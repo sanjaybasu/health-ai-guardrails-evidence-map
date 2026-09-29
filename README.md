@@ -2,7 +2,7 @@
 
 A weekly-updated map that links each recommended guardrail for deploying artificial intelligence in health care (large language models, predictive models, imaging software, multimodal models, ambient scribes, and agents) to the sources that endorse it and the studies that tested it, with attention to Medicaid, safety-net, limited English proficiency, and low-literacy populations.
 
-Site: https://sanjaybasu.github.io/health-ai-guardrails-evidence-map/
+The site is published at https://sanjaybasu.github.io/health-ai-guardrails-evidence-map/.
 
 ## What it answers
 
@@ -16,17 +16,19 @@ Governance frameworks (CHAI, Joint Commission and CHAI, the Health AI Partnershi
 | Extract atomic recommendations with verbatim quotes; merge, critique, revise | `gem/taxonomy.py` | Claude Opus 5.5, GPT-6, Gemini 3.1 Pro |
 | Retrieve literature (Europe PMC incl. medRxiv/bioRxiv/Research Square, arXiv, OpenAlex) | `gem/fetch.py` | none |
 | Screen titles and abstracts; audit a sample of exclusions with a second vendor | `gem/evidence.py` | Gemini Flash, Claude Sonnet |
-| Extract study-to-recommendation links (three-vendor panel for tests of a practice) | `gem/evidence.py` | three vendors |
+| Calibrated second screen; arbitrate disagreements | `gem/jev.py` | Jev (TypeSafe), Claude Sonnet |
+| Route each study to relevant domains; extract links with a three-vendor panel; cross-examine single-vendor links | `gem/evidence.py` | Claude, OpenAI, Gemini |
+| Score whether each quote supports its link | `gem/jev.py` | Jev |
 | Verify every quote against the source text | `gem/quotes.py` | none |
 | Assign evidence levels, compute status, build the site | `gem/evidence.py`, `gem/build_site.py` | none |
 
-A link from a study to a recommendation needs agreement from at least two of the three vendors and a quote that appears verbatim in the text the models read. Bibliographic details come only from Europe PMC, arXiv, and OpenAlex. Everything the models produce is marked machine-extracted until a person verifies it. The methods page on the site gives the evidence levels, status rules, agreement statistics, and screening-audit results.
+A link from a study to a recommendation needs at least two of the three vendors to agree, either independently or when a second vendor is shown a link the first proposed, and a quote that appears verbatim in the text the models read. Bibliographic details come only from Europe PMC, arXiv, and OpenAlex. Everything the models produce is marked machine-extracted until a person verifies it. The methods page on the site gives the evidence levels, status rules, agreement statistics, and screening-audit results.
 
 ## Running it
 
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements.txt
-export ANTHROPIC_API_KEY=... OPENAI_API_KEY=... GEMINI_API_KEY=...
+export ANTHROPIC_API_KEY=... OPENAI_API_KEY=... GEMINI_API_KEY=... TYPESAFE_API_KEY=... NCBI_API_KEY=...
 python -m gem.pipeline seed-taxonomy            # once, then curate data/taxonomy.yaml by hand
 python -m gem.pipeline backfill --since 2023-01-01
 python -m gem.pipeline weekly                   # what the scheduled workflow runs
@@ -53,4 +55,4 @@ The maintainers are employees of Waymark, a public benefit organization that pro
 
 ## License
 
-Code: MIT. Data and site content: CC BY 4.0. Quotes from source documents remain the property of their authors and are reproduced as short excerpts for commentary and research.
+The code is released under the MIT license, and the data and site content under CC BY 4.0. Quotes from source documents remain the property of their authors and are reproduced as short excerpts for commentary and research.

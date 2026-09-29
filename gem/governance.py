@@ -64,7 +64,7 @@ def fetch_all(only: set[str] | None = None) -> dict[str, dict]:
         text = "\n\n".join(parts)
         h = hashlib.sha256(text.encode()).hexdigest()
         changed = hashes.get(s["id"]) != h
-        if changed:
+        if changed or not (TEXT / f"{s['id']}.txt").exists():
             (TEXT / f"{s['id']}.txt").write_text(text)
             hashes[s["id"]] = h
         report[s["id"]] = {"changed": changed, "chars": len(text)}

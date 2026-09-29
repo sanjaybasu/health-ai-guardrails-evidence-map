@@ -14,7 +14,27 @@ import requests
 
 from .llm import CFG, ROOT
 
-PAPERS = ROOT / "data" / "papers.jsonl"
+PAPERS = ROOT / "data" / "papers.jsonl.gz"     # gzip keeps the corpus under GitHub's file-size limit
+_LEGACY = ROOT / "data" / "papers.jsonl"
+
+
+def _lines():
+    import gzip
+    if PAPERS.exists():
+        with gzip.open(PAPERS, "rt") as f:
+            yield from f
+    elif _LEGACY.exists():
+        with _LEGACY.open() as f:
+            yield from f
+
+
+def _write_all(papers):
+    import gzip
+    tmp = PAPERS.with_suffix(".tmp")
+    with gzip.open(tmp, "wt") as f:
+        for p in papers:
+            f.write(json.dumps(p) + "\n")
+    tmp.replace(PAPERS)
 UA = {"User-Agent": "health-ai-guardrails-evidence-map (mailto:sanjay.basu@waymarkcare.com)"}
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 
@@ -143,8 +163,8 @@ def verify_ids(papers: list[dict]) -> list[dict]:
 
 def load() -> dict[str, dict]:
     out = {}
-    if PAPERS.exists():
-        for line in PAPERS.read_text().splitlines():
+    for line in _lines():
+        if line.strip():
             p = json.loads(line)
             out[p["id"]] = p
     return out
@@ -165,9 +185,7 @@ def merge_new(records) -> list[dict]:
         r["fetched"] = dt.date.today().isoformat()
         new.append(r)
     if new:
-        with PAPERS.open("a") as f:
-            for r in new:
-                f.write(json.dumps(r) + "\n")
+        _write_all(list(have.values()) + new)
     return new
 
 
@@ -205,7 +223,28 @@ def update(since: str, until: str | None = None, limit: int | None = None) -> li
     if new:   # rewrite with citation counts and identifier checks
         allp = load()
         allp.update({p["id"]: p for p in new})
-        tmp = PAPERS.with_suffix(".tmp")
-        tmp.write_text("".join(json.dumps(p) + "\n" for p in allp.values()))
-        tmp.replace(PAPERS)
+        _write_all(allp.values())
     return new
+
+
+def retry_failed(pause: float = 20.0) -> dict:
+    """Re-fetch Europe PMC windows that failed in the last update, one at a time with a pause between them."""
+    path = ROOT / "state" / "fetch_failed_windows.json"
+    windows = json.loads(path.read_text()) if path.exists() else []
+    still, new = [], []
+    for w in windows:
+        q = CFG["search"]["europepmc_queries"][w["query"]]
+        try:
+            recs = [{**r, "query": w["query"]} for r in europepmc(w["since"], w["until"], query=q)]
+            new += merge_new(recs)
+        except RuntimeError as e:
+            still.append({**w, "error": str(e)[:160]})
+        time.sleep(pause)
+    openalex_enrich(new)
+    verify_ids(new)
+    if new:
+        allp = load()
+        allp.update({p["id"]: p for p in new})
+        _write_all(allp.values())
+    path.write_text(json.dumps(still, indent=1))
+    return {"retried": len(windows), "recovered_records": len(new), "still_failed": len(still)}

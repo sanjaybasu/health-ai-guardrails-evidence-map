@@ -15,7 +15,7 @@
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const $ = (id) => document.getElementById(id);
-  let DATA, rows = [], sortKey = "n_endorse", sortDir = -1;
+  let DATA, rows = [], sortKey = "n_endorse", sortDir = -1, showAll = false;
 
   fetch("data/map.json").then((r) => r.json()).then((d) => {
     DATA = d;
@@ -28,6 +28,7 @@
     document.querySelectorAll("#tbl th").forEach((th) => th.addEventListener("click", () => {
       const k = th.dataset.k; sortDir = sortKey === k ? -sortDir : (k === "statement" || k === "domain" || k === "status" ? 1 : -1); sortKey = k; renderTable();
     }));
+    $("more").addEventListener("click", () => { showAll = true; renderTable(); });
     window.addEventListener("hashchange", openFromHash);
     window.addEventListener("resize", () => renderMap());
     render(); openFromHash();
@@ -43,7 +44,7 @@
       && (!$("us").checked || r.underserved_tested));
   }
 
-  function render() { rows = filtered(); renderMap(); renderTable(); }
+  function render() { rows = filtered(); showAll = false; renderMap(); renderTable(); }
 
   function hash(s) { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967295; }
 
@@ -60,7 +61,7 @@
     let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
     const x3 = x(3);
     s += `<rect class="band" x="${x3}" y="${y(6) - band / 2 - 4}" width="${W - m.r - x3}" height="${band + 8}" rx="6"/>`;
-    s += `<text class="band-label" x="${W - m.r - 6}" y="${y(6) - band / 2 + 8}" text-anchor="end">endorsed by 3+ sources, never tested</text>`;
+    s += `<text class="band-label" x="${W - m.r - 6}" y="${y(6) - band / 2 - 9}" text-anchor="end">endorsed by 3+ sources, never tested</text>`;
     rowsY.forEach((lv, i) => { s += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${y(lv)}" y2="${y(lv)}"/><g class="axis"><text x="${m.l - 8}" y="${y(lv) + 4}" text-anchor="end">${yl[i]}</text></g>`; });
     const ticks = [0, 1, 3, 5, 10, 20, 40].filter((t) => t <= maxN);
     ticks.forEach((t) => { s += `<g class="axis"><line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${m.t}" y2="${H - m.b}" stroke-dasharray="2 4"/><text x="${x(t)}" y="${H - m.b + 16}" text-anchor="middle">${t}</text></g>`; });
@@ -84,7 +85,10 @@
     const v = (r) => (k === "best_level" ? (r.best_level ?? 9) * -1 : r[k]);
     rows.sort((a, b) => (v(a) > v(b) ? d : v(a) < v(b) ? -d : 0));
     $("count").textContent = `${rows.length} of ${DATA.recs.length}`;
-    $("tbl").querySelector("tbody").innerHTML = rows.map((r) => `<tr data-id="${r.id}">
+    const shownRows = showAll ? rows : rows.slice(0, 60);
+    $("more").hidden = showAll || rows.length <= 60;
+    $("more").textContent = `Show all ${rows.length}`;
+    $("tbl").querySelector("tbody").innerHTML = shownRows.map((r) => `<tr data-id="${r.id}">
       <td><b>${r.id}</b> ${esc(r.statement)}</td><td>${esc(label(r.domain))}</td>
       <td class="num">${r.n_endorse}</td><td class="num">${r.best_level ?? "–"}</td>
       <td class="num">${r.n_tests}</td><td class="num">${r.n_hazard}</td>
@@ -96,6 +100,24 @@
     if (e.doi) return `https://doi.org/${e.doi}`;
     if (e.pmid) return `https://pubmed.ncbi.nlm.nih.gov/${e.pmid}/`;
     return "";
+  }
+
+  const LENS = { evidence_synthesis: "Evidence synthesis", patient_safety: "Patient safety", clinical_informatics: "Clinical informatics and implementation",
+    health_equity: "Health equity", regulatory_policy: "Regulation and policy", operations: "Health-system operations", patient_advocate: "Patient perspective" };
+  const CERT = { high: "High", moderate: "Moderate", low: "Low", very_low: "Very low", no_direct_evidence: "No direct evidence" };
+
+  function commentaryHtml(r) {
+    const c = r.commentary;
+    if (!c) return "";
+    const byId = Object.fromEntries(r.evidence.map((e) => [e.study, e]));
+    const cite = (ids) => ids.filter((i) => byId[i]).map((i) => { const e = byId[i]; const u = link(e);
+      return u ? `<a href="${u}" target="_blank" rel="noopener" title="${esc(e.title)}">[${esc(i)}]</a>` : `[${esc(i)}]`; }).join(" ");
+    const views = (c.perspectives || []).map((p) => `<div class="item"><div class="t">${esc(LENS[p.lens] || p.lens)}</div><div>${esc(p.view)} ${cite(p.cites || [])}</div></div>`).join("");
+    return `<section class="commentary"><h3>Evidence commentary</h3>
+      <div class="meta">Certainty that the practice achieves its aim: <b>${esc(CERT[c.certainty] || c.certainty)}</b>. Machine-written from the evidence listed below by expert-role perspectives, with each statement checked by a second model; not reviewed by the named fields' experts.</div>
+      ${c.bottom_line ? `<p>${esc(c.bottom_line)}</p>` : ""}${views}
+      ${c.underserved_note ? `<p><b>Underserved populations.</b> ${esc(c.underserved_note)}</p>` : ""}
+      ${c.research_gap ? `<p><b>Research gap.</b> ${esc(c.research_gap)}</p>` : ""}</section>`;
   }
 
   function openFromHash() {
@@ -118,6 +140,7 @@
       <h2>${r.id}. ${esc(r.statement)}</h2>
       <div class="meta">${esc(label(r.domain))} · ${r.applies_to.map((a) => TARGET[a]).join(", ")}${(r.technology || []).length ? " · " + r.technology.map((t) => TECH[t] || t).join(", ") : ""} · <span class="pill" style="background:var(${STATUS_COLOR[r.status]})">${esc(r.status_label)}</span> · ${r.curation === "curated" ? "wording curated by a person" : "machine-drafted wording"}</div>
       <p><b>Hazard it targets.</b> ${esc(r.hazard)}</p>
+      ${commentaryHtml(r)}
       <h3>Tests of the practice (${tests.length})</h3>${tests.length ? tests.map(ev).join("") : "<p class='meta'>No study has tested this practice yet.</p>"}
       <h3>Studies documenting the hazard (${haz.length})</h3>${haz.length ? haz.slice(0, 40).map(ev).join("") + (haz.length > 40 ? `<p class="meta">${haz.length - 40} more in the data file.</p>` : "") : "<p class='meta'>None linked yet.</p>"}
       <h3>Endorsing sources (${r.n_endorse})</h3>${en || "<p class='meta'>None.</p>"}`;

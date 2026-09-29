@@ -74,16 +74,20 @@ def screen(records: list[dict], workers: int = 16):
 
     def one(r):
         user = f"Title: {r['title']}\nPublication types: {', '.join(r.get('pub_types') or [])}\nAbstract: {r['abstract']}"
-        try:
-            out = llm.call(m["vendor"], m["model"], SCREEN_SYSTEM, user, SCREEN_SCHEMA, step="screen",
-                           effort="low", max_tokens=2000)
-        except llm.BudgetExceeded:
-            raise
-        except Exception as e:
-            print("  screen fail", r["id"], repr(e)[:120], flush=True)
+        out = None
+        for mm in (m, CFG["models"]["screen_audit"]):   # fall back to a second vendor on empty or failed output
+            try:
+                out = llm.call(mm["vendor"], mm["model"], SCREEN_SYSTEM, user, SCREEN_SCHEMA, step="screen",
+                               effort="low", max_tokens=2000)
+                break
+            except llm.BudgetExceeded:
+                raise
+            except Exception as e:
+                print("  screen fail", r["id"], mm["model"], repr(e)[:120], flush=True)
+        if out is None:
             return
         with _lock, SCREEN.open("a") as f:
-            f.write(json.dumps({"id": r["id"], "model": m["model"], **out}) + "\n")
+            f.write(json.dumps({"id": r["id"], "model": mm["model"], **out}) + "\n")
 
     with ThreadPoolExecutor(workers) as ex:
         list(ex.map(one, todo))
@@ -190,6 +194,61 @@ def _taxonomy_block() -> tuple[str, set[str]]:
     return "\n".join(lines), {r["id"] for r in t["recommendations"]}
 
 
+_REC_INDEX = None
+
+
+def _rec_index():
+    """Embeddings of every recommendation (statement + hazard + variants), cached on disk by taxonomy hash."""
+    global _REC_INDEX
+    if _REC_INDEX is None:
+        import hashlib
+        import numpy as np
+        from .taxonomy import _embed
+        recs = yaml.safe_load(TAXONOMY.read_text())["recommendations"]
+        texts = [f"{r['statement']} Hazard: {r['hazard']}. Variants: {'; '.join(r.get('variants', []))}" for r in recs]
+        h = hashlib.sha256("\n".join(texts).encode()).hexdigest()[:12]
+        path = ROOT / "data" / "cache" / f"rec_index_{h}.npy"
+        if path.exists():
+            v = np.load(path)
+        else:
+            v = _embed(texts)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            np.save(path, v)
+        _REC_INDEX = (recs, v)
+    return _REC_INDEX
+
+
+ROUTE_SCHEMA = {"type": "object", "additionalProperties": False, "required": ["domains"],
+                "properties": {"domains": {"type": "array", "items": {"type": "string", "enum": None}}}}
+
+
+def _route_domains(p: dict) -> list[str]:
+    """A low-cost model names up to 5 domains the study bears on (pilot recall 65 of 66 agreed links)."""
+    from .taxonomy import DOMAINS
+    schema = json.loads(json.dumps(ROUTE_SCHEMA))
+    schema["properties"]["domains"]["items"]["enum"] = list(DOMAINS)
+    system = ("You route a health care AI study to the guardrail domains its results bear on, for an evidence map. "
+              "A study bears on a domain if it tests a practice in that domain or measures the hazard a practice in "
+              "that domain targets. Return up to 5 domains, most relevant first, including any domain that could "
+              "plausibly apply.\n\nDomains:\n" + "\n".join(f"{k}: {v}" for k, v in DOMAINS.items()))
+    m = CFG["models"]["screen"]
+    return llm.call(m["vendor"], m["model"], system, f"Title: {p['title']}\nAbstract: {p['abstract']}", schema,
+                    step="route", effort="low", max_tokens=2000)["domains"]
+
+
+def _candidate_block(p: dict, k_embed: int = 15) -> tuple[str, set[str]]:
+    """Every recommendation in the routed domains plus the top-k by embedding; all vendors see the same list."""
+    from .taxonomy import _embed
+    recs, v = _rec_index()
+    doms = set(_route_domains(p))
+    q = _embed([f"{p['title']}. {p['abstract'][:6000]}"])[0]
+    top = set(sorted(range(len(recs)), key=lambda i: -float(v[i] @ q))[:k_embed])
+    keep = [i for i in range(len(recs)) if recs[i]["domain"] in doms or i in top]
+    lines = [f"{recs[i]['id']} [{recs[i]['domain']}] {recs[i]['statement']} (targets hazard: {recs[i]['hazard']})"
+             for i in keep]
+    return "\n".join(lines), {recs[i]["id"] for i in keep}
+
+
 STUDY_SYSTEM = """You extract structured evidence from a study for an evidence map of guardrails for deploying artificial intelligence in health care (generative, predictive, imaging, multimodal, agentic, and other AI). The map links each study to the recommendations below.
 
 Link the study to a recommendation only when one of these holds:
@@ -199,13 +258,14 @@ Do not link a study just because it is about the same topic. Most accuracy studi
 
 For each link, quote one verbatim sentence from the text that states the result (copy exactly; quotes that are not verbatim are discarded) and report the effect with the numbers as written. Population flags are true only if the study sample is described as that population (for example Medicaid enrollees, safety-net hospital patients, patients with limited English proficiency, non-English prompts). sample_size is the number of the sample_unit analyzed, or null if not reported. Use only information in the text.
 
-Recommendations:
+Candidate recommendations ({k} in the domains this study bears on; link only those that meet the rules above):
 {taxonomy}"""
 
 
 def _call_study(vendor, model, p, text, tax_block, step):
     user = f"Title: {p['title']}\nVenue: {p.get('venue')} ({p.get('date')}){' [preprint]' if p.get('preprint') else ''}\n\n<text>\n{text}\n</text>"
-    return llm.call(vendor, model, STUDY_SYSTEM.replace("{taxonomy}", tax_block), user, study_schema(), step=step,
+    return llm.call(vendor, model, STUDY_SYSTEM.replace("{k}", str(tax_block.count(chr(10)) + 1)).replace("{taxonomy}", tax_block),
+                    user, study_schema(), step=step,
                     effort="high", max_tokens=32000)
 
 
@@ -265,14 +325,37 @@ def aggregate(outs: dict[str, dict], links: dict[str, list[dict]]) -> dict:
     return agg
 
 
-def extract_studies(workers: int = 6, limit: int | None = None):
-    """Extract every screened-in record not yet extracted."""
+def _route(r) -> str:
+    if r["category"] == "recommendation_commentary":
+        return "commentary"
+    if r["tests_practice"] and r["setting"] == "real_deployment":
+        return "panel"
+    if r["tests_practice"] and r["setting"] == "offline_or_simulated":
+        return "fast_panel"
+    return "single"
+
+
+def pilot_ids(per_route: dict | None = None, seed: int = 20260928) -> set[str]:
+    """Stratified random sample of screened-in records for a cost and quality pilot."""
+    per_route = per_route or {"panel": 15, "fast_panel": 20, "single": 25, "commentary": 10}
+    rows = [json.loads(l) for l in SCREEN.read_text().splitlines()]
+    rows = [r for r in rows if r["category"] in ("empirical_ai_health", "recommendation_commentary")]
+    rng = random.Random(seed)
+    out = set()
+    for route, n in per_route.items():
+        pool = [r["id"] for r in rows if _route(r) == route]
+        out |= set(rng.sample(pool, min(n, len(pool))))
+    return out
+
+
+def extract_studies(workers: int = 6, limit: int | None = None, only: set[str] | None = None):
+    """Extract every screened-in record not yet extracted (or only the given ids)."""
     EXTRACT_DIR.mkdir(parents=True, exist_ok=True)
     tax_block, valid = _taxonomy_block()
     papers = fetch.load()
     rows = [json.loads(l) for l in SCREEN.read_text().splitlines()]
     todo = [r for r in rows if r["category"] in ("empirical_ai_health", "recommendation_commentary")
-            and not (EXTRACT_DIR / f"{_fn(r['id'])}.json").exists()]
+            and not (EXTRACT_DIR / f"{_fn(r['id'])}.json").exists() and (only is None or r["id"] in only)]
     todo.sort(key=lambda r: (not r["tests_practice"], r["setting"] != "real_deployment"))
     if limit:
         todo = todo[:limit]
@@ -309,7 +392,55 @@ def _fn(pid: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]", "_", pid)
 
 
+XEXAM_SCHEMA = {"type": "object", "additionalProperties": False, "required": ["agree", "finding"],
+                "properties": {"agree": {"type": "boolean"}, "finding": {"type": "string", "enum": FINDINGS}}}
+
+XEXAM_SYSTEM = """You are checking a proposed link in an evidence map of guardrails for deploying AI in health care. Another reviewer linked the study below to one recommendation. Agree only if the text shows that the study tests the practice (tests_guardrail: it compares outcomes with and without the practice, or measures whether the practice achieves its aim) or measures the specific failure the practice targets (documents_hazard), and the quoted sentence states that result. Disagree if the link rests on topic similarity alone. Give the finding you would assign."""
+
+
+def _cross_examine(p, text, ntext, agg, outs, members, route):
+    """For links made by one vendor only, ask the other panel members to agree or disagree."""
+    recs = {r["id"]: r for r in _rec_index()[0]}
+    raw = {v: {(l["rec_id"], l["relation"]): l for l in outs[v]["links"]} for v in outs}
+    for c in list(agg["contested_links"]):
+        (v0,) = c["vendors"] if len(c["vendors"]) == 1 else (None,)
+        if v0 is None:
+            continue
+        link = raw[v0].get((c["rec_id"], c["relation"]))
+        r = recs.get(c["rec_id"])
+        if not link or not r:
+            continue
+        ok, score = quotes.verify(link["quote"], text, ntext)
+        if not ok:
+            continue
+        votes = [(v0, link["finding"])]
+        for vendor, model in members.items():
+            if vendor == v0 or vendor not in outs:
+                continue
+            user = (f"Study: {p['title']}\n\n<text>\n{text[:40000]}\n</text>\n\nProposed link: {c['relation']} -> "
+                    f"{r['id']}: {r['statement']} (targets hazard: {r['hazard']})\nProposed finding: {link['finding']}\n"
+                    f"Quoted sentence: {link['quote']}")
+            try:
+                x = llm.call(vendor, model, XEXAM_SYSTEM, user, XEXAM_SCHEMA, step=f"xexam_{route}", effort="medium",
+                             max_tokens=4000)
+            except llm.BudgetExceeded:
+                raise
+            except Exception:
+                continue
+            if x["agree"]:
+                votes.append((vendor, x["finding"]))
+        if len(votes) >= 2:
+            finding, share = _majority([f for _, f in votes])
+            agg["links"].append({"rec_id": c["rec_id"], "relation": c["relation"], "finding": finding,
+                                 "finding_agreement": round(share, 2), "outcome": link["outcome"],
+                                 "effect": link["effect"], "quote": link["quote"],
+                                 "linked_by": sorted(v for v, _ in votes), "via": "cross_examination"})
+            agg["contested_links"].remove(c)
+    return agg
+
+
 def _panel(p, tax_block, valid, members, route):
+    tax_block, valid = _candidate_block(p)
     ft = fulltext(p)
     text = f"Abstract: {p['abstract']}" + (f"\n\nFull text (methods and results first):\n{ft}" if ft else "")
     ntext = quotes.norm(text)
@@ -325,11 +456,13 @@ def _panel(p, tax_block, valid, members, route):
     if not outs:
         raise RuntimeError("all panel members failed")
     agg = aggregate(outs, links)
+    if len(outs) >= 3:
+        agg = _cross_examine(p, text, ntext, agg, outs, members, route)
     return {"route": route, "fulltext": bool(ft), "raw": outs, **agg, "models": {v: members[v] for v in outs}}
 
 
 def _single(p, tax_block, valid):
-    m = CFG["models"]["hazard"]
+    m = CFG["models"]["hazard"]   # full taxonomy in a fixed system prompt, so prompt caching applies
     text = f"Abstract: {p['abstract']}"
     out = _call_study(m["vendor"], m["model"], p, text, tax_block, "study_hazard")
     links = _verify_links(out, text, quotes.norm(text), valid)
@@ -351,13 +484,18 @@ COMMENT_SCHEMA = {
 
 COMMENT_SYSTEM = """You map a commentary or framework paper on health care AI to the recommendations it endorses, for an evidence map of guardrails for deploying AI in health care. List a recommendation only if the text explicitly recommends that practice; quote the verbatim sentence (copy exactly). List recommendations the text makes that match nothing below as unlisted_recommendations, each as one atomic imperative statement.
 
-Recommendations:
+Candidate recommendations:
 {taxonomy}"""
 
 
 def _commentary(p, tax_block, valid):
     m = CFG["models"]["hazard"]
-    text = f"Title: {p['title']}\nAbstract: {p['abstract']}"
+    ft = fulltext(p, max_words=9000)
+    if not ft:   # abstracts rarely state a recommendation verbatim; count commentaries only with open full text
+        return {"route": "commentary", "models": {}, "endorsements": [], "unlisted_practices": [], "links": [],
+                "skipped": "no open full text"}
+    tax_block, valid = _candidate_block(p)
+    text = f"Title: {p['title']}\nAbstract: {p['abstract']}\n\nFull text:\n{ft}"
     out = llm.call(m["vendor"], m["model"], COMMENT_SYSTEM.replace("{taxonomy}", tax_block), text, COMMENT_SCHEMA,
                    step="commentary", effort="medium", max_tokens=8000)
     nt = quotes.norm(text)
@@ -385,6 +523,16 @@ def level(design: str, setting: str) -> int:
     return 3
 
 
+def _clean_title(t):
+    import html
+    return re.sub(r"<[^>]+>", "", html.unescape(html.unescape(t or ""))).strip()
+
+
+def _randomization_stated(p: dict) -> bool:
+    text = f"{p.get('title', '')} {p.get('abstract', '')} {' '.join(p.get('pub_types') or [])}".lower()
+    return bool(re.search(r"random|cluster-randomi[sz]ed|stepped[- ]wedge", text))
+
+
 def assemble():
     """Write evidence.jsonl and commentary_endorsements.jsonl from all extraction files."""
     papers = fetch.load()
@@ -396,18 +544,23 @@ def assemble():
         p = papers.get(x["id"], {})
         if p.get("id_verified") is False:   # bibliographic record did not match PubMed or doi.org
             continue
-        meta = {"study": x["id"], "title": p.get("title"), "venue": p.get("venue"), "date": p.get("date"),
+        meta = {"study": x["id"], "title": _clean_title(p.get("title")), "venue": p.get("venue"), "date": p.get("date"),
                 "doi": p.get("doi"), "pmid": p.get("pmid"), "preprint": p.get("preprint"),
                 "citations": p.get("citations")}
         if x["route"] == "commentary":
             for e in x["endorsements"]:
                 com.append({**meta, "rec": e["rec_id"], "quote": e["quote"]})
         else:
-            lv = level(x["design"], x["setting"])
+            design = x["design"]
+            # Guard: a randomized design label needs randomization stated in the record itself.
+            if design in ("rct", "cluster_rct") and not _randomization_stated(p):
+                design = "prospective_with_comparator"
+            lv = level(design, x["setting"])
             for l in x["links"]:
                 ev.append({**meta, "rec": l["rec_id"], "relation": l["relation"], "finding": l["finding"],
                            "outcome": l["outcome"], "effect": l["effect"], "quote": l["quote"],
-                           "design": x["design"], "setting": x["setting"], "user": x["user"], "level": lv,
+                           "design": design, "design_extracted": x["design"], "setting": x["setting"],
+                           "user": x["user"], "level": lv,
                            "technology": x.get("technology", []),
                            "sample_size": x.get("sample_size"), "sample_unit": x.get("sample_unit"),
                            "country": x.get("country"), "population": x["population"],

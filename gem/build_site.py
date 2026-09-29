@@ -58,6 +58,7 @@ def compute() -> dict:
                                   "kind": "commentary", "date": e.get("date") or "",
                                   "url": f"https://doi.org/{e['doi']}" if e.get("doi") else "",
                                   "strength": "should", "quote": e["quote"]})
+    comm = {c["rec"]: c for c in _jsonl(ROOT / "data" / "commentary.jsonl")}
     ev = defaultdict(list)
     for e in _jsonl(EVIDENCE):
         ev[e["rec"]].append(e)
@@ -82,6 +83,8 @@ def compute() -> dict:
             "underserved_tested": any(any(e["population"].get(f) for f in UNDERSERVED) for e in tests),
             "underserved_hazard": any(any(e["population"].get(f) for f in UNDERSERVED) for e in haz),
             "status": st, "status_label": STATUS_LABEL[st],
+            "commentary": {k: comm[r["id"]].get(k) for k in ("bottom_line", "certainty", "perspectives",
+                                                              "research_gap", "underserved_note")} if r["id"] in comm else None,
             "endorsements": sorted(es, key=lambda e: (e["kind"] == "commentary", e["strength"] != "must")),
             "evidence": sorted(ev[r["id"]], key=lambda e: (e["relation"] != "tests_guardrail", e["level"])),
         })
@@ -91,7 +94,8 @@ def compute() -> dict:
 
 def stats(data: dict) -> dict:
     screen = _jsonl(ROOT / "data" / "screening.jsonl")
-    papers = _jsonl(ROOT / "data" / "papers.jsonl")
+    from .fetch import load
+    papers = list(load().values())
     ex = [json.loads(p.read_text()) for p in (ROOT / "data" / "extractions").glob("*.json")]
     panel = [x for x in ex if x["route"] in ("panel", "fast_panel") and x.get("agreement")]
     agree = defaultdict(list)
@@ -104,6 +108,7 @@ def stats(data: dict) -> dict:
     return {
         "updated": dt.date.today().isoformat(),
         "n_papers": len(papers), "n_preprints": sum(p.get("preprint", False) for p in papers),
+        "n_screened": len(screen),
         "screen": dict(Counter(s["category"] for s in screen)),
         "n_practice_testing": sum(1 for s in screen if s["tests_practice"] and s["category"] == "empirical_ai_health"),
         "routes": dict(Counter(x["route"] for x in ex)),
@@ -121,7 +126,7 @@ def build():
     data["stats"] = stats(data)
     DOCS.mkdir(exist_ok=True)
     (DOCS / "data").mkdir(exist_ok=True)
-    (DOCS / "data" / "map.json").write_text(json.dumps(data, separators=(",", ":")))
+    (DOCS / "data" / "map.json").write_text(json.dumps(data, separators=(",", ":"), default=str))
     for f in (SITE / "static").iterdir():
         shutil.copy(f, DOCS / f.name)
     env = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=True)

@@ -131,6 +131,8 @@ def _gemini(model, system, user, schema, effort, max_tokens):
                                       response_json_schema=schema, max_output_tokens=max_tokens,
                                       thinking_config=types.ThinkingConfig(thinking_level=level))
     r = c.models.generate_content(model=model, contents=user, config=cfg)
+    if not r.text:
+        raise json.JSONDecodeError("empty gemini response", "", 0)
     u = r.usage_metadata
     tout = (u.candidates_token_count or 0) + (getattr(u, "thoughts_token_count", 0) or 0)
     return json.loads(r.text), u.prompt_token_count or 0, tout
