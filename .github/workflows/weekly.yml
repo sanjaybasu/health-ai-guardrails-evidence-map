@@ -1,0 +1,77 @@
+name: weekly-update
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Run weekly pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+        run: python -m gem.pipeline weekly
+      - name: Summarize changes for the pull request
+        id: summary
+        run: |
+          {
+            echo 'body<<EOF'
+            python - <<'PY'
+          import json
+          e = [json.loads(l) for l in open("data/changelog.jsonl")][-1]
+          print(f"Weekly update {e['date']}: {e['new_records']} new records screened, {e['new_tests']} new tests of a practice, "
+                f"{e['new_hazard']} new hazard studies, {e['new_endorsements']} new endorsements; model spend ${e['spend_usd']}.")
+          if e.get("sources_changed"):
+              print("\nRevised governance sources (new candidate recommendations need curation): " + ", ".join(e["sources_changed"]))
+          if e["status_changes"]:
+              print("\nStatus changes:")
+              for c in e["status_changes"]:
+                  print(f"- {c['id']} {c['statement']}: {c['before']} -> {c['after']}")
+          print("\nEvery new link is machine-extracted. Spot-check the quotes in data/evidence.jsonl before merging.")
+          PY
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+      - name: Open pull request with data and site changes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: weekly-update
+          delete-branch: true
+          title: "Weekly literature update"
+          commit-message: "weekly literature update"
+          body: ${{ steps.summary.outputs.body }}
+          add-paths: |
+            data/**
+            docs/**
+            state/cost_ledger.jsonl
+            state/last_run.json
+      - name: Heartbeat commit on main (keeps the schedule active)
+        run: |
+          git fetch origin main
+          git checkout -B main origin/main
+          python -c "import json,datetime; json.dump({'last_run': datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds')}, open('state/heartbeat.json','w'))"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/heartbeat.json
+          git commit -m "heartbeat" || exit 0
+          git push origin main

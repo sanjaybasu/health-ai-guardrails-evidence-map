@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block body %}
+<section class="intro">
+  <h1>Which guardrails for health care AI have evidence behind them?</h1>
+  <p class="lede">Frameworks, statutes, and commentaries recommend many practices for deploying AI with patients and staff, from large language models and ambient scribes to predictive risk models, imaging software, and agents. This map places each recommended practice by how many sources endorse it and by the strongest study that has tested it, and it flags whether any test included Medicaid, safety-net, limited English proficiency, or low-literacy populations.</p>
+  <div class="kpis">
+    <div><b>{{ s.n_recs }}</b><span>recommendations</span></div>
+    <div><b>{{ s.n_sources }}</b><span>governance sources</span></div>
+    <div><b>{{ "{:,}".format(s.n_papers) }}</b><span>records screened</span></div>
+    <div><b>{{ s.n_tests_edges }}</b><span>tests of a practice</span></div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="controls" id="controls">
+    <input id="q" type="search" placeholder="Search recommendations" aria-label="Search recommendations">
+    <select id="domain" aria-label="Domain"><option value="">All domains</option></select>
+    <select id="target" aria-label="User">
+      <option value="">Patients, staff, and organizations</option>
+      <option value="patient_facing">Patient-facing</option>
+      <option value="clinician_or_staff_facing">Clinician- or staff-facing</option>
+      <option value="organizational">Organizational</option>
+    </select>
+    <select id="status" aria-label="Evidence status"><option value="">Any evidence status</option></select>
+    <select id="tech" aria-label="Technology"><option value="">All AI technologies</option></select>
+    <label class="chk"><input type="checkbox" id="us"> Tested in underserved populations</label>
+  </div>
+  <figure class="mapfig">
+    <div id="map" role="img" aria-label="Recommendations plotted by endorsement count and strongest evidence"></div>
+    <figcaption>Each point is one recommendation. Horizontal position is the number of distinct sources that endorse it; vertical position is the strongest study design that has tested it. Points with a dark ring were tested in at least one underserved population. Select a point for detail.</figcaption>
+    <div class="legend" id="legend"></div>
+  </figure>
+</section>
+
+<section class="panel">
+  <div class="tablehead"><h2>Recommendations</h2><span id="count"></span></div>
+  <div class="tablewrap">
+    <table id="tbl">
+      <thead><tr>
+        <th data-k="statement">Recommendation</th>
+        <th data-k="domain">Domain</th>
+        <th data-k="n_endorse" class="num">Sources</th>
+        <th data-k="best_level" class="num">Best evidence</th>
+        <th data-k="n_tests" class="num">Tests</th>
+        <th data-k="n_hazard" class="num">Hazard studies</th>
+        <th data-k="status">Status</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<dialog id="detail"><div id="detail-body"></div></dialog>
+{% endblock %}
+{% block scripts %}<script src="app.js"></script>{% endblock %}
