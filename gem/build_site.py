@@ -18,7 +18,7 @@ DOCS = ROOT / "docs"
 SITE = ROOT / "site"
 UNDERSERVED = ("medicaid", "safety_net", "limited_english_or_non_english", "low_health_literacy", "low_income")
 STATUS_LABEL = {
-    "evidence_supported": "Supported by controlled deployment evidence",
+    "evidence_supported": "Favoured by a controlled deployment study",
     "contested": "Contested",
     "limited_evidence": "Tested, weaker designs only",
     "consensus_without_evidence": "Widely endorsed, untested",
@@ -126,7 +126,15 @@ def build():
     data["stats"] = stats(data)
     DOCS.mkdir(exist_ok=True)
     (DOCS / "data").mkdir(exist_ok=True)
-    (DOCS / "data" / "map.json").write_text(json.dumps(data, separators=(",", ":"), default=str))
+    # Summary for the map and table; full detail per recommendation, loaded when a recommendation is opened.
+    detail_keys = ("endorsements", "evidence", "commentary")
+    (DOCS / "data" / "rec").mkdir(parents=True, exist_ok=True)
+    for r in data["recs"]:
+        (DOCS / "data" / "rec" / f"{r['id']}.json").write_text(
+            json.dumps({k: r.get(k) for k in detail_keys}, separators=(",", ":"), default=str))
+    summary = {**data, "recs": [{k: v for k, v in r.items() if k not in detail_keys} for r in data["recs"]]}
+    (DOCS / "data" / "map.json").write_text(json.dumps(summary, separators=(",", ":"), default=str))
+    (DOCS / "data" / "map_full.json").unlink(missing_ok=True)
     for f in (SITE / "static").iterdir():
         shutil.copy(f, DOCS / f.name)
     env = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=True)

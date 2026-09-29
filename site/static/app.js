@@ -114,17 +114,20 @@
       return u ? `<a href="${u}" target="_blank" rel="noopener" title="${esc(e.title)}">[${esc(i)}]</a>` : `[${esc(i)}]`; }).join(" ");
     const views = (c.perspectives || []).map((p) => `<div class="item"><div class="t">${esc(LENS[p.lens] || p.lens)}</div><div>${esc(p.view)} ${cite(p.cites || [])}</div></div>`).join("");
     return `<section class="commentary"><h3>Evidence commentary</h3>
-      <div class="meta">Certainty that the practice achieves its aim: <b>${esc(CERT[c.certainty] || c.certainty)}</b>. Machine-written from the evidence listed below by expert-role perspectives, with each statement checked by a second model; not reviewed by the named fields' experts.</div>
+      <div class="meta">Certainty that the practice achieves its aim: <b>${esc(CERT[c.certainty] || c.certainty)}</b>. Machine-written from the evidence listed below by expert-role perspectives, with each statement checked by a second model. It has not been reviewed by human experts.</div>
       ${c.bottom_line ? `<p>${esc(c.bottom_line)}</p>` : ""}${views}
       ${c.underserved_note ? `<p><b>Underserved populations.</b> ${esc(c.underserved_note)}</p>` : ""}
       ${c.research_gap ? `<p><b>Research gap.</b> ${esc(c.research_gap)}</p>` : ""}</section>`;
   }
 
-  function openFromHash() {
+  const DETAIL = {};
+  async function openFromHash() {
     const id = decodeURIComponent(location.hash.slice(1));
-    const r = DATA && DATA.recs.find((x) => x.id === id);
+    const base = DATA && DATA.recs.find((x) => x.id === id);
     const dlg = $("detail");
-    if (!r) { if (dlg.open) dlg.close(); return; }
+    if (!base) { if (dlg.open) dlg.close(); return; }
+    if (!DETAIL[id]) DETAIL[id] = await fetch(`data/rec/${id}.json`).then((x) => x.json());
+    const r = { ...base, ...DETAIL[id] };
     const tests = r.evidence.filter((e) => e.relation === "tests_guardrail"), haz = r.evidence.filter((e) => e.relation === "documents_hazard");
     const ev = (e) => {
       const pops = Object.entries({ ...UNDERSERVED, ...OTHER_POP }).filter(([k]) => e.population[k]).map(([k, v]) => `<span class="chip${UNDERSERVED[k] ? " warn" : ""}">${v}</span>`).join("");
