@@ -66,10 +66,11 @@ def month_spend() -> float:
     if not LEDGER.exists():
         return 0.0
     month = dt.date.today().strftime("%Y-%m")
+    since = CFG["budget"].get("count_from", "")
     total = 0.0
     for line in LEDGER.read_text().splitlines():
         r = json.loads(line)
-        if r["ts"].startswith(month):
+        if r["ts"].startswith(month) and r["ts"] >= since:
             total += r["usd"]
     return total
 
