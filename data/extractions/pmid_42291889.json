@@ -1,0 +1,349 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 80,
+   "sample_unit": "TMA cores (40 ER, 40 PR images)",
+   "models_evaluated": [
+    "Claude Haiku 4.5",
+    "Gemini 3.0",
+    "Gemma 3.0 12B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Concordance with CAP consensus with fresh-session (zero-state reset) versus continuous chat threads",
+     "effect": "Zero-state reset protocol reportedly raised accuracy from 70-80% baseline to expert-level concordance (\u226595% for the control set); conversational drift degraded borderline case performance in long threads. No formal statistics.",
+     "quote": "The implementation of ZSR was the turning point that enabled the models to move from an initial accuracy of 70-80% to expert-level concordance."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Overlap of prompt-optimization cases with final test set; lack of held-out validation",
+     "effect": "The 10 cases used for iterative prompt optimization were included in final concordance analysis; no independent held-out validation cohort was employed, risking overestimated performance.",
+     "quote": "The 10 cases used for iterative prompt optimization were drawn from the larger 80-case pool and were included in the final concordance analysis."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Use of confidence intervals and appropriate metrics in reporting concordance",
+     "effect": "Only simple percentage agreement reported; no Cohen's kappa, confidence intervals, or sensitivity/specificity per tier were calculated.",
+     "quote": "Formal statistical measures, such as Cohen's kappa or confidence intervals, were not calculated given the feasibility study design and sample size."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Concordance of three LLMs with CAP consensus for ER/PR scoring",
+     "effect": "Claude 90-98%, Gemini 85-100%, Gemma 73-93% concordance across qualitative and semi-qualitative approaches; models compared with each other against CAP consensus, not against clinicians.",
+     "quote": "Performance varied across models and scoring approaches, with Claude achieving the highest concordance (90-98%), followed by Gemini (85-100%) and Gemma (73-93%), reflecting differences in multimodal reasoning capacity that should be considered when selecting a model for implementation."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Misclassification driven by poor-quality image inputs (compression, exposure, white balance, artifacts)",
+     "effect": "Image quality, compression, improper brightness, and absent white-balance adjustment led LLMs to misclassify borderline images, e.g., misreading background hues as staining.",
+     "quote": "In the critical 0% to 1% threshold, the primary drivers of error were image quality and pre-analytical slide preparation, low image resolution/compression, and improper brightness settings (over- or underexposure)."
+    }
+   ],
+   "unlisted_practices": [
+    "Recursive prompt engineering with error feedback to refine prompts against a reference consensus",
+    "Locally hosted small model versus cloud LLM to address data governance"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "Not reported",
+   "sample_size": 80,
+   "sample_unit": "images/cases (40 ER and 40 PR CAP proficiency-testing cases)",
+   "models_evaluated": [
+    "Claude Haiku 4.5",
+    "Gemini 3.0",
+    "Gemma 3.0 12B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Side-by-side model concordance",
+     "effect": "Claude 90-98%, Gemini 85-100%, and Gemma 73-93% concordance across scoring approaches.",
+     "quote": "Performance varied across models and scoring approaches, with Claude achieving the highest concordance (90-98%), followed by Gemini (85-100%) and Gemma (73-93%), reflecting differences in multimodal reasoning capacity that should be considered when selecting a model for implementation."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Image-quality driven scoring errors",
+     "effect": "At the 0% to 1% threshold, errors were driven by image quality, pre-analytic preparation, low resolution/compression, and improper exposure.",
+     "quote": "In the critical 0% to 1% threshold, the primary drivers of error were image quality and pre-analytical slide preparation, low image resolution/compression, and improper brightness settings (over- or underexposure)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Concordance with CAP consensus",
+     "effect": "Final model-task concordance ranged from 73% to 100%; Gemma was lowest at 73-93%.",
+     "quote": "Performance varied across models and scoring approaches, with Claude achieving the highest concordance (90-98%), followed by Gemini (85-100%) and Gemma (73-93%), reflecting differences in multimodal reasoning capacity that should be considered when selecting a model for implementation."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prompt/session protocol concordance",
+     "effect": "Systematic RPE plus ZSR elevated CAP concordance from 70-80% baseline to over 95%.",
+     "quote": "The key insight is that diagnostic accuracy is driven not by model size or architecture, but by systematic RPE and the ZSR protocol, the latter proving essential for eliminating conversational bias and elevating concordance with CAP consensus from a baseline of 70-80% to over 95%."
+    }
+   ],
+   "unlisted_practices": [
+    "Zero-state reset protocol requiring fresh chat sessions for each evaluation to prevent conversational bias."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 80,
+   "sample_unit": "tissue microarray cores",
+   "models_evaluated": [
+    "Claude Haiku 4.5",
+    "Gemini 3.0",
+    "Gemma 3.0 12B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Zero-state reset (ZSR) protocol requiring fresh chat sessions for each case evaluation to prevent conversational inertia and contextual bias in batch processing",
+    "Recursive prompt engineering (RPE) protocol with iterative error feedback to optimize and calibrate clinical scoring prompts and decision thresholds"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "TMA cores (40 ER, 40 PR images)",
+ "sample_size": 80,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude Haiku 4.5",
+  "Gemini 3.0",
+  "Gemma 3.0 12B"
+ ],
+ "links": [
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Misclassification driven by poor-quality image inputs (compression, exposure, white balance, artifacts)",
+   "effect": "Image quality, compression, improper brightness, and absent white-balance adjustment led LLMs to misclassify borderline images, e.g., misreading background hues as staining.",
+   "quote": "In the critical 0% to 1% threshold, the primary drivers of error were image quality and pre-analytical slide preparation, low image resolution/compression, and improper brightness settings (over- or underexposure).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Overlap of prompt-optimization cases with final test set; lack of held-out validation",
+   "effect": "The 10 cases used for iterative prompt optimization were included in final concordance analysis; no independent held-out validation cohort was employed, risking overestimated performance.",
+   "quote": "The 10 cases used for iterative prompt optimization were drawn from the larger 80-case pool and were included in the final concordance analysis.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Use of confidence intervals and appropriate metrics in reporting concordance",
+   "effect": "Only simple percentage agreement reported; no Cohen's kappa, confidence intervals, or sensitivity/specificity per tier were calculated.",
+   "quote": "Formal statistical measures, such as Cohen's kappa or confidence intervals, were not calculated given the feasibility study design and sample size.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Concordance of three LLMs with CAP consensus for ER/PR scoring",
+   "effect": "Claude 90-98%, Gemini 85-100%, Gemma 73-93% concordance across qualitative and semi-qualitative approaches; models compared with each other against CAP consensus, not against clinicians.",
+   "quote": "Performance varied across models and scoring approaches, with Claude achieving the highest concordance (90-98%), followed by Gemini (85-100%) and Gemma (73-93%), reflecting differences in multimodal reasoning capacity that should be considered when selecting a model for implementation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Prompt/session protocol concordance",
+   "effect": "Systematic RPE plus ZSR elevated CAP concordance from 70-80% baseline to over 95%.",
+   "quote": "The key insight is that diagnostic accuracy is driven not by model size or architecture, but by systematic RPE and the ZSR protocol, the latter proving essential for eliminating conversational bias and elevating concordance with CAP consensus from a baseline of 70-80% to over 95%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Locally hosted small model versus cloud LLM to address data governance",
+  "Recursive prompt engineering (RPE) protocol with iterative error feedback to optimize and calibrate clinical scoring prompts and decision thresholds",
+  "Recursive prompt engineering with error feedback to refine prompts against a reference consensus",
+  "Zero-state reset (ZSR) protocol requiring fresh chat sessions for each case evaluation to prevent conversational inertia and contextual bias in batch processing",
+  "Zero-state reset protocol requiring fresh chat sessions for each evaluation to prevent conversational bias."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42291889",
+ "screen": {
+  "id": "pmid:42291889",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "zero-state reset protocol and recursive prompt engineering",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests a deployment protocol (zero-state reset and prompt engineering guardrails) comparing accuracy with and without the reset protocol on tissue microarrays.",
+  "jev": {
+   "id": "pmid:42291889",
+   "empirical": 0.92,
+   "tests_practice": 0.89,
+   "real_deployment": 0.06
+  }
+ }
+}

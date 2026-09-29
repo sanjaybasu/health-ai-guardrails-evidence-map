@@ -1,0 +1,372 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 186540,
+   "sample_unit": "ICU admissions",
+   "models_evaluated": [
+    "Sanchez-Pinto and Khemani early AKI score (recalibrated logistic regression)",
+    "Extended logistic regression model (12-hour features)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination of single-center AKI model on multicenter temporally split test data",
+     "effect": "Recalibrated single-center model AUROC fell to 0.78 (PEDSNET-VPS) and 0.65 (PDC) versus 0.86 originally; PDC-trained model cross-validated in PEDSNET-VPS had AUROC 0.62.",
+     "quote": "After recalibration in the training split, the AUROC in the PEDSNET-VPS dataset was 0.78 [95% CI, 0.78\u20130.78] and in PDC was 0.65 [95% CI, 0.64\u20130.65]."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of single-center model when applied to different multicenter populations and data",
+     "effect": "Single-center model AUROC was 0.74 in PEDSNET-VPS and 0.39 in PDC with original coefficients; two of seven features were unavailable in PDC.",
+     "quote": "The AUROC was 0.74 in the PEDSNET-VPS dataset and 0.39 in the PDC dataset, which is missing two of the seven features as previously described."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Discrimination and PPV after recalibrating/extending single-center model with local data",
+     "effect": "Recalibration alone left poor discrimination (AUROC 0.65-0.78; AUPRC 0.10-0.12); adding features gave AUROC 0.80-0.88 and AUPRC 0.13-0.22, though PPV remained low (10-12% at 90th percentile).",
+     "quote": "After the addition of new features that would be available at the time of the prediction, we found improved discrimination and performance."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance generalization to new populations and sites",
+     "effect": "Single-center model performance decreased on multicenter data; PDC model applied to PEDSNET-VPS had lower sensitivity and PPV at both cutpoints (AUROC 0.62, AUPRC 0.03).",
+     "quote": "Sanchez-Pinto and Khemani ( 5 ) created a parsimonious score to predict early AKI from single-center data; when we applied this score across multicenter data, the performance decreased."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Alert burden (PPV and number needed to alert) at chosen cutpoints",
+     "effect": "At 90th percentile cutpoint PPV was 10% (PEDSNET-VPS) and 12% (PDC), with NNA 11 and 9; false alerts remain high.",
+     "quote": "Future work includes user-focused decision support design based on model results, guided by the need to minimize alert burden given our PPV and NNA results, to improve the actionability and usability of this predictive model ( 48 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Excluding race and ethnicity as predictors a priori to avoid exacerbating systemic bias"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 186540,
+   "sample_unit": "ICU admissions",
+   "models_evaluated": [
+    "Sanchez-Pinto and Khemani Early AKI prediction model",
+    "recalibrated Early AKI prediction model",
+    "expanded logistic regression AKI prediction model",
+    "decision tree",
+    "random forest",
+    "penalized logistic regression",
+    "support vector machines"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external validation discrimination",
+     "effect": "Recalibrated single-center model AUROC was 0.78 in PEDSNET-VPS and 0.65 in PDC; AUPRC was 0.12 and 0.10.",
+     "quote": "After recalibration in the training split, the AUROC in the PEDSNET-VPS dataset was 0.78 [95% CI, 0.78\u20130.78] and in PDC was 0.65 [95% CI, 0.64\u20130.65]."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model comparison",
+     "effect": "Adding new features improved AUROC to 0.80-0.88 and AUPRC to 0.13-0.22, versus recalibrated AUROC 0.65-0.78 and AUPRC 0.10-0.12.",
+     "quote": "Following the addition of new features, the model had higher AUROC (0.80-0.88) and AUPRC (0.13-0.22)."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missing input features",
+     "effect": "Original coefficients AUROC was 0.74 in PEDSNET-VPS versus 0.39 in PDC, where two of seven features were missing.",
+     "quote": "The AUROC was 0.74 in the PEDSNET-VPS dataset and 0.39 in the PDC dataset, which is missing two of the seven features as previously described."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "false-positive alert burden",
+     "effect": "At highest sensitivity cutoff, PPV was 13% and NNA 8%; 7% false positives for every 1% true positive.",
+     "quote": "Specifically, at our highest sensitivity cutoff, with a PPV of 13% and NNA of 8%, clinicians would be exposed to 7% false positives for every 1% true positive result."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 186540,
+   "sample_unit": "ICU admissions",
+   "models_evaluated": [
+    "Sanchez-Pinto and Khemani AKI prediction model",
+    "Logistic regression",
+    "Decision tree",
+    "Random forest",
+    "Support vector machines"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination of single-center AKI model on external multicenter datasets",
+     "effect": "AUROC 0.65-0.78 and AUPRC 0.10-0.12 after recalibration (original AUROC was 0.86); uncalibrated AUROC was 0.74 in PEDSNET-VPS and 0.39 in PDC",
+     "quote": "Initial recalibration of an existing single-center model demonstrated poor discrimination (AUROC 0.65-0.78; AUPRC 0.10-0.12)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ICU admissions",
+ "sample_size": 186540,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Decision tree",
+  "Extended logistic regression model (12-hour features)",
+  "Logistic regression",
+  "Random forest",
+  "Sanchez-Pinto and Khemani AKI prediction model",
+  "Sanchez-Pinto and Khemani Early AKI prediction model",
+  "Sanchez-Pinto and Khemani early AKI score (recalibrated logistic regression)",
+  "Support vector machines",
+  "decision tree",
+  "expanded logistic regression AKI prediction model",
+  "penalized logistic regression",
+  "random forest",
+  "recalibrated Early AKI prediction model",
+  "support vector machines"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination of single-center AKI model on multicenter temporally split test data",
+   "effect": "Recalibrated single-center model AUROC fell to 0.78 (PEDSNET-VPS) and 0.65 (PDC) versus 0.86 originally; PDC-trained model cross-validated in PEDSNET-VPS had AUROC 0.62.",
+   "quote": "After recalibration in the training split, the AUROC in the PEDSNET-VPS dataset was 0.78 [95% CI, 0.78\u20130.78] and in PDC was 0.65 [95% CI, 0.64\u20130.65].",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Alert burden (PPV and number needed to alert) at chosen cutpoints",
+   "effect": "At 90th percentile cutpoint PPV was 10% (PEDSNET-VPS) and 12% (PDC), with NNA 11 and 9; false alerts remain high.",
+   "quote": "Future work includes user-focused decision support design based on model results, guided by the need to minimize alert burden given our PPV and NNA results, to improve the actionability and usability of this predictive model ( 48 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of single-center model when applied to different multicenter populations and data",
+   "effect": "Single-center model AUROC was 0.74 in PEDSNET-VPS and 0.39 in PDC with original coefficients; two of seven features were unavailable in PDC.",
+   "quote": "The AUROC was 0.74 in the PEDSNET-VPS dataset and 0.39 in the PDC dataset, which is missing two of the seven features as previously described.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance generalization to new populations and sites",
+   "effect": "Single-center model performance decreased on multicenter data; PDC model applied to PEDSNET-VPS had lower sensitivity and PPV at both cutpoints (AUROC 0.62, AUPRC 0.03).",
+   "quote": "Sanchez-Pinto and Khemani ( 5 ) created a parsimonious score to predict early AKI from single-center data; when we applied this score across multicenter data, the performance decreased.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "external validation discrimination",
+   "effect": "Recalibrated single-center model AUROC was 0.78 in PEDSNET-VPS and 0.65 in PDC; AUPRC was 0.12 and 0.10.",
+   "quote": "After recalibration in the training split, the AUROC in the PEDSNET-VPS dataset was 0.78 [95% CI, 0.78\u20130.78] and in PDC was 0.65 [95% CI, 0.64\u20130.65].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "missing input features",
+   "effect": "Original coefficients AUROC was 0.74 in PEDSNET-VPS versus 0.39 in PDC, where two of seven features were missing.",
+   "quote": "The AUROC was 0.74 in the PEDSNET-VPS dataset and 0.39 in the PDC dataset, which is missing two of the seven features as previously described.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Excluding race and ethnicity as predictors a priori to avoid exacerbating systemic bias"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42183744",
+ "screen": {
+  "id": "pmid:42183744",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration and external validation before deployment, with alert threshold selection",
+  "user": "none",
+  "reason": "Evaluates the external validation and recalibration of an existing predictive risk model for acute kidney injury across multicenter pediatric ICU datasets, measuring the impact on performance and alert burden.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "external validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42183744",
+   "empirical": 0.93,
+   "tests_practice": 0.52,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,331 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "NSCLC patients in SEER registry (diagnosed 2000-2018)",
+   "models_evaluated": [
+    "Cox survival model",
+    "LOGIT model",
+    "three other machine learning models for surgery recommendation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R306",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fairness metrics and model performance with vs without race/ethnicity as predictor",
+     "effect": "Excluding race/ethnicity as a predictor in survival and surgery recommendation models improved fairness metrics without degrading model performance; but disparate impact persisted in survival models.",
+     "quote": "The exclusion of race/ethnicity as a predictor in the survival and surgery recommendation models improved fairness metrics without degrading model performance."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of stratified oversampling mitigation on disparate impact and model accuracy",
+     "effect": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model.",
+     "quote": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fairness metrics across racial/ethnic subgroups for survival and surgery recommendation models",
+     "effect": "Survival models show disparate impact toward non-Hispanic Black patients regardless of whether race/ethnicity was used as a predictor; models including race/ethnicity amplified disparities in the data.",
+     "quote": "The survival models show disparate impact towards non-Hispanic Black patients regardless of whether race/ethnicity is used as a predictor."
+    },
+    {
+     "rec_id": "R305",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Bias in models trained on registry data reflecting real-world disparities",
+     "effect": "Machine learning models amplified racial/ethnic disparities reflected in the data; Black patients less often recommended surgery than White patients even accounting for age and stage.",
+     "quote": "Machine learning models amplified the racial/ethnic disparities across the cancer care continuum (which are reflected in the data used to make model decisions)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "NSCLC patients",
+   "models_evaluated": [
+    "Cox survival model",
+    "LOGIT model",
+    "three other machine learning models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R306",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "effect of race/ethnicity predictor",
+     "effect": "Including race/ethnicity amplified disparities; excluding it improved fairness metrics without degrading performance.",
+     "quote": "The models including race/ethnicity amplified the disparities observed in the data."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "racial fairness metrics",
+     "effect": "Survival models showed disparate impact toward non-Hispanic Black patients, with or without race/ethnicity.",
+     "quote": "The survival models show disparate impact towards non-Hispanic Black patients regardless of whether race/ethnicity is used as a predictor."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "oversampling bias mitigation",
+     "effect": "Stratified oversampling reduced disparate impact while reducing model accuracy.",
+     "quote": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Cox survival model",
+    "LOGIT model",
+    "machine learning models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R306",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "disparity amplification from including race or ethnicity as predictor",
+     "effect": "Models including race/ethnicity amplified observed disparities, while survival models showed disparate impact toward non-Hispanic Black patients regardless of whether race/ethnicity was used as a predictor.",
+     "quote": "The models including race/ethnicity amplified the disparities observed in the data."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "effect of stratified oversampling on disparate impact and accuracy",
+     "effect": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model.",
+     "quote": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "NSCLC patients in SEER registry (diagnosed 2000-2018)",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Cox survival model",
+  "LOGIT model",
+  "machine learning models",
+  "three other machine learning models",
+  "three other machine learning models for surgery recommendation"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of stratified oversampling mitigation on disparate impact and model accuracy",
+   "effect": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model.",
+   "quote": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness metrics across racial/ethnic subgroups for survival and surgery recommendation models",
+   "effect": "Survival models show disparate impact toward non-Hispanic Black patients regardless of whether race/ethnicity was used as a predictor; models including race/ethnicity amplified disparities in the data.",
+   "quote": "The survival models show disparate impact towards non-Hispanic Black patients regardless of whether race/ethnicity is used as a predictor.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R306",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "effect of race/ethnicity predictor",
+   "effect": "Including race/ethnicity amplified disparities; excluding it improved fairness metrics without degrading performance.",
+   "quote": "The models including race/ethnicity amplified the disparities observed in the data.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R306",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness metrics and model performance with vs without race/ethnicity as predictor",
+   "effect": "Excluding race/ethnicity as a predictor in survival and surgery recommendation models improved fairness metrics without degrading model performance; but disparate impact persisted in survival models.",
+   "quote": "The exclusion of race/ethnicity as a predictor in the survival and surgery recommendation models improved fairness metrics without degrading model performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R305",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Bias in models trained on registry data reflecting real-world disparities",
+   "effect": "Machine learning models amplified racial/ethnic disparities reflected in the data; Black patients less often recommended surgery than White patients even accounting for age and stage.",
+   "quote": "Machine learning models amplified the racial/ethnic disparities across the cancer care continuum (which are reflected in the data used to make model decisions).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R323",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "effect of stratified oversampling on disparate impact and accuracy",
+   "effect": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model.",
+   "quote": "Stratified oversampling strategies reduced disparate impact while reducing the accuracy of the model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39495385",
+ "screen": {
+  "id": "pmid:39495385",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "excluding race/ethnicity as predictor and oversampling to mitigate bias",
+  "user": "none",
+  "reason": "The study empirically evaluates algorithmic bias and tests mitigation practices (excluding race as a predictor, stratified oversampling) to reduce racial disparities in cancer risk and treatment prediction models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "exclusion of race predictor and oversampling for fairness mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39495385",
+   "empirical": 0.93,
+   "tests_practice": 0.25,
+   "real_deployment": 0.03
+  }
+ }
+}

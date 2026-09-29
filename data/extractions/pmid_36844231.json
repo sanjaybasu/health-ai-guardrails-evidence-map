@@ -1,0 +1,309 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Portugal",
+   "sample_size": 1531,
+   "sample_unit": "AMI episodes (patients discharged alive)",
+   "models_evaluated": [
+    "Logistic regression model for extended length of stay in AMI (Magalh\u00e3es et al.)",
+    "Recalibrated logistic regression model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination of previously developed model on new hospital's historical data against reference outcome",
+     "effect": "On new-hospital data the model's AUC fell from 0.828 to 0.702 and recall from 72% to 58%; specificity 75% to 73%, showing worse local performance than original evidence.",
+     "quote": "According to the data presented in Table 3 , there is a decrease in the predictive capacity of the VM compared to the results obtained in the model by Magalh\u00e3es et al. ( 13 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance after local recalibration versus unadjusted model",
+     "effect": "Recalibrating on local data improved AUC from 0.702 (VM) to 0.745 (RM) and recall from 58% to 69%; Hosmer-Lemeshow p=0.692; specificity fell from 73% to 68%.",
+     "quote": "Regarding the performance measures for the population of patients with AMI who were discharged alive, the results obtained in the RM were worse compared to the validation by Magalh\u00e3es et al. ( 13 ) and improved compared to the VM (expected result, since the model was adjusted to the population)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability of model developed at small hospital to larger hospital population",
+     "effect": "Model developed on a ~400-bed hospital did not generalize to a ~1,000-bed hospital in a different period; AUC dropped 0.828 to 0.702 and predictor ORs and CIs differed.",
+     "quote": "Therefore, it highlights the need to recalibrate the models to new populations, as the models cannot be generalized to different populations without losing their predictive capacity."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when applied to a new population/context",
+     "effect": "Prior model applied to a new population lost predictive capacity (AUC 0.828 to 0.702; recall 72% to 58%), requiring recalibration.",
+     "quote": "As a result, the model required recalibration in the population under study."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Portugal",
+   "sample_size": 1531,
+   "sample_unit": "episodes",
+   "models_evaluated": [
+    "Magalh\u00e3es et al. LOSE model",
+    "Validation model (VM)",
+    "Recalibration model (RM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local validation performance drop",
+     "effect": "Recall 72% to 58%; specificity 75% to 73%; AUC 0.828 to 0.702.",
+     "quote": "According to the data presented in Table 3 , there is a decrease in the predictive capacity of the VM compared to the results obtained in the model by Magalh\u00e3es et al. ( 13 )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalization to new population",
+     "effect": "Previous model could not be generalized; VM AUC 0.702 versus original 0.828.",
+     "quote": "This study allowed researchers to conclude that a previous model for predicting LOSE on patients diagnosed with AMI could not be generalized."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "recalibrated model performance",
+     "effect": "Recall improved 58% to 69% and AUC 0.702 to 0.745; specificity decreased 73% to 68%.",
+     "quote": "Regarding the performance measures for the population of patients with AMI who were discharged alive, the results obtained in the RM were worse compared to the validation by Magalh\u00e3es et al. ( 13 ) and improved compared to the VM (expected result, since the model was adjusted to the population)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Portugal",
+   "sample_size": 1531,
+   "sample_unit": "episodes",
+   "models_evaluated": [
+    "Magalh\u00e3es et al. predictive model",
+    "Recalibration model (RM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model discrimination and recall on local hospital data",
+     "effect": "AUC decreased from 0.828 to 0.702 and recall from 72% to 58% (specificity 73% vs 75%) when applying the previously developed model to the local hospital population.",
+     "quote": "According to the data presented in Table 3 , there is a decrease in the predictive capacity of the VM compared to the results obtained in the model by Magalh\u00e3es et al. ( 13 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predictive performance after local model recalibration",
+     "effect": "Recalibration on local data improved AUC from 0.702 to 0.745 and recall from 58% to 69% compared to the uncalibrated validation model.",
+     "quote": "Regarding the performance measures for the population of patients with AMI who were discharged alive, the results obtained in the RM were worse compared to the validation by Magalh\u00e3es et al. ( 13 ) and improved compared to the VM (expected result, since the model was adjusted to the population)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Portugal",
+ "sample_unit": "episodes",
+ "sample_size": 1531,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Logistic regression model for extended length of stay in AMI (Magalh\u00e3es et al.)",
+  "Magalh\u00e3es et al. LOSE model",
+  "Magalh\u00e3es et al. predictive model",
+  "Recalibrated logistic regression model",
+  "Recalibration model (RM)",
+  "Validation model (VM)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Performance after local recalibration versus unadjusted model",
+   "effect": "Recalibrating on local data improved AUC from 0.702 (VM) to 0.745 (RM) and recall from 58% to 69%; Hosmer-Lemeshow p=0.692; specificity fell from 73% to 68%.",
+   "quote": "Regarding the performance measures for the population of patients with AMI who were discharged alive, the results obtained in the RM were worse compared to the validation by Magalh\u00e3es et al. ( 13 ) and improved compared to the VM (expected result, since the model was adjusted to the population).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalizability of model developed at small hospital to larger hospital population",
+   "effect": "Model developed on a ~400-bed hospital did not generalize to a ~1,000-bed hospital in a different period; AUC dropped 0.828 to 0.702 and predictor ORs and CIs differed.",
+   "quote": "Therefore, it highlights the need to recalibrate the models to new populations, as the models cannot be generalized to different populations without losing their predictive capacity.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "local validation performance drop",
+   "effect": "Recall 72% to 58%; specificity 75% to 73%; AUC 0.828 to 0.702.",
+   "quote": "According to the data presented in Table 3 , there is a decrease in the predictive capacity of the VM compared to the results obtained in the model by Magalh\u00e3es et al. ( 13 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Discrimination of previously developed model on new hospital's historical data against reference outcome",
+   "effect": "On new-hospital data the model's AUC fell from 0.828 to 0.702 and recall from 72% to 58%; specificity 75% to 73%, showing worse local performance than original evidence.",
+   "quote": "According to the data presented in Table 3 , there is a decrease in the predictive capacity of the VM compared to the results obtained in the model by Magalh\u00e3es et al. ( 13 ).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when applied to a new population/context",
+   "effect": "Prior model applied to a new population lost predictive capacity (AUC 0.828 to 0.702; recall 72% to 58%), requiring recalibration.",
+   "quote": "As a result, the model required recalibration in the population under study.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36844231",
+ "screen": {
+  "id": "pmid:36844231",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration before deployment",
+  "user": "none",
+  "reason": "The study empirically tests the external validation and local recalibration of an existing predictive risk model on a new hospital population.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36844231",
+   "empirical": 0.85,
+   "tests_practice": 0.26,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,406 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 2020,
+   "sample_unit": "diagnostic assessments (101 radiologists x 20 cases)",
+   "models_evaluated": [
+    "GPT-4 (2024-02-15-preview)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist diagnostic accuracy with vs without LLM support by explanation format; adherence/overreliance",
+     "effect": "Chain-of-thought improved accuracy 12.2 pp vs control (P=0.001); standard output +5.0 pp (P=0.150) and differential diagnosis +2.5 pp (P=0.446) not significant vs control. Differential diagnosis group over-adhered to wrong advice (63.3-80.0%).",
+     "quote": "Physicians in the chain-of-thought group performed best with a 12.2 percentage point improvement over the control group (95% CI = [5.3, 19.2], P = 0.001)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI team accuracy across LLM output formats versus control, in vignette workflow",
+     "effect": "Effectiveness of LLM support varied by format: chain-of-thought +12.2 pp vs control, +7.2 pp vs standard, +9.7 pp vs differential diagnosis; other formats were not significantly better than control.",
+     "quote": "Our experiment demonstrates that the format of explanation plays a surprisingly important role in the effectiveness of LLM support."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Adherence to incorrect LLM diagnoses (automation bias) by explanation format",
+     "effect": "When the LLM diagnosis was incorrect, adherence was 63.3% and 80.0% in the differential diagnosis group vs 25.0% and 30.6% in standard output and 30.4% in chain-of-thought.",
+     "quote": "Thus, physicians in the differential diagnosis group appeared more inclined to follow the LLM-generated advice even when it was wrong."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether output presentation format promotes selective adherence and overriding of incorrect LLM advice",
+     "effect": "Chain-of-thought explanations led to more selective adherence than differential diagnosis, with physicians more likely to follow correct advice and override incorrect advice; accuracy +9.7 pp vs differential diagnosis (P=0.004).",
+     "quote": "Conversely, the chain-of-thought explanation (in comparison to the differential diagnosis) led to more selective adherence, with physicians being more likely to follow correct LLM advice and to override incorrect LLM advice."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of LLM explanation formats on clinicians' diagnostic accuracy",
+     "effect": "Chain-of-thought explanations improved accuracy 12.2 pp vs control (P=0.001) and 7.2 pp vs standard output without explanation (P=0.040); differential diagnosis was not significantly better than control.",
+     "quote": "The chain-of-thought explanations are also superior to the standard output without explanation ( + 7.2%; P = 0.040) and the differential diagnosis format ( + 9.7%; P = 0.004)."
+    },
+    {
+     "rec_id": "R235",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Accuracy with differential-diagnosis (unranked-style multiple options) format versus other formats",
+     "effect": "Differential diagnosis format showed no significant gain over control (+2.5 pp, P=0.446) and was outperformed by chain-of-thought by 9.7 pp (P=0.004); it induced over-adherence to incorrect advice.",
+     "quote": "Differential diagnoses, by contrast, enumerate multiple options\u2014here, five possibilities\u2014without providing explicit reasoning for each."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "GPT-4 diagnostic accuracy on radiology cases",
+     "effect": "LLM achieved moderate accuracy overall: standard 75%; differential 65% top-1 and 80% top-5; chain-of-thought 80%. Radiologists were outperformed by the LLM alone.",
+     "quote": "The LLM achieved moderate diagnostic accuracy overall (standard output: 75%; differential diagnosis: 65% for the top-1 answer and 80% for the top-5 answers; chain-of-thought: 80%; Supplementary Fig. 1 ), which underscores the need for careful evaluation of LLM outputs and which further implies that the selected patient cases were challenging for the model."
+    }
+   ],
+   "unlisted_practices": [
+    "Selecting LLM explanation format (chain-of-thought vs differential diagnosis vs standard output) to improve clinician diagnostic accuracy",
+    "Memorization/contamination test of LLM on evaluation cases"
+   ]
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 2020,
+   "sample_unit": "assessments by 101 radiologists",
+   "models_evaluated": [
+    "GPT-4 (version 2024-02-15-preview)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "training-data memorization of cases",
+     "effect": "Ratcliff/Obershelp 0.049 and BLEU 0.006; Wikipedia BLEU 0.048, 8-fold higher.",
+     "quote": "Average similarity scores across all patient cases were consistently low (Ratcliff/Obershelp: 0.049, BLEU: 0.006)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM diagnostic accuracy",
+     "effect": "Standard output 75%; differential 65% top-1, 80% top-5; chain-of-thought 80%.",
+     "quote": "The LLM achieved moderate diagnostic accuracy overall (standard output: 75%; differential diagnosis: 65% for the top-1 answer and 80% for the top-5 answers; chain-of-thought: 80%; Supplementary Fig. 1 ), which underscores the need for careful evaluation of LLM outputs and which further implies that the selected patient cases were challenging for the model."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "human-AI diagnostic accuracy",
+     "effect": "Standard +5.0 points (P=0.150), differential +2.5 (P=0.446), chain-of-thought +12.2 (P=0.001) vs control.",
+     "quote": "Physicians augmented with LLM advice outperformed those in the control group without LLM advice (Fig. 2 for statistical comparisons based on one-sided Welch\u2019s t -tests)."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "selective adherence and overriding",
+     "effect": "Correct advice adherence CoT 90.8%/94.0%; incorrect advice adherence CoT 30.4% vs differential 63.3%/80.0%.",
+     "quote": "Conversely, the chain-of-thought explanation (in comparison to the differential diagnosis) led to more selective adherence, with physicians being more likely to follow correct LLM advice and to override incorrect LLM advice."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "over-adherence to incorrect advice",
+     "effect": "Differential-diagnosis adherence to incorrect diagnoses was 63.3%/80.0%, exceeding standard 25.0%/30.6% and chain-of-thought 30.4%.",
+     "quote": "When the LLM-generated diagnosis was incorrect (Fig. 3 , right column), adherence was highest in the differential diagnosis group irrespective of the correctness of the explanation (adherence for incorrect diagnosis but correct explanation: 63.3%; adherence for incorrect diagnosis and incorrect explanation: 80.0%), which also exceeded that of the standard output group (25.0% and 30.6%, respectively) and the chain-of-thought group (adherence for incorrect diagnosis and incorrect explanation: 30.4%)."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "radiologists' diagnostic accuracy",
+     "effect": "Chain-of-thought +12.2 points vs control; +7.2 vs standard; +9.7 vs differential.",
+     "quote": "Physicians in the chain-of-thought group performed best with a 12.2 percentage point improvement over the control group (95% CI = [5.3, 19.2], P = 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 101,
+   "sample_unit": "radiologists",
+   "models_evaluated": [
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic accuracy of radiologists across LLM explanation formats",
+     "effect": "Chain-of-thought explanations improved diagnostic accuracy by 7.2 percentage points (95% CI [0.3, 14.2], P = 0.040) over standard output without explanation and 9.7 percentage points (95% CI [3.2, 16.3], P = 0.004) over differential diagnosis.",
+     "quote": "Separate comparisons for the chain-of-thought versus standard condition and chain-of-thought versus differential diagnosis condition showed improvements in the outcome measure by 7.2 percentage points (95% CI = [0.3, 14.2], P = 0.040) and 9.7 percentage points (95% CI = [3.2, 16.3], P = 0.004), respectively, which confirms that the chain-of-thought condition performed best (Supplementary Table 8 )."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Radiologist adherence to incorrect LLM-generated diagnoses",
+     "effect": "When LLM diagnosis was incorrect, adherence was 63.3% to 80.0% with differential diagnosis, 25.0% to 30.6% with standard output, and 30.4% with chain-of-thought.",
+     "quote": "When the LLM-generated diagnosis was incorrect (Fig. 3 , right column), adherence was highest in the differential diagnosis group irrespective of the correctness of the explanation (adherence for incorrect diagnosis but correct explanation: 63.3%; adherence for incorrect diagnosis and incorrect explanation: 80.0%), which also exceeded that of the standard output group (25.0% and 30.6%, respectively) and the chain-of-thought group (adherence for incorrect diagnosis and incorrect explanation: 30.4%)."
+    }
+   ],
+   "unlisted_practices": [
+    "presenting AI diagnostic advice as differential diagnosis lists without step-by-step reasoning"
+   ]
+  }
+ },
+ "design": "rct",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "diagnostic assessments (101 radiologists x 20 cases)",
+ "sample_size": 2020,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4",
+  "GPT-4 (2024-02-15-preview)",
+  "GPT-4 (version 2024-02-15-preview)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist diagnostic accuracy with vs without LLM support by explanation format; adherence/overreliance",
+   "effect": "Chain-of-thought improved accuracy 12.2 pp vs control (P=0.001); standard output +5.0 pp (P=0.150) and differential diagnosis +2.5 pp (P=0.446) not significant vs control. Differential diagnosis group over-adhered to wrong advice (63.3-80.0%).",
+   "quote": "Physicians in the chain-of-thought group performed best with a 12.2 percentage point improvement over the control group (95% CI = [5.3, 19.2], P = 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Adherence to incorrect LLM diagnoses (automation bias) by explanation format",
+   "effect": "When the LLM diagnosis was incorrect, adherence was 63.3% and 80.0% in the differential diagnosis group vs 25.0% and 30.6% in standard output and 30.4% in chain-of-thought.",
+   "quote": "Thus, physicians in the differential diagnosis group appeared more inclined to follow the LLM-generated advice even when it was wrong.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether output presentation format promotes selective adherence and overriding of incorrect LLM advice",
+   "effect": "Chain-of-thought explanations led to more selective adherence than differential diagnosis, with physicians more likely to follow correct advice and override incorrect advice; accuracy +9.7 pp vs differential diagnosis (P=0.004).",
+   "quote": "Conversely, the chain-of-thought explanation (in comparison to the differential diagnosis) led to more selective adherence, with physicians being more likely to follow correct LLM advice and to override incorrect LLM advice.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of LLM explanation formats on clinicians' diagnostic accuracy",
+   "effect": "Chain-of-thought explanations improved accuracy 12.2 pp vs control (P=0.001) and 7.2 pp vs standard output without explanation (P=0.040); differential diagnosis was not significantly better than control.",
+   "quote": "The chain-of-thought explanations are also superior to the standard output without explanation ( + 7.2%; P = 0.040) and the differential diagnosis format ( + 9.7%; P = 0.004).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human-AI team accuracy across LLM output formats versus control, in vignette workflow",
+   "effect": "Effectiveness of LLM support varied by format: chain-of-thought +12.2 pp vs control, +7.2 pp vs standard, +9.7 pp vs differential diagnosis; other formats were not significantly better than control.",
+   "quote": "Our experiment demonstrates that the format of explanation plays a surprisingly important role in the effectiveness of LLM support.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "training-data memorization of cases",
+   "effect": "Ratcliff/Obershelp 0.049 and BLEU 0.006; Wikipedia BLEU 0.048, 8-fold higher.",
+   "quote": "Average similarity scores across all patient cases were consistently low (Ratcliff/Obershelp: 0.049, BLEU: 0.006).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R235",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Memorization/contamination test of LLM on evaluation cases",
+  "Selecting LLM explanation format (chain-of-thought vs differential diagnosis vs standard output) to improve clinician diagnostic accuracy",
+  "presenting AI diagnostic advice as differential diagnosis lists without step-by-step reasoning"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42026140",
+ "screen": {
+  "id": "pmid:42026140",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM explanation format (chain-of-thought vs differential vs standard output)",
+  "user": "clinician_or_staff",
+  "reason": "This study experimentally evaluates the effect of different LLM explanation formats (such as chain-of-thought reasoning versus standard diagnostic output) on radiologists' diagnostic decision-making across clinical vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "explanation formatting (chain-of-thought vs standard vs differential diagnosis)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42026140",
+   "empirical": 0.96,
+   "tests_practice": 0.46,
+   "real_deployment": 0.04
+  }
+ }
+}

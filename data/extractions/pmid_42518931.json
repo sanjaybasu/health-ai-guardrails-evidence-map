@@ -1,0 +1,329 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 3200,
+   "sample_unit": "radar-derived 60 s epochs (from 60 healthy volunteers)",
+   "models_evaluated": [
+    "hybrid CNN-LSTM with handcrafted feature fusion",
+    "SVR baseline",
+    "bandpass filtering with spectral peak detection"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance across sex-based training configurations and subgroup-specific precision/recall",
+     "effect": "Male-only training gave accuracy 78.2% and F1 0.60 versus 94.5% for female-dominant; male-dominant training showed lower precision for females (0.67) than males (0.80).",
+     "quote": "The male-dominant configuration produced intermediate accuracy (84.1%) but exhibited asymmetric precision/recall across genders, indicating that predictions favoured male samples and were less consistent for female samples."
+    },
+    {
+     "rec_id": "R309",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of sex representation in training data on model performance",
+     "effect": "Male-only data: accuracy 78.2%, RMSE 1.80; female-dominant: accuracy 94.5%, RMSE 0.70. Male-skewed datasets had larger errors and lower success rates.",
+     "quote": "These findings reveal a systematic relationship between demographic representation and error magnitude: male-skewed datasets exhibited larger errors and lower success rates, undermining fairness and reliability."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Bias scores and F1/accuracy after TimeGAN augmentation, equalised-odds regularisation and threshold adjustment",
+     "effect": "Bias reduced to as low as 0.00005 (from 0.0261 in abstract), p<0.001; post-mitigation accuracy 98.5-99.03%, F1 0.975-0.993. TimeGAN raised male-only F1 0.79 to 0.88.",
+     "quote": "Performance remained high across configurations, indicating that bias reduction was achieved without substantial degradation in Accuracy, Precision, Recall, or F1-score."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Fairness and calibration metrics reported across subgroups",
+     "effect": "DI ratios all exceeded 0.8 (1.000-1.165) despite large accuracy/error gaps; log loss 1.25 in male-only versus 0.28 in female-dominant. Mitigation reported without confidence intervals.",
+     "quote": "All DI values exceeded 0.8, indicating compliance with the standard disparate impact threshold; however, female-skewed configurations achieved higher DI values than male-skewed settings."
+    }
+   ],
+   "unlisted_practices": [
+    "TimeGAN synthetic data augmentation for underrepresented groups",
+    "equalised-odds regularisation during training",
+    "group-specific decision threshold adjustment",
+    "observer-effect linear bias correction of predictions"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 3200,
+   "sample_unit": "radar-derived 60 s epochs",
+   "models_evaluated": [
+    "Hybrid 1D CNN-LSTM model with handcrafted radar features",
+    "Support vector regression with radial basis function kernel",
+    "Bandpass filtering with spectral peak detection",
+    "TimeGAN-augmented fairness-aware model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R309",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance by gender representation in training data",
+     "effect": "Male-only accuracy 78.2%, RMSE 1.80; balanced accuracy 88.9%, RMSE 1.10; female-dominant accuracy 94.5%, RMSE 0.70.",
+     "quote": "Gender-imbalanced training\u2013particularly male-only data\u2013produced significantly lower accuracy, higher error rates, and poorer agreement with ground truth, whereas balanced or female-majority training improved both predictive accuracy and equity."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup precision and recall gaps",
+     "effect": "Male-dominant precision/recall 0.80/0.78 (M) versus 0.67/0.62 (F); accuracy 84.1%.",
+     "quote": "The male-dominant configuration produced intermediate accuracy (84.1%) but exhibited asymmetric precision/recall across genders, indicating that predictions favoured male samples and were less consistent for female samples."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Bias mitigation and F1 score",
+     "effect": "Bias score 0.0261 to 0.00005 (p<0.001); F1 score >0.98.",
+     "quote": "This approach reduced the bias score from 0.0261 to 0.00005 ( p<0.001 ) while maintaining a high F1 score ( >0.98 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Measurement bias versus ground truth",
+     "effect": "E[X\u2217]=105.24 vs E[X]=100.00; B_measure=+5.24; Cohen\u2019s \u03ba=-0.061 poor agreement.",
+     "quote": "The AI system produced E [ X \u2217 ] = 105.24 compared with E [ X ] = 100.00 , yielding B measure = + 5.24 and indicating systematic overestimation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 60,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "Hybrid CNN-LSTM",
+    "Support Vector Regression",
+    "TimeGAN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness and classification performance after bias mitigation",
+     "effect": "Bias score reduced from 0.0261 to 0.00005 (p<0.001) while maintaining F1 score >0.98 across dataset configurations.",
+     "quote": "This approach reduced the bias score from 0.0261 to 0.00005 ( p<0.001 ) while maintaining a high F1 score ( >0.98 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "radar-derived 60 s epochs (from 60 healthy volunteers)",
+ "sample_size": 3200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Bandpass filtering with spectral peak detection",
+  "Hybrid 1D CNN-LSTM model with handcrafted radar features",
+  "Hybrid CNN-LSTM",
+  "SVR baseline",
+  "Support Vector Regression",
+  "Support vector regression with radial basis function kernel",
+  "TimeGAN",
+  "TimeGAN-augmented fairness-aware model",
+  "bandpass filtering with spectral peak detection",
+  "hybrid CNN-LSTM with handcrafted feature fusion"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance across sex-based training configurations and subgroup-specific precision/recall",
+   "effect": "Male-only training gave accuracy 78.2% and F1 0.60 versus 94.5% for female-dominant; male-dominant training showed lower precision for females (0.67) than males (0.80).",
+   "quote": "The male-dominant configuration produced intermediate accuracy (84.1%) but exhibited asymmetric precision/recall across genders, indicating that predictions favoured male samples and were less consistent for female samples.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Bias scores and F1/accuracy after TimeGAN augmentation, equalised-odds regularisation and threshold adjustment",
+   "effect": "Bias reduced to as low as 0.00005 (from 0.0261 in abstract), p<0.001; post-mitigation accuracy 98.5-99.03%, F1 0.975-0.993. TimeGAN raised male-only F1 0.79 to 0.88.",
+   "quote": "Performance remained high across configurations, indicating that bias reduction was achieved without substantial degradation in Accuracy, Precision, Recall, or F1-score.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R309",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of sex representation in training data on model performance",
+   "effect": "Male-only data: accuracy 78.2%, RMSE 1.80; female-dominant: accuracy 94.5%, RMSE 0.70. Male-skewed datasets had larger errors and lower success rates.",
+   "quote": "These findings reveal a systematic relationship between demographic representation and error magnitude: male-skewed datasets exhibited larger errors and lower success rates, undermining fairness and reliability.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R309",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance by gender representation in training data",
+   "effect": "Male-only accuracy 78.2%, RMSE 1.80; balanced accuracy 88.9%, RMSE 1.10; female-dominant accuracy 94.5%, RMSE 0.70.",
+   "quote": "Gender-imbalanced training\u2013particularly male-only data\u2013produced significantly lower accuracy, higher error rates, and poorer agreement with ground truth, whereas balanced or female-majority training improved both predictive accuracy and equity.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "TimeGAN synthetic data augmentation for underrepresented groups",
+  "equalised-odds regularisation during training",
+  "group-specific decision threshold adjustment",
+  "observer-effect linear bias correction of predictions"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42518931",
+ "screen": {
+  "id": "pmid:42518931",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "bias mitigation via data balancing, fairness constraints, and threshold adjustment",
+  "user": "none",
+  "reason": "Evaluates bias detection and a multilevel mitigation strategy (data augmentation, fairness constraints, threshold adjustment) to reduce gender bias in radar-based vital sign monitoring AI.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "algorithmic bias mitigation framework"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42518931",
+   "empirical": 0.95,
+   "tests_practice": 0.55,
+   "real_deployment": 0.05
+  }
+ }
+}

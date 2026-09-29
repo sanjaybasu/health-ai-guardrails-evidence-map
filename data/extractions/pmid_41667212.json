@@ -1,0 +1,398 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 250000,
+   "sample_unit": "logged intervention decision records",
+   "models_evaluated": [
+    "SARSA reinforcement learning policy (Waymark)",
+    "CatBoost conformal harm prediction model",
+    "auxiliary attention network",
+    "sparse autoencoders"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Residual harm rates among cleared decisions by race/ethnicity and sex subgroup",
+     "effect": "Baseline residual harm varied from 1.03% (Hispanic) to 1.33% (non-Hispanic black, p=0.006); female 1.14% vs male 1.28%.",
+     "quote": "Baseline residual harm varied from 1.03% (Hispanic) to 1.33% (non-Hispanic black, p=0.006)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Subgroup disparity and policy value after constrained fairness optimisation",
+     "effect": "Disparity reduced 37% (95% CI 22% to 48%) for race and 28% (95% CI 14% to 39%) for sex; policy value decreased 0.2%.",
+     "quote": "Constrained fairness optimisation tightened harm rates to 1.10%\u20131.20% across race/ethnicity groups, reducing disparity by 37% (95% CI 22% to 48%) for race and 28% (95% CI 14% to 39%) for sex ( table 3 )."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether conformal clearance separates low-harm decisions from those needing human review",
+     "effect": "89.5% of decisions cleared with 1.22% residual harm versus 6.67% harm among flagged decisions (81.7% relative reduction).",
+     "quote": "Residual harm among cleared decisions was 1.22% (95% CI 1.14% to 1.30%) vs 6.67% (95% CI 6.02% to 7.32%) for flagged decisions, an 81.7% relative reduction ( table 2 )."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Clinician reviewer ratings of overridden AI recommendations",
+     "effect": "23% of overridden recommendations rated well-matched, 57% plausible but suboptimal, 20% mismatched; care teams better addressed needs in 77%.",
+     "quote": "Reviewers rated 23% (95% CI 17% to 29%) of algorithmic recommendations as well-matched despite override, 57% as plausible but suboptimal and 20% as mismatched."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Divergence between care team choices and AI recommendations across clinical subgroups",
+     "effect": "Divergence higher for behavioural health (10.7% vs 6.9%, p<0.001), telehealth (11.2%) and \u22654 chronic conditions (12.1% vs 5.8%).",
+     "quote": "Divergence was higher among patients with behavioural health diagnoses (10.7%, 95% CI 10.5% to 10.9%) than those without (6.9%, 95% CI 6.8% to 7.0%; p<0.001) and among those with \u22654 chronic conditions (12.1%, 95% CI 11.9% to 12.3%) than those with fewer conditions (5.8%, 95% CI 5.7% to 5.9%; p<0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Split conformal prediction to derive a harm threshold that routes flagged decisions to human review",
+    "Mechanistic interpretability (attention analysis, SHAP, sparse autoencoders) to expose AI reasoning",
+    "Error taxonomy development via blinded clinician adjudication of divergent cases"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 250000,
+   "sample_unit": "intervention decisions",
+   "models_evaluated": [
+    "Waymark SARSA reinforcement learning policy",
+    "CatBoost conformal harm prediction model",
+    "auxiliary attention network",
+    "sparse autoencoder reasoning motif model"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R104",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "explanation fidelity",
+     "effect": "Auxiliary-original Q-value correlation Pearson r=0.94 (95% CI 0.93 to 0.95); TreeSHAP ranking Spearman \u03c1=0.71 (95% CI 0.65 to 0.77).",
+     "quote": "We validated fidelity through three mechanisms: Q-value correlation between auxiliary and original models (Pearson r=0.94, 95% CI 0.93 to 0.95), comparison with TreeSHAP values 19 (Spearman \u03c1=0.71, 95% CI 0.65 to 0.77) and triangulation with permutation importance."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI recommendation quality versus clinicians",
+     "effect": "Among overridden recommendations, 23% were well-matched, 57% plausible but suboptimal, and 20% mismatched.",
+     "quote": "Reviewers rated 23% (95% CI 17% to 29%) of algorithmic recommendations as well-matched despite override, 57% as plausible but suboptimal and 20% as mismatched."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "risk-based human-review flagging",
+     "effect": "89.5% cleared; cleared residual harm 1.22% (95% CI 1.14% to 1.30%) vs flagged 6.67% (95% CI 6.02% to 7.32%).",
+     "quote": "Residual harm among cleared decisions was 1.22% (95% CI 1.14% to 1.30%) vs 6.67% (95% CI 6.02% to 7.32%) for flagged decisions, an 81.7% relative reduction ( table 2 )."
+    },
+    {
+     "rec_id": "R163",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "appropriateness of human overrides",
+     "effect": "In divergent cases, care teams better addressed patient needs in 77% of overrides.",
+     "quote": "The 77% where care teams better addressed patient needs validates appropriate human oversight based on contextual information unavailable to the algorithm."
+    },
+    {
+     "rec_id": "R175",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "override divergence by workflow",
+     "effect": "Telehealth divergence was 11.2% (95% CI 10.9% to 11.5%) vs community health worker visits 6.4% (95% CI 6.2% to 6.6%).",
+     "quote": "Stratified analysis revealed telehealth visits showed the highest divergence (11.2%, 95% CI 10.9% to 11.5%), with calibration failures predominating, while community health worker visits showed the lowest divergence (6.4%, 95% CI 6.2% to 6.6%), with premise errors predominating ( online supplemental Table 8 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "race-group residual harm disparity",
+     "effect": "Baseline residual harm varied from 1.03% (Hispanic) to 1.33% (non-Hispanic black, p=0.006).",
+     "quote": "Baseline residual harm varied from 1.03% (Hispanic) to 1.33% (non-Hispanic black, p=0.006)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness optimisation disparity reduction",
+     "effect": "CFO tightened race/ethnicity harm rates to 1.10%\u20131.20%, reducing disparity 37% for race and 28% for sex.",
+     "quote": "Constrained fairness optimisation tightened harm rates to 1.10%\u20131.20% across race/ethnicity groups, reducing disparity by 37% (95% CI 22% to 48%) for race and 28% (95% CI 14% to 39%) for sex ( table 3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Mechanistic interpretability audit of reinforcement-learning policies using sparse autoencoder reasoning motifs",
+    "Development of an error taxonomy for reinforcement-learning care-coordination recommendations"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 250000,
+   "sample_unit": "decisions",
+   "models_evaluated": [
+    "Waymark SARSA reinforcement learning policy",
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R104",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "explanation fidelity across interpretability methods",
+     "effect": "Pearson r=0.94 for auxiliary Q-values, Spearman rho=0.71 with TreeSHAP, and consistent top features across triangulation.",
+     "quote": "We validated fidelity through three mechanisms: Q-value correlation between auxiliary and original models (Pearson r=0.94, 95% CI 0.93 to 0.95), comparison with TreeSHAP values 19 (Spearman \u03c1=0.71, 95% CI 0.65 to 0.77) and triangulation with permutation importance."
+    },
+    {
+     "rec_id": "R163",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinical appropriateness of clinician overrides",
+     "effect": "Care teams better addressed patient needs in 77% of overrides (57% plausible but suboptimal, 20% mismatched); 23% were well-matched despite override.",
+     "quote": "The 77% where care teams better addressed patient needs validates appropriate human oversight based on contextual information unavailable to the algorithm."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "subgroup disparity reduction and policy value after bias mitigation",
+     "effect": "Fairness optimisation reduced race disparity by 37% (95% CI 22% to 48%) and sex disparity by 28% (95% CI 14% to 39%), with stable policy value (0.2% decrease).",
+     "quote": "Constrained fairness optimisation tightened harm rates to 1.10%\u20131.20% across race/ethnicity groups, reducing disparity by 37% (95% CI 22% to 48%) for race and 28% (95% CI 14% to 39%) for sex ( table 3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Split conformal prediction for bounding residual harm in algorithmic clearance",
+    "Sparse autoencoder feature discovery for clinical reasoning motifs"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "logged intervention decision records",
+ "sample_size": 250000,
+ "population": {
+  "medicaid": true,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CatBoost",
+  "CatBoost conformal harm prediction model",
+  "SARSA reinforcement learning policy (Waymark)",
+  "Waymark SARSA reinforcement learning policy",
+  "auxiliary attention network",
+  "sparse autoencoder reasoning motif model",
+  "sparse autoencoders"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Residual harm rates among cleared decisions by race/ethnicity and sex subgroup",
+   "effect": "Baseline residual harm varied from 1.03% (Hispanic) to 1.33% (non-Hispanic black, p=0.006); female 1.14% vs male 1.28%.",
+   "quote": "Baseline residual harm varied from 1.03% (Hispanic) to 1.33% (non-Hispanic black, p=0.006).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup disparity and policy value after constrained fairness optimisation",
+   "effect": "Disparity reduced 37% (95% CI 22% to 48%) for race and 28% (95% CI 14% to 39%) for sex; policy value decreased 0.2%.",
+   "quote": "Constrained fairness optimisation tightened harm rates to 1.10%\u20131.20% across race/ethnicity groups, reducing disparity by 37% (95% CI 22% to 48%) for race and 28% (95% CI 14% to 39%) for sex ( table 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether conformal clearance separates low-harm decisions from those needing human review",
+   "effect": "89.5% of decisions cleared with 1.22% residual harm versus 6.67% harm among flagged decisions (81.7% relative reduction).",
+   "quote": "Residual harm among cleared decisions was 1.22% (95% CI 1.14% to 1.30%) vs 6.67% (95% CI 6.02% to 7.32%) for flagged decisions, an 81.7% relative reduction ( table 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R104",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "explanation fidelity",
+   "effect": "Auxiliary-original Q-value correlation Pearson r=0.94 (95% CI 0.93 to 0.95); TreeSHAP ranking Spearman \u03c1=0.71 (95% CI 0.65 to 0.77).",
+   "quote": "We validated fidelity through three mechanisms: Q-value correlation between auxiliary and original models (Pearson r=0.94, 95% CI 0.93 to 0.95), comparison with TreeSHAP values 19 (Spearman \u03c1=0.71, 95% CI 0.65 to 0.77) and triangulation with permutation importance.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R163",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "appropriateness of human overrides",
+   "effect": "In divergent cases, care teams better addressed patient needs in 77% of overrides.",
+   "quote": "The 77% where care teams better addressed patient needs validates appropriate human oversight based on contextual information unavailable to the algorithm.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R175",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Development of an error taxonomy for reinforcement-learning care-coordination recommendations",
+  "Error taxonomy development via blinded clinician adjudication of divergent cases",
+  "Mechanistic interpretability (attention analysis, SHAP, sparse autoencoders) to expose AI reasoning",
+  "Mechanistic interpretability audit of reinforcement-learning policies using sparse autoencoder reasoning motifs",
+  "Sparse autoencoder feature discovery for clinical reasoning motifs",
+  "Split conformal prediction for bounding residual harm in algorithmic clearance",
+  "Split conformal prediction to derive a harm threshold that routes flagged decisions to human review"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41667212",
+ "screen": {
+  "id": "pmid:41667212",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "fairness-aware guardrails and conformal harm prediction gating",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and evaluates mechanistic interpretability and fairness-aware safety guardrails (conformal harm prediction filter and clinician oversight) to mitigate harm and bias in an RL care coordination tool.",
+  "jev": {
+   "id": "pmid:41667212",
+   "empirical": 0.94,
+   "tests_practice": 0.87,
+   "real_deployment": 0.46
+  }
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 100,
+ "sample_unit": "synthetic FHIR R4 patient bundles",
+ "models_evaluated": [
+  "Claude Sonnet 4.5",
+  "GPT-5.4",
+  "DeepSeek V3.2",
+  "Qwen3 32B",
+  "Llama 3.1 70B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM output quality sensitivity to input serialization format across models",
+   "effect": "Serialization significantly changed quality on both evaluation layers; significant Model x Serializer interaction (Friedman p = 0.0009), with best format differing by model (GPT-5.4 favoring Raw JSON, others compressed formats).",
+   "quote": "Third, a significant Model \u00d7 Serializer interaction (Friedman p = 0.0009) precludes universal format recommendations, with GPT-5.4 favoring Raw JSON while Claude and open-weight models favor compressed formats.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R498",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Inference failure on long, complex patient records within nominal context window",
+   "effect": "Llama 3.1 70B showed 100% inference failure on complex patients despite operating within its nominal context window.",
+   "quote": "Fourth, Llama 3.1 70B exhibits 100% inference failure on complex patients despite operating within its nominal context window, revealing a patient-safety gap where AI assistance fails precisely for the patients who need it most.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Model-aware FHIR serialization middleware",
+  "Multi-layer evaluation combining token-level F1 with LLM-as-judge rubric scoring",
+  "Explicit capacity verification for complex patient records before deployment",
+  "Choosing token-efficient FHIR serialization formats (e.g., narrative) to reduce cost"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1279744",
+ "screen": {
+  "id": "epmc:PPR1279744",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "FHIR serialization format selection and pre-deployment capacity verification",
+  "user": "none",
+  "reason": "Evaluates how different input data serialization strategies (formatting/prompting practices for structured FHIR clinical records) affect downstream LLM clinical decision support performance and failure rates.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "FHIR data serialization formatting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1279744",
+   "empirical": 0.93,
+   "tests_practice": 0.13,
+   "real_deployment": 0.02
+  }
+ }
+}

@@ -1,0 +1,322 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 735,
+   "sample_unit": "AI-generated order set suggestions",
+   "models_evaluated": [
+    "GPT-4o",
+    "AutoGen multiagent system with RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between LLM judge usefulness scores and physician reference ratings before vs after expert alignment",
+     "effect": "Cohen \u03ba improved from 0.06 (poor agreement) to 0.41 (moderate agreement) after alignment with a small set of physician-annotated examples.",
+     "quote": "Cohen \u03ba improved from 0.06 (poor agreement) to 0.41 (moderate agreement) after alignment (eFigure 2 in Supplement 1 )."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Hallucinated clinical content in RAG-grounded order set suggestions",
+     "effect": "No suggestions were identified as hallucinations, although 11% were redundant (96 suggestions rated by 3 physicians).",
+     "quote": "No suggestions were identified as hallucinations, although 11% were redundant."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Postprocessing filter retention of useful suggestions while reducing total suggestions",
+     "effect": "Threshold of 0.11 retained 453 suggestions (29% reduction) while preserving 92% of useful suggestions.",
+     "quote": "Using this model as a filter, a threshold of 0.11 retained 453 suggestions (a 29% reduction) while preserving 92% of useful suggestions."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM-as-a-judge with few-shot expert alignment to filter AI-generated suggestions",
+    "Comparing AI suggestions against historical ordering data to assess alignment with practice"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 735,
+   "sample_unit": "AI-generated suggestions",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-based multiagent system",
+    "expert-aligned GPT-4o LLM-as-a-judge filter"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "perturbed order-set detection",
+     "effect": "Correct suggestions for 41/45 removed medications and 38/45 added medications; 88% accuracy on the development dataset.",
+     "quote": "From the 45 manually modified order sets, the system correctly generated suggestions for 41 (91%; 95% CI, 83%-99%) of the removed medications and 38 (84%; 95% CI, 74%-95%) of the added medications."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hallucinations in RAG suggestions",
+     "effect": "No hallucinations were identified; 11% of suggestions were redundant.",
+     "quote": "No suggestions were identified as hallucinations, although 11% were redundant."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "physician-rated output quality",
+     "effect": "Among 96 suggestions, 54% scored \u22654 for accuracy, 19% usefulness, 16% feasibility, and 12% direct impact.",
+     "quote": "For the 96 suggestions generated for the initial 9 order sets, a high proportion were rated as accurate (54% scoring \u22654), while fewer were rated as highly useful (19%), feasible (16%), or direct impact (12%)."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "context-specific usefulness",
+     "effect": "Only 19% of suggestions were useful; many factually correct suggestions lacked needed clinical context.",
+     "quote": "The modest useful suggestion rate (19%) highlights a key challenge: many suggestions, while factually correct, lacked the specific clinical context to be deemed useful."
+    }
+   ],
+   "unlisted_practices": [
+    "Expert-aligned LLM-as-a-judge postprocessing filter to reduce low-usefulness order-set suggestions while preserving useful suggestions."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 735,
+   "sample_unit": "suggestions",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "hallucinations in generated suggestions",
+     "effect": "0% of 96 suggestions were identified as hallucinations",
+     "quote": "No suggestions were identified as hallucinations, although 11% were redundant."
+    }
+   ],
+   "unlisted_practices": [
+    "Post-generation filtering of AI recommendations using an LLM-as-a-judge aligned with expert physician preferences via few-shot prompting"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "AI-generated order set suggestions",
+ "sample_size": 735,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "AutoGen multiagent system with RAG",
+  "GPT-4o",
+  "GPT-4o-based multiagent system",
+  "expert-aligned GPT-4o LLM-as-a-judge filter"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucinated clinical content in RAG-grounded order set suggestions",
+   "effect": "No suggestions were identified as hallucinations, although 11% were redundant (96 suggestions rated by 3 physicians).",
+   "quote": "No suggestions were identified as hallucinations, although 11% were redundant.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Postprocessing filter retention of useful suggestions while reducing total suggestions",
+   "effect": "Threshold of 0.11 retained 453 suggestions (29% reduction) while preserving 92% of useful suggestions.",
+   "quote": "Using this model as a filter, a threshold of 0.11 retained 453 suggestions (a 29% reduction) while preserving 92% of useful suggestions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "hallucinations in RAG suggestions",
+   "effect": "No hallucinations were identified; 11% of suggestions were redundant.",
+   "quote": "No suggestions were identified as hallucinations, although 11% were redundant.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R141",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "context-specific usefulness",
+   "effect": "Only 19% of suggestions were useful; many factually correct suggestions lacked needed clinical context.",
+   "quote": "The modest useful suggestion rate (19%) highlights a key challenge: many suggestions, while factually correct, lacked the specific clinical context to be deemed useful.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing AI suggestions against historical ordering data to assess alignment with practice",
+  "Expert-aligned LLM-as-a-judge postprocessing filter to reduce low-usefulness order-set suggestions while preserving useful suggestions.",
+  "LLM-as-a-judge with few-shot expert alignment to filter AI-generated suggestions",
+  "Post-generation filtering of AI recommendations using an LLM-as-a-judge aligned with expert physician preferences via few-shot prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40986301",
+ "screen": {
+  "id": "pmid:40986301",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "expert-aligned LLM-as-a-judge filtering",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluated an LLM multiagent system to generate suggestions for clinical order sets, and specifically tested the effect of adding an expert-aligned LLM-as-a-judge filter (filtering suggestions by usefulness), measuring reduction of total suggestions while retaining useful ones.",
+  "jev": {
+   "id": "pmid:40986301",
+   "empirical": 0.97,
+   "tests_practice": 0.86,
+   "real_deployment": 0.2
+  }
+ }
+}

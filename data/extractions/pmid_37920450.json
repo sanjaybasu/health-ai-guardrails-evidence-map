@@ -1,0 +1,318 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Italy",
+   "sample_size": 20,
+   "sample_unit": "patients (CT planning scans contoured by 2 radiation oncologists)",
+   "models_evaluated": [
+    "MIM Proteg\u00e8 v1.1.2 Prostate CT 2.0.0 (U-Net)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local performance of commercial auto-contouring vs manual contours on retrospective local patients (DSC, HD, clinical score)",
+     "effect": "Unedited vs manual DSC ranged 0.65 (seminal vesicles) to 0.94 (bladder); median clinical score 4; 2 and 3 of 20 patients not fully satisfactory for the two observers.",
+     "quote": "The average values between the two observers of DSC regarding manual vs (fully) automatic contours showed values ranging between 0.65 for seminal vesicles and 0.94 for bladder with significant differences between the two observers for prostate (after editing) and for femoral heads + femurs (this last not clinically relevant)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-observer variability and contouring time with AI+editing vs manual contouring",
+     "effect": "Inter-observer DSC improved with AI+edit (seminal vesicles 0.83 vs 0.73; prostate 0.88 vs 0.83; rectum 0.96 vs 0.81); editing time 3-7 min vs 17-24 min manual (p<0.01).",
+     "quote": "After automatic contouring and manual editing, inter-observer variability improved significantly, particularly for femoral heads + femurs, rectum and seminal vesicles."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Need for clinician editing of AI auto-contours, especially target volumes",
+     "effect": "Unedited AI CTVs were significantly smaller than manual; editing significantly improved DSC (p \u2264 0.002); a minority of patients (2-3 of 20) needed more extensive editing.",
+     "quote": "Despite the excellent performances, in a limited fraction of patients the segmentation was not fully satisfactory (2 and 3 out of 20 patients for the two observers, respectively), requiring more extensive editing for a few patients."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Italy",
+   "sample_size": 20,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "MIM Proteg\u00e8 system v. 1.1.2 (Prostate CT 2.0.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician review of automatic contours",
+     "effect": "Review found segmentation not fully satisfactory in 2/20 and 3/20 patients, requiring more extensive editing.",
+     "quote": "Despite the excellent performances, in a limited fraction of patients the segmentation was not fully satisfactory (2 and 3 out of 20 patients for the two observers, respectively), requiring more extensive editing for a few patients."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "edited contour agreement",
+     "effect": "After editing, DSC improved p \u2264 0.002; seminal vesicles 0.76 vs 0.65 and prostate 0.86 vs 0.82.",
+     "quote": "After editing, DSC significantly improved (p \u2264 0.002) for both OARs and CTVs: the larger gain was found for seminal vesicles (0.76 vs 0.65) and for prostate (0.86 vs 0.82)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician contouring time",
+     "effect": "Manual vs automatic+editing time: Obs 1 24 (\u00b13.5) to 7 min (\u00b13); Obs 2 17 (\u00b12.5) to 3 min (\u00b11.5), p < 0.01.",
+     "quote": "As shown in the Supplementary material ( Supplementary Fig. S5 ), the time for contouring (manual vs automatic + editing) was significantly reduced (p < 0.01) for both operators: for Obs 1 it was reduced from 24 (\u00b13.5) to 7 min (\u00b13) and for Obs 2 from 17 (\u00b12.5) to 3 min (\u00b11.5)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Italy",
+   "sample_size": 20,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "MIM Proteg\u00e8 system, v. 1.1.2 (Prostate CT 2.0.0)",
+    "U-Net"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R164",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Dice Similarity Coefficient after manual editing of automatic contours",
+     "effect": "After editing, DSC significantly improved (p <= 0.002) for both OARs and CTVs: the larger gain was found for seminal vesicles (0.76 vs 0.65) and for prostate (0.86 vs 0.82).",
+     "quote": "After editing, DSC significantly improved (p \u2264 0.002) for both OARs and CTVs: the larger gain was found for seminal vesicles (0.76 vs 0.65) and for prostate (0.86 vs 0.82)."
+    }
+   ],
+   "unlisted_practices": [
+    "Clinician review and editing of AI-generated radiotherapy contours prior to treatment planning approval"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Italy",
+ "sample_unit": "patients",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "MIM Proteg\u00e8 system v. 1.1.2 (Prostate CT 2.0.0)",
+  "MIM Proteg\u00e8 system, v. 1.1.2 (Prostate CT 2.0.0)",
+  "MIM Proteg\u00e8 v1.1.2 Prostate CT 2.0.0 (U-Net)",
+  "U-Net"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local performance of commercial auto-contouring vs manual contours on retrospective local patients (DSC, HD, clinical score)",
+   "effect": "Unedited vs manual DSC ranged 0.65 (seminal vesicles) to 0.94 (bladder); median clinical score 4; 2 and 3 of 20 patients not fully satisfactory for the two observers.",
+   "quote": "The average values between the two observers of DSC regarding manual vs (fully) automatic contours showed values ranging between 0.65 for seminal vesicles and 0.94 for bladder with significant differences between the two observers for prostate (after editing) and for femoral heads + femurs (this last not clinically relevant).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-observer variability and contouring time with AI+editing vs manual contouring",
+   "effect": "Inter-observer DSC improved with AI+edit (seminal vesicles 0.83 vs 0.73; prostate 0.88 vs 0.83; rectum 0.96 vs 0.81); editing time 3-7 min vs 17-24 min manual (p<0.01).",
+   "quote": "After automatic contouring and manual editing, inter-observer variability improved significantly, particularly for femoral heads + femurs, rectum and seminal vesicles.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "clinician review of automatic contours",
+   "effect": "Review found segmentation not fully satisfactory in 2/20 and 3/20 patients, requiring more extensive editing.",
+   "quote": "Despite the excellent performances, in a limited fraction of patients the segmentation was not fully satisfactory (2 and 3 out of 20 patients for the two observers, respectively), requiring more extensive editing for a few patients.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "edited contour agreement",
+   "effect": "After editing, DSC improved p \u2264 0.002; seminal vesicles 0.76 vs 0.65 and prostate 0.86 vs 0.82.",
+   "quote": "After editing, DSC significantly improved (p \u2264 0.002) for both OARs and CTVs: the larger gain was found for seminal vesicles (0.76 vs 0.65) and for prostate (0.86 vs 0.82).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "clinician contouring time",
+   "effect": "Manual vs automatic+editing time: Obs 1 24 (\u00b13.5) to 7 min (\u00b13); Obs 2 17 (\u00b12.5) to 3 min (\u00b11.5), p < 0.01.",
+   "quote": "As shown in the Supplementary material ( Supplementary Fig. S5 ), the time for contouring (manual vs automatic + editing) was significantly reduced (p < 0.01) for both operators: for Obs 1 it was reduced from 24 (\u00b13.5) to 7 min (\u00b13) and for Obs 2 from 17 (\u00b12.5) to 3 min (\u00b11.5).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R164",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Dice Similarity Coefficient after manual editing of automatic contours",
+   "effect": "After editing, DSC significantly improved (p <= 0.002) for both OARs and CTVs: the larger gain was found for seminal vesicles (0.76 vs 0.65) and for prostate (0.86 vs 0.82).",
+   "quote": "After editing, DSC significantly improved (p \u2264 0.002) for both OARs and CTVs: the larger gain was found for seminal vesicles (0.76 vs 0.65) and for prostate (0.86 vs 0.82).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Clinician review and editing of AI-generated radiotherapy contours prior to treatment planning approval"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37920450",
+ "screen": {
+  "id": "pmid:37920450",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "clinician editing of AI auto-contours",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a commercial AI auto-contouring tool in radiotherapy planning, specifically comparing manual contouring versus AI auto-contouring with clinician editing, assessing time savings and inter-observer variability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "clinician editing / human-in-the-loop review of AI auto-contours"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37920450",
+   "empirical": 0.97,
+   "tests_practice": 0.79,
+   "real_deployment": 0.58
+  }
+ }
+}

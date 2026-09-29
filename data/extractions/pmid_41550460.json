@@ -1,0 +1,329 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "quasi_experimental",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 23,
+   "sample_unit": "healthcare professionals",
+   "models_evaluated": [
+    "CORONET (random forest regression with SHAP explanations)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "HCP concordance with correct decisions when the model intentionally recommended wrong discharge",
+     "effect": "In Daniel's case 65% (15/23) followed the wrong discharge recommendation; in Christine's 48% (11/23). Only 35% (CS) and 52% (CS+Exp) overrode the model.",
+     "quote": "The results strongly suggest that for both types of output (CS and CS+Ex) HCPs over-relied in the recommendation provided by the model."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of SHAP feature-contribution explanations on HCP understanding, trust, satisfaction, and critical understanding",
+     "effect": "No significant change in satisfaction, trust, or understanding (CS vs CS+Exp); explanation did not change understanding of wrong recommendations for 57% and lowered it for 17%.",
+     "quote": "The explanation did not improve satisfaction (RQ2, Fig. 7 question A), trust (RQ3, Fig. 7 questions B, C, E) nor the understanding of how the model produced the recommendation (RQ1, Fig. 7 questions D, F, G)."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether explanations promote scrutiny and reduce automation bias in HCP decisions",
+     "effect": "With explanations, decisions against the model took a median 84s vs 38s for agreeing (p<0.001); only 52% overrode the wrong recommendation with explanations vs 35% without; confirmation bias risk noted.",
+     "quote": "On the other hand, explanations drove users to reflect longer on the decision when disagreeing with the model outcome (RQ6)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Human-AI team decisions with and without explanation, including overreliance on incorrect model recommendations",
+     "effect": "Lowest concordance in cases where CORONET recommended wrong action; 35% (CS) and 52% (CS+Exp) of HCPs overrode incorrect discharge recommendations.",
+     "quote": "Only 35% (CS scenario) and 52% (CS+Ex) HCPs took that critical perspective over the model."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "HCP expectations about uncertainty display alongside model output",
+     "effect": "96% (22/23) at least slightly agreed uncertainty behind the recommendation was essential; 43% (10/23) strongly agreed. The tool did not communicate uncertainty.",
+     "quote": "Apart from knowing why the model recommends such action, the uncertainty behind the recommendation was even more essential for the HCPs: 96% (22/23) of them at least slightly agreed, and 43% (10/23) strongly agreed, which is the highest \u2018strongly agree\u2019 proportion in the study."
+    }
+   ],
+   "unlisted_practices": [
+    "Displaying SHAP feature-contribution and cohort scatter plot explanations alongside predictive scores to clinicians"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 23,
+   "sample_unit": "healthcare professionals",
+   "models_evaluated": [
+    "CORONET"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "clinician understanding of wrong recommendations",
+     "effect": "Explanations did not change understanding for 57% (13/23) and lowered understanding for 17%.",
+     "quote": "The provided explanations did not change the level of understanding of when and why the model produces wrong recommendations for 57% (13/23) of HCPs (RQ1)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "overriding incorrect AI discharge recommendations",
+     "effect": "Daniel: 65% (15/23) discharged as CORONET recommended; Christine: 48% (11/23).",
+     "quote": "In Daniel\u2019s case 65% (15/23) HCPs decided to discharge, as CORONET recommended, while for Christine this accounted for 48% (11/23)."
+    },
+    {
+     "rec_id": "R224",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "information-related risks of explanations",
+     "effect": "Undesirable explanation effects occurred for 17-35%; critical understanding not improved for 57%.",
+     "quote": "Despite the general positive attitude towards explanations, for a significant set of participants (17-35%), an undesirable effect for the explanations was observed, possibly due to an increase in cognitive effort."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 23,
+   "sample_unit": "clinicians",
+   "models_evaluated": [
+    "CORONET"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Clinician satisfaction, trust, and understanding of recommendations",
+     "effect": "Pairwise comparison between score alone and score plus explanation showed no statistically significant change in clinician satisfaction, trust, understanding, or reassurance.",
+     "quote": "In the pairwise comparison of responses between CS and CS+Exp scenarios, we did not find a statistically significant change in the HCPs\u2019 attitude towards the model (i.a. satisfaction, trust, understanding, reassurance)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinician detection of incorrect AI recommendations",
+     "effect": "When the model recommended incorrect discharge, 65% (15/23) of clinicians discharged in Daniel's case and 48% (11/23) in Christine's case.",
+     "quote": "In Daniel\u2019s case 65% (15/23) HCPs decided to discharge, as CORONET recommended, while for Christine this accounted for 48% (11/23)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "healthcare professionals",
+ "sample_size": 23,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CORONET",
+  "CORONET (random forest regression with SHAP explanations)"
+ ],
+ "links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "HCP concordance with correct decisions when the model intentionally recommended wrong discharge",
+   "effect": "In Daniel's case 65% (15/23) followed the wrong discharge recommendation; in Christine's 48% (11/23). Only 35% (CS) and 52% (CS+Exp) overrode the model.",
+   "quote": "The results strongly suggest that for both types of output (CS and CS+Ex) HCPs over-relied in the recommendation provided by the model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of SHAP feature-contribution explanations on HCP understanding, trust, satisfaction, and critical understanding",
+   "effect": "No significant change in satisfaction, trust, or understanding (CS vs CS+Exp); explanation did not change understanding of wrong recommendations for 57% and lowered it for 17%.",
+   "quote": "The explanation did not improve satisfaction (RQ2, Fig. 7 question A), trust (RQ3, Fig. 7 questions B, C, E) nor the understanding of how the model produced the recommendation (RQ1, Fig. 7 questions D, F, G).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Whether explanations promote scrutiny and reduce automation bias in HCP decisions",
+   "effect": "With explanations, decisions against the model took a median 84s vs 38s for agreeing (p<0.001); only 52% overrode the wrong recommendation with explanations vs 35% without; confirmation bias risk noted.",
+   "quote": "On the other hand, explanations drove users to reflect longer on the decision when disagreeing with the model outcome (RQ6).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Human-AI team decisions with and without explanation, including overreliance on incorrect model recommendations",
+   "effect": "Lowest concordance in cases where CORONET recommended wrong action; 35% (CS) and 52% (CS+Exp) of HCPs overrode incorrect discharge recommendations.",
+   "quote": "Only 35% (CS scenario) and 52% (CS+Ex) HCPs took that critical perspective over the model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R224",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "information-related risks of explanations",
+   "effect": "Undesirable explanation effects occurred for 17-35%; critical understanding not improved for 57%.",
+   "quote": "Despite the general positive attitude towards explanations, for a significant set of participants (17-35%), an undesirable effect for the explanations was observed, possibly due to an increase in cognitive effort.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R214",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Displaying SHAP feature-contribution and cohort scatter plot explanations alongside predictive scores to clinicians"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41550460",
+ "screen": {
+  "id": "pmid:41550460",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "model explanations shown to clinicians (explainability)",
+  "user": "clinician_or_staff",
+  "reason": "Empirically evaluates the impact of ML explanation models on healthcare professional trust, cognitive bias, and clinical decision-making.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "explainable AI (XAI) outputs"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41550460",
+   "empirical": 0.85,
+   "tests_practice": 0.31,
+   "real_deployment": 0.17
+  }
+ }
+}

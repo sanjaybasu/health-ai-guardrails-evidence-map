@@ -1,0 +1,503 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 80,
+   "sample_unit": "patients with severe aortic stenosis",
+   "models_evaluated": [
+    "BioGPT",
+    "GPT-3.5",
+    "GPT-4",
+    "GPT-4 Turbo",
+    "GPT-4o",
+    "LLaMA-2",
+    "Mistral-7B",
+    "PaLM 2",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reproducibility of LLM treatment decisions across 10 repeated runs (ICC, entropy)",
+     "effect": "Low reliability in raw experiment (ICC 0.0-1.0); GPT-3.5 and LLaMA-2 gave opposite answers to the identical prompt across runs; smaller models gave conflicting recommendations.",
+     "quote": "Some LLMs gave indeterminate treatment recommendations in up to 54% of cases (eg, GPT-3.5) and showed low reliability as evidenced by low ICCs and high entropy values (eg, Mistral, LLaMA-2, and DeepSeek-R1)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM agreement with heart team compared with a simple guideline-based non-LLM reference model",
+     "effect": "Reference model outperformed LLMs on raw reports; only with summaries plus guideline text did GPT-4 models and DeepSeek-R1 draw level with it.",
+     "quote": "The reference model outperformed the LLMs in the raw experiment regarding the metrics we assessed."
+    },
+    {
+     "rec_id": "R085",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether a simple non-LLM model matches LLM performance on treatment decision",
+     "effect": "Simple reference model performed comparably to GPT-4 and outperformed LLMs on raw reports, suggesting simpler models could suffice.",
+     "quote": "In our study, as well as in the study by Salihu et al [ 8 ], simple reference models performed comparably to GPT-4, suggesting that non-LLM models could outperform LLMs if trained appropriately."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM performance with lengthy unstructured raw reports versus curated case summaries",
+     "effect": "Raw reports: Cohen kappa -0.47 to 0.22; with summaries plus guideline text kappa -0.02 to 0.63. Input representation was the most critical factor.",
+     "quote": "This, along with the significant performance gains observed when providing case summaries instead of original medical reports, suggests that input data representation is the most critical factor in LLM performance."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of adding guideline summary to the prompt on agreement with heart team",
+     "effect": "Adding guideline knowledge to raw reports did not substantially change performance (DeepSeek-R1 kappa 0.22 to 0.40); with summaries, sum+ peaked, giving the best results.",
+     "quote": "The performance metrics of the other LLMs did not change substantially in the raw+ experiment."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinations in LLM treatment recommendations",
+     "effect": "All LLMs produced hallucinations of varying severity and frequency in every experiment, including fabricated frailty and prior cardiac surgery and a fabricated surgery report.",
+     "quote": "In each experiment, all LLMs produced hallucinations of varying severity and frequency."
+    },
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM treatment recommendation quality on real-world data",
+     "effect": "LLMs gave poor agreement with the heart team on original reports and are deemed unsuitable as decision makers; some recommended heart transplantation, ignoring instructions.",
+     "quote": "Overall, we conclude that LLMs are currently not suitable as decision makers for the treatment of patients with severe AS, as our results suggest that LLMs require elaborate preprocessing of patient data to make guideline-concordant treatment decisions."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Bias toward TAVR recommendation measured by frequency bias index",
+     "effect": "FBI 0.95-1.51 with raw reports, substantially above 1 for all LLMs except BioGPT; 0.46-1.23 with summaries plus guidelines.",
+     "quote": "FBIs were substantially higher than 1.0 for all LLMs, except BioGPT, indicating a bias toward TAVR."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Concordance of LLM treatment decisions with guideline-based heart team decisions",
+     "effect": "Raw input kappa -0.47 to 0.22, indeterminate up to 54%; incorrect guideline application observed even with guideline text in the prompt (e.g., fabricated high surgical risk).",
+     "quote": "In the raw experiment, LLMs\u2019 treatment decisions were in poor agreement with the HT."
+    },
+    {
+     "rec_id": "R186",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Risk of laypersons misled by persuasive but incorrect LLM recommendations",
+     "effect": "Authors argue laypersons using raw reports would get raw-experiment-level recommendations and may not recognize hallucinations, creating illusion of certainty.",
+     "quote": "Finally, medical laypersons may not be able to recognize hallucinations as effectively as medical professionals."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLMs to extract clinical data and feed downstream deterministic models for decision-making",
+    "Manual case summarization of decision-relevant data before LLM input"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 80,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "BioGPT",
+    "GPT-3.5",
+    "GPT-4",
+    "GPT-4 Turbo",
+    "GPT-4o",
+    "LLaMA-2",
+    "Mistral-7B",
+    "PaLM 2",
+    "DeepSeek-R1",
+    "non-LLM reference model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R097",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "raw-report treatment decision performance",
+     "effect": "Original medical reports: Cohen \u03ba -0.47 to 0.22; ICC 0.0-1.0; FBI 0.95-1.51.",
+     "quote": "When presented with original medical reports, LLMs showed poor performance (Cohen \u03ba coefficient: -0.47 to 0.22; ICC: 0.0-1.0; FBI: 0.95-1.51)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "repeated-prompt reliability",
+     "effect": "Indeterminate recommendations occurred in up to 54%; raw ICC range 0.0-1.0, with low ICCs/high entropy in Mistral, LLaMA-2, DeepSeek-R1.",
+     "quote": "Some LLMs gave indeterminate treatment recommendations in up to 54% of cases (eg, GPT-3.5) and showed low reliability as evidenced by low ICCs and high entropy values (eg, Mistral, LLaMA-2, and DeepSeek-R1)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "reference-model comparison",
+     "effect": "Best raw LLM \u03ba was 0.22 (DeepSeek-R1); the non-LLM reference model outperformed LLMs in the raw experiment.",
+     "quote": "The reference model outperformed the LLMs in the raw experiment regarding the metrics we assessed."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "input representation sensitivity",
+     "effect": "Raw reports \u03ba -0.47 to 0.22; case summaries plus guideline prompt improved \u03ba to -0.02 to 0.63.",
+     "quote": "The LLMs' performance improved substantially when case summaries were used as input and additional guideline knowledge was added to the prompt (Cohen \u03ba coefficient: -0.02 to 0.63; ICC: 0.01-1.0; FBI: 0.46-1.23)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucinated and inaccurate treatment outputs",
+     "effect": "All LLMs had hallucinations; raw-report performance was \u03ba -0.47 to 0.22, ICC 0.0-1.0, FBI 0.95-1.51.",
+     "quote": "Qualitative analysis revealed instances of hallucinations in all LLMs tested."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 80,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "BioGPT",
+    "GPT-3.5",
+    "GPT-4",
+    "GPT-4 Turbo",
+    "GPT-4o",
+    "LLaMA-2",
+    "Mistral",
+    "PaLM 2",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "de"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Treatment decision agreement, reliability, and hallucinations",
+     "effect": "Guideline knowledge with case summaries improved agreement (Cohen kappa -0.02 to 0.63), but adding guidelines to raw reports showed little change, and hallucinations persisted across all models.",
+     "quote": "The LLMs' performance improved substantially when case summaries were used as input and additional guideline knowledge was added to the prompt (Cohen \u03ba coefficient: -0.02 to 0.63; ICC: 0.01-1.0; FBI: 0.46-1.23)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM decision performance compared with a simpler non-LLM reference model",
+     "effect": "A simpler non-LLM guideline reference model outperformed all LLMs on raw medical reports, while LLMs only matched the reference model when given manually curated summaries.",
+     "quote": "The reference model outperformed the LLMs in the raw experiment regarding the metrics we assessed."
+    }
+   ],
+   "unlisted_practices": [
+    "Manual curation and extraction of unstructured medical text into structured case summaries before prompting"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "patients",
+ "sample_size": 80,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German",
+  "de"
+ ],
+ "models_evaluated": [
+  "BioGPT",
+  "DeepSeek-R1",
+  "GPT-3.5",
+  "GPT-4",
+  "GPT-4 Turbo",
+  "GPT-4o",
+  "LLaMA-2",
+  "Mistral",
+  "Mistral-7B",
+  "PaLM 2",
+  "non-LLM reference model"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of LLM treatment decisions across 10 repeated runs (ICC, entropy)",
+   "effect": "Low reliability in raw experiment (ICC 0.0-1.0); GPT-3.5 and LLaMA-2 gave opposite answers to the identical prompt across runs; smaller models gave conflicting recommendations.",
+   "quote": "Some LLMs gave indeterminate treatment recommendations in up to 54% of cases (eg, GPT-3.5) and showed low reliability as evidenced by low ICCs and high entropy values (eg, Mistral, LLaMA-2, and DeepSeek-R1).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM agreement with heart team compared with a simple guideline-based non-LLM reference model",
+   "effect": "Reference model outperformed LLMs on raw reports; only with summaries plus guideline text did GPT-4 models and DeepSeek-R1 draw level with it.",
+   "quote": "The reference model outperformed the LLMs in the raw experiment regarding the metrics we assessed.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM performance with lengthy unstructured raw reports versus curated case summaries",
+   "effect": "Raw reports: Cohen kappa -0.47 to 0.22; with summaries plus guideline text kappa -0.02 to 0.63. Input representation was the most critical factor.",
+   "quote": "This, along with the significant performance gains observed when providing case summaries instead of original medical reports, suggests that input data representation is the most critical factor in LLM performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of adding guideline summary to the prompt on agreement with heart team",
+   "effect": "Adding guideline knowledge to raw reports did not substantially change performance (DeepSeek-R1 kappa 0.22 to 0.40); with summaries, sum+ peaked, giving the best results.",
+   "quote": "The performance metrics of the other LLMs did not change substantially in the raw+ experiment.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R085",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether a simple non-LLM model matches LLM performance on treatment decision",
+   "effect": "Simple reference model performed comparably to GPT-4 and outperformed LLMs on raw reports, suggesting simpler models could suffice.",
+   "quote": "In our study, as well as in the study by Salihu et al [ 8 ], simple reference models performed comparably to GPT-4, suggesting that non-LLM models could outperform LLMs if trained appropriately.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucinations in LLM treatment recommendations",
+   "effect": "All LLMs produced hallucinations of varying severity and frequency in every experiment, including fabricated frailty and prior cardiac surgery and a fabricated surgery report.",
+   "quote": "In each experiment, all LLMs produced hallucinations of varying severity and frequency.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R063",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM treatment recommendation quality on real-world data",
+   "effect": "LLMs gave poor agreement with the heart team on original reports and are deemed unsuitable as decision makers; some recommended heart transplantation, ignoring instructions.",
+   "quote": "Overall, we conclude that LLMs are currently not suitable as decision makers for the treatment of patients with severe AS, as our results suggest that LLMs require elaborate preprocessing of patient data to make guideline-concordant treatment decisions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R097",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "raw-report treatment decision performance",
+   "effect": "Original medical reports: Cohen \u03ba -0.47 to 0.22; ICC 0.0-1.0; FBI 0.95-1.51.",
+   "quote": "When presented with original medical reports, LLMs showed poor performance (Cohen \u03ba coefficient: -0.47 to 0.22; ICC: 0.0-1.0; FBI: 0.95-1.51).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM decision performance compared with a simpler non-LLM reference model",
+   "effect": "A simpler non-LLM guideline reference model outperformed all LLMs on raw medical reports, while LLMs only matched the reference model when given manually curated summaries.",
+   "quote": "The reference model outperformed the LLMs in the raw experiment regarding the metrics we assessed.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R186",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Manual case summarization of decision-relevant data before LLM input",
+  "Manual curation and extraction of unstructured medical text into structured case summaries before prompting",
+  "Using LLMs to extract clinical data and feed downstream deterministic models for decision-making"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41190890",
+ "screen": {
+  "id": "pmid:41190890",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "input curation with case summaries and guideline-augmented prompts",
+  "user": "none",
+  "reason": "The study empirically evaluates LLMs on real-world clinical reports versus manually curated case summaries with guideline grounding added to prompts to determine impact on clinical decision accuracy and bias.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "curated case summarization and prompt grounding with guidelines"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41190890",
+   "empirical": 0.98,
+   "tests_practice": 0.36,
+   "real_deployment": 0.03
+  }
+ }
+}

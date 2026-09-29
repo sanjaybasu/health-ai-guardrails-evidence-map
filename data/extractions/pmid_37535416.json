@@ -1,0 +1,196 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1326,
+   "sample_unit": "patient encounters flagged",
+   "models_evaluated": [
+    "ML-based CDS falls risk algorithm (Epic-integrated)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Adjusting ML risk threshold over time to match target referral volume per week (clinic capacity)",
+    "Excluding patients with completed or scheduled clinic appointments from repeat CDS flags"
+   ]
+  },
+  "openai": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1326,
+   "sample_unit": "patient encounters flagged as high risk",
+   "models_evaluated": [
+    "ML-based CDS algorithm predicting fall-related ED return within 6 months"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R249",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Appointment scheduling among high-risk patients referred to the mobility and falls clinic",
+     "effect": "Only 15% (45/339) of referred patients had scheduled an appointment, documenting a downstream follow-up gap despite AI-based identification and referral.",
+     "quote": "To date, 15% (45/339) of patients have scheduled an appointment with the clinic."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1326,
+   "sample_unit": "patient encounters",
+   "models_evaluated": [
+    "ML-CDS falls risk algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "deploying machine learning clinical decision support in emergency departments to identify high-risk older adults for outpatient fall prevention referrals"
+   ]
+  }
+ },
+ "design": "quasi_experimental",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patient encounters flagged",
+ "sample_size": 1326,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ML-CDS falls risk algorithm",
+  "ML-based CDS algorithm predicting fall-related ED return within 6 months",
+  "ML-based CDS falls risk algorithm (Epic-integrated)"
+ ],
+ "links": [
+  {
+   "rec_id": "R249",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Appointment scheduling among high-risk patients referred to the mobility and falls clinic",
+   "effect": "Only 15% (45/339) of referred patients had scheduled an appointment, documenting a downstream follow-up gap despite AI-based identification and referral.",
+   "quote": "To date, 15% (45/339) of patients have scheduled an appointment with the clinic.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adjusting ML risk threshold over time to match target referral volume per week (clinic capacity)",
+  "Excluding patients with completed or scheduled clinic appointments from repeat CDS flags",
+  "deploying machine learning clinical decision support in emergency departments to identify high-risk older adults for outpatient fall prevention referrals"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37535416",
+ "screen": {
+  "id": "pmid:37535416",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "alert threshold-triggered automated screening and referral",
+  "user": "clinician_or_staff",
+  "reason": "Protocol with preliminary implementation data describing the prospective deployment and evaluation of a machine-learning-based clinical decision support tool for fall screening in emergency departments.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37535416",
+   "empirical": 0.89,
+   "tests_practice": 0.3,
+   "real_deployment": 0.92
+  }
+ }
+}

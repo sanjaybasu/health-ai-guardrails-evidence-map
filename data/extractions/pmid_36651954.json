@@ -1,0 +1,307 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Netherlands, Belgium, Italy (multinational Europe)",
+   "sample_size": 374,
+   "sample_unit": "CT scans (external validation)",
+   "models_evaluated": [
+    "ICOVAI (ResUNet-a segmentation + random forest CO-RADS classifier)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance on internal test versus independent external multicenter validation (CO-RADS kappa, lung opacity DSC)",
+     "effect": "CO-RADS linear weighted kappa fell from 0.78 internal to 0.62 external (p<0.0001); opacity segmentation fell from DSC 0.76 to mDSC 0.59 (p<0.0001); lung contour unchanged (0.97).",
+     "quote": "External validation can highlight the shortcomings of a predictive model, which were not apparent during internal testing on CT scans sampled out of the same cohort."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop when applied to data from other institutions than development",
+     "effect": "Significant reduction in lung opacity segmentation (DSC 0.76 to 0.59) and CO-RADS agreement (kappa 0.78 to 0.62) on external multicenter data.",
+     "quote": "Our work shows that published results of COVID-19 segmentation on internal test sets may not generalize well to patient data from other institutions."
+    },
+    {
+     "rec_id": "R148",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Independent external validation versus internal testing by developers",
+     "effect": "Independent validation revealed significantly lower performance (kappa 0.62 vs 0.78; opacity DSC 0.59 vs 0.76), showing that internal results overstated performance.",
+     "quote": "The study demonstrates the importance of independent external validation of AI models."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance across sites in external multicenter validation",
+     "effect": "External multicenter validation (five hospitals) showed reduced performance versus internal test; annotation platform differences and site variation may contribute. Site-specific results not reported.",
+     "quote": "We observed a significant reduction in performance on the external test as compared to the internal test for lung opacity segmentation and CO-RADS prediction, but not for lung contour segmentation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "The Netherlands; Belgium; France; Singapore; United Kingdom; Italy",
+   "sample_size": 374,
+   "sample_unit": "CT scans in final external validation analysis",
+   "models_evaluated": [
+    "ICOVAI model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Independent external validation versus internal testing",
+     "effect": "CO-RADS weighted kappa fell from 0.78 internally to 0.62 externally (p < 0.0001).",
+     "quote": "For CO-RADS classification, agreement with radiologists on the internal set was substantial (kappa = 0.78), but significantly lower on the external set (kappa = 0.62, p < 0.0001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "COVID-19 opacity segmentation accuracy",
+     "effect": "Lung opacities DSC was 0.59 on external validation versus 0.76 internally (p < 0.0001).",
+     "quote": "Lung opacities segmentation performance was adequate internally (DSC = 0.76), but significantly worse on external validation (DSC = 0.59, p < 0.0001)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "The Netherlands",
+   "sample_size": 1660,
+   "sample_unit": "CT scans",
+   "models_evaluated": [
+    "ICOVAI model (ResUNet-a and Random Forest)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external vs internal segmentation and CO-RADS classification performance",
+     "effect": "Internal vs external: lung opacity DSC was 0.76 vs 0.59 (p < 0.0001); CO-RADS linear kappa was 0.78 vs 0.62 (p < 0.0001); lung contour DSC was 0.97 in both (p = 0.97).",
+     "quote": "Lung opacities segmentation performance was adequate internally (DSC = 0.76), but significantly worse on external validation (DSC = 0.59, p < 0.0001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Netherlands, Belgium, Italy (multinational Europe)",
+ "sample_unit": "CT scans (external validation)",
+ "sample_size": 374,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ICOVAI (ResUNet-a segmentation + random forest CO-RADS classifier)",
+  "ICOVAI model",
+  "ICOVAI model (ResUNet-a and Random Forest)"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance on internal test versus independent external multicenter validation (CO-RADS kappa, lung opacity DSC)",
+   "effect": "CO-RADS linear weighted kappa fell from 0.78 internal to 0.62 external (p<0.0001); opacity segmentation fell from DSC 0.76 to mDSC 0.59 (p<0.0001); lung contour unchanged (0.97).",
+   "quote": "External validation can highlight the shortcomings of a predictive model, which were not apparent during internal testing on CT scans sampled out of the same cohort.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drop when applied to data from other institutions than development",
+   "effect": "Significant reduction in lung opacity segmentation (DSC 0.76 to 0.59) and CO-RADS agreement (kappa 0.78 to 0.62) on external multicenter data.",
+   "quote": "Our work shows that published results of COVID-19 segmentation on internal test sets may not generalize well to patient data from other institutions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R148",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Independent external validation versus internal testing by developers",
+   "effect": "Independent validation revealed significantly lower performance (kappa 0.62 vs 0.78; opacity DSC 0.59 vs 0.76), showing that internal results overstated performance.",
+   "quote": "The study demonstrates the importance of independent external validation of AI models.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance across sites in external multicenter validation",
+   "effect": "External multicenter validation (five hospitals) showed reduced performance versus internal test; annotation platform differences and site variation may contribute. Site-specific results not reported.",
+   "quote": "We observed a significant reduction in performance on the external test as compared to the internal test for lung opacity segmentation and CO-RADS prediction, but not for lung contour segmentation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "COVID-19 opacity segmentation accuracy",
+   "effect": "Lung opacities DSC was 0.59 on external validation versus 0.76 internally (p < 0.0001).",
+   "quote": "Lung opacities segmentation performance was adequate internally (DSC = 0.76), but significantly worse on external validation (DSC = 0.59, p < 0.0001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external vs internal segmentation and CO-RADS classification performance",
+   "effect": "Internal vs external: lung opacity DSC was 0.76 vs 0.59 (p < 0.0001); CO-RADS linear kappa was 0.78 vs 0.62 (p < 0.0001); lung contour DSC was 0.97 in both (p = 0.97).",
+   "quote": "Lung opacities segmentation performance was adequate internally (DSC = 0.76), but significantly worse on external validation (DSC = 0.59, p < 0.0001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36651954",
+ "screen": {
+  "id": "pmid:36651954",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "independent external validation before clinical use",
+  "user": "none",
+  "reason": "Evaluates the generalizability drop of an AI imaging model via independent external validation versus internal testing to assess readiness for clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "independent external validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36651954",
+   "empirical": 0.97,
+   "tests_practice": 0.05,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,381 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Hong Kong",
+   "sample_size": 236,
+   "sample_unit": "emergency department triage encounters",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "GPT-4o",
+    "Claude 3.7 Sonnet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Triage agreement (QWK) and accuracy with RAG grounding versus prompt-only LLM",
+     "effect": "MECR-RAG mean QWK 0.902 vs 0.801 baseline; accuracy 0.802 vs 0.542 (both P<.001); overtriage 28.8% to 12.7%.",
+     "quote": "Across 5 independent runs, MECR\u2011RAG achieved a mean QWK of 0.902 (SD 0.0021; 95% CI 0.901-0.904), compared with 0.801 (SD 0.004; 95% CI 0.798-0.804) for the baseline model (mean paired difference 0.101, SD 0.0058; 95% CI 0.097-0.106; P <.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity for high-severity patients, LLM versus initial nurse triage and baseline LLM",
+     "effect": "MECR-RAG sensitivity for R1+R2 124/130 (95.4%) vs nurses 117/130 (90.0%) (P=.02) and baseline LLM 122/130 (93.8%); specificity similar to nurses.",
+     "quote": "When high-severity outcomes were defined as R1+R2 (n=130) and triage \u201cpositive\u201d as categories 1 - 3 versus 4 - 5, MECR\u2011RAG achieved the highest sensitivity for high-risk courses at 124/130 (95.4%), compared with 117/130 (90.0%) for initial nurse triage and 122/130 (93.8%) for the baseline LLM."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference standard creation with blinded raters and adjudication; interrater agreement",
+     "effect": "Two blinded advanced practice nurses labelled cases with a third adjudicating disagreements; interrater QWK 0.887.",
+     "quote": "Disagreements were adjudicated by a third senior triage nurse to obtain a final consensus category for each encounter."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Output reproducibility across repeated runs and across LLM backends",
+     "effect": "Five independent runs gave QWK SD 0.0021 for MECR-RAG; advantage robust to run-to-run variability; single-run gains on Claude 3.7 (0.840 to 0.890) and GPT-4o (0.778 to 0.890).",
+     "quote": "Similar effect sizes were observed when analyses were repeated using single median\u2011run prediction sets, indicating that MECR\u2011RAG\u2019s advantage was robust to run\u2011to\u2011run variability."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether standalone performance reflects human-AI team performance and automation bias",
+     "effect": "Authors state usability, automation bias and workflow impact were not evaluated; offline retrospective study cannot show real-world effectiveness or safety.",
+     "quote": "In addition, we did not directly evaluate usability, interpretability, automation bias, or workflow impact, which are increasingly recognized as critical determinants of the safety and effectiveness of AI\u2011enabled clinical decision-support systems [ 32 , 36 ]."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Undertriage and overtriage of urgent cases by LLM triage",
+     "effect": "MECR-RAG undertriage 3/236 (1.3%) vs baseline 4/236 (1.7%); overtriage fell from 68/236 (28.8%) to 30/236 (12.7%) (McNemar P<.001).",
+     "quote": "Overtriage decreased from 68/236 (28.8%) with the baseline LLM to 30/236 (12.7%) with MECR\u2011RAG (McNemar P <.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Dual-source retrieval (guideline plus similar past cases) versus single-source retrieval, tested by component ablation",
+    "Scaling the retrieval case database from 1000 to 3000 cases"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Hong Kong",
+   "sample_size": 236,
+   "sample_unit": "ED triage encounters",
+   "models_evaluated": [
+    "MECR-RAG (DeepSeek-V3)",
+    "prompt-only DeepSeek-V3 baseline",
+    "guideline-only RAG",
+    "case-only RAG",
+    "Claude 3.7 Sonnet",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "QWK vs expert consensus",
+     "effect": "MECR\u2011RAG QWK 0.902 vs baseline 0.801; mean paired difference 0.101; P <.001.",
+     "quote": "Across 5 independent runs, MECR\u2011RAG achieved a mean QWK of 0.902 (SD 0.0021; 95% CI 0.901-0.904), compared with 0.801 (SD 0.004; 95% CI 0.798-0.804) for the baseline model (mean paired difference 0.101, SD 0.0058; 95% CI 0.097-0.106; P <.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate versus simpler model",
+     "effect": "Same-data comparison showed MECR\u2011RAG accuracy 0.802 vs prompt-only baseline 0.542; P <.001.",
+     "quote": "Classification accuracy followed the same pattern, with a mean accuracy of 0.802 (SD 0.0082; 95% CI 0.795-0.808) for MECR\u2011RAG versus 0.542 (SD 0.0073; 95% CI 0.536-0.548) for the baseline LLM (mean paired difference 0.264, SD 0.0150; 95% CI 0.251-0.278; P <.001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Triage classification errors",
+     "effect": "Mean accuracy was 0.802 for MECR\u2011RAG and 0.542 for baseline, leaving substantial exact-match errors.",
+     "quote": "Classification accuracy followed the same pattern, with a mean accuracy of 0.802 (SD 0.0082; 95% CI 0.795-0.808) for MECR\u2011RAG versus 0.542 (SD 0.0073; 95% CI 0.536-0.548) for the baseline LLM (mean paired difference 0.264, SD 0.0150; 95% CI 0.251-0.278; P <.001)."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Undertriage and overtriage",
+     "effect": "Overtriage fell from 68/236 to 30/236; undertriage remained low, 4/236 to 3/236.",
+     "quote": "In 3\u2011group analysis, MECR\u2011RAG reduced overtriage from 68/236 (28.8%) with the baseline LLM to 30/236 (12.7%) and maintained low undertriage from 4/236 (1.7%) to 3/236 (1.3%), with the largest gains in the diagnostically ambiguous yet operationally important categories 3 and 4."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Run-to-run performance variability",
+     "effect": "Across five runs, MECR\u2011RAG QWK SD 0.0021 and accuracy SD 0.0082; advantage was robust.",
+     "quote": "Similar effect sizes were observed when analyses were repeated using single median\u2011run prediction sets, indicating that MECR\u2011RAG\u2019s advantage was robust to run\u2011to\u2011run variability."
+    }
+   ],
+   "unlisted_practices": [
+    "Scaling the historical past-case retrieval database from 1000 to 3000 cases"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Hong Kong",
+   "sample_size": 236,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "Claude 3.7 Sonnet",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Emergency triage agreement and accuracy",
+     "effect": "MECR-RAG achieved mean QWK of 0.902 vs 0.801 for baseline LLM (difference 0.101, P<.001) and accuracy of 0.802 vs 0.542 (P<.001).",
+     "quote": "MECR\u2011RAG achieved a mean QWK of 0.902 (SD 0.0021; 95% CI 0.901-0.904) and accuracy of 0.802 (SD 0.0082; 95% CI 0.795-0.808), outperforming the baseline LLM (QWK 0.801, SD 0.004; accuracy 0.542, SD 0.0073; both P<.001) and demonstrating expert\u2011comparable agreement with triage nurses (interrater QWK 0.887)."
+    }
+   ],
+   "unlisted_practices": [
+    "Dual-source retrieval combining clinical guidelines with historical case exemplars"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Hong Kong",
+ "sample_unit": "emergency department triage encounters",
+ "sample_size": 236,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude 3.7 Sonnet",
+  "DeepSeek-V3",
+  "GPT-4o",
+  "MECR-RAG (DeepSeek-V3)",
+  "case-only RAG",
+  "guideline-only RAG",
+  "prompt-only DeepSeek-V3 baseline"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Triage agreement (QWK) and accuracy with RAG grounding versus prompt-only LLM",
+   "effect": "MECR-RAG mean QWK 0.902 vs 0.801 baseline; accuracy 0.802 vs 0.542 (both P<.001); overtriage 28.8% to 12.7%.",
+   "quote": "Across 5 independent runs, MECR\u2011RAG achieved a mean QWK of 0.902 (SD 0.0021; 95% CI 0.901-0.904), compared with 0.801 (SD 0.004; 95% CI 0.798-0.804) for the baseline model (mean paired difference 0.101, SD 0.0058; 95% CI 0.097-0.106; P <.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity for high-severity patients, LLM versus initial nurse triage and baseline LLM",
+   "effect": "MECR-RAG sensitivity for R1+R2 124/130 (95.4%) vs nurses 117/130 (90.0%) (P=.02) and baseline LLM 122/130 (93.8%); specificity similar to nurses.",
+   "quote": "When high-severity outcomes were defined as R1+R2 (n=130) and triage \u201cpositive\u201d as categories 1 - 3 versus 4 - 5, MECR\u2011RAG achieved the highest sensitivity for high-risk courses at 124/130 (95.4%), compared with 117/130 (90.0%) for initial nurse triage and 122/130 (93.8%) for the baseline LLM.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Undertriage and overtriage of urgent cases by LLM triage",
+   "effect": "MECR-RAG undertriage 3/236 (1.3%) vs baseline 4/236 (1.7%); overtriage fell from 68/236 (28.8%) to 30/236 (12.7%) (McNemar P<.001).",
+   "quote": "Overtriage decreased from 68/236 (28.8%) with the baseline LLM to 30/236 (12.7%) with MECR\u2011RAG (McNemar P <.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Output reproducibility across repeated runs and across LLM backends",
+   "effect": "Five independent runs gave QWK SD 0.0021 for MECR-RAG; advantage robust to run-to-run variability; single-run gains on Claude 3.7 (0.840 to 0.890) and GPT-4o (0.778 to 0.890).",
+   "quote": "Similar effect sizes were observed when analyses were repeated using single median\u2011run prediction sets, indicating that MECR\u2011RAG\u2019s advantage was robust to run\u2011to\u2011run variability.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Run-to-run performance variability",
+   "effect": "Across five runs, MECR\u2011RAG QWK SD 0.0021 and accuracy SD 0.0082; advantage was robust.",
+   "quote": "Similar effect sizes were observed when analyses were repeated using single median\u2011run prediction sets, indicating that MECR\u2011RAG\u2019s advantage was robust to run\u2011to\u2011run variability.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dual-source retrieval (guideline plus similar past cases) versus single-source retrieval, tested by component ablation",
+  "Dual-source retrieval combining clinical guidelines with historical case exemplars",
+  "Scaling the historical past-case retrieval database from 1000 to 3000 cases",
+  "Scaling the retrieval case database from 1000 to 3000 cases"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41587455",
+ "screen": {
+  "id": "pmid:41587455",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (guideline and case-based RAG) added to baseline LLM",
+  "user": "none",
+  "reason": "The study directly evaluates the effect of adding retrieval-augmented generation (RAG grounding with guidelines and past cases) to a baseline LLM (DeepSeek-V3) for emergency department clinical triage.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval grounding added to an existing tool"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41587455",
+   "empirical": 0.98,
+   "tests_practice": 0.55,
+   "real_deployment": 0.04
+  }
+ }
+}

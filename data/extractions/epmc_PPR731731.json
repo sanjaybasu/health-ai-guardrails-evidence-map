@@ -1,0 +1,305 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Multi-country (SEED dataset with geographic heterogeneity; specific countries not stated in text)",
+   "sample_size": null,
+   "sample_unit": "women (EXT external cohort size not reported; SEED = 9,462 women, 17,013 images)",
+   "models_evaluated": [
+    "Multiclass deep learning cervical image classifier with MC dropout (SEED-trained)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Classifier performance on external data not used in training or internal validation",
+     "effect": "Repeatability carried over to EXT without retraining (95% limit of agreement range = 0.2-0.4); strong classification performance on EXT required retraining (4.0% extreme misclassifications with n=26 EXT individuals added).",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Repeatability of predictions on repeat images from same patient under identical conditions",
+     "effect": "Strong repeatability with MC dropout, carried over to external data even without retraining (95% limit of agreement range = 0.2-0.4).",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Classification performance on external data after retraining with local samples",
+     "effect": "Retraining with EXT images achieved strong performance (4.0% extreme misclassifications with n=26 EXT individuals added to SEED) with incremental improvement as more individuals were added.",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance variation across image capture device and geography",
+     "effect": "Device-level heterogeneity affected model performance more than geography-level heterogeneity.",
+     "quote": "We additionally find that device-level heterogeneity affects our model performance more than geography-level heterogeneity."
+    }
+   ],
+   "unlisted_practices": [
+    "Multiclass ground truth including an indeterminate class to handle clinical uncertainty",
+    "Monte-Carlo dropout to improve prediction repeatability",
+    "Training on multi-heterogeneous data across devices and geographies"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "women/images; total external sample size not reported",
+   "models_evaluated": [
+    "multiclass cervical image classifier using Monte-Carlo dropout"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "repeatability on external data",
+     "effect": "95% limit of agreement range = 0.2 - 0.4",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external classification after retraining",
+     "effect": "% extreme misclassifications = 4.0% for n = 26 EXT individuals added; incremental improvement followed retraining",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance variation by device and geography",
+     "effect": "Device-level heterogeneity affected performance more than geography-level heterogeneity.",
+     "quote": "We additionally find that device-level heterogeneity affects our model performance more than geography-level heterogeneity."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "extreme misclassifications",
+     "effect": "% extreme misclassifications = 4.0% for n = 26 EXT individuals added",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    }
+   ],
+   "unlisted_practices": [
+    "Use of Monte-Carlo dropout to improve repeatability",
+    "Use of multiclass ground truth with an indeterminate category to address clinical uncertainty"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 9462,
+   "sample_unit": "women",
+   "models_evaluated": [
+    "deep learning multiclass classifier with Monte-Carlo dropout"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external classification performance after model retraining",
+     "effect": "Extreme misclassification rate was 4.0% with retraining using n = 26 external individuals added in a 2n:2n:n ratio, with incremental performance improvement following retraining with images from additional individuals.",
+     "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals."
+    }
+   ],
+   "unlisted_practices": [
+    "Monte-Carlo dropout for repeat-image prediction repeatability"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Multi-country (SEED dataset with geographic heterogeneity; specific countries not stated in text)",
+ "sample_unit": "women (EXT external cohort size not reported; SEED = 9,462 women, 17,013 images)",
+ "sample_size": 9462,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Multiclass deep learning cervical image classifier with MC dropout (SEED-trained)",
+  "deep learning multiclass classifier with Monte-Carlo dropout",
+  "multiclass cervical image classifier using Monte-Carlo dropout"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Repeatability of predictions on repeat images from same patient under identical conditions",
+   "effect": "Strong repeatability with MC dropout, carried over to external data even without retraining (95% limit of agreement range = 0.2-0.4).",
+   "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Classification performance on external data after retraining with local samples",
+   "effect": "Retraining with EXT images achieved strong performance (4.0% extreme misclassifications with n=26 EXT individuals added to SEED) with incremental improvement as more individuals were added.",
+   "quote": "Our results indicate strong repeatability of our multiclass model utilizing Monte-Carlo (MC) dropout, which carries over well to \u201cEXT\u201d (95% limit of agreement range = 0.2 - 0.4) even in the absence of retraining, as well as strong classification performance of our model on \u201cEXT\u201d that is achieved with retraining (% extreme misclassifications = 4.0% for n = 26 \u201cEXT\u201d individuals added to \u201cSEED\u201d in a 2n normal : 2n indeterminate : n precancer+ ratio), and incremental improvement of performance following retraining with images from additional individuals.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance variation across image capture device and geography",
+   "effect": "Device-level heterogeneity affected model performance more than geography-level heterogeneity.",
+   "quote": "We additionally find that device-level heterogeneity affects our model performance more than geography-level heterogeneity.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Monte-Carlo dropout for repeat-image prediction repeatability",
+  "Monte-Carlo dropout to improve prediction repeatability",
+  "Multiclass ground truth including an indeterminate class to handle clinical uncertainty",
+  "Training on multi-heterogeneous data across devices and geographies",
+  "Use of Monte-Carlo dropout to improve repeatability",
+  "Use of multiclass ground truth with an indeterminate category to address clinical uncertainty"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR731731",
+ "screen": {
+  "id": "epmc:PPR731731",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local retraining/recalibration on external site data before deployment",
+  "user": "none",
+  "reason": "Empirical study evaluating model portability across devices/geographies and testing the deployment practice of local retraining/adaptation on external data to mitigate distribution shifts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local retraining or adaptation across devices and geographies"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR731731",
+   "empirical": 0.97,
+   "tests_practice": 0.74,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,291 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "Unknown",
+   "sample_size": 763,
+   "sample_unit": "pressure injury images (training/test; 159 external validation images)",
+   "models_evaluated": [
+    "ConvNeXt-V2-Tiny",
+    "large language model (unspecified)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy on retained predictions and share of errors captured when low-confidence cases are deferred",
+     "effect": "At 85% confidence threshold, accuracy on retained predictions reached 90.8% (vs 74.4% overall), while deferral captured 83.3% of all baseline errors; externally, retained accuracy was 72.7%.",
+     "quote": "At an 85% confidence threshold, classification accuracy on retained predictions reached 90.8%, while deferral captured 83.3% of all baseline errors."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop on independent external dataset versus internal test",
+     "effect": "External validation yielded macro-AUC-ROC of 0.809 and macro F1 score of 0.590, versus internal macro-AUC-ROC of 0.929; retained accuracy at 85% threshold was 72.7%.",
+     "quote": "External validation yielded macro-AUC-ROC of 0.809 and macro F1 score of 0.590."
+    }
+   ],
+   "unlisted_practices": [
+    "post-hoc temperature scaling to calibrate model confidence",
+    "LLM-generated structured wound documentation from NPIAP definitions"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "",
+   "sample_size": 922,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "ConvNeXt-V2-Tiny classifier",
+    "large language model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration error",
+     "effect": "Temperature scaling reduced test expected calibration error from 0.101 to 0.063.",
+     "quote": "Temperature scaling reduced test expected calibration error from 0.101 to 0.063."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "low-confidence deferral",
+     "effect": "At 85% confidence, retained accuracy reached 90.8%, while deferral captured 83.3% of all baseline errors.",
+     "quote": "At an 85% confidence threshold, classification accuracy on retained predictions reached 90.8%, while deferral captured 83.3% of all baseline errors."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external validation performance",
+     "effect": "External validation yielded macro-AUC-ROC of 0.809 and macro F1 score of 0.590.",
+     "quote": "External validation yielded macro-AUC-ROC of 0.809 and macro F1 score of 0.590."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "pressure injury staging accuracy",
+     "effect": "Classifier achieved 74.4% overall accuracy, 73.7% balanced accuracy, and macro-AUC-ROC of 0.929.",
+     "quote": "The classifier achieved 74.4% overall accuracy, 73.7% balanced accuracy, and a macro-AUC-ROC of 0.929."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 922,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "ConvNeXt-V2-Tiny"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "retained prediction accuracy and error capture via deferral",
+     "effect": "accuracy on retained predictions reached 90.8% and deferral captured 83.3% of baseline errors at 85% confidence threshold",
+     "quote": "At an 85% confidence threshold, classification accuracy on retained predictions reached 90.8%, while deferral captured 83.3% of all baseline errors."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expected calibration error",
+     "effect": "temperature scaling reduced test expected calibration error from 0.101 to 0.063",
+     "quote": "Temperature scaling reduced test expected calibration error from 0.101 to 0.063."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Unknown",
+ "sample_unit": "images",
+ "sample_size": 922,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ConvNeXt-V2-Tiny",
+  "ConvNeXt-V2-Tiny classifier",
+  "large language model",
+  "large language model (unspecified)"
+ ],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy on retained predictions and share of errors captured when low-confidence cases are deferred",
+   "effect": "At 85% confidence threshold, accuracy on retained predictions reached 90.8% (vs 74.4% overall), while deferral captured 83.3% of all baseline errors; externally, retained accuracy was 72.7%.",
+   "quote": "At an 85% confidence threshold, classification accuracy on retained predictions reached 90.8%, while deferral captured 83.3% of all baseline errors.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "calibration error",
+   "effect": "Temperature scaling reduced test expected calibration error from 0.101 to 0.063.",
+   "quote": "Temperature scaling reduced test expected calibration error from 0.101 to 0.063.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external validation performance",
+   "effect": "External validation yielded macro-AUC-ROC of 0.809 and macro F1 score of 0.590.",
+   "quote": "External validation yielded macro-AUC-ROC of 0.809 and macro F1 score of 0.590.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "LLM-generated structured wound documentation from NPIAP definitions",
+  "post-hoc temperature scaling to calibrate model confidence"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42314450",
+ "screen": {
+  "id": "pmid:42314450",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "selective prediction deferral threshold and confidence calibration",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and explicitly tests a selective classification safeguard (confidence calibration and threshold-based deferral of uncertain cases to clinician review) alongside automated clinical documentation, measuring error reduction when uncertain cases are deferred.",
+  "jev": {
+   "id": "pmid:42314450",
+   "empirical": 0.97,
+   "tests_practice": 0.89,
+   "real_deployment": 0.06
+  }
+ }
+}

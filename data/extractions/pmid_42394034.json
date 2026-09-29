@@ -1,0 +1,94 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": null,
+ "sample_unit": "emergency department triage cases (MIMIC-IV)",
+ "models_evaluated": [],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Gender subgroup F1 gap in LLM emergency triage versus 0.05 threshold",
+   "effect": "Per-subgroup confusion matrix stratification found gender \u0394F1 of 0.020, within the 0.05 governance threshold; bias was class-directional rather than demographically concentrated.",
+   "quote": "Evaluated on the MIMIC-IV Full Emergency dataset (N=300-1,000), FairGuard achieves a gender \u0394F1 of 0.020, well within threshold, while identifying RAG corpus composition as the root cause of conservative triage bias (50.9% Urgent \u2192 Non-Urgent misclassification), establishing that the observed bias is class-directional rather than demographically concentrated.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Under-triage of urgent patients by LLM triage support",
+   "effect": "50.9% of Urgent cases were misclassified as Non-Urgent, a conservative triage bias attributed to RAG corpus composition.",
+   "quote": "Evaluated on the MIMIC-IV Full Emergency dataset (N=300-1,000), FairGuard achieves a gender \u0394F1 of 0.020, well within threshold, while identifying RAG corpus composition as the root cause of conservative triage bias (50.9% Urgent \u2192 Non-Urgent misclassification), establishing that the observed bias is class-directional rather than demographically concentrated.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Blockchain-anchored audit trail enforcing a fairness threshold on every inference batch",
+  "Demographic-blind consent gate access control for equity",
+  "RAG corpus bias analysis tracing misclassification to retrieval corpus composition"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42394034",
+ "screen": {
+  "id": "pmid:42394034",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study designs and empirically tests a continuous fairness governance framework (guardrail architecture with bias auditing, consent gating, and blockchain-anchored threshold enforcement) for an LLM emergency triage system using MIMIC-IV data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "continuous fairness auditing and threshold enforcement guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42394034",
+   "empirical": 0.87,
+   "tests_practice": 0.6,
+   "real_deployment": 0.06
+  }
+ }
+}

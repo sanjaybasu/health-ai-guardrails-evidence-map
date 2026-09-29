@@ -1,0 +1,118 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "other",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Germany",
+ "sample_size": 900,
+ "sample_unit": "evaluations (50 questions x 6 models x 3 repetitions)",
+ "models_evaluated": [
+  "Custom GPT (RAG with guideline access)",
+  "ConsensusGPT",
+  "DeepSeek-V3.2",
+  "Mistral Small 3.2",
+  "Qwen3-Next-80B",
+  "GPT-OSS-120B",
+  "GPT-5"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy and hallucination rate with vs without guideline retrieval grounding",
+   "effect": "Content-level hallucination fell from 42% to 4%; judge accuracy rose by pooled +0.64 points (95% CI 0.47-0.80); citation groundedness rose from 0% to 51-89%.",
+   "quote": "On the judge, content-level hallucination fell from 42% to 4% and accuracy rose by a pooled +0.64 points (95% CI 0.47-0.80); the accuracy gain persisted after adjustment for response length (+0.48, 95% CI 0.22-0.73), which retrieval shortened rather than lengthened.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R476",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Retrieval recall and citation groundedness of a documented guideline RAG corpus",
+   "effect": "Retrieval recall@5 was 92%; citation groundedness rose from 0% to 51-89% deterministically from retrieval logs.",
+   "quote": "Deterministically from the retrieval logs, citation groundedness rose from 0% to 51-89% and retrieval recall@5 was 92%.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R481",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Citation groundedness and auditability of answers with guideline retrieval",
+   "effect": "Citation groundedness rose from 0% to 51-89%; hallucination and auditability gains were consistent across all models.",
+   "quote": "The accuracy gain was large for weaker base models and small or non-significant for already-strong ones, whereas the hallucination and auditability gains were consistent across all models.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R368",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Hallucination rate of standard LLMs without guideline access",
+   "effect": "Content-level hallucination was 42% without retrieval, falling to 4% with retrieval; residual hallucination requires human oversight.",
+   "quote": "On the judge, content-level hallucination fell from 42% to 4% and accuracy rose by a pooled +0.64 points (95% CI 0.47-0.80); the accuracy gain persisted after adjustment for response length (+0.48, 95% CI 0.22-0.73), which retrieval shortened rather than lengthened.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Rater-independent evaluation measures (deterministic log metrics, condition-blind LLM judge) because RAG answers are recognizable to blinded experts"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42587692",
+ "screen": {
+  "id": "pmid:42587692",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval grounding added to an existing tool",
+  "user": "none",
+  "reason": "Evaluates LLMs answering clinical guideline questions in a paired within-model benchmark directly testing the impact of adding retrieval-augmented generation (RAG guideline grounding) on safety, hallucination, and accuracy.",
+  "jev": {
+   "id": "pmid:42587692",
+   "empirical": 0.97,
+   "tests_practice": 0.9,
+   "real_deployment": 0.02
+  }
+ }
+}

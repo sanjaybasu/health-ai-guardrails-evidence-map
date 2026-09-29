@@ -1,0 +1,317 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 464,
+   "sample_unit": "patients (prostate cancer radiotherapy cases)",
+   "models_evaluated": [
+    "AccuContour (Manteia, 2D U-Net, model A)",
+    "INTContour (Carina Medical, 3D U-Net, model B)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of performance shifts using predefined 2\u03c3 and 3\u03c3 statistical process control limits",
+     "effect": "Model A stayed within 3\u03c3 limits for 9-13 months per organ; model B shift (p < 0.001) exceeded both thresholds for all five organs across all 7 months; 2\u03c3 more sensitive to mild deviations.",
+     "quote": "The 2 \u03c3x\u00af thresholds were more sensitive in detecting mild deviations for model A, while both limits effectively identified the substantial drift of model B."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Monthly monitoring of auto-segmentation agreement with clinical contours for drift",
+     "effect": "Monthly monitoring detected model switch/practice change; no degradation trend or clinician overreliance observed over 20 months; authors recommend at least monthly QA.",
+     "quote": "The monitoring system effectively detected out-of-distribution outliers and clinical practice changes, providing a reliable framework for early detection of monthly performance degradation."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Flagging of out-of-distribution outlier cases (e.g., metal artifacts)",
+     "effect": "Flagged prostate outliers included 5 cases with fiducials and 6 with hip implants; rectum, bladder, femoral head outliers attributed to metal artifacts and generalization limits.",
+     "quote": "By employing statistical process control, our framework effectively identified out-of-distribution outliers, serving as an early warning mechanism to prevent performance degradation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 464,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AccuContour, model A (institutionally retrained 2D U-Net)",
+    "INTContour, model B (institutionally retrained 3D U-Net)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Apparent accuracy differences associated with clinician-edited AI reference contours",
+     "effect": "Mean DSC increased from 0.82\u20130.96 to 0.89\u20130.97; HD95 decreased from 5.0\u20139.6 mm to 2.5\u20135.7 mm. Clinical references were edited AI outputs; authors cautioned that improved agreement did not necessarily indicate intrinsically better performance.",
+     "quote": "The mean DSC increased from a range of 0.82\u20130.96 during testing to 0.89\u20130.97 during clinical practice, while the HD95 decreased from 5.0\u20139.6 mm to 2.5\u20135.7 mm across all organs of interest."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of temporal segmentation-performance shifts using monthly control charts",
+     "effect": "Retrospective monitoring used 150 baseline and 314 validation cases and detected model-switching shifts (p < 0.001). Model A remained within 3 \u03c3x\u00af limits for 9-13 months per organ. No obvious degradation was observed.",
+     "quote": "Model B showed systematic deviations from baseline performance, with monthly averages exceeding the established control limits for every organ."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Segmentation outliers associated with image artifacts and implanted materials",
+     "effect": "Among prostate outliers, five cases were associated with fiducials and six with hip implants. Many other patients with fiducials remained within acceptable thresholds; hip-prosthesis metal artifacts also contributed to femoral-head segmentation failures.",
+     "quote": "Among the prostate outliers, five cases were associated with fiducials and six with hip implants."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity of predefined control thresholds to performance deviations",
+     "effect": "2 \u03c3x\u00af thresholds detected mild deviations more sensitively than 3 \u03c3x\u00af thresholds; both detected the substantial shift associated with model B.",
+     "quote": "The 2 \u03c3x\u00af thresholds were more sensitive in detecting mild deviations for model A, while both limits effectively identified the substantial drift of model B."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 464,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "AccuContour",
+    "INTContour"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of model drift",
+     "effect": "The 2 standard deviation limits detected mild deviations more sensitively, and both limits successfully identified substantial drift.",
+     "quote": "The 2 \u03c3x\u00af thresholds were more sensitive in detecting mild deviations for model A, while both limits effectively identified the substantial drift of model B."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of outliers and degradation",
+     "effect": "The performance monitoring framework successfully detected outliers and shifts in clinical practice over time.",
+     "quote": "The monitoring system effectively detected out-of-distribution outliers and clinical practice changes, providing a reliable framework for early detection of monthly performance degradation."
+    }
+   ],
+   "unlisted_practices": [
+    "Using statistical process control charts to monitor AI segmentation performance over time"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients (prostate cancer radiotherapy cases)",
+ "sample_size": 464,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AccuContour",
+  "AccuContour (Manteia, 2D U-Net, model A)",
+  "AccuContour, model A (institutionally retrained 2D U-Net)",
+  "INTContour",
+  "INTContour (Carina Medical, 3D U-Net, model B)",
+  "INTContour, model B (institutionally retrained 3D U-Net)"
+ ],
+ "links": [
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of performance shifts using predefined 2\u03c3 and 3\u03c3 statistical process control limits",
+   "effect": "Model A stayed within 3\u03c3 limits for 9-13 months per organ; model B shift (p < 0.001) exceeded both thresholds for all five organs across all 7 months; 2\u03c3 more sensitive to mild deviations.",
+   "quote": "The 2 \u03c3x\u00af thresholds were more sensitive in detecting mild deviations for model A, while both limits effectively identified the substantial drift of model B.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Monthly monitoring of auto-segmentation agreement with clinical contours for drift",
+   "effect": "Monthly monitoring detected model switch/practice change; no degradation trend or clinician overreliance observed over 20 months; authors recommend at least monthly QA.",
+   "quote": "The monitoring system effectively detected out-of-distribution outliers and clinical practice changes, providing a reliable framework for early detection of monthly performance degradation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Flagging of out-of-distribution outlier cases (e.g., metal artifacts)",
+   "effect": "Flagged prostate outliers included 5 cases with fiducials and 6 with hip implants; rectum, bladder, femoral head outliers attributed to metal artifacts and generalization limits.",
+   "quote": "By employing statistical process control, our framework effectively identified out-of-distribution outliers, serving as an early warning mechanism to prevent performance degradation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Apparent accuracy differences associated with clinician-edited AI reference contours",
+   "effect": "Mean DSC increased from 0.82\u20130.96 to 0.89\u20130.97; HD95 decreased from 5.0\u20139.6 mm to 2.5\u20135.7 mm. Clinical references were edited AI outputs; authors cautioned that improved agreement did not necessarily indicate intrinsically better performance.",
+   "quote": "The mean DSC increased from a range of 0.82\u20130.96 during testing to 0.89\u20130.97 during clinical practice, while the HD95 decreased from 5.0\u20139.6 mm to 2.5\u20135.7 mm across all organs of interest.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R363",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation outliers associated with image artifacts and implanted materials",
+   "effect": "Among prostate outliers, five cases were associated with fiducials and six with hip implants. Many other patients with fiducials remained within acceptable thresholds; hip-prosthesis metal artifacts also contributed to femoral-head segmentation failures.",
+   "quote": "Among the prostate outliers, five cases were associated with fiducials and six with hip implants.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Using statistical process control charts to monitor AI segmentation performance over time"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41488801",
+ "screen": {
+  "id": "pmid:41488801",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "statistical process control drift monitoring",
+  "user": "clinician_or_staff",
+  "reason": "The study directly evaluates a practical quality assurance guardrail (statistical process control charts with 2- and 3-sigma thresholds) to monitor performance drift and detect clinical practice changes/degradation in deep-learning auto-segmentation tools.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "statistical process control monitoring for performance drift"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41488801",
+   "empirical": 0.97,
+   "tests_practice": 0.53,
+   "real_deployment": 0.72
+  }
+ }
+}

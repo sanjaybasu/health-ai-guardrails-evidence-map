@@ -1,0 +1,107 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "China",
+ "sample_size": 100,
+ "sample_unit": "CBC reports",
+ "models_evaluated": [
+  "GPT-5",
+  "Grok 4",
+  "DeepSeek R1"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Top-1 diagnostic concordance with and without initial clinical suspicion in prompt (ablation)",
+   "effect": "Concordance fell from 93% to 79% (GPT-5), 92% to 77% (DeepSeek R1), 89% to 72% (Grok 4) after removing clinical suspicion; all P<.001.",
+   "quote": "After removing the initial clinical suspicion, these rates decreased to 79% (79/100), 77% (77/100), and 72% (72/100), representing statistically significant within-model reductions for all models (P<.001).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Reasoning errors and unwarranted diagnostic inferences in correlation analysis and preliminary diagnosis tasks",
+   "effect": "All models exhibited reasoning errors and deficiencies in correlation analysis and preliminary diagnosis, inferring disease status from isolated results without clinical integration.",
+   "quote": "All models exhibited reasoning errors and varying degrees of deficiencies in the correlation analysis and preliminary diagnosis tasks, characterized by unwarranted inferences of disease status from isolated results without clinical integration.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Hallucinations and reasoning errors in LLM outputs on CBC interpretation",
+   "effect": "GPT-5 had 12 hallucinations in analyzer alert processing; DeepSeek R1 had 1 in abnormal item identification; Grok 4 none. Grok 4 had 9 reasoning errors in clinical management.",
+   "quote": "GPT-5 exhibited 12 hallucinations in the analyzer alert processing task; DeepSeek R1 demonstrated 1 hallucination in the abnormal item identification task, whereas Grok 4 displayed none.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42247415",
+ "screen": {
+  "id": "pmid:42247415",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests whether providing initial clinical suspicion in the prompt improves LLM diagnostic concordance and reduces errors when interpreting complete blood count reports.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompting with clinical context"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42247415",
+   "empirical": 0.97,
+   "tests_practice": 0.41,
+   "real_deployment": 0.04
+  }
+ }
+}

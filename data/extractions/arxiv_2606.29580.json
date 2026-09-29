@@ -1,0 +1,262 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Tanzania",
+   "sample_size": null,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "EmbeddingGemma 300M",
+    "Gemma 4 E4B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of retrieved guideline context on small generator answer quality and faithfulness",
+     "effect": "Adding retrieved context did not improve the 4B generator's answers. Where the corpus held the right passage, answers were specific and actionable; otherwise they were vague. The chosen generator was about twice as faithful to its sources.",
+     "quote": "The small generator is what remains in doubt: adding retrieved context does not improve its answers, and at 4B it cannot be both helpful and safe at once -- of two same-size candidates, the more helpful one commits genuine dangerous errors, so we deploy the other, which is about twice as faithful to its sources (as faithful as a frontier model), and recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%."
+    }
+   ],
+   "unlisted_practices": [
+    "Fully offline on-device retrieval-augmented generation with no query leaving the device",
+    "Prompt redesign to reduce deflection while preserving faithfulness",
+    "Layered evaluation separating retriever, generator under oracle context, end-to-end, and latency",
+    "LLM judges validated against physician rubrics"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Zanzibar",
+   "sample_size": null,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "MAM-AI",
+    "EmbeddingGemma, 300M",
+    "Gemma 4 E4B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "answer quality with retrieved context",
+     "effect": "Adding retrieved context did not improve answers; corpus coverage affected specificity.",
+     "quote": "The small generator is what remains in doubt: adding retrieved context does not improve its answers, and at 4B it cannot be both helpful and safe at once -- of two same-size candidates, the more helpful one commits genuine dangerous errors, so we deploy the other, which is about twice as faithful to its sources (as faithful as a frontier model), and recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generator clinical safety and accuracy",
+     "effect": "More helpful same-size 4B candidate committed genuine dangerous errors.",
+     "quote": "The small generator is what remains in doubt: adding retrieved context does not improve its answers, and at 4B it cannot be both helpful and safe at once -- of two same-size candidates, the more helpful one commits genuine dangerous errors, so we deploy the other, which is about twice as faithful to its sources (as faithful as a frontier model), and recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%."
+    },
+    {
+     "rec_id": "R476",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "answer quality when corpus lacks passage",
+     "effect": "Answers were specific/actionable when corpus held the right passage, vague when it did not.",
+     "quote": "Corpus quality is decisive for the same reason: where the corpus holds the right passage the answer is specific and actionable, and where it does not it goes vague."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt redesign to reduce deflection from 33% to 3%.",
+    "Running the medical RAG system entirely offline on a commodity Android device so no query leaves the device."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Tanzania",
+   "sample_size": null,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "EmbeddingGemma 300M",
+    "Gemma 4 E4B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "generator answer quality with retrieved context",
+     "effect": "adding retrieved context does not improve generator answers, and deflection was reduced from 33% to 3% with prompt redesign",
+     "quote": "The small generator is what remains in doubt: adding retrieved context does not improve its answers, and at 4B it cannot be both helpful and safe at once -- of two same-size candidates, the more helpful one commits genuine dangerous errors, so we deploy the other, which is about twice as faithful to its sources (as faithful as a frontier model), and recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Tanzania",
+ "sample_unit": "questions",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "EmbeddingGemma 300M",
+  "EmbeddingGemma, 300M",
+  "Gemma 4 E4B",
+  "MAM-AI"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of retrieved guideline context on small generator answer quality and faithfulness",
+   "effect": "Adding retrieved context did not improve the 4B generator's answers. Where the corpus held the right passage, answers were specific and actionable; otherwise they were vague. The chosen generator was about twice as faithful to its sources.",
+   "quote": "The small generator is what remains in doubt: adding retrieved context does not improve its answers, and at 4B it cannot be both helpful and safe at once -- of two same-size candidates, the more helpful one commits genuine dangerous errors, so we deploy the other, which is about twice as faithful to its sources (as faithful as a frontier model), and recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R476",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "answer quality when corpus lacks passage",
+   "effect": "Answers were specific/actionable when corpus held the right passage, vague when it did not.",
+   "quote": "Corpus quality is decisive for the same reason: where the corpus holds the right passage the answer is specific and actionable, and where it does not it goes vague.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Fully offline on-device retrieval-augmented generation with no query leaving the device",
+  "LLM judges validated against physician rubrics",
+  "Layered evaluation separating retriever, generator under oracle context, end-to-end, and latency",
+  "Prompt redesign to reduce deflection from 33% to 3%.",
+  "Prompt redesign to reduce deflection while preserving faithfulness",
+  "Running the medical RAG system entirely offline on a commodity Android device so no query leaves the device."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "arxiv:2606.29580",
+ "screen": {
+  "id": "arxiv:2606.29580",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt redesign to reduce deflection; retrieval grounding with citations",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates an on-device RAG system for nurse-midwives, specifically testing the effects of adding retrieved context, model safety/faithfulness trade-offs, and prompt redesign to reduce deflection and dangerous errors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding and prompt redesign for small models"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.29580",
+   "empirical": 0.91,
+   "tests_practice": 0.27,
+   "real_deployment": 0.06
+  }
+ }
+}

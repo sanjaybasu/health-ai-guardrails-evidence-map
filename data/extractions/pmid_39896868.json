@@ -1,0 +1,321 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 63,
+   "sample_unit": "people living with dementia (512 labelled weeks; 32,896 person-days)",
+   "models_evaluated": [
+    "LightGBM",
+    "Random Forest",
+    "XGBoost",
+    "AdaBoost",
+    "SVM",
+    "Logistic Regression",
+    "MLP"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": true
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of adding Amber category threshold stratification on sensitivity, specificity, and false alerts",
+     "effect": "Traffic-light stratification increased specificity from 75.28 to 90.33 and sensitivity from 71.32 to 76.36, reducing false alerts; thresholds set using NPI-based rates, not clinician input.",
+     "quote": "The inclusion of the Amber group reduced the false alerts, increasing the model's clinical applicability."
+    },
+    {
+     "rec_id": "R513",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of actionable traffic-light risk categories versus raw binary classification",
+     "effect": "Traffic-light categories improved accuracy 71.36 to 78.87, precision 71.81 to 80.06, specificity 75.28 to 90.33, ROC AUC 77.63 to 80.73.",
+     "quote": "Incorporating a stratification technique via a traffic-light system, which included an additional Amber category (medium probability estimate), increased sensitivity by 5% and specificity by 15% and improved all metrics."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "External validation and leakage prevention in model evaluation",
+     "effect": "Used participant-ID-grouped 10-fold splits to prevent leakage, but no external validation data; authors note more data needed to validate generalisation to larger cohorts and external data.",
+     "quote": "It should be noted that while we conducted feature selection, employed regularisation techniques and utilised grouped evaluation strategies to minimise overfitting, more data collection and further studies are required to validate generalisation of the proposed approach to larger cohorts and external data."
+    }
+   ],
+   "unlisted_practices": [
+    "Person-level baseline z-score normalisation to reduce individual differences",
+    "SHAP-based feature attribution for interpretability",
+    "Interactive in-silico tool for simulating personalised non-pharmacological interventions"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 512,
+   "sample_unit": "agitation-labelled weeks from 63 people living with dementia",
+   "models_evaluated": [
+    "LightGBM",
+    "Random Forest",
+    "XGBoost",
+    "ADABoost",
+    "Support Vector Machine",
+    "Logistic Regression",
+    "Multilayer Perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": true
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Robustness to imputation strategies",
+     "effect": "Final model was robust to different imputation strategies; no numeric values reported in text.",
+     "quote": "In Table S7 we evaluate the final model's sensitivity to different imputation strategies and find that the model is robust to these approaches."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Subgroup bias",
+     "effect": "Bias analysis indicated absence of bias towards specific groups within the cohort; no numeric values reported in text.",
+     "quote": "Addressing fairness and bias, our analysis indicates an absence of bias towards specific groups within our cohort (see Table S8 , Table S9 , Figure S3 ), likely attributable to the personalised pre-processing employed."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity versus alternative models",
+     "effect": "LightGBM sensitivity was significantly higher than logistic regression (p-value < \u00d710\u22123) and other tree-based models (p-value < 5 \u00d7 10\u22123).",
+     "quote": "The LightGBM yielded significantly higher sensitivity than logistic regression ( p \u2212 value < \u00d710 \u22123 ) and the other examined tree-based models ( p \u2212 value < 5 \u00d7 10 \u22123 ) (see Table S5 )."
+    },
+    {
+     "rec_id": "R513",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity and specificity",
+     "effect": "Traffic-light stratification increased sensitivity by 5% and specificity by 15%, and improved all metrics.",
+     "quote": "Incorporating a stratification technique via a traffic-light system, which included an additional Amber category (medium probability estimate), increased sensitivity by 5% and specificity by 15% and improved all metrics."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 63,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LightGBM",
+    "Random Forest",
+    "XGBoost",
+    "AdaBoost",
+    "Support Vector Machine",
+    "Logistic Regression",
+    "Multilayer Perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": true
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Three-tier traffic-light stratification with an indeterminate (amber) category to reduce false alerts and improve specificity compared to binary classification"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "people living with dementia (512 labelled weeks; 32,896 person-days)",
+ "sample_size": 63,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": true
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ADABoost",
+  "AdaBoost",
+  "LightGBM",
+  "Logistic Regression",
+  "MLP",
+  "Multilayer Perceptron",
+  "Random Forest",
+  "SVM",
+  "Support Vector Machine",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R513",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of actionable traffic-light risk categories versus raw binary classification",
+   "effect": "Traffic-light categories improved accuracy 71.36 to 78.87, precision 71.81 to 80.06, specificity 75.28 to 90.33, ROC AUC 77.63 to 80.73.",
+   "quote": "Incorporating a stratification technique via a traffic-light system, which included an additional Amber category (medium probability estimate), increased sensitivity by 5% and specificity by 15% and improved all metrics.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Robustness to imputation strategies",
+   "effect": "Final model was robust to different imputation strategies; no numeric values reported in text.",
+   "quote": "In Table S7 we evaluate the final model's sensitivity to different imputation strategies and find that the model is robust to these approaches.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity versus alternative models",
+   "effect": "LightGBM sensitivity was significantly higher than logistic regression (p-value < \u00d710\u22123) and other tree-based models (p-value < 5 \u00d7 10\u22123).",
+   "quote": "The LightGBM yielded significantly higher sensitivity than logistic regression ( p \u2212 value < \u00d710 \u22123 ) and the other examined tree-based models ( p \u2212 value < 5 \u00d7 10 \u22123 ) (see Table S5 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Interactive in-silico tool for simulating personalised non-pharmacological interventions",
+  "Person-level baseline z-score normalisation to reduce individual differences",
+  "SHAP-based feature attribution for interpretability",
+  "Three-tier traffic-light stratification with an indeterminate (amber) category to reduce false alerts and improve specificity compared to binary classification"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39896868",
+ "screen": {
+  "id": "pmid:39896868",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "traffic-light alert threshold stratification",
+  "user": "none",
+  "reason": "Pure model development and offline retrospective validation study of an ML monitoring tool; no real-world clinical deployment or evaluation of organizational deployment practices/safeguards.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39896868",
+   "empirical": 0.95,
+   "tests_practice": 0.64,
+   "real_deployment": 0.09
+  }
+ }
+}

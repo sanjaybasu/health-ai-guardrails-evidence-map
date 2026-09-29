@@ -1,0 +1,211 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 1245767,
+   "sample_unit": "EHR records (ARMD dataset; a second BV-BRC/PATRIC genomic dataset had 400,372 records)",
+   "models_evaluated": [
+    "Random Forest (500 estimators) with SISA (5 shards)",
+    "Full Retraining",
+    "Label-Flip Retraining",
+    "Influence Reweighting",
+    "Selective Tree Pruning"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R337",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Speed and accuracy cost of removing individual patient data from deployed AMR models (SISA vs. full retraining)",
+     "effect": "SISA gave 8.9\u00d7 speedup on ARMD (7.5 s vs 66.7 s) and 9.8\u00d7 on PATRIC (1.4 s vs 13.4 s), with accuracy costs of 0.024% and 0.048%, below the 0.5% threshold.",
+     "quote": "SISA achieved an 8.9\u00d7 speedup over full retraining on ARMD (7.5 s vs. 66.7 s) and a 9.8 \u00d7 speedup on PATRIC (1.4 s vs. 13.4 s), with accuracy costs of 0.024% and 0.048%, respectively, both below the 0.5% clinical threshold."
+    }
+   ],
+   "unlisted_practices": [
+    "Machine unlearning (SISA sharded training) to fulfil GDPR right-to-erasure requests in deployed clinical ML models"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 1646139,
+   "sample_unit": "EHR records and genomic surveillance records",
+   "models_evaluated": [
+    "Random Forest classifiers (500 estimators)",
+    "SISA training (5 shards)",
+    "Full Retraining",
+    "Label-Flip Retraining",
+    "Influence Reweighting",
+    "Selective Tree Pruning"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R337",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Unlearning speed and accuracy cost",
+     "effect": "SISA speedup 8.9\u00d7 (7.5 s vs. 66.7 s) on ARMD and 9.8 \u00d7 (1.4 s vs. 13.4 s) on PATRIC; accuracy costs 0.024% and 0.048%.",
+     "quote": "SISA achieved an 8.9\u00d7 speedup over full retraining on ARMD (7.5 s vs. 66.7 s) and a 9.8 \u00d7 speedup on PATRIC (1.4 s vs. 13.4 s), with accuracy costs of 0.024% and 0.048%, respectively, both below the 0.5% clinical threshold."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 1646139,
+   "sample_unit": "records",
+   "models_evaluated": [
+    "Random Forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Machine unlearning using Sharded, Isolated, Sliced and Aggregated (SISA) training for GDPR right-to-erasure data deletion requests"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "EHR records (ARMD dataset; a second BV-BRC/PATRIC genomic dataset had 400,372 records)",
+ "sample_size": 1646139,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Full Retraining",
+  "Influence Reweighting",
+  "Label-Flip Retraining",
+  "Random Forest",
+  "Random Forest (500 estimators) with SISA (5 shards)",
+  "Random Forest classifiers (500 estimators)",
+  "SISA training (5 shards)",
+  "Selective Tree Pruning"
+ ],
+ "links": [
+  {
+   "rec_id": "R337",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Speed and accuracy cost of removing individual patient data from deployed AMR models (SISA vs. full retraining)",
+   "effect": "SISA gave 8.9\u00d7 speedup on ARMD (7.5 s vs 66.7 s) and 9.8\u00d7 on PATRIC (1.4 s vs 13.4 s), with accuracy costs of 0.024% and 0.048%, below the 0.5% threshold.",
+   "quote": "SISA achieved an 8.9\u00d7 speedup over full retraining on ARMD (7.5 s vs. 66.7 s) and a 9.8 \u00d7 speedup on PATRIC (1.4 s vs. 13.4 s), with accuracy costs of 0.024% and 0.048%, respectively, both below the 0.5% clinical threshold.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Machine unlearning (SISA sharded training) to fulfil GDPR right-to-erasure requests in deployed clinical ML models",
+  "Machine unlearning using Sharded, Isolated, Sliced and Aggregated (SISA) training for GDPR right-to-erasure data deletion requests"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1267695",
+ "screen": {
+  "id": "epmc:PPR1267695",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "machine unlearning (SISA) for patient data deletion requests",
+  "user": "none",
+  "reason": "Evaluates machine unlearning methods (SISA framework) to support regulatory data privacy/erasure compliance (GDPR right-to-erasure) in clinical antimicrobial resistance prediction models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "machine unlearning for GDPR right-to-erasure compliance"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1267695",
+   "empirical": 0.92,
+   "tests_practice": 0.15,
+   "real_deployment": 0.07
+  }
+ }
+}

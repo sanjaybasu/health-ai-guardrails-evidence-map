@@ -1,0 +1,113 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "not reported",
+ "sample_size": 10889,
+ "sample_unit": "radiology reports (10,000 real-world and 889 synthetic)",
+ "models_evaluated": [
+  "GPT-4o",
+  "rule-based+GPT-4o",
+  "fine-tuned RoBERTa",
+  "fine-tuned ClinicalBERT",
+  "rule-based baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Precision on real-world imbalanced data versus synthetic balanced data",
+   "effect": "GPT-4o precision fell from 0.979 on synthetic Test-2 to 0.219 on real-world Test-1. ClinicalBERT precision fell from 0.984 to 0.047. Test-1 membership predicted false positives (GPT-4o OR 239.89).",
+   "quote": "Both ClinicalBERT and GPT-4o exhibited notable declines in precision on TrainVal and Test-1 compared to Test-2.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R135",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Benchmark performance on synthetic balanced data versus real-world imbalanced reports",
+   "effect": "Synthetic balanced data gave F1 of 0.966 for GPT-4o and 0.959 for rule-based+GPT-4o. On real-world Test-1, F1 was 0.352 for GPT-4o and 0.780 for rule-based+GPT-4o.",
+   "quote": "A significant performance gap exists between balanced synthetic datasets and imbalanced real-world data.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Comparison of the candidate ensemble against GPT-4o, ClinicalBERT and RoBERTa on the same test data",
+   "effect": "On Test-1, rule-based+GPT-4o had F1 0.780, versus 0.352 for GPT-4o, 0.088 for ClinicalBERT and 0.000 for RoBERTa.",
+   "quote": "In experiment 2, on Test-1, rule-based+GPT-4o (precision=0.696; recall=0.889; F<sub>1</sub>-score=0.780) outperformed GPT-4o (precision=0.219; recall=0.889; F<sub>1</sub>-score=0.352), ClinicalBERT (precision=0.047; recall=0.667; F<sub>1</sub>-score=0.088), and RoBERTa (F<sub>1</sub>-score=0.000).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Hybrid rule-based plus LLM ensemble for radiology report laterality error screening",
+  "Evaluating on real-world imbalanced data rather than balanced synthetic data"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41161340",
+ "screen": {
+  "id": "pmid:41161340",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and retrospectively evaluates an ensemble algorithm (combining rule-based methods and GPT-4o) to detect laterality errors in radiology reports, comparing it against other models and baselines on retrospective datasets without testing a deployment practice.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41161340",
+   "empirical": 0.97,
+   "tests_practice": 0.24,
+   "real_deployment": 0.06
+  }
+ }
+}

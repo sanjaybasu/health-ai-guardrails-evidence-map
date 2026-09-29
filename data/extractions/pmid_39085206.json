@@ -1,0 +1,415 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 285320,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "regularized logistic regression",
+    "gradient boosting machine (LightGBM)",
+    "LSTM with temporal attention"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Transported model AUROC versus locally trained model AUROC on the same target data",
+     "effect": "Transported models were inferior or comparable to locally developed models. APCD local LR AUROC 0.879 vs 0.802 (HIDD-trained) and 0.845 (KHIN-trained) on APCD test data.",
+     "quote": "All the transported models showed either inferior or comparable performance to the locally developed models, implying that while transported performance was sometimes still good, it was generally upper-bounded by the best performance of locally developed ones."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Locally trained versus transported model performance on target data",
+     "effect": "Local models on target data generally matched or exceeded transported models; APCD local LR AUROC 0.879 vs 0.797 to HIDD and 0.749 to KHIN when transported.",
+     "quote": "the LR model trained from APCD could achieve an average AUROC of 0.879 ([0.876, 0.882]) on the APCD testing data, and the transported model trained from HIDD and KHIN achieved an average AUROC of 0.802 ([0.795, 0.808]) and 0.845 ([0.841, 0.849]), respectively, when tested on the same APCD data."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Change in AUROC when models were applied to new datasets/settings",
+     "effect": "Transported LR from APCD dropped from 0.879 to 0.797 (HIDD) and 0.749 (KHIN); KHIN model rose from 0.787 to 0.845 (APCD) and 0.829 (HIDD). LSTM HIDD to KHIN AUROC 0.595.",
+     "quote": "When transporting models developed on source data to target data, their transported performance does not necessarily drop, showing data-dependent transportability."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Feature prevalence differences (SMD) between development and target datasets and their effect on transportability",
+     "effect": "Datasets differed in captured encounters (e.g., SMD -0.7 for acute appendicitis; 1.4-1.8 for outpatient codes), and predictor importance differed across datasets, with varying transported performance.",
+     "quote": "Overall, the same ML-based suicide prediction model might identify a different set of important predictors when trained from different datasets, together with data differences, suggesting varying transported performance."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of complex models (LSTM, GBM) with simpler logistic regression on same data",
+     "effect": "Complex models did not outperform LR locally or transported; on KHIN LSTM AUROC 0.759 vs LR 0.787; LSTM HIDD to KHIN 0.595.",
+     "quote": "More complex models, particularly deep long short-term memory neural network models, did not outperform simpler regularized logistic regression models in terms of both local and transported performance."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across sites/data sources",
+     "effect": "LR AUROC varied by source and target: local 0.879 (APCD), 0.831 (HIDD), 0.787 (KHIN); transported values ranged 0.735 to 0.845.",
+     "quote": "Transported models exhibited varying performance, showing drops or even improvements compared to their source performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Fusing knowledge from multiple source models or a model pool to improve transported performance",
+    "Preferring simpler regularized logistic regression over deep learning for prediction"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 285320,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "regularized logistic regression",
+    "gradient boosting machine",
+    "long short-term memory neural network with temporal attention mechanisms"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transported AUROC across external datasets",
+     "effect": "APCD LR AUROC 0.879 on source dropped to 0.797 on HIDD and 0.749 on KHIN.",
+     "quote": "As shown in Table 2 , the locally learned LR model on APCD could achieve an average AUROC of 0.879 ([0.876, 0.882]), and transported performance of 0.797 ([0.785, 0.809]) and 0.749 ([0.739, 0.757]) to HIDD and KHIN, respectively."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC of complex versus simpler models",
+     "effect": "On KHIN, LSTM AUROC 0.759 versus LR 0.787 and GBM 0.793.",
+     "quote": "Regarding the KHIN data, the LSTM showed inferior performance than other models, with an average AUROC of 0.759 ([0.745, 0.771), compared to 0.787 ([0.781, 0.794]) by LR and 0.793 ([0.788, 0.799]) by GBM."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local versus transported AUROC",
+     "effect": "On APCD target, local LR AUROC 0.879 versus transported HIDD 0.802 and KHIN 0.845.",
+     "quote": "For example, as shown in Table 2 and Fig. 2c , the LR model trained from APCD could achieve an average AUROC of 0.879 ([0.876, 0.882]) on the APCD testing data, and the transported model trained from HIDD and KHIN achieved an average AUROC of 0.802 ([0.795, 0.808]) and 0.845 ([0.841, 0.849]), respectively, when tested on the same APCD data."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "feature prevalence dataset shift",
+     "effect": "Acute appendicitis prevalence SMD between APCD and HIDD was -0.7.",
+     "quote": "Taking the difference in the prevalence of \u2018Acute appendicitis\u2019 between APCD and HIDD as an example, the standardized mean difference (SMD) of its prevalence between the two datasets is -0.7, indicating that compared to HIDD, the APCD captured much less this potential inpatient event."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transported LSTM AUROC",
+     "effect": "LSTM transported HIDD to KHIN AUROC 0.595 and HIDD to APCD AUROC 0.654.",
+     "quote": "For example, the LSTM showed very poor transported performance when transported from HIDD to KHIN with AUROC of 0.595 ([0.572, 0.616]), and from HIDD to APCD with AUROC of 0.654 ([0.641, 0.668]) (see Supplementary Table 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 285320,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "regularized logistic regression",
+    "gradient boosting machine",
+    "LSTM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Predictive performance of complex deep learning versus simpler regularized logistic regression models",
+     "effect": "Logistic regression achieved comparable AUROC to LSTM on APCD (0.879 vs 0.901) and HIDD (0.831 vs 0.811), and outperformed LSTM on KHIN (0.787 vs 0.759); transported LSTM performance dropped substantially.",
+     "quote": "More complex models, particularly deep long short-term memory neural network models, did not outperform simpler regularized logistic regression models in terms of both local and transported performance."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Transported model performance compared to locally developed models on target data",
+     "effect": "Transported models had inferior or comparable AUROC to locally developed models (e.g., APCD local LR AUROC was 0.879 vs 0.802 for transported HIDD and 0.845 for transported KHIN), showing performance was upper-bounded locally.",
+     "quote": "All the transported models showed either inferior or comparable performance to the locally developed models, implying that while transported performance was sometimes still good, it was generally upper-bounded by the best performance of locally developed ones."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Generalizability of predictive models transported across different clinical contexts and datasets",
+     "effect": "Models transported across contexts showed AUROC drops (APCD LR from 0.879 to 0.797 on HIDD, 0.749 on KHIN) or improvements (KHIN LR from 0.787 to 0.845 on APCD, 0.829 on HIDD) relative to source.",
+     "quote": "Transported models exhibited varying performance, showing drops or even improvements compared to their source performance."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 285320,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "LSTM",
+  "LSTM with temporal attention",
+  "gradient boosting machine",
+  "gradient boosting machine (LightGBM)",
+  "long short-term memory neural network with temporal attention mechanisms",
+  "regularized logistic regression"
+ ],
+ "links": [
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Change in AUROC when models were applied to new datasets/settings",
+   "effect": "Transported LR from APCD dropped from 0.879 to 0.797 (HIDD) and 0.749 (KHIN); KHIN model rose from 0.787 to 0.845 (APCD) and 0.829 (HIDD). LSTM HIDD to KHIN AUROC 0.595.",
+   "quote": "When transporting models developed on source data to target data, their transported performance does not necessarily drop, showing data-dependent transportability.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Feature prevalence differences (SMD) between development and target datasets and their effect on transportability",
+   "effect": "Datasets differed in captured encounters (e.g., SMD -0.7 for acute appendicitis; 1.4-1.8 for outpatient codes), and predictor importance differed across datasets, with varying transported performance.",
+   "quote": "Overall, the same ML-based suicide prediction model might identify a different set of important predictors when trained from different datasets, together with data differences, suggesting varying transported performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of complex models (LSTM, GBM) with simpler logistic regression on same data",
+   "effect": "Complex models did not outperform LR locally or transported; on KHIN LSTM AUROC 0.759 vs LR 0.787; LSTM HIDD to KHIN 0.595.",
+   "quote": "More complex models, particularly deep long short-term memory neural network models, did not outperform simpler regularized logistic regression models in terms of both local and transported performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "local versus transported AUROC",
+   "effect": "On APCD target, local LR AUROC 0.879 versus transported HIDD 0.802 and KHIN 0.845.",
+   "quote": "For example, as shown in Table 2 and Fig. 2c , the LR model trained from APCD could achieve an average AUROC of 0.879 ([0.876, 0.882]) on the APCD testing data, and the transported model trained from HIDD and KHIN achieved an average AUROC of 0.802 ([0.795, 0.808]) and 0.845 ([0.841, 0.849]), respectively, when tested on the same APCD data.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Locally trained versus transported model performance on target data",
+   "effect": "Local models on target data generally matched or exceeded transported models; APCD local LR AUROC 0.879 vs 0.797 to HIDD and 0.749 to KHIN when transported.",
+   "quote": "the LR model trained from APCD could achieve an average AUROC of 0.879 ([0.876, 0.882]) on the APCD testing data, and the transported model trained from HIDD and KHIN achieved an average AUROC of 0.802 ([0.795, 0.808]) and 0.845 ([0.841, 0.849]), respectively, when tested on the same APCD data.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across sites/data sources",
+   "effect": "LR AUROC varied by source and target: local 0.879 (APCD), 0.831 (HIDD), 0.787 (KHIN); transported values ranged 0.735 to 0.845.",
+   "quote": "Transported models exhibited varying performance, showing drops or even improvements compared to their source performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "transported AUROC across external datasets",
+   "effect": "APCD LR AUROC 0.879 on source dropped to 0.797 on HIDD and 0.749 on KHIN.",
+   "quote": "As shown in Table 2 , the locally learned LR model on APCD could achieve an average AUROC of 0.879 ([0.876, 0.882]), and transported performance of 0.797 ([0.785, 0.809]) and 0.749 ([0.739, 0.757]) to HIDD and KHIN, respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive performance of complex deep learning versus simpler regularized logistic regression models",
+   "effect": "Logistic regression achieved comparable AUROC to LSTM on APCD (0.879 vs 0.901) and HIDD (0.831 vs 0.811), and outperformed LSTM on KHIN (0.787 vs 0.759); transported LSTM performance dropped substantially.",
+   "quote": "More complex models, particularly deep long short-term memory neural network models, did not outperform simpler regularized logistic regression models in terms of both local and transported performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Fusing knowledge from multiple source models or a model pool to improve transported performance",
+  "Preferring simpler regularized logistic regression over deep learning for prediction"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39085206",
+ "screen": {
+  "id": "pmid:39085206",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and transport of models across datasets vs locally developed models",
+  "user": "none",
+  "reason": "Empirical study testing the transportability/external validation of predictive suicide risk models across disparate real-world healthcare datasets (claims and EHRs from multiple contexts/states).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "cross-site external validation and transportability assessment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39085206",
+   "empirical": 0.96,
+   "tests_practice": 0.04,
+   "real_deployment": 0.06
+  }
+ }
+}

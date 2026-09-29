@@ -1,0 +1,406 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 93319,
+   "sample_unit": "patients (chest X-rays)",
+   "models_evaluated": [
+    "JF CXR-1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI CAD vs radiologists diagnostic yield and PPV on same CXRs",
+     "effect": "CAD DYD 229/273 (83.9%) vs radiologists 70/273 (25.6%); CAD PPV 1.7% vs radiologists 10.3%; CAD captured all 70 radiologist-detected cases.",
+     "quote": "Among the 273 patients with confirmed PTB, CAD achieved DYD of 83.9% (229/273), which was substantially higher than that of radiologists (70/273, 25.6%)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CAD performance by health care facility tier (county vs township)",
+     "effect": "CAD performed worse in county-level hospitals (DYD 62.5%, PPV 0.6%) than township facilities (DYD 86.7%, PPV 2%), P<.001.",
+     "quote": "However, CAD showed significant variation in performance with respect to health care facility tier, performing poorer in the county-level group than in the township-level group ( P <.001; Table S1 in Multimedia Appendix 1 )."
+    },
+    {
+     "rec_id": "R071",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CAD false positives and positive rate in low-prevalence symptomatic population",
+     "effect": "CAD flagged 13,515 (14.5%) as positive with PPV 1.7% at 0.3% prevalence, versus radiologist positive rate 0.7%.",
+     "quote": "However, excessive reliance on CAD-based diagnoses may potentially contribute to a higher volume of unnecessary follow-up procedures, leading to an inefficient allocation of medical resources."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "CAD performance across subgroups (age, sex, region, patient category)",
+     "effect": "CAD outperformed radiologists in all subgroups; age \u226580 less likely to have high PPV (OR 0.21, 95% CI 0.10-0.44); no sex or inpatient/outpatient differences.",
+     "quote": "Multivariate logistic regression also demonstrated that advanced age (\u226580 y) groups were less likely to achieve high PPV (OR 0.21, 95% CI 0.10\u20100.44; P <.001)."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist review of CAD-positive images only (triage) workload and cases missed",
+     "effect": "Selective review of CAD-positive images reduced radiologist workload by 85.5% (13,515 of 93,319 CXRs) without missing any radiologist-identified PTB cases.",
+     "quote": "Strategy 5 enabled a radiologist workload reduction of 85.5% (1\u201013,515/93,319) while maintaining a minimum system DYD of 25.6% (ie, finding all cases the radiologists originally found) and a potential DYD of 83.9% (if radiologists trusted the AI on all 229 positive cases; Table 2 )."
+    },
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI score quartiles for prioritizing radiologist review of high-risk patients",
+     "effect": "Scores >0.75 (34.2% of CAD-positive) contained 189/229 (82.5%) of confirmed PTB cases; P for trend <.001.",
+     "quote": "Most confirmed patients (189/229, 82.5%) had CAD scores exceeding the 75% quantiles (Q75) threshold, which accounted for 34.2% (4618/13,515) of all CAD-positive patients ( Table 3 )."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local real-world performance of AI on retrospective local data versus reference standard",
+     "effect": "On local historical CXRs versus bacteriological confirmation, CAD DYD was 83.9% versus 78.9% in prior clinical validation, noting a difference in primary care performance.",
+     "quote": "Compared with the sensitivity shown in clinical validation (eg, 78.9% in a study by Yang et al [ 12 ]), there is still a certain difference in performance in primary health care."
+    }
+   ],
+   "unlisted_practices": [
+    "Tiered AI prescreening with selective human review to reduce radiologist workload",
+    "Sensitivity analyses of confirmation time window and case definition"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 93319,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "JF CXR-1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CAD triage workload and yield",
+     "effect": "Selective review reduced radiologist workload 85.5%, with minimum DYD 25.6% and potential DYD 83.9%.",
+     "quote": "Strategy 5 enabled a radiologist workload reduction of 85.5% (1\u201013,515/93,319) while maintaining a minimum system DYD of 25.6% (ie, finding all cases the radiologists originally found) and a potential DYD of 83.9% (if radiologists trusted the AI on all 229 positive cases; Table 2 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "CAD versus radiologist performance",
+     "effect": "CAD DYD 229/273 (83.9%) vs radiologists 70/273 (25.6%), but PPV 1.70% vs 10.31%.",
+     "quote": "Among 93,319 enrolled study patients, including 273 (0.3%) bacteriologically confirmed PTB cases, CAD demonstrated a substantially higher DYD (229/273, 83.9%) than radiologists (70/273, 25.6%), although the PPV was much lower (1.70% vs 10.31%)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CAD performance by facility tier",
+     "effect": "Township facilities: DYD 86.7%, PPV 2%; county hospitals: DYD 62.5%, PPV 0.6%.",
+     "quote": "CAD performance was significantly better in township-level medical facilities (DYD: 86.7%; PPV: 2%) than in county-level hospitals (DYD: 62.5%; PPV: 0.6%)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CAD PPV by age subgroup",
+     "effect": "Age \u226580 had lower PPV: OR 0.21, 95% CI 0.10\u20100.44; P <.001.",
+     "quote": "Multivariate logistic regression also demonstrated that advanced age (\u226580 y) groups were less likely to achieve high PPV (OR 0.21, 95% CI 0.10\u20100.44; P <.001)."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Incomplete PTB detection by CAD",
+     "effect": "CAD achieved DYD 83.9% (229/273), so not all confirmed PTB cases were identified.",
+     "quote": "Among the 273 patients with confirmed PTB, CAD achieved DYD of 83.9% (229/273), which was substantially higher than that of radiologists (70/273, 25.6%)."
+    },
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "High CAD score prioritization",
+     "effect": "Score >0.75 contained 189/229 (82.5%) confirmed PTB among 4618/13,515 (34.2%) CAD-positive patients.",
+     "quote": "Most confirmed patients (189/229, 82.5%) had CAD scores exceeding the 75% quantiles (Q75) threshold, which accounted for 34.2% (4618/13,515) of all CAD-positive patients ( Table 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 93319,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "JF CXR-1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CAD diagnostic yield and PPV across healthcare facility tiers",
+     "effect": "DYD was 86.7% vs 62.5% and PPV was 2% vs 0.6% in township-level facilities compared with county-level hospitals",
+     "quote": "CAD performance was significantly better in township-level medical facilities (DYD: 86.7%; PPV: 2%) than in county-level hospitals (DYD: 62.5%; PPV: 0.6%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Tiered AI prescreening with selective human review of AI-positive images"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 93319,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "JF CXR-1"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "AI CAD vs radiologists diagnostic yield and PPV on same CXRs",
+   "effect": "CAD DYD 229/273 (83.9%) vs radiologists 70/273 (25.6%); CAD PPV 1.7% vs radiologists 10.3%; CAD captured all 70 radiologist-detected cases.",
+   "quote": "Among the 273 patients with confirmed PTB, CAD achieved DYD of 83.9% (229/273), which was substantially higher than that of radiologists (70/273, 25.6%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "CAD performance by health care facility tier (county vs township)",
+   "effect": "CAD performed worse in county-level hospitals (DYD 62.5%, PPV 0.6%) than township facilities (DYD 86.7%, PPV 2%), P<.001.",
+   "quote": "However, CAD showed significant variation in performance with respect to health care facility tier, performing poorer in the county-level group than in the township-level group ( P <.001; Table S1 in Multimedia Appendix 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R518",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI score quartiles for prioritizing radiologist review of high-risk patients",
+   "effect": "Scores >0.75 (34.2% of CAD-positive) contained 189/229 (82.5%) of confirmed PTB cases; P for trend <.001.",
+   "quote": "Most confirmed patients (189/229, 82.5%) had CAD scores exceeding the 75% quantiles (Q75) threshold, which accounted for 34.2% (4618/13,515) of all CAD-positive patients ( Table 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R071",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "CAD false positives and positive rate in low-prevalence symptomatic population",
+   "effect": "CAD flagged 13,515 (14.5%) as positive with PPV 1.7% at 0.3% prevalence, versus radiologist positive rate 0.7%.",
+   "quote": "However, excessive reliance on CAD-based diagnoses may potentially contribute to a higher volume of unnecessary follow-up procedures, leading to an inefficient allocation of medical resources.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "CAD performance across subgroups (age, sex, region, patient category)",
+   "effect": "CAD outperformed radiologists in all subgroups; age \u226580 less likely to have high PPV (OR 0.21, 95% CI 0.10-0.44); no sex or inpatient/outpatient differences.",
+   "quote": "Multivariate logistic regression also demonstrated that advanced age (\u226580 y) groups were less likely to achieve high PPV (OR 0.21, 95% CI 0.10\u20100.44; P <.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "CAD triage workload and yield",
+   "effect": "Selective review reduced radiologist workload 85.5%, with minimum DYD 25.6% and potential DYD 83.9%.",
+   "quote": "Strategy 5 enabled a radiologist workload reduction of 85.5% (1\u201013,515/93,319) while maintaining a minimum system DYD of 25.6% (ie, finding all cases the radiologists originally found) and a potential DYD of 83.9% (if radiologists trusted the AI on all 229 positive cases; Table 2 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "CAD PPV by age subgroup",
+   "effect": "Age \u226580 had lower PPV: OR 0.21, 95% CI 0.10\u20100.44; P <.001.",
+   "quote": "Multivariate logistic regression also demonstrated that advanced age (\u226580 y) groups were less likely to achieve high PPV (OR 0.21, 95% CI 0.10\u20100.44; P <.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Sensitivity analyses of confirmation time window and case definition",
+  "Tiered AI prescreening with selective human review of AI-positive images",
+  "Tiered AI prescreening with selective human review to reduce radiologist workload"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41328508",
+ "screen": {
+  "id": "pmid:41328508",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI prescreening triage with selective radiologist review at probability threshold",
+  "user": "clinician_or_staff",
+  "reason": "Retrospectively evaluates CAD triage software on real-world clinic CXRs and models/tests a selective human review workflow and probability thresholding strategy to reduce radiologist workload.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI triage with selective radiologist review thresholding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41328508",
+   "empirical": 0.97,
+   "tests_practice": 0.72,
+   "real_deployment": 0.21
+  }
+ }
+}

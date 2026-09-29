@@ -1,0 +1,383 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 497,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "iCurveE",
+    "nnU-Net",
+    "TotalSegmentator"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Contour accuracy for manual vs AI-only vs physician-plus-AI delineation",
+     "effect": "Mean vDSC 0.857 manual, 0.896 AI, 0.902 AI-assisted; HD95 8.01, 5.62, 5.20 mm; sequential significant improvement (p<0.0001); time median 10.0 vs 55.0 min.",
+     "quote": "These data show a sequential and significant improvement in accuracy from manual, to AI, and to AI-assisted delineation ( p < 0.0001), a trend that was further supported by sDSC ( p < 0.0001) (Supplementary Fig. 3 )."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of physician-revised AI contours vs unrevised AI contours",
+     "effect": "AI-assisted (physician-revised) contours significantly more accurate than AI-only for 6 of 11 OARs (54.5%); revision eliminated EC-related trachea accuracy drop.",
+     "quote": "AI-assisted delineation also achieved significantly higher accuracy than AI delineation for 6 out of 11 OARs (54.5%): the heart, aorta, liver, trachea, spinal cord, and esophagus (Fig. 2a, b and Supplementary Fig. 3 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance by center for AI-assisted vs manual delineation",
+     "effect": "Performance hierarchy held across all five centers (p<0.0001), but AI-assisted showed no advantage for trachea in Center 4 and aorta in Center 5.",
+     "quote": "However, AI-assisted delineation failed to show an advantage over the manual method in a few specific instances: for the trachea both in Center 4 and in patients with EC, and for the aorta in Center 5 (Supplementary Figs. 4 \u2013 6 )."
+    },
+    {
+     "rec_id": "R444",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Change in manual contouring accuracy over time among less-experienced physicians using AI",
+     "effect": "Of 25 less-experienced physicians, 19 (76%) no change, 3 (12%) improved, 3 (12%) declined in manual vDSC.",
+     "quote": "In contrast, three (12%) experienced a decline in M-vDSC ( p = 0.042, 0.029, and 0.013), characterized by under- or over-segmentation of clear anatomical boundaries and increased OAR overlap (Supplementary Fig. 21 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 497,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "iCurveE",
+    "nnU-Net",
+    "TotalSegmentator"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Segmentation accuracy compared with alternative models on the same cohort",
+     "effect": "iCurveE: vDSC 0.896, HD95 5.62 mm; nnU-Net: 0.850, 12.05 mm; TotalSegmentator: 0.781, 19.07 mm; both comparisons p < 0.0001.",
+     "quote": "The iCurveE model achieved a significantly superior performance, with a mean volumetric Dice similarity coefficient (vDSC) of 0.896 and a 95% Hausdorff distance (HD95) of 5.62 mm, compared to both the nnU-Net (vDSC, 0.850; HD95, 12.05 mm; p < 0.0001) and TotalSegmentator (vDSC, 0.781; HD95, 19.07 mm; p < 0.0001) models."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Contour accuracy after physician review and modification versus unmodified AI outputs",
+     "effect": "Physician revision significantly improved accuracy for 6 out of 11 OARs (54.5%); mean vDSC increased from 0.896 to 0.902, and mean HD95 decreased from 5.62 mm to 5.20 mm.",
+     "quote": "AI-assisted delineation also achieved significantly higher accuracy than AI delineation for 6 out of 11 OARs (54.5%): the heart, aorta, liver, trachea, spinal cord, and esophagus (Fig. 2a, b and Supplementary Fig. 3 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI segmentation accuracy differences between lung cancer and non-lung-cancer patients",
+     "effect": "AI accuracy was significantly lower for the heart, trachea, and esophagus in lung cancer patients; no consistent multi-metric differences occurred for lungs or bronchial tree. Numerical effect sizes were not reported.",
+     "quote": "In patients with LC, the model\u2019s segmentation accuracy (i.e., AI-vDSC, HD95, and sDSC) for the heart, trachea, and esophagus was significantly lower than in non-LC patients; however, no consistent multi-metric differences were observed for the lungs and bronchial tree (Supplementary Fig. 8 )."
+    },
+    {
+     "rec_id": "R444",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Changes in less-experienced physicians\u2019 manual contouring accuracy during AI use",
+     "effect": "Among 25 physicians, 19 (76%) showed no significant change, three (12%) improved, and three (12%) declined; decline p = 0.042, 0.029, and 0.013. Causation by AI reliance was not established.",
+     "quote": "In contrast, three (12%) experienced a decline in M-vDSC ( p = 0.042, 0.029, and 0.013), characterized by under- or over-segmentation of clear anatomical boundaries and increased OAR overlap (Supplementary Fig. 21 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 500,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "iCurveE",
+    "nnU-Net",
+    "TotalSegmentator"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of manual, AI standalone, and AI-assisted delineation",
+     "effect": "Accuracy sequentially improved from manual (mean vDSC 0.857) to AI standalone (0.896) to AI-assisted delineation (0.902).",
+     "quote": "These data show a sequential and significant improvement in accuracy from manual, to AI, and to AI-assisted delineation ( p < 0.0001), a trend that was further supported by sDSC ( p < 0.0001) (Supplementary Fig. 3 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparative accuracy against alternative models",
+     "effect": "The iCurveE model (mean vDSC 0.896) significantly outperformed competing models nnU-Net (0.850) and TotalSegmentator (0.781).",
+     "quote": "The iCurveE model achieved a significantly superior performance, with a mean volumetric Dice similarity coefficient (vDSC) of 0.896 and a 95% Hausdorff distance (HD95) of 5.62 mm, compared to both the nnU-Net (vDSC, 0.850; HD95, 12.05 mm; p < 0.0001) and TotalSegmentator (vDSC, 0.781; HD95, 19.07 mm; p < 0.0001) models."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model accuracy by CT slice thickness",
+     "effect": "CT scans with a 5 mm slice thickness resulted in lower model accuracy for humeral heads compared to thinner slices.",
+     "quote": "Furthermore, compared to thinner slices (<5 mm), scans with a 5 mm slice thickness demonstrated lower model accuracy only for the left and right humeral heads (Supplementary Fig. 11 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Segmentation accuracy in clinical subgroups",
+     "effect": "Model segmentation accuracy for the heart, trachea, and esophagus was significantly lower in patients with lung cancer than those without.",
+     "quote": "In patients with LC, the model\u2019s segmentation accuracy (i.e., AI-vDSC, HD95, and sDSC) for the heart, trachea, and esophagus was significantly lower than in non-LC patients; however, no consistent multi-metric differences were observed for the lungs and bronchial tree (Supplementary Fig. 8 )."
+    },
+    {
+     "rec_id": "R444",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Change in manual contouring accuracy over time",
+     "effect": "Three of 25 less-experienced physicians (12%) experienced a significant decline in their manual contouring accuracy over time after using AI.",
+     "quote": "In contrast, three (12%) experienced a decline in M-vDSC ( p = 0.042, 0.029, and 0.013), characterized by under- or over-segmentation of clear anatomical boundaries and increased OAR overlap (Supplementary Fig. 21 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 497,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "TotalSegmentator",
+  "iCurveE",
+  "nnU-Net"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Contour accuracy for manual vs AI-only vs physician-plus-AI delineation",
+   "effect": "Mean vDSC 0.857 manual, 0.896 AI, 0.902 AI-assisted; HD95 8.01, 5.62, 5.20 mm; sequential significant improvement (p<0.0001); time median 10.0 vs 55.0 min.",
+   "quote": "These data show a sequential and significant improvement in accuracy from manual, to AI, and to AI-assisted delineation ( p < 0.0001), a trend that was further supported by sDSC ( p < 0.0001) (Supplementary Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance by center for AI-assisted vs manual delineation",
+   "effect": "Performance hierarchy held across all five centers (p<0.0001), but AI-assisted showed no advantage for trachea in Center 4 and aorta in Center 5.",
+   "quote": "However, AI-assisted delineation failed to show an advantage over the manual method in a few specific instances: for the trachea both in Center 4 and in patients with EC, and for the aorta in Center 5 (Supplementary Figs. 4 \u2013 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R444",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Change in manual contouring accuracy over time among less-experienced physicians using AI",
+   "effect": "Of 25 less-experienced physicians, 19 (76%) no change, 3 (12%) improved, 3 (12%) declined in manual vDSC.",
+   "quote": "In contrast, three (12%) experienced a decline in M-vDSC ( p = 0.042, 0.029, and 0.013), characterized by under- or over-segmentation of clear anatomical boundaries and increased OAR overlap (Supplementary Fig. 21 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI segmentation accuracy differences between lung cancer and non-lung-cancer patients",
+   "effect": "AI accuracy was significantly lower for the heart, trachea, and esophagus in lung cancer patients; no consistent multi-metric differences occurred for lungs or bronchial tree. Numerical effect sizes were not reported.",
+   "quote": "In patients with LC, the model\u2019s segmentation accuracy (i.e., AI-vDSC, HD95, and sDSC) for the heart, trachea, and esophagus was significantly lower than in non-LC patients; however, no consistent multi-metric differences were observed for the lungs and bronchial tree (Supplementary Fig. 8 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of physician-revised AI contours vs unrevised AI contours",
+   "effect": "AI-assisted (physician-revised) contours significantly more accurate than AI-only for 6 of 11 OARs (54.5%); revision eliminated EC-related trachea accuracy drop.",
+   "quote": "AI-assisted delineation also achieved significantly higher accuracy than AI delineation for 6 out of 11 OARs (54.5%): the heart, aorta, liver, trachea, spinal cord, and esophagus (Fig. 2a, b and Supplementary Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation accuracy compared with alternative models on the same cohort",
+   "effect": "iCurveE: vDSC 0.896, HD95 5.62 mm; nnU-Net: 0.850, 12.05 mm; TotalSegmentator: 0.781, 19.07 mm; both comparisons p < 0.0001.",
+   "quote": "The iCurveE model achieved a significantly superior performance, with a mean volumetric Dice similarity coefficient (vDSC) of 0.896 and a 95% Hausdorff distance (HD95) of 5.62 mm, compared to both the nnU-Net (vDSC, 0.850; HD95, 12.05 mm; p < 0.0001) and TotalSegmentator (vDSC, 0.781; HD95, 19.07 mm; p < 0.0001) models.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Contour accuracy after physician review and modification versus unmodified AI outputs",
+   "effect": "Physician revision significantly improved accuracy for 6 out of 11 OARs (54.5%); mean vDSC increased from 0.896 to 0.902, and mean HD95 decreased from 5.62 mm to 5.20 mm.",
+   "quote": "AI-assisted delineation also achieved significantly higher accuracy than AI delineation for 6 out of 11 OARs (54.5%): the heart, aorta, liver, trachea, spinal cord, and esophagus (Fig. 2a, b and Supplementary Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparative accuracy against alternative models",
+   "effect": "The iCurveE model (mean vDSC 0.896) significantly outperformed competing models nnU-Net (0.850) and TotalSegmentator (0.781).",
+   "quote": "The iCurveE model achieved a significantly superior performance, with a mean volumetric Dice similarity coefficient (vDSC) of 0.896 and a 95% Hausdorff distance (HD95) of 5.62 mm, compared to both the nnU-Net (vDSC, 0.850; HD95, 12.05 mm; p < 0.0001) and TotalSegmentator (vDSC, 0.781; HD95, 19.07 mm; p < 0.0001) models.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41917034",
+ "screen": {
+  "id": "pmid:41917034",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "clinician review/editing of AI-generated contours (AI-assisted vs manual delineation)",
+  "user": "clinician_or_staff",
+  "reason": "Prospective multi-center reader trial evaluating clinician performance and time efficiency when using AI assistance versus manual delineation for radiation therapy planning.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI-assisted contouring vs manual clinician delineation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41917034",
+   "empirical": 0.97,
+   "tests_practice": 0.73,
+   "real_deployment": 0.7
+  }
+ }
+}

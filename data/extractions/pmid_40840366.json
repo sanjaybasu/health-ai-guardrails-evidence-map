@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Taiwan",
+ "sample_size": 2400,
+ "sample_unit": "images (external test set)",
+ "models_evaluated": [
+  "Swin Transformer v2"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R135",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Snake species classification accuracy on validation set versus real-world external test images",
+   "effect": "Accuracy fell from 95.6% (validation) to 83.3% (external test, no preprocessing); TT-ODC preprocessing raised it to 89.8% versus 90.3% for human annotation.",
+   "quote": "Without preprocessing, the model achieved 95.6% accuracy on the validation set but dropped to 83.3% on the external test set.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Overestimation of accuracy on internal validation data versus external test data",
+   "effect": "Validation accuracy of 95.6% overstated real-world performance; the external test set gave 83.3% accuracy without preprocessing.",
+   "quote": "Without preprocessing, the model achieved 95.6% accuracy on the validation set but dropped to 83.3% on the external test set.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Test-time object detection and cropping (TT-ODC) preprocessing to close the gap between validation and real-world image performance"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40840366",
+ "screen": {
+  "id": "pmid:40840366",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "both",
+  "reason": "The study evaluates the deployment of an image classification tool via a chatbot and specifically tests an automated preprocessing safeguard/practice (test-time object detection and cropping) to improve real-world input accuracy on external user-submitted images.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "test-time object detection and cropping preprocessing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40840366",
+   "empirical": 0.94,
+   "tests_practice": 0.61,
+   "real_deployment": 0.37
+  }
+ }
+}

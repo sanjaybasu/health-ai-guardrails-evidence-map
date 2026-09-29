@@ -1,0 +1,330 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 2919,
+   "sample_unit": "head CT studies",
+   "models_evaluated": [
+    "FDA-cleared commercial ICH detection model (black-box)",
+    "RSNA 2019 second-place open-source ICH model (ResNeXt-101 + BiLSTM)",
+    "Ensembled Monitoring Model (five 3D CNN sub-models)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether a monitoring model can detect errors in deployed AI output without ground-truth labels",
+     "effect": "Reviewing decreased-confidence cases gave relative accuracy gains of 4.66, 11.28 and 38.57% vs false-alarm rates of 0.89, 0.45 and 0.14% for ICH-positive predictions at 30, 15 and 5% prevalence.",
+     "quote": "For example, reviewing cases where EMM showed decreased confidence led to substantial relative accuracy gains that outweighed the burden of false alarms."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of the primary model stratified by case-level confidence from EMM agreement",
+     "effect": "Accuracy was highest with high EMM agreement and lowest with low agreement, for both ICH-positive and ICH-negative predictions and at all prevalences.",
+     "quote": "As expected, overall accuracy was highest for cases in which the primary model and EMM showed high agreement, and overall accuracy was lowest when EMM showed a lower agreement level with the primary model."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Ability of EMM to flag unreliable predictions from deployed black-box AI, and its failures",
+     "effect": "EMM had 100% agreement with the FDA-cleared model but failed to detect its errors in 138 cases (4%); it was proposed but not tested for longitudinal drift.",
+     "quote": "Finally, in 138 cases (4%, 117 ICH-positive, 21 ICH-negative), EMM demonstrated 100% agreement with the FDA-cleared primary model, but EMM failed to detect that the FDA-cleared primary model\u2019s prediction was wrong."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "EMM error-detection performance across gender, age and race subgroups",
+     "effect": "Discrepancies in EMM performance were found in some gender, age and race subgroups, possibly from underrepresentation in the training data or distribution mismatch.",
+     "quote": "Additionally, we analyzed EMM performance across gender, age and race groups and found discrepancies in some subgroups, potentially due to either underrepresentation in the EMM training data or the distribution mismatch between the EMM training data and our internal testing dataset for these subgroups (Supplementary Fig. 6 )."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False confidence when the confidence estimator agrees with an incorrect primary AI prediction",
+     "effect": "EMM showed full agreement with an incorrect primary prediction in 138 cases (4%), mainly subtle hemorrhages or hemorrhage mimics, which could instill false confidence.",
+     "quote": "Of particular concern are instances where EMM fails simultaneously with the primary model while indicating complete consensus, as this could instill false confidence in clinicians and potentially increase misdiagnosis risk."
+    }
+   ],
+   "unlisted_practices": [
+    "Ensemble-based agreement monitoring model for black-box AI to give case-level confidence and suggest actions",
+    "Selecting EMM agreement thresholds by disease prevalence to balance false-alarm burden against accuracy gain"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 2919,
+   "sample_unit": "CT studies",
+   "models_evaluated": [
+    "Ensembled Monitoring Model (EMM)",
+    "FDA-cleared commercial intracranial hemorrhage detection model",
+    "open-source RSNA 2019 ICH Detection Challenge second-place model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy across confidence strata",
+     "effect": "100% agreement was correct in 1479 cases (51%); high agreement had highest accuracy and lower agreement had lowest accuracy across 30%, 15%, and 5% prevalences.",
+     "quote": "As expected, overall accuracy was highest for cases in which the primary model and EMM showed high agreement, and overall accuracy was lowest when EMM showed a lower agreement level with the primary model."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Low-confidence deferral accuracy and false alarms",
+     "effect": "ICH-positive: +4.66, +11.28, and +38.57% versus false alarms 0.89, 0.45, and 0.14%; ICH-negative net benefit only at 30%.",
+     "quote": "However, this net benefit was only observed for cases with ICH-negative primary model predictions at 30% prevalence (false-alarm rate of 1.05% versus relative accuracy improvement of 3.35%)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False high-confidence predictions",
+     "effect": "100% EMM agreement failed to detect wrong FDA-cleared model predictions in 138 cases (4%; 117 ICH-positive, 21 ICH-negative).",
+     "quote": "Finally, in 138 cases (4%, 117 ICH-positive, 21 ICH-negative), EMM demonstrated 100% agreement with the FDA-cleared primary model, but EMM failed to detect that the FDA-cleared primary model\u2019s prediction was wrong."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance discrepancies",
+     "effect": "Discrepancies found across gender, age, and race subgroups; main text reports no subgroup-specific estimates.",
+     "quote": "Additionally, we analyzed EMM performance across gender, age and race groups and found discrepancies in some subgroups, potentially due to either underrepresentation in the EMM training data or the distribution mismatch between the EMM training data and our internal testing dataset for these subgroups (Supplementary Fig. 6 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 2919,
+   "sample_unit": "CT studies",
+   "models_evaluated": [
+    "FDA-cleared commercial ICH detection model",
+    "RSNA 2019 ICH challenge 2nd-place model",
+    "Ensembled Monitoring Model (EMM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "accuracy gains versus false alarm burden from deferral",
+     "effect": "Reviewing low-confidence cases yielded net accuracy gains over false alarms across all prevalences for positive predictions, but for negative predictions net benefit occurred only at 30% prevalence (3.35% gain vs 1.05% false alarms).",
+     "quote": "However, this net benefit was only observed for cases with ICH-negative primary model predictions at 30% prevalence (false-alarm rate of 1.05% versus relative accuracy improvement of 3.35%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Ensembled monitoring model (EMM) using multiple independent sub-models to estimate confidence and detect errors in deployed black-box AI outputs"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "CT studies",
+ "sample_size": 2919,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Ensembled Monitoring Model (EMM)",
+  "Ensembled Monitoring Model (five 3D CNN sub-models)",
+  "FDA-cleared commercial ICH detection model",
+  "FDA-cleared commercial ICH detection model (black-box)",
+  "FDA-cleared commercial intracranial hemorrhage detection model",
+  "RSNA 2019 ICH challenge 2nd-place model",
+  "RSNA 2019 second-place open-source ICH model (ResNeXt-101 + BiLSTM)",
+  "open-source RSNA 2019 ICH Detection Challenge second-place model"
+ ],
+ "links": [
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of the primary model stratified by case-level confidence from EMM agreement",
+   "effect": "Accuracy was highest with high EMM agreement and lowest with low agreement, for both ICH-positive and ICH-negative predictions and at all prevalences.",
+   "quote": "As expected, overall accuracy was highest for cases in which the primary model and EMM showed high agreement, and overall accuracy was lowest when EMM showed a lower agreement level with the primary model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "EMM error-detection performance across gender, age and race subgroups",
+   "effect": "Discrepancies in EMM performance were found in some gender, age and race subgroups, possibly from underrepresentation in the training data or distribution mismatch.",
+   "quote": "Additionally, we analyzed EMM performance across gender, age and race groups and found discrepancies in some subgroups, potentially due to either underrepresentation in the EMM training data or the distribution mismatch between the EMM training data and our internal testing dataset for these subgroups (Supplementary Fig. 6 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "False confidence when the confidence estimator agrees with an incorrect primary AI prediction",
+   "effect": "EMM showed full agreement with an incorrect primary prediction in 138 cases (4%), mainly subtle hemorrhages or hemorrhage mimics, which could instill false confidence.",
+   "quote": "Of particular concern are instances where EMM fails simultaneously with the primary model while indicating complete consensus, as this could instill false confidence in clinicians and potentially increase misdiagnosis risk.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Low-confidence deferral accuracy and false alarms",
+   "effect": "ICH-positive: +4.66, +11.28, and +38.57% versus false alarms 0.89, 0.45, and 0.14%; ICH-negative net benefit only at 30%.",
+   "quote": "However, this net benefit was only observed for cases with ICH-negative primary model predictions at 30% prevalence (false-alarm rate of 1.05% versus relative accuracy improvement of 3.35%).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Ensemble-based agreement monitoring model for black-box AI to give case-level confidence and suggest actions",
+  "Ensembled monitoring model (EMM) using multiple independent sub-models to estimate confidence and detect errors in deployed black-box AI outputs",
+  "Selecting EMM agreement thresholds by disease prevalence to balance false-alarm burden against accuracy gain"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41102370",
+ "screen": {
+  "id": "pmid:41102370",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "real-time AI confidence monitoring with ensemble model",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates an ensembled monitoring model framework as a deployment guardrail to monitor commercial intracranial hemorrhage detection AI outputs in real time.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "real-time confidence monitoring and guardrail ensemble"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41102370",
+   "empirical": 0.94,
+   "tests_practice": 0.57,
+   "real_deployment": 0.11
+  }
+ }
+}

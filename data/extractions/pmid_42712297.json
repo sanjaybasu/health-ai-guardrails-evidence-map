@@ -1,0 +1,405 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 225,
+   "sample_unit": "adults with type 1 diabetes (REPLACE trial CGM data)",
+   "models_evaluated": [
+    "XGBoost hypoglycaemia risk model with SHAP explanations"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether combining covariate shift, multiple performance metrics and feature importance detects drift and safety risk",
+     "effect": "Combined monitoring identified different drift types; single metrics missed risks (e.g., +20 mg/dL shift showed no AUROC/AP drop but significant sensitivity drop); simplistic drift detection could misidentify risk.",
+     "quote": "This underlines the importance of using multiple methods and metrics to track drift and hence model safety."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance under perturbed inputs (sensor noise, uniform offsets, reduced CGM use)",
+     "effect": "Adding 5% Gaussian noise significantly lowered AUROC, AP and sensitivity, with specificity sharply declining and hypoglycaemia overpredicted; \u00b120 mg/dL shifts produced significant changes.",
+     "quote": "Any addition of noise significantly lowers model performance as marked by AUROC, AP and sensitivity."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of anomalous or shifted input data on model outputs and covariate shift detection",
+     "effect": "Even 5% noise gave normalised JS divergence of 172 sigma; sensor noise and offsets degraded performance and changed output rates.",
+     "quote": "Even a modest addition of 5% noise leads to a very significant covariate shift."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether covariate shift (JS divergence) thresholds alone reliably signal performance degradation",
+     "effect": "JS divergence did not track performance consistently: reduced CGM use gave large drift but only marginal performance change, and high variance pattern had high JS divergence with improved performance.",
+     "quote": "Therefore, predictive performance is only marginally affected as CGM use drops, despite a significant drift in JS divergence."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when applied to unseen usage patterns, behaviours and sensor conditions",
+     "effect": "Performance varied across glucose patterns; 'above range' users at elevated risk of false negatives, 'below range' had higher false-alarm rate, lowest CGM use (<0.1) significantly decreased performance.",
+     "quote": "users who are \u2018above range\u2019 (3.2) despite only having a moderate covariate shift relative to baseline and no negative change in AUROC are at elevated risk of false negatives (ie, hypoglycaemia missed by the model)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether a single performance metric conceals poor performance under drift",
+     "effect": "AUROC alone missed a significant sensitivity drop at +20 mg/dL shift; 'above range' AUROC rose while AP and sensitivity fell.",
+     "quote": "This highlights the danger of using performance metrics alone to identify drift."
+    }
+   ],
+   "unlisted_practices": [
+    "Bootstrap-normalised Jensen-Shannon divergence to compare covariate shift across samples of different size",
+    "Tracking SHAP feature importance shifts as a drift and explainability monitoring signal"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 225,
+   "sample_unit": "adults with type 1 diabetes using CGM",
+   "models_evaluated": [
+    "XGBoost gradient boosted tree model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Covariate shift under Gaussian-noise stress test",
+     "effect": "Mean JS: 0.00275 with no added noise, 0.144 at 5%, 0.209 at 10%, and 0.251 at 20% Gaussian noise.",
+     "quote": "Even a modest addition of 5% noise leads to a very significant covariate shift."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Combined drift-monitoring framework",
+     "effect": "Mean JS examples: behavior patterns 0.0091\u20130.1092, CGM-use bins 0.0119\u20130.0838, Gaussian-noise tests 0.00275\u20130.251.",
+     "quote": "We demonstrate that using a combination of covariate shift detection, multiple performance metrics and feature importance offers a powerful methodology of identifying different types of drifts in sensor data."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Single-metric performance masking",
+     "effect": "+20 mg/dL uniform shift: no notable AUROC or AP drop, but significant sensitivity drop.",
+     "quote": "In particular, +20 mg/dL shows no notable drop in AUROC or AP; however, a significant drop in sensitivity."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance with low CGM use",
+     "effect": "CGM use 0.0\u20130.1: mean JS 0.0838 and 113.17\u03c3; 0.7\u20130.8: mean JS 0.0119 and 12.44\u03c3; <0.1 significantly decreased performance.",
+     "quote": "Only the lowest usage fraction (<0.1) results in a significant decrease in model performance."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Explanation instability under sensor noise",
+     "effect": "As Gaussian noise increased to 5%, 10%, and 20%, mean JS rose to 0.144, 0.209, and 0.251, with rate-of-change SD gaining importance.",
+     "quote": "There is a strong correlation with the amplitude of added noise and the importance of \u2018SD of rate of change\u2019 features."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance after sensor/device noise",
+     "effect": "Gaussian sensor noise: mean JS 0.144 at 5%, 0.209 at 10%, 0.251 at 20%; performance degradation was significant with any added noise.",
+     "quote": "For device and sensor changes, adding noise results in large covariate shifts, significant performance degradation and a change in the importance of rate of change (of CGM readings)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 225,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hypoglycemia prediction performance under sensor calibration shift",
+     "effect": "A +20 mg/dL shift showed no notable drop in AUROC or AP, but caused a significant drop in sensitivity.",
+     "quote": "In particular, +20 mg/dL shows no notable drop in AUROC or AP; however, a significant drop in sensitivity."
+    }
+   ],
+   "unlisted_practices": [
+    "Combining covariate shift detection, multiple performance metrics, and feature attribution explainability to monitor and interpret data drift in sensor-based predictive models"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "Not reported",
+ "sample_unit": "adults with type 1 diabetes (REPLACE trial CGM data)",
+ "sample_size": 225,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "XGBoost",
+  "XGBoost gradient boosted tree model",
+  "XGBoost hypoglycaemia risk model with SHAP explanations"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether combining covariate shift, multiple performance metrics and feature importance detects drift and safety risk",
+   "effect": "Combined monitoring identified different drift types; single metrics missed risks (e.g., +20 mg/dL shift showed no AUROC/AP drop but significant sensitivity drop); simplistic drift detection could misidentify risk.",
+   "quote": "This underlines the importance of using multiple methods and metrics to track drift and hence model safety.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R363",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of anomalous or shifted input data on model outputs and covariate shift detection",
+   "effect": "Even 5% noise gave normalised JS divergence of 172 sigma; sensor noise and offsets degraded performance and changed output rates.",
+   "quote": "Even a modest addition of 5% noise leads to a very significant covariate shift.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether a single performance metric conceals poor performance under drift",
+   "effect": "AUROC alone missed a significant sensitivity drop at +20 mg/dL shift; 'above range' AUROC rose while AP and sensitivity fell.",
+   "quote": "This highlights the danger of using performance metrics alone to identify drift.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance under perturbed inputs (sensor noise, uniform offsets, reduced CGM use)",
+   "effect": "Adding 5% Gaussian noise significantly lowered AUROC, AP and sensitivity, with specificity sharply declining and hypoglycaemia overpredicted; \u00b120 mg/dL shifts produced significant changes.",
+   "quote": "Any addition of noise significantly lowers model performance as marked by AUROC, AP and sensitivity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when applied to unseen usage patterns, behaviours and sensor conditions",
+   "effect": "Performance varied across glucose patterns; 'above range' users at elevated risk of false negatives, 'below range' had higher false-alarm rate, lowest CGM use (<0.1) significantly decreased performance.",
+   "quote": "users who are \u2018above range\u2019 (3.2) despite only having a moderate covariate shift relative to baseline and no negative change in AUROC are at elevated risk of false negatives (ie, hypoglycaemia missed by the model).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R104",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Explanation instability under sensor noise",
+   "effect": "As Gaussian noise increased to 5%, 10%, and 20%, mean JS rose to 0.144, 0.209, and 0.251, with rate-of-change SD gaining importance.",
+   "quote": "There is a strong correlation with the amplitude of added noise and the importance of \u2018SD of rate of change\u2019 features.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R545",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance after sensor/device noise",
+   "effect": "Gaussian sensor noise: mean JS 0.144 at 5%, 0.209 at 10%, 0.251 at 20%; performance degradation was significant with any added noise.",
+   "quote": "For device and sensor changes, adding noise results in large covariate shifts, significant performance degradation and a change in the importance of rate of change (of CGM readings).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hypoglycemia prediction performance under sensor calibration shift",
+   "effect": "A +20 mg/dL shift showed no notable drop in AUROC or AP, but caused a significant drop in sensitivity.",
+   "quote": "In particular, +20 mg/dL shows no notable drop in AUROC or AP; however, a significant drop in sensitivity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Bootstrap-normalised Jensen-Shannon divergence to compare covariate shift across samples of different size",
+  "Combining covariate shift detection, multiple performance metrics, and feature attribution explainability to monitor and interpret data drift in sensor-based predictive models",
+  "Tracking SHAP feature importance shifts as a drift and explainability monitoring signal"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42712297",
+ "screen": {
+  "id": "pmid:42712297",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "drift monitoring (covariate shift detection, performance metrics, feature importance)",
+  "user": "none",
+  "reason": "Evaluates methods for drift monitoring (covariate shift detection, performance metrics, and feature importance shifts) under simulated real-world sensor and behavioral changes to ensure ongoing safety of glucose risk prediction models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "multimodal drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42712297",
+   "empirical": 0.83,
+   "tests_practice": 0.53,
+   "real_deployment": 0.07
+  }
+ }
+}

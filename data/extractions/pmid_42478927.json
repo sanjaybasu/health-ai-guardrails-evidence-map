@@ -1,0 +1,88 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "Japan",
+ "sample_size": 400,
+ "sample_unit": "test utterances (200 per domain: 100 clinical, 100 casual)",
+ "models_evaluated": [
+  "LENOHA",
+  "E5-large-instruct",
+  "Swallow-8B",
+  "ChatGPT (GPT-4o)",
+  "Gemini Advanced"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy of routing clinical questions to vetted FAQ answers versus cloud LLMs",
+   "effect": "E5-large-instruct routed with 98.3% accuracy (393/400), AUC 0.996, 7/400 misclassifications; not statistically different from ChatGPT GPT-4o (6/400 errors; P>.99).",
+   "quote": "Across both domains (N=400), E5-large-instruct achieved an accuracy of 98.3% (393/400; 95% CI 96.4%-99.1%) and an area under the curve of 0.996, with only 7 out of 400 (1.8%) misclassifications.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Decoupling clinical information retrieval from generative chit-chat using a classifier that answers clinical questions verbatim from expert-curated FAQs",
+  "Locally hosted small language model for privacy and low energy use",
+  "Measuring energy consumption per request of AI systems"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42478927",
+ "screen": {
+  "id": "pmid:42478927",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "patient",
+  "reason": "Evaluates an architectural guardrail (LENOHA) that routes clinical queries to vetted FAQs (nongenerative) vs small talk to an LLM to prevent hallucinations and reduce local resource usage.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "intent routing to nongenerative FAQ vs generative model"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42478927",
+   "empirical": 0.95,
+   "tests_practice": 0.21,
+   "real_deployment": 0.06
+  }
+ }
+}

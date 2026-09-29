@@ -1,0 +1,291 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cluster_rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 520,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "82-layer convolutional neural network AI-ECG for atrial fibrillation detection"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Inappropriate NOAC prescriptions following false-positive AI-ECG AF alerts",
+     "effect": "48 (intervention) and 35 (control) potential AI errors; only 1 intervention patient received NOAC, clinically justified by later AF; no off-label NOAC prescriptions attributable to AI errors.",
+     "quote": "As such, there were no instances of off\u2010label NOAC prescription attributable to potential AI\u2010ECG errors."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "cluster_rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 520,
+   "sample_unit": "patients with AI-detected high likelihood of atrial fibrillation included in the primary analysis",
+   "models_evaluated": [
+    "AI-ECG: 82-layer convolutional neural network for atrial fibrillation and atrial flutter detection"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R108",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Mortality, ischemic stroke, and bleeding with AI alerts versus usual care",
+     "effect": "All-cause death: HR, 0.72 [95% CI, 0.50\u20131.04]; no significant ischemic stroke or cardiovascular death differences. Post hoc gastrointestinal bleeding: 2.5% versus 6.9%; HR, 0.35 [95% CI, 0.15\u20130.85].",
+     "quote": "Regarding secondary end points, the intervention group revealed a numerically lower, but not statistically significant, incidence of all\u2010cause death (HR, 0.72 [95% CI, 0.50\u20131.04]) compared with the control group (Figure 3A )."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Off-label anticoagulant prescriptions attributable to false-positive AI-ECG alerts",
+     "effect": "Among 48 intervention and 35 control potential AI errors, only 1 intervention patient received consecutive NOAC prescriptions, justified by subsequent AF; no off-label prescriptions were attributable to AI-ECG errors.",
+     "quote": "As such, there were no instances of off\u2010label NOAC prescription attributable to potential AI\u2010ECG errors."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Atrial fibrillation diagnosis by noncardiologists with versus without AI alerts",
+     "effect": "AF diagnosis was 47.8% versus 36.0%; HR, 1.40 [95% CI, 1.03\u20131.90], favoring clinicians receiving AI-ECG alerts.",
+     "quote": "The diagnosis rates of AF were significantly higher in the intervention group compared with the control group (47.8% versus 36.0%; HR, 1.40 [95% CI, 1.03\u20131.90]), as depicted in Figure 2 ."
+    },
+    {
+     "rec_id": "R505",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Anticoagulant prescribing following immediate physician-phone AI alerts versus no AI alerts",
+     "effect": "NOAC prescription rates within 90 days were 23.3% with alerts versus 12.0% with usual care; HR, 1.85 (95% CI, 1.11\u20133.07).",
+     "quote": "The prescription rates of NOACs after discharge within 90 days after the index ECG were 23.3% in the intervention group and 12.0% in the control group, resulting in a HR of 1.85 (95% CI, 1.11\u20133.07)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cluster_rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "Taiwan",
+   "sample_size": 520,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "in-house 82-layer convolutional neural network"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R108",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "NOAC prescription rate",
+     "effect": "The NOAC prescription rate was significantly higher in the intervention group (23.3%) compared to the control group (12.0%).",
+     "quote": "The non-vitamin K antagonist oral anticoagulant prescription rate was significantly higher in the intervention group (23.3% versus 12.0%; hazard ratio [HR], 1.85 [95% CI, 1.11-3.07])."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinician failure to act on AI alerts",
+     "effect": "Despite high model accuracy, the misdiagnosis rate among true AF cases remained high at 55.1% in the intervention group.",
+     "quote": "These findings suggest that physicians often did not act on the presence of AF, even when both a formal ECG report and an AI-ECG alert were available, highlighting the need for additional strategies to improve AF recognition and diagnosis."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "inappropriate NOAC prescriptions for false positives",
+     "effect": "Zero instances of off-label NOAC prescriptions were caused by potential AI errors among the 48 false positives.",
+     "quote": "As such, there were no instances of off-label NOAC prescription attributable to potential AI-ECG errors."
+    }
+   ],
+   "unlisted_practices": [
+    "setting AI alert thresholds for high positive predictive value to minimize alert fatigue",
+    "automatically excluding patients with clinical contraindications from AI alerts to reduce alert fatigue"
+   ]
+  }
+ },
+ "design": "cluster_rct",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Taiwan",
+ "sample_unit": "patients",
+ "sample_size": 520,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "82-layer convolutional neural network AI-ECG for atrial fibrillation detection",
+  "AI-ECG: 82-layer convolutional neural network for atrial fibrillation and atrial flutter detection",
+  "in-house 82-layer convolutional neural network"
+ ],
+ "links": [
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Inappropriate NOAC prescriptions following false-positive AI-ECG AF alerts",
+   "effect": "48 (intervention) and 35 (control) potential AI errors; only 1 intervention patient received NOAC, clinically justified by later AF; no off-label NOAC prescriptions attributable to AI errors.",
+   "quote": "As such, there were no instances of off\u2010label NOAC prescription attributable to potential AI\u2010ECG errors.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R108",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Mortality, ischemic stroke, and bleeding with AI alerts versus usual care",
+   "effect": "All-cause death: HR, 0.72 [95% CI, 0.50\u20131.04]; no significant ischemic stroke or cardiovascular death differences. Post hoc gastrointestinal bleeding: 2.5% versus 6.9%; HR, 0.35 [95% CI, 0.15\u20130.85].",
+   "quote": "Regarding secondary end points, the intervention group revealed a numerically lower, but not statistically significant, incidence of all\u2010cause death (HR, 0.72 [95% CI, 0.50\u20131.04]) compared with the control group (Figure 3A ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "clinician failure to act on AI alerts",
+   "effect": "Despite high model accuracy, the misdiagnosis rate among true AF cases remained high at 55.1% in the intervention group.",
+   "quote": "These findings suggest that physicians often did not act on the presence of AF, even when both a formal ECG report and an AI-ECG alert were available, highlighting the need for additional strategies to improve AF recognition and diagnosis.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R505",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "automatically excluding patients with clinical contraindications from AI alerts to reduce alert fatigue",
+  "setting AI alert thresholds for high positive predictive value to minimize alert fatigue"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:40611485",
+ "screen": {
+  "id": "pmid:40611485",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "AI-ECG alerts to noncardiologist physicians vs usual care",
+  "user": "clinician_or_staff",
+  "reason": "This is a pragmatic cluster randomized controlled trial testing the real-world deployment and clinical impact of AI-ECG alerts sent to noncardiologists compared to usual care.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "clinical decision support alerting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40611485",
+   "empirical": 0.97,
+   "tests_practice": 0.37,
+   "real_deployment": 0.96
+  }
+ }
+}

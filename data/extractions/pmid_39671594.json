@@ -1,0 +1,287 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 16481,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost",
+    "random forest",
+    "decision tree",
+    "logistic regression",
+    "correlation remover",
+    "exponentiated gradient",
+    "threshold optimizer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model F1-score and equalized odds across sex and racial subgroups",
+     "effect": "Naive XGBoost had overall F1 0.860 but eOR 0.619; F1 ranged from 0.907 in Black male patients to 0.824 in Asian female patients (95% CI 0.571-0.947).",
+     "quote": "In sex and racial subgroups, the \u201cbest\u201d na\u00efve model achieved the highest F 1 -score in Black male patients ( F 1 -score 0.907; 95% CI 0.859-0.947) and the lowest in Asian female patients ( F 1 -score 0.824; 95% CI 0.571-0.947; Figure 1 )."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Equalized odds ratio and overall accuracy/F1 after applying bias mitigation techniques",
+     "effect": "All 3 mitigation techniques raised eOR from 0.619 (correlation remover 0.750, threshold optimizer 0.750, exponentiated gradient 0.667) with F1 0.861 vs 0.860 for correlation remover; residual unfairness remained and some subgroups decreased.",
+     "quote": "We found that all techniques improved the eOR, with the largest improvements observed after applying correlation remover and threshold optimizer; application of these techniques resulted in an equivalent eOR of 0.750 ( Table 4 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing multiple algorithmic unfairness mitigation techniques (preprocessing, in-processing, postprocessing) to select the fairest model"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 16481,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost",
+    "random forest",
+    "decision tree",
+    "logistic regression",
+    "correlation remover mitigated model",
+    "exponentiated gradient mitigated model",
+    "threshold optimizer mitigated model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate model F1-score",
+     "effect": "XGBoost F1-score 0.860; logistic regression 0.852; random forest 0.832; decision tree 0.719.",
+     "quote": "The \u201cbest\u201d na\u00efve model based on F 1 -score was XGBoost ( F 1 -score 0.860; 95% CI 0.8490.869)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup F1-score and fairness",
+     "effect": "Naive XGBoost aggregate F1-score 0.860 and eOR 0.619; subgroup F1-score ranged from 0.907 in Black male patients to 0.824 in Asian female patients.",
+     "quote": "In sex and racial subgroups, the \u201cbest\u201d na\u00efve model achieved the highest F 1 -score in Black male patients ( F 1 -score 0.907; 95% CI 0.859-0.947) and the lowest in Asian female patients ( F 1 -score 0.824; 95% CI 0.571-0.947; Figure 1 )."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Equalized odds ratio after mitigation",
+     "effect": "Naive eOR 0.619; correlation remover eOR 0.750, F1-score 0.861; exponentiated gradient eOR 0.667, F1-score 0.861; threshold optimizer eOR 0.750, F1-score 0.847.",
+     "quote": "We found that all techniques improved the eOR, with the largest improvements observed after applying correlation remover and threshold optimizer; application of these techniques resulted in an equivalent eOR of 0.750 ( Table 4 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 16481,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost",
+    "Random forest",
+    "Decision tree",
+    "Logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness and overall model accuracy after mitigation",
+     "effect": "Correlation remover increased eOR from 0.619 to 0.750 with F1-score 0.861 and accuracy 0.766 compared to naive eOR 0.619, F1-score 0.860, and accuracy 0.765.",
+     "quote": "We then compared and used algorithm unfairness mitigation techniques in the 3 different phases of model development and found that all techniques improved model fairness, with negligible impact on overall classifier accuracy."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "algorithmic fairness across sex and racial subgroups",
+     "effect": "The best naive model had an equalized odds ratio of 0.619, with F1-scores ranging from 0.824 in Asian female to 0.907 in Black male patients.",
+     "quote": "The ML model predicting survival after radical cystectomy exhibited bias across sex and racial subgroups."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 16481,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Decision tree",
+  "Logistic regression",
+  "Random forest",
+  "XGBoost",
+  "correlation remover",
+  "correlation remover mitigated model",
+  "decision tree",
+  "exponentiated gradient",
+  "exponentiated gradient mitigated model",
+  "logistic regression",
+  "random forest",
+  "threshold optimizer",
+  "threshold optimizer mitigated model"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model F1-score and equalized odds across sex and racial subgroups",
+   "effect": "Naive XGBoost had overall F1 0.860 but eOR 0.619; F1 ranged from 0.907 in Black male patients to 0.824 in Asian female patients (95% CI 0.571-0.947).",
+   "quote": "In sex and racial subgroups, the \u201cbest\u201d na\u00efve model achieved the highest F 1 -score in Black male patients ( F 1 -score 0.907; 95% CI 0.859-0.947) and the lowest in Asian female patients ( F 1 -score 0.824; 95% CI 0.571-0.947; Figure 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Equalized odds ratio and overall accuracy/F1 after applying bias mitigation techniques",
+   "effect": "All 3 mitigation techniques raised eOR from 0.619 (correlation remover 0.750, threshold optimizer 0.750, exponentiated gradient 0.667) with F1 0.861 vs 0.860 for correlation remover; residual unfairness remained and some subgroups decreased.",
+   "quote": "We found that all techniques improved the eOR, with the largest improvements observed after applying correlation remover and threshold optimizer; application of these techniques resulted in an equivalent eOR of 0.750 ( Table 4 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing multiple algorithmic unfairness mitigation techniques (preprocessing, in-processing, postprocessing) to select the fairest model"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39671594",
+ "screen": {
+  "id": "pmid:39671594",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "algorithmic unfairness mitigation (bias evaluation and mitigation techniques)",
+  "user": "none",
+  "reason": "Evaluates fairness mitigation techniques (such as correlation remover) to correct demographic bias across sex and racial subgroups in predictive survival models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "algorithmic unfairness mitigation techniques"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39671594",
+   "empirical": 0.96,
+   "tests_practice": 0.14,
+   "real_deployment": 0.16
+  }
+ }
+}

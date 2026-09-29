@@ -1,0 +1,88 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Italy",
+ "sample_size": 174,
+ "sample_unit": "Italian free-text radiology reports (CT staging of lymphoma)",
+ "models_evaluated": [
+  "IT5 (220M, fine-tuned, ex-post combination)",
+  "GPT-3.5"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Italian"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Information extraction performance of fine-tuned IT5 versus GPT-3.5 on same reports",
+   "effect": "Fine-tuned IT5 with batch splitting and ex-post combination performed on par with GPT-3.5 across item types; GPT-3.5 was better at plausible human-like free-text statements.",
+   "quote": "The combination of fine-tuning and batch splitting allows IT5 ex-post combination to achieve notable results in terms of information extraction of different types of structured data, performing on par with GPT-3.5.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R176",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Whether models withhold answers when an answer is not supposed to be given",
+   "effect": "GPT-3.5 systematically provided answers even when not supposed to be given; IT5 was reported able to discern when an answer is supposed to be given or not.",
+   "quote": "The latter is better at generating plausible human-like statements, even if it systematically provides answers even when they are not supposed to be given.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using a small fine-tuned domain-specific transformer instead of a general LLM for structured report extraction",
+  "Batch-truncation and ex-post combination strategies to handle context length limits"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:38964194",
+ "screen": {
+  "id": "pmid:38964194",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates generative language models (IT5 and GPT-3.5) for retrospective information extraction and structured report generation from radiology notes without evaluating an operational deployment practice or guardrail.",
+  "jev": {
+   "id": "pmid:38964194",
+   "empirical": 0.97,
+   "tests_practice": 0.06,
+   "real_deployment": 0.05
+  }
+ }
+}

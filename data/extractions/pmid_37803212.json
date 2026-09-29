@@ -1,0 +1,246 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "random forest",
+    "linear model (nomogram)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy with double-threshold uncertainty-aware predictions versus single threshold",
+     "effect": "Traditional thresholding produced an accuracy of 84.5%, while the double threshold approach yielded 92.2% accuracy on the 80.7% of patients with the highest confidence predictions.",
+     "quote": "Traditional thresholding produced an accuracy of 84.5%, while the double threshold approach yielded 92.2% accuracy on the 80.7% of patients with the highest confidence predictions."
+    }
+   ],
+   "unlisted_practices": [
+    "Double-threshold mechanism to abstain from low-confidence predictions",
+    "Nomogram from linear model for explainability"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "combined random forest",
+    "radiomic-feature random forest",
+    "clinical-feature random forest",
+    "linear model/nomogram"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Simpler model discrimination",
+     "effect": "Linear model AUC 0.916 was comparable despite lower complexity; combined RF AUC 0.925 reported.",
+     "quote": "The linear model had a comparable AUC (0.916), despite its lower complexity."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "High-confidence thresholding accuracy",
+     "effect": "Traditional thresholding accuracy 84.5%; double threshold accuracy 92.2% on 80.7% highest-confidence patients.",
+     "quote": "Traditional thresholding produced an accuracy of 84.5%, while the double threshold approach yielded 92.2% accuracy on the 80.7% of patients with the highest confidence predictions."
+    }
+   ],
+   "unlisted_practices": [
+    "Including radiomic features with clinical or tumor-location features to predict BRAF status"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Random forest",
+    "Linear model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Double threshold mechanism to account for uncertainty by outputting predictions only for high-confidence cases (selective classification/abstention)"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "patients",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Linear model",
+  "Random forest",
+  "clinical-feature random forest",
+  "combined random forest",
+  "linear model (nomogram)",
+  "linear model/nomogram",
+  "radiomic-feature random forest",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy with double-threshold uncertainty-aware predictions versus single threshold",
+   "effect": "Traditional thresholding produced an accuracy of 84.5%, while the double threshold approach yielded 92.2% accuracy on the 80.7% of patients with the highest confidence predictions.",
+   "quote": "Traditional thresholding produced an accuracy of 84.5%, while the double threshold approach yielded 92.2% accuracy on the 80.7% of patients with the highest confidence predictions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Simpler model discrimination",
+   "effect": "Linear model AUC 0.916 was comparable despite lower complexity; combined RF AUC 0.925 reported.",
+   "quote": "The linear model had a comparable AUC (0.916), despite its lower complexity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "High-confidence thresholding accuracy",
+   "effect": "Traditional thresholding accuracy 84.5%; double threshold accuracy 92.2% on 80.7% highest-confidence patients.",
+   "quote": "Traditional thresholding produced an accuracy of 84.5%, while the double threshold approach yielded 92.2% accuracy on the 80.7% of patients with the highest confidence predictions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Double threshold mechanism to account for uncertainty by outputting predictions only for high-confidence cases (selective classification/abstention)",
+  "Double-threshold mechanism to abstain from low-confidence predictions",
+  "Including radiomic features with clinical or tumor-location features to predict BRAF status",
+  "Nomogram from linear model for explainability"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37803212",
+ "screen": {
+  "id": "pmid:37803212",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "uncertainty thresholding (double threshold mechanism / deferral)",
+  "user": "none",
+  "reason": "The study develops and tests a machine learning model on radiomics/clinical features to classify BRAF status in pediatric low-grade glioma, and specifically evaluates a deployment practice (a double-threshold uncertainty mechanism that defers low-confidence predictions to improve accuracy on high-confidence cases).",
+  "jev": {
+   "id": "pmid:37803212",
+   "empirical": 0.95,
+   "tests_practice": 0.83,
+   "real_deployment": 0.06
+  }
+ }
+}

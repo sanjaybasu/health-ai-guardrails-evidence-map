@@ -1,0 +1,118 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 18714,
+ "sample_unit": "MIMIC-IV-ED vignettes (374,275 evaluations)",
+ "models_evaluated": [
+  "Gemini-3-Flash",
+  "Nemotron-3-Super",
+  "DeepSeek-V3.1",
+  "Mistral-Small-3.2",
+  "GPT-4.1-Nano"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R322",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Change in ESI assignment under gender-swapped counterfactual vignettes (flip rate, F/M undertriage ratio)",
+   "effect": "All five models exceeded the pre-registered 5% flip threshold (9.9% to 43.8%); DeepSeek F/M 2.15:1 and Gemini 1.34:1 directional female undertriage.",
+   "quote": "All five models produced flip rates above a pre-registered 5% threshold (9.9% to 43.8%).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Subgroup-specific bias hidden from aggregate performance in LLM triage",
+   "effect": "DeepSeek's directional bias coexisted with a low outcome-linked calibration gap (0.013), showing group calibration can mask counterfactual non-invariance.",
+   "quote": "DeepSeek's directional bias coexisted with a low outcome-linked calibration gap (0.013 against MIMIC-IV admission), a Chouldechova-style dissociation between within-group calibration and between-pair counterfactual invariance.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Effect of demographic blinding on flip rate and directional bias",
+   "effect": "Blinding reduced Gemini's flip rate to 0.5%; age-preserving blind variant left DeepSeek with residual F/M 1.25, so effectiveness was model-dependent.",
+   "quote": "Demographic blinding reduced Gemini's flip rate to 0.5%; an age-preserving blind variant left DeepSeek with residual F/M 1.25, implicating age as a residual channel.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "outcome": "Accuracy of ESI assignment under chain-of-thought prompting versus other prompt strategies",
+   "effect": "Chain-of-thought prompting degraded accuracy for all five models.",
+   "quote": "Chain-of-thought prompting degraded accuracy for all five models.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Demographic blinding of model inputs to reduce gender bias",
+  "Per-model counterfactual auditing before clinical deployment",
+  "Chain-of-thought prompting as accuracy intervention"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2605.03998",
+ "screen": {
+  "id": "arxiv:2605.03998",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "demographic blinding and prompt strategies",
+  "user": "none",
+  "reason": "The study conducts a fairness audit of LLMs on emergency department triage vignettes, specifically testing deployment mitigation practices such as demographic blinding and prompting strategies (e.g., chain-of-thought) to assess their impact on gender bias and accuracy.",
+  "jev": {
+   "id": "arxiv:2605.03998",
+   "empirical": 0.97,
+   "tests_practice": 0.88,
+   "real_deployment": 0.03
+  }
+ }
+}

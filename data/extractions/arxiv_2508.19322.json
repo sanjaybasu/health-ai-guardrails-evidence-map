@@ -1,0 +1,101 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "agentic",
+  "imaging_diagnostic",
+  "generative_llm",
+  "multimodal_foundation"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "chest X-ray images (balanced subset of NIH ChestX-ray14, five-fold)",
+ "models_evaluated": [
+  "AT-CXR rule-based router",
+  "AT-CXR LLM-decided router",
+  "zero-shot vision-language models",
+  "supervised classifiers"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Selective-prediction performance (AURC, error at high coverage) of an agent that abstains on uncertain cases for human review",
+   "effect": "Both AT-CXR routers achieved lower AURC and lower error at high coverage than zero-shot VLMs and supervised classifiers, with higher full-coverage accuracy. No numeric values in the text.",
+   "quote": "Across five-fold evaluation on a balanced subset of NIH ChestX-ray14 dataset, both variants outperform strong zero-shot vision-language models and state-of-the-art supervised classifiers, achieving higher full-coverage accuracy and superior selective-prediction performance, evidenced by a lower area under the risk-coverage curve (AURC) and a lower error rate at high coverage, while operating with lower latency that meets practical clinical constraints.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether the agent defers or abstains appropriately on uncertain cases, measured by risk-coverage tradeoffs",
+   "effect": "Uncertainty-aware abstention policy gave lower risk-coverage AUC and lower error at high coverage than baselines. Two routers offer throughput-focused or accuracy-focused operating points. No numeric values in the text.",
+   "quote": "The two routers provide complementary operating points, enabling deployments to prioritize maximal throughput or maximal accuracy.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Uncertainty and distributional-fit estimation to drive abstention in imaging triage",
+  "Rule-based versus LLM-decided routing for deferral decisions"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2508.19322",
+ "screen": {
+  "id": "arxiv:2508.19322",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "agentic",
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates selective classification / triage routing (automated decision vs deferral/abstention for human review) based on confidence/uncertainty estimation using a benchmark dataset.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "uncertainty-aware selective prediction and human deferral routing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2508.19322",
+   "empirical": 0.95,
+   "tests_practice": 0.3,
+   "real_deployment": 0.04
+  }
+ }
+}

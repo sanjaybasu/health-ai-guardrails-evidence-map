@@ -1,0 +1,298 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 20,
+   "sample_unit": "speakers (each reading 4 standardized medical texts)",
+   "models_evaluated": [
+    "Whisper",
+    "WhisperX",
+    "WhisperX-GPT (GPT-4o post-processing)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English (native and non-native accents)"
+   ],
+   "links": [
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ASR transcription error (WER) for native vs non-native English accented speech",
+     "effect": "Non-native speakers had higher WER across all models; Whisper disparity \u03b2 = 11.0 (95% CI 1.0\u201321.0, p = 0.031); WhisperX \u03b2 = 3.4 (p = 0.07).",
+     "quote": "The greatest disparity was observed in Whisper ( \u03b2 = 11.0, 95% CI [1.0, 21.0], p = 0.031), while WhisperX showed a smaller, marginally significant difference ( \u03b2 = 3.4, p = 0.07)."
+    },
+    {
+     "rec_id": "R270",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Speech transcription error rates stratified by speaker language background (native vs non-native)",
+     "effect": "Language-stratified analysis showed higher WER for non-native speakers across Whisper, WhisperX and WhisperX-GPT; disparity largest for Whisper (\u03b2 = 11.0).",
+     "quote": "Across all three ASR systems (Whisper, WhisperX, and WhisperX-GPT) non-native speakers consistently demonstrated higher WER, with the effect size varying by model."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM (GPT-4o) post-processing correction of ASR transcripts to reduce accent-related errors"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United States",
+   "sample_size": 20,
+   "sample_unit": "individuals",
+   "models_evaluated": [
+    "Whisper",
+    "WhisperX",
+    "GPT-4o",
+    "WhisperX-GPT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "WER by native versus non-native accent",
+     "effect": "Whisper: \u03b2 = 11.0, 95% CI [1.0, 21.0], p = 0.031; WhisperX: \u03b2 = 3.4, p = 0.07 higher WER for non-native speakers.",
+     "quote": "The greatest disparity was observed in Whisper ( \u03b2 = 11.0, 95% CI [1.0, 21.0], p = 0.031), while WhisperX showed a smaller, marginally significant difference ( \u03b2 = 3.4, p = 0.07)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup transcription performance gap",
+     "effect": "Non-native speakers consistently had higher WER; effect sizes varied by model, with Whisper \u03b2 = 11.0 and WhisperX \u03b2 = 3.4.",
+     "quote": "Across all three ASR systems (Whisper, WhisperX, and WhisperX-GPT) non-native speakers consistently demonstrated higher WER, with the effect size varying by model."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "bias mitigation with LLM correction",
+     "effect": "GPT-4o correction attenuated the non-native penalty to 1.7 percentage points (p = 0.057); WER reductions ranged 4.52 to 6.89 (p < 0.001).",
+     "quote": "Notably, applying GPT-4o correction to WhisperX output reduced the mean WER overall and attenuated the non-native penalty to 1.7 percentage points ( p = 0.057), effectively eliminating speaker-level variability."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 20,
+   "sample_unit": "individuals",
+   "models_evaluated": [
+    "Whisper",
+    "WhisperX",
+    "GPT-4o",
+    "WhisperX-GPT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transcription word error rate by speaker accent",
+     "effect": "Disparity in WER was greatest in Whisper (\u03b2=11.0, 95% CI [1.0, 21.0], p=0.031), with a smaller, marginally significant difference in WhisperX (\u03b2=3.4, p=0.07).",
+     "quote": "The greatest disparity was observed in Whisper ( \u03b2 = 11.0, 95% CI [1.0, 21.0], p = 0.031), while WhisperX showed a smaller, marginally significant difference ( \u03b2 = 3.4, p = 0.07)."
+    }
+   ],
+   "unlisted_practices": [
+    "Large language model post-processing error correction for automatic speech recognition transcripts"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "individuals",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "English (native and non-native accents)"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "Whisper",
+  "WhisperX",
+  "WhisperX-GPT",
+  "WhisperX-GPT (GPT-4o post-processing)"
+ ],
+ "links": [
+  {
+   "rec_id": "R272",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "ASR transcription error (WER) for native vs non-native English accented speech",
+   "effect": "Non-native speakers had higher WER across all models; Whisper disparity \u03b2 = 11.0 (95% CI 1.0\u201321.0, p = 0.031); WhisperX \u03b2 = 3.4 (p = 0.07).",
+   "quote": "The greatest disparity was observed in Whisper ( \u03b2 = 11.0, 95% CI [1.0, 21.0], p = 0.031), while WhisperX showed a smaller, marginally significant difference ( \u03b2 = 3.4, p = 0.07).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R270",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Speech transcription error rates stratified by speaker language background (native vs non-native)",
+   "effect": "Language-stratified analysis showed higher WER for non-native speakers across Whisper, WhisperX and WhisperX-GPT; disparity largest for Whisper (\u03b2 = 11.0).",
+   "quote": "Across all three ASR systems (Whisper, WhisperX, and WhisperX-GPT) non-native speakers consistently demonstrated higher WER, with the effect size varying by model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "subgroup transcription performance gap",
+   "effect": "Non-native speakers consistently had higher WER; effect sizes varied by model, with Whisper \u03b2 = 11.0 and WhisperX \u03b2 = 3.4.",
+   "quote": "Across all three ASR systems (Whisper, WhisperX, and WhisperX-GPT) non-native speakers consistently demonstrated higher WER, with the effect size varying by model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "bias mitigation with LLM correction",
+   "effect": "GPT-4o correction attenuated the non-native penalty to 1.7 percentage points (p = 0.057); WER reductions ranged 4.52 to 6.89 (p < 0.001).",
+   "quote": "Notably, applying GPT-4o correction to WhisperX output reduced the mean WER overall and attenuated the non-native penalty to 1.7 percentage points ( p = 0.057), effectively eliminating speaker-level variability.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "LLM (GPT-4o) post-processing correction of ASR transcripts to reduce accent-related errors",
+  "Large language model post-processing error correction for automatic speech recognition transcripts"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41772044",
+ "screen": {
+  "id": "pmid:41772044",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM post-processing of speech transcripts to correct accent-related errors",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests an LLM post-processing safeguard/remedy to mitigate accent-related disparities and transcription errors from automatic speech recognition models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "LLM post-processing correction of transcription errors"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41772044",
+   "empirical": 0.88,
+   "tests_practice": 0.49,
+   "real_deployment": 0.12
+  }
+ }
+}

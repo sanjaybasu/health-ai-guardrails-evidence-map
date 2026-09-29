@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "multimodal_foundation",
+  "imaging_diagnostic"
+ ],
+ "country": "China",
+ "sample_size": 80,
+ "sample_unit": "breast masses (patients)",
+ "models_evaluated": [
+  "GPT-4o",
+  "customized CNN"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Intra-model consistency (Fleiss kappa) of GPT-4o across repeated runs by input strategy",
+   "effect": "Image-only kappa 0.25 (95% CI 0.07-0.43, fair); image-plus-text kappa 0.81 (95% CI 0.67-0.91, excellent).",
+   "quote": "GPT-4o with image-strategy exhibited a fair consistency [0.25, 95% confidence interval (CI): 0.07-0.43], whereas the agreement of image-combined-text-strategy was excellent (0.81, 95% CI: 0.67-0.91).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Diagnostic accuracy of GPT-4o versus radiologists and a CNN on the same breast ultrasound cases",
+   "effect": "GPT-4o image-only 58% vs image+text 70% (P=0.031); image+text similar to moderately experienced radiologists 71% (P=0.450) and CNN 74% (P=0.701).",
+   "quote": "Diagnostic accuracy improved when deploying the image-combined-text-strategy compared to only image [58% (46 of 80) <i>vs.</i> 70% (56 of 80), P=0.031], which resembled board-certified moderately experienced radiologists (70% [56 of 80] <i>vs.</i> 71% [57 of 80], P=0.450) and customized CNN [70% (56 of 80) <i>vs.</i> 74% (59 of 80), P=0.701].",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Combining images with original report text as input to a multimodal LLM to improve diagnostic accuracy"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41081240",
+ "screen": {
+  "id": "pmid:41081240",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "generative_llm",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Retrospective multicenter benchmark comparing GPT-4o (image vs image-plus-text input strategy) against CNNs and 95 radiologists for breast ultrasound mass classification. It evaluates model accuracy under different input prompts/strategies rather than an organizational deployment safeguard.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41081240",
+   "empirical": 0.97,
+   "tests_practice": 0.21,
+   "real_deployment": 0.06
+  }
+ }
+}

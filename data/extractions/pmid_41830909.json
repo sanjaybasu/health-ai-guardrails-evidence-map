@@ -1,0 +1,303 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China; United States (OAI)",
+   "sample_size": 345,
+   "sample_unit": "knee radiographs (external held-out test)",
+   "models_evaluated": [
+    "KL-FuseNet (ConvNeXt-Base + ResNet-50)",
+    "Flat5C-ConvNeXt",
+    "Flat5C-NFNetF4",
+    "DualHead-4C"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External test accuracy/QWK before vs after fine-tuning on local site data",
+     "effect": "Zero-shot accuracy 0.661, QWK 0.907; after fine-tuning accuracy 0.800, QWK 0.950, macro-F1 0.634 to 0.783, MAE 0.348 to 0.206.",
+     "quote": "After fine\u2010tuning on the external training/validation partitions ( n = 1606 + 344), the same held\u2010out test ( n = 345) achieved QWK 0.950 (0.903\u20130.960), accuracy 0.800 (0.708\u20130.831), macro\u2010F1 0.783 (0.712\u20130.811), and MAE 0.206 (0.172\u20130.306); multiclass ROC AUC rose to 0.946 and KL\u22652 ROC AUC rose to 0.984 (Figure 6C )."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop when model applied to new institution/scanner/population without adaptation",
+     "effect": "Zero-shot external held-out accuracy 0.661 vs internal 0.703; macro-F1 0.634 vs 0.724; authors describe a 10.7-point macro-F1 domain gap.",
+     "quote": "Zero\u2010shot performance (QWK 0.907, accuracy 0.661, macro\u2010F1 0.634) on the external held\u2010out test revealed a meaningful domain gap: the 10.7\u2010point macro\u2010F1 drop relative to internal validation mirrors cross\u2010site degradation patterns documented in pneumonia detection [ 15 ] and other radiographic tasks [ 20 ]."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across sites and scanners",
+     "effect": "Internal OAI accuracy 0.703 vs external zero-shot held-out 0.661 and macro-F1 0.724 vs 0.634 on a different scanner and site.",
+     "quote": "On the held\u2010out 15% external test partition ( n = 345), zero\u2010shot performance was QWK 0.907 (95% CI 0.869\u20130.915), accuracy 0.661 (0.605\u20130.693), macro\u2010F1 0.634 (0.598\u20130.692), and MAE 0.348 (0.314\u20130.402); multiclass ROC AUC was 0.895 and KL\u22652 ROC AUC 0.981 (Figure 5D \u2212 F )."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Leakage-free patient-wise split and external validation of performance",
+     "effect": "Strict patient-wise splits with zero overlap and test set unused for tuning; external data from a different scanner showed lower zero-shot accuracy (66.1% vs 70.3%).",
+     "quote": "All hyperparameter decisions (architecture choice, loss weights, augmentation settings, early stopping/model selection, and TTA) were made using training/validation only; the held\u2010out test sets were not used for any tuning or selection decisions."
+    }
+   ],
+   "unlisted_practices": [
+    "patient-wise data splitting to prevent bilateral leakage",
+    "multitask ordinal/label-distribution architecture for grading"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China (external cohort); OAI public dataset (country not stated)",
+   "sample_size": 10555,
+   "sample_unit": "knee radiographs/images",
+   "models_evaluated": [
+    "KL-FuseNet",
+    "Flat5C-ConvNeXt",
+    "Flat5C-NFNetF4",
+    "DualHead-4C"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-site and scanner generalization",
+     "effect": "External zero-shot held-out test: QWK 0.907, accuracy 0.661, macro-F1 0.634; 10.7-point macro-F1 drop versus internal validation.",
+     "quote": "Zero\u2010shot performance (QWK 0.907, accuracy 0.661, macro\u2010F1 0.634) on the external held\u2010out test revealed a meaningful domain gap: the 10.7\u2010point macro\u2010F1 drop relative to internal validation mirrors cross\u2010site degradation patterns documented in pneumonia detection [ 15 ] and other radiographic tasks [ 20 ]."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "institution-specific fine-tuning",
+     "effect": "Selective fine-tuning raised external held-out accuracy from 66.1% to 80.0%, QWK to 0.950, and KL\u22652 AUC to 0.984.",
+     "quote": "While external zero-shot deployment revealed a domain gap, with accuracy dropping to 66.1%, our selective fine-tuning protocol significantly bridged this divide, boosting external accuracy to 80.0% and QWK to 0.950, with an AUC of 0.984 for clinically significant osteoarthritis (KL\u22652)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "comparison with baseline imaging models",
+     "effect": "Internal test: KL-FuseNet QWK 0.881, accuracy 0.703; Flat5C-ConvNeXt QWK 0.855, accuracy 0.679; Flat5C-NFNetF4 QWK 0.866, accuracy 0.691.",
+     "quote": "This outperformed the Flat5C\u2010ConvNeXt (QWK 0.855, accuracy 0.679, macro\u2010F1 0.701, MAE 0.332) and the higher\u2010capacity Flat5C\u2010NFNetF4 (QWK 0.866, accuracy 0.691, macro\u2010F1 0.735, MAE 0.318) while using lower resolution inputs (224 \u00d7 224 vs. 384 \u00d7 384 pixels) and fewer parameters."
+    }
+   ],
+   "unlisted_practices": [
+    "Multistream global-plus-patch architecture and ordinal/label-distribution/binary multitask heads for KL grading"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China, United States",
+   "sample_size": 10555,
+   "sample_unit": "radiographs",
+   "models_evaluated": [
+    "KL-FuseNet",
+    "Flat5C-ConvNeXt",
+    "Flat5C-NFNetF4",
+    "DualHead-4C"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External cohort grading accuracy and quadratic Cohen's kappa",
+     "effect": "Fine-tuning boosted external accuracy from 66.1% to 80.0%, QWK from 0.907 to 0.950, and KL\u22652 AUC to 0.984.",
+     "quote": "While external zero-shot deployment revealed a domain gap, with accuracy dropping to 66.1%, our selective fine-tuning protocol significantly bridged this divide, boosting external accuracy to 80.0% and QWK to 0.950, with an AUC of 0.984 for clinically significant osteoarthritis (KL\u22652)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China; United States (OAI)",
+ "sample_unit": "knee radiographs (external held-out test)",
+ "sample_size": 10555,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "DualHead-4C",
+  "Flat5C-ConvNeXt",
+  "Flat5C-NFNetF4",
+  "KL-FuseNet",
+  "KL-FuseNet (ConvNeXt-Base + ResNet-50)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External test accuracy/QWK before vs after fine-tuning on local site data",
+   "effect": "Zero-shot accuracy 0.661, QWK 0.907; after fine-tuning accuracy 0.800, QWK 0.950, macro-F1 0.634 to 0.783, MAE 0.348 to 0.206.",
+   "quote": "After fine\u2010tuning on the external training/validation partitions ( n = 1606 + 344), the same held\u2010out test ( n = 345) achieved QWK 0.950 (0.903\u20130.960), accuracy 0.800 (0.708\u20130.831), macro\u2010F1 0.783 (0.712\u20130.811), and MAE 0.206 (0.172\u20130.306); multiclass ROC AUC rose to 0.946 and KL\u22652 ROC AUC rose to 0.984 (Figure 6C ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across sites and scanners",
+   "effect": "Internal OAI accuracy 0.703 vs external zero-shot held-out 0.661 and macro-F1 0.724 vs 0.634 on a different scanner and site.",
+   "quote": "On the held\u2010out 15% external test partition ( n = 345), zero\u2010shot performance was QWK 0.907 (95% CI 0.869\u20130.915), accuracy 0.661 (0.605\u20130.693), macro\u2010F1 0.634 (0.598\u20130.692), and MAE 0.348 (0.314\u20130.402); multiclass ROC AUC was 0.895 and KL\u22652 ROC AUC 0.981 (Figure 5D \u2212 F ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drop when model applied to new institution/scanner/population without adaptation",
+   "effect": "Zero-shot external held-out accuracy 0.661 vs internal 0.703; macro-F1 0.634 vs 0.724; authors describe a 10.7-point macro-F1 domain gap.",
+   "quote": "Zero\u2010shot performance (QWK 0.907, accuracy 0.661, macro\u2010F1 0.634) on the external held\u2010out test revealed a meaningful domain gap: the 10.7\u2010point macro\u2010F1 drop relative to internal validation mirrors cross\u2010site degradation patterns documented in pneumonia detection [ 15 ] and other radiographic tasks [ 20 ].",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Multistream global-plus-patch architecture and ordinal/label-distribution/binary multitask heads for KL grading",
+  "multitask ordinal/label-distribution architecture for grading",
+  "patient-wise data splitting to prevent bilateral leakage"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41830909",
+ "screen": {
+  "id": "pmid:41830909",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning/recalibration before deployment at external site",
+  "user": "none",
+  "reason": "Pure model development and retrospective cross-institutional validation study testing fine-tuning methods for knee osteoarthritis grading, without testing an operational deployment practice, safety guardrail, workflow, or human use.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41830909",
+   "empirical": 0.96,
+   "tests_practice": 0.77,
+   "real_deployment": 0.06
+  }
+ }
+}

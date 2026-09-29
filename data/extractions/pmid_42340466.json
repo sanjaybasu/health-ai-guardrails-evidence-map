@@ -1,0 +1,290 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 1247,
+   "sample_unit": "subjects (255 non-AD, 281 MCI, 711 AD) from UK memory clinics",
+   "models_evaluated": [
+    "Volumetric MRI ML 'CN vs. AD' model",
+    "Volumetric MRI ML 'CN vs. MCI vs. AD' model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop of CN vs AD model on external real-world clinical dataset",
+     "effect": "Volume-normalized 'CN vs. AD' model BAC fell from 87.7% internally to 81.5% in SLaM-BRC due to misclassification of non-AD subjects with hippocampal atrophy.",
+     "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model performance across magnetic field strengths (1.5T vs 3.0T) and external site",
+     "effect": "87.1% of 93 subjects had the same class assignment at 1.5T vs 3.0T; CN vs MCI vs AD model BAC stayed similar (55.3% vs 54.6%).",
+     "quote": "Our 'CN vs. AD' model showed similar performance when tested at different magnetic fields (1.5T vs. 3.0T: 87.1% of 93 subjects had the same class assignment)."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing volume normalization to estimated total intracranial volume versus non-normalized volumes on generalizability"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 1247,
+   "sample_unit": "subjects",
+   "models_evaluated": [
+    "volume-normalized CN vs. AD model",
+    "non-normalized CN vs. MCI vs. AD model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external balanced accuracy",
+     "effect": "Volume-normalized CN vs. AD BAC decreased from 87.7% to 81.5% in SLaM-BRC, with non-AD hippocampal atrophy misclassifications.",
+     "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "real-world clinical dataset performance",
+     "effect": "Volume-normalized CN vs. AD BAC decreased from 87.7% to 81.5% in the UK SLaM-BRC cohort.",
+     "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "field-strength classification consistency",
+     "effect": "At 1.5T vs. 3.0T, 87.1% of 93 subjects had the same class assignment.",
+     "quote": "Our 'CN vs. AD' model showed similar performance when tested at different magnetic fields (1.5T vs. 3.0T: 87.1% of 93 subjects had the same class assignment)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalization to UK clinical context",
+     "effect": "Volume-normalized CN vs. AD BAC decreased from 87.7% to 81.5% when evaluated in SLaM-BRC.",
+     "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy."
+    }
+   ],
+   "unlisted_practices": [
+    "Normalizing MRI brain volumes to estimated total intracranial volume"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 1247,
+   "sample_unit": "subjects",
+   "models_evaluated": [
+    "CN vs. AD model",
+    "CN vs. MCI vs. AD model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "balanced accuracy in external real-world clinical dataset",
+     "effect": "Balanced accuracy decreased from 87.7% to 81.5% in the SLaM-BRC cohort due to misclassifications of non-AD subjects with hippocampal atrophy",
+     "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "subjects",
+ "sample_size": 1247,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CN vs. AD model",
+  "CN vs. MCI vs. AD model",
+  "Volumetric MRI ML 'CN vs. AD' model",
+  "Volumetric MRI ML 'CN vs. MCI vs. AD' model",
+  "non-normalized CN vs. MCI vs. AD model",
+  "volume-normalized CN vs. AD model"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drop of CN vs AD model on external real-world clinical dataset",
+   "effect": "Volume-normalized 'CN vs. AD' model BAC fell from 87.7% internally to 81.5% in SLaM-BRC due to misclassification of non-AD subjects with hippocampal atrophy.",
+   "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance across magnetic field strengths (1.5T vs 3.0T) and external site",
+   "effect": "87.1% of 93 subjects had the same class assignment at 1.5T vs 3.0T; CN vs MCI vs AD model BAC stayed similar (55.3% vs 54.6%).",
+   "quote": "Our 'CN vs. AD' model showed similar performance when tested at different magnetic fields (1.5T vs. 3.0T: 87.1% of 93 subjects had the same class assignment).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "real-world clinical dataset performance",
+   "effect": "Volume-normalized CN vs. AD BAC decreased from 87.7% to 81.5% in the UK SLaM-BRC cohort.",
+   "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "generalization to UK clinical context",
+   "effect": "Volume-normalized CN vs. AD BAC decreased from 87.7% to 81.5% when evaluated in SLaM-BRC.",
+   "quote": "The volume-normalized 'CN vs. AD' model (87.7% balanced accuracy [BAC]) led to decreased performance in the SLaM-BRC (81.5% BAC) due to misclassifications of non-AD subjects with evidence of hippocampal atrophy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing volume normalization to estimated total intracranial volume versus non-normalized volumes on generalizability",
+  "Normalizing MRI brain volumes to estimated total intracranial volume"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42340466",
+ "screen": {
+  "id": "pmid:42340466",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "external validation on local clinical data",
+  "user": "none",
+  "reason": "Evaluates the real-world generalizability and external validation of existing MRI machine learning models across clinical cohorts and evaluates the impact of scanner field strength and brain volume normalization.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "external validation across clinical cohorts and scanner variations"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42340466",
+   "empirical": 0.96,
+   "tests_practice": 0.17,
+   "real_deployment": 0.11
+  }
+ }
+}

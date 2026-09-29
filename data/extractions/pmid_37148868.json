@@ -1,0 +1,264 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands, USA, Belgium",
+   "sample_size": null,
+   "sample_unit": "ICU patients",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-dataset AUC with direct validation versus recalibration",
+     "effect": "Direct external validation showed partial generalizability with AUCs reaching 0.77; recalibration resulted in performances matching or exceeding internal validation (AUC 0.81).",
+     "quote": "However, recalibration resulted in performances matching or exceeding that of the internal validation."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across external ICU datasets",
+     "effect": "Direct external validation showed only partial generalizability (AUCs up to 0.77) versus 0.81 internally.",
+     "quote": "Direct external validation showed partial generalizability with AUCs reaching 0.77."
+    }
+   ],
+   "unlisted_practices": [
+    "patient matching of AF and no-AF patients for training",
+    "uncertainty calibration assessment (ECE/ESCE) of risk scores"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 3,
+   "sample_unit": "ICU datasets",
+   "models_evaluated": [
+    "CatBoost model using data 1.5-13.5 hours before AF occurrence",
+    "CatBoost model using data 6-18 hours before AF occurrence",
+    "CatBoost model using data 12-24 hours before AF occurrence"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External dataset generalizability",
+     "effect": "Direct external validation showed partial generalizability, with AUCs reaching 0.77.",
+     "quote": "Direct external validation showed partial generalizability with AUCs reaching 0.77."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Risk-score calibration",
+     "effect": "All models showed calibration capabilities demonstrating adequate risk prediction competence.",
+     "quote": "All models furthermore showed calibration capabilities demonstrating adequate risk prediction competence."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Recalibration on external datasets",
+     "effect": "Recalibration resulted in performances matching or exceeding internal validation.",
+     "quote": "However, recalibration resulted in performances matching or exceeding that of the internal validation."
+    }
+   ],
+   "unlisted_practices": [
+    "Matching AF patients with no-AF patients for model training"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model discrimination after recalibration versus direct external validation",
+     "effect": "internal AUC reached 0.81, direct external validation reached 0.77, and recalibration matched or exceeded internal validation performance",
+     "quote": "However, recalibration resulted in performances matching or exceeding that of the internal validation."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Netherlands, USA, Belgium",
+ "sample_unit": "ICU patients",
+ "sample_size": 3,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CatBoost",
+  "CatBoost model using data 1.5-13.5 hours before AF occurrence",
+  "CatBoost model using data 12-24 hours before AF occurrence",
+  "CatBoost model using data 6-18 hours before AF occurrence"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External-dataset AUC with direct validation versus recalibration",
+   "effect": "Direct external validation showed partial generalizability with AUCs reaching 0.77; recalibration resulted in performances matching or exceeding internal validation (AUC 0.81).",
+   "quote": "However, recalibration resulted in performances matching or exceeding that of the internal validation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across external ICU datasets",
+   "effect": "Direct external validation showed only partial generalizability (AUCs up to 0.77) versus 0.81 internally.",
+   "quote": "Direct external validation showed partial generalizability with AUCs reaching 0.77.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External dataset generalizability",
+   "effect": "Direct external validation showed partial generalizability, with AUCs reaching 0.77.",
+   "quote": "Direct external validation showed partial generalizability with AUCs reaching 0.77.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Matching AF patients with no-AF patients for model training",
+  "patient matching of AF and no-AF patients for training",
+  "uncertainty calibration assessment (ECE/ESCE) of risk scores"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37148868",
+ "screen": {
+  "id": "pmid:37148868",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "external validation and recalibration",
+  "user": "none",
+  "reason": "Evaluates the impact of model recalibration versus direct application across multiple external independent ICU datasets for atrial fibrillation risk prediction.",
+  "jev": {
+   "id": "pmid:37148868",
+   "empirical": 0.96,
+   "tests_practice": 0.86,
+   "real_deployment": 0.05
+  }
+ }
+}

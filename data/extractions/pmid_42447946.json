@@ -1,0 +1,94 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 44500,
+ "sample_unit": "generation trajectories",
+ "models_evaluated": [
+  "Qwen3-8B",
+  "Llama-3.1-8B-Instruct",
+  "BioMistral-7B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Hallucination detection and flagging of generated medical answers under false-positive-rate caps",
+   "effect": "EDR@5 up to 0.390 (PubMedQA) and 0.352 (MedHallu) at strict cap \u03b3\u22640.10, rising to 0.587 with 29%-59% hallucination reduction at monitoring cap \u03b3\u22640.20.",
+   "quote": "The trigger fires roughly 10-35 tokens before error onset, whereas a post-hoc check has zero lead time by construction.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Automated real-time hidden-state probe detecting erroneous LLM outputs without human review, with latency",
+   "effect": "Probe gives viable detection across all backbone-dataset combinations, 29%-59% hallucination reduction at \u03b3\u22640.20, ~10ms latency per answer versus ~10s for multi-sample baselines.",
+   "quote": "Probe latency is \u223c10ms per answer versus \u223c10s for multi-sample baselines.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Token-level calibrated hidden-state probing with a false-positive-rate-constrained operating point for streaming hallucination intervention"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42447946",
+ "screen": {
+  "id": "pmid:42447946",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "real-time hallucination detection with FPR-constrained trigger calibration",
+  "user": "none",
+  "reason": "The study develops and evaluates an explicit real-time hallucination detection and intervention guardrail (hidden-state probe with FPR-constrained calibration) designed to safeguard medical LLM outputs during streaming generation across biomedical QA benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "real-time hallucination detection and intervention guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42447946",
+   "empirical": 0.92,
+   "tests_practice": 0.68,
+   "real_deployment": 0.06
+  }
+ }
+}

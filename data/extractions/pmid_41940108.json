@@ -1,0 +1,387 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Russia",
+   "sample_size": 180,
+   "sample_unit": "LLM-generated summaries of EHRs (30 patients, 6 summarizing LLMs)",
+   "models_evaluated": [
+    "Qwen3-32B",
+    "Llama-3.3-70B-Instruct",
+    "Gemma-3-12B-it",
+    "Llama3.1-8B",
+    "Gemma-2-27B-it",
+    "Llama-3.2-3B-Instruct",
+    "Granite 4.0 32b-a9b-h",
+    "gpt-oss-20b",
+    "T-Pro 2.0",
+    "Mistral-Small-3.1-24B-Instruct-2503",
+    "DeepSeek-R1-32B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Russian"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinations in LLM-generated EHR summaries rated by radiologist experts",
+     "effect": "Mean expert hallucination scores (0\u20131 scale, 1 = hallucination present) ranged 0.60\u20130.90 across the six summarizing models, indicating frequent hallucinated content.",
+     "quote": "Hallucinations 0.70 0.90 0.67 0.60 0.73 0.70"
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Agreement of LLM-as-a-Judge with expert reference standard for hallucination detection",
+     "effect": "Kendall's W for hallucination detection was 0.37\u20130.55 across judges and prompt configurations; authors conclude LLM judges are not advisable for detecting hallucinations in semantically difficult medical text.",
+     "quote": "Our results indicate that it is not advisable to use LLM-as-a-Judges to search for hallucinations in texts, especially when analyzing a semantically difficult medical text."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Consistency of LLM judge scores for the same summary across scale sizes and prompt granularities",
+     "effect": "The same summary got 3/4, 4/5, 6/7 and 4/10 completeness from Mistral; inconsistency more pronounced at larger scales; often three different scores across three prompt granularity variants.",
+     "quote": "When reviewing the responses of LLMs-as-a-Judges, periodic inconsistencies in scores assigned to the same summary across different scale granularities became apparent."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Disagreement among radiologist experts defining and grading summary quality",
+     "effect": "Experts disagreed on task requirements based on clinical profile, modality and institutional school; consensus of three experts used for ground truth.",
+     "quote": "However, even at the task formulation stage, we encountered disagreements among the experts."
+    }
+   ],
+   "unlisted_practices": [
+    "Tuning LLM-as-a-judge rating scale size and prompt granularity to maximize agreement with expert raters",
+    "Involving diverse end-user expert teams and a cognitive scientist to define evaluation criteria for LLM judges",
+    "Using language-specific fine-tuned judge models (T-Pro 2.0 outperformed base Qwen3-32B in Russian)"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Russia",
+   "sample_size": 180,
+   "sample_unit": "LLM-generated clinical summaries from 30 patient EHRs",
+   "models_evaluated": [
+    "Qwen3-32B",
+    "Llama-3.3-70B-Instruct",
+    "Gemma-3-12B-it",
+    "Llama3.1-8B",
+    "Gemma-2-27B-it",
+    "Llama-3.2-3B-Instruct",
+    "Granite 4.0 32b-a9b-h",
+    "gpt-oss: 20b",
+    "T-Pro 2.0",
+    "Mistral-Small-3.1-24B-Instruct-2503",
+    "deepseek-r1: 32b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Russian"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "automatic metric validity for medical summaries",
+     "effect": "ROUGE-1 0.29\u20130.38, BLEU 0.06\u20130.12, BERTScore 0.72\u20130.77; authors judged automated metrics poorly applicable.",
+     "quote": "The results presented in Table 4 indicate that automated metrics are poorly applicable to our task."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM-judge score stability across rating scales",
+     "effect": "Mistral scored the same summary\u2019s completeness 3/4, 4/5, 6/7, and 4/10 across scale sizes.",
+     "quote": "For example, the LLM-as-a-Judge Mistral evaluated the completeness of Summary \u211610 as follows: 3 out of 4 points, 4 out of 5 points, 6 out of 7 points, and 4 out of 10 points."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinically significant omissions in AI summaries",
+     "effect": "Expert Completeness averaged 3.26/5 while Grammar and Terminology averaged 4.4/5.",
+     "quote": "Therefore, in our experiment, experts rated the summarizations with relatively high scores according to the criterion of Grammar and Terminology (on average 4.4 out of 5) but with substantially lower scores according to the criterion of Completeness (on average 3.26 out of 5)."
+    },
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "LLM-as-judge hallucination detection",
+     "effect": "Kendall W for hallucination detection was 0.37\u20130.55 across models/prompt detail; authors advised against LLM-as-Judges for semantic hallucinations.",
+     "quote": "In general, all models showed rather low consistency with experts, which indicates the weak ability of LLM to detect semantic hallucinations in medical texts."
+    }
+   ],
+   "unlisted_practices": [
+    "Configuring LLM-as-a-judge rating scale size for clinical summary evaluation",
+    "Choosing prompt granularity for LLM-as-a-judge scoring",
+    "Using locally trained or local-language LLMs as judges for Russian clinical text"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Russia",
+   "sample_size": 180,
+   "sample_unit": "summaries",
+   "models_evaluated": [
+    "Qwen3-32B",
+    "Llama-3.3-70B-Instruct",
+    "Gemma-3-12B-it",
+    "Llama3.1-8B",
+    "Gemma-2-27B-it",
+    "Llama-3.2-3B-Instruct",
+    "Granite 4.0 32b-a9b-h",
+    "gpt-oss: 20b",
+    "T-Pro 2.0",
+    "Mistral-Small-3.1-24B-Instruct-2503",
+    "Deepseek-r1: 32b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Russian"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Completeness and hallucinations in LLM-generated clinical summaries",
+     "effect": "Experts rated LLM summaries lower on completeness (average 3.26 out of 5) and detected frequent hallucinations (model averages 0.60\u20130.90), despite high grammar and terminology scores (average 4.4 out of 5).",
+     "quote": "Therefore, in our experiment, experts rated the summarizations with relatively high scores according to the criterion of Grammar and Terminology (on average 4.4 out of 5) but with substantially lower scores according to the criterion of Completeness (on average 3.26 out of 5)."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM-as-a-judge for automated evaluation of clinical text summarization",
+    "Optimization of rating scale size and prompt granularity for LLM-as-a-judge evaluations"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Russia",
+ "sample_unit": "LLM-generated summaries of EHRs (30 patients, 6 summarizing LLMs)",
+ "sample_size": 180,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Russian"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1-32B",
+  "Deepseek-r1: 32b",
+  "Gemma-2-27B-it",
+  "Gemma-3-12B-it",
+  "Granite 4.0 32b-a9b-h",
+  "Llama-3.2-3B-Instruct",
+  "Llama-3.3-70B-Instruct",
+  "Llama3.1-8B",
+  "Mistral-Small-3.1-24B-Instruct-2503",
+  "Qwen3-32B",
+  "T-Pro 2.0",
+  "deepseek-r1: 32b",
+  "gpt-oss-20b",
+  "gpt-oss: 20b"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Consistency of LLM judge scores for the same summary across scale sizes and prompt granularities",
+   "effect": "The same summary got 3/4, 4/5, 6/7 and 4/10 completeness from Mistral; inconsistency more pronounced at larger scales; often three different scores across three prompt granularity variants.",
+   "quote": "When reviewing the responses of LLMs-as-a-Judges, periodic inconsistencies in scores assigned to the same summary across different scale granularities became apparent.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "clinically significant omissions in AI summaries",
+   "effect": "Expert Completeness averaged 3.26/5 while Grammar and Terminology averaged 4.4/5.",
+   "quote": "Therefore, in our experiment, experts rated the summarizations with relatively high scores according to the criterion of Grammar and Terminology (on average 4.4 out of 5) but with substantially lower scores according to the criterion of Completeness (on average 3.26 out of 5).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement of LLM-as-a-Judge with expert reference standard for hallucination detection",
+   "effect": "Kendall's W for hallucination detection was 0.37\u20130.55 across judges and prompt configurations; authors conclude LLM judges are not advisable for detecting hallucinations in semantically difficult medical text.",
+   "quote": "Our results indicate that it is not advisable to use LLM-as-a-Judges to search for hallucinations in texts, especially when analyzing a semantically difficult medical text.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "automatic metric validity for medical summaries",
+   "effect": "ROUGE-1 0.29\u20130.38, BLEU 0.06\u20130.12, BERTScore 0.72\u20130.77; authors judged automated metrics poorly applicable.",
+   "quote": "The results presented in Table 4 indicate that automated metrics are poorly applicable to our task.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM-as-judge hallucination detection",
+   "effect": "Kendall W for hallucination detection was 0.37\u20130.55 across models/prompt detail; authors advised against LLM-as-Judges for semantic hallucinations.",
+   "quote": "In general, all models showed rather low consistency with experts, which indicates the weak ability of LLM to detect semantic hallucinations in medical texts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Choosing prompt granularity for LLM-as-a-judge scoring",
+  "Configuring LLM-as-a-judge rating scale size for clinical summary evaluation",
+  "Involving diverse end-user expert teams and a cognitive scientist to define evaluation criteria for LLM judges",
+  "LLM-as-a-judge for automated evaluation of clinical text summarization",
+  "Optimization of rating scale size and prompt granularity for LLM-as-a-judge evaluations",
+  "Tuning LLM-as-a-judge rating scale size and prompt granularity to maximize agreement with expert raters",
+  "Using language-specific fine-tuned judge models (T-Pro 2.0 outperformed base Qwen3-32B in Russian)",
+  "Using locally trained or local-language LLMs as judges for Russian clinical text"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41940108",
+ "screen": {
+  "id": "pmid:41940108",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM-as-a-judge prompt configuration (scale size, criteria, prompt granularity) for evaluating summaries",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests the design and alignment of LLM-as-a-judge systems (evaluating prompt granularity, rating scales, and expert alignment) for automated safety/quality evaluation of clinical text summarization.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "LLM-as-a-judge automated evaluation / prompt and scale design for clinical validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41940108",
+   "empirical": 0.92,
+   "tests_practice": 0.16,
+   "real_deployment": 0.1
+  }
+ }
+}

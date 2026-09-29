@@ -1,0 +1,411 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 210,
+   "sample_unit": "Japanese individual case safety reports (ICSRs) translated to English and reviewed by experts",
+   "models_evaluated": [
+    "mt5-xl",
+    "mpt-7b-instruct",
+    "stablelm-japanese"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese",
+    "English",
+    "Spanish",
+    "French",
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "MISMATCH guardrail detection of hallucinated drug names in source vs generated text",
+     "effect": "All instances of hallucinated drug names (never event) were flagged in 20 sampled cases; misses occurred for dictionary incompleteness and drug spelling issues with multiple mentions.",
+     "quote": "As can be seen in Fig. 4 , all instances of the never event, \u201cspontaneously hallucinated drug names\u201d, were correctly identified by the MISMATCH guardrail."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether token-level entropy uncertainty signals correlate with human-rated errors",
+     "effect": "Significant differences found (e.g., clinical accuracy adj. p=0.0031), but higher entropy correlated with more accurate outputs, a counterintuitive direction; described as a 'useful, if subtle, signal'.",
+     "quote": "More clinically accurate, less incorrect drugs/AEs trended towards a higher uncertainty score, implying that entropy correlates negatively with the model\u2019s human evaluated performance."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Document-level uncertainty detecting non-ICSR/anomalous documents before LLM processing",
+     "effect": "AUROC of 0.80 discriminating extraneous documents from validation ICSRs; not completely separated, three counterexamples.",
+     "quote": "Although not completely separated, the separation of the validation and extraneous samples corresponds to an AUROC in the validation data of 0.80."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Expert-rated errors in LLM-generated English ICSR translations",
+     "effect": "LLM translations had errors in dates/times (60%), drug names (59%), AEs (66%), nonsensical phrases (62%); only 35% judged clinically accurate (Table 4: 73/210).",
+     "quote": "The results (Table 4 ) showed the LLM translation had errors in categories including dates/times (60% error rate), drug names (59% error rate), AEs (66% error rate), and 62% had nonsensical phrases, including grammatical errors."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automated MISMATCH check on outputs catching drug hallucinations without human review",
+     "effect": "MISMATCH hard guardrail flagged all hallucinated drug names in 20 cases; other drug error categories were not universally caught due to dictionary limits and misspellings.",
+     "quote": "Our findings reveal that strategic guardrail applications effectively mitigate the risk of \u201cnever event\u201d errors, with our MISMATCH guardrail successfully identifying every instance of hallucinated drug names in our translated texts from a carefully chosen case sample, although other drug error categories were not universally caught, such as wrong indications and due to dictionary limitations."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Base model suitability for Japanese ICSR translation without fine-tuning (perplexity)",
+     "effect": "Base models had perplexities of 2.72\u00d710^3 to 2.20\u00d710^7; only fine-tuned mt5-xl reached suitable perplexity (1.43) versus 113 and 131 for others.",
+     "quote": "These results indicate that none of the base models are suitable for translation \u201coff the shelf\u201d (Table 2 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Hard semantic guardrail that blocks/re-routes outputs when drug or adverse event terms mismatch between source and generated text using dictionaries (MedDRA)",
+    "Document-level embedding distance screening of anomalous input documents before LLM ingestion",
+    "Token-level entropy highlighting to direct human reviewer attention"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan; United States",
+   "sample_size": 210,
+   "sample_unit": "Japanese ICSR cases evaluated by experts",
+   "models_evaluated": [
+    "mt5-xl",
+    "mpt-7B instruct",
+    "Stablelm-Japanese"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese",
+    "English",
+    "Spanish",
+    "French",
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "anomalous input detection",
+     "effect": "DL-UQ compared 80 training/validation texts with 25 extraneous samples; validation versus extraneous AUROC was 0.80, with three counterexamples.",
+     "quote": "Although not completely separated, the separation of the validation and extraneous samples corresponds to an AUROC in the validation data of 0.80."
+    },
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hallucinated drug-name flagging",
+     "effect": "In 20 randomly selected cases, MISMATCH correctly identified all spontaneously hallucinated drug names; dictionary incompleteness and drug spelling issues still caused misses.",
+     "quote": "As can be seen in Fig. 4 , all instances of the never event, \u201cspontaneously hallucinated drug names\u201d, were correctly identified by the MISMATCH guardrail."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "uncertainty score calibration",
+     "effect": "Clinical accuracy differences: Yes vs. No adj. p-value 0.0031; Yes/No vs. No adj. p-value 0.043; wrong drug Yes/No vs. No adj. p-value 0.028, but higher entropy tracked more accurate outputs.",
+     "quote": "The observed trend of higher entropy scores correlating with more clinically accurate outputs and fewer incorrect drug mentions may be interpreted as counterintuitive."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM translation error rates",
+     "effect": "Human PV experts found LLM translation errors: dates/times 60%, drug names 59%, AEs 66%, and nonsensical phrases 62%.",
+     "quote": "The results (Table 4 ) showed the LLM translation had errors in categories including dates/times (60% error rate), drug names (59% error rate), AEs (66% error rate), and 62% had nonsensical phrases, including grammatical errors."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 210,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "mt5-xl",
+    "mpt-7b-instruct",
+    "stablelm-japanese"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC of document-level uncertainty quantification for detecting anomalous inputs",
+     "effect": "Separation of validation and extraneous anomalous samples corresponded to an AUROC of 0.80.",
+     "quote": "Although not completely separated, the separation of the validation and extraneous samples corresponds to an AUROC in the validation data of 0.80."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection rate of spontaneously hallucinated drug names by MISMATCH guardrail",
+     "effect": "All instances of spontaneously hallucinated drug names were correctly identified by the guardrail in 20 evaluated cases.",
+     "quote": "As can be seen in Fig. 4 , all instances of the never event, \u201cspontaneously hallucinated drug names\u201d, were correctly identified by the MISMATCH guardrail."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "correlation between token entropy uncertainty scores and clinical accuracy or errors",
+     "effect": "Entropy significantly differed for clinical accuracy (adj p=0.0031) and wrong drug mentions (adj p=0.028), with higher entropy in accurate cases.",
+     "quote": "Mann\u2013Whitney U tests (using a Bonferroni correction with n = 9 trials) revealed significant differences in in the \u201cclinical accuracy\u201d stratification (Yes vs. No, adj. p -value of 0.0031, Yes/No vs. No, adj. p-value of 0.043) and the \u201cwrong drug\u201d stratification (Yes/No vs. No, adj. p -value of 0.028)."
+    }
+   ],
+   "unlisted_practices": [
+    "Token-level uncertainty quantification using predictive entropy visualization to guide clinician review"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "Japanese individual case safety reports (ICSRs) translated to English and reviewed by experts",
+ "sample_size": 210,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "French",
+  "German",
+  "Japanese",
+  "Spanish"
+ ],
+ "models_evaluated": [
+  "Stablelm-Japanese",
+  "mpt-7B instruct",
+  "mpt-7b-instruct",
+  "mt5-xl",
+  "stablelm-japanese"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Whether token-level entropy uncertainty signals correlate with human-rated errors",
+   "effect": "Significant differences found (e.g., clinical accuracy adj. p=0.0031), but higher entropy correlated with more accurate outputs, a counterintuitive direction; described as a 'useful, if subtle, signal'.",
+   "quote": "More clinically accurate, less incorrect drugs/AEs trended towards a higher uncertainty score, implying that entropy correlates negatively with the model\u2019s human evaluated performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Document-level uncertainty detecting non-ICSR/anomalous documents before LLM processing",
+   "effect": "AUROC of 0.80 discriminating extraneous documents from validation ICSRs; not completely separated, three counterexamples.",
+   "quote": "Although not completely separated, the separation of the validation and extraneous samples corresponds to an AUROC in the validation data of 0.80.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Automated MISMATCH check on outputs catching drug hallucinations without human review",
+   "effect": "MISMATCH hard guardrail flagged all hallucinated drug names in 20 cases; other drug error categories were not universally caught due to dictionary limits and misspellings.",
+   "quote": "Our findings reveal that strategic guardrail applications effectively mitigate the risk of \u201cnever event\u201d errors, with our MISMATCH guardrail successfully identifying every instance of hallucinated drug names in our translated texts from a carefully chosen case sample, although other drug error categories were not universally caught, such as wrong indications and due to dictionary limitations.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "hallucinated drug-name flagging",
+   "effect": "In 20 randomly selected cases, MISMATCH correctly identified all spontaneously hallucinated drug names; dictionary incompleteness and drug spelling issues still caused misses.",
+   "quote": "As can be seen in Fig. 4 , all instances of the never event, \u201cspontaneously hallucinated drug names\u201d, were correctly identified by the MISMATCH guardrail.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM translation error rates",
+   "effect": "Human PV experts found LLM translation errors: dates/times 60%, drug names 59%, AEs 66%, and nonsensical phrases 62%.",
+   "quote": "The results (Table 4 ) showed the LLM translation had errors in categories including dates/times (60% error rate), drug names (59% error rate), AEs (66% error rate), and 62% had nonsensical phrases, including grammatical errors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "correlation between token entropy uncertainty scores and clinical accuracy or errors",
+   "effect": "Entropy significantly differed for clinical accuracy (adj p=0.0031) and wrong drug mentions (adj p=0.028), with higher entropy in accurate cases.",
+   "quote": "Mann\u2013Whitney U tests (using a Bonferroni correction with n = 9 trials) revealed significant differences in in the \u201cclinical accuracy\u201d stratification (Yes vs. No, adj. p -value of 0.0031, Yes/No vs. No, adj. p-value of 0.043) and the \u201cwrong drug\u201d stratification (Yes/No vs. No, adj. p -value of 0.028).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R487",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Document-level embedding distance screening of anomalous input documents before LLM ingestion",
+  "Hard semantic guardrail that blocks/re-routes outputs when drug or adverse event terms mismatch between source and generated text using dictionaries (MedDRA)",
+  "Token-level entropy highlighting to direct human reviewer attention",
+  "Token-level uncertainty quantification using predictive entropy visualization to guide clinician review"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40738919",
+ "screen": {
+  "id": "pmid:40738919",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "output guardrails (anomalous document detection, drug/adverse event term checks, uncertainty communication)",
+  "user": "clinician_or_staff",
+  "reason": "The authors develop and evaluate a specific suite of guardrails (anomaly detection, hallucination checks for drug names/adverse events, and uncertainty conveyance) applied to an LLM for pharmacovigilance data processing.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "guardrails suite for hallucination and error mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40738919",
+   "empirical": 0.77,
+   "tests_practice": 0.5,
+   "real_deployment": 0.15
+  }
+ }
+}

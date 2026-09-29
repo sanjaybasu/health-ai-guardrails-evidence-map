@@ -1,0 +1,391 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 809,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Croce post-traumatic VAP prediction model (logistic regression)",
+    "intercept-recalibrated Croce model",
+    "fully recalibrated Croce model",
+    "Croce model plus age",
+    "Ridge-penalized updated models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration of externally developed model on local historical data before and after recalibration",
+     "effect": "Original AUC 0.83, mean predicted risk 6.4% vs observed 10.6%, calibration slope 0.63; after full recalibration AUC 0.84, Brier 0.087, calibration improved.",
+     "quote": "After full model recalibration, discrimination (AUC 0.84, 95% CI 0.80-0.88) and calibration improved."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration and discrimination after local intercept and full recalibration of imported model",
+     "effect": "Intercept moved from -3.08 to 0.80, giving better calibration; full recalibration AUC 0.84 and Brier 0.089 to 0.087; adding age raised AUC to 0.87.",
+     "quote": "After intercept recalibration, the model\u2019s intercept increased from -3.08 in the Croce model to 0.80 in our cohort, showing better calibration (Fig. 2 B)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development and local cohorts and resulting miscalibration",
+     "effect": "Croce cohort had more penetrating trauma (23% vs 3%), younger patients (median 35 vs 51), more laparotomy (14% vs 3%); pneumonia incidence 5.6% vs 10.6%; calibration slope 0.63.",
+     "quote": "However, in Croce\u2019s cohort, the incidence of penetrating trauma was higher (23% vs. 3%), patients were younger (median 35 vs. 51 years), and relatively more patients underwent an emergent laparotomy (14% vs. 3%) compared to the Dutch cohort [ 6 ]."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance at a new external site relative to development",
+     "effect": "AUC fell from 0.97 at internal validation to 0.83 externally; predicted risk too low (6.4% vs 10.6%); calibration slope 0.63.",
+     "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of predictive model to a new population and outcome definition",
+     "effect": "Model developed for VAP in a US center underpredicted nosocomial pneumonia in a Dutch cohort; calibration slope 0.63.",
+     "quote": "The calibration slope was 0.63, suggesting some overfitting in the original study compared to our population."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Applicability of original risk cutoff to local population after recalibration",
+     "effect": "Original 0.5 cutoff not workable; few recalibrated predicted probabilities above 0.25.",
+     "quote": "A comparable cutoff is not yet reasonable for Dutch level-1 trauma patients when using the recalibrated or updated model."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 809,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Croce post-traumatic ventilator-associated pneumonia prediction model",
+    "intercept-recalibrated Croce model",
+    "fully recalibrated Croce model",
+    "Croce model without mechanism of injury",
+    "Croce model with age added",
+    "Ridge-penalized updated models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External validation performance",
+     "effect": "External validation showed AUC 0.83 (95% CI 0.79 \u2013 0.87), calibration slope 0.63, and underprediction: mean predicted risk 6.4% vs. 10.6% observed.",
+     "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination-calibration mismatch",
+     "effect": "Despite AUC 0.83 (95% CI 0.79 \u2013 0.87), calibration was poor: slope 0.63 and mean predicted risk 6.4% vs. 10.6% observed.",
+     "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local validation performance",
+     "effect": "On local Dutch historical data, AUC was 0.83 (95% CI 0.79 \u2013 0.87), calibration slope 0.63, and predicted risk 6.4% vs. 10.6% observed.",
+     "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Development-local population shift",
+     "effect": "Compared with Dutch cohort, Croce cohort had more penetrating trauma (23% vs. 3%), younger age (median 35 vs. 51), and more emergent laparotomy (14% vs. 3%).",
+     "quote": "However, in Croce\u2019s cohort, the incidence of penetrating trauma was higher (23% vs. 3%), patients were younger (median 35 vs. 51 years), and relatively more patients underwent an emergent laparotomy (14% vs. 3%) compared to the Dutch cohort [ 6 ]."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local recalibration performance",
+     "effect": "Full recalibration improved AUC to 0.84 (95% CI 0.80 \u2013 0.88) with better calibration; Brier\u2019s statistic improved to 0.087.",
+     "quote": "The first model recalibration slightly improved the discriminatory capacity (AUC 0.84, 95% CI 0.80 \u2013 0.88) and showed an overall better concordance in calibration (Fig. 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 809,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Croce post-traumatic VAP prediction model",
+    "recalibrated Croce prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination and calibration of external prediction model",
+     "effect": "External validation showed AUC of 0.83 (95% CI 0.79-0.87), mean predicted risk 6.4% versus 10.6% observed risk, and calibration slope 0.63, reflecting overfitting compared to internal validation AUC of 0.97.",
+     "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination and calibration after local model recalibration",
+     "effect": "Full recalibration improved discriminatory capacity to AUC 0.84 (95% CI 0.80-0.88), improved calibration concordance, and Brier statistic improved from 0.089 to 0.087.",
+     "quote": "Full recalibration of the model improved the discriminatory capacity (AUC 0.84, 95% CI 0.80 \u2013 0.88) and calibration in our study cohort."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Netherlands",
+ "sample_unit": "patients",
+ "sample_size": 809,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Croce model plus age",
+  "Croce model with age added",
+  "Croce model without mechanism of injury",
+  "Croce post-traumatic VAP prediction model",
+  "Croce post-traumatic VAP prediction model (logistic regression)",
+  "Croce post-traumatic ventilator-associated pneumonia prediction model",
+  "Ridge-penalized updated models",
+  "fully recalibrated Croce model",
+  "intercept-recalibrated Croce model",
+  "recalibrated Croce prediction model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration and discrimination after local intercept and full recalibration of imported model",
+   "effect": "Intercept moved from -3.08 to 0.80, giving better calibration; full recalibration AUC 0.84 and Brier 0.089 to 0.087; adding age raised AUC to 0.87.",
+   "quote": "After intercept recalibration, the model\u2019s intercept increased from -3.08 in the Croce model to 0.80 in our cohort, showing better calibration (Fig. 2 B).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences between development and local cohorts and resulting miscalibration",
+   "effect": "Croce cohort had more penetrating trauma (23% vs 3%), younger patients (median 35 vs 51), more laparotomy (14% vs 3%); pneumonia incidence 5.6% vs 10.6%; calibration slope 0.63.",
+   "quote": "However, in Croce\u2019s cohort, the incidence of penetrating trauma was higher (23% vs. 3%), patients were younger (median 35 vs. 51 years), and relatively more patients underwent an emergent laparotomy (14% vs. 3%) compared to the Dutch cohort [ 6 ].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance at a new external site relative to development",
+   "effect": "AUC fell from 0.97 at internal validation to 0.83 externally; predicted risk too low (6.4% vs 10.6%); calibration slope 0.63.",
+   "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local validation performance",
+   "effect": "On local Dutch historical data, AUC was 0.83 (95% CI 0.79 \u2013 0.87), calibration slope 0.63, and predicted risk 6.4% vs. 10.6% observed.",
+   "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration of externally developed model on local historical data before and after recalibration",
+   "effect": "Original AUC 0.83, mean predicted risk 6.4% vs observed 10.6%, calibration slope 0.63; after full recalibration AUC 0.84, Brier 0.087, calibration improved.",
+   "quote": "After full model recalibration, discrimination (AUC 0.84, 95% CI 0.80-0.88) and calibration improved.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of predictive model to a new population and outcome definition",
+   "effect": "Model developed for VAP in a US center underpredicted nosocomial pneumonia in a Dutch cohort; calibration slope 0.63.",
+   "quote": "The calibration slope was 0.63, suggesting some overfitting in the original study compared to our population.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination-calibration mismatch",
+   "effect": "Despite AUC 0.83 (95% CI 0.79 \u2013 0.87), calibration was poor: slope 0.63 and mean predicted risk 6.4% vs. 10.6% observed.",
+   "quote": "The original model showed good discriminatory capacity (AUC 0.83, 95% CI 0.79 \u2013 0.87) but was overfitted for use in the Dutch population (calibration slope 0.63; mean predicted risk 6.4% vs. 10.6% observed risk).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36646943",
+ "screen": {
+  "id": "pmid:36646943",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration before deployment",
+  "user": "none",
+  "reason": "The study evaluates the external validation and local recalibration of an existing predictive risk model (Croce's model) on a new hospital cohort, comparing performance before and after recalibration.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36646943",
+   "empirical": 0.79,
+   "tests_practice": 0.68,
+   "real_deployment": 0.05
+  }
+ }
+}

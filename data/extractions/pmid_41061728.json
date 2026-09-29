@@ -1,0 +1,93 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 171,
+ "sample_unit": "test CT images (40 with simulated artifacts plus 131 for correlation analysis)",
+ "models_evaluated": [
+  "3D U-Net liver and lesion segmentation",
+  "InfoOOD",
+  "embedded feature-based OOD measures",
+  "reconstruction-based OOD measure"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "OOD detection AUC for simulated CT artifacts, InfoOOD vs established OOD detectors",
+   "effect": "InfoOOD AUC 0.93 vs 0.57 for embedded feature-based measures (strong rings artifact); AUC 0.75 vs 0.61 for reconstruction-based measure (weak sparse view artifact).",
+   "quote": "The<i>InfoOOD</i>measure consistently outperformed the embedded feature-based measures in detecting OOD data (e.g. AUC = 0.93 vs. AUC = 0.57 for the strong rings artifact) and surpassed the reconstruction-based measure across weak magnitude artifacts (e.g., AUC = 0.75 vs. AUC = 0.61 for the weak sparse view artifact).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Segmentation performance under simulated low-dose, sparse-view, and ring artifacts",
+   "effect": "Artifact simulation significantly degraded segmentation performance across all artifact types and magnitudes (p<0.001), worsening as magnitude increased.",
+   "quote": "Artifact simulation significantly degraded segmentation model performance across all artifact types and magnitudes (<i>\u03c1</i>< 0.001), with model performance worsening as artifact magnitude increased.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41061728",
+ "screen": {
+  "id": "pmid:41061728",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirically develops and evaluates InfoOOD, a post hoc out-of-distribution (OOD) detection safeguard to identify corrupted or artifact-induced inputs before image segmentation failure.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "post hoc out-of-distribution detection guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41061728",
+   "empirical": 0.94,
+   "tests_practice": 0.15,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "Canada",
+ "sample_size": 960,
+ "sample_unit": "hospitalizations (with 3,374 prospective clinician predictions)",
+ "models_evaluated": [
+  "neural network model predicting in-hospital death and ICU admission"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "ML model vs clinician predictions of ICU admission or death on the same hospitalizations",
+   "effect": "ML median F1 0.32, AUC 0.77 vs clinicians F1 0.33, AUC 0.64; ML more accurate than clinicians for ICU admission.",
+   "quote": "ML predictions were more accurate than clinicians for ICU admission.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Combined human-plus-model prediction sensitivity versus clinicians alone or model alone",
+   "effect": "Combined predictions detected 49% of deterioration events, improving sensitivity by 16% vs clinicians alone and 24% vs model alone, with PPV of 33%.",
+   "quote": "Combining human and model predictions detected 49% of clinical deterioration events, improving sensitivity by 16% compared with clinicians alone and 24% compared with the model alone while maintaining a positive predictive value of 33%, thus keeping false alarms at a clinically acceptable level.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:37151895",
+ "screen": {
+  "id": "pmid:37151895",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study compares model-alone, clinician-alone, and human-AI combination strategies to evaluate the benefit of combining ML predictions with physician/nurse judgment for inpatient deterioration.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "combining AI predictions with clinician judgment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37151895",
+   "empirical": 0.97,
+   "tests_practice": 0.35,
+   "real_deployment": 0.52
+  }
+ }
+}

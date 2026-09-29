@@ -1,0 +1,463 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "China",
+   "sample_size": 9,
+   "sample_unit": "clinical coders",
+   "models_evaluated": [
+    "CliniCoCo",
+    "CAML",
+    "LAAT",
+    "Joint LAAT",
+    "BERT-based (Chen et al.)",
+    "BERT-Chinese-base"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Coder performance with vs without AI assistance, and compared with AI alone, by experience level",
+     "effect": "Senior and junior coders with AI outperformed both human-only and AI-only setups; interns with AI still fell short of AI alone. HITL mode outperformed simplified ACC mode and manual coding.",
+     "quote": "In contrast, the senior and junior clinical coders outperform both the human-only and AI-only setups, which demonstrates the positive impact of collaborative coding approach."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Whether coders detect and correct erroneous codes in EMR with AI support versus manual",
+     "effect": "Manual mode showed about 50% lower accuracy on error cases than HITL, especially missing codes. Interns in HITL mode performed slightly worse than the AI alone, indicating inability to fully correct AI errors.",
+     "quote": "Compared with the HITL mode, the manual coding mode demonstrated significant (50% on average) lower accuracy on cases with errors, particularly for missing codes."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI team performance in intended interface versus AI standalone and human alone",
+     "effect": "Senior-HITL reached recall 0.95 and precision 0.95; interns' collaborative results fell below AI-only ROC curve; seniors and juniors exceeded both human-only and AI-only setups.",
+     "quote": "Overall, senior-HITL had the highest recall (0.95) and precision (0.95) with a small in-group variance."
+    },
+    {
+     "rec_id": "R146",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Coding accuracy, usability and time savings for coders using AI scribe-like coding tool in pilot",
+     "effect": "Both ACC modes cut coding time by about 30-40% versus manual (10-12 min per case); HITL mode slightly slower than simplified mode; interviewees gave overall positive usability assessment.",
+     "quote": "They took around 10\u201312 min per case, which was about 30\u201340% reduction of time needed per case compared manual coding."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Usability and acceptance of interface functions assessed through interviews with coders in pilot",
+     "effect": "Coders preferred separated result presentation and similar-sample retrieval, adjusted threshold for higher recall, and all interviewees gave overall positive assessment.",
+     "quote": "(4) All interviewees give an overall positive assessment on CliniCoCo in terms of its clinical utility for human\u2013AI collaboration."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of collaborative interface strategies versus black-box AI predictions on coder performance",
+     "effect": "HITL ACC mode with heatmaps, similar references and threshold adjustment yielded higher recall and precision than simplified black-box ACC mode, though slightly longer coding time.",
+     "quote": "Specifically, both ACC settings led to higher recall and precision rates among coders with varying levels of experience, while coders operating under the HITL ACC mode further outperformed those using the simplified mode, highlighting the effectiveness of collaborative strategies in key stages of the ACC process."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model performance across two hospital datasets and full-label vs 50/100-label settings",
+     "effect": "Micro-F1 0.7336 and 0.7665 on full-label datasets; macro-F1 fell sharply (0.2484 HPH, 0.1994 APH) versus 50/100-code sets due to few-shot codes.",
+     "quote": "However, the macro F1 scores show a significant decrease on the full-size datasets compared to the 50/100-label datasets."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-in-the-loop active-learning annotation strategy to reduce manual labelling workload",
+    "Confidence-threshold adjustment slider for users to balance recall and precision",
+    "Heatmap visualisation and similar-case retrieval to support coder decision-making",
+    "Simulating EMR noise to quantify optimal annotation effort versus effectiveness"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "China",
+   "sample_size": 24786,
+   "sample_unit": "EMR documents/admissions",
+   "models_evaluated": [
+    "CliniCoCo",
+    "CAML",
+    "LAAT",
+    "Joint LAAT",
+    "Chen et al. BERT-based ACC",
+    "CliniCoCo variants without noisy-labelled data, raw incomplete data, or collaborative annotation",
+    "Simplified ACC mode"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R071",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Macro-F1 on full versus restricted code sets",
+     "effect": "Full-label macro-F1 was 0.2484 (HPH) and 0.1994 (APH), versus 75.49/73.72 on 100-label datasets and 80.82/79.64 on 50-label datasets.",
+     "quote": "However, the macro F1 scores show a significant decrease on the full-size datasets compared to the 50/100-label datasets."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance under noisy structured EMR inputs",
+     "effect": "Cases 3 to 6 showed worse representation performance with higher noise; case 10 real-world F1 was 0.8140, implying raw EMR error rate 0.3 to 0.4.",
+     "quote": "Last but not least, an obvious negative correlation between the noise ratio in the raw datasets and the representation performance can be observed from cases 3 to 6, which reveals that the performance of CliniCoCo is sensitive to the quality of structured short text in raw EMRs."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC, F1, Recall@5 versus ACC baselines",
+     "effect": "On HPH-50, CliniCoCo micro-F1 84.20 vs variants 70.79\u201383.03; on APH-100, 80.43 vs variants 66.97\u201379.51.",
+     "quote": "Compared with all the variants in terms of F1 score, AUC, and Recall@5, our proposed CliniCoCo achieves best performance under all the HPH and APH dataset settings, which demonstrates the effectiveness of our designed feature extractor."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Recall and precision with collaborative interface",
+     "effect": "HITL ACC with threshold adjustment, heatmap visualisation, and similar reference retrieval outperformed simplified ACC; senior-HITL recall 0.95 and precision 0.95.",
+     "quote": "Specifically, both ACC settings led to higher recall and precision rates among coders with varying levels of experience, while coders operating under the HITL ACC mode further outperformed those using the simplified mode, highlighting the effectiveness of collaborative strategies in key stages of the ACC process."
+    },
+    {
+     "rec_id": "R170",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance by coder experience",
+     "effect": "Intern-HITL remained below AI-only despite +0.26 recall and +0.25 precision vs manual; senior-HITL reached 0.95 recall and 0.95 precision.",
+     "quote": "However, compared to senior and junior coders who excelled on collaborative manner mode, the intern in HITL mode performed slightly worse than the AI-based coding system."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI versus human-only and AI-only performance",
+     "effect": "Senior-HITL had recall 0.95 and precision 0.95; intern-HITL improved vs manual by 0.26 recall and 0.25 precision but remained below AI-only.",
+     "quote": "In contrast, the senior and junior clinical coders outperform both the human-only and AI-only setups, which demonstrates the positive impact of collaborative coding approach."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Usability and user acceptance",
+     "effect": "Nine coders/interns participated; all interviewees were positive and preferred separated predictions, similar-sample references, and lower thresholds.",
+     "quote": "All interviewees give an overall positive assessment on CliniCoCo in terms of its clinical utility for human\u2013AI collaboration."
+    }
+   ],
+   "unlisted_practices": [
+    "Dynamic iterative human-in-the-loop annotation to minimize manual coding-label workload",
+    "Three-step contrastive learning using incomplete, noisy-labelled, and clean-labelled EMR data",
+    "kNN retrieval of similar coded EMR cases as prior expertise for coding predictions"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "China",
+   "sample_size": 9,
+   "sample_unit": "clinical coders",
+   "models_evaluated": [
+    "CliniCoCo",
+    "CAML",
+    "LAAT",
+    "Joint LAAT",
+    "Chen et al."
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "coder recall and precision under collaborative HITL vs simplified black-box AI mode",
+     "effect": "coders operating under HITL ACC mode with collaborative interface functions outperformed those using simplified black-box AI mode with higher recall and precision",
+     "quote": "Specifically, both ACC settings led to higher recall and precision rates among coders with varying levels of experience, while coders operating under the HITL ACC mode further outperformed those using the simplified mode, highlighting the effectiveness of collaborative strategies in key stages of the ACC process."
+    },
+    {
+     "rec_id": "R170",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "human-AI collaborative coding performance across user experience levels",
+     "effect": "collaborative coding by intern coders fell short of standalone AI, while senior and junior coders outperformed both human-only and AI-only setups",
+     "quote": "However, as shown in Fig. 7 f, the collaborative coding results performed by intern coders still fall short compared to the averaged ROC curve which denotes the performance only based on CliniCoCo framework."
+    }
+   ],
+   "unlisted_practices": [
+    "Dynamic and iterative collaborative data annotation combining automated noisy labeling with adaptive manual clean labeling",
+    "Multi-step multi-label contrastive learning utilizing unlabelled, noisy-labelled, and clean-labelled clinical records",
+    "kNN-optimised inference integrating retrieved representative clinical cases from a clean-labelled datastore",
+    "User-adjustable confidence threshold slider allowing clinical coders to tune sensitivity and precision"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "clinical coders",
+ "sample_size": 9,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "BERT-Chinese-base",
+  "BERT-based (Chen et al.)",
+  "CAML",
+  "Chen et al.",
+  "Chen et al. BERT-based ACC",
+  "CliniCoCo",
+  "CliniCoCo variants without noisy-labelled data, raw incomplete data, or collaborative annotation",
+  "Joint LAAT",
+  "LAAT",
+  "Simplified ACC mode"
+ ],
+ "links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human-AI team performance in intended interface versus AI standalone and human alone",
+   "effect": "Senior-HITL reached recall 0.95 and precision 0.95; interns' collaborative results fell below AI-only ROC curve; seniors and juniors exceeded both human-only and AI-only setups.",
+   "quote": "Overall, senior-HITL had the highest recall (0.95) and precision (0.95) with a small in-group variance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R145",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Usability and acceptance of interface functions assessed through interviews with coders in pilot",
+   "effect": "Coders preferred separated result presentation and similar-sample retrieval, adjusted threshold for higher recall, and all interviewees gave overall positive assessment.",
+   "quote": "(4) All interviewees give an overall positive assessment on CliniCoCo in terms of its clinical utility for human\u2013AI collaboration.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of collaborative interface strategies versus black-box AI predictions on coder performance",
+   "effect": "HITL ACC mode with heatmaps, similar references and threshold adjustment yielded higher recall and precision than simplified black-box ACC mode, though slightly longer coding time.",
+   "quote": "Specifically, both ACC settings led to higher recall and precision rates among coders with varying levels of experience, while coders operating under the HITL ACC mode further outperformed those using the simplified mode, highlighting the effectiveness of collaborative strategies in key stages of the ACC process.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R170",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance by coder experience",
+   "effect": "Intern-HITL remained below AI-only despite +0.26 recall and +0.25 precision vs manual; senior-HITL reached 0.95 recall and 0.95 precision.",
+   "quote": "However, compared to senior and junior coders who excelled on collaborative manner mode, the intern in HITL mode performed slightly worse than the AI-based coding system.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Coder performance with vs without AI assistance, and compared with AI alone, by experience level",
+   "effect": "Senior and junior coders with AI outperformed both human-only and AI-only setups; interns with AI still fell short of AI alone. HITL mode outperformed simplified ACC mode and manual coding.",
+   "quote": "In contrast, the senior and junior clinical coders outperform both the human-only and AI-only setups, which demonstrates the positive impact of collaborative coding approach.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance under noisy structured EMR inputs",
+   "effect": "Cases 3 to 6 showed worse representation performance with higher noise; case 10 real-world F1 was 0.8140, implying raw EMR error rate 0.3 to 0.4.",
+   "quote": "Last but not least, an obvious negative correlation between the noise ratio in the raw datasets and the representation performance can be observed from cases 3 to 6, which reveals that the performance of CliniCoCo is sensitive to the quality of structured short text in raw EMRs.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R146",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R071",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Confidence-threshold adjustment slider for users to balance recall and precision",
+  "Dynamic and iterative collaborative data annotation combining automated noisy labeling with adaptive manual clean labeling",
+  "Dynamic iterative human-in-the-loop annotation to minimize manual coding-label workload",
+  "Heatmap visualisation and similar-case retrieval to support coder decision-making",
+  "Human-in-the-loop active-learning annotation strategy to reduce manual labelling workload",
+  "Multi-step multi-label contrastive learning utilizing unlabelled, noisy-labelled, and clean-labelled clinical records",
+  "Simulating EMR noise to quantify optimal annotation effort versus effectiveness",
+  "Three-step contrastive learning using incomplete, noisy-labelled, and clean-labelled EMR data",
+  "User-adjustable confidence threshold slider allowing clinical coders to tune sensitivity and precision",
+  "kNN retrieval of similar coded EMR cases as prior expertise for coding predictions",
+  "kNN-optimised inference integrating retrieved representative clinical cases from a clean-labelled datastore"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39702575",
+ "screen": {
+  "id": "pmid:39702575",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop coder review of AI-suggested codes",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study evaluating a human-in-the-loop collaborative workflow (CliniCoCo) for clinical coding compared to manual coding and measuring impact on coder efficiency and accuracy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "human-in-the-loop collaborative workflow"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39702575",
+   "empirical": 0.95,
+   "tests_practice": 0.48,
+   "real_deployment": 0.35
+  }
+ }
+}

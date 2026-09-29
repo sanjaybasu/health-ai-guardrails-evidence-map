@@ -1,0 +1,343 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China (Hong Kong)",
+   "sample_size": 120,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Llama2-7b-chat",
+    "EyeGPT (fine-tuned Llama2 with LoRA)",
+    "EyeGPT + RAG (ophthalmology textbooks / manual database)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Hallucination proportion and response score with vs without retrieval grounding in ophthalmology textbooks",
+     "effect": "Adding book retrieval improved score (mean 13.08 vs 15.14; P=.001) and reduced hallucinations (71/120, 59.2% vs 57/120, 47.4%, P=.02) versus fine-tuned model alone.",
+     "quote": "Incorporating information retrieval from reliable sources, particularly ophthalmology textbooks, further improved the model's response compared with solely the best fine-tuned model (mean 13.08, SD 5.43 vs mean 15.14, SD 4.64; P=.001) and reduced hallucinations (71/120, 59.2% vs 57/120, 47.4%, P=.02)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ophthalmologist answers ranked best with vs without EyeGPT assistance",
+     "effect": "EyeGPT-assisted ophthalmologists ranked best in accuracy for 94 (78.3%) and trustworthiness for 93 (77.5%) of 120 questions; unassisted ophthalmologists ranked best for 14 (11.7%) and 15 (12.5%).",
+     "quote": "With the assistance of EyeGPT, the answers provided by the ophthalmologists excelled, ranking highest in accuracy and trustworthiness in 94 (78.3%) and 93 (77.5%) of the 120 questions, respectively."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "EyeGPT answers compared with unassisted ophthalmologists across four dimensions",
+     "effect": "EyeGPT ranked best more often for understandability (19.2% vs 10%) and empathy (34.2% vs 6.7%) but slightly lower for accuracy (10% vs 11.7%) and trustworthiness (10% vs 12.5%).",
+     "quote": "however, the accuracy and trustworthiness of EyeGPT answers were slightly lower than those by the ophthalmologists (accuracy: 12/120, 10% vs 14/120, 11.7%; trustworthiness: 12/120, 10% vs 15/120, 12.5%), highlighting areas for improvement."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Factual errors and incomplete information in best EyeGPT model answers; performance on rare diseases",
+     "effect": "Rater 1 found factual errors in 35/120 (29.2%) and incomplete information in 23/120 (19.2%); scores lower for rare than common diseases (e.g., best fine-tune 10.33 vs 15.79).",
+     "quote": "Rater 1 identified 5 (5/120, 4.2%) QA pairs as containing unrelated information, 35 (35/120, 29.2%) as containing apparent factual errors, 23 (23/120, 19.2%) as having incomplete information, and 6 (6/120, 5%) exhibiting faulty logic."
+    },
+    {
+     "rec_id": "R298",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Score differences by questioner role (patient vs medical student) across model variants",
+     "effect": "Patient-framed responses scored higher; significant for best fine-tune (13.45 vs 10.99, P=.03) and role-play+database (P=.03) but not for RAG+fine-tune variants (P=.06-.08).",
+     "quote": "This difference reached statistically significant in the best fine-tune and role-play+database models."
+    }
+   ],
+   "unlisted_practices": [
+    "Domain-specific fine-tuning of an LLM with filtered ophthalmology data",
+    "Role-play prompt engineering to improve response quality and empathy"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Hong Kong",
+   "sample_size": 120,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Llama2-7b-chat",
+    "EyeGPT role-play",
+    "EyeGPT fine-tune 1",
+    "EyeGPT fine-tune 2",
+    "EyeGPT fine-tune 3 (best fine-tune)",
+    "EyeGPT role-play+book retrieval",
+    "EyeGPT role-play+database retrieval",
+    "EyeGPT best fine-tune+book retrieval",
+    "EyeGPT best fine-tune+database retrieval"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "RAG response score and hallucinations",
+     "effect": "Reliable-source RAG, especially textbooks, improved score 15.14 vs 13.08 (P=.001) and reduced hallucinations 57/120 (47.4%) vs 71/120 (59.2%; P=.02).",
+     "quote": "Incorporating information retrieval from reliable sources, particularly ophthalmology textbooks, further improved the model's response compared with solely the best fine-tuned model (mean 13.08, SD 5.43 vs mean 15.14, SD 4.64; P=.001) and reduced hallucinations (71/120, 59.2% vs 57/120, 47.4%, P=.02)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI team answer rankings",
+     "effect": "EyeGPT-assisted ophthalmologists ranked best for accuracy 94/120 (78.3%) and trustworthiness 93/120 (77.5%).",
+     "quote": "With the assistance of EyeGPT, the answers provided by the ophthalmologists excelled, ranking highest in accuracy and trustworthiness in 94 (78.3%) and 93 (77.5%) of the 120 questions, respectively."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "EyeGPT versus ophthalmologist rankings",
+     "effect": "EyeGPT was lower for accuracy 12/120 vs 14/120 and trustworthiness 12/120 vs 15/120, but higher for understandability 23/120 vs 12/120 and empathy 41/120 vs 8/120.",
+     "quote": "however, the accuracy and trustworthiness of EyeGPT answers were slightly lower than those by the ophthalmologists (accuracy: 12/120, 10% vs 14/120, 11.7%; trustworthiness: 12/120, 10% vs 15/120, 12.5%), highlighting areas for improvement."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Factual errors in EyeGPT answers",
+     "effect": "Rater 1 found unrelated information 5/120 (4.2%), factual errors 35/120 (29.2%), incomplete information 23/120 (19.2%), and faulty logic 6/120 (5%).",
+     "quote": "Rater 1 identified 5 (5/120, 4.2%) QA pairs as containing unrelated information, 35 (35/120, 29.2%) as containing apparent factual errors, 23 (23/120, 19.2%) as having incomplete information, and 6 (6/120, 5%) exhibiting faulty logic."
+    }
+   ],
+   "unlisted_practices": [
+    "Role-playing prompt assigning the LLM an ophthalmologist role and users patient or medical student roles",
+    "Ophthalmology-specific fine-tuning of Llama2 with eye-related public medical datasets"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Hong Kong",
+   "sample_size": 120,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Llama 2",
+    "EyeGPT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "response score and hallucination rate",
+     "effect": "Textbook retrieval improved score (15.14 vs 13.08, P=.001) and reduced hallucinations (47.4% vs 59.2%, P=.02) compared to fine-tuning alone.",
+     "quote": "Incorporating information retrieval from reliable sources, particularly ophthalmology textbooks, further improved the model's response compared with solely the best fine-tuned model (mean 13.08, SD 5.43 vs mean 15.14, SD 4.64; P=.001) and reduced hallucinations (71/120, 59.2% vs 57/120, 47.4%, P=.02)."
+    }
+   ],
+   "unlisted_practices": [
+    "Domain-specific instruction fine-tuning",
+    "Role-play prompting to embody clinical and user personas",
+    "Clinician-AI collaboration for answering clinical questions"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "Hong Kong",
+ "sample_unit": "questions",
+ "sample_size": 120,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "EyeGPT",
+  "EyeGPT (fine-tuned Llama2 with LoRA)",
+  "EyeGPT + RAG (ophthalmology textbooks / manual database)",
+  "EyeGPT best fine-tune+book retrieval",
+  "EyeGPT best fine-tune+database retrieval",
+  "EyeGPT fine-tune 1",
+  "EyeGPT fine-tune 2",
+  "EyeGPT fine-tune 3 (best fine-tune)",
+  "EyeGPT role-play",
+  "EyeGPT role-play+book retrieval",
+  "EyeGPT role-play+database retrieval",
+  "Llama 2",
+  "Llama2-7b-chat"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucination proportion and response score with vs without retrieval grounding in ophthalmology textbooks",
+   "effect": "Adding book retrieval improved score (mean 13.08 vs 15.14; P=.001) and reduced hallucinations (71/120, 59.2% vs 57/120, 47.4%, P=.02) versus fine-tuned model alone.",
+   "quote": "Incorporating information retrieval from reliable sources, particularly ophthalmology textbooks, further improved the model's response compared with solely the best fine-tuned model (mean 13.08, SD 5.43 vs mean 15.14, SD 4.64; P=.001) and reduced hallucinations (71/120, 59.2% vs 57/120, 47.4%, P=.02).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ophthalmologist answers ranked best with vs without EyeGPT assistance",
+   "effect": "EyeGPT-assisted ophthalmologists ranked best in accuracy for 94 (78.3%) and trustworthiness for 93 (77.5%) of 120 questions; unassisted ophthalmologists ranked best for 14 (11.7%) and 15 (12.5%).",
+   "quote": "With the assistance of EyeGPT, the answers provided by the ophthalmologists excelled, ranking highest in accuracy and trustworthiness in 94 (78.3%) and 93 (77.5%) of the 120 questions, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "EyeGPT answers compared with unassisted ophthalmologists across four dimensions",
+   "effect": "EyeGPT ranked best more often for understandability (19.2% vs 10%) and empathy (34.2% vs 6.7%) but slightly lower for accuracy (10% vs 11.7%) and trustworthiness (10% vs 12.5%).",
+   "quote": "however, the accuracy and trustworthiness of EyeGPT answers were slightly lower than those by the ophthalmologists (accuracy: 12/120, 10% vs 14/120, 11.7%; trustworthiness: 12/120, 10% vs 15/120, 12.5%), highlighting areas for improvement.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R298",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Clinician-AI collaboration for answering clinical questions",
+  "Domain-specific fine-tuning of an LLM with filtered ophthalmology data",
+  "Domain-specific instruction fine-tuning",
+  "Ophthalmology-specific fine-tuning of Llama2 with eye-related public medical datasets",
+  "Role-play prompt engineering to improve response quality and empathy",
+  "Role-play prompting to embody clinical and user personas",
+  "Role-playing prompt assigning the LLM an ophthalmologist role and users patient or medical student roles"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39661433",
+ "screen": {
+  "id": "pmid:39661433",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation grounding",
+  "user": "both",
+  "reason": "The study develops and validates EyeGPT, testing the specific impact of adding retrieval-augmented generation (RAG) grounding with ophthalmology textbooks to reduce hallucinations and improve accuracy, as well as evaluating human-AI collaboration (EyeGPT + physician).",
+  "jev": {
+   "id": "pmid:39661433",
+   "empirical": 0.96,
+   "tests_practice": 0.84,
+   "real_deployment": 0.09
+  }
+ }
+}

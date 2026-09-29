@@ -1,0 +1,353 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Thailand",
+   "sample_size": 232,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CRASH Basic model",
+    "CRASH CT model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration of CRASH model on local retrospective data against observed 14-day mortality",
+     "effect": "AuROC 0.92 (Basic) and 0.93 (CT); calibration-in-the-large -0.916 and -1.257, slopes 1.69 and 1.86, showing overestimation of mortality locally.",
+     "quote": "However, calibration metrics indicated a systematic overestimation of mortality, suggesting that recalibration of both the intercept and slope is necessary before the model can be implemented in local clinical practice."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of logistic recalibration of intercept and slope on calibration in local population",
+     "effect": "Recalibration reduced overestimation in high-risk groups and better aligned predictions with observed mortality (shown in plots; no numeric post-recalibration metrics in text).",
+     "quote": "The recalibration process effectively reduced this overestimation, aligning predicted outcomes with observed mortality rates."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development and local validation populations (age, GCS, CT findings, mortality)",
+     "effect": "75% aged \u226555 vs 14.5% in development; mortality 9.1% vs 20.7%; non-evacuated hematoma 62.1% vs 27.3%; miscalibration followed.",
+     "quote": "Patients in the validation dataset were predominantly older, with 75% aged 55 or above, compared to only 14.5% in the development cohort (STD = 1.940)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of CRASH model to new population (TBI with ICH in Thai ED)",
+     "effect": "Discrimination retained (AuROC 0.92/0.93) but systematic overestimation of mortality (CITL -0.916 Basic, -1.257 CT).",
+     "quote": "These results suggest that the models systematically predict higher risks of 14-day mortality than observed, particularly in higher-risk groups."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Thailand",
+   "sample_size": 232,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CRASH Basic model",
+    "CRASH CT model",
+    "recalibrated CRASH Basic model",
+    "recalibrated CRASH CT model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "mortality-risk calibration",
+     "effect": "Basic CITL \u22120.916 (95% CI \u22121.420, \u22120.413), slope 1.69; CT CITL \u22121.257 (95% CI \u22121.751, \u22120.763), slope 1.86.",
+     "quote": "However, calibration metrics in this study indicated a significant overestimation of mortality risk, as evidenced by a negative calibration-in-the-large."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Basic versus CT discrimination",
+     "effect": "CT AuROC 0.93 (95% CI: 0.86\u20130.99) versus Basic 0.92; no statistical difference (P-value=0.679).",
+     "quote": "The CT model also demonstrated outstanding discriminative performance in the validation dataset, with an AuROC of 0.93 (95% CI: 0.86\u20130.99), slightly higher than the Basic model with no statistical difference ( P -value=0.679)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local validation performance",
+     "effect": "Local validation found high discrimination (Basic AuROC 0.92; CT 0.93) but miscalibration/overestimation: Basic CITL -0.916, slope 1.69; CT CITL -1.257, slope 1.86.",
+     "quote": "However, calibration metrics indicated a systematic overestimation of mortality, suggesting that recalibration of both the intercept and slope is necessary before the model can be implemented in local clinical practice."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "development-to-local representativeness",
+     "effect": "Age \u226555: 75.0% versus 14.5% (STD=1.940); mortality at 14 days: 9.1% versus 20.7% (STD=0.332).",
+     "quote": "Patients in the validation dataset were predominantly older, with 75% aged 55 or above, compared to only 14.5% in the development cohort (STD = 1.940)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local recalibration effect",
+     "effect": "After original miscalibration (Basic CITL \u22120.916, slope 1.69; CT CITL \u22121.257, slope 1.86), recalibration reduced overestimation.",
+     "quote": "The recalibration process effectively reduced this overestimation, aligning predicted outcomes with observed mortality rates."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Thailand",
+   "sample_size": 232,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CRASH Basic model",
+    "CRASH CT model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "14-day mortality discriminative ability and calibration",
+     "effect": "Basic model had AuROC 0.92 (95% CI: 0.84, 1.00) and CT model 0.93 (95% CI: 0.86, 1.00), but both had significant miscalibration (Basic CITL -0.916; CT CITL -1.257).",
+     "quote": "The original CRASH prediction model demonstrates strong discriminative ability for predicting 14-day mortality in TBI patients; however, significant miscalibration was observed."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predictive accuracy and calibration after recalibration",
+     "effect": "Recalibration corrected miscalibration and reduced overestimation in high-risk groups from uncalibrated Basic model CITL -0.916 (95% CI: -1.420, -0.413), slope 1.69, and CT model CITL -1.257 (95% CI: -1.751, -0.763), slope 1.86.",
+     "quote": "Recalibration achieved better predictive accuracy and reduced overestimation in high-risk groups."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Thailand",
+ "sample_unit": "patients",
+ "sample_size": 232,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CRASH Basic model",
+  "CRASH CT model",
+  "recalibrated CRASH Basic model",
+  "recalibrated CRASH CT model"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration of CRASH model on local retrospective data against observed 14-day mortality",
+   "effect": "AuROC 0.92 (Basic) and 0.93 (CT); calibration-in-the-large -0.916 and -1.257, slopes 1.69 and 1.86, showing overestimation of mortality locally.",
+   "quote": "However, calibration metrics indicated a systematic overestimation of mortality, suggesting that recalibration of both the intercept and slope is necessary before the model can be implemented in local clinical practice.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of logistic recalibration of intercept and slope on calibration in local population",
+   "effect": "Recalibration reduced overestimation in high-risk groups and better aligned predictions with observed mortality (shown in plots; no numeric post-recalibration metrics in text).",
+   "quote": "The recalibration process effectively reduced this overestimation, aligning predicted outcomes with observed mortality rates.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences between development and local validation populations (age, GCS, CT findings, mortality)",
+   "effect": "75% aged \u226555 vs 14.5% in development; mortality 9.1% vs 20.7%; non-evacuated hematoma 62.1% vs 27.3%; miscalibration followed.",
+   "quote": "Patients in the validation dataset were predominantly older, with 75% aged 55 or above, compared to only 14.5% in the development cohort (STD = 1.940).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of CRASH model to new population (TBI with ICH in Thai ED)",
+   "effect": "Discrimination retained (AuROC 0.92/0.93) but systematic overestimation of mortality (CITL -0.916 Basic, -1.257 CT).",
+   "quote": "These results suggest that the models systematically predict higher risks of 14-day mortality than observed, particularly in higher-risk groups.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "14-day mortality discriminative ability and calibration",
+   "effect": "Basic model had AuROC 0.92 (95% CI: 0.84, 1.00) and CT model 0.93 (95% CI: 0.86, 1.00), but both had significant miscalibration (Basic CITL -0.916; CT CITL -1.257).",
+   "quote": "The original CRASH prediction model demonstrates strong discriminative ability for predicting 14-day mortality in TBI patients; however, significant miscalibration was observed.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41087867",
+ "screen": {
+  "id": "pmid:41087867",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration before deployment",
+  "user": "none",
+  "reason": "Evaluates the external validation and local recalibration of the CRASH prognostic model in a Thai emergency department setting to correct miscalibration.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41087867",
+   "empirical": 0.75,
+   "tests_practice": 0.76,
+   "real_deployment": 0.05
+  }
+ }
+}

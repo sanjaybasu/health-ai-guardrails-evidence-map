@@ -1,0 +1,371 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 50,
+   "sample_unit": "clinical vignettes (each run 20 times, 1000 model outputs per condition)",
+   "models_evaluated": [
+    "GPT-4 turbo (gpt-4-1106-preview) with guideline-augmented prompt",
+    "GPT-4 turbo (gpt-4-1106-preview) base/un-augmented prompt"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Rate of selecting expert-defined optimal treatment with vs without guideline grounding in prompt",
+     "effect": "Augmented model chose optimal treatment for 50.8% vs 23.4% for un-augmented model (McNemar's p<0.001); kappa 0.31 vs 0.09.",
+     "quote": "For 234 (23.4%) of vignettes, the model identified the optimal treatment, a result significantly poorer than for the augmented model (McNemar\u2019s p < 0.001)"
+    },
+    {
+     "rec_id": "R322",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Change in model treatment selection when vignette gender and race were permuted",
+     "effect": "Augmented model performance differed modestly across gender-race pairs (p=0.02); Black women significantly poorer than white men (Bonferroni p=0.03); base model showed no significant differences (p=0.17).",
+     "quote": "In post-hoc pairwise contrasts using McNemar\u2019s test, model performance in Black women was significantly poorer than white men (Bonferroni-corrected p = 0.03)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model performance across gender-race subgroups",
+     "effect": "Omnibus test showed modest but statistically significant differences across 4 gender-race groups (p=0.02); optimal choice 48.4% in Black women vs 53.2% in white men.",
+     "quote": "In subgroup analyses of the 4 gender-race pairs, model performance exhibited differences of modest magnitude (Table 1 ; Supplementary Table 1 ) that were statistically significant ( p = 0.02)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Frequency of LLM selecting poor or contraindicated medications among top choices",
+     "effect": "Augmented model selected at least one poor/contraindicated medication in 12.0% of vignettes; base model 10.8%; community clinicians 22-24%.",
+     "quote": "Conversely, for 120 (12.0%) of vignettes, the model selected a medication considered by the experts to be a poor choice, or contraindicated."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Augmented LLM versus community clinicians and base model on expert-defined optimal choice",
+     "effect": "Augmented model 50.8% optimal vs community clinicians 23.1% (McNemar p<0.001) and base model 23.4%.",
+     "quote": "A sample of community clinicians scoring the same vignettes identified the optimal choice for 23.1% (95% CI 15.7-30.5%) of vignettes, on average; McNemar's p < 0.001 versus augmented model."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Output variation across repeated runs with permuted demographic inputs at temperature 0",
+     "effect": "Each vignette run 20 times with permuted gender/race at temperature 0; performance varied modestly by subgroup, significantly for the augmented model but not the base model.",
+     "quote": "Each vignette was presented a total of 20 times, with gender and race permuted (that is, each combination of male or female, and Black or white, was presented 5 times)."
+    }
+   ],
+   "unlisted_practices": [
+    "Incorporating guideline excerpt directly into the LLM prompt (in-context knowledge augmentation) to improve clinical decision support"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 1000,
+   "sample_unit": "vignette presentations/model responses",
+   "models_evaluated": [
+    "GPT-4 turbo (gpt-4-1106-preview), guideline-augmented",
+    "GPT-4 turbo (gpt-4-1106-preview), base/unaugmented"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "expert-concordant and contraindicated pharmacotherapy choices",
+     "effect": "Guideline augmentation improved optimal top choice: 508 (50.8%) vs 234 (23.4%), p < 0.001; poor choices were not different: 12.0% vs 10.8%, p = 0.4.",
+     "quote": "For 234 (23.4%) of vignettes, the model identified the optimal treatment, a result significantly poorer than for the augmented model (McNemar\u2019s p < 0.001); for 724 (72.4%) the optimal treatment was among the top 3 nominated by the model; and for 906 (90.6%) the optimal treatment was among the top 5."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "poor or contraindicated medication recommendations",
+     "effect": "The guideline-augmented model selected a poor or contraindicated medication in 120 (12.0%) vignettes.",
+     "quote": "Conversely, for 120 (12.0%) of vignettes, the model selected a medication considered by the experts to be a poor choice, or contraindicated."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI performance versus community clinicians",
+     "effect": "Community clinicians identified the optimal choice for 23.1% of vignettes versus augmented model 50.8%; McNemar's p < 0.001 versus augmented model.",
+     "quote": "A sample of community clinicians scoring the same vignettes identified the optimal choice for 23.1% (95% CI 15.7-30.5%) of vignettes, on average; McNemar's p\u2009<\u20090.001 versus augmented model."
+    },
+    {
+     "rec_id": "R322",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "race and gender counterfactual performance differences",
+     "effect": "Omnibus subgroup differences p = 0.02; Black women performed significantly poorer than white men, Bonferroni-corrected p = 0.03.",
+     "quote": "In post-hoc pairwise contrasts using McNemar\u2019s test, model performance in Black women was significantly poorer than white men (Bonferroni-corrected p = 0.03)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 1000,
+   "sample_unit": "vignettes",
+   "models_evaluated": [
+    "gpt-4-1106-preview"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "selection of expert-defined optimal pharmacotherapy",
+     "effect": "augmented model identified optimal treatment for 50.8% of vignettes vs 23.4% for unaugmented model (McNemar\u2019s p < 0.001)",
+     "quote": "For 234 (23.4%) of vignettes, the model identified the optimal treatment, a result significantly poorer than for the augmented model (McNemar\u2019s p < 0.001); for 724 (72.4%) the optimal treatment was among the top 3 nominated by the model; and for 906 (90.6%) the optimal treatment was among the top 5."
+    },
+    {
+     "rec_id": "R322",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "optimal treatment selection disparity by race-gender subgroup",
+     "effect": "model performance in Black women was significantly poorer than white men (48.4% vs 53.2%, Bonferroni-corrected p = 0.03; omnibus p = 0.02)",
+     "quote": "In post-hoc pairwise contrasts using McNemar\u2019s test, model performance in Black women was significantly poorer than white men (Bonferroni-corrected p = 0.03)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "clinical vignettes (each run 20 times, 1000 model outputs per condition)",
+ "sample_size": 1000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4 turbo (gpt-4-1106-preview) base/un-augmented prompt",
+  "GPT-4 turbo (gpt-4-1106-preview) with guideline-augmented prompt",
+  "GPT-4 turbo (gpt-4-1106-preview), base/unaugmented",
+  "GPT-4 turbo (gpt-4-1106-preview), guideline-augmented",
+  "gpt-4-1106-preview"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Rate of selecting expert-defined optimal treatment with vs without guideline grounding in prompt",
+   "effect": "Augmented model chose optimal treatment for 50.8% vs 23.4% for un-augmented model (McNemar's p<0.001); kappa 0.31 vs 0.09.",
+   "quote": "For 234 (23.4%) of vignettes, the model identified the optimal treatment, a result significantly poorer than for the augmented model (McNemar\u2019s p < 0.001)",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Augmented LLM versus community clinicians and base model on expert-defined optimal choice",
+   "effect": "Augmented model 50.8% optimal vs community clinicians 23.1% (McNemar p<0.001) and base model 23.4%.",
+   "quote": "A sample of community clinicians scoring the same vignettes identified the optimal choice for 23.1% (95% CI 15.7-30.5%) of vignettes, on average; McNemar's p < 0.001 versus augmented model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R322",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "race and gender counterfactual performance differences",
+   "effect": "Omnibus subgroup differences p = 0.02; Black women performed significantly poorer than white men, Bonferroni-corrected p = 0.03.",
+   "quote": "In post-hoc pairwise contrasts using McNemar\u2019s test, model performance in Black women was significantly poorer than white men (Bonferroni-corrected p = 0.03).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R322",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Change in model treatment selection when vignette gender and race were permuted",
+   "effect": "Augmented model performance differed modestly across gender-race pairs (p=0.02); Black women significantly poorer than white men (Bonferroni p=0.03); base model showed no significant differences (p=0.17).",
+   "quote": "In post-hoc pairwise contrasts using McNemar\u2019s test, model performance in Black women was significantly poorer than white men (Bonferroni-corrected p = 0.03).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance across gender-race subgroups",
+   "effect": "Omnibus test showed modest but statistically significant differences across 4 gender-race groups (p=0.02); optimal choice 48.4% in Black women vs 53.2% in white men.",
+   "quote": "In subgroup analyses of the 4 gender-race pairs, model performance exhibited differences of modest magnitude (Table 1 ; Supplementary Table 1 ) that were statistically significant ( p = 0.02).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Frequency of LLM selecting poor or contraindicated medications among top choices",
+   "effect": "Augmented model selected at least one poor/contraindicated medication in 12.0% of vignettes; base model 10.8%; community clinicians 22-24%.",
+   "quote": "Conversely, for 120 (12.0%) of vignettes, the model selected a medication considered by the experts to be a poor choice, or contraindicated.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Incorporating guideline excerpt directly into the LLM prompt (in-context knowledge augmentation) to improve clinical decision support"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38480911",
+ "screen": {
+  "id": "pmid:38480911",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "guideline retrieval/prompt augmentation",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates LLM performance on bipolar depression clinical vignettes, directly comparing an unaugmented baseline model against one augmented with evidence-based clinical guidelines via prompt augmentation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "guideline augmentation prompting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38480911",
+   "empirical": 0.97,
+   "tests_practice": 0.59,
+   "real_deployment": 0.02
+  }
+ }
+}

@@ -1,0 +1,322 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 100,
+   "sample_unit": "fictional pancreatic cancer cases",
+   "models_evaluated": [
+    "NotebookLM (Gemini 2.0 Flash with RAG)",
+    "Gemini 2.0 Flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Staging accuracy with RAG grounding in guideline versus same LLM given guideline in prompt or none",
+     "effect": "REK+/RAG+ 70% staging accuracy vs REK+/RAG\u2212 38% and REK\u2212/RAG\u2212 35%; difference 0.32 (95% CI 0.17-0.45), p<0.001; TNM 80% vs 55% and 50%.",
+     "quote": "The REK+/RAG+ group achieved 70% staging accuracy, outperforming REK+/RAG\u2212 (38%) and REK\u2212/RAG\u2212 (35%)."
+    },
+    {
+     "rec_id": "R481",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of retrieved source excerpts displayed as rationale and usefulness for tracing errors",
+     "effect": "NotebookLM presented retrieved guideline excerpts as rationale with 92% retrieval accuracy; eight retrieval failures; excerpts enabled identifying error sources, though physician verification was not directly tested.",
+     "quote": "Unlike Gemini 2.0 Flash with REK (REK+/RAG\u2212) and without REK (REK\u2212/RAG\u2212), NotebookLM (REK+/RAG+) presented retrieved excerpts from REK as the basis for its classifications, achieving a retrieval accuracy of 92% (Fig. 2 )."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM staging accuracy against current staging guideline, including overstaging errors",
+     "effect": "Without RAG, staging accuracy was 35-38%; even with RAG 70%, with T3 cases overstaged as T4 (12) and R cases overstaged as UR (7).",
+     "quote": "Among the misclassified T3 cases by NotebookLM with REK (REK+/RAG+), 12 were overstaged as T4, whereas 2 were understaged as T2 or lower."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM output accuracy against radiologist-defined ground-truth staging",
+     "effect": "Best configuration reached only 70% staging accuracy; most errors (e.g., resectability 9/14, T 13/15) occurred despite sufficient retrieval, indicating generation errors.",
+     "quote": "Consequently, retrieval failures accounted for a minority of misclassifications (resectability: 5/14, T category: 2/15, local invasion: 1/7), whereas most errors occurred despite sufficient retrieval, indicating generation-related failures (see Figs. 3 and 4 for reference)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Reproducibility of staging outputs across repeated runs",
+     "effect": "Identical inputs submitted twice per case under each setting gave consistent staging classifications (temperature zero for Gemini).",
+     "quote": "To assess potential variability in staging results, identical inputs were submitted twice for each of the 100 cases under each LLM setting across independent runs, and the resulting staging classifications were consistent."
+    }
+   ],
+   "unlisted_practices": [
+    "Using retrieval-augmented generation with isolated comparison holding base model constant to attribute gains to retrieval"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 100,
+   "sample_unit": "fictional pancreatic cancer cases",
+   "models_evaluated": [
+    "NotebookLM with REK (REK+/RAG+)",
+    "Gemini 2.0 Flash with REK (REK+/RAG\u2212)",
+    "Gemini 2.0 Flash without REK (REK\u2212/RAG\u2212)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "staging accuracy with RAG grounding",
+     "effect": "REK+/RAG+ staging accuracy was 70% versus 38% for REK+/RAG\u2212 and 35% for REK\u2212/RAG\u2212.",
+     "quote": "In the experiment using 100 fictional pancreatic cancer cases, NotebookLM with REK (REK+/RAG+) achieved a staging accuracy of 70%, whereas Gemini 2.0 Flash with REK (REK+/RAG\u2212) and without REK (REK\u2212/RAG\u2212) showed lower accuracies of 38% and 35%, respectively (Fig. 2 )."
+    },
+    {
+     "rec_id": "R481",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "retrieved evidence sufficiency",
+     "effect": "NotebookLM displayed retrieved REK excerpts as classification basis and achieved 92% retrieval accuracy.",
+     "quote": "Unlike Gemini 2.0 Flash with REK (REK+/RAG\u2212) and without REK (REK\u2212/RAG\u2212), NotebookLM (REK+/RAG+) presented retrieved excerpts from REK as the basis for its classifications, achieving a retrieval accuracy of 92% (Fig. 2 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generation-related staging errors",
+     "effect": "Retrieval failures explained resectability 5/14, T 2/15, and local invasion 1/7 misclassifications; most errors occurred despite sufficient retrieval.",
+     "quote": "Consequently, retrieval failures accounted for a minority of misclassifications (resectability: 5/14, T category: 2/15, local invasion: 1/7), whereas most errors occurred despite sufficient retrieval, indicating generation-related failures (see Figs. 3 and 4 for reference)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "run-to-run classification consistency",
+     "effect": "Identical inputs were submitted twice for each of 100 cases under each LLM setting; classifications were consistent.",
+     "quote": "To assess potential variability in staging results, identical inputs were submitted twice for each of the 100 cases under each LLM setting across independent runs, and the resulting staging classifications were consistent."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 100,
+   "sample_unit": "fictional cases",
+   "models_evaluated": [
+    "NotebookLM",
+    "Gemini 2.0 Flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "pancreatic cancer staging accuracy",
+     "effect": "70% accuracy with RAG vs 38% with guideline in prompt and 35% without guideline (p < 0.001)",
+     "quote": "In the experiment using 100 fictional pancreatic cancer cases, NotebookLM with REK (REK+/RAG+) achieved a staging accuracy of 70%, whereas Gemini 2.0 Flash with REK (REK+/RAG\u2212) and without REK (REK\u2212/RAG\u2212) showed lower accuracies of 38% and 35%, respectively (Fig. 2 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "fictional pancreatic cancer cases",
+ "sample_size": 100,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Gemini 2.0 Flash",
+  "Gemini 2.0 Flash with REK (REK+/RAG\u2212)",
+  "Gemini 2.0 Flash without REK (REK\u2212/RAG\u2212)",
+  "NotebookLM",
+  "NotebookLM (Gemini 2.0 Flash with RAG)",
+  "NotebookLM with REK (REK+/RAG+)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Staging accuracy with RAG grounding in guideline versus same LLM given guideline in prompt or none",
+   "effect": "REK+/RAG+ 70% staging accuracy vs REK+/RAG\u2212 38% and REK\u2212/RAG\u2212 35%; difference 0.32 (95% CI 0.17-0.45), p<0.001; TNM 80% vs 55% and 50%.",
+   "quote": "The REK+/RAG+ group achieved 70% staging accuracy, outperforming REK+/RAG\u2212 (38%) and REK\u2212/RAG\u2212 (35%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R481",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of retrieved source excerpts displayed as rationale and usefulness for tracing errors",
+   "effect": "NotebookLM presented retrieved guideline excerpts as rationale with 92% retrieval accuracy; eight retrieval failures; excerpts enabled identifying error sources, though physician verification was not directly tested.",
+   "quote": "Unlike Gemini 2.0 Flash with REK (REK+/RAG\u2212) and without REK (REK\u2212/RAG\u2212), NotebookLM (REK+/RAG+) presented retrieved excerpts from REK as the basis for its classifications, achieving a retrieval accuracy of 92% (Fig. 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM output accuracy against radiologist-defined ground-truth staging",
+   "effect": "Best configuration reached only 70% staging accuracy; most errors (e.g., resectability 9/14, T 13/15) occurred despite sufficient retrieval, indicating generation errors.",
+   "quote": "Consequently, retrieval failures accounted for a minority of misclassifications (resectability: 5/14, T category: 2/15, local invasion: 1/7), whereas most errors occurred despite sufficient retrieval, indicating generation-related failures (see Figs. 3 and 4 for reference).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of staging outputs across repeated runs",
+   "effect": "Identical inputs submitted twice per case under each setting gave consistent staging classifications (temperature zero for Gemini).",
+   "quote": "To assess potential variability in staging results, identical inputs were submitted twice for each of the 100 cases under each LLM setting across independent runs, and the resulting staging classifications were consistent.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Using retrieval-augmented generation with isolated comparison holding base model constant to attribute gains to retrieval"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41784908",
+ "screen": {
+  "id": "pmid:41784908",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding with guideline documents",
+  "user": "none",
+  "reason": "Evaluated the effect of adding retrieval-augmented generation (RAG) using clinical guidelines to an LLM versus LLM alone on pancreatic cancer staging accuracy and source attribution across simulated/fictional cases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG) grounding with guidelines"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41784908",
+   "empirical": 0.92,
+   "tests_practice": 0.64,
+   "real_deployment": 0.02
+  }
+ }
+}

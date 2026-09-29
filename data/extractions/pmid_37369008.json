@@ -1,0 +1,300 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 12,
+   "sample_unit": "machine learning models (laboratory result classifiers) silently deployed",
+   "models_evaluated": [
+    "Random forest binary classifiers (12 laboratory result prediction models)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prospective silent-trial AUROC versus retrospective AUROC",
+     "effect": "Silent deployment revealed prospective AUROC generally several points lower than retrospective, e.g., sodium 0.79 vs 0.71, white blood cell 0.76 vs 0.69, carbon dioxide 0.69 vs 0.62.",
+     "quote": "Our silent trial results underscore the necessity of prospective evaluations before ML applications are integrated into clinical work-streams."
+    },
+    {
+     "rec_id": "R122",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance gap detected by shadow deployment on live EMR data",
+     "effect": "Across 12 models, prospective AUROC was lower than retrospective, e.g., hemoglobin 0.88 vs 0.83, potassium 0.67 vs 0.60; authors recommend prospective silent-trial estimates for go decisions.",
+     "quote": "Across our 12 laboratory predictions tasks, AUROC in our prospective test sets were generally several percentage points lower than what is seen retrospectively."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance by number of available features at inference",
+     "effect": "Performance increased with number of available features at inference time; missing data degraded performance in production.",
+     "quote": "We show that performance of our ML models increases with the number of available features at inference time."
+    }
+   ],
+   "unlisted_practices": [
+    "Randomization injected into inference display to estimate model impact and correct feedback-loop bias in monitoring"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "laboratory diagnostic orders",
+   "models_evaluated": [
+    "Random forest classifiers predicting abnormal laboratory results (12 models)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Retrospective versus prospective AUROC during silent deployment",
+     "effect": "Retrospective versus prospective AUROC: white blood cell, 0.76 [0.74, 0.79] versus 0.69 [0.68, 0.70]; sodium, 0.79 [0.75, 0.82] versus 0.71 [0.70, 0.72].",
+     "quote": "Across our 12 laboratory predictions tasks, AUROC in our prospective test sets were generally several percentage points lower than what is seen retrospectively."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance stratified by available feature count",
+     "effect": "Performance increased with the number of available features at inference time; numerical effect estimates were not provided in the text.",
+     "quote": "We show that performance of our ML models increases with the number of available features at inference time."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 40657,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Random Forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prospective vs retrospective AUROC",
+     "effect": "AUROC in prospective test sets was generally several percentage points lower than in retrospective test sets",
+     "quote": "Across our 12 laboratory predictions tasks, AUROC in our prospective test sets were generally several percentage points lower than what is seen retrospectively."
+    },
+    {
+     "rec_id": "R122",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prospective vs retrospective AUROC",
+     "effect": "AUROC in prospective test sets was generally several percentage points lower than in retrospective test sets",
+     "quote": "Across our 12 laboratory predictions tasks, AUROC in our prospective test sets were generally several percentage points lower than what is seen retrospectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Deploying machine learning models using an automated continuous monitoring dashboard and serverless cloud computing."
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "machine learning models (laboratory result classifiers) silently deployed",
+ "sample_size": 20334,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Random Forest",
+  "Random forest binary classifiers (12 laboratory result prediction models)",
+  "Random forest classifiers predicting abnormal laboratory results (12 models)"
+ ],
+ "links": [
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective silent-trial AUROC versus retrospective AUROC",
+   "effect": "Silent deployment revealed prospective AUROC generally several points lower than retrospective, e.g., sodium 0.79 vs 0.71, white blood cell 0.76 vs 0.69, carbon dioxide 0.69 vs 0.62.",
+   "quote": "Our silent trial results underscore the necessity of prospective evaluations before ML applications are integrated into clinical work-streams.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R122",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance gap detected by shadow deployment on live EMR data",
+   "effect": "Across 12 models, prospective AUROC was lower than retrospective, e.g., hemoglobin 0.88 vs 0.83, potassium 0.67 vs 0.60; authors recommend prospective silent-trial estimates for go decisions.",
+   "quote": "Across our 12 laboratory predictions tasks, AUROC in our prospective test sets were generally several percentage points lower than what is seen retrospectively.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R509",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance by number of available features at inference",
+   "effect": "Performance increased with number of available features at inference time; missing data degraded performance in production.",
+   "quote": "We show that performance of our ML models increases with the number of available features at inference time.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Retrospective versus prospective AUROC during silent deployment",
+   "effect": "Retrospective versus prospective AUROC: white blood cell, 0.76 [0.74, 0.79] versus 0.69 [0.68, 0.70]; sodium, 0.79 [0.75, 0.82] versus 0.71 [0.70, 0.72].",
+   "quote": "Across our 12 laboratory predictions tasks, AUROC in our prospective test sets were generally several percentage points lower than what is seen retrospectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance stratified by available feature count",
+   "effect": "Performance increased with the number of available features at inference time; numerical effect estimates were not provided in the text.",
+   "quote": "We show that performance of our ML models increases with the number of available features at inference time.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Deploying machine learning models using an automated continuous monitoring dashboard and serverless cloud computing.",
+  "Randomization injected into inference display to estimate model impact and correct feedback-loop bias in monitoring"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37369008",
+ "screen": {
+  "id": "pmid:37369008",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "silent deployment with prospective evaluation before go-live",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a deployment framework and demonstrates silent-mode live prospective evaluation of 12 clinical risk/lab prediction models in an EMR system to assess performance discrepancies from retrospective estimates.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "silent deployment and prospective monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37369008",
+   "empirical": 0.83,
+   "tests_practice": 0.58,
+   "real_deployment": 0.91
+  }
+ }
+}

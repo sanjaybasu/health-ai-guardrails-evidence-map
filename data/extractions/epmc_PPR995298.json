@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "speech_ambient"
+ ],
+ "country": "India",
+ "sample_size": 50,
+ "sample_unit": "simulated radiologist-patient conversations / mammography reports",
+ "models_evaluated": [
+  "OpenAI Whisper large-v2",
+  "GPT-4o"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Hindi"
+ ],
+ "links": [
+  {
+   "rec_id": "R270",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Ambient transcription accuracy (WER, CER) for Hindi radiologist-patient conversations",
+   "effect": "Lowest WER 0.577 and CER 0.379 at temperature 0 for Hindi transcription with Whisper large-v2, indicating poor non-English transcription accuracy.",
+   "quote": "The lowest WER (0.577) and CER (0.379) were observed at temperature 0.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Errors in AI-generated mammography reports (missed/incorrect information)",
+   "effect": "Errors present in 50% of AI-generated reports, predominantly missed and incorrect information, with higher error rate in malignant cases; mean concordance 0.94.",
+   "quote": "Errors were present in 50% of AI-generated reports, predominantly missed and incorrect information, with a higher error rate in malignant cases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Generating structured radiology reports from vernacular-language radiologist-patient conversations using ASR plus LLM",
+  "Generating multiple transcriptions at different Whisper temperatures to maximize information capture"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR995298",
+ "screen": {
+  "id": "epmc:PPR995298",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates the feasibility, accuracy, and editing workflow (measuring error types and radiologist correction time) for generating structured mammography reports from simulated vernacular radiologist-patient dialogue using Whisper and GPT-4o.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "radiologist review and editing of AI-generated reports"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR995298",
+   "empirical": 0.96,
+   "tests_practice": 0.27,
+   "real_deployment": 0.05
+  }
+ }
+}

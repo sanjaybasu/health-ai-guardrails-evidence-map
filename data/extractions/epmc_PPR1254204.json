@@ -1,0 +1,126 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": 9105,
+ "sample_unit": "critically ill adult patients",
+ "models_evaluated": [
+  "gradient-boosted survival model",
+  "1995 SUPPORT logistic model",
+  "attending physician prognostic estimate",
+  "neural networks",
+  "deep ranking survival model",
+  "discrete-time survival models"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Fixed-horizon AUROC of ML survival model versus physician estimates and 1995 model",
+   "effect": "At 60 days AUROC was 0.750 for the survival model, 0.808 for physicians (matched sample) and 0.827 for the 1995 model; gap reproduced across eight splits.",
+   "quote": "The survival model achieved a competitive ranking concordance (0.705) but underperformed both comparators at fixed horizons: at 60 days its area under the ROC curve was 0.750, versus 0.808 for physicians (on the matched sample) and 0.827 for the 1995 model, a gap reproduced across eight independent splits and statistically reliable after multiplicity correction.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Concordance index versus timepoint-specific discrimination as evaluation metrics",
+   "effect": "Concordance was competitive (0.705) but 60-day AUROC was 0.750, below comparators (0.808, 0.827); recalibration did not change discrimination.",
+   "quote": "The survival model achieved a competitive ranking concordance (0.705) but underperformed both comparators at fixed horizons: at 60 days its area under the ROC curve was 0.750, versus 0.808 for physicians (on the matched sample) and 0.827 for the 1995 model, a gap reproduced across eight independent splits and statistically reliable after multiplicity correction.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Discrimination across sex, race, and age subgroups",
+   "effect": "Discrimination was reported as equitable across sex, race, and age subgroups.",
+   "quote": "Discrimination was equitable across sex, race, and age.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Generalization to disease groups absent from training (leave-one-disease-out validation)",
+   "effect": "Severe generalization failure in disease groups absent from training.",
+   "quote": "Leave-one-disease-out validation revealed severe generalization failure in disease groups absent from training.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Timepoint-matched binary training when fixed-horizon predictions drive care",
+  "Leave-one-subgroup-out validation",
+  "Distribution-free prediction intervals to support selective deployment",
+  "Reporting timepoint-specific discrimination alongside the concordance index"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1254204",
+ "screen": {
+  "id": "epmc:PPR1254204",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates ML survival models against physician judgment and logistic models for ICU mortality prediction, specifically demonstrating pitfalls of ranking-optimized models for fixed-horizon bedside tasks and evaluating validation strategies (leave-one-subgroup) and objective alignment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "timepoint-matched training vs ranking optimization and leave-one-subgroup validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1254204",
+   "empirical": 0.96,
+   "tests_practice": 0.3,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,320 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Japan",
+   "sample_size": 37529,
+   "sample_unit": "surgeries",
+   "models_evaluated": [
+    "YOLO V.3 (surgical laterality)",
+    "VGG V.16 (IOL authentication)",
+    "facial recognition"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R549",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Errors from IOL models not in AI training due to delayed updates",
+     "effect": "7.3% of 9713 post-implementation IOL surgeries involved unlearned lenses, leading to two incorrect IOL implantations; model updated only three times due to budget and stability constraints.",
+     "quote": "Of the 9713 IOL surgeries performed post implementation, 7.3% involved unlearned lenses, leading to two cases of incorrect IOL implantation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Japan",
+   "sample_size": 37529,
+   "sample_unit": "ophthalmic surgeries",
+   "models_evaluated": [
+    "YOLO V.3",
+    "VGG V.16"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R173",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Surgical safety failures despite accurate AI detection in the clinical workflow",
+     "effect": "Pre-implementation testing demonstrated 100% accuracy in 300 cases; deployment included a wrong-eye anaesthetic injection despite AI warnings, which the nurse could not relay even after eight attempts.",
+     "quote": "The AI-based surgery safety system continued to point out the mistake, but the attending nurse could not relay this to the surgeon even after eight attempts, leading to a local anaesthetic injection in the wrong eye."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Medical errors when AI authentication was not implemented or properly used",
+     "effect": "Five postimplementation errors (0.027%) occurred, four in non-authenticated cases. Initial surgical laterality authentication was 84.5% vs 99.4% post implementation; two laterality errors occurred during initial implementation.",
+     "quote": "Post implementation, five medical errors (0.027%) occurred, with four in non-authenticated cases (where the AI system was not fully implemented or properly used), compared with one (0.0053%) pre-implementation (p=0.125)."
+    }
+   ],
+   "unlisted_practices": [
+    "Add AI-based patient identification, surgical laterality verification, and intraocular lens authentication to the existing WHO Surgical Safety Checklist."
+   ]
+  },
+  "gemini": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Japan",
+   "sample_size": 37529,
+   "sample_unit": "surgeries",
+   "models_evaluated": [
+    "YOLO V.3",
+    "VGG V.16"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R140",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "near misses identified",
+     "effect": "30 near misses (0.16%) were identified post-implementation versus 9 (0.048%) pre-implementation.",
+     "quote": "The AI system identified 30 near misses (0.16%) post implementation, vs 9 (0.048%) pre-implementation (p=0.00067), surgical laterality errors/near misses occurred at 0.039% (7/18 762) and IOL recognition at 0.29% (28/9713)."
+    },
+    {
+     "rec_id": "R140",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "cost-benefit analysis",
+     "effect": "Potential benefits ranged from US$181,946.94 to US$2,769,129.12 in conservative and intermediate scenarios.",
+     "quote": "Cost-benefit analysis revealed potential benefits ranging from US$181 946.94 to US$2 769 129.12 in conservative and intermediate scenarios, respectively."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "medical errors in non-authenticated cases",
+     "effect": "Four of five post-implementation medical errors occurred in non-authenticated cases where the AI was not properly used.",
+     "quote": "Post implementation, five medical errors (0.027%) occurred, with four in non-authenticated cases (where the AI system was not fully implemented or properly used), compared with one (0.0053%) pre-implementation (p=0.125)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "errors involving unlearned inputs",
+     "effect": "Two errors involved unlearned intraocular lenses due to delayed AI updates, causing non-authentication.",
+     "quote": "Of the four non-authenticated errors, two were laterality errors during the initial implementation period and two were IOL implantation errors involving unlearned IOLs (7.3% of cases) due to delayed AI updates."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "system accuracy in pre-implementation testing",
+     "effect": "The system demonstrated 100% accuracy in a pre-implementation test of 300 cases.",
+     "quote": "Pre-implementation testing with 300 cases (50% intentionally erroneous) demonstrated 100% system accuracy ( online supplemental figure 6 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Integrating AI-based surgical safety checks with the existing WHO Surgical Safety Checklist",
+    "Economic evaluation modeling near misses into error probabilities across conservative, intermediate, and high-risk scenarios"
+   ]
+  }
+ },
+ "design": "pre_post_no_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "surgeries",
+ "sample_size": 37529,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "VGG V.16",
+  "VGG V.16 (IOL authentication)",
+  "YOLO V.3",
+  "YOLO V.3 (surgical laterality)",
+  "facial recognition"
+ ],
+ "links": [
+  {
+   "rec_id": "R371",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Medical errors when AI authentication was not implemented or properly used",
+   "effect": "Five postimplementation errors (0.027%) occurred, four in non-authenticated cases. Initial surgical laterality authentication was 84.5% vs 99.4% post implementation; two laterality errors occurred during initial implementation.",
+   "quote": "Post implementation, five medical errors (0.027%) occurred, with four in non-authenticated cases (where the AI system was not fully implemented or properly used), compared with one (0.0053%) pre-implementation (p=0.125).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R549",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Errors from IOL models not in AI training due to delayed updates",
+   "effect": "7.3% of 9713 post-implementation IOL surgeries involved unlearned lenses, leading to two incorrect IOL implantations; model updated only three times due to budget and stability constraints.",
+   "quote": "Of the 9713 IOL surgeries performed post implementation, 7.3% involved unlearned lenses, leading to two cases of incorrect IOL implantation.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R173",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Surgical safety failures despite accurate AI detection in the clinical workflow",
+   "effect": "Pre-implementation testing demonstrated 100% accuracy in 300 cases; deployment included a wrong-eye anaesthetic injection despite AI warnings, which the nurse could not relay even after eight attempts.",
+   "quote": "The AI-based surgery safety system continued to point out the mistake, but the attending nurse could not relay this to the surgeon even after eight attempts, leading to a local anaesthetic injection in the wrong eye.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "errors involving unlearned inputs",
+   "effect": "Two errors involved unlearned intraocular lenses due to delayed AI updates, causing non-authentication.",
+   "quote": "Of the four non-authenticated errors, two were laterality errors during the initial implementation period and two were IOL implantation errors involving unlearned IOLs (7.3% of cases) due to delayed AI updates.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "system accuracy in pre-implementation testing",
+   "effect": "The system demonstrated 100% accuracy in a pre-implementation test of 300 cases.",
+   "quote": "Pre-implementation testing with 300 cases (50% intentionally erroneous) demonstrated 100% system accuracy ( online supplemental figure 6 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R140",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Add AI-based patient identification, surgical laterality verification, and intraocular lens authentication to the existing WHO Surgical Safety Checklist.",
+  "Economic evaluation modeling near misses into error probabilities across conservative, intermediate, and high-risk scenarios",
+  "Integrating AI-based surgical safety checks with the existing WHO Surgical Safety Checklist"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:39613452",
+ "screen": {
+  "id": "pmid:39613452",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "AI verification integrated with WHO surgical safety checklist",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the real-world implementation of an AI-based surgical safety checklist verification system (patient ID, laterality, and IOL check) before and after deployment across over 37,000 ophthalmic surgeries.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "AI-based surgical safety checklist verification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39613452",
+   "empirical": 0.97,
+   "tests_practice": 0.67,
+   "real_deployment": 0.94
+  }
+ }
+}

@@ -1,0 +1,442 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Thailand",
+   "sample_size": 322,
+   "sample_unit": "knee radiographs (116 patients internal; 150 external Kaggle images)",
+   "models_evaluated": [
+    "ResNet18",
+    "EfficientNetB0",
+    "DenseNet121",
+    "Neural Network",
+    "Efficient Linear",
+    "SVM",
+    "Naive Bayes"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop from internal to external knee X-ray dataset under domain shift",
+     "effect": "External AUC 0.72\u20130.89 but accuracy only 31\u201344%, indicating calibration drift and domain shift between internal and external datasets.",
+     "quote": "Although most models achieved relatively high AUC values (0.72\u20130.89), the corresponding external test accuracy remained substantially lower (31\u201344%), suggesting the presence of calibration drift and domain shift between the internal and external datasets."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Osteopenia recall and balanced accuracy after class-prior boosting and recalibration on external data",
+     "effect": "Class-prior boosting raised balanced accuracy from 38.0% to 48.0%, macro F1 from 0.259 to 0.416, and Osteopenia recall from 2% to 78%; Normal recall fell from 22% to 6%. Recalibration alone was insufficient.",
+     "quote": "Most importantly, Osteopenia recall improved dramatically from 2% to 78%, transforming the model from effectively blind to the intermediate disease stage into a clinically meaningful early-detection screening system."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration drift under external domain shift",
+     "effect": "Osteopenia predicted probabilities collapsed below 0.30 externally, with baseline Osteopenia recall of 2%; Osteoporosis class overconfident.",
+     "quote": "From Table 10 , reliability analysis revealed that the Osteopenia class experienced near-complete probability collapse, with predicted probabilities consistently remaining below 0.30 during external testing."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Overestimated performance from internal versus external validation",
+     "effect": "Internal test accuracy about 67\u201375% versus external accuracy 31\u201344%; external set was isolated and used once, revealing a performance gap.",
+     "quote": "This limitation is reflected in the observed performance gap between internal and external validation, highlighting the challenges of generalization across different imaging domains."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination (AUC) masking poor calibration and threshold-based performance",
+     "effect": "High external AUC (0.87\u20130.89) masked poor threshold-based accuracy (~42\u201343%); subgroup/class-specific Osteopenia sensitivity was near zero.",
+     "quote": "Importantly, high discrimination performance should not be interpreted as evidence of clinical readiness."
+    }
+   ],
+   "unlisted_practices": [
+    "Class-prior boosting with cross-validated threshold optimization for external domain shift",
+    "Isotonic recalibration of predicted probabilities"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Thailand",
+   "sample_size": 472,
+   "sample_unit": "knee X-ray images",
+   "models_evaluated": [
+    "ResNet18",
+    "EfficientNetB0",
+    "DenseNet121",
+    "Optimizable Tree",
+    "Optimizable SVM",
+    "Optimizable Naive Bayes",
+    "Optimizable KNN",
+    "Optimizable Neural Network",
+    "Optimizable Efficient Linear"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External validation detected calibration/domain shift",
+     "effect": "AUC 0.72\u20130.89 but external accuracy 31\u201344%, revealing calibration drift and domain shift.",
+     "quote": "Although most models achieved relatively high AUC values (0.72\u20130.89), the corresponding external test accuracy remained substantially lower (31\u201344%), suggesting the presence of calibration drift and domain shift between the internal and external datasets."
+    },
+    {
+     "rec_id": "R092",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset provenance incompleteness",
+     "effect": "External dataset lacked acquisition protocols, equipment, DXA procedures, quality control, and label generation details.",
+     "quote": "As the dataset was collected and curated by an independent source, detailed information regarding image acquisition protocols, imaging equipment, DXA procedures, image quality control, and label generation was not fully available."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC hid poor threshold accuracy",
+     "effect": "AUC 0.87\u20130.89 while external classification accuracy was approximately 42\u201343%.",
+     "quote": "While several models achieved relatively high AUC values (0.87\u20130.89), external classification accuracy remained limited (approximately 42\u201343%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate model comparison",
+     "effect": "DenseNet-121+Neural Network had highest test accuracy 75.38, F1-score 72.45, AUC 0.9010.",
+     "quote": "Similarly, DenseNet-121 with Neural Network delivers the best overall performance, achieving the highest test accuracy (75.38) and F1-score (72.45), along with the highest AUC (0.9010), demonstrating superior generalization and feature learning capability."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cross-domain performance degradation",
+     "effect": "Domain shift led to external accuracy 31\u201344% despite AUC 0.72\u20130.89.",
+     "quote": "Although most models achieved relatively high AUC values (0.72\u20130.89), the corresponding external test accuracy remained substantially lower (31\u201344%), suggesting the presence of calibration drift and domain shift between the internal and external datasets."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Class-prior adjustment performance",
+     "effect": "Overall and balanced accuracy increased 38.0% to 48.0%; macro F1 0.259 to 0.416.",
+     "quote": "From Table 11 , the CV-unbiased evaluation demonstrated that class-prior adjustment increased overall accuracy and balanced accuracy from 38.0% to 48.0%, while macro F1-score improved from 0.259 to 0.416."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Isotonic recalibration external recall",
+     "effect": "Normal recall improved 14% to 22%, but Osteopenia recall remained 2%.",
+     "quote": "Although recalibration improved Normal recall from 14% to 22%, Osteopenia recall remained unchanged at only 2%, indicating that probability recalibration alone was insufficient to recover the suppressed Osteopenia decision region under external domain shift (see Table 9 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Incorrect external classifications",
+     "effect": "External accuracy approximately 42\u201343% despite AUC 0.87\u20130.89.",
+     "quote": "Although AUC values remained relatively high under external testing, the substantially reduced classification accuracy indicates that many individual predictions would still be incorrect in practice."
+    }
+   ],
+   "unlisted_practices": [
+    "Training-set data augmentation and oversampling/class balancing to mitigate class imbalance"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Thailand",
+   "sample_size": 472,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "ResNet18",
+    "EfficientNet-B0",
+    "DenseNet-121"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external test accuracy drop under domain shift",
+     "effect": "External test accuracy dropped substantially to 31\u201344% despite relatively high AUC values (0.72\u20130.89), demonstrating severe performance degradation on external validation data.",
+     "quote": "Although most models achieved relatively high AUC values (0.72\u20130.89), the corresponding external test accuracy remained substantially lower (31\u201344%), suggesting the presence of calibration drift and domain shift between the internal and external datasets."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination metrics concealing calibration drift",
+     "effect": "Models showed a substantial discrepancy between AUC and threshold-based metrics, with severe probability collapse in osteopenia concealed by high AUC values.",
+     "quote": "External validation revealed a substantial discrepancy between AUC and threshold-based metrics, indicating the presence of calibration drift and class-prior mismatch across imaging domains."
+    }
+   ],
+   "unlisted_practices": [
+    "Post-hoc isotonic recalibration and class-prior boosting with threshold optimization to address calibration drift and class-prior mismatch under domain shift"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Thailand",
+ "sample_unit": "knee radiographs (116 patients internal; 150 external Kaggle images)",
+ "sample_size": 472,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "DenseNet-121",
+  "DenseNet121",
+  "Efficient Linear",
+  "EfficientNet-B0",
+  "EfficientNetB0",
+  "Naive Bayes",
+  "Neural Network",
+  "Optimizable Efficient Linear",
+  "Optimizable KNN",
+  "Optimizable Naive Bayes",
+  "Optimizable Neural Network",
+  "Optimizable SVM",
+  "Optimizable Tree",
+  "ResNet18",
+  "SVM"
+ ],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drop from internal to external knee X-ray dataset under domain shift",
+   "effect": "External AUC 0.72\u20130.89 but accuracy only 31\u201344%, indicating calibration drift and domain shift between internal and external datasets.",
+   "quote": "Although most models achieved relatively high AUC values (0.72\u20130.89), the corresponding external test accuracy remained substantially lower (31\u201344%), suggesting the presence of calibration drift and domain shift between the internal and external datasets.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Osteopenia recall and balanced accuracy after class-prior boosting and recalibration on external data",
+   "effect": "Class-prior boosting raised balanced accuracy from 38.0% to 48.0%, macro F1 from 0.259 to 0.416, and Osteopenia recall from 2% to 78%; Normal recall fell from 22% to 6%. Recalibration alone was insufficient.",
+   "quote": "Most importantly, Osteopenia recall improved dramatically from 2% to 78%, transforming the model from effectively blind to the intermediate disease stage into a clinically meaningful early-detection screening system.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Overestimated performance from internal versus external validation",
+   "effect": "Internal test accuracy about 67\u201375% versus external accuracy 31\u201344%; external set was isolated and used once, revealing a performance gap.",
+   "quote": "This limitation is reflected in the observed performance gap between internal and external validation, highlighting the challenges of generalization across different imaging domains.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination (AUC) masking poor calibration and threshold-based performance",
+   "effect": "High external AUC (0.87\u20130.89) masked poor threshold-based accuracy (~42\u201343%); subgroup/class-specific Osteopenia sensitivity was near zero.",
+   "quote": "Importantly, high discrimination performance should not be interpreted as evidence of clinical readiness.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration drift under external domain shift",
+   "effect": "Osteopenia predicted probabilities collapsed below 0.30 externally, with baseline Osteopenia recall of 2%; Osteoporosis class overconfident.",
+   "quote": "From Table 10 , reliability analysis revealed that the Osteopenia class experienced near-complete probability collapse, with predicted probabilities consistently remaining below 0.30 during external testing.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "External validation detected calibration/domain shift",
+   "effect": "AUC 0.72\u20130.89 but external accuracy 31\u201344%, revealing calibration drift and domain shift.",
+   "quote": "Although most models achieved relatively high AUC values (0.72\u20130.89), the corresponding external test accuracy remained substantially lower (31\u201344%), suggesting the presence of calibration drift and domain shift between the internal and external datasets.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R092",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dataset provenance incompleteness",
+   "effect": "External dataset lacked acquisition protocols, equipment, DXA procedures, quality control, and label generation details.",
+   "quote": "As the dataset was collected and curated by an independent source, detailed information regarding image acquisition protocols, imaging equipment, DXA procedures, image quality control, and label generation was not fully available.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Isotonic recalibration external recall",
+   "effect": "Normal recall improved 14% to 22%, but Osteopenia recall remained 2%.",
+   "quote": "Although recalibration improved Normal recall from 14% to 22%, Osteopenia recall remained unchanged at only 2%, indicating that probability recalibration alone was insufficient to recover the suppressed Osteopenia decision region under external domain shift (see Table 9 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Class-prior boosting with cross-validated threshold optimization for external domain shift",
+  "Isotonic recalibration of predicted probabilities",
+  "Post-hoc isotonic recalibration and class-prior boosting with threshold optimization to address calibration drift and class-prior mismatch under domain shift",
+  "Training-set data augmentation and oversampling/class balancing to mitigate class imbalance"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42452681",
+ "screen": {
+  "id": "pmid:42452681",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "isotonic recalibration and threshold optimization for domain shift",
+  "user": "none",
+  "reason": "The study empirically tests post-hoc recalibration and adaptive threshold optimization as deployment safeguards to mitigate calibration drift and class-prior mismatch under external validation.",
+  "jev": {
+   "id": "pmid:42452681",
+   "empirical": 0.96,
+   "tests_practice": 0.85,
+   "real_deployment": 0.03
+  }
+ }
+}

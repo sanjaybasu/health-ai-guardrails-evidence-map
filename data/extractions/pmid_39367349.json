@@ -1,0 +1,344 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Sweden; Australia",
+   "sample_size": 399,
+   "sample_unit": "ankle radiograph examinations (external validation set)",
+   "models_evaluated": [
+    "ResNet-based multi-label deep learning ankle fracture classifier (AO/OTA 2018)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model AUC on external site data versus internal validation data",
+     "effect": "Fracture detection AUC 0.86 (0.82-0.89) in external set vs 0.95 (0.94-0.97) internal; weighted AUC 0.82 vs 0.93, revealing an external performance gap.",
+     "quote": "Notable was that fracture detection (fracture \u201cyes\u201d/\u201dno\u201d) had AUC 0.86 (0.82\u20130.89) for the EVD vs. AUC 0.95 (0.94\u20130.97) for the IVD."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development and external site datasets and effect on performance",
+     "effect": "External set had three times more type A fractures, fewer views (3 vs 4+), no casts/implants, follow-up images; performance lower externally.",
+     "quote": "In this study, the Flinders data has a different distribution and priori probabilities than the training data."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of active learning with targeted local-like training data on external performance",
+     "effect": "After active learning, external wAUC rose by 0.06 (0.77 to 0.83) and wAUPR from 0.57 to 0.63; group C2 AUPR dropped by 0.40.",
+     "quote": "The wAUC increased by 0.06 (0.77 to 0.83), and the wAUPR increased from 0.57 to 0.63 for the EVD."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance at an external site versus developer's internal site",
+     "effect": "External wAUC 0.86 vs 0.95 internal for fracture detection; type A fractures had lowest AUC and several outcomes did not beat random AUPR.",
+     "quote": "The direct clinical implications of this study are that algorithms developed elsewhere need local validation and that discrepancies can be rectified using targeted training."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation between two hospital sites",
+     "effect": "wAUC 0.95 internal (Danderyd) vs 0.86 external (Flinders) for fracture detection; different results expected at other hospitals.",
+     "quote": "Compared to the weighted mean AUC (wAUC) 0.86 (95%CI 0.82-0.89) for fracture detection in the EVD, the network attained wAUC 0.95 (95%CI 0.94-0.97) for the IVD."
+    }
+   ],
+   "unlisted_practices": [
+    "Active learning with uncertainty-based case selection to improve external validity"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Sweden; Australia",
+   "sample_size": 808,
+   "sample_unit": "validation ankle radiographic examinations",
+   "models_evaluated": [
+    "modified ResNet-based neural network ankle fracture classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External versus internal diagnostic performance",
+     "effect": "Fracture detection AUC 0.86 (0.82\u20130.89) EVD vs 0.95 (0.94\u20130.97) IVD; AUPR 0.93 vs 0.96.",
+     "quote": "Notable was that fracture detection (fracture \u201cyes\u201d/\u201dno\u201d) had AUC 0.86 (0.82\u20130.89) for the EVD vs. AUC 0.95 (0.94\u20130.97) for the IVD."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Site-specific performance variation",
+     "effect": "External Flinders performance was lower than internal Danderyd: AUC 0.86 vs 0.95 for fracture detection.",
+     "quote": "Notable was that fracture detection (fracture \u201cyes\u201d/\u201dno\u201d) had AUC 0.86 (0.82\u20130.89) for the EVD vs. AUC 0.95 (0.94\u20130.97) for the IVD."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Reviewer agreement for reference labels",
+     "effect": "Malleolar ICC 0.86/kappa 0.85; type ICC 0.76\u20130.84/kappa 0.85\u20130.78; most other outcomes poor.",
+     "quote": "ICC and kappa are poor for most other outcomes, and we consider the task challenging for humans."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retesting after active learning",
+     "effect": "EVD wAUC increased 0.77 to 0.83 and wAUPR 0.57 to 0.63, but C2 AUPR fell -0.40 and C2.1 -0.38.",
+     "quote": "Most notable is a drop in performance for group C2 fractures, where group C2 and subgroup C2.1 decreased considerably in AUPR (-0.40 and -0.38, respectively)."
+    }
+   ],
+   "unlisted_practices": [
+    "Targeted active learning and additional training data focused on underperforming fracture classes to improve external validity"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Sweden, Australia",
+   "sample_size": 808,
+   "sample_unit": "studies",
+   "models_evaluated": [
+    "modified ResNet-based CNN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "fracture detection and classification performance on internal versus external validation datasets",
+     "effect": "wAUC 0.86 (95% CI 0.82-0.89) for fracture detection in EVD vs wAUC 0.95 (95% CI 0.94-0.97) in IVD; individual outcome wAUC 0.82 vs 0.93.",
+     "quote": "Compared to the weighted mean AUC (wAUC) 0.86 (95%CI 0.82-0.89) for fracture detection in the EVD, the network attained wAUC 0.95 (95%CI 0.94-0.97) for the IVD."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Sweden; Australia",
+ "sample_unit": "ankle radiograph examinations (external validation set)",
+ "sample_size": 808,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "ResNet-based multi-label deep learning ankle fracture classifier (AO/OTA 2018)",
+  "modified ResNet-based CNN",
+  "modified ResNet-based neural network ankle fracture classifier"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model AUC on external site data versus internal validation data",
+   "effect": "Fracture detection AUC 0.86 (0.82-0.89) in external set vs 0.95 (0.94-0.97) internal; weighted AUC 0.82 vs 0.93, revealing an external performance gap.",
+   "quote": "Notable was that fracture detection (fracture \u201cyes\u201d/\u201dno\u201d) had AUC 0.86 (0.82\u20130.89) for the EVD vs. AUC 0.95 (0.94\u20130.97) for the IVD.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation between two hospital sites",
+   "effect": "wAUC 0.95 internal (Danderyd) vs 0.86 external (Flinders) for fracture detection; different results expected at other hospitals.",
+   "quote": "Compared to the weighted mean AUC (wAUC) 0.86 (95%CI 0.82-0.89) for fracture detection in the EVD, the network attained wAUC 0.95 (95%CI 0.94-0.97) for the IVD.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of active learning with targeted local-like training data on external performance",
+   "effect": "After active learning, external wAUC rose by 0.06 (0.77 to 0.83) and wAUPR from 0.57 to 0.63; group C2 AUPR dropped by 0.40.",
+   "quote": "The wAUC increased by 0.06 (0.77 to 0.83), and the wAUPR increased from 0.57 to 0.63 for the EVD.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance at an external site versus developer's internal site",
+   "effect": "External wAUC 0.86 vs 0.95 internal for fracture detection; type A fractures had lowest AUC and several outcomes did not beat random AUPR.",
+   "quote": "The direct clinical implications of this study are that algorithms developed elsewhere need local validation and that discrepancies can be rectified using targeted training.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "fracture detection and classification performance on internal versus external validation datasets",
+   "effect": "wAUC 0.86 (95% CI 0.82-0.89) for fracture detection in EVD vs wAUC 0.95 (95% CI 0.94-0.97) in IVD; individual outcome wAUC 0.82 vs 0.93.",
+   "quote": "Compared to the weighted mean AUC (wAUC) 0.86 (95%CI 0.82-0.89) for fracture detection in the EVD, the network attained wAUC 0.95 (95%CI 0.94-0.97) for the IVD.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Active learning with uncertainty-based case selection to improve external validity",
+  "Targeted active learning and additional training data focused on underperforming fracture classes to improve external validity"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39367349",
+ "screen": {
+  "id": "pmid:39367349",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local external validation before deployment",
+  "user": "none",
+  "reason": "This is an external validation study of a deep-learning model for ankle fracture classification across two distinct institutional cohorts. While it discusses the importance of local validation, it evaluates model accuracy rather than testing a specific implementation safeguard or deployment practice.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39367349",
+   "empirical": 0.97,
+   "tests_practice": 0.36,
+   "real_deployment": 0.05
+  }
+ }
+}

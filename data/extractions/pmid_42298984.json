@@ -1,0 +1,212 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 5115,
+   "sample_unit": "hospitalized patients labeled with AKI by standard KDIGO criteria",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Refining AKI outcome labeling criteria (excluding transient creatinine decreases, minimum absolute creatinine increase) to improve prognostic validity and ML model performance",
+    "Dual-alert clinical decision support distinguishing refined AKI from ambiguous AKI cases"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 5115,
+   "sample_unit": "patients labeled by standard KDIGO",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ambiguous AKI labels",
+     "effect": "978/5,115 (19.1%) standard KDIGO-labeled patients were considered ambiguous; 4,137 (80.9%) met refined criteria.",
+     "quote": "Among 5,115 patients labeled by the standard KDIGO, 4,137 (80.9%) met the refined criteria, and 978 (19.1%) were considered ambiguous."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model discrimination, precision, and false-positive alerts",
+     "effect": "Refined-label models: AUROC 0.935 vs. 0.926; AUPRC 0.729 vs. 0.707; 27% fewer false-positive alerts, with minimal detection loss.",
+     "quote": "ML models trained with refined labels showed improved discrimination (AUROC, 0.935 vs. 0.926) and precision (AUPRC, 0.729 vs. 0.707) and reduced false-positive alerts by 27% with minimal loss in adverse outcome detection."
+    }
+   ],
+   "unlisted_practices": [
+    "Refine AKI labels by excluding transient serum creatinine decreases from baseline estimation and applying a minimum absolute serum creatinine increase threshold.",
+    "Use a dual-alert clinical decision support system to distinguish refined AKI from ambiguous AKI cases."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 5115,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Refining algorithmic ground-truth labeling criteria (e.g., baseline serum creatinine estimation and minimum absolute increase thresholds) to train and evaluate predictive models",
+    "Employing a dual-alert clinical decision support architecture to distinguish definite condition cases from ambiguous cases"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "hospitalized patients labeled with AKI by standard KDIGO criteria",
+ "sample_size": 5115,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CatBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Ambiguous AKI labels",
+   "effect": "978/5,115 (19.1%) standard KDIGO-labeled patients were considered ambiguous; 4,137 (80.9%) met refined criteria.",
+   "quote": "Among 5,115 patients labeled by the standard KDIGO, 4,137 (80.9%) met the refined criteria, and 978 (19.1%) were considered ambiguous.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dual-alert clinical decision support distinguishing refined AKI from ambiguous AKI cases",
+  "Employing a dual-alert clinical decision support architecture to distinguish definite condition cases from ambiguous cases",
+  "Refine AKI labels by excluding transient serum creatinine decreases from baseline estimation and applying a minimum absolute serum creatinine increase threshold.",
+  "Refining AKI outcome labeling criteria (excluding transient creatinine decreases, minimum absolute creatinine increase) to improve prognostic validity and ML model performance",
+  "Refining algorithmic ground-truth labeling criteria (e.g., baseline serum creatinine estimation and minimum absolute increase thresholds) to train and evaluate predictive models",
+  "Use a dual-alert clinical decision support system to distinguish refined AKI from ambiguous AKI cases."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42298984",
+ "screen": {
+  "id": "pmid:42298984",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "refined outcome labeling and dual-alert threshold design",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates how refined label definitions and a dual-alert clinical decision support architecture impact model performance and alert burden (reducing false-positive alerts).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "ground truth relabeling and dual-alert thresholding for ambiguous cases"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42298984",
+   "empirical": 0.92,
+   "tests_practice": 0.41,
+   "real_deployment": 0.07
+  }
+ }
+}

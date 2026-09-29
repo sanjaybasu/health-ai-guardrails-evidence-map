@@ -1,0 +1,348 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 44,
+   "sample_unit": "head and neck cancer cases (institutional external test set)",
+   "models_evaluated": [
+    "3D U-Net DLAS",
+    "GPT-4",
+    "Llama-3-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Auto-segmentation performance on local clinical data versus challenge performance",
+     "effect": "Significant performance degradation on local cases; GTVp DSC 0.68, GTVn DSC 0.66, HD95 16.0 mm; FP errors in 5 GTVp and 12 GTVn cases.",
+     "quote": "In our study, we observed significant performance degradation for GTVp and GTVn in independent clinical cases, mainly due to the high incidence of FPs and FNs in DLAS."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM extraction accuracy of tumor counts under basic versus refined prompt",
+     "effect": "Prompt1 gave 47 primary tumors and 117 LNs; prompt2 gave 40 and 106 versus RadOnc 40 and 111, matching better.",
+     "quote": "The results of prompt2 matched better those of the RadOncs."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of GPT-4 versus Llama-3-8B for tumor information extraction from reports",
+     "effect": "GPT-4 extracted 40 primary tumors and 106 LNs vs RadOnc 40/111; Llama-3-8B gave 48 primary tumors and 127 LNs with extra false positives; Llama-3 inferior.",
+     "quote": "Our study found that Llama-3 is inferior to the GPT-4 model in terms of tumor information extraction."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM misclassification of benign findings as malignant tumors in radiology reports",
+     "effect": "GPT-4 misclassified suspected goiter and symmetric tonsil enhancement as tumor out of the box; prompt engineering improved accuracy.",
+     "quote": "For example, in one instance, the report mentioned \u201csymmetric enhancement in the tonsil region\u201d, which GPT-4 incorrectly categorized as malignant primary tumor."
+    }
+   ],
+   "unlisted_practices": [
+    "Using radiology report content extracted by LLM to rule out false-positive AI segmentation contours",
+    "Prompt engineering to emphasize impression section for LLM report extraction"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 44,
+   "sample_unit": "head and neck cancer cases",
+   "models_evaluated": [
+    "3D U-Net DLAS model",
+    "ChatGPT-4",
+    "Llama-3-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "benchmark-to-local performance drop",
+     "effect": "HECKTOR reported top DSCs 0.788/0.776; local baseline DSCs were 0.68 for GTVp and 0.66 for GTVn.",
+     "quote": "The contouring agreement, as reflected by the DSC and HD95 metrics, remained inferior to the performance reported in the HECKTOR challenge, even after applying the FP ruling-out approach."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local validation false-positive errors",
+     "effect": "On 44 local cases, 5 GTVp and 12 GTVn cases contained FP errors; eight GTVn FN errors were also found.",
+     "quote": "Out of 44 cases, 5 and 12 cases contained FP errors for GTVp and GTVn, respectively."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "radiology-report data added to segmentation",
+     "effect": "FP errors improved from 17/111 to 0/111 for GTVn and 5/40 to 0/40 for GTVp; precision reached 1.0.",
+     "quote": "The ruling-out process successfully removed all FPs for both GTVp (5) and GTVn (17), achieving a perfect precision of 1.0."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI contour output accuracy",
+     "effect": "Before report-based ruling out, FP errors were 17/111 GTVn and 5/40 GTVp; FN errors were 8/111 GTVn and 0/40 GTVp.",
+     "quote": "However, eight FN errors remained for 111 GTVn instances."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering that instructs the LLM to use the radiology report impression paragraph to classify findings as primary tumors or lymph nodes."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 44,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "3D U-Net",
+    "ChatGPT-4",
+    "Llama-3-8B",
+    "INTContour"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "en"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "auto-segmentation performance degradation on local clinical data",
+     "effect": "DLAS model achieved an average DSC of 0.68 for GTVp and 0.66 for GTVn, with false-positive errors in 5 and 12 of 44 cases, respectively.",
+     "quote": "In our study, we observed significant performance degradation for GTVp and GTVn in independent clinical cases, mainly due to the high incidence of FPs and FNs in DLAS."
+    }
+   ],
+   "unlisted_practices": [
+    "Automated post-processing verification of image auto-segmentation contours against LLM-extracted radiology report findings to rule out false positives"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "head and neck cancer cases (institutional external test set)",
+ "sample_size": 44,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "en"
+ ],
+ "models_evaluated": [
+  "3D U-Net",
+  "3D U-Net DLAS",
+  "3D U-Net DLAS model",
+  "ChatGPT-4",
+  "GPT-4",
+  "INTContour",
+  "Llama-3-8B"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Auto-segmentation performance on local clinical data versus challenge performance",
+   "effect": "Significant performance degradation on local cases; GTVp DSC 0.68, GTVn DSC 0.66, HD95 16.0 mm; FP errors in 5 GTVp and 12 GTVn cases.",
+   "quote": "In our study, we observed significant performance degradation for GTVp and GTVn in independent clinical cases, mainly due to the high incidence of FPs and FNs in DLAS.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of GPT-4 versus Llama-3-8B for tumor information extraction from reports",
+   "effect": "GPT-4 extracted 40 primary tumors and 106 LNs vs RadOnc 40/111; Llama-3-8B gave 48 primary tumors and 127 LNs with extra false positives; Llama-3 inferior.",
+   "quote": "Our study found that Llama-3 is inferior to the GPT-4 model in terms of tumor information extraction.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "benchmark-to-local performance drop",
+   "effect": "HECKTOR reported top DSCs 0.788/0.776; local baseline DSCs were 0.68 for GTVp and 0.66 for GTVn.",
+   "quote": "The contouring agreement, as reflected by the DSC and HD95 metrics, remained inferior to the performance reported in the HECKTOR challenge, even after applying the FP ruling-out approach.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R500",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated post-processing verification of image auto-segmentation contours against LLM-extracted radiology report findings to rule out false positives",
+  "Prompt engineering that instructs the LLM to use the radiology report impression paragraph to classify findings as primary tumors or lymph nodes.",
+  "Prompt engineering to emphasize impression section for LLM report extraction",
+  "Using radiology report content extracted by LLM to rule out false-positive AI segmentation contours"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40563585",
+ "screen": {
+  "id": "pmid:40563585",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM-based report cross-check to rule out false-positive auto-segmentations",
+  "user": "none",
+  "reason": "Evaluates using an LLM to cross-reference auto-segmentation contours against radiology reports as an automated verification/filtering safeguard to eliminate false-positive segmentations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "LLM report-based false-positive filtering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40563585",
+   "empirical": 0.94,
+   "tests_practice": 0.74,
+   "real_deployment": 0.07
+  }
+ }
+}

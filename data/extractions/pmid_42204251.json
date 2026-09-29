@@ -1,0 +1,283 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 142,
+   "sample_unit": "radiology reports",
+   "models_evaluated": [
+    "LLaMA-3.3 70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Sensitivity of classification performance to prompt strategy and few-shot example count",
+     "effect": "Zero-shot micro-F1 0.716; few-shot k=2 0.652, k=3 0.693, k=4 0.654, k=5 0.696; CoT+SC 0.811. Performance varied non-linearly with number and selection of examples.",
+     "quote": "The results reveal a non-linear relationship between the number of shots and model effectiveness."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reference-standard construction (labels taken from original radiologist reports, no independent annotation)",
+     "effect": "Reference labels were original classifications documented in the reports by radiologists, without independent blinded annotators or adjudication; reports contained discordance between measurements and stated conclusions.",
+     "quote": "A reference set of original classifications, as documented in the reports, was retained for performance benchmarking."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Reporting of metrics with uncertainty",
+     "effect": "Accuracy and F1 reported with bootstrapped 95% CIs (3000 resamples); CoT+SC accuracy 0.81 [0.746-0.873]; per-class precision, recall, F1 reported.",
+     "quote": "To quantify statistical uncertainty, 95% confidence intervals (CIs) for accuracy and F1-scores were estimated using non-parametric bootstrapping with 3000 resamples at the report level."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Single-site, retrospective, institution-templated data limiting representativeness",
+     "effect": "Evaluation used reports from one institution with standardized RECIST-structured templates; authors state generalizability may be restricted and multicenter validation is needed.",
+     "quote": "The use of single-center data may restrict generalizability due to stylistic homogeneity in report language and local reporting conventions."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing prompting strategies (zero-shot, few-shot, chain-of-thought with self-consistency) for LLM classification accuracy",
+    "Offline in-house LLM deployment for privacy preservation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 142,
+   "sample_unit": "radiology reports",
+   "models_evaluated": [
+    "LLaMA 3.3\u201370B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "RECIST classification accuracy versus expert labels",
+     "effect": "Best CoT+SC accuracy 0.810 and micro-F1 0.81; zero-shot accuracy 0.72.",
+     "quote": "CoT + SC achieved the best micro-F1 (0.81) and accuracy (0.810), exceeding the next-best approach (zero-shot, accuracy = 0.72) by an absolute + 9% points."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Prompt-strategy sensitivity of RECIST classification",
+     "effect": "k=2 few-shot micro-F1 0.652 versus zero-shot 0.716; CoT+SC reached 0.811.",
+     "quote": "Adding just two examples per class (k = 2) led to a decrease in performance (micro-F1 = 0.652), indicating that limited contextual examples may introduce overfitting or noise, especially in a setting with imbalanced class distributions and variable linguistic structure in clinical texts."
+    }
+   ],
+   "unlisted_practices": [
+    "Chain-of-thought plus self-consistency prompting for RECIST category classification",
+    "Varying few-shot examples per class for in-context RECIST prompting"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 142,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "LLaMA-3.3 (70B)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Chain-of-thought prompting with self-consistency",
+    "Few-shot prompting"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "radiology reports",
+ "sample_size": 142,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "LLaMA 3.3\u201370B",
+  "LLaMA-3.3 (70B)",
+  "LLaMA-3.3 70B"
+ ],
+ "links": [
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Prompt-strategy sensitivity of RECIST classification",
+   "effect": "k=2 few-shot micro-F1 0.652 versus zero-shot 0.716; CoT+SC reached 0.811.",
+   "quote": "Adding just two examples per class (k = 2) led to a decrease in performance (micro-F1 = 0.652), indicating that limited contextual examples may introduce overfitting or noise, especially in a setting with imbalanced class distributions and variable linguistic structure in clinical texts.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Chain-of-thought plus self-consistency prompting for RECIST category classification",
+  "Chain-of-thought prompting with self-consistency",
+  "Comparing prompting strategies (zero-shot, few-shot, chain-of-thought with self-consistency) for LLM classification accuracy",
+  "Few-shot prompting",
+  "Offline in-house LLM deployment for privacy preservation",
+  "Varying few-shot examples per class for in-context RECIST prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42204251",
+ "screen": {
+  "id": "pmid:42204251",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompting strategy (zero-shot vs few-shot vs chain-of-thought) with offline in-house LLM",
+  "user": "none",
+  "reason": "The study tests an offline-deployed LLM on real-world CT radiology reports and compares different prompt engineering strategies (zero-shot vs few-shot vs chain-of-thought) to improve automated RECIST classification.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompting strategies comparison"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42204251",
+   "empirical": 0.95,
+   "tests_practice": 0.11,
+   "real_deployment": 0.14
+  }
+ }
+}

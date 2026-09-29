@@ -1,0 +1,310 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 958,
+   "sample_unit": "pediatric chest radiographs (patients)",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR v3.1.4.4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance with adult vendor threshold versus locally optimized pediatric threshold",
+     "effect": "Optimized pediatric cut-off 44.5 vs adult 15: accuracy 89.8% (vs 83.4%), specificity 92.4% (vs 82.3%), sensitivity 80.0% (vs 87.5%), similar AUC 0.93; PPV improved.",
+     "quote": "Compared to the adult threshold, the pediatric-specific cut-off led to improvement in the specificity and the PPV, supporting a safer AI interpretation in children with a slight trade-off in the sensitivity at 80%."
+    },
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance of adult-trained tool applied to pediatric population outside intended use",
+     "effect": "Overall AUC 0.94 (sens 87.5%, spec 82.3%, PPV 56.6%) in children 2-14, but significantly lower in ages 2-6 (AUC 0.91) than 7-14 (AUC 0.96), p<0.001.",
+     "quote": "In the older age group (n = 449 [46.9%]; mean age 10.2 \u00b1 2 years), the performance metrics were as follows: AUC 0.96 (95% CI: 0.94\u20130.98), accuracy 89.7% (95% CI: 86.5\u201392.4%), sensitivity 86.2%, specificity 90.3%, PPV 56.8% and NPV 97.8%, respectively, which were significantly higher compared to the younger age groups (p < 0.001)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance difference between adult development population and pediatric deployment population",
+     "effect": "Tool trained on adult radiographs; performance lower in younger children (AUC 0.91 in 2-6 vs 0.96 in 7-14, p<0.001), attributed to different anatomy.",
+     "quote": "Notably, subanalyses by age revealed a significantly higher performance for older children aged 7\u201314 years, compared to younger patients (2\u20136 years), presumably due to a substantially different anatomy in younger individuals."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance by age group, masked by aggregate metrics",
+     "effect": "AUC 0.91 (accuracy 78%) in ages 2-6 vs AUC 0.96 (accuracy 89.7%) in ages 7-14, p<0.001.",
+     "quote": "In the younger age group (n = 509 [53.1%]; mean age 3.7 \u00b1 1.4 years), the AUC for the presence of any relevant finding was 0.91 (95% CI: 0.88\u20130.94), with an accuracy of 78% (95% CI: 74.1\u201381.5%) and a sensitivity, specificity, PPV and NPV of 88.1%, 74%, 57% and 94.1%, respectively."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Reference standard construction with blinded reads and consensus adjudication",
+     "effect": "Dedicated reading separate from AI output avoided bias versus prior study; single-reader reference with consensus for discordance; authors note lack of multi-reader panel as limitation.",
+     "quote": "We conducted a dedicated reading session informed by clinical information and radiological expertise, followed by a separate assessment of the AI-tools performance to avoid any potential bias."
+    }
+   ],
+   "unlisted_practices": [
+    "Repurposing adult-developed AI tool for pediatric use with pediatric-specific threshold optimization"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 958,
+   "sample_unit": "patients/radiographs",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR, Version 3.1.4.4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "performance outside validated pediatric population",
+     "effect": "Overall AUC 0.94; younger children AUC 0.91 and accuracy 78%; older children AUC 0.96, accuracy 89.7%, p < 0.001.",
+     "quote": "In the older age group (n = 449 [46.9%]; mean age 10.2 \u00b1 2 years), the performance metrics were as follows: AUC 0.96 (95% CI: 0.94\u20130.98), accuracy 89.7% (95% CI: 86.5\u201392.4%), sensitivity 86.2%, specificity 90.3%, PPV 56.8% and NPV 97.8%, respectively, which were significantly higher compared to the younger age groups (p < 0.001)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "pediatric threshold adjustment",
+     "effect": "Optimized cutoff 44.5: accuracy 89.8%, sensitivity 80.0%, specificity 92.4%; adult threshold: accuracy 83.4%, sensitivity 87.5%, specificity 82.3%.",
+     "quote": "Compared to the adult threshold, the pediatric-specific cut-off led to improvement in the specificity and the PPV, supporting a safer AI interpretation in children with a slight trade-off in the sensitivity at 80%."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "age subgroup performance gap",
+     "effect": "Younger children: AUC 0.91, accuracy 78%, specificity 74%; older children: AUC 0.96, accuracy 89.7%, specificity 90.3%, p < 0.001.",
+     "quote": "In the younger age group (n = 509 [53.1%]; mean age 3.7 \u00b1 1.4 years), the AUC for the presence of any relevant finding was 0.91 (95% CI: 0.88\u20130.94), with an accuracy of 78% (95% CI: 74.1\u201381.5%) and a sensitivity, specificity, PPV and NPV of 88.1%, 74%, 57% and 94.1%, respectively."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 958,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic accuracy and specificity with pediatric-optimized vs adult threshold",
+     "effect": "pediatric-specific cutoff (44.5 vs 15) increased accuracy from 83.4% to 89.8% and specificity from 82.3% to 92.4%, with sensitivity 80.0% vs 87.5%",
+     "quote": "Compared to the adult threshold, the pediatric-specific cut-off led to improvement in the specificity and the PPV, supporting a safer AI interpretation in children with a slight trade-off in the sensitivity at 80%."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic performance by pediatric age subgroup",
+     "effect": "AUC was 0.96, accuracy 89.7%, and specificity 90.3% in children aged 7-14 years versus AUC 0.91, accuracy 78%, and specificity 74% in children aged 2-6 years (p < 0.001)",
+     "quote": "In the older age group (n = 449 [46.9%]; mean age 10.2 \u00b1 2 years), the performance metrics were as follows: AUC 0.96 (95% CI: 0.94\u20130.98), accuracy 89.7% (95% CI: 86.5\u201392.4%), sensitivity 86.2%, specificity 90.3%, PPV 56.8% and NPV 97.8%, respectively, which were significantly higher compared to the younger age groups (p < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "pediatric chest radiographs (patients)",
+ "sample_size": 958,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Lunit INSIGHT CXR",
+  "Lunit INSIGHT CXR v3.1.4.4",
+  "Lunit INSIGHT CXR, Version 3.1.4.4"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance with adult vendor threshold versus locally optimized pediatric threshold",
+   "effect": "Optimized pediatric cut-off 44.5 vs adult 15: accuracy 89.8% (vs 83.4%), specificity 92.4% (vs 82.3%), sensitivity 80.0% (vs 87.5%), similar AUC 0.93; PPV improved.",
+   "quote": "Compared to the adult threshold, the pediatric-specific cut-off led to improvement in the specificity and the PPV, supporting a safer AI interpretation in children with a slight trade-off in the sensitivity at 80%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R070",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of adult-trained tool applied to pediatric population outside intended use",
+   "effect": "Overall AUC 0.94 (sens 87.5%, spec 82.3%, PPV 56.6%) in children 2-14, but significantly lower in ages 2-6 (AUC 0.91) than 7-14 (AUC 0.96), p<0.001.",
+   "quote": "In the older age group (n = 449 [46.9%]; mean age 10.2 \u00b1 2 years), the performance metrics were as follows: AUC 0.96 (95% CI: 0.94\u20130.98), accuracy 89.7% (95% CI: 86.5\u201392.4%), sensitivity 86.2%, specificity 90.3%, PPV 56.8% and NPV 97.8%, respectively, which were significantly higher compared to the younger age groups (p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup performance by age group, masked by aggregate metrics",
+   "effect": "AUC 0.91 (accuracy 78%) in ages 2-6 vs AUC 0.96 (accuracy 89.7%) in ages 7-14, p<0.001.",
+   "quote": "In the younger age group (n = 509 [53.1%]; mean age 3.7 \u00b1 1.4 years), the AUC for the presence of any relevant finding was 0.91 (95% CI: 0.88\u20130.94), with an accuracy of 78% (95% CI: 74.1\u201381.5%) and a sensitivity, specificity, PPV and NPV of 88.1%, 74%, 57% and 94.1%, respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance difference between adult development population and pediatric deployment population",
+   "effect": "Tool trained on adult radiographs; performance lower in younger children (AUC 0.91 in 2-6 vs 0.96 in 7-14, p<0.001), attributed to different anatomy.",
+   "quote": "Notably, subanalyses by age revealed a significantly higher performance for older children aged 7\u201314 years, compared to younger patients (2\u20136 years), presumably due to a substantially different anatomy in younger individuals.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Repurposing adult-developed AI tool for pediatric use with pediatric-specific threshold optimization"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40705715",
+ "screen": {
+  "id": "pmid:40705715",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local threshold optimization for pediatric population",
+  "user": "none",
+  "reason": "Evaluates repurposing an adult commercial AI diagnostic tool for pediatric patients and compares vendor default adult thresholds against optimized pediatric decision thresholds.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "threshold optimization / recalibration for new subpopulation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40705715",
+   "empirical": 0.97,
+   "tests_practice": 0.76,
+   "real_deployment": 0.21
+  }
+ }
+}

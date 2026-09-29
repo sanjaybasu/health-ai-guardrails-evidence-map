@@ -1,0 +1,302 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 1561,
+   "sample_unit": "consecutive anatomical lung-cancer resections (patients)",
+   "models_evaluated": [
+    "Logistic regression model for 2-year post-resection mortality (developed on 2011\u20132015, frozen)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration drift of frozen prediction model over time despite stable discrimination",
+     "effect": "Discrimination stable (AUC 0.76 development; 0.74 and 0.75 later eras) but calibration intercept drifted to -0.54 and -0.31, 95% CIs excluding zero, with over-prediction.",
+     "quote": "Discrimination remained stable (optimism-corrected development AUC 0.76; later eras 0.74 and 0.75), but calibration drifted: the intercept became \u2212 0.54 and \u2212 0.31, both 95% CIs excluding zero, with over-prediction in both access strata."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of contemporaneous vs stale intercept recalibration on calibration and discrimination",
+     "effect": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed bias direction.",
+     "quote": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed the direction of the bias."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether recalibrating with representative contemporaneous data fixes miscalibration",
+     "effect": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; stale correction failed to transport.",
+     "quote": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed the direction of the bias."
+    },
+    {
+     "rec_id": "R366",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Loss of calibration relative to original validation over a decade of static deployment",
+     "effect": "Discrimination stable, but calibration intercept drifted (-0.54, -0.31) with over-prediction as baseline mortality fell from 20.5% to 15.6%.",
+     "quote": "Discrimination-based validation can conceal clinically meaningful calibration drift."
+    }
+   ],
+   "unlisted_practices": [
+    "Use calibration intercept as drift trigger and reference calibration slope to optimism-corrected deployment-time value rather than 1"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 1561,
+   "sample_unit": "anatomical lung-cancer resections",
+   "models_evaluated": [
+    "Logistic model for 2-year post-resection mortality"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination-only validation missed calibration drift",
+     "effect": "AUC stayed 0.76, 0.74, and 0.75, but calibration intercepts drifted to \u22120.54 and \u22120.31; both 95% CIs excluded zero.",
+     "quote": "Discrimination remained stable (optimism-corrected development AUC 0.76; later eras 0.74 and 0.75), but calibration drifted: the intercept became\u2009\u2212\u20090.54 and \u2212\u20090.31, both 95% CIs excluding zero, with over-prediction in both access strata."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal calibration drift in frozen model",
+     "effect": "AUC stayed 0.76, 0.74, and 0.75, but calibration intercepts drifted to \u22120.54 and \u22120.31; both 95% CIs excluded zero.",
+     "quote": "Discrimination remained stable (optimism-corrected development AUC 0.76; later eras 0.74 and 0.75), but calibration drifted: the intercept became\u2009\u2212\u20090.54 and \u2212\u20090.31, both 95% CIs excluding zero, with over-prediction in both access strata."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Contemporaneous intercept recalibration",
+     "effect": "Contemporaneous intercept recalibration changed predicted mortality 19.2%\u219215.6% and restored calibration-in-the-large; earlier stale correction failed and reversed bias direction.",
+     "quote": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed the direction of the bias."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 1561,
+   "sample_unit": "resections",
+   "models_evaluated": [
+    "logistic model for 2-year post-resection mortality"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration drift under population shift",
+     "effect": "Calibration intercept drifted to -0.54 and -0.31 (95% CIs excluding zero) with over-prediction, while discrimination remained stable (optimism-corrected AUC 0.76 to 0.74 and 0.75).",
+     "quote": "Discrimination remained stable (optimism-corrected development AUC 0.76; later eras 0.74 and 0.75), but calibration drifted: the intercept became\u2009\u2212\u20090.54 and \u2212\u20090.31, both 95% CIs excluding zero, with over-prediction in both access strata."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration-in-the-large restoration via recalibration",
+     "effect": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2% to 15.6%) without affecting discrimination, whereas stale recalibration failed to transport and reversed bias direction.",
+     "quote": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed the direction of the bias."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "consecutive anatomical lung-cancer resections (patients)",
+ "sample_size": 1561,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Logistic model for 2-year post-resection mortality",
+  "Logistic regression model for 2-year post-resection mortality (developed on 2011\u20132015, frozen)",
+  "logistic model for 2-year post-resection mortality"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration drift of frozen prediction model over time despite stable discrimination",
+   "effect": "Discrimination stable (AUC 0.76 development; 0.74 and 0.75 later eras) but calibration intercept drifted to -0.54 and -0.31, 95% CIs excluding zero, with over-prediction.",
+   "quote": "Discrimination remained stable (optimism-corrected development AUC 0.76; later eras 0.74 and 0.75), but calibration drifted: the intercept became \u2212 0.54 and \u2212 0.31, both 95% CIs excluding zero, with over-prediction in both access strata.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of contemporaneous vs stale intercept recalibration on calibration and discrimination",
+   "effect": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed bias direction.",
+   "quote": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed the direction of the bias.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether recalibrating with representative contemporaneous data fixes miscalibration",
+   "effect": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; stale correction failed to transport.",
+   "quote": "Contemporaneous intercept recalibration restored calibration-in-the-large (predicted 19.2%\u219215.6%) without affecting discrimination; a correction estimated in the earlier era failed to transport and reversed the direction of the bias.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R366",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Loss of calibration relative to original validation over a decade of static deployment",
+   "effect": "Discrimination stable, but calibration intercept drifted (-0.54, -0.31) with over-prediction as baseline mortality fell from 20.5% to 15.6%.",
+   "quote": "Discrimination-based validation can conceal clinically meaningful calibration drift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination-only validation missed calibration drift",
+   "effect": "AUC stayed 0.76, 0.74, and 0.75, but calibration intercepts drifted to \u22120.54 and \u22120.31; both 95% CIs excluded zero.",
+   "quote": "Discrimination remained stable (optimism-corrected development AUC 0.76; later eras 0.74 and 0.75), but calibration drifted: the intercept became\u2009\u2212\u20090.54 and \u2212\u20090.31, both 95% CIs excluding zero, with over-prediction in both access strata.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Use calibration intercept as drift trigger and reference calibration slope to optimism-corrected deployment-time value rather than 1"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1315780",
+ "screen": {
+  "id": "epmc:PPR1315780",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "post-deployment drift monitoring and recalibration",
+  "user": "none",
+  "reason": "The study emulates a static deployment of a clinical prediction model over a decade to test calibration drift monitoring and evaluate the effect of contemporaneous recalibration.",
+  "jev": {
+   "id": "epmc:PPR1315780",
+   "empirical": 0.92,
+   "tests_practice": 0.83,
+   "real_deployment": 0.12
+  }
+ }
+}

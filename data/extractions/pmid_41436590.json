@@ -1,0 +1,325 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Italy",
+   "sample_size": 20,
+   "sample_unit": "simulated clinical cases",
+   "models_evaluated": [
+    "GPT-o3 (baseline)",
+    "customised GPT with static domain knowledge (GPTs, o3)",
+    "retrieval-augmented GPT (RAG, o3-mini)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement with expert benchmark for systemic therapy: grounded (RAG, static corpus) vs baseline GPT",
+     "effect": "RAG and GPTs 70.0% agreement vs baseline GPT 60.0%; RAG and GPTs met the -10% non-inferiority margin, baseline did not; neither met -5%.",
+     "quote": "Based on the lower bound of the one-sided 95% bootstrap confidence interval, GPT did not meet non-inferiority, whereas GPTs and RAG satisfied the \u201310% but not the \u20135% margin (Fig. 1 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Reproducibility of outputs across repeated runs of the same cases",
+     "effect": "RAG perfect stability (AC1 1.000); baseline GPT AC1 0.843; GPTs lower (about 0.766, 69.9% agreement); temperature 0.2 used.",
+     "quote": "Baseline GPT was more reproducible than GPTs (AC1 0.843, 95% CI 0.687\u20130.961; 80.1%, 95% CI 60\u201395 vs 69.9%, 95% CI 50\u201390), yielding the ranking RAG > GPT > GPTs."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Explicit expression of uncertainty in AI vs expert recommendations",
+     "effect": "AI expressed uncertainty more consistently than experts: GPTs AC1 1.000, RAG 0.875, GPT 0.835 vs experts 0.239 (p<0.001).",
+     "quote": "Uncertainty was more frequently acknowledged by AI than experts."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Concordance of AI therapy recommendations with expert modal guideline-based decisions",
+     "effect": "Agreement 60.0% (GPT), 70.0% (GPTs, RAG) vs experts 63.8%; lung primaries significantly predicted disagreement for RAG (OR 19.50, p=0.032); AI outputs always complete.",
+     "quote": "These findings indicate that adapted LLMs can deliver guideline-concordant therapeutic recommendations close to expert consensus, although validation in prospective, real-world studies remains essential before clinical use."
+    }
+   ],
+   "unlisted_practices": [
+    "Non-inferiority benchmarking of LLM therapy recommendations against expert panel with prespecified margins",
+    "Comparison of baseline vs customised static-knowledge vs retrieval-augmented LLM configurations"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Italy",
+   "sample_size": 20,
+   "sample_unit": "simulated clinical cases",
+   "models_evaluated": [
+    "OpenAI o3 baseline GPT",
+    "customised GPT with static domain knowledge (GPTs)",
+    "retrieval-augmented GPT (RAG; o3-mini)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Agreement with expert systemic therapy benchmark",
+     "effect": "GPT 60.0%; GPTs 70.0%; RAG 70.0%; GPTs/RAG met \u201310% but not \u20135% non-inferiority.",
+     "quote": "Against this benchmark, baseline GPT achieved 60.0% (95% CI 44.4\u201376.9), GPTs 70.0% (95% CI 54.5\u201385.7), and the retrieval-augmented model (RAG) 70.0% (95% CI 54.5\u201384.6)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Non-inferiority of grounded/adapted LLMs",
+     "effect": "GPTs and RAG satisfied \u201310% but not \u20135% margin; baseline GPT did not meet non-inferiority.",
+     "quote": "Based on the lower bound of the one-sided 95% bootstrap confidence interval, GPT did not meet non-inferiority, whereas GPTs and RAG satisfied the \u201310% but not the \u20135% margin (Fig. 1 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Inaccurate or discordant therapy recommendations",
+     "effect": "RAG/GPTs agreement 70.0%; baseline GPT 60.0%; concordance remained limited and baseline was not non-inferior.",
+     "quote": "Baseline GPT reached 60.0% and was not non-inferior."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Output reproducibility across repeated generations",
+     "effect": "RAG AC1 1.000; GPT AC1 0.843; GPTs AC1 0.766 for therapeutic recommendations.",
+     "quote": "ARTEMIS therefore provides the first evidence that repeated generations from the same model yield highly consistent therapeutic recommendations, particularly for the RAG configuration (AC1 1.000) and, to a slightly lesser extent, for GPT and GPTs (AC1 0.843 and 0.766, respectively)."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating parsimony and cost of AI-proposed additional tests against an expert benchmark",
+    "Measuring completeness and explicit uncertainty of AI therapeutic recommendations"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Italy",
+   "sample_size": 20,
+   "sample_unit": "simulated cases",
+   "models_evaluated": [
+    "OpenAI o3",
+    "OpenAI o3-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "agreement with expert benchmark for systemic therapy recommendations",
+     "effect": "RAG and GPTs achieved 70.0% agreement (meeting -10% non-inferiority margin) vs 60.0% for baseline GPT (not non-inferior)",
+     "quote": "Against this benchmark, baseline GPT achieved 60.0% (95% CI 44.4\u201376.9), GPTs 70.0% (95% CI 54.5\u201385.7), and the retrieval-augmented model (RAG) 70.0% (95% CI 54.5\u201384.6)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Italy",
+ "sample_unit": "simulated clinical cases",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "GPT-o3 (baseline)",
+  "OpenAI o3",
+  "OpenAI o3 baseline GPT",
+  "OpenAI o3-mini",
+  "customised GPT with static domain knowledge (GPTs)",
+  "customised GPT with static domain knowledge (GPTs, o3)",
+  "retrieval-augmented GPT (RAG, o3-mini)",
+  "retrieval-augmented GPT (RAG; o3-mini)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Agreement with expert benchmark for systemic therapy: grounded (RAG, static corpus) vs baseline GPT",
+   "effect": "RAG and GPTs 70.0% agreement vs baseline GPT 60.0%; RAG and GPTs met the -10% non-inferiority margin, baseline did not; neither met -5%.",
+   "quote": "Based on the lower bound of the one-sided 95% bootstrap confidence interval, GPT did not meet non-inferiority, whereas GPTs and RAG satisfied the \u201310% but not the \u20135% margin (Fig. 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of outputs across repeated runs of the same cases",
+   "effect": "RAG perfect stability (AC1 1.000); baseline GPT AC1 0.843; GPTs lower (about 0.766, 69.9% agreement); temperature 0.2 used.",
+   "quote": "Baseline GPT was more reproducible than GPTs (AC1 0.843, 95% CI 0.687\u20130.961; 80.1%, 95% CI 60\u201395 vs 69.9%, 95% CI 50\u201390), yielding the ranking RAG > GPT > GPTs.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement with expert systemic therapy benchmark",
+   "effect": "GPT 60.0%; GPTs 70.0%; RAG 70.0%; GPTs/RAG met \u201310% but not \u20135% non-inferiority.",
+   "quote": "Against this benchmark, baseline GPT achieved 60.0% (95% CI 44.4\u201376.9), GPTs 70.0% (95% CI 54.5\u201385.7), and the retrieval-augmented model (RAG) 70.0% (95% CI 54.5\u201384.6).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparison of baseline vs customised static-knowledge vs retrieval-augmented LLM configurations",
+  "Evaluating parsimony and cost of AI-proposed additional tests against an expert benchmark",
+  "Measuring completeness and explicit uncertainty of AI therapeutic recommendations",
+  "Non-inferiority benchmarking of LLM therapy recommendations against expert panel with prespecified margins"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41436590",
+ "screen": {
+  "id": "pmid:41436590",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval augmentation and domain-knowledge customization of an existing GPT",
+  "user": "none",
+  "reason": "Evaluates LLM therapeutic decisions on simulated clinical cases, directly comparing baseline LLM against deployment configurations/safeguards (retrieval-augmented generation and custom static domain knowledge).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG) vs static domain knowledge customization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41436590",
+   "empirical": 0.97,
+   "tests_practice": 0.54,
+   "real_deployment": 0.02
+  }
+ }
+}

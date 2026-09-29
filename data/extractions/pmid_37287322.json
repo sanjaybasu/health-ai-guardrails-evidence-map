@@ -1,0 +1,276 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 215,
+   "sample_unit": "prostate cancer patients (CT-based contours)",
+   "models_evaluated": [
+    "three commercial DLAS vendor built-in models",
+    "retrained custom DLAS model (incremental retraining)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Segmentation accuracy (DSC) of local retrained custom model versus vendor built-in model",
+     "effect": "Retrained custom model DSC 0.82 prostate, 0.48 SV, 0.92 rectum vs built-in 0.73, 0.37, 0.81; significant improvement.",
+     "quote": "This represents a significant improvement over the built-in model with DSC of 0.73, 0.37, and 0.81 for the corresponding structures."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Built-in vendor model performance on local patient data",
+     "effect": "Three commercial DLAS vendor built-in models achieved sub-optimal performance in 20 local patients.",
+     "quote": "Three commercial DLAS vendor built-in models achieved sub-optimal performance in 20 patients."
+    }
+   ],
+   "unlisted_practices": [
+    "Visual inspection of failure modes in unacceptable auto-segmentation cases",
+    "Blinded multi-rater qualitative acceptance scoring of auto-contours versus manual contours"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 215,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "three commercial DLAS software built-in models",
+    "retrained custom model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local built-in model performance",
+     "effect": "Three commercial DLAS vendor built-in models achieved sub-optimal performance in 20 patients.",
+     "quote": "Three commercial DLAS vendor built-in models achieved sub-optimal performance in 20 patients."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "segmentation DSC after local retraining",
+     "effect": "Custom model DSC: 0.82 prostate, 0.48 SV, 0.92 rectum; built-in: 0.73, 0.37, 0.81; significant improvement.",
+     "quote": "This represents a significant improvement over the built-in model with DSC of 0.73, 0.37, and 0.81 for the corresponding structures."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "failure modes under clinical variation",
+     "effect": "Failures: cystogram n=2, hip prosthesis n=2, brachytherapy seeds n=2, air in endorectal balloon n=1, non-iodinated spacer n=2, giant bladder n=1.",
+     "quote": "The failure modes of retrained custom model were attributed to the following: cystogram (n\u00a0=\u00a02), hip prosthesis (n\u00a0=\u00a02), low dose rate brachytherapy seeds (n\u00a0=\u00a02), air in endorectal balloon(n\u00a0=\u00a01), non-iodinated spacer (n\u00a0=\u00a02), and giant bladder(n\u00a0=\u00a01)."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "consensus unacceptable auto-contours",
+     "effect": "Manual contours: 96.5% acceptance and 3.5% consensus unacceptable; custom model: 91.3% acceptance and 8.7% consensus unacceptable.",
+     "quote": "Compared to the acceptance rate of 96.5% and consensus unacceptable rate (i.e., both reviewers rated as unacceptable) of 3.5% achieved by manual contours, the custom model achieved a 91.3% acceptance rate and 8.7% consensus unacceptable rate."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 215,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "three commercial DLAS software built-in models",
+    "retrained custom model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Dice similarity coefficient of auto-segmentation",
+     "effect": "Custom retrained model significantly improved mean DSC over built-in models: prostate (0.82 vs 0.73), seminal vesicles (0.48 vs 0.37), and rectum (0.92 vs 0.81).",
+     "quote": "This represents a significant improvement over the built-in model with DSC of 0.73, 0.37, and 0.81 for the corresponding structures."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "patients",
+ "sample_size": 215,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "retrained custom DLAS model (incremental retraining)",
+  "retrained custom model",
+  "three commercial DLAS software built-in models",
+  "three commercial DLAS vendor built-in models"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation accuracy (DSC) of local retrained custom model versus vendor built-in model",
+   "effect": "Retrained custom model DSC 0.82 prostate, 0.48 SV, 0.92 rectum vs built-in 0.73, 0.37, 0.81; significant improvement.",
+   "quote": "This represents a significant improvement over the built-in model with DSC of 0.73, 0.37, and 0.81 for the corresponding structures.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Built-in vendor model performance on local patient data",
+   "effect": "Three commercial DLAS vendor built-in models achieved sub-optimal performance in 20 local patients.",
+   "quote": "Three commercial DLAS vendor built-in models achieved sub-optimal performance in 20 patients.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "failure modes under clinical variation",
+   "effect": "Failures: cystogram n=2, hip prosthesis n=2, brachytherapy seeds n=2, air in endorectal balloon n=1, non-iodinated spacer n=2, giant bladder n=1.",
+   "quote": "The failure modes of retrained custom model were attributed to the following: cystogram (n\u00a0=\u00a02), hip prosthesis (n\u00a0=\u00a02), low dose rate brachytherapy seeds (n\u00a0=\u00a02), air in endorectal balloon(n\u00a0=\u00a01), non-iodinated spacer (n\u00a0=\u00a02), and giant bladder(n\u00a0=\u00a01).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R134",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "consensus unacceptable auto-contours",
+   "effect": "Manual contours: 96.5% acceptance and 3.5% consensus unacceptable; custom model: 91.3% acceptance and 8.7% consensus unacceptable.",
+   "quote": "Compared to the acceptance rate of 96.5% and consensus unacceptable rate (i.e., both reviewers rated as unacceptable) of 3.5% achieved by manual contours, the custom model achieved a 91.3% acceptance rate and 8.7% consensus unacceptable rate.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Blinded multi-rater qualitative acceptance scoring of auto-contours versus manual contours",
+  "Visual inspection of failure modes in unacceptable auto-segmentation cases"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37287322",
+ "screen": {
+  "id": "pmid:37287322",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local incremental retraining / fine-tuning with institutional data",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the deployment practice of using incremental local retraining on institutional data to address practice variability/performance degradation of commercial DL auto-segmentation models, comparing performance and physician acceptance rate.",
+  "jev": {
+   "id": "pmid:37287322",
+   "empirical": 0.97,
+   "tests_practice": 0.82,
+   "real_deployment": 0.86
+  }
+ }
+}

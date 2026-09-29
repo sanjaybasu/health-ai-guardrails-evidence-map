@@ -1,0 +1,93 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "United States",
+ "sample_size": 544,
+ "sample_unit": "CT exams (prospective test set)",
+ "models_evaluated": [
+  "VQVAE",
+  "ViT-MAE"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Detection of anomalous/out-of-distribution CT inputs in prospective and external test sets",
+   "effect": "Prospective TP rate 86.11% despite under-documentation of anomalies in reports; external AbdominalCT-1k TP rate 75.26% with 24.7% FP rate, mostly from anomalies outside the body.",
+   "quote": "Prospective analysis showed the model was able to handle the under-documentation of anomaly in radiology reports with 86.11% true positive (TP) rate.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop from internal to external validation due to artifacts and implants",
+   "effect": "Model performance often drops on external validation because of artifacts from motion and implants not accounted for in curated training data.",
+   "quote": "Despite the high precision of deep learning models on internal tests on CT, their effectiveness often drops on external validation due to artifacts caused by patient motion and implants like metal or silicone that were not accounted for in the carefully curated training data.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Self-supervised generative out-of-distribution detection for automated CT dataset curation"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41719005",
+ "screen": {
+  "id": "pmid:41719005",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and validates a self-supervised out-of-distribution (OOD) / anomaly detection guardrail for abdominal CT scans to identify artifacts and implants prior to downstream AI applications.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "out-of-distribution input detection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41719005",
+   "empirical": 0.95,
+   "tests_practice": 0.06,
+   "real_deployment": 0.16
+  }
+ }
+}

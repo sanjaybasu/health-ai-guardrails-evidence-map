@@ -1,0 +1,255 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 291,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "nnU-Net",
+    "ResNet-34"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-cohort performance before versus after fine-tuning on a small local subset",
+     "effect": "External AUC 68% and Acc 66%; after fine-tuning on a small external subset, AUC and accuracy 70% (sensitivity 70%; specificity 71%).",
+     "quote": "Fine-tuning on a selected small subset of the external cohort enhanced performance, achieving an AUC and accuracy of 70% (sensitivity 70%; specificity 71%)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop from internal test set to external validation cohort",
+     "effect": "Internal test AUC 85%, Acc 86% (sens 80%, spec 93%); external cohort (n=58) AUC 68%, Acc 66% (sens 64%, spec 67%).",
+     "quote": "On the external validation cohort (n=58), the classification pipeline achieved an AUC of 68% and Acc of 66% (sensitivity 64%; specificity 67%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 291,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "nnU-Net segmentation model",
+    "ResNet-34 classification model",
+    "end-to-end classification pipeline/tool"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external generalizability performance",
+     "effect": "External cohort AUC 68%, Acc 66% (sensitivity 64%; specificity 67%); internal test Acc 86%, AUC 85%.",
+     "quote": "On the external validation cohort (n=58), the classification pipeline achieved an AUC of 68% and Acc of 66% (sensitivity 64%; specificity 67%)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fine-tuning on external cohort",
+     "effect": "External AUC 68%, Acc 66%; fine-tuned AUC and accuracy 70% (sensitivity 70%; specificity 71%).",
+     "quote": "Fine-tuning on a selected small subset of the external cohort enhanced performance, achieving an AUC and accuracy of 70% (sensitivity 70%; specificity 71%)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic classification accuracy",
+     "effect": "External validation AUC 68%, Acc 66%, sensitivity 64%, specificity 67%.",
+     "quote": "On the external validation cohort (n=58), the classification pipeline achieved an AUC of 68% and Acc of 66% (sensitivity 64%; specificity 67%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 349,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "nnU-Net",
+    "ResNet-34"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external cohort classification accuracy and AUC after local fine-tuning",
+     "effect": "Fine-tuning on a subset of the external cohort enhanced AUC and accuracy to 70% (sensitivity 70%, specificity 71%) compared to baseline external AUC of 68% and accuracy of 66%.",
+     "quote": "Fine-tuning on a selected small subset of the external cohort enhanced performance, achieving an AUC and accuracy of 70% (sensitivity 70%; specificity 71%)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "patients",
+ "sample_size": 291,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "ResNet-34",
+  "ResNet-34 classification model",
+  "end-to-end classification pipeline/tool",
+  "nnU-Net",
+  "nnU-Net segmentation model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External-cohort performance before versus after fine-tuning on a small local subset",
+   "effect": "External AUC 68% and Acc 66%; after fine-tuning on a small external subset, AUC and accuracy 70% (sensitivity 70%; specificity 71%).",
+   "quote": "Fine-tuning on a selected small subset of the external cohort enhanced performance, achieving an AUC and accuracy of 70% (sensitivity 70%; specificity 71%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drop from internal test set to external validation cohort",
+   "effect": "Internal test AUC 85%, Acc 86% (sens 80%, spec 93%); external cohort (n=58) AUC 68%, Acc 66% (sens 64%, spec 67%).",
+   "quote": "On the external validation cohort (n=58), the classification pipeline achieved an AUC of 68% and Acc of 66% (sensitivity 64%; specificity 67%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR918944",
+ "screen": {
+  "id": "epmc:PPR918944",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning/recalibration on external site data",
+  "user": "none",
+  "reason": "Pure model development and retrospective validation paper reporting discrimination metrics of a new segmentation/classification pipeline with no clinical deployment, workflow, or human-use evaluation.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "not_applicable",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR918944",
+   "empirical": 0.96,
+   "tests_practice": 0.57,
+   "real_deployment": 0.04
+  }
+ }
+}

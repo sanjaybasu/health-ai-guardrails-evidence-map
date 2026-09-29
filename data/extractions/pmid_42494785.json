@@ -1,0 +1,457 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 1166,
+   "sample_unit": "patients (clinical records)",
+   "models_evaluated": [
+    "Llama 3 8B (LoRA fine-tuned, 4-bit quantized)",
+    "multilingual-e5-large",
+    "TabPFN",
+    "CatBoost",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R129",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Error-detection yield of human review by flag tier and random sample of unflagged records",
+     "effect": "HITL reviewed 289 records: cosine-flagged 62.4% had errors, RAG-fallback 78.6%, random nonflagged 3.8%; accuracy rose 86.0% to 97.0% after HITL.",
+     "quote": "Among these, 93 records were flagged by cosine similarity (58 contained at least one extraction error, 62.4%), 14 by the RAG fallback mechanism (11 contained errors, 78.6%), and 182 were randomly sampled nonflagged records (7 contained errors, 3.8%)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Extraction accuracy before and after RAG-based verification against source text",
+     "effect": "Accuracy increased from 74.8% (rule-based) to 86.0% after RAG validation; grounding accuracy 91.5%; improvement significant (P<0.001).",
+     "quote": "After RAG-based contextual validation, accuracy increased further to 86.0% (95% CI, 83.6% to 88.4%), with F1 score and variable-level F1 both 0.813 (95% CI, 0.791 to 0.835)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy gains from automated rule-based and similarity-based checks on LLM outputs",
+     "effect": "Rule-based verification raised accuracy from 64.9% to 74.8%; fully automated pipeline reached 86.0% (all P<0.001).",
+     "quote": "With the addition of rule-based verification, performance improved to an accuracy of 74.8% (95% CI, 72.1% to 77.5%), F1 score of 0.701 (95% CI, 0.670 to 0.732), and variable-level F1 of 0.662 (95% CI, 0.631 to 0.693)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Extraction accuracy after clinician review of AI-extracted data",
+     "effect": "Accuracy improved from 86.0% after automated validation to 97.0% (95% CI, 95.7% to 98.3%) following human-in-the-loop review.",
+     "quote": "The final HITL review achieved the highest data fidelity, yielding an accuracy of 97.0% (95% CI, 95.7% to 98.3%), F1 score of 0.920 (95% CI, 0.879 to 0.961), and variable-level F1 of 0.902 (95% CI, 0.841 to 0.962), with grounding accuracy increasing to 93.2% (95% CI, 91.7% to 94.7%)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Awareness of dataset shift/generalizability limits of single-site pipeline",
+     "effect": "Authors state no external validation; 0.82 similarity threshold would need recalibration; cited external accuracy reductions exceeding 20% for single-institution NLP models.",
+     "quote": "The 0.82 similarity threshold, derived empirically from our institutional corpus, would require recalibration in new deployment settings."
+    },
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance of English-pretrained SLM on Korean clinical text",
+     "effect": "Korean token-to-character ratio 1.14 vs English 0.4-0.6 suggests suboptimal tokenization; acceptable performance reported after fine-tuning, but no language-stratified performance comparison.",
+     "quote": "The application of an English-pretrained SLM to Korean-language text introduces linguistic challenges."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Absence of prospective/shadow-mode validation before clinical integration",
+     "effect": "Retrospective single-center study; authors recommend shadow mode deployment and prospective accuracy audit before prospective clinical integration.",
+     "quote": "Prior to prospective clinical integration, a staged validation process\u2014including shadow mode deployment, prospective accuracy audit, and formal clinical impact assessment\u2014is recommended to ensure patient safety and regulatory compliance."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative feedback of human-corrected errors into LoRA adapter fine-tuning to reduce hallucinations (9% to 2.4%)",
+    "Cosine-similarity outlier flagging to triage records for human review",
+    "Local on-premise deployment of small language model for privacy"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 1166,
+   "sample_unit": "patient records",
+   "models_evaluated": [
+    "Llama 3 8B SLM",
+    "Logistic regression",
+    "CatBoost",
+    "TabPFN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Baseline extraction correctness",
+     "effect": "Initial few-shot extraction accuracy was 64.9%; F1 0.555; variable-level F1 0.532.",
+     "quote": "The initial few-shot output demonstrated an accuracy of 64.9% (95% CI, 62.0% to 67.8%), F1 score of 0.555 (95% CI, 0.524 to 0.586), and variable-level F1 of 0.532 (95% CI, 0.501 to 0.563)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy after automated validation",
+     "effect": "Fully automated multi-tiered validation improved extraction accuracy from 64.9% to 86.0%; HITL later reached 97.0%.",
+     "quote": "Baseline extraction accuracy was 64.9% (95% CI, 62.0% to 67.8%), improving to 86.0% after fully automated multi-tiered validation, and further to 97.0% (95% CI, 95.7% to 98.3%) following human-in-the-loop review."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy after RAG validation",
+     "effect": "RAG validation increased accuracy to 86.0% (95% CI, 83.6% to 88.4%); F1 was 0.813.",
+     "quote": "After RAG-based contextual validation, accuracy increased further to 86.0% (95% CI, 83.6% to 88.4%), with F1 score and variable-level F1 both 0.813 (95% CI, 0.791 to 0.835)."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Extraction accuracy after clinician review",
+     "effect": "HITL review yielded 97.0% accuracy, F1 0.920, variable-level F1 0.902, and grounding accuracy 93.2%.",
+     "quote": "The final HITL review achieved the highest data fidelity, yielding an accuracy of 97.0% (95% CI, 95.7% to 98.3%), F1 score of 0.920 (95% CI, 0.879 to 0.961), and variable-level F1 of 0.902 (95% CI, 0.841 to 0.962), with grounding accuracy increasing to 93.2% (95% CI, 91.7% to 94.7%)."
+    },
+    {
+     "rec_id": "R129",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Error enrichment among review tiers",
+     "effect": "Errors occurred in 62.4% cosine-flagged, 78.6% RAG-fallback, and 3.8% random nonflagged records.",
+     "quote": "Among these, 93 records were flagged by cosine similarity (58 contained at least one extraction error, 62.4%), 14 by the RAG fallback mechanism (11 contained errors, 78.6%), and 182 were randomly sampled nonflagged records (7 contained errors, 3.8%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Stroke outcome model discrimination",
+     "effect": "TabPFN AUROC 0.816 vs CatBoost 0.789 and logistic regression 0.700.",
+     "quote": "While all models exhibited acceptable discrimination, the TabPFN model demonstrated the highest AUROC (0.816; 95% CI, 0.784 to 0.847), followed by CatBoost (0.789; 95% CI, 0.756 to 0.822) and logistic regression (0.700; 95% CI, 0.665 to 0.735)."
+    }
+   ],
+   "unlisted_practices": [
+    "Local/on-premise small language model deployment for privacy-preserving clinical text extraction"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 1166,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Llama 3 8B",
+    "TabPFN",
+    "CatBoost",
+    "Logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Extraction accuracy and F1 score after automated rule-based verification",
+     "effect": "Accuracy improved from 64.9% to 74.8% (95% CI, 72.1% to 77.5%) and F1 from 0.555 to 0.701 (95% CI, 0.670 to 0.732)",
+     "quote": "With the addition of rule-based verification, performance improved to an accuracy of 74.8% (95% CI, 72.1% to 77.5%), F1 score of 0.701 (95% CI, 0.670 to 0.732), and variable-level F1 of 0.662 (95% CI, 0.631 to 0.693)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Extraction accuracy and F1 score after RAG-based contextual validation",
+     "effect": "Accuracy increased from 74.8% to 86.0% (95% CI, 83.6% to 88.4%) and F1 from 0.701 to 0.813 (95% CI, 0.791 to 0.835)",
+     "quote": "After RAG-based contextual validation, accuracy increased further to 86.0% (95% CI, 83.6% to 88.4%), with F1 score and variable-level F1 both 0.813 (95% CI, 0.791 to 0.835)."
+    },
+    {
+     "rec_id": "R129",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Error-detection rates across automated risk tiers during clinician review",
+     "effect": "Errors were identified in 62.4% (58/93) of cosine-flagged records, 78.6% (11/14) of RAG-fallback records, and 3.8% (7/182) of sampled nonflagged records",
+     "quote": "Among these, 93 records were flagged by cosine similarity (58 contained at least one extraction error, 62.4%), 14 by the RAG fallback mechanism (11 contained errors, 78.6%), and 182 were randomly sampled nonflagged records (7 contained errors, 3.8%)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Extraction accuracy and F1 score after clinician human-in-the-loop review",
+     "effect": "Accuracy increased from 86.0% to 97.0% (95% CI, 95.7% to 98.3%) and F1 from 0.813 to 0.920 (95% CI, 0.879 to 0.961)",
+     "quote": "The final HITL review achieved the highest data fidelity, yielding an accuracy of 97.0% (95% CI, 95.7% to 98.3%), F1 score of 0.920 (95% CI, 0.879 to 0.961), and variable-level F1 of 0.902 (95% CI, 0.841 to 0.962), with grounding accuracy increasing to 93.2% (95% CI, 91.7% to 94.7%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative fine-tuning of parameter-efficient adapters using clinician-reviewed error feedback"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "patients (clinical records)",
+ "sample_size": 1166,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Korean"
+ ],
+ "models_evaluated": [
+  "CatBoost",
+  "Llama 3 8B",
+  "Llama 3 8B (LoRA fine-tuned, 4-bit quantized)",
+  "Llama 3 8B SLM",
+  "Logistic regression",
+  "TabPFN",
+  "logistic regression",
+  "multilingual-e5-large"
+ ],
+ "links": [
+  {
+   "rec_id": "R129",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Error-detection yield of human review by flag tier and random sample of unflagged records",
+   "effect": "HITL reviewed 289 records: cosine-flagged 62.4% had errors, RAG-fallback 78.6%, random nonflagged 3.8%; accuracy rose 86.0% to 97.0% after HITL.",
+   "quote": "Among these, 93 records were flagged by cosine similarity (58 contained at least one extraction error, 62.4%), 14 by the RAG fallback mechanism (11 contained errors, 78.6%), and 182 were randomly sampled nonflagged records (7 contained errors, 3.8%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Extraction accuracy before and after RAG-based verification against source text",
+   "effect": "Accuracy increased from 74.8% (rule-based) to 86.0% after RAG validation; grounding accuracy 91.5%; improvement significant (P<0.001).",
+   "quote": "After RAG-based contextual validation, accuracy increased further to 86.0% (95% CI, 83.6% to 88.4%), with F1 score and variable-level F1 both 0.813 (95% CI, 0.791 to 0.835).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy gains from automated rule-based and similarity-based checks on LLM outputs",
+   "effect": "Rule-based verification raised accuracy from 64.9% to 74.8%; fully automated pipeline reached 86.0% (all P<0.001).",
+   "quote": "With the addition of rule-based verification, performance improved to an accuracy of 74.8% (95% CI, 72.1% to 77.5%), F1 score of 0.701 (95% CI, 0.670 to 0.732), and variable-level F1 of 0.662 (95% CI, 0.631 to 0.693).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Extraction accuracy after clinician review",
+   "effect": "HITL review yielded 97.0% accuracy, F1 0.920, variable-level F1 0.902, and grounding accuracy 93.2%.",
+   "quote": "The final HITL review achieved the highest data fidelity, yielding an accuracy of 97.0% (95% CI, 95.7% to 98.3%), F1 score of 0.920 (95% CI, 0.879 to 0.961), and variable-level F1 of 0.902 (95% CI, 0.841 to 0.962), with grounding accuracy increasing to 93.2% (95% CI, 91.7% to 94.7%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Stroke outcome model discrimination",
+   "effect": "TabPFN AUROC 0.816 vs CatBoost 0.789 and logistic regression 0.700.",
+   "quote": "While all models exhibited acceptable discrimination, the TabPFN model demonstrated the highest AUROC (0.816; 95% CI, 0.784 to 0.847), followed by CatBoost (0.789; 95% CI, 0.756 to 0.822) and logistic regression (0.700; 95% CI, 0.665 to 0.735).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Extraction accuracy and F1 score after clinician human-in-the-loop review",
+   "effect": "Accuracy increased from 86.0% to 97.0% (95% CI, 95.7% to 98.3%) and F1 from 0.813 to 0.920 (95% CI, 0.879 to 0.961)",
+   "quote": "The final HITL review achieved the highest data fidelity, yielding an accuracy of 97.0% (95% CI, 95.7% to 98.3%), F1 score of 0.920 (95% CI, 0.879 to 0.961), and variable-level F1 of 0.902 (95% CI, 0.841 to 0.962), with grounding accuracy increasing to 93.2% (95% CI, 91.7% to 94.7%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R272",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Cosine-similarity outlier flagging to triage records for human review",
+  "Iterative feedback of human-corrected errors into LoRA adapter fine-tuning to reduce hallucinations (9% to 2.4%)",
+  "Iterative fine-tuning of parameter-efficient adapters using clinician-reviewed error feedback",
+  "Local on-premise deployment of small language model for privacy",
+  "Local/on-premise small language model deployment for privacy-preserving clinical text extraction"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42494785",
+ "screen": {
+  "id": "pmid:42494785",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "multi-tiered validation and human-in-the-loop review",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests how adding multi-tiered validation (rule checks, RAG, cosine similarity flagging) and human-in-the-loop review affects extraction accuracy from clinical records compared to baseline SLM output.",
+  "jev": {
+   "id": "pmid:42494785",
+   "empirical": 0.96,
+   "tests_practice": 0.92,
+   "real_deployment": 0.11
+  }
+ }
+}

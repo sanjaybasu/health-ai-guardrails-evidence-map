@@ -1,0 +1,316 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 241,
+   "sample_unit": "breast cancer radiotherapy patients (CT scans)",
+   "models_evaluated": [
+    "18 CNN-based cardiac substructure segmentation models",
+    "1 transformer-based segmentation model",
+    "denoising autoencoder",
+    "variational autoencoder",
+    "linear regression with bagging"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Segmentation accuracy (DSC) under perturbed CT inputs (artifact, pathology, scanner protocol variation)",
+     "effect": "All abnormal domains gave significant DSC decrease for CNN models (p<0.001), only some for transformer; CNN DSC decreased 0.07 to 0.41 with added noise; transformer not significantly affected (p=0.99).",
+     "quote": "When tested on the benchmark dataset, all abnormal domains resulted in a significant DSC decrease relative to the normal domain for CNN models (  p < 0.001 $p < 0.001$  ), but only for some domains for the transformer model."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of input image and output shape detectors to identify abnormal domains and predict segmentation performance",
+     "effect": "Linear regression with bagging achieved MAE 0.041 \u00b1 0.002 in predicted DSC; MAE was lowest when combining input (image) and output (shape) detectors compared to output detectors alone.",
+     "quote": "MAE was lowest when combining both input (image) detectors and output (shape) detectors compared to output detectors alone."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of QA framework in monitoring domain shift and predicting autosegmentation performance",
+     "effect": "QA framework predicted DSC with MAE 0.041 \u00b1 0.002 for clinically anticipated abnormal domain shifts.",
+     "quote": "A QA framework was able to predict cardiac substructure autosegmentation model performance for clinically anticipated \"abnormal\" domain shifts."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 241,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "18 CNN-based cardiac substructure autosegmentation models",
+    "1 transformer-based cardiac substructure autosegmentation model",
+    "denoising autoencoder image domain shift detector",
+    "variational autoencoder shape quality detector",
+    "linear regression",
+    "Bagging",
+    "Gaussian process regression",
+    "random forest",
+    "gradient boost regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Robustness to added noise",
+     "effect": "Added noise decreased CNN DSC by 0.07 to 0.41; transformer was not significantly affected (ANOVA, p = 0.99).",
+     "quote": "CNN-based autosegmentation models demonstrated a decreased DSC ranging from 0.07 to 0.41 with added noise, while the transformer-based model was not significantly affected (ANOVA,  p = 0.99 $p=0.99$  )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Domain shift effect on DSC",
+     "effect": "All abnormal domains significantly decreased DSC vs normal for CNN models (p < 0.001); transformer affected only for some domains.",
+     "quote": "When tested on the benchmark dataset, all abnormal domains resulted in a significant DSC decrease relative to the normal domain for CNN models (  p < 0.001 $p &lt; 0.001$  ), but only for some domains for the transformer model."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Monitoring framework DSC prediction",
+     "effect": "QA framework predicted performance; reported predicted-DSC MAE was 0.041 \u00b1 0.002 relative to true DSC.",
+     "quote": "A QA framework was able to predict cardiac substructure autosegmentation model performance for clinically anticipated \"abnormal\" domain shifts."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Input/output checks for prediction",
+     "effect": "Combining input image and output shape detectors had lowest MAE versus output detectors alone.",
+     "quote": "MAE was lowest when combining both input (image) detectors and output (shape) detectors compared to output detectors alone."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 241,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "18 CNN-based autosegmentation models",
+    "1 transformer-based autosegmentation model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Autosegmentation accuracy across abnormal image domains",
+     "effect": "All abnormal domains caused significant DSC decrease for CNN models (p < 0.001), but only some for transformer; added noise reduced CNN DSC by 0.07-0.41 (p = 0.01).",
+     "quote": "When tested on the benchmark dataset, all abnormal domains resulted in a significant DSC decrease relative to the normal domain for CNN models (  p < 0.001 $p < 0.001$  ), but only for some domains for the transformer model."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of QA monitoring framework to predict autosegmentation performance",
+     "effect": "The QA framework predicted per-patient segmentation accuracy with MAE of 0.041 \u00b1 0.002 in DSC; MAE was lowest when combining input and output detectors.",
+     "quote": "A QA framework was able to predict cardiac substructure autosegmentation model performance for clinically anticipated \"abnormal\" domain shifts."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 241,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "1 transformer-based autosegmentation model",
+  "1 transformer-based cardiac substructure autosegmentation model",
+  "1 transformer-based segmentation model",
+  "18 CNN-based autosegmentation models",
+  "18 CNN-based cardiac substructure autosegmentation models",
+  "18 CNN-based cardiac substructure segmentation models",
+  "Bagging",
+  "Gaussian process regression",
+  "denoising autoencoder",
+  "denoising autoencoder image domain shift detector",
+  "gradient boost regression",
+  "linear regression",
+  "linear regression with bagging",
+  "random forest",
+  "variational autoencoder",
+  "variational autoencoder shape quality detector"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Robustness to added noise",
+   "effect": "Added noise decreased CNN DSC by 0.07 to 0.41; transformer was not significantly affected (ANOVA, p = 0.99).",
+   "quote": "CNN-based autosegmentation models demonstrated a decreased DSC ranging from 0.07 to 0.41 with added noise, while the transformer-based model was not significantly affected (ANOVA,  p = 0.99 $p=0.99$  ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of input image and output shape detectors to identify abnormal domains and predict segmentation performance",
+   "effect": "Linear regression with bagging achieved MAE 0.041 \u00b1 0.002 in predicted DSC; MAE was lowest when combining input (image) and output (shape) detectors compared to output detectors alone.",
+   "quote": "MAE was lowest when combining both input (image) detectors and output (shape) detectors compared to output detectors alone.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of QA framework in monitoring domain shift and predicting autosegmentation performance",
+   "effect": "QA framework predicted DSC with MAE 0.041 \u00b1 0.002 for clinically anticipated abnormal domain shifts.",
+   "quote": "A QA framework was able to predict cardiac substructure autosegmentation model performance for clinically anticipated \"abnormal\" domain shifts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Domain shift effect on DSC",
+   "effect": "All abnormal domains significantly decreased DSC vs normal for CNN models (p < 0.001); transformer affected only for some domains.",
+   "quote": "When tested on the benchmark dataset, all abnormal domains resulted in a significant DSC decrease relative to the normal domain for CNN models (  p < 0.001 $p &lt; 0.001$  ), but only for some domains for the transformer model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38015793",
+ "screen": {
+  "id": "pmid:38015793",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "routine drift/domain-shift monitoring with performance prediction",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and empirically evaluates a quality assurance (QA) framework designed to continuously monitor domain shift and predict segmentation performance drops for deep learning autosegmentation tools in clinical radiotherapy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "quality assurance monitoring and domain shift detection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38015793",
+   "empirical": 0.96,
+   "tests_practice": 0.44,
+   "real_deployment": 0.06
+  }
+ }
+}

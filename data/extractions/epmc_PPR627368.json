@@ -1,0 +1,213 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 188,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Viz.ai ICH detection algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Active smartphone notification of AI-detected intracranial hemorrhage to the neurosurgical team to speed clinical trial screening"
+   ]
+  },
+  "openai": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 188,
+   "sample_unit": "adult patients screened for the ENRICH Trial",
+   "models_evaluated": [
+    "VizAI intracranial hemorrhage detection algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R505",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Time from CT Head to neurosurgical-team notification for trial screening",
+     "effect": "Immediate smartphone notification reduced notification time by 50 minutes (p<0.002), increasing to 57 minutes when hemorrhages not identified by the ICH algorithm were excluded.",
+     "quote": "Time between CT Head and notification of the neurosurgical team for trial screening was reduced by 50 minutes after the implementation of VizAI (p<0.002)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 188,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "VizAI"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R526",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "time between CT head and team notification",
+     "effect": "Time between CT Head and notification of the neurosurgical team was reduced by 50 minutes after VizAI implementation (p<0.002).",
+     "quote": "Time between CT Head and notification of the neurosurgical team for trial screening was reduced by 50 minutes after the implementation of VizAI (p<0.002)."
+    }
+   ],
+   "unlisted_practices": [
+    "sending active notifications of AI findings to provider mobile devices"
+   ]
+  }
+ },
+ "design": "pre_post_no_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "patients",
+ "sample_size": 188,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Viz.ai ICH detection algorithm",
+  "VizAI",
+  "VizAI intracranial hemorrhage detection algorithm"
+ ],
+ "links": [
+  {
+   "rec_id": "R505",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Time from CT Head to neurosurgical-team notification for trial screening",
+   "effect": "Immediate smartphone notification reduced notification time by 50 minutes (p<0.002), increasing to 57 minutes when hemorrhages not identified by the ICH algorithm were excluded.",
+   "quote": "Time between CT Head and notification of the neurosurgical team for trial screening was reduced by 50 minutes after the implementation of VizAI (p<0.002).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R526",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "time between CT head and team notification",
+   "effect": "Time between CT Head and notification of the neurosurgical team was reduced by 50 minutes after VizAI implementation (p<0.002).",
+   "quote": "Time between CT Head and notification of the neurosurgical team for trial screening was reduced by 50 minutes after the implementation of VizAI (p<0.002).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Active smartphone notification of AI-detected intracranial hemorrhage to the neurosurgical team to speed clinical trial screening",
+  "sending active notifications of AI findings to provider mobile devices"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "epmc:PPR627368",
+ "screen": {
+  "id": "epmc:PPR627368",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "Active smartphone notification of clinicians from AI hemorrhage detection",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the pre- and post-implementation impact of a real clinical deployment of an AI triage/notification app (VizAI) on clinical trial screening workflow times.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "AI-driven automated mobile alert notification for clinical trial screening"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR627368",
+   "empirical": 0.96,
+   "tests_practice": 0.39,
+   "real_deployment": 0.87
+  }
+ }
+}

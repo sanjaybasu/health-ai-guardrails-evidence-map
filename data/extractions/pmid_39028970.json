@@ -1,0 +1,369 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 200,
+   "sample_unit": "patient messages (validation dataset)",
+   "models_evaluated": [
+    "GPT-4",
+    "GPT-3.5-turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Physician acceptance of AI-drafted replies after iterative, versioned prompt engineering",
+     "effect": "Acceptance of draft suitability rose from 62% to 84% (P<.001) in the validation set (N=200); 74% of production drafts were rated helpful.",
+     "quote": "After 3 iterations of prompt engineering, physician acceptance of draft suitability increased from 62% to 84% (P <.001) in the validation dataset (N = 200), and 74% of drafts in the test dataset were rated as \"helpful.\""
+    },
+    {
+     "rec_id": "R145",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Patient preference for tone and quality after feedback-driven prompt revision",
+     "effect": "Patient preference for optimized prompt (V3) drafts was 62% for tone and quality, versus <15% for the initial prompt (P<.001).",
+     "quote": "When comparing responses created from the final prompt to the initial prompt, patient preference shifted to the optimized prompt (V3) based LLM-generated responses for tone ( Figure 4B , N = 154, 62%) and quality ( Figure 4B , N = 154, 62%), significantly higher than preference to the first iteration of prompt based LLM-generated response (<15% for both tone or overall quality) with P -value less than .001."
+    },
+    {
+     "rec_id": "R152",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinated clinical information in AI-drafted patient message replies",
+     "effect": "7 (6%) of 116 training-set drafts contained hallucinated information; none in the validation set; 16% of validation drafts rejected by physicians.",
+     "quote": "Interesting, 7 (6%) of the 116 original messages from the test set were found to contain hallucinated information in the LLM responses."
+    }
+   ],
+   "unlisted_practices": [
+    "Merging category-specific prompts into a single prompt to bypass error-prone LLM message classification/routing",
+    "Including patient advisors as blinded evaluators in prompt development"
+   ]
+  },
+  "openai": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 761,
+   "sample_unit": "LLM-generated messages reviewed and rated during the 2-week production pilot",
+   "models_evaluated": [
+    "GPT-4",
+    "GPT-3.5-turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Patient preference for tone and quality after iterative, clinician- and patient-reviewed prompt refinement",
+     "effect": "Patient advisors preferred optimized-prompt responses for tone and quality (N = 154, 62% each), versus <15% for initial-prompt responses (P -value less than .001).",
+     "quote": "When comparing responses created from the final prompt to the initial prompt, patient preference shifted to the optimized prompt (V3) based LLM-generated responses for tone ( Figure 4B , N = 154, 62%) and quality ( Figure 4B , N = 154, 62%), significantly higher than preference to the first iteration of prompt based LLM-generated response (<15% for both tone or overall quality) with P -value less than .001."
+    },
+    {
+     "rec_id": "R152",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Hallucinated clinical information in AI-drafted patient messages",
+     "effect": "Hallucinations occurred in 7 (6%) of 116 original responses; none were found in responses from the 200-message validation set using the optimized prompt.",
+     "quote": "Interesting, 7 (6%) of the 116 original messages from the test set were found to contain hallucinated information in the LLM responses."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Patient preference for human versus initial-prompt AI response tone and quality",
+     "effect": "Patients preferred human-generated responses for tone (N = 159, 68%) and overall quality (N = 160, 69%) over initial-prompt AI responses.",
+     "quote": "There was notable preference for human-generated responses in the first phase of evaluation for both tone ( N = 159, 68%) and quality ( N = 160, 69%) ( Figure 4A )."
+    },
+    {
+     "rec_id": "R484",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Patient advisors\u2019 ability to identify AI-generated responses when blinded to authorship",
+     "effect": "Patient advisors correctly identified AI-generated responses only 24% of the time; 50% were attributed to humans, and authorship was undetermined for 26%.",
+     "quote": "As shown in Figure 5 , in the final round of patient evaluation, patients determined that 77% ( N = 192) of responses completely addressed patient questions, and patients correctly identified messages were AI-generated only 24% of the time."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 761,
+   "sample_unit": "messages",
+   "models_evaluated": [
+    "GPT-4",
+    "GPT-3.5-turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "patient preference for AI response",
+     "effect": "Patient preference for tone and quality increased from <15% to 62% with local prompt tuning.",
+     "quote": "When comparing responses created from the final prompt to the initial prompt, patient preference shifted to the optimized prompt (V3) based LLM-generated responses for tone ( Figure 4B , N = 154, 62%) and quality ( Figure 4B , N = 154, 62%), significantly higher than preference to the first iteration of prompt based LLM-generated response (<15% for both tone or overall quality) with P -value less than .001."
+    },
+    {
+     "rec_id": "R152",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "draft response suitability",
+     "effect": "45% of validation drafts required editing and 16% were rejected by physicians.",
+     "quote": "Of the validation set of 200 newly selected messages reviewed by pilot physicians, 34% were ranked as \u201cSend,\u201d 45% as \u201cEdit,\u201d and 16% as \u201cReject,\u201d the proportion of \u201cSend\u201d and \u201cEdit\u201d combined was much higher than the rank based on the first prompt ( Figure 3 , P -value <.01)."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "patient sentiment toward response tone",
+     "effect": "52% of patient feedback was negative for initial AI responses compared to 14% for human responses.",
+     "quote": "Sentiment analysis revealed that 50% ( N = 117) positive toward human-generated messages, compared to 15% positive for original prompt based LLM-generated messages ( P -value <.01) ( Supplementary Figure S4 ), and 52% negative feedback toward responses generated based on the original prompt, compared to 14% negative for the human response."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucinated information",
+     "effect": "6% of original messages contained hallucinated information in the LLM responses.",
+     "quote": "Interesting, 7 (6%) of the 116 original messages from the test set were found to contain hallucinated information in the LLM responses."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt engineering with patient advisors assessing tone and quality",
+    "Consolidating multiple task-specific prompts into a single merged prompt to eliminate classification routing errors"
+   ]
+  }
+ },
+ "design": "pre_post_no_comparator",
+ "setting": "real_deployment",
+ "user": "both",
+ "country": "United States",
+ "sample_unit": "patient messages (validation dataset)",
+ "sample_size": 761,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-3.5-turbo",
+  "GPT-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Physician acceptance of AI-drafted replies after iterative, versioned prompt engineering",
+   "effect": "Acceptance of draft suitability rose from 62% to 84% (P<.001) in the validation set (N=200); 74% of production drafts were rated helpful.",
+   "quote": "After 3 iterations of prompt engineering, physician acceptance of draft suitability increased from 62% to 84% (P <.001) in the validation dataset (N = 200), and 74% of drafts in the test dataset were rated as \"helpful.\"",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R152",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "Hallucinated clinical information in AI-drafted patient message replies",
+   "effect": "7 (6%) of 116 training-set drafts contained hallucinated information; none in the validation set; 16% of validation drafts rejected by physicians.",
+   "quote": "Interesting, 7 (6%) of the 116 original messages from the test set were found to contain hallucinated information in the LLM responses.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Patient preference for human versus initial-prompt AI response tone and quality",
+   "effect": "Patients preferred human-generated responses for tone (N = 159, 68%) and overall quality (N = 160, 69%) over initial-prompt AI responses.",
+   "quote": "There was notable preference for human-generated responses in the first phase of evaluation for both tone ( N = 159, 68%) and quality ( N = 160, 69%) ( Figure 4A ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R145",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Patient preference for tone and quality after feedback-driven prompt revision",
+   "effect": "Patient preference for optimized prompt (V3) drafts was 62% for tone and quality, versus <15% for the initial prompt (P<.001).",
+   "quote": "When comparing responses created from the final prompt to the initial prompt, patient preference shifted to the optimized prompt (V3) based LLM-generated responses for tone ( Figure 4B , N = 154, 62%) and quality ( Figure 4B , N = 154, 62%), significantly higher than preference to the first iteration of prompt based LLM-generated response (<15% for both tone or overall quality) with P -value less than .001.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R484",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Patient advisors\u2019 ability to identify AI-generated responses when blinded to authorship",
+   "effect": "Patient advisors correctly identified AI-generated responses only 24% of the time; 50% were attributed to humans, and authorship was undetermined for 26%.",
+   "quote": "As shown in Figure 5 , in the final round of patient evaluation, patients determined that 77% ( N = 192) of responses completely addressed patient questions, and patients correctly identified messages were AI-generated only 24% of the time.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "patient preference for AI response",
+   "effect": "Patient preference for tone and quality increased from <15% to 62% with local prompt tuning.",
+   "quote": "When comparing responses created from the final prompt to the initial prompt, patient preference shifted to the optimized prompt (V3) based LLM-generated responses for tone ( Figure 4B , N = 154, 62%) and quality ( Figure 4B , N = 154, 62%), significantly higher than preference to the first iteration of prompt based LLM-generated response (<15% for both tone or overall quality) with P -value less than .001.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hallucinated information",
+   "effect": "6% of original messages contained hallucinated information in the LLM responses.",
+   "quote": "Interesting, 7 (6%) of the 116 original messages from the test set were found to contain hallucinated information in the LLM responses.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Consolidating multiple task-specific prompts into a single merged prompt to eliminate classification routing errors",
+  "Including patient advisors as blinded evaluators in prompt development",
+  "Iterative prompt engineering with patient advisors assessing tone and quality",
+  "Merging category-specific prompts into a single prompt to bypass error-prone LLM message classification/routing"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:39028970",
+ "screen": {
+  "id": "pmid:39028970",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "iterative prompt engineering with clinician and patient feedback",
+  "user": "both",
+  "reason": "The study tests an iterative prompt engineering and optimization practice incorporating clinician and patient feedback, evaluating its impact across iterations and in a real EHR production deployment with 69 primary care clinicians.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "iterative prompt engineering and clinician/patient feedback optimization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39028970",
+   "empirical": 0.96,
+   "tests_practice": 0.23,
+   "real_deployment": 0.86
+  }
+ }
+}

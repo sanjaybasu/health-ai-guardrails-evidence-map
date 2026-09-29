@@ -1,0 +1,242 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Spain",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "MBDS-based logistic regression mortality model for ischaemic stroke"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC of original model on temporally later external cohort versus recalibrated model",
+     "effect": "External validation AUC 0.726 vs recalibrated AUC 0.743; external validation slightly decreased AUC but confirmed validity of baseline model.",
+     "quote": "Rigorous external validation slightly decreased the AUC but confirmed the validity of the baseline model for the chronologically later cohort."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination after recalibrating model coefficients on later cohort",
+     "effect": "Recalibrated model produced AUC of 0.743 compared with 0.726 for external validation using original coefficients.",
+     "quote": "The recalibrated model produced an AUC of 0.743 and was composed of the following variables: age (odds ratio, OR:1.073), female sex (OR:1.143), ischaemic heart disease (OR:1.192), hypertension (OR:0.719), atrial fibrillation (OR:1.414), hyperlipidaemia (OR:0.652), heart failure (OR:2.133) and posterior circulation stroke (OR: 0.755)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Spain",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "MBDS ischaemic stroke mortality prediction model",
+    "recalibrated MBDS ischaemic stroke mortality prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External validation discrimination",
+     "effect": "External validation produced an AUC of 0.726; recalibrated model AUC was 0.743.",
+     "quote": "External validation produced an AUC of 0.726."
+    }
+   ],
+   "unlisted_practices": [
+    "Recalibration of model coefficients using a chronologically later national cohort"
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Spain",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Minimum Basic Data Set (MBDS) stroke mortality prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "stroke mortality prediction discrimination on chronologically later cohort",
+     "effect": "external validation AUC 0.726; slightly decreased AUC but confirmed baseline model validity",
+     "quote": "Rigorous external validation slightly decreased the AUC but confirmed the validity of the baseline model for the chronologically later cohort."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Spain",
+ "sample_unit": "patients",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "MBDS ischaemic stroke mortality prediction model",
+  "MBDS-based logistic regression mortality model for ischaemic stroke",
+  "Minimum Basic Data Set (MBDS) stroke mortality prediction model",
+  "recalibrated MBDS ischaemic stroke mortality prediction model"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUC of original model on temporally later external cohort versus recalibrated model",
+   "effect": "External validation AUC 0.726 vs recalibrated AUC 0.743; external validation slightly decreased AUC but confirmed validity of baseline model.",
+   "quote": "Rigorous external validation slightly decreased the AUC but confirmed the validity of the baseline model for the chronologically later cohort.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination after recalibrating model coefficients on later cohort",
+   "effect": "Recalibrated model produced AUC of 0.743 compared with 0.726 for external validation using original coefficients.",
+   "quote": "The recalibrated model produced an AUC of 0.743 and was composed of the following variables: age (odds ratio, OR:1.073), female sex (OR:1.143), ischaemic heart disease (OR:1.192), hypertension (OR:0.719), atrial fibrillation (OR:1.414), hyperlipidaemia (OR:0.652), heart failure (OR:2.133) and posterior circulation stroke (OR: 0.755).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "stroke mortality prediction discrimination on chronologically later cohort",
+   "effect": "external validation AUC 0.726; slightly decreased AUC but confirmed baseline model validity",
+   "quote": "Rigorous external validation slightly decreased the AUC but confirmed the validity of the baseline model for the chronologically later cohort.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Recalibration of model coefficients using a chronologically later national cohort"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38002780",
+ "screen": {
+  "id": "pmid:38002780",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "external validation and recalibration before deployment",
+  "user": "none",
+  "reason": "The study empirically performs and evaluates temporal external validation and model recalibration (updating coefficients for a new cohort) on a predictive risk model for stroke mortality.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "model recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38002780",
+   "empirical": 0.79,
+   "tests_practice": 0.67,
+   "real_deployment": 0.04
+  }
+ }
+}

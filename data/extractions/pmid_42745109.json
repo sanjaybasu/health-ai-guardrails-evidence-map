@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "unknown",
+ "sample_size": null,
+ "sample_unit": "chest X-ray images (CheXpert dataset)",
+ "models_evaluated": [
+  "multi-label chest X-ray deep learning classifier (CheXpert)",
+  "graph-based class-distinctiveness quality control (INFORMER)",
+  "retrieval-based INFORMER extension"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Quality-control F1 under input-image noise levels 0.001-0.005 versus baseline",
+   "effect": "Averaged across noise levels, under IxG-based evaluation, retrieval-based variant improved bootstrapped F1 by 21.92% and non-retrieval variant by 13.53% over baseline.",
+   "quote": "Averaged across input-image noise levels of 0.001-0.005, under IxG-based evaluation, the proposed framework showed improvements in bootstrapped F1 over the baseline, with the retrieval-based variant achieving a 21.92% improvement and the corresponding non-retrieval variant achieving a 13.53% improvement.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Saliency/gradient-based graph class-distinctiveness quality control to flag unreliable multi-label image predictions",
+  "Retrieval-based case-based explanations for flagged predictions"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42745109",
+ "screen": {
+  "id": "pmid:42745109",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "quality control flagging of unreliable predictions with case-based explanations",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a quality control and failure detection framework (INFORMER) that monitors predictions using gradient saliency and provides case-based explanations to clinicians.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "interpretability-based quality control and failure detection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42745109",
+   "empirical": 0.95,
+   "tests_practice": 0.65,
+   "real_deployment": 0.06
+  }
+ }
+}

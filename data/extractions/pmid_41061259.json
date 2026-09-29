@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "Germany",
+ "sample_size": 944499,
+ "sample_unit": "patients (931,726 university hospital; 12,773 geriatric hospital)",
+ "models_evaluated": [
+  "state-of-the-art AI models (fall risk prediction)",
+  "federated learning models",
+  "rule-based fall risk systems (comparator)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "AI fall risk model AUROC versus rule-based clinical systems on same data",
+   "effect": "AI models consistently outperformed rule-based systems in all setups; AUROC 0.735 (90% CI 0.727-0.744) geriatric hospital, 0.926 (90% CI 0.924-0.928) university hospital.",
+   "quote": "Our findings demonstrate that AI models consistently outperform rule-based systems across all experimental setups, with the area under the receiver operating characteristic curve of 0.735 (90% CI 0.727-0.744) for the geriatric hospital, and 0.926 (90% CI 0.924-0.928) for the university hospital.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Generalization of models across hospitals with demographic and label distribution differences",
+   "effect": "Demographic shifts and label distribution imbalances limited federated learning models' ability to generalize; FL did not improve fall risk prediction.",
+   "quote": "However, it also reveals the challenges related to demographic shifts and label distribution imbalances, which limited the FL models' ability to generalize.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Model fairness across sex and age subgroups",
+   "effect": "No performance disparities between sex groups, but fairness infringements found across age groups.",
+   "quote": "Our fairness analysis ruled out disparities in model performance between different sex groups, but we found fairness infringements across age groups.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "federated learning across hospitals to train models without sharing data"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41061259",
+ "screen": {
+  "id": "pmid:41061259",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirical evaluation of fall risk predictive models comparing centralized training vs. federated learning across two hospital datasets and evaluating demographic fairness, without testing a specific organizational deployment practice or workflow safeguard.",
+  "jev": {
+   "id": "pmid:41061259",
+   "empirical": 0.97,
+   "tests_practice": 0.15,
+   "real_deployment": 0.07
+  }
+ }
+}

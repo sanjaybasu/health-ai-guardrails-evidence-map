@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "US",
+ "sample_size": 1000,
+ "sample_unit": "FDA drug labels (128,906 entities extracted); MIMIC-CXR reports also evaluated",
+ "models_evaluated": [
+  "GPT-4.1",
+  "Llama-4-Maverick"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether conformal calibration of LLM extraction confidence achieves target coverage with acceptable rejection rates",
+   "effect": "Conformal prediction reached at least 90% target coverage in both FDA label and radiology settings, with 9-13% rejection rates; models were underconfident on FDA labels (tau about 0.06) and overconfident on radiology (tau up to 0.99).",
+   "quote": "Despite this heterogeneity, conformal prediction achieves target coverage ($\\geq 90\\%$) in both settings with manageable rejection rates (9--13\\%).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Domain-specific conformal prediction calibration with finite-sample coverage guarantees for LLM medical entity extraction, with rejection of low-confidence extractions"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2603.00924",
+ "screen": {
+  "id": "arxiv:2603.00924",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "conformal prediction calibration thresholds for LLM output rejection",
+  "user": "none",
+  "reason": "Evaluates conformal prediction as a risk-controlling deployment practice/safeguard for LLM clinical entity extraction across two medical datasets to guarantee coverage.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "conformal prediction for risk-controlled entity extraction"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2603.00924",
+   "empirical": 0.96,
+   "tests_practice": 0.67,
+   "real_deployment": 0.04
+  }
+ }
+}

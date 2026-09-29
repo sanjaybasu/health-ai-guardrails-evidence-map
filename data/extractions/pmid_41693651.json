@@ -1,0 +1,444 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "Turkey",
+   "sample_size": 86,
+   "sample_unit": "abdominal radiology cases (Eurorad)",
+   "models_evaluated": [
+    "GPT-5 (browser-based, GPT-5-2025-08-08)",
+    "GPT-5 via OpenAI API (temperature 0-1.5, top-p 0-1)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist diagnostic accuracy with vs without GPT-5 assistance",
+     "effect": "R1/R2 accuracy rose from 73%/71% unassisted to 87%/86% with browser GPT-5 and 94%/94% with optimal-settings GPT-5 (P=0.001; P=0.031/0.028). Overreliance not assessed.",
+     "quote": "With browser-based GPT-5 assistance, their accuracy significantly improved to 87% (75/86; 95% CI: 79%\u201394%) and 86% (74/86; 95% CI: 78%\u201393%), respectively ( P = 0.001, P = 0.001)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician performance with AI assistance versus unassisted in the workflow, not standalone metrics",
+     "effect": "Radiologists' accuracy improved with GPT-5 assistance (73%/71% to 87%/86% to 94%); differential Likert scores improved to 4.56 and 4.49; assisted juniors outperformed the abdominal radiologist on differentials.",
+     "quote": "Using GPT-5 with the optimal settings further improved their accuracy to 94% (81/86; 95% CI: 88%\u201399%) ( P = 0.031, P = 0.028)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "GPT-5 performance across input formats, temperature/top-p settings, and repeat-run reproducibility",
+     "effect": "Accuracy 12% image-only vs 58% with text; 53% to 73% across temperatures; Round 2 agreement kappa 0.882 for diagnosis, no significant difference (P=0.41). Temperature 2 outputs were unevaluable.",
+     "quote": "Agreement between GPT-5 responses generated with the optimal settings at baseline and in the Round 2 evaluation was high, with Cohen\u2019s \u03ba: 0.882 (95% CI: 0.80\u20130.96) for the most likely diagnosis and \u03ba: 0.816 for differential diagnosis performance, indicating strong agreement."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "GPT-5 and GPT-5-assisted radiologists compared against unassisted and expert abdominal radiologist",
+     "effect": "Abdominal radiologist accuracy 92% exceeded unassisted juniors (P<0.001) but did not differ from assisted juniors; assisted juniors outperformed the abdominal radiologist on differentials (P=0.002, 0.001).",
+     "quote": "Comparatively, AR achieved an accuracy of 92% (79/86; 95% CI: 85%\u201397%), which was superior to the accuracy of R1 and R2 without GPT-5 assistance ( P < 0.001) but not significantly different from their performances with both browser-based GPT-5 and GPT-5 with the optimal settings ( Table 4 )."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Data contamination and generalizability from a single open-access dataset",
+     "effect": "Single open-access dataset raises contamination concerns; near-exact reference phrasing overlap in 2/86 cases (2.3%); no real patient data used.",
+     "quote": "First, it was based on a single open-access dataset, which raises concerns about data contamination and limits the generalizability of the results to the broader, heterogeneous patient populations encountered in actual radiologic practice."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model changes over time and undocumented browser settings affecting performance",
+     "effect": "Authors note browser GPT-5 responses reflect a point in time; stochasticity and updates or undocumented internal configuration may cause performance differences at different times.",
+     "quote": "Therefore, the browser-based GPT-5 responses included in the study reflect the responses at the time of the study."
+    }
+   ],
+   "unlisted_practices": [
+    "Documenting and standardizing LLM hyperparameters (temperature, top-p) for decision-support use",
+    "Providing structured text (imaging findings and clinical presentation) alongside images as input to multimodal LLMs"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 86,
+   "sample_unit": "abdominal cases",
+   "models_evaluated": [
+    "browser-based GPT-5 (GPT-5-2025-08-08)",
+    "GPT-5 via OpenAI API with temperature/top-p settings",
+    "GPT-5 with optimal settings (temperature: 1.5, top-p: 1)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R500",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy with clinical context inputs",
+     "effect": "Accuracy increased from 12% to 58% when imaging findings and clinical presentation were added; P<0.001.",
+     "quote": "With the \"only visual\" input format, browser-based GPT-5 achieved a diagnostic accuracy of 12%, increasing to 58% when imaging findings and clinical presentations were provided (<i>P</i> < 0.001)."
+    },
+    {
+     "rec_id": "R536",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy across hyperparameter settings",
+     "effect": "Optimal temperature 1.5/top-p 1 raised accuracy to 73%; mean differential score improved from 3.44 to 3.84.",
+     "quote": "Hyperparameter optimization further improved GPT-5 performance, with diagnostic accuracy increasing to 73% at the optimal settings (temperature: 1.5, top-p: 1) and mean differential diagnosis scores improving from 3.44 to 3.84."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "repeat-run reproducibility",
+     "effect": "Round 2 agreement was high: diagnosis \u03ba 0.882 (95% CI: 0.80\u20130.96); differential \u03ba 0.816.",
+     "quote": "Agreement between GPT-5 responses generated with the optimal settings at baseline and in the Round 2 evaluation was high, with Cohen\u2019s \u03ba: 0.882 (95% CI: 0.80\u20130.96) for the most likely diagnosis and \u03ba: 0.816 for differential diagnosis performance, indicating strong agreement."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "radiologist accuracy with AI assistance",
+     "effect": "Accuracy improved from 73%/71% unaided to 87%/86% with browser assistance and 94%/94% with optimized assistance.",
+     "quote": "Radiologist accuracy improved from 73%/71% unaided to 87%/86% with browser-based assistance and to 94%/94% with optimized assistance, approaching the AR benchmark (92%)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone GPT-5 diagnostic accuracy",
+     "effect": "Standalone GPT-5 accuracy ranged from 53% (46/86) to 73% (63/86) across temperature settings.",
+     "quote": "At temperature settings of 0, 0.5, 1, and 1.5, diagnostic accuracies were 53% (46/86; 95% CI: 42%\u201363%), 64% (55/86; 95% CI: 54%\u201374%), 66% (57/86; 95% CI: 56%\u201376%), and 73% (63/86; 95% CI: 63%\u201382%), respectively."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "Turkey",
+   "sample_size": 86,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "GPT-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "radiologist diagnostic accuracy with versus without AI assistance",
+     "effect": "Radiologist accuracy increased from 73% and 71% unaided to 87% and 86% with browser-based assistance and 94% with optimal assistance, demonstrating standalone AI accuracy (58% and 73%) failed to predict human-AI performance.",
+     "quote": "The radiologists' diagnostic accuracy increased from 73% and 71% without assistance to 87% and 86% with browser-based GPT-5 assistance and further to 94% with GPT-5 with optimal settings assistance."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "GPT-5 response reproducibility across repeated runs",
+     "effect": "Agreement between baseline and Round 2 was high (Cohen's kappa 0.882 for most likely diagnosis; kappa 0.816 for differential diagnosis), indicating strong agreement and response stability.",
+     "quote": "Agreement between GPT-5 responses generated with the optimal settings at baseline and in the Round 2 evaluation was high, with Cohen\u2019s \u03ba: 0.882 (95% CI: 0.80\u20130.96) for the most likely diagnosis and \u03ba: 0.816 for differential diagnosis performance, indicating strong agreement."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic accuracy with visual-only versus multimodal input",
+     "effect": "Browser-based GPT-5 achieved diagnostic accuracy of only 12% (10/86; 95% CI: 6%-21%) with visual-only input, compared to 58% when clinical presentation and imaging findings were added.",
+     "quote": "Browser-based GPT-5 demonstrated limited diagnostic accuracy in the \u201conly visual\u201d format, correctly answering 12% of cases [10/86; 95% confidence interval (CI), 6%\u201321%]."
+    }
+   ],
+   "unlisted_practices": [
+    "Hyperparameter optimization (systematic tuning of temperature and top-p settings) to improve diagnostic and differential diagnosis performance of large language models."
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Turkey",
+ "sample_unit": "abdominal radiology cases (Eurorad)",
+ "sample_size": 86,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-5",
+  "GPT-5 (browser-based, GPT-5-2025-08-08)",
+  "GPT-5 via OpenAI API (temperature 0-1.5, top-p 0-1)",
+  "GPT-5 via OpenAI API with temperature/top-p settings",
+  "GPT-5 with optimal settings (temperature: 1.5, top-p: 1)",
+  "browser-based GPT-5 (GPT-5-2025-08-08)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist diagnostic accuracy with vs without GPT-5 assistance",
+   "effect": "R1/R2 accuracy rose from 73%/71% unassisted to 87%/86% with browser GPT-5 and 94%/94% with optimal-settings GPT-5 (P=0.001; P=0.031/0.028). Overreliance not assessed.",
+   "quote": "With browser-based GPT-5 assistance, their accuracy significantly improved to 87% (75/86; 95% CI: 79%\u201394%) and 86% (74/86; 95% CI: 78%\u201393%), respectively ( P = 0.001, P = 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "repeat-run reproducibility",
+   "effect": "Round 2 agreement was high: diagnosis \u03ba 0.882 (95% CI: 0.80\u20130.96); differential \u03ba 0.816.",
+   "quote": "Agreement between GPT-5 responses generated with the optimal settings at baseline and in the Round 2 evaluation was high, with Cohen\u2019s \u03ba: 0.882 (95% CI: 0.80\u20130.96) for the most likely diagnosis and \u03ba: 0.816 for differential diagnosis performance, indicating strong agreement.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician performance with AI assistance versus unassisted in the workflow, not standalone metrics",
+   "effect": "Radiologists' accuracy improved with GPT-5 assistance (73%/71% to 87%/86% to 94%); differential Likert scores improved to 4.56 and 4.49; assisted juniors outperformed the abdominal radiologist on differentials.",
+   "quote": "Using GPT-5 with the optimal settings further improved their accuracy to 94% (81/86; 95% CI: 88%\u201399%) ( P = 0.031, P = 0.028).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "GPT-5 performance across input formats, temperature/top-p settings, and repeat-run reproducibility",
+   "effect": "Accuracy 12% image-only vs 58% with text; 53% to 73% across temperatures; Round 2 agreement kappa 0.882 for diagnosis, no significant difference (P=0.41). Temperature 2 outputs were unevaluable.",
+   "quote": "Agreement between GPT-5 responses generated with the optimal settings at baseline and in the Round 2 evaluation was high, with Cohen\u2019s \u03ba: 0.882 (95% CI: 0.80\u20130.96) for the most likely diagnosis and \u03ba: 0.816 for differential diagnosis performance, indicating strong agreement.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "GPT-5 and GPT-5-assisted radiologists compared against unassisted and expert abdominal radiologist",
+   "effect": "Abdominal radiologist accuracy 92% exceeded unassisted juniors (P<0.001) but did not differ from assisted juniors; assisted juniors outperformed the abdominal radiologist on differentials (P=0.002, 0.001).",
+   "quote": "Comparatively, AR achieved an accuracy of 92% (79/86; 95% CI: 85%\u201397%), which was superior to the accuracy of R1 and R2 without GPT-5 assistance ( P < 0.001) but not significantly different from their performances with both browser-based GPT-5 and GPT-5 with the optimal settings ( Table 4 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "accuracy with clinical context inputs",
+   "effect": "Accuracy increased from 12% to 58% when imaging findings and clinical presentation were added; P<0.001.",
+   "quote": "With the \"only visual\" input format, browser-based GPT-5 achieved a diagnostic accuracy of 12%, increasing to 58% when imaging findings and clinical presentations were provided (<i>P</i> < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R536",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "accuracy across hyperparameter settings",
+   "effect": "Optimal temperature 1.5/top-p 1 raised accuracy to 73%; mean differential score improved from 3.44 to 3.84.",
+   "quote": "Hyperparameter optimization further improved GPT-5 performance, with diagnostic accuracy increasing to 73% at the optimal settings (temperature: 1.5, top-p: 1) and mean differential diagnosis scores improving from 3.44 to 3.84.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "diagnostic accuracy with visual-only versus multimodal input",
+   "effect": "Browser-based GPT-5 achieved diagnostic accuracy of only 12% (10/86; 95% CI: 6%-21%) with visual-only input, compared to 58% when clinical presentation and imaging findings were added.",
+   "quote": "Browser-based GPT-5 demonstrated limited diagnostic accuracy in the \u201conly visual\u201d format, correctly answering 12% of cases [10/86; 95% confidence interval (CI), 6%\u201321%].",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Documenting and standardizing LLM hyperparameters (temperature, top-p) for decision-support use",
+  "Hyperparameter optimization (systematic tuning of temperature and top-p settings) to improve diagnostic and differential diagnosis performance of large language models.",
+  "Providing structured text (imaging findings and clinical presentation) alongside images as input to multimodal LLMs"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41693651",
+ "screen": {
+  "id": "pmid:41693651",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "input format and hyperparameter (temperature/top-p) configuration",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests how hyperparameter configuration (temperature/top-p) and input structure affect model performance and human-AI diagnostic accuracy in abdominal radiology.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "hyperparameter and prompt/input optimization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41693651",
+   "empirical": 0.94,
+   "tests_practice": 0.29,
+   "real_deployment": 0.12
+  }
+ }
+}

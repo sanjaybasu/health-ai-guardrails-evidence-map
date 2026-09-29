@@ -1,0 +1,450 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "USA and Canada",
+   "sample_size": 782,
+   "sample_unit": "patients (external validation; 1795 ECGs)",
+   "models_evaluated": [
+    "AI-ECG convolutional neural network (residual, pretrained on congenital heart disease ECGs)",
+    "QRS duration logistic regression comparator"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI-ECG discrimination and calibration variation across external sites",
+     "effect": "AUROC ranged 0.69 to 0.88 across five sites (A 0.87, B 0.88, C 0.82, D 0.74, E 0.69); three of five sites met criteria for miscalibration.",
+     "quote": "Notably, there was variation observed in AUROC across centres, which ranged from 0.69 to 0.88 (AUROC Site A: 0.87, B: 0.88, C: 0.82; D: 0.74, E: 0.69; see Supplementary material online , Figure S1 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration after centre-specific Platt scaling at miscalibrated sites",
+     "effect": "After within-centre calibration, model adequately calibrated with expected calibration error 6.1% (Spiegelhalter Z P=0.25); uncalibrated model showed negative net benefit across all centres.",
+     "quote": "After within-centre calibration, the model was adequately calibrated with expected calibration error of 6.1% (Spiegelhalter Z test P = 0.25, Figure 2 )."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance at local sites versus aggregate; need for local verification",
+     "effect": "Two of five sites had lower AUROC and three of five miscalibrated; authors conclude local verification of discrimination and calibration is required.",
+     "quote": "Based on the extensive external validation performed in this study, we conclude that local verification of discrimination and calibration is required."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AUROC across subgroups by sex, race/ethnicity, and age",
+     "effect": "No difference by sex (P=0.18) or race/ethnicity (P=1.0); lower AUROC in <22 years vs older (0.73 vs 0.85; P=0.005).",
+     "quote": "There was lower performance in children and young adults <22 years old vs. older adults (AUROC 0.73 vs. 0.85; P = 0.005)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-ECG versus QRS duration model discrimination and net reduction in CMR",
+     "effect": "AI-ECG AUROC 0.87 vs 0.78 for QRS duration; QRS model gave no net CMR reduction (-0.02) at 0.25 threshold.",
+     "quote": "Artificial intelligence analysis of electrocardiograms outperformed QRS duration (AUROC 0.87 vs. 0.78, see Supplementary material online , Figure S3 )."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration and net benefit of uncalibrated model across sites",
+     "effect": "Miscalibration at one high-AUROC site (B); uncalibrated model showed negative net benefit when all centres considered.",
+     "quote": "This shows that without proper consideration of calibration, a model may be harmful compared with the current standard of care when considered in the context of clinical risk tolerance."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between training and external validation populations",
+     "effect": "External cohort had higher outcome prevalence than training (57 vs 38% composite; P<0.001) and heterogeneity in race/ethnicity, age, subtype; authors link miscalibration to out-of-distribution prevalence and age.",
+     "quote": "The aggregated external validation cohort had a higher prevalence of disease outcomes compared with the training site (34 vs. 23% for RVEDVi \u2265 160, 48 vs. 29% for RVESVi \u2265 80, 61 vs. 36% for RVEF < 47%, 51 vs. 35% for LVEF < 55%, 57 vs. 38% for composite of \u22652 criteria; P < 0.001 for all comparisons)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance in external multisite validation versus expected generalizability",
+     "effect": "External validation across five sites revealed two sites with suboptimal discrimination, indicating that standard external validation may not ensure generalizability.",
+     "quote": "The current standards could be inadequate to ensure truly generalizable performance, which warrants further examination across the breadth of AI-ECG applications."
+    }
+   ],
+   "unlisted_practices": [
+    "Centre-specific Platt scaling recalibration using leave-one-group-out cross-validation",
+    "Decision curve analysis of net reduction in cardiac MRI use",
+    "Containerized model pipeline for reproducible inference across sites"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA and Canada",
+   "sample_size": 1690,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AI-ECG deep learning model for ventricular remodelling",
+    "QRS duration logistic regression comparator",
+    "within-centre Platt-scaled AI-ECG calibration"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "stand-alone replacement risk",
+     "effect": "At <25% risk, AI may delay but not replace CMR because of false negatives; sensitivity 92%, NPV 87%.",
+     "quote": "For low-risk patients who have less than a 25% risk of having an actionable CMR abnormality, use of this test may delay (but not necessarily replace due to false negatives) the need for surveillance CMR by a year, with 92% sensitivity and 87% NPV."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external-site discrimination variation",
+     "effect": "External site AUROCs ranged 0.69\u20130.88, with Sites D 0.74 and E 0.69.",
+     "quote": "Notably, there was variation observed in AUROC across centres, which ranged from 0.69 to 0.88 (AUROC Site A: 0.87, B: 0.88, C: 0.82; D: 0.74, E: 0.69; see Supplementary material online , Figure S1 )."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "site calibration",
+     "effect": "3/5 centres were miscalibrated, tending to underestimate ventricular-remodelling risk.",
+     "quote": "Three of five centres met criteria for miscalibration (Sites B, D, E; see Supplementary material online , Results ), with miscalibrated sites tending to underestimate the risk of ventricular remodelling (See Supplementary material online , Figure S1 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus QRS duration",
+     "effect": "AI-ECG outperformed QRS duration: AUROC 0.87 vs. 0.78.",
+     "quote": "Artificial intelligence analysis of electrocardiograms outperformed QRS duration (AUROC 0.87 vs. 0.78, see Supplementary material online , Figure S3 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "within-centre calibration",
+     "effect": "Within-centre calibration produced expected calibration error 6.1% and Spiegelhalter Z P = 0.25.",
+     "quote": "After within-centre calibration, the model was adequately calibrated with expected calibration error of 6.1% (Spiegelhalter Z test P = 0.25, Figure 2 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "site-level performance variation",
+     "effect": "Site AUROCs varied from 0.69 to 0.88 across five external centres.",
+     "quote": "Notably, there was variation observed in AUROC across centres, which ranged from 0.69 to 0.88 (AUROC Site A: 0.87, B: 0.88, C: 0.82; D: 0.74, E: 0.69; see Supplementary material online , Figure S1 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "demographic and site performance",
+     "effect": "No sex/race difference; age and site differences, with 2/5 sites lower AUROC and 3/5 miscalibrated.",
+     "quote": "There was no difference by sex or race/ethnicity, but there were differences by age and site, with two of five sites with lower AUROC than the others, and three of five sites met criteria for miscalibration, which improved after centre-specific calibration."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States, Canada",
+   "sample_size": 1690,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AI-ECG 1D-CNN",
+    "Univariable logistic regression (QRS duration)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC variation across external validation sites",
+     "effect": "AUROC varied across centres from 0.69 to 0.88 (Site A: 0.87, B: 0.88, C: 0.82, D: 0.74, E: 0.69).",
+     "quote": "Notably, there was variation observed in AUROC across centres, which ranged from 0.69 to 0.88 (AUROC Site A: 0.87, B: 0.88, C: 0.82; D: 0.74, E: 0.69; see Supplementary material online , Figure S1 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model calibration error after centre-specific recalibration",
+     "effect": "After within-centre calibration, the model was adequately calibrated with an expected calibration error of 6.1% (Spiegelhalter Z test P = 0.25).",
+     "quote": "After within-centre calibration, the model was adequately calibrated with expected calibration error of 6.1% (Spiegelhalter Z test P = 0.25, Figure 2 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model discrimination in younger versus older patients",
+     "effect": "AUROC was significantly lower in children and young adults <22 years old compared with older adults (0.73 vs. 0.85; P = 0.005).",
+     "quote": "There was lower performance in children and young adults <22 years old vs. older adults (AUROC 0.73 vs. 0.85; P = 0.005)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "USA and Canada",
+ "sample_unit": "patients",
+ "sample_size": 1690,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "AI-ECG 1D-CNN",
+  "AI-ECG convolutional neural network (residual, pretrained on congenital heart disease ECGs)",
+  "AI-ECG deep learning model for ventricular remodelling",
+  "QRS duration logistic regression comparator",
+  "Univariable logistic regression (QRS duration)",
+  "within-centre Platt-scaled AI-ECG calibration"
+ ],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI-ECG discrimination and calibration variation across external sites",
+   "effect": "AUROC ranged 0.69 to 0.88 across five sites (A 0.87, B 0.88, C 0.82, D 0.74, E 0.69); three of five sites met criteria for miscalibration.",
+   "quote": "Notably, there was variation observed in AUROC across centres, which ranged from 0.69 to 0.88 (AUROC Site A: 0.87, B: 0.88, C: 0.82; D: 0.74, E: 0.69; see Supplementary material online , Figure S1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration after centre-specific Platt scaling at miscalibrated sites",
+   "effect": "After within-centre calibration, model adequately calibrated with expected calibration error 6.1% (Spiegelhalter Z P=0.25); uncalibrated model showed negative net benefit across all centres.",
+   "quote": "After within-centre calibration, the model was adequately calibrated with expected calibration error of 6.1% (Spiegelhalter Z test P = 0.25, Figure 2 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI-ECG versus QRS duration model discrimination and net reduction in CMR",
+   "effect": "AI-ECG AUROC 0.87 vs 0.78 for QRS duration; QRS model gave no net CMR reduction (-0.02) at 0.25 threshold.",
+   "quote": "Artificial intelligence analysis of electrocardiograms outperformed QRS duration (AUROC 0.87 vs. 0.78, see Supplementary material online , Figure S3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration and net benefit of uncalibrated model across sites",
+   "effect": "Miscalibration at one high-AUROC site (B); uncalibrated model showed negative net benefit when all centres considered.",
+   "quote": "This shows that without proper consideration of calibration, a model may be harmful compared with the current standard of care when considered in the context of clinical risk tolerance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance in external multisite validation versus expected generalizability",
+   "effect": "External validation across five sites revealed two sites with suboptimal discrimination, indicating that standard external validation may not ensure generalizability.",
+   "quote": "The current standards could be inadequate to ensure truly generalizable performance, which warrants further examination across the breadth of AI-ECG applications.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "demographic and site performance",
+   "effect": "No sex/race difference; age and site differences, with 2/5 sites lower AUROC and 3/5 miscalibrated.",
+   "quote": "There was no difference by sex or race/ethnicity, but there were differences by age and site, with two of five sites with lower AUROC than the others, and three of five sites met criteria for miscalibration, which improved after centre-specific calibration.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance at local sites versus aggregate; need for local verification",
+   "effect": "Two of five sites had lower AUROC and three of five miscalibrated; authors conclude local verification of discrimination and calibration is required.",
+   "quote": "Based on the extensive external validation performed in this study, we conclude that local verification of discrimination and calibration is required.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC across subgroups by sex, race/ethnicity, and age",
+   "effect": "No difference by sex (P=0.18) or race/ethnicity (P=1.0); lower AUROC in <22 years vs older (0.73 vs 0.85; P=0.005).",
+   "quote": "There was lower performance in children and young adults <22 years old vs. older adults (AUROC 0.73 vs. 0.85; P = 0.005).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Centre-specific Platt scaling recalibration using leave-one-group-out cross-validation",
+  "Containerized model pipeline for reproducible inference across sites",
+  "Decision curve analysis of net reduction in cardiac MRI use"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41695565",
+ "screen": {
+  "id": "pmid:41695565",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration before deployment",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and multicentre-validates an AI-ECG model and explicitly tests local centre-specific recalibration to address observed miscalibration across sites.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "center-specific recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41695565",
+   "empirical": 0.97,
+   "tests_practice": 0.57,
+   "real_deployment": 0.06
+  }
+ }
+}

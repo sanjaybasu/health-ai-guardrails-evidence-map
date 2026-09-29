@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 186,
+ "sample_unit": "patients (421 AP knee radiographs; 128 fracture patients in the main six-class analysis)",
+ "models_evaluated": [
+  "ResNet-50"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Whether archive-assembly artifacts (accompanying CT section) leak label information and inflate benchmark performance",
+   "effect": "Fracture vs no classifiable fracture: network 0.833 vs 0.814 for a no-pixel model (p=0.264); coronal CT section accompanied 126/128 fracture patients but 24/58 others (p=2.9e-19).",
+   "quote": "a coronal computed tomography section accompanied 126 of 128 fracture patients but 24 of 58 others (p = 2.9 \u00d7 10-19)",
+   "quote_score": 93.85964912280701,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Negative-control baselines fitted with no pixel content (metadata/non-anatomical regression) to test whether benchmark accuracy exceeds shortcuts",
+  "Ablation paired with its complement (tibia-only input) to localize where the signal lies",
+  "Augmentation audit for label-erasing invariances",
+  "Patient-grouped stratified cross-validation with multiple seeds and balanced accuracy"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42795848",
+ "screen": {
+  "id": "pmid:42795848",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates and tests a transferable diagnostic auditing/control protocol (ablation, non-anatomical baselines, augmentation audit) to identify confounding, shortcut learning, and archive bias prior to deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "benchmark control protocol / shortcut and confounding audit"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42795848",
+   "empirical": 0.95,
+   "tests_practice": 0.06,
+   "real_deployment": 0.03
+  }
+ }
+}

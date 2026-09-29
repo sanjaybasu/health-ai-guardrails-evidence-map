@@ -1,0 +1,246 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation",
+    "predictive_risk"
+   ],
+   "country": "United States; United Kingdom",
+   "sample_size": 5198,
+   "sample_unit": "individuals referred for first TTE (temporal validation); also 33,518 UK Biobank participants and 3,628 MIMIC-IV patients",
+   "models_evaluated": [
+    "TARGET-AI",
+    "CLMBR-T",
+    "contrastive vision-language AI-ECG model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R071",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "F1 score and false positives for targeted vs untargeted AI-ECG screening across SHD labels",
+     "effect": "Targeted screening in temporal validation (n=5,198) significantly increased F1 (median 0.25 [0.09 to 0.75]) and decreased false positives (median -303 [-715 to -77]) across 26 SHD labels.",
+     "quote": "Compared with untargeted AI-ECG screening, targeted screening in the temporal validation set (n=5,198) was associated with a significant increase in F1 scores (median of 0.25 [range: 0.09 to 0.75]) and decrease in false positives (median of \u2013303 [range: \u2013715 to \u201377]) across 26 SHD labels."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Targeted screening performance across geographically distinct cohorts (UK Biobank, MIMIC-IV)",
+     "effect": "Similar F1 gains and false-positive reductions: UK Biobank median change -819 (range -3,521 to -459) across 7 labels; MIMIC-IV median -255 (-716 to -86) across 5 labels.",
+     "quote": "Similar increases in F1 scores and reductions in false positives were seen in the UK Biobank (n=33,518; median change in false positives of \u2013819 [range: \u20133,521 to \u2013459] across 7 SHD labels) and MIMIC-IV (n=3,628; median false positive change of \u2013255 [range: \u2013716 to \u201386] across 5 SHD labels)."
+    }
+   ],
+   "unlisted_practices": [
+    "Using EHR foundation model embeddings to gate AI-ECG screening to high-risk patients and encounters"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "multimodal_foundation",
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom; other cohort countries not reported",
+   "sample_size": 42344,
+   "sample_unit": "individuals/participants/patients in validation cohorts",
+   "models_evaluated": [
+    "TARGET-AI",
+    "CLMBR-T",
+    "pre-trained AI-ECG image foundation model",
+    "contrastive vision-language model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R071",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "F1 score and false-positive changes versus untargeted screening",
+     "effect": "Temporal validation (n=5,198): median F1 score increased 0.25 [range: 0.09 to 0.75]; median false positives decreased \u2013303 [range: \u2013715 to \u201377].",
+     "quote": "Compared with untargeted AI-ECG screening, targeted screening in the temporal validation set (n=5,198) was associated with a significant increase in F1 scores (median of 0.25 [range: 0.09 to 0.75]) and decrease in false positives (median of \u2013303 [range: \u2013715 to \u201377]) across 26 SHD labels."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "quasi_experimental",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "United States, United Kingdom",
+   "sample_size": 42344,
+   "sample_unit": "individuals",
+   "models_evaluated": [
+    "TARGET-AI",
+    "CLMBR-T"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R071",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "F1 score and false positive reduction in structural heart disease screening",
+     "effect": "Targeted screening increased F1 scores (median +0.25) and reduced false positives (median -303 in temporal validation, -819 in UK Biobank, -255 in MIMIC-IV) compared with untargeted screening.",
+     "quote": "Compared with untargeted AI-ECG screening, targeted screening in the temporal validation set (n=5,198) was associated with a significant increase in F1 scores (median of 0.25 [range: 0.09 to 0.75]) and decrease in false positives (median of \u2013303 [range: \u2013715 to \u201377]) across 26 SHD labels."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States; United Kingdom",
+ "sample_unit": "individuals referred for first TTE (temporal validation); also 33,518 UK Biobank participants and 3,628 MIMIC-IV patients",
+ "sample_size": 42344,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "CLMBR-T",
+  "TARGET-AI",
+  "contrastive vision-language AI-ECG model",
+  "contrastive vision-language model",
+  "pre-trained AI-ECG image foundation model"
+ ],
+ "links": [
+  {
+   "rec_id": "R071",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "F1 score and false positives for targeted vs untargeted AI-ECG screening across SHD labels",
+   "effect": "Targeted screening in temporal validation (n=5,198) significantly increased F1 (median 0.25 [0.09 to 0.75]) and decreased false positives (median -303 [-715 to -77]) across 26 SHD labels.",
+   "quote": "Compared with untargeted AI-ECG screening, targeted screening in the temporal validation set (n=5,198) was associated with a significant increase in F1 scores (median of 0.25 [range: 0.09 to 0.75]) and decrease in false positives (median of \u2013303 [range: \u2013715 to \u201377]) across 26 SHD labels.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Targeted screening performance across geographically distinct cohorts (UK Biobank, MIMIC-IV)",
+   "effect": "Similar F1 gains and false-positive reductions: UK Biobank median change -819 (range -3,521 to -459) across 7 labels; MIMIC-IV median -255 (-716 to -86) across 5 labels.",
+   "quote": "Similar increases in F1 scores and reductions in false positives were seen in the UK Biobank (n=33,518; median change in false positives of \u2013819 [range: \u20133,521 to \u2013459] across 7 SHD labels) and MIMIC-IV (n=3,628; median false positive change of \u2013255 [range: \u2013716 to \u201386] across 5 SHD labels).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Using EHR foundation model embeddings to gate AI-ECG screening to high-risk patients and encounters"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1074814",
+ "screen": {
+  "id": "epmc:PPR1074814",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "EHR-based targeted (gated) AI-ECG screening population selection",
+  "user": "none",
+  "reason": "The study directly tests a deployment strategy (a two-stage gated targeted screening pipeline using EHR foundation model embeddings to pre-select candidates vs. untargeted screening) to mitigate false positives in AI-ECG deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "gated targeted screening strategy"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1074814",
+   "empirical": 0.97,
+   "tests_practice": 0.63,
+   "real_deployment": 0.1
+  }
+ }
+}

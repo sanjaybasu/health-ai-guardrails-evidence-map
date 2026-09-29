@@ -1,0 +1,315 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1937,
+   "sample_unit": "survey respondents in the held-out test set (NSDUH 2015-2019)",
+   "models_evaluated": [
+    "Cost-Sensitive Bagged Trees (untuned)",
+    "Cost-Sensitive Bagged Trees (threshold-tuned)",
+    "RUSBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether clinically weighted metrics, CIs, and threshold choice change model ranking versus raw accuracy",
+     "effect": "Raw accuracy ranked CSBT-Untuned highest (0.867) but it detected only 38.5% of misuse cases; balanced accuracy/CDPS ranked CSBT-Tuned highest (0.696). Bootstrap CIs showed CSBT-Tuned and RUSBoost overlap.",
+     "quote": "WEAS reversed this ordering, ranking CSBT-Tuned highest (0.696), followed by RUSBoost (0.690) and CSBT-Untuned (0.658)."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of decision threshold choice on sensitivity, false positives, and net benefit",
+     "effect": "Lowering threshold to 0.33 raised sensitivity from 38.5% to 51.3% and false positives from 119 to 207, reducing PPV from 42.2% to 35.9%; model preference shifted with cost ratio (crossover c_FN\u22483.03).",
+     "quote": "The threshold reduction that increased CSBT-Tuned sensitivity from 38.5% to 51.3% simultaneously increased false positives from 119 to 207, reducing PPV from 42.2% to 35.9%."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Leakage-free preprocessing and strict holdout test evaluation",
+     "effect": "Preprocessing fit on training only, target-leakage variables excluded, and test set used once; validation performance consistent with test. However, only internal random split of one survey dataset, no external validation.",
+     "quote": "Across all three models, validation set performance was consistent with test set results."
+    }
+   ],
+   "unlisted_practices": [
+    "Clinically weighted composite metrics (CDPS, CPUS, WEAS, CEPM) with swing-weight expert elicitation",
+    "Cost-ratio crossover analysis for model selection",
+    "Decision curve analysis and cost-effectiveness analysis of classifiers",
+    "Learning curve convergence as a model disqualification criterion"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1937,
+   "sample_unit": "test observations/respondents",
+   "models_evaluated": [
+    "CSBT-Untuned",
+    "CSBT-Tuned",
+    "RUSBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinical metrics revealed hidden poor sensitivity",
+     "effect": "CSBT-Untuned had 86.7% raw accuracy but missed 61.5% positives; WEAS ranked CSBT-Tuned highest, 0.696 vs 0.658.",
+     "quote": "The results demonstrate that while CSBT-Untuned achieved the highest raw accuracy of 86.7%, it missed 61.5% of positive cases."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "threshold tuning sensitivity and false positives",
+     "effect": "Threshold 0.33 increased sensitivity from 38.5% to 51.3%, but false positives rose from 119 to 207 and PPV fell from 42.2% to 35.9%.",
+     "quote": "The threshold reduction that increased CSBT-Tuned sensitivity from 38.5% to 51.3% simultaneously increased false positives from 119 to 207, reducing PPV from 42.2% to 35.9%."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model net benefit comparison",
+     "effect": "Over thresholds 0.10 to 0.30, INB was 0.00650 for RUSBoost, 0.00621 for CSBT-Tuned, and 0.00570 for CSBT-Untuned.",
+     "quote": "RUSBoost achieved the highest integrated net benefit over the full screening range (0.10 to 0.30), with an INB of 0.00650 compared to 0.00621 for CSBT-Tuned and 0.00570 for CSBT-Untuned."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured swing-weight elicitation to set clinical composite-metric weights",
+    "Penalty-matrix crossover analysis for asymmetric error costs",
+    "Decision-curve and cost-effectiveness modeling for classifier selection",
+    "Learning-curve convergence checks as a deployment-readiness screen"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1937,
+   "sample_unit": "observations",
+   "models_evaluated": [
+    "Cost-Sensitive Bagged Trees (CSBT-Untuned)",
+    "Cost-Sensitive Bagged Trees (CSBT-Tuned)",
+    "Random Under-Sampling Boosting (RUSBoost)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "high raw accuracy concealing poor positive class detection",
+     "effect": "CSBT-Untuned achieved 86.7% raw accuracy but missed 61.5% of positive cases (sensitivity 38.5%, 139 false negatives)",
+     "quote": "The results demonstrate that while CSBT-Untuned achieved the highest raw accuracy of 86.7%, it missed 61.5% of positive cases."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "survey respondents in the held-out test set (NSDUH 2015-2019)",
+ "sample_size": 1937,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CSBT-Tuned",
+  "CSBT-Untuned",
+  "Cost-Sensitive Bagged Trees (CSBT-Tuned)",
+  "Cost-Sensitive Bagged Trees (CSBT-Untuned)",
+  "Cost-Sensitive Bagged Trees (threshold-tuned)",
+  "Cost-Sensitive Bagged Trees (untuned)",
+  "RUSBoost",
+  "Random Under-Sampling Boosting (RUSBoost)"
+ ],
+ "links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether clinically weighted metrics, CIs, and threshold choice change model ranking versus raw accuracy",
+   "effect": "Raw accuracy ranked CSBT-Untuned highest (0.867) but it detected only 38.5% of misuse cases; balanced accuracy/CDPS ranked CSBT-Tuned highest (0.696). Bootstrap CIs showed CSBT-Tuned and RUSBoost overlap.",
+   "quote": "WEAS reversed this ordering, ranking CSBT-Tuned highest (0.696), followed by RUSBoost (0.690) and CSBT-Untuned (0.658).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of decision threshold choice on sensitivity, false positives, and net benefit",
+   "effect": "Lowering threshold to 0.33 raised sensitivity from 38.5% to 51.3% and false positives from 119 to 207, reducing PPV from 42.2% to 35.9%; model preference shifted with cost ratio (crossover c_FN\u22483.03).",
+   "quote": "The threshold reduction that increased CSBT-Tuned sensitivity from 38.5% to 51.3% simultaneously increased false positives from 119 to 207, reducing PPV from 42.2% to 35.9%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Leakage-free preprocessing and strict holdout test evaluation",
+   "effect": "Preprocessing fit on training only, target-leakage variables excluded, and test set used once; validation performance consistent with test. However, only internal random split of one survey dataset, no external validation.",
+   "quote": "Across all three models, validation set performance was consistent with test set results.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "high raw accuracy concealing poor positive class detection",
+   "effect": "CSBT-Untuned achieved 86.7% raw accuracy but missed 61.5% of positive cases (sensitivity 38.5%, 139 false negatives)",
+   "quote": "The results demonstrate that while CSBT-Untuned achieved the highest raw accuracy of 86.7%, it missed 61.5% of positive cases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Clinically weighted composite metrics (CDPS, CPUS, WEAS, CEPM) with swing-weight expert elicitation",
+  "Cost-ratio crossover analysis for model selection",
+  "Decision curve analysis and cost-effectiveness analysis of classifiers",
+  "Decision-curve and cost-effectiveness modeling for classifier selection",
+  "Learning curve convergence as a model disqualification criterion",
+  "Learning-curve convergence checks as a deployment-readiness screen",
+  "Penalty-matrix crossover analysis for asymmetric error costs",
+  "Structured swing-weight elicitation to set clinical composite-metric weights"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42796009",
+ "screen": {
+  "id": "pmid:42796009",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert threshold selection with cost-sensitive clinical evaluation",
+  "user": "none",
+  "reason": "Evaluates the impact of threshold optimization and cost-sensitive tuning aligned with clinical error costs versus untuned raw classification on opioid misuse screening data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "cost-sensitive threshold tuning based on clinical priorities"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42796009",
+   "empirical": 0.95,
+   "tests_practice": 0.23,
+   "real_deployment": 0.03
+  }
+ }
+}

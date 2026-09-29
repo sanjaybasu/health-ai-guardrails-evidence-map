@@ -1,0 +1,364 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 52787,
+   "sample_unit": "patients (external test set, Hospital B, baseline pairs)",
+   "models_evaluated": [
+    "DeepECG LVSD (SE-ResNeXt-152, pretrained)",
+    "AI-ECG without pretraining",
+    "recalibrated DeepECG LVSD",
+    "recalibrated DeepECG LVSD masked to LVEF"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "External validation performance versus internal validation for LVSD detection",
+     "effect": "Baseline pairs: AUROC 0.953 internal vs 0.947 external (little drop). Follow-up pairs, uncalibrated: 0.945 internal vs 0.910 external.",
+     "quote": "The standard 12-lead DeepECG LVSD model exhibited an AUROC of 0.953 (95% CI 0.941\u20100.965) in internal validation and 0.947 (95% CI 0.943\u20100.951) in external validation ( Table 2 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance difference between internal and external site",
+     "effect": "Uncalibrated 12-lead follow-up AUROC fell from 0.945 (internal) to 0.910 (external); specificity 0.852 vs 0.763.",
+     "quote": "representing a modest improvement over the uncalibrated DeepECG LVSD model with an internal AUROC of 0.945 (95% CI 0.933\u20100.957) and an external AUROC of 0.910 (95% CI 0.905\u20100.916)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC change after patient-wise recalibration on follow-up ECG pairs, overall and by subgroup",
+     "effect": "External 12-lead AUROC 0.910 to 0.940 with recalibration; significant improvements in all subgroups (P<.05); masked-LVEF variant 0.920.",
+     "quote": "Subgroup analysis revealed that all subpopulations consistently showed statistically significant differences between the AUROC of the recalibrated and uncalibrated standard 12-lead DeepECG LVSD models ( Table 5 )."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup AUROC and specificity across comorbidities",
+     "effect": "AFIB/flutter AUROC 0.875, specificity 0.578; LBBB AUROC 0.859, specificity 0.219; IHD specificity 0.596.",
+     "quote": "In patients with AFIB or flutter, the AUROC decreased to 0.875 (95% CI 0.858\u20100.890), accompanied by a reduction in specificity to 0.578 (95% CI 0.564\u20100.592) and PPV to 0.174 (95% CI 0.158\u20100.190)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hidden subgroup performance gaps masked by aggregate AUROC",
+     "effect": "Aggregate external AUROC 0.947 but specificity 0.219 in LBBB and 0.578 in AFIB; specificity decline larger than AUROC suggests.",
+     "quote": "Thus, the subgroup AUROC alone may mask clinically significant degradations in binary performance metrics, such as specificity and sensitivity, which are directly relevant to clinical application."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether subgroup AUROC reveals threshold-based performance degradation",
+     "effect": "Subgroup AUROC remained moderately high while specificity fell sharply (LBBB AUROC 0.859, specificity 0.219), concealing threshold-level underperformance.",
+     "quote": "However, the decline in specificity was considerably more pronounced than would be anticipated from AUROC alone."
+    }
+   ],
+   "unlisted_practices": [
+    "Patient-wise recalibration using prior LVEF and prior AI outputs to stabilize a fixed decision threshold across subgroups",
+    "Transfer learning pretraining on automatically labeled ECG data to improve performance"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "Korea",
+   "sample_size": 91609,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AI-ECG without pretraining",
+    "DeepECG LVSD",
+    "DeepECG LVSD (recalibrated, masked to LVEF)",
+    "DeepECG LVSD (recalibrated)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External-site performance drop",
+     "effect": "Follow-up 12-lead AUROC: uncalibrated 0.945 internal vs 0.910 external; recalibrated 0.956 internal vs 0.940 external.",
+     "quote": "The 12-lead model achieved an AUROC of 0.956 (95% CI 0.946\u20100.965) for internal validation and 0.940 (95% CI 0.936\u20100.945) for external validation, representing a modest improvement over the uncalibrated DeepECG LVSD model with an internal AUROC of 0.945 (95% CI 0.933\u20100.957) and an external AUROC of 0.910 (95% CI 0.905\u20100.916)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup threshold performance",
+     "effect": "AFIB/AFL subgroup: AUROC 0.875, specificity 0.578, PPV 0.174, showing threshold-metric degradation.",
+     "quote": "In patients with AFIB or flutter, the AUROC decreased to 0.875 (95% CI 0.858\u20100.890), accompanied by a reduction in specificity to 0.578 (95% CI 0.564\u20100.592) and PPV to 0.174 (95% CI 0.158\u20100.190)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinical subgroup performance gaps",
+     "effect": "LBBB subgroup had AUROC 0.859 (95% CI 0.828\u20100.890) and specificity 0.219 (95% CI 0.177\u20100.266).",
+     "quote": "LBBB was also associated with a low AUROC of 0.859 (95% CI 0.828\u20100.890) and a lower specificity of 0.219 (95% CI 0.177\u20100.266)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Recalibration for subgroup degradation",
+     "effect": "External follow-up 12-lead AUROC improved from 0.910 to 0.940; recalibration improvements were P<.001 across clinical subgroups.",
+     "quote": "Recalibration yielded statistically significant improvements in the 12-lead DeepECG LVSD models (P<.001), with enhanced and more balanced performance across all clinical subgroups."
+    }
+   ],
+   "unlisted_practices": [
+    "Pretraining AI-ECG on automatically generated ECG feature labels before LVSD fine-tuning",
+    "Evaluating reduced-lead ECG configurations for LVSD detection"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 91609,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DeepECG LVSD",
+    "SE-ResNeXt-152"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup performance degradation in comorbidities",
+     "effect": "In AFIB/flutter, AUROC dropped to 0.875 and specificity to 0.578; in LBBB, AUROC dropped to 0.859 and specificity to 0.219, compared to overall AUROC 0.947 and specificity 0.847.",
+     "quote": "In patients with AFIB or flutter, the AUROC decreased to 0.875 (95% CI 0.858\u20100.890), accompanied by a reduction in specificity to 0.578 (95% CI 0.564\u20100.592) and PPV to 0.174 (95% CI 0.158\u20100.190)."
+    }
+   ],
+   "unlisted_practices": [
+    "Patient-wise recalibration incorporating historical clinical measurements and prior AI outputs to adjust predictions",
+    "Pretraining on large-scale automatically labeled ECG data before task-specific fine-tuning"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "patients",
+ "sample_size": 91609,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AI-ECG without pretraining",
+  "DeepECG LVSD",
+  "DeepECG LVSD (SE-ResNeXt-152, pretrained)",
+  "DeepECG LVSD (recalibrated)",
+  "DeepECG LVSD (recalibrated, masked to LVEF)",
+  "SE-ResNeXt-152",
+  "recalibrated DeepECG LVSD",
+  "recalibrated DeepECG LVSD masked to LVEF"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "External validation performance versus internal validation for LVSD detection",
+   "effect": "Baseline pairs: AUROC 0.953 internal vs 0.947 external (little drop). Follow-up pairs, uncalibrated: 0.945 internal vs 0.910 external.",
+   "quote": "The standard 12-lead DeepECG LVSD model exhibited an AUROC of 0.953 (95% CI 0.941\u20100.965) in internal validation and 0.947 (95% CI 0.943\u20100.951) in external validation ( Table 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hidden subgroup performance gaps masked by aggregate AUROC",
+   "effect": "Aggregate external AUROC 0.947 but specificity 0.219 in LBBB and 0.578 in AFIB; specificity decline larger than AUROC suggests.",
+   "quote": "Thus, the subgroup AUROC alone may mask clinically significant degradations in binary performance metrics, such as specificity and sensitivity, which are directly relevant to clinical application.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether subgroup AUROC reveals threshold-based performance degradation",
+   "effect": "Subgroup AUROC remained moderately high while specificity fell sharply (LBBB AUROC 0.859, specificity 0.219), concealing threshold-level underperformance.",
+   "quote": "However, the decline in specificity was considerably more pronounced than would be anticipated from AUROC alone.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance difference between internal and external site",
+   "effect": "Uncalibrated 12-lead follow-up AUROC fell from 0.945 (internal) to 0.910 (external); specificity 0.852 vs 0.763.",
+   "quote": "representing a modest improvement over the uncalibrated DeepECG LVSD model with an internal AUROC of 0.945 (95% CI 0.933\u20100.957) and an external AUROC of 0.910 (95% CI 0.905\u20100.916).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup AUROC and specificity across comorbidities",
+   "effect": "AFIB/flutter AUROC 0.875, specificity 0.578; LBBB AUROC 0.859, specificity 0.219; IHD specificity 0.596.",
+   "quote": "In patients with AFIB or flutter, the AUROC decreased to 0.875 (95% CI 0.858\u20100.890), accompanied by a reduction in specificity to 0.578 (95% CI 0.564\u20100.592) and PPV to 0.174 (95% CI 0.158\u20100.190).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Recalibration for subgroup degradation",
+   "effect": "External follow-up 12-lead AUROC improved from 0.910 to 0.940; recalibration improvements were P<.001 across clinical subgroups.",
+   "quote": "Recalibration yielded statistically significant improvements in the 12-lead DeepECG LVSD models (P<.001), with enhanced and more balanced performance across all clinical subgroups.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Evaluating reduced-lead ECG configurations for LVSD detection",
+  "Patient-wise recalibration incorporating historical clinical measurements and prior AI outputs to adjust predictions",
+  "Patient-wise recalibration using prior LVEF and prior AI outputs to stabilize a fixed decision threshold across subgroups",
+  "Pretraining AI-ECG on automatically generated ECG feature labels before LVSD fine-tuning",
+  "Pretraining on large-scale automatically labeled ECG data before task-specific fine-tuning",
+  "Transfer learning pretraining on automatically labeled ECG data to improve performance"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42030497",
+ "screen": {
+  "id": "pmid:42030497",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "patient-wise longitudinal recalibration",
+  "user": "none",
+  "reason": "The study tests a patient-wise recalibration strategy incorporating historical patient data to mitigate confounding/bias across clinical subgroups and compares the recalibrated model against the uncalibrated model.",
+  "jev": {
+   "id": "pmid:42030497",
+   "empirical": 0.97,
+   "tests_practice": 0.92,
+   "real_deployment": 0.05
+  }
+ }
+}

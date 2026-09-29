@@ -1,0 +1,423 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 60,
+   "sample_unit": "original CT oncology reports (30 colorectal, 30 lung), each simplified into two versions and rated by radiologists and PPI readers",
+   "models_evaluated": [
+    "OpenAI GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "PPI-rated accessibility/readability of LLM-simplified reports versus original report",
+     "effect": "Original reports scored lower than versions A and B for accessibility (median 1.667 vs 4.333 for both); full-length version B rated higher than summary A (P=0.029); 60% (A) and 85% (B) scored >4.",
+     "quote": "In all questions, combined colorectal and lung cohorts, the Friedman test showed significant differences between the original version, version A, and version B reports (all P < 0.0001), with the original scoring less for accessibility and being beneficial to patients, in comparison with versions A and B as per Table 4 ."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Incorrect, misleading, or missing content in AI-simplified reports flagged by readers",
+     "effect": "Open comments identified incorrect facts/statements (n=28), complex terminology (n=18), added confusion (n=10) and missing information (n=10) in LLM outputs.",
+     "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Factual errors and potentially harmful content in AI-generated patient-facing report versions",
+     "effect": "Radiologists found LLM reports with incorrect statements (n=28 comments); factual correctness >4 in only 65% (A) and 70% (B) of scores; harm noted in some outputs.",
+     "quote": "Nevertheless, this study does highlight that, in some instances, the LLM generated factually incorrect or potentially harmful information which has also been highlighted by other groups [ 25 ]."
+    },
+    {
+     "rec_id": "R298",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Repeatability of LLM outputs across ten runs and repeat reads after washout",
+     "effect": "Prompts were run ten times each and scored, giving good repeatability; repeat reads on six reports showed no significant differences between versions.",
+     "quote": "The results gave good repeatability and the selected prompts were: Prompt A (three shot) \u2013 summary of the original report"
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Output reproducibility across repeated runs of selected prompts",
+     "effect": "Each prompt was run ten times at temperature 0 and scored; results gave good repeatability. Reader repeatability subset showed no significant differences.",
+     "quote": "The results gave good repeatability and the selected prompts were: Prompt A (three shot) \u2013 summary of the original report"
+    },
+    {
+     "rec_id": "R456",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Patient/public representative input in evaluating AI-simplified reports",
+     "effect": "PPI readers (180 reads) preferred full-length version B (P<0.0001), differing from radiologist preferences in the lung cohort, showing that patient input revealed distinct preferences.",
+     "quote": "While radiologists\u2019 preferences differed between cohorts, with the lung cohort preferring the summary version and the colorectal cohort preferring the full-length version, patients\u2019 overall preference was for the latter."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Multiple-reader assessment of output quality",
+     "effect": "Three radiologists per cohort scored outputs on 5-point Likert; radiologist scores differed per cohort (Simpson's paradox), so the study did not mitigate rater variability with adjudication.",
+     "quote": "The differences in both cancer cohorts are cancelled when combined, a possible case of Simpson\u2019s paradox [ 17 ], hence the importance of analysing the cohorts separately."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing summarised versus full-length LLM report formats for patient preference",
+    "Tailoring AI-simplified report format to individual patient preference and clinical context",
+    "Stepwise iterative prompt engineering with few-shot versus zero-shot prompt selection"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 60,
+   "sample_unit": "original oncology CT imaging reports",
+   "models_evaluated": [
+    "Open.AI GPT-4 deployed in the RM Trust secure Azure environment"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cohort-stratified versus pooled performance",
+     "effect": "Lung favored A (factual correctness P=0.001; completeness P<0.0001); colorectal favored B (all P<0.002); combined medians did not differ (all p>0.057).",
+     "quote": "The differences in both cancer cohorts are cancelled when combined, a possible case of Simpson\u2019s paradox [ 17 ], hence the importance of analysing the cohorts separately."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Errors in AI-generated simplified reports",
+     "effect": "Incorrect statements n=28; missing information n=10; adding confusion n=10; complex terminology n=18.",
+     "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10)."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Patient-facing readability and perceived benefit",
+     "effect": "PPI accessibility median: original 1.667 (0% >4), A 4.333 (60% >4), B 4.333 (85% \u22654); overall P<0.0001.",
+     "quote": "In all questions, combined colorectal and lung cohorts, the Friedman test showed significant differences between the original version, version A, and version B reports (all P < 0.0001), with the original scoring less for accessibility and being beneficial to patients, in comparison with versions A and B as per Table 4 ."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Confusing terminology in patient-facing output",
+     "effect": "Complex terminology n=18 and adding confusion n=10; qualitative coding also found missing information n=10.",
+     "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10)."
+    },
+    {
+     "rec_id": "R456",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PPI versus radiologist report preferences",
+     "effect": "PPI preferred full-length version B for access (Q3 P<0.0001); radiologists favored A in lung and B in colorectal cohorts.",
+     "quote": "While radiologists\u2019 preferences differed between cohorts, with the lung cohort preferring the summary version and the colorectal cohort preferring the full-length version, patients\u2019 overall preference was for the latter."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Output accuracy and completeness",
+     "effect": "Factual-correctness median was 4.330 for both versions; open comments identified incorrect statements n=28 and missing information n=10.",
+     "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10)."
+    }
+   ],
+   "unlisted_practices": [
+    "Choosing summarized versus full-length LLM-simplified oncology imaging report formats based on patient and cancer-cohort preferences"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 60,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "factual errors, complex terminology, confusion, and omissions in AI-generated radiology reports",
+     "effect": "Qualitative review identified 28 incorrect statements, 18 instances of complex terminology, 10 additions of confusion, and 10 omissions across AI-generated reports.",
+     "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "United Kingdom",
+ "sample_unit": "original CT oncology reports (30 colorectal, 30 lung), each simplified into two versions and rated by radiologists and PPI readers",
+ "sample_size": 60,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4",
+  "Open.AI GPT-4 deployed in the RM Trust secure Azure environment",
+  "OpenAI GPT-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Errors in AI-generated simplified reports",
+   "effect": "Incorrect statements n=28; missing information n=10; adding confusion n=10; complex terminology n=18.",
+   "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R456",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Patient/public representative input in evaluating AI-simplified reports",
+   "effect": "PPI readers (180 reads) preferred full-length version B (P<0.0001), differing from radiologist preferences in the lung cohort, showing that patient input revealed distinct preferences.",
+   "quote": "While radiologists\u2019 preferences differed between cohorts, with the lung cohort preferring the summary version and the colorectal cohort preferring the full-length version, patients\u2019 overall preference was for the latter.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Incorrect, misleading, or missing content in AI-simplified reports flagged by readers",
+   "effect": "Open comments identified incorrect facts/statements (n=28), complex terminology (n=18), added confusion (n=10) and missing information (n=10) in LLM outputs.",
+   "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Output reproducibility across repeated runs of selected prompts",
+   "effect": "Each prompt was run ten times at temperature 0 and scored; results gave good repeatability. Reader repeatability subset showed no significant differences.",
+   "quote": "The results gave good repeatability and the selected prompts were: Prompt A (three shot) \u2013 summary of the original report",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Cohort-stratified versus pooled performance",
+   "effect": "Lung favored A (factual correctness P=0.001; completeness P<0.0001); colorectal favored B (all P<0.002); combined medians did not differ (all p>0.057).",
+   "quote": "The differences in both cancer cohorts are cancelled when combined, a possible case of Simpson\u2019s paradox [ 17 ], hence the importance of analysing the cohorts separately.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R289",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Patient-facing readability and perceived benefit",
+   "effect": "PPI accessibility median: original 1.667 (0% >4), A 4.333 (60% >4), B 4.333 (85% \u22654); overall P<0.0001.",
+   "quote": "In all questions, combined colorectal and lung cohorts, the Friedman test showed significant differences between the original version, version A, and version B reports (all P < 0.0001), with the original scoring less for accessibility and being beneficial to patients, in comparison with versions A and B as per Table 4 .",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Confusing terminology in patient-facing output",
+   "effect": "Complex terminology n=18 and adding confusion n=10; qualitative coding also found missing information n=10.",
+   "quote": "Incorrect facts and statements in versions A and/or B were the most common open comment ( n = 28), followed by complex terminology ( n = 18), adding confusion ( n = 10) as well as missing information ( n = 10).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R298",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Choosing summarized versus full-length LLM-simplified oncology imaging report formats based on patient and cancer-cohort preferences",
+  "Comparing summarised versus full-length LLM report formats for patient preference",
+  "Stepwise iterative prompt engineering with few-shot versus zero-shot prompt selection",
+  "Tailoring AI-simplified report format to individual patient preference and clinical context"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41975482",
+ "screen": {
+  "id": "pmid:41975482",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "reading-level and length constraints via prompt (summarised vs full-length simplified reports)",
+  "user": "both",
+  "reason": "Empirical multi-reader study evaluating LLM-simplified oncology radiology reports comparing two prompt designs (summarized vs. full-length) with evaluations by radiologists and patient representatives.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "summarized versus full-length report prompt designs"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41975482",
+   "empirical": 0.96,
+   "tests_practice": 0.11,
+   "real_deployment": 0.08
+  }
+ }
+}

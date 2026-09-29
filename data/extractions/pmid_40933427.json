@@ -1,0 +1,352 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Brazil",
+   "sample_size": 969,
+   "sample_unit": "medical texts",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "GPT-4 Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Brazilian Portuguese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Reproducibility of LLM diagnoses across repeated runs on different days",
+     "effect": "GPT 3.5 on 927 texts over 3 days: 6 cases (0.65%) had different diagnoses, 70% textual variation; rerun of all configurations averaged 1.7 changes in confusion matrices.",
+     "quote": "Diagnoses: Most notably, 6 cases (0.65%) presented different diagnoses on at least 2 different days."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Comparison of candidate GPT model configurations against expert physician labels on same data",
+     "effect": "GPT 4 Turbo precision 90.6%, sensitivity 100%, kappa 0.95; GPT 3.5 precision 44.9%, kappa 0.59; GPT 3.5+4 precision 81.0%, kappa 0.88.",
+     "quote": "The best results came using configuration 3, the GPT 4 Turbo."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Reference standard by expert physicians labeling texts for anaphylaxis",
+     "effect": "Three expert physicians reviewed and classified all texts before experiments; no blinding or adjudication procedure or inter-rater agreement is reported.",
+     "quote": "The 3 specialists reviewed all texts and classified all cases as anaphylaxis or not before these experiments."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM diagnostic accuracy against expert ground-truth labels",
+     "effect": "GPT 4 Turbo: 90.6% precision, 100% sensitivity, 99.5% specificity, 99.5% accuracy, kappa 0.95.",
+     "quote": "The best results came using configuration 3, the GPT 4 Turbo."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of adding WAO criteria to prompt on LLM precision",
+     "effect": "WAO criteria improved GPT 3.5 precision from 44.9% to 60.8% and GPT 3.5+4 from 81.0% to 84.2%; GPT 4 Turbo precision did not improve (90.6% to 88.9%).",
+     "quote": "It reached the point that GPT 4 Turbo precision did not improve with the additional information."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering with explicit clinical criteria to improve LLM detection accuracy",
+    "Using LLMs to identify anaphylaxis in unstructured EMR text to reconcile with structured records"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Brazil",
+   "sample_size": 969,
+   "sample_unit": "medical texts",
+   "models_evaluated": [
+    "GPT 3.5",
+    "GPT 4",
+    "GPT 4 Turbo",
+    "GPT 3.5 + GPT 4 configuration"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Brazilian Portuguese"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Anaphylaxis classification accuracy against physician labels",
+     "effect": "Best model: TP 48, FP 5, TN 916, FN 0; precision 90.6%, sensitivity 100%, specificity 99.5%, accuracy 99.5%.",
+     "quote": "Using the primary prompt, GPT 4 Turbo detected anaphylaxis cases with 90.6% precision, 100% sensitivity, 99.5% specificity, 99.5% accuracy, and a Cohen kappa coefficient of 0.95."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Diagnosis reproducibility across repeated runs",
+     "effect": "Initial GPT 3.5 consistency test: 6/927 (0.65%) different diagnoses; later reruns changed 0-3 cases/configuration, average 1.7.",
+     "quote": "Most notably, 6 cases (0.65%) presented different diagnoses on at least 2 different days."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance after removing easy negative texts",
+     "effect": "Without SemClinBR, GPT4 Turbo specificity 99.5%\u219290.2%, accuracy 99.5%\u219295%, kappa 0.95\u21920.90; precision/sensitivity unchanged.",
+     "quote": "Specificity went from 99.5% to 90.2%, and accuracy from 99.5% to 95%, still outstanding results."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model and prompt configuration selection",
+     "effect": "GPT 4 Turbo was best: precision 90.6%, kappa 0.95; WAO improved GPT3.5 precision 44.9%\u219260.8% and GPT3.5+4 81.0%\u219284.2%.",
+     "quote": "The WAO criteria did improve the older models\u2019 performance, as for GPT 3.5 + 4 configuration, precision went from 81.0% to 84.2% and kappa from 0.88 to 0.9, and for the GPT 3.5, configuration had even more improvements, with precision going from 44.9% to 60.8% and kappa from 0.59 to 0.74."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding World Allergy Organization anaphylaxis criteria to the prompt"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Brazil",
+   "sample_size": 969,
+   "sample_unit": "medical texts",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "GPT-4 Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Portuguese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Diagnostic consistency across repeat runs on different dates",
+     "effect": "Across repeat runs for all model configurations, diagnostic classification changes averaged 1.7 out of 969 texts, with minimal changes in precision and sensitivity.",
+     "quote": "The changes were minimal (average of 1.7); consequently, the precision, sensitivity, etc. values changed very little."
+    }
+   ],
+   "unlisted_practices": [
+    "incorporating clinical diagnostic criteria into prompts"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Brazil",
+ "sample_unit": "medical texts",
+ "sample_size": 969,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Brazilian Portuguese",
+  "Portuguese"
+ ],
+ "models_evaluated": [
+  "GPT 3.5",
+  "GPT 3.5 + GPT 4 configuration",
+  "GPT 4",
+  "GPT 4 Turbo",
+  "GPT-3.5",
+  "GPT-4",
+  "GPT-4 Turbo"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Reproducibility of LLM diagnoses across repeated runs on different days",
+   "effect": "GPT 3.5 on 927 texts over 3 days: 6 cases (0.65%) had different diagnoses, 70% textual variation; rerun of all configurations averaged 1.7 changes in confusion matrices.",
+   "quote": "Diagnoses: Most notably, 6 cases (0.65%) presented different diagnoses on at least 2 different days.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Comparison of candidate GPT model configurations against expert physician labels on same data",
+   "effect": "GPT 4 Turbo precision 90.6%, sensitivity 100%, kappa 0.95; GPT 3.5 precision 44.9%, kappa 0.59; GPT 3.5+4 precision 81.0%, kappa 0.88.",
+   "quote": "The best results came using configuration 3, the GPT 4 Turbo.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of adding WAO criteria to prompt on LLM precision",
+   "effect": "WAO criteria improved GPT 3.5 precision from 44.9% to 60.8% and GPT 3.5+4 from 81.0% to 84.2%; GPT 4 Turbo precision did not improve (90.6% to 88.9%).",
+   "quote": "It reached the point that GPT 4 Turbo precision did not improve with the additional information.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance after removing easy negative texts",
+   "effect": "Without SemClinBR, GPT4 Turbo specificity 99.5%\u219290.2%, accuracy 99.5%\u219295%, kappa 0.95\u21920.90; precision/sensitivity unchanged.",
+   "quote": "Specificity went from 99.5% to 90.2%, and accuracy from 99.5% to 95%, still outstanding results.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding World Allergy Organization anaphylaxis criteria to the prompt",
+  "Prompt engineering with explicit clinical criteria to improve LLM detection accuracy",
+  "Using LLMs to identify anaphylaxis in unstructured EMR text to reconcile with structured records",
+  "incorporating clinical diagnostic criteria into prompts"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40933427",
+ "screen": {
+  "id": "pmid:40933427",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt guardrails (adding WAO criteria to prompt)",
+  "user": "none",
+  "reason": "Evaluates LLM performance on detecting anaphylaxis from EMR text, specifically testing the addition of World Allergy Organization (WAO) clinical criteria into the prompt.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompting with clinical diagnostic criteria"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40933427",
+   "empirical": 0.96,
+   "tests_practice": 0.23,
+   "real_deployment": 0.04
+  }
+ }
+}

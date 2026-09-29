@@ -1,0 +1,373 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 100,
+   "sample_unit": "test CT scans (each with 4 independent human segmentations)",
+   "models_evaluated": [
+    "3D U-Net (scratch)",
+    "UNETR",
+    "Swin-UNETR",
+    "SegResNet",
+    "SuPreM (SwinUNETR, SegResNet, U-Net backbones)",
+    "TotalSegmentator",
+    "PanSegNet",
+    "PANORAMA winner (nnU-Net)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fraction of predictions reaching human-level performance after human revision of flagged outlier cases",
+     "effect": "Revision of the top 5% uncertainty-flagged cases (6 cases) raised FT to 0.99 for DSC and NSD, with 1.54 min/case vs 35.4 min manual (23x workload reduction).",
+     "quote": "Overall, this was translated into an FT of 0.99 for both metrics ( Figure 5C )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Segmentation accuracy versus multi-reader human reference standard, including tail-case failures",
+     "effect": "Best model DSC 0.88 \u00b1 0.04 approached humans, but 3%-5% of cases (best model) and 7%-10% (benchmark) fell below human thresholds vs 1% for humans.",
+     "quote": "Figure 2C-D confirm this trend\u2014human readers had fewer low DSC and NSD cases (1%) compared to AI models (7%\u201310% for the benchmark, 3%\u20135% for the best model)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Robustness on held-out test set of older patients differing from training population",
+     "effect": "Failures occurred in cases with fatty infiltration or uncommon anatomy absent from training data; 5%-7% of predictions fell below minimum human performance despite good mean Dice.",
+     "quote": "Our multireader evaluation revealed that even the best-performing pancreas segmentation models lacked robustness: 5% to 7% of predictions fell below the minimum performance threshold in cases that human readers handled consistently."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Uncertainty-based triage identifying cases to defer to humans for revision",
+     "effect": "Acquisition function (entropy + sphericity) inversely correlated with DSC/NSD; revising 6% of cases reduced error rate (1 \u2013 FT) to ~1%.",
+     "quote": "Instead, an active learning approach proved effective in this case, reducing the error rate (1 \u2013 FT) to \u223c1% with manual revision of only 6% of cases, leading to a 23-fold workload reduction."
+    }
+   ],
+   "unlisted_practices": [
+    "Fractional Threshold robustness metric benchmarking AI against multi-reader human performance distribution",
+    "Active learning uncertainty-based selection of outputs for human revision"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 100,
+   "sample_unit": "test CT scans",
+   "models_evaluated": [
+    "3D U-Net trained from scratch",
+    "UNETR trained from scratch",
+    "Swin-UNETR trained from scratch",
+    "SegResNet trained from scratch",
+    "SuPreM 3D U-Net",
+    "SuPreM SwinUNETR",
+    "SuPreM SegResNet fine-tuned",
+    "TotalSegmentator nnU-Net",
+    "PanSegNet nnU-Net",
+    "PANORAMA winner nnU-Net",
+    "U-Net with abnormal cases"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Robustness hidden by mean metrics",
+     "effect": "Even best models lacked robustness: 5% to 7% of predictions fell below minimum performance threshold despite high mean metrics.",
+     "quote": "Our multireader evaluation revealed that even the best-performing pancreas segmentation models lacked robustness: 5% to 7% of predictions fell below the minimum performance threshold in cases that human readers handled consistently."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Failures in anatomical variants",
+     "effect": "Annular pancreas case 79 and duodenal diverticulum case 53 led to segmentation inconsistencies; other errors involved fatty infiltration and low BMI.",
+     "quote": "Additionally, rare anatomical variations, such as annular pancreas (case 79) and duodenal diverticulum (case 53), led to segmentation inconsistencies, likely because of their limited representation in training data."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Deferring uncertain segmentations to humans",
+     "effect": "Human revision of the highest-\u03b1 6% of test cases made all metrics comparable to humans and yielded FT 0.99 for both metrics.",
+     "quote": "Thus, after human revision of only 6% of the test cases, the model performance in all metrics of interest was comparable to that in humans."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automated outlier detection for segmentations",
+     "effect": "High \u03b1 was inversely correlated with DSC/NSD; 95th-percentile high-\u03b1 cases were more likely to underperform and were triaged for revision.",
+     "quote": "Figure 5A shows an inverse correlation between the acquisition function \u03b1 and the DSC/NSD, confirming that cases with high \u03b1 were more likely to underperform manual segmentation."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI segmentation below human thresholds",
+     "effect": "Low DSC/NSD cases were 1% for humans versus 7%\u201310% for benchmark AI and 3%\u20135% for best AI.",
+     "quote": "Figure 2C-D confirm this trend\u2014human readers had fewer low DSC and NSD cases (1%) compared to AI models (7%\u201310% for the benchmark, 3%\u20135% for the best model)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 100,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "3D U-Net",
+    "SegResNet",
+    "UNETR",
+    "Swin-UNETR",
+    "SuPreM",
+    "TotalSegmentator",
+    "PanSegNet",
+    "PANORAMA winner"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fractional Threshold and segmentation workload with active learning triage",
+     "effect": "active learning revision of 6% uncertain cases raised Fractional Threshold to 0.99 with 23-fold workload reduction (1.54 vs 35.4 minutes/case)",
+     "quote": "Instead, an active learning approach proved effective in this case, reducing the error rate (1 \u2013 FT) to \u223c1% with manual revision of only 6% of cases, leading to a 23-fold workload reduction."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "test CT scans (each with 4 independent human segmentations)",
+ "sample_size": 100,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "3D U-Net",
+  "3D U-Net (scratch)",
+  "3D U-Net trained from scratch",
+  "PANORAMA winner",
+  "PANORAMA winner (nnU-Net)",
+  "PANORAMA winner nnU-Net",
+  "PanSegNet",
+  "PanSegNet nnU-Net",
+  "SegResNet",
+  "SegResNet trained from scratch",
+  "SuPreM",
+  "SuPreM (SwinUNETR, SegResNet, U-Net backbones)",
+  "SuPreM 3D U-Net",
+  "SuPreM SegResNet fine-tuned",
+  "SuPreM SwinUNETR",
+  "Swin-UNETR",
+  "Swin-UNETR trained from scratch",
+  "TotalSegmentator",
+  "TotalSegmentator nnU-Net",
+  "U-Net with abnormal cases",
+  "UNETR",
+  "UNETR trained from scratch"
+ ],
+ "links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation accuracy versus multi-reader human reference standard, including tail-case failures",
+   "effect": "Best model DSC 0.88 \u00b1 0.04 approached humans, but 3%-5% of cases (best model) and 7%-10% (benchmark) fell below human thresholds vs 1% for humans.",
+   "quote": "Figure 2C-D confirm this trend\u2014human readers had fewer low DSC and NSD cases (1%) compared to AI models (7%\u201310% for the benchmark, 3%\u20135% for the best model).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Uncertainty-based triage identifying cases to defer to humans for revision",
+   "effect": "Acquisition function (entropy + sphericity) inversely correlated with DSC/NSD; revising 6% of cases reduced error rate (1 \u2013 FT) to ~1%.",
+   "quote": "Instead, an active learning approach proved effective in this case, reducing the error rate (1 \u2013 FT) to \u223c1% with manual revision of only 6% of cases, leading to a 23-fold workload reduction.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Robustness hidden by mean metrics",
+   "effect": "Even best models lacked robustness: 5% to 7% of predictions fell below minimum performance threshold despite high mean metrics.",
+   "quote": "Our multireader evaluation revealed that even the best-performing pancreas segmentation models lacked robustness: 5% to 7% of predictions fell below the minimum performance threshold in cases that human readers handled consistently.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Failures in anatomical variants",
+   "effect": "Annular pancreas case 79 and duodenal diverticulum case 53 led to segmentation inconsistencies; other errors involved fatty infiltration and low BMI.",
+   "quote": "Additionally, rare anatomical variations, such as annular pancreas (case 79) and duodenal diverticulum (case 53), led to segmentation inconsistencies, likely because of their limited representation in training data.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Automated outlier detection for segmentations",
+   "effect": "High \u03b1 was inversely correlated with DSC/NSD; 95th-percentile high-\u03b1 cases were more likely to underperform and were triaged for revision.",
+   "quote": "Figure 5A shows an inverse correlation between the acquisition function \u03b1 and the DSC/NSD, confirming that cases with high \u03b1 were more likely to underperform manual segmentation.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Active learning uncertainty-based selection of outputs for human revision",
+  "Fractional Threshold robustness metric benchmarking AI against multi-reader human performance distribution"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41394428",
+ "screen": {
+  "id": "pmid:41394428",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop uncertainty-flagged revision",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates an active learning / human-in-the-loop safeguard where uncertainty-flagged outlier segmentation predictions are routed for human clinician revision to achieve human-level reliability.",
+  "jev": {
+   "id": "pmid:41394428",
+   "empirical": 0.97,
+   "tests_practice": 0.92,
+   "real_deployment": 0.07
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "",
+ "sample_size": null,
+ "sample_unit": "benchmark evaluations of 5 models at 3 precision levels",
+ "models_evaluated": [
+  "Qwen2.5-7B",
+  "BioMistral-7B",
+  "Meditron-7B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy and safety change after quantization and recovery fine-tuning across tasks",
+   "effect": "INT8 max degradation -1.9% to 1.9%; INT4 degradation substantial and model-dependent (BioMistral-7B -19.7% on MedMCQA). Recovery methods raised MedMCQA but further degraded MedQA.",
+   "quote": "We additionally test two recovery methods, clinical calibration substitution and QLoRA fine-tuning, both producing the same trade-off: MedMCQA recovers while MedQA further degrades, indicating recovery strategies require task-specific validation rather than being assumed universally beneficial.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Performance on HealthBench emergency-risk subgroup under INT4 quantization",
+   "effect": "Qwen2.5-7B degrades by 26.8% on the emergency-risk subgroup under INT4; results are model-dependent, and INT8 is broadly safe.",
+   "quote": "On HealthBench's emergency-risk subgroup, Qwen2.5-7B degrades by 26.8% under INT4, suggesting high-risk scenarios are disproportionately vulnerable to compression.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Validating model quantization level (INT8 vs INT4) per model and per task before edge deployment",
+  "Assessing safety refusal robustness separately from accuracy after model compression"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2609.22216",
+ "screen": {
+  "id": "arxiv:2609.22216",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "quantization precision selection with task-specific validation",
+  "user": "none",
+  "reason": "Empirically tests the safety and accuracy impact of model quantization (GPTQ-INT8/INT4) and recovery techniques across multiple clinical benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "post-training quantization and recovery fine-tuning"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2609.22216",
+   "empirical": 0.96,
+   "tests_practice": 0.55,
+   "real_deployment": 0.02
+  }
+ }
+}

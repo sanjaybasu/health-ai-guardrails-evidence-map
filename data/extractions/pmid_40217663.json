@@ -1,0 +1,374 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 6039,
+   "sample_unit": "patient encounters",
+   "models_evaluated": [
+    "VC-MAES",
+    "NEWS",
+    "MEWS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC of early warning score under missing inputs and forced imputation",
+     "effect": "AUROC 0.918 with actual data fell to 0.883 with mean-based imputation and 0.827 with MICE; specificity at 80% sensitivity fell from 85.5% to 78.3%.",
+     "quote": "When missing values were imputed using values randomly drawn from within one SD of the mean observed values for the corresponding non-event and event groups, the AUROC decreased to 0.883 (95% CI: 0.875\u20130.891) compared with 0.918 (95% CI: 0.912\u20130.924) under the model\u2019s default normal-value imputation method (DeLong test, p < 0.001)."
+    },
+    {
+     "rec_id": "R304",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences in missing lab data between event and non-event patient groups and effect on model scores",
+     "effect": "Non-event group had over 80% missing lactate and pH vs 7.37% and 6.91% in event group; forced imputation raised non-event average score from 7.7 to 10.6, increasing false positives.",
+     "quote": "For instance, over 80% of the lactate and pH data were missing in the non-event group, compared to only 7.37% and 6.91%, respectively, in the event group."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model AUROC with minimal inputs versus full inputs, with normal-value imputation",
+     "effect": "With only vital signs and age, AUROC 0.896 (vs NEWS 0.797, MEWS 0.722); adding available clinical data raised it to 0.918 (p<0.001).",
+     "quote": "Upon reintroducing the full set of originally collected clinical data, previously treated as missing, the VC-MAES performance improved significantly compared with the vital-signs-only scenario."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination of AI early warning score versus NEWS and MEWS on same data",
+     "effect": "VC-MAES AUROC 0.896 vs NEWS 0.797 and MEWS 0.722; AUPRC 0.336 vs 0.125 (NEWS) and 0.079 (MEWS).",
+     "quote": "These results indicate that VC-MAES outperformed both NEWS and MEWS in terms of both AUROC and AUPRC ( Figure 1 )."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prospective silent-mode performance of the early warning model on live data",
+     "effect": "Model generated real-time predictions undisclosed to clinicians; prospective AUROC 0.918 (full data) on 6039 encounters at an external site.",
+     "quote": "The model generated predictions in real-time; however, these predictions were neither disclosed to healthcare providers nor incorporated into clinical decision-making processes."
+    }
+   ],
+   "unlisted_practices": [
+    "Using default normal-value imputation with LOCF rather than mean-based or MICE imputation to preserve informative missingness",
+    "Including a lab-ordering indicator as a model feature to capture informative presence"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Republic of Korea",
+   "sample_size": 6039,
+   "sample_unit": "patient encounters",
+   "models_evaluated": [
+    "VC-MAES",
+    "National Early Warning Score (NEWS)",
+    "Modified Early Warning Score (MEWS)",
+    "VC-MAES experimental vital-signs-only model",
+    "VC-MAES experimental lab-ordering indicator model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Missing-input and imputation stress testing",
+     "effect": "Mean imputation decreased AUROC from 0.918 to 0.883; MICE declined further to 0.827.",
+     "quote": "When missing values were imputed using values randomly drawn from within one SD of the mean observed values for the corresponding non-event and event groups, the AUROC decreased to 0.883 (95% CI: 0.875\u20130.891) compared with 0.918 (95% CI: 0.912\u20130.924) under the model\u2019s default normal-value imputation method (DeLong test, p < 0.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus traditional early warning scores",
+     "effect": "VC-MAES AUROC 0.896 using vital signs and age, versus NEWS 0.797 and MEWS 0.722.",
+     "quote": "VC-MAES achieved the area under the receiver operating characteristic curve (AUROC) of 0.896 using only vital signs and age, outperforming traditional EWSs, including the National Early Warning Score (0.797) and the Modified Early Warning Score (0.722)."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Silent-mode prospective predictive performance",
+     "effect": "Real-time hidden validation found AUROC rose 0.896 to 0.918 and AUPRC 0.336 to 0.352 with full clinical data.",
+     "quote": "The AUROC increased from 0.896 to 0.918 (95% CI: 0.912\u20130.924; DeLong test p < 0.001), and the AUPRC increased from 0.336 (95% CI: 0.312\u20130.361) to 0.352 (95% CI: 0.329\u20130.373), further enhancing the model\u2019s predictive capabilities."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missing patient data and predictive accuracy",
+     "effect": "Withheld clinical data lowered AUROC/AUPRC; reintroducing data increased AUROC 0.896 to 0.918 and AUPRC 0.336 to 0.352.",
+     "quote": "The AUROC increased from 0.896 to 0.918 (95% CI: 0.912\u20130.924; DeLong test p < 0.001), and the AUPRC increased from 0.336 (95% CI: 0.312\u20130.361) to 0.352 (95% CI: 0.329\u20130.373), further enhancing the model\u2019s predictive capabilities."
+    }
+   ],
+   "unlisted_practices": [
+    "Use clinically informed normal-value imputation and missingness/order indicators to preserve informative presence rather than forcing complete mean-based or MICE imputation."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 6039,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "VC-MAES",
+    "NEWS",
+    "MEWS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "discrimination of AI versus traditional early warning scores",
+     "effect": "AUROC 0.896 vs 0.797 (NEWS) and 0.722 (MEWS); AUPRC 0.336 vs 0.125 (NEWS) and 0.079 (MEWS)",
+     "quote": "VC-MAES achieved the area under the receiver operating characteristic curve (AUROC) of 0.896 using only vital signs and age, outperforming traditional EWSs, including the National Early Warning Score (0.797) and the Modified Early Warning Score (0.722)."
+    }
+   ],
+   "unlisted_practices": [
+    "Normal-value imputation rather than statistical imputation to preserve informative presence in missing clinical data",
+    "Incorporating binary test-ordering indicators to capture informative presence of clinical testing patterns"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "patient encounters",
+ "sample_size": 6039,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "MEWS",
+  "Modified Early Warning Score (MEWS)",
+  "NEWS",
+  "National Early Warning Score (NEWS)",
+  "VC-MAES",
+  "VC-MAES experimental lab-ordering indicator model",
+  "VC-MAES experimental vital-signs-only model"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination of AI early warning score versus NEWS and MEWS on same data",
+   "effect": "VC-MAES AUROC 0.896 vs NEWS 0.797 and MEWS 0.722; AUPRC 0.336 vs 0.125 (NEWS) and 0.079 (MEWS).",
+   "quote": "These results indicate that VC-MAES outperformed both NEWS and MEWS in terms of both AUROC and AUPRC ( Figure 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective silent-mode performance of the early warning model on live data",
+   "effect": "Model generated real-time predictions undisclosed to clinicians; prospective AUROC 0.918 (full data) on 6039 encounters at an external site.",
+   "quote": "The model generated predictions in real-time; however, these predictions were neither disclosed to healthcare providers nor incorporated into clinical decision-making processes.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R363",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC of early warning score under missing inputs and forced imputation",
+   "effect": "AUROC 0.918 with actual data fell to 0.883 with mean-based imputation and 0.827 with MICE; specificity at 80% sensitivity fell from 85.5% to 78.3%.",
+   "quote": "When missing values were imputed using values randomly drawn from within one SD of the mean observed values for the corresponding non-event and event groups, the AUROC decreased to 0.883 (95% CI: 0.875\u20130.891) compared with 0.918 (95% CI: 0.912\u20130.924) under the model\u2019s default normal-value imputation method (DeLong test, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R509",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Model AUROC with minimal inputs versus full inputs, with normal-value imputation",
+   "effect": "With only vital signs and age, AUROC 0.896 (vs NEWS 0.797, MEWS 0.722); adding available clinical data raised it to 0.918 (p<0.001).",
+   "quote": "Upon reintroducing the full set of originally collected clinical data, previously treated as missing, the VC-MAES performance improved significantly compared with the vital-signs-only scenario.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Missing-input and imputation stress testing",
+   "effect": "Mean imputation decreased AUROC from 0.918 to 0.883; MICE declined further to 0.827.",
+   "quote": "When missing values were imputed using values randomly drawn from within one SD of the mean observed values for the corresponding non-event and event groups, the AUROC decreased to 0.883 (95% CI: 0.875\u20130.891) compared with 0.918 (95% CI: 0.912\u20130.924) under the model\u2019s default normal-value imputation method (DeLong test, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Missing patient data and predictive accuracy",
+   "effect": "Withheld clinical data lowered AUROC/AUPRC; reintroducing data increased AUROC 0.896 to 0.918 and AUPRC 0.336 to 0.352.",
+   "quote": "The AUROC increased from 0.896 to 0.918 (95% CI: 0.912\u20130.924; DeLong test p < 0.001), and the AUPRC increased from 0.336 (95% CI: 0.312\u20130.361) to 0.352 (95% CI: 0.329\u20130.373), further enhancing the model\u2019s predictive capabilities.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "discrimination of AI versus traditional early warning scores",
+   "effect": "AUROC 0.896 vs 0.797 (NEWS) and 0.722 (MEWS); AUPRC 0.336 vs 0.125 (NEWS) and 0.079 (MEWS)",
+   "quote": "VC-MAES achieved the area under the receiver operating characteristic curve (AUROC) of 0.896 using only vital signs and age, outperforming traditional EWSs, including the National Early Warning Score (0.797) and the Modified Early Warning Score (0.722).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R304",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Including a lab-ordering indicator as a model feature to capture informative presence",
+  "Incorporating binary test-ordering indicators to capture informative presence of clinical testing patterns",
+  "Normal-value imputation rather than statistical imputation to preserve informative presence in missing clinical data",
+  "Use clinically informed normal-value imputation and missingness/order indicators to preserve informative presence rather than forcing complete mean-based or MICE imputation.",
+  "Using default normal-value imputation with LOCF rather than mean-based or MICE imputation to preserve informative missingness"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40217663",
+ "screen": {
+  "id": "pmid:40217663",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "missing-data imputation strategy selection",
+  "user": "none",
+  "reason": "Evaluates how different missing data handling/imputation strategies (default normal-value imputation vs. distribution-based or MICE) impact the predictive performance and reliability of an AI-based early warning score.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "missing data imputation strategy selection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40217663",
+   "empirical": 0.96,
+   "tests_practice": 0.06,
+   "real_deployment": 0.1
+  }
+ }
+}

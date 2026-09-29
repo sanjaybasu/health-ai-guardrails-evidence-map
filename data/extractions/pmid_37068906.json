@@ -1,0 +1,229 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Real-time electronic KDIGO-based AKI alert algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Physician-pharmacist expert team reviews electronic AKI alerts and delivers personalised recommendations as an EHR progress note instead of interruptive pop-up alerts"
+   ]
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Rule-based electronic AKI alert algorithm using KDIGO stage I creatinine criteria"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician disagreement with electronic AKI diagnoses leading to exclusion",
+     "effect": "KAT clinicians disagreed with electronic AKI diagnoses in 20.7% of those screened; this was the most common reason for exclusion.",
+     "quote": "KAT clinicians\u2019 disagreement with the electronic AKI diagnosis (20.7% of those screened) was the most common reason for exclusion."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 740,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Electronic AKI alert system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "disagreement with electronic diagnosis",
+     "effect": "Expert clinicians reviewing the alerts disagreed with the automated AKI diagnosis in 20.7% of screened patients.",
+     "quote": "KAT clinicians\u2019 disagreement with the electronic AKI diagnosis (20.7% of those screened) was the most common reason for exclusion."
+    },
+    {
+     "rec_id": "R178",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "filtration of inaccurate alerts",
+     "effect": "An intermediary expert review team identified errors and disagreed with the electronic AKI diagnosis in 20.7% of screened alerts.",
+     "quote": "KAT clinicians\u2019 disagreement with the electronic AKI diagnosis (20.7% of those screened) was the most common reason for exclusion."
+    },
+    {
+     "rec_id": "R527",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "filtration of inaccurate alerts",
+     "effect": "Routing early-warning alerts through an intermediary review team led to the exclusion of 20.7% of cases due to disagreement with the electronic diagnosis.",
+     "quote": "KAT clinicians\u2019 disagreement with the electronic AKI diagnosis (20.7% of those screened) was the most common reason for exclusion."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "rct",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Electronic AKI alert system",
+  "Real-time electronic KDIGO-based AKI alert algorithm",
+  "Rule-based electronic AKI alert algorithm using KDIGO stage I creatinine criteria"
+ ],
+ "links": [
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician disagreement with electronic AKI diagnoses leading to exclusion",
+   "effect": "KAT clinicians disagreed with electronic AKI diagnoses in 20.7% of those screened; this was the most common reason for exclusion.",
+   "quote": "KAT clinicians\u2019 disagreement with the electronic AKI diagnosis (20.7% of those screened) was the most common reason for exclusion.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R178",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R527",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Physician-pharmacist expert team reviews electronic AKI alerts and delivers personalised recommendations as an EHR progress note instead of interruptive pop-up alerts"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37068906",
+ "screen": {
+  "id": "pmid:37068906",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "Human clinician/pharmacist review of AKI alerts with personalised recommendations",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a clinical workflow/decision support team intervention (Kidney Action Team) responding to standard electronic AKI alerts (KDIGO rule-based electronic health record alert system), not an advanced AI/ML model.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "real_deployment",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37068906",
+   "empirical": 0.36,
+   "tests_practice": 0.72,
+   "real_deployment": 0.68
+  }
+ }
+}

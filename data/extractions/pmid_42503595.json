@@ -1,0 +1,293 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Japan",
+   "sample_size": 12,
+   "sample_unit": "VMAT plans (from 11 patients)",
+   "models_evaluated": [
+    "RatoGuide (AiRato Inc.) v1.6.1.6, dense dilated U-Net dose prediction"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether physicist review and manual fine-tuning caught and corrected AI-plan hotspots exceeding the 115% constraint",
+     "effect": "Three of 12 initial AI plans had Body Dmax of 119.94%, 121.00%, and 123.65%; manual fine-tuning reduced these to 109.68%, 109.55%, and 111.03%, meeting institutional criteria.",
+     "quote": "Regarding the three initial AI\u2010assisted plans that contained hotspots (No. 3, 4, and 10\u20102, as described in Section 3.1 ), manual fine\u2010tuning was applied and successfully resolved these hotspots, reducing the Dmax values to 109.68%, 109.55%, and 111.03%, respectively, thereby meeting our institutional criteria."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-assisted plan quality versus experienced planner's clinical plans on the same cases",
+     "effect": "Comparable PTV coverage and Paddick CI (0.478 vs 0.479); spinal cord PRV Dmax 23.97 vs 27.50 Gy (p<0.01); contralateral parotid worse with AI (20.16 vs 16.82 Gy).",
+     "quote": "Regarding the OARs, the AI\u2010assisted plans significantly reduced doses to the spinal cord PRV, with lower values observed for both Dmax (27.50 \u00b1 1.65 vs. 23.97 \u00b1 2.12 Gy, p <0.01), and Dmean (17.69 \u00b1 2.03 vs. 12.92 \u00b1 1.65 Gy, p <0.01)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI plan behavior on irregular anatomy (bulky or ruptured tumors) using vendor-recommended parameters",
+     "effect": "Initial AI plans exceeded Dmax 115% in three cases near the body surface (119.94%, 121.00%, 123.65%), including the ruptured-tumor replan.",
+     "quote": "However, in three AI\u2010assisted plans (Nos. 3, 4, and 10\u20102), the Body Dmax exceeded 115% of the prescription dose, reaching 119.94%, 121.00%, and 123.65%, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-in-the-loop manual adjustment of optimization constraints and re-optimization when AI-generated plans violate dose constraints",
+    "Pre-processing PTV cropping from the body surface to avoid over-optimization in the buildup region"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Japan",
+   "sample_size": 12,
+   "sample_unit": "VMAT plans",
+   "models_evaluated": [
+    "RatoGuide (version 1.6.1.6)",
+    "Dense dilated U-Net dose prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Parotid sparing comparison",
+     "effect": "Contralateral parotid Dmean favored clinical plans; ipsilateral parotid Dmean favored AI-assisted plans.",
+     "quote": "Parotid gland sparing was inconsistent: the clinical plans demonstrated superiority for the contralateral parotid gland Dmean (16.82 \u00b1 2.30 vs. 20.16 \u00b1 4.70 Gy, p <0.01), whereas the AI\u2010assisted plans were superior for the ipsilateral parotid gland Dmean (21.44 \u00b1 5.55 vs. 19.28 \u00b1 6.74 Gy, p = 0.01)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsafe hotspots in initial AI plans",
+     "effect": "3/12 AI-assisted plans exceeded 115% Body Dmax, reaching 119.94%, 121.00%, and 123.65%.",
+     "quote": "However, in three AI\u2010assisted plans (Nos. 3, 4, and 10\u20102), the Body Dmax exceeded 115% of the prescription dose, reaching 119.94%, 121.00%, and 123.65%, respectively."
+    },
+    {
+     "rec_id": "R164",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Hotspot correction after manual fine-tuning",
+     "effect": "In 3 hotspot plans, Dmax reduced to 109.68%, 109.55%, and 111.03%, meeting institutional criteria.",
+     "quote": "Regarding the three initial AI\u2010assisted plans that contained hotspots (No. 3, 4, and 10\u20102, as described in Section 3.1 ), manual fine\u2010tuning was applied and successfully resolved these hotspots, reducing the Dmax values to 109.68%, 109.55%, and 111.03%, respectively, thereby meeting our institutional criteria."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Vendor parameters exceeded local tolerance",
+     "effect": "Vendor-recommended initial AI plans exceeded local maximum-dose tolerance in three cases.",
+     "quote": "Conversely, the initially calculated AI\u2010assisted plans using the vendor\u2010recommended optimization parameters exhibited a tendency toward an elevated maximum dose near the body surface, exceeding our institution's tolerance in three cases."
+    }
+   ],
+   "unlisted_practices": [
+    "Use AI-generated dose-derived structures for VMAT optimization to standardize radiotherapy plan quality and reduce planning time."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Japan",
+   "sample_size": 12,
+   "sample_unit": "plans",
+   "models_evaluated": [
+    "RatoGuide",
+    "dense dilated U-Net"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R164",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hotspot reduction via manual fine-tuning",
+     "effect": "Manual fine-tuning resolved hotspots in 3 initial AI plans, reducing Dmax from 119.94%, 121.00%, and 123.65% to 109.68%, 109.55%, and 111.03%, meeting institutional criteria (Dmax < 115%).",
+     "quote": "Regarding the three initial AI\u2010assisted plans that contained hotspots (No. 3, 4, and 10\u20102, as described in Section 3.1 ), manual fine\u2010tuning was applied and successfully resolved these hotspots, reducing the Dmax values to 109.68%, 109.55%, and 111.03%, respectively, thereby meeting our institutional criteria."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "VMAT plans (from 11 patients)",
+ "sample_size": 12,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Dense dilated U-Net dose prediction model",
+  "RatoGuide",
+  "RatoGuide (AiRato Inc.) v1.6.1.6, dense dilated U-Net dose prediction",
+  "RatoGuide (version 1.6.1.6)",
+  "dense dilated U-Net"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "AI-assisted plan quality versus experienced planner's clinical plans on the same cases",
+   "effect": "Comparable PTV coverage and Paddick CI (0.478 vs 0.479); spinal cord PRV Dmax 23.97 vs 27.50 Gy (p<0.01); contralateral parotid worse with AI (20.16 vs 16.82 Gy).",
+   "quote": "Regarding the OARs, the AI\u2010assisted plans significantly reduced doses to the spinal cord PRV, with lower values observed for both Dmax (27.50 \u00b1 1.65 vs. 23.97 \u00b1 2.12 Gy, p <0.01), and Dmean (17.69 \u00b1 2.03 vs. 12.92 \u00b1 1.65 Gy, p <0.01).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI plan behavior on irregular anatomy (bulky or ruptured tumors) using vendor-recommended parameters",
+   "effect": "Initial AI plans exceeded Dmax 115% in three cases near the body surface (119.94%, 121.00%, 123.65%), including the ruptured-tumor replan.",
+   "quote": "However, in three AI\u2010assisted plans (Nos. 3, 4, and 10\u20102), the Body Dmax exceeded 115% of the prescription dose, reaching 119.94%, 121.00%, and 123.65%, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R164",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Hotspot correction after manual fine-tuning",
+   "effect": "In 3 hotspot plans, Dmax reduced to 109.68%, 109.55%, and 111.03%, meeting institutional criteria.",
+   "quote": "Regarding the three initial AI\u2010assisted plans that contained hotspots (No. 3, 4, and 10\u20102, as described in Section 3.1 ), manual fine\u2010tuning was applied and successfully resolved these hotspots, reducing the Dmax values to 109.68%, 109.55%, and 111.03%, respectively, thereby meeting our institutional criteria.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R141",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Vendor parameters exceeded local tolerance",
+   "effect": "Vendor-recommended initial AI plans exceeded local maximum-dose tolerance in three cases.",
+   "quote": "Conversely, the initially calculated AI\u2010assisted plans using the vendor\u2010recommended optimization parameters exhibited a tendency toward an elevated maximum dose near the body surface, exceeding our institution's tolerance in three cases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Human-in-the-loop manual adjustment of optimization constraints and re-optimization when AI-generated plans violate dose constraints",
+  "Pre-processing PTV cropping from the body surface to avoid over-optimization in the buildup region",
+  "Use AI-generated dose-derived structures for VMAT optimization to standardize radiotherapy plan quality and reduce planning time."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42503595",
+ "screen": {
+  "id": "pmid:42503595",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop manual fine-tuning / intervention",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates an AI-assisted radiotherapy planning workflow specifically testing the feasibility and impact of human-in-the-loop manual re-optimization/fine-tuning when AI predictions exceed safe clinical dose thresholds.",
+  "jev": {
+   "id": "pmid:42503595",
+   "empirical": 0.96,
+   "tests_practice": 0.88,
+   "real_deployment": 0.29
+  }
+ }
+}

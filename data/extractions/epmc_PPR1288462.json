@@ -1,0 +1,333 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 52178,
+   "sample_unit": "adult first ICU stays",
+   "models_evaluated": [
+    "multilayer perceptron (5,313 parameters)",
+    "INT8 dynamic quantization",
+    "30% magnitude pruning",
+    "50% magnitude pruning",
+    "knowledge distillation (~1/4 parameters)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup AUROC and equalized-odds gaps by gender, insurance, age group before and after compression",
+     "effect": "Every compression method shifted subgroup AUROC by 1\u20134 points; insurance- and age-based equalized-odds gaps were large in absolute terms before and after compression, partly from small-n subgroups.",
+     "quote": "Using bootstrap significance testing (1,000 resamples), we find every compression method shifts subgroup-level AUROC by 1\u20134 points, with 50% pruning producing the largest and most consistently significant degradation, while insuranceand age-based equalized-odds gaps are large in absolute terms both before and after compression, driven partly by small-n subgroups."
+    },
+    {
+     "rec_id": "R137",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC after naive INT8 dynamic quantization versus after plausibility filter fix",
+     "effect": "Naive per-tensor dynamic quantization collapsed AUROC to chance (0.500) due to implausible raw values; the plausibility filter recovered AUROC to 0.699.",
+     "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699"
+    }
+   ],
+   "unlisted_practices": [
+    "Using a same-protocol baseline (out-of-fold vs in-sample) when comparing compressed models to avoid spurious fairness improvements",
+    "Input plausibility filtering before quantization"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 52178,
+   "sample_unit": "adult first ICU stays",
+   "models_evaluated": [
+    "compact multilayer perceptron (5,313 parameters)",
+    "INT8 dynamic quantization",
+    "30% magnitude pruning",
+    "50% magnitude pruning",
+    "\u223c1/4parameter knowledge distillation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "quantization robustness to implausible inputs",
+     "effect": "Naive dynamic quantization collapsed AUROC to 0.500 because implausible vitals/labs dominated activation-quantization range; plausibility filter recovered AUROC to 0.699.",
+     "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699; and (2) diffing an out-of-fold baseline against in-sample-evaluated compressed models produces a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "in-sample evaluation artifact",
+     "effect": "OOF baseline versus in-sample compressed models produced a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline.",
+     "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699; and (2) diffing an out-of-fold baseline against in-sample-evaluated compressed models produces a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "post-compression subgroup AUROC",
+     "effect": "Every compression method shifted subgroup-level AUROC by 1\u20134 points; 50% pruning produced the largest, most consistently significant degradation.",
+     "quote": "Using bootstrap significance testing (1,000 resamples), we find every compression method shifts subgroup-level AUROC by 1\u20134 points, with 50% pruning producing the largest and most consistently significant degradation, while insuranceand age-based equalized-odds gaps are large in absolute terms both before and after compression, driven partly by small-n subgroups."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup AUROC and equalized-odds gaps",
+     "effect": "Every compression method shifted subgroup-level AUROC by 1\u20134 points; insuranceand age-based equalized-odds gaps were large before and after compression.",
+     "quote": "Using bootstrap significance testing (1,000 resamples), we find every compression method shifts subgroup-level AUROC by 1\u20134 points, with 50% pruning producing the largest and most consistently significant degradation, while insuranceand age-based equalized-odds gaps are large in absolute terms both before and after compression, driven partly by small-n subgroups."
+    }
+   ],
+   "unlisted_practices": [
+    "Apply a documented plausibility filter to physiologically implausible raw vitals/labs before quantization.",
+    "Use a same-protocol baseline when comparing fairness effects of compressed models."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 52178,
+   "sample_unit": "ICU stays",
+   "models_evaluated": [
+    "multilayer perceptron",
+    "INT8 dynamic quantization",
+    "magnitude pruning",
+    "knowledge distillation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup-level AUROC shift and equalized-odds gaps after compression",
+     "effect": "Every compression method shifted subgroup AUROC by 1\u20134 points; 50% pruning caused largest degradation; insurance and age equalized-odds gaps were large before and after compression.",
+     "quote": "Using bootstrap significance testing (1,000 resamples), we find every compression method shifts subgroup-level AUROC by 1\u20134 points, with 50% pruning producing the largest and most consistently significant degradation, while insuranceand age-based equalized-odds gaps are large in absolute terms both before and after compression, driven partly by small-n subgroups."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC collapse from dynamic quantization",
+     "effect": "Naive dynamic quantization collapsed AUROC to 0.500 due to implausible vitals/labs readings; applying a plausibility filter recovered AUROC to 0.699.",
+     "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699; and (2) diffing an out-of-fold baseline against in-sample-evaluated compressed models produces a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline."
+    }
+   ],
+   "unlisted_practices": [
+    "physiologic plausibility filter on raw clinical inputs before quantization"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "adult first ICU stays",
+ "sample_size": 52178,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "30% magnitude pruning",
+  "50% magnitude pruning",
+  "INT8 dynamic quantization",
+  "compact multilayer perceptron (5,313 parameters)",
+  "knowledge distillation",
+  "knowledge distillation (~1/4 parameters)",
+  "magnitude pruning",
+  "multilayer perceptron",
+  "multilayer perceptron (5,313 parameters)",
+  "\u223c1/4parameter knowledge distillation"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup AUROC and equalized-odds gaps by gender, insurance, age group before and after compression",
+   "effect": "Every compression method shifted subgroup AUROC by 1\u20134 points; insurance- and age-based equalized-odds gaps were large in absolute terms before and after compression, partly from small-n subgroups.",
+   "quote": "Using bootstrap significance testing (1,000 resamples), we find every compression method shifts subgroup-level AUROC by 1\u20134 points, with 50% pruning producing the largest and most consistently significant degradation, while insuranceand age-based equalized-odds gaps are large in absolute terms both before and after compression, driven partly by small-n subgroups.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "post-compression subgroup AUROC",
+   "effect": "Every compression method shifted subgroup-level AUROC by 1\u20134 points; 50% pruning produced the largest, most consistently significant degradation.",
+   "quote": "Using bootstrap significance testing (1,000 resamples), we find every compression method shifts subgroup-level AUROC by 1\u20134 points, with 50% pruning producing the largest and most consistently significant degradation, while insuranceand age-based equalized-odds gaps are large in absolute terms both before and after compression, driven partly by small-n subgroups.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R137",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC after naive INT8 dynamic quantization versus after plausibility filter fix",
+   "effect": "Naive per-tensor dynamic quantization collapsed AUROC to chance (0.500) due to implausible raw values; the plausibility filter recovered AUROC to 0.699.",
+   "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "quantization robustness to implausible inputs",
+   "effect": "Naive dynamic quantization collapsed AUROC to 0.500 because implausible vitals/labs dominated activation-quantization range; plausibility filter recovered AUROC to 0.699.",
+   "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699; and (2) diffing an out-of-fold baseline against in-sample-evaluated compressed models produces a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "in-sample evaluation artifact",
+   "effect": "OOF baseline versus in-sample compressed models produced a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline.",
+   "quote": "We report two methodological findings alongside the fairness results: (1) naive per-tensor dynamic quantization collapsed AUROC to chance level (0.500) due to a small number of physiologically implausible raw vitals/labs readings dominating the activation-quantization range\u2013 fixed at the source with a documented plausibility filter, recovering AUROC to 0.699; and (2) diffing an out-of-fold baseline against in-sample-evaluated compressed models produces a spurious \u201dcompression improves fairness\u201d artifact, corrected with a sameprotocol baseline.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Apply a documented plausibility filter to physiologically implausible raw vitals/labs before quantization.",
+  "Input plausibility filtering before quantization",
+  "Use a same-protocol baseline when comparing fairness effects of compressed models.",
+  "Using a same-protocol baseline (out-of-fold vs in-sample) when comparing compressed models to avoid spurious fairness improvements",
+  "physiologic plausibility filter on raw clinical inputs before quantization"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1288462",
+ "screen": {
+  "id": "epmc:PPR1288462",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "post-compression subgroup fairness auditing",
+  "user": "none",
+  "reason": "Evaluates the impact of model compression techniques (quantization, pruning, distillation) and input plausibility filtering on subgroup fairness and performance for clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "model compression and plausibility filtering audit"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1288462",
+   "empirical": 0.97,
+   "tests_practice": 0.48,
+   "real_deployment": 0.03
+  }
+ }
+}

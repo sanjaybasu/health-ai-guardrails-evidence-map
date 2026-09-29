@@ -1,0 +1,217 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 36581,
+   "sample_unit": "AI records (mammogram reports)",
+   "models_evaluated": [
+    "Therapixel mammography AI v1.2-US",
+    "Therapixel mammography AI v1.3-US",
+    "Therapixel mammography AI v2.0.1-US"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Output score distribution drift monitoring vs. pre-deployment reference, detection of mismatched configurations",
+     "effect": "Matched-reference PCCs 0.975\u20130.998 with no significant chi-squared differences (p 0.346\u20130.853); unmatched references gave PCCs 0.364\u20130.825, showing the method flags deviations.",
+     "quote": "The low PCC value found when an unmatched manufacturer is used for the reference shows that finding a difference could be the source of an alert, which would facilitate the detection of software malfunctions or deviations (such as an unsupported manufacturer or a version of the tool that is not suitable for the analyzed mammogram)."
+    }
+   ],
+   "unlisted_practices": [
+    "Using retrospective pre-deployment evaluation score distributions as a reference for monitoring when ground truth is delayed",
+    "Using Wasserstein distance to grade severity of output distribution shifts"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 36581,
+   "sample_unit": "AI reports",
+   "models_evaluated": [
+    "Breast cancer screening AI version 1.2",
+    "Breast cancer screening AI version 1.3",
+    "Breast cancer screening AI version 2.0.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of deviations in deployed AI score distributions",
+     "effect": "Global PCCs were 0.998, 0.975, 0.995 and 0.994 with matched references, versus 0.374, 0.825, 0.707 and 0.364 with unmatched references; proposed deviation threshold: 0.95. Clinical accuracy was not measured.",
+     "quote": "The PCCs between each center distribution and an unmatched reference were 0.374 for center US-1, 0.825 for US-2, 0.707 for US-3 and 0.364 for US-4."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 36581,
+   "sample_unit": "AI records",
+   "models_evaluated": [
+    "Therapixel AI system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "drift in AI output score distributions",
+     "effect": "PCCs between each center's AI score distribution and the reference ranged from 0.975 to 0.998, indicating the AI behaved as expected without drift.",
+     "quote": "The estimated PCCs were 0.998 [min: 0.993, max: 0.999] for center US-1, 0.975 [min: 0.923, max: 0.986] for US-2, 0.995 [min: 0.972, max: 0.998] for US-3 and 0.994 [min: 0.962, max: 0.982] for US-4."
+    }
+   ],
+   "unlisted_practices": [
+    "Monitoring AI score distributions in clinical centers against a retrospective reference distribution using histogram correlation metrics when ground truth is not immediately available to detect output drift or malfunctions."
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "AI records (mammogram reports)",
+ "sample_size": 36581,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Breast cancer screening AI version 1.2",
+  "Breast cancer screening AI version 1.3",
+  "Breast cancer screening AI version 2.0.1",
+  "Therapixel AI system",
+  "Therapixel mammography AI v1.2-US",
+  "Therapixel mammography AI v1.3-US",
+  "Therapixel mammography AI v2.0.1-US"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Output score distribution drift monitoring vs. pre-deployment reference, detection of mismatched configurations",
+   "effect": "Matched-reference PCCs 0.975\u20130.998 with no significant chi-squared differences (p 0.346\u20130.853); unmatched references gave PCCs 0.364\u20130.825, showing the method flags deviations.",
+   "quote": "The low PCC value found when an unmatched manufacturer is used for the reference shows that finding a difference could be the source of an alert, which would facilitate the detection of software malfunctions or deviations (such as an unsupported manufacturer or a version of the tool that is not suitable for the analyzed mammogram).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Monitoring AI score distributions in clinical centers against a retrospective reference distribution using histogram correlation metrics when ground truth is not immediately available to detect output drift or malfunctions.",
+  "Using Wasserstein distance to grade severity of output distribution shifts",
+  "Using retrospective pre-deployment evaluation score distributions as a reference for monitoring when ground truth is delayed"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:36836797",
+ "screen": {
+  "id": "pmid:36836797",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "drift monitoring of AI score distributions",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a post-deployment monitoring methodology (comparing output score distributions to a reference distribution via Pearson correlation) on 36,581 clinical screening records across four real deployment centers to detect malfunctions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "post-deployment drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36836797",
+   "empirical": 0.94,
+   "tests_practice": 0.17,
+   "real_deployment": 0.78
+  }
+ }
+}

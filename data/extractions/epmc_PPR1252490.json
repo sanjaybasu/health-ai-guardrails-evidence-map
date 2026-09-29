@@ -1,0 +1,347 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States and United Kingdom/Canada (SEER and METABRIC cohorts)",
+   "sample_size": 1904,
+   "sample_unit": "patients in the METABRIC external validation cohort (SEER training n = 4,024)",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM",
+    "MLP",
+    "Hybrid MLP+RF soft-voting",
+    "Hybrid MLP+XGBoost soft-voting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration (ECE) of SEER-fit calibrators on external METABRIC cohort versus internal SEER test",
+     "effect": "Isotonic regression reduced SEER test ECE by 50\u201392%, but the same calibrators applied unchanged to METABRIC increased ECE by a factor of two to three for every model.",
+     "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration miscalibration persistence after population base-rate shift",
+     "effect": "Base-rate shift from 84.7% to 42.1% alive increased ECE two- to threefold; authors conclude predicted probabilities require per-cohort recalibration on a labeled target sample.",
+     "quote": "feature-level explanations can be reported with confidence across cohorts, but predicted probabilities require per-cohort recalibration on a labeled sample of the target population."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration suitability of a model to a different population without local recalibration",
+     "effect": "SEER-fit calibrators increased ECE two- to threefold on METABRIC for all models; per-cohort recalibration recommended.",
+     "quote": "Calibration and feature importance dissociate under prevalence shift: probability scale is cohort-specific, but feature ranking is cohort-stable."
+    }
+   ],
+   "unlisted_practices": [
+    "Assessing cross-cohort transferability of SHAP feature-importance rankings separately from calibration",
+    "Validating SHAP explanations via cross-validation stability, clinical-alignment scoring, and cross-model rank correlation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 5928,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM",
+    "MLP",
+    "two soft-voting hybrid MLP-plus-tree ensembles",
+    "temperature scaling",
+    "Platt scaling",
+    "isotonic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external calibration performance",
+     "effect": "SEER-fit calibrators increased ECE two- to three-fold on METABRIC; alive rate shifted from 84.7% to 42.1%.",
+     "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "dataset shift and calibration",
+     "effect": "ECE increased by a factor of two to three for every model under base-rate shift from 84.7% to 42.1% alive.",
+     "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibrated probability transfer",
+     "effect": "SEER-fit calibrators increased external ECE two- to three-fold for every model on imputed and complete-case METABRIC cohorts.",
+     "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "SHAP feature-importance transfer stability",
+     "effect": "Tree models: \u03c1 \u2248 0.94 (p &lt; 0.01); LR/MLP positive but non-significant (\u03c1 = 0.66 and 0.71).",
+     "quote": "By contrast, SHAP feature-importance rankings transferred strongly across cohorts in the five-model base-model analysis: tree-based models (RF, XGB, LGBM) achieved SEER\u2013METABRIC Spearman rank correlations of \u03c1 \u2248 0.94 (p &lt; 0.01), with Age and Nodes Positive top-ranked in both cohorts; LR and MLP showed positive but non-significant agreement (\u03c1 = 0.66 and 0.71, respectively) in the six-feature setting."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 5928,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM",
+    "MLP",
+    "hybrid MLP-plus-tree ensembles"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "expected calibration error under cross-cohort population shift",
+     "effect": "increased ECE by a factor of two to three for every model under base-rate shift from 84.7% to 42.1% alive",
+     "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States and United Kingdom/Canada (SEER and METABRIC cohorts)",
+ "sample_unit": "patients",
+ "sample_size": 5928,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Hybrid MLP+RF soft-voting",
+  "Hybrid MLP+XGBoost soft-voting",
+  "LightGBM",
+  "Logistic Regression",
+  "MLP",
+  "Platt scaling",
+  "Random Forest",
+  "XGBoost",
+  "hybrid MLP-plus-tree ensembles",
+  "isotonic regression",
+  "temperature scaling",
+  "two soft-voting hybrid MLP-plus-tree ensembles"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration (ECE) of SEER-fit calibrators on external METABRIC cohort versus internal SEER test",
+   "effect": "Isotonic regression reduced SEER test ECE by 50\u201392%, but the same calibrators applied unchanged to METABRIC increased ECE by a factor of two to three for every model.",
+   "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration miscalibration persistence after population base-rate shift",
+   "effect": "Base-rate shift from 84.7% to 42.1% alive increased ECE two- to threefold; authors conclude predicted probabilities require per-cohort recalibration on a labeled target sample.",
+   "quote": "feature-level explanations can be reported with confidence across cohorts, but predicted probabilities require per-cohort recalibration on a labeled sample of the target population.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration suitability of a model to a different population without local recalibration",
+   "effect": "SEER-fit calibrators increased ECE two- to threefold on METABRIC for all models; per-cohort recalibration recommended.",
+   "quote": "Calibration and feature importance dissociate under prevalence shift: probability scale is cohort-specific, but feature ranking is cohort-stable.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "dataset shift and calibration",
+   "effect": "ECE increased by a factor of two to three for every model under base-rate shift from 84.7% to 42.1% alive.",
+   "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "calibrated probability transfer",
+   "effect": "SEER-fit calibrators increased external ECE two- to three-fold for every model on imputed and complete-case METABRIC cohorts.",
+   "quote": "The same SEER-fit calibrators, applied unchanged to METABRIC, increased ECE by a factor of two to three for every model on both the imputed and complete-case external cohorts, a direct consequence of the base-rate shift from 84.7% to 42.1% alive.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R104",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "SHAP feature-importance transfer stability",
+   "effect": "Tree models: \u03c1 \u2248 0.94 (p &lt; 0.01); LR/MLP positive but non-significant (\u03c1 = 0.66 and 0.71).",
+   "quote": "By contrast, SHAP feature-importance rankings transferred strongly across cohorts in the five-model base-model analysis: tree-based models (RF, XGB, LGBM) achieved SEER\u2013METABRIC Spearman rank correlations of \u03c1 \u2248 0.94 (p &lt; 0.01), with Age and Nodes Positive top-ranked in both cohorts; LR and MLP showed positive but non-significant agreement (\u03c1 = 0.66 and 0.71, respectively) in the six-feature setting.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Assessing cross-cohort transferability of SHAP feature-importance rankings separately from calibration",
+  "Validating SHAP explanations via cross-validation stability, clinical-alignment scoring, and cross-model rank correlation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1252490",
+ "screen": {
+  "id": "epmc:PPR1252490",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration before deployment on target cohort",
+  "user": "none",
+  "reason": "Empirically tests calibration transferability and recalibration practices across clinical cohorts under prevalence shift, specifically evaluating post-hoc calibration methods and feature attribution stability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration under distribution shift"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1252490",
+   "empirical": 0.96,
+   "tests_practice": 0.61,
+   "real_deployment": 0.03
+  }
+ }
+}

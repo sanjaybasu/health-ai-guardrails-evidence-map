@@ -1,0 +1,328 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6,
+   "sample_unit": "hospitals",
+   "models_evaluated": [
+    "breast density classification algorithm (base model and locally fine-tuned models)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Base model performance at each hospital versus holdout test dataset",
+     "effect": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model.",
+     "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Performance of locally fine-tuned models locally and on holdout test dataset",
+     "effect": "Fine-tuned models had mixed performance locally and performed poorly on the test dataset.",
+     "quote": "The fine-tuned models had mixed performance locally and performed poorly on the test dataset."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across six hospital sites",
+     "effect": "Algorithm performed worse at each of six hospitals than on holdout test dataset, indicating site-dependent performance.",
+     "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model."
+    }
+   ],
+   "unlisted_practices": [
+    "multi-institutional federated training and validation platform (ACR Connect and AI-LAB)",
+    "measuring time to IRB approval and local software installation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6,
+   "sample_unit": "hospitals",
+   "models_evaluated": [
+    "ACR Connect and AI-LAB",
+    "breast density classification algorithm",
+    "locally fine-tuned breast density models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalizability across sites",
+     "effect": "At six hospitals, the base model performed worse than on the holdout test dataset; no performance values reported.",
+     "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local retrospective validation",
+     "effect": "Local testing found worse performance at each hospital than on the holdout test dataset.",
+     "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "local fine-tuning performance",
+     "effect": "Fine-tuned models had mixed local performance and performed poorly on the test dataset.",
+     "quote": "The fine-tuned models had mixed performance locally and performed poorly on the test dataset."
+    },
+    {
+     "rec_id": "R127",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local validation infrastructure implementation",
+     "effect": "Median IRB approval was 66 days; median local installation was 157 days.",
+     "quote": "The median time to receive institutional review board approval was 66 days, and the median time to successfully install Connect and AI-LAB locally was 157 days."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6,
+   "sample_unit": "hospitals",
+   "models_evaluated": [
+    "breast density algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local algorithm performance versus holdout test dataset",
+     "effect": "performed worse at each hospital than on the holdout test dataset",
+     "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model."
+    }
+   ],
+   "unlisted_practices": [
+    "multi-institutional software platform for local AI training and validation"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "hospitals",
+ "sample_size": 6,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ACR Connect and AI-LAB",
+  "breast density algorithm",
+  "breast density classification algorithm",
+  "breast density classification algorithm (base model and locally fine-tuned models)",
+  "locally fine-tuned breast density models"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Base model performance at each hospital versus holdout test dataset",
+   "effect": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model.",
+   "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of locally fine-tuned models locally and on holdout test dataset",
+   "effect": "Fine-tuned models had mixed performance locally and performed poorly on the test dataset.",
+   "quote": "The fine-tuned models had mixed performance locally and performed poorly on the test dataset.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across six hospital sites",
+   "effect": "Algorithm performed worse at each of six hospitals than on holdout test dataset, indicating site-dependent performance.",
+   "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "generalizability across sites",
+   "effect": "At six hospitals, the base model performed worse than on the holdout test dataset; no performance values reported.",
+   "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R127",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "local validation infrastructure implementation",
+   "effect": "Median IRB approval was 66 days; median local installation was 157 days.",
+   "quote": "The median time to receive institutional review board approval was 66 days, and the median time to successfully install Connect and AI-LAB locally was 157 days.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "local algorithm performance versus holdout test dataset",
+   "effect": "performed worse at each hospital than on the holdout test dataset",
+   "quote": "The breast density algorithm performed worse at each hospital than on the holdout test dataset, suggesting poor generalizability of the base model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "measuring time to IRB approval and local software installation",
+  "multi-institutional federated training and validation platform (ACR Connect and AI-LAB)",
+  "multi-institutional software platform for local AI training and validation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39551328",
+ "screen": {
+  "id": "pmid:39551328",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and fine-tuning before deployment",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the implementation and real-world deployment logistics (e.g. IRB, installation times) and performance impact of multi-institutional local validation and fine-tuning of an imaging AI model via the ACR Connect and AI-LAB software platform.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and fine-tuning platform deployment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39551328",
+   "empirical": 0.95,
+   "tests_practice": 0.48,
+   "real_deployment": 0.06
+  }
+ }
+}

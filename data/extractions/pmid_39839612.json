@@ -1,0 +1,260 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 20,
+   "sample_unit": "evaluation questions",
+   "models_evaluated": [
+    "GPT-3.5-Turbo",
+    "GLM-3-Turbo",
+    "Qwen-Turbo",
+    "Spark3.5 Max",
+    "Moonshot-V1-8K"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Rater-scored safety, usability and smoothness of knowledge-graph-grounded QA versus the same LLMs without RAG",
+     "effect": "Safety 2.868 vs 1.57-1.74 and usability 2.848 vs 1.55-1.67 for LLMs without RAG; smoothness 2.98 vs 2.13-2.21 (3-point scale, 5 TCM evaluators, 20 questions). RAGAS faithfulness 0.9375.",
+     "quote": "Overall, the traditional Chinese medicine case-based Q&A system, based on LLMs and knowledge graphs, provides outstanding performance in terms of security, professionalism, and fluency, significantly outperforming traditional Q&A systems that rely solely on LLMs, and has enormous potential for application."
+    }
+   ],
+   "unlisted_practices": [
+    "Knowledge-graph construction with LLM entity extraction plus dual-researcher cross-proofreading for terminology normalization",
+    "Selecting the LLM for each pipeline component by comparative benchmarking (NER F1, RAGAS)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 679,
+   "sample_unit": "case records",
+   "models_evaluated": [
+    "GPT-3.5-Turbo",
+    "GLM-3-Turbo",
+    "Qwen-Turbo",
+    "Spark3.5 Max",
+    "Moonshot-V1-8K",
+    "TCM case QA system integrating LLMs and knowledge graphs"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate LLM response-generation comparison",
+     "effect": "GPT-3.5-Turbo scored highest on RAGAS: faithfulness 0.9375, answer relevance 0.9686, context recall 0.9500; it was selected for response generation.",
+     "quote": "The evaluation results indicate that the GPT-3.5-Turbo model achieved the highest scores in three dimensions: fidelity, answer relevance, and context recall, with scores of 0.9375, 0.9686, and 0.9500, respectively."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-rated safety, usability, smoothness",
+     "effect": "QA system safety 2.868, usability 2.848, smoothness 2.98; standalone LLMs safety 1.57\u20131.74, usability 1.55\u20131.67, smoothness 2.13\u20132.21.",
+     "quote": "Overall, the traditional Chinese medicine case-based Q&A system, based on LLMs and knowledge graphs, provides outstanding performance in terms of security, professionalism, and fluency, significantly outperforming traditional Q&A systems that rely solely on LLMs, and has enormous potential for application."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsafe or inaccurate standalone LLM answers",
+     "effect": "Standalone LLMs scored below acceptable (2) for safety 1.57\u20131.74 and usability 1.55\u20131.67 on the 1\u20133 SUS scale.",
+     "quote": "This is something traditional LLMs (e.g., GPT-3.5-Turbo and GLM-3-Turbo) cannot achieve, as these models typically lack specialized knowledge in the field of traditional Chinese medicine and are prone to generating inaccurate answers in this area."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 20,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "GPT-3.5-Turbo",
+    "GLM-3-Turbo",
+    "Spark3.5 Max",
+    "Qwen-Turbo",
+    "Moonshot-V1-8K"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "safety and usability of generated medical answers",
+     "effect": "Knowledge-graph grounded QA scored 2.868 in safety and 2.848 in usability on a 3-point scale, compared to 1.57-1.74 and 1.55-1.67 for standalone LLMs without RAG.",
+     "quote": "Overall, the traditional Chinese medicine case-based Q&A system, based on LLMs and knowledge graphs, provides outstanding performance in terms of security, professionalism, and fluency, significantly outperforming traditional Q&A systems that rely solely on LLMs, and has enormous potential for application."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "evaluation questions",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "GLM-3-Turbo",
+  "GPT-3.5-Turbo",
+  "Moonshot-V1-8K",
+  "Qwen-Turbo",
+  "Spark3.5 Max",
+  "TCM case QA system integrating LLMs and knowledge graphs"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Rater-scored safety, usability and smoothness of knowledge-graph-grounded QA versus the same LLMs without RAG",
+   "effect": "Safety 2.868 vs 1.57-1.74 and usability 2.848 vs 1.55-1.67 for LLMs without RAG; smoothness 2.98 vs 2.13-2.21 (3-point scale, 5 TCM evaluators, 20 questions). RAGAS faithfulness 0.9375.",
+   "quote": "Overall, the traditional Chinese medicine case-based Q&A system, based on LLMs and knowledge graphs, provides outstanding performance in terms of security, professionalism, and fluency, significantly outperforming traditional Q&A systems that rely solely on LLMs, and has enormous potential for application.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Candidate LLM response-generation comparison",
+   "effect": "GPT-3.5-Turbo scored highest on RAGAS: faithfulness 0.9375, answer relevance 0.9686, context recall 0.9500; it was selected for response generation.",
+   "quote": "The evaluation results indicate that the GPT-3.5-Turbo model achieved the highest scores in three dimensions: fidelity, answer relevance, and context recall, with scores of 0.9375, 0.9686, and 0.9500, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Knowledge-graph construction with LLM entity extraction plus dual-researcher cross-proofreading for terminology normalization",
+  "Selecting the LLM for each pipeline component by comparative benchmarking (NER F1, RAGAS)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39839612",
+ "screen": {
+  "id": "pmid:39839612",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation grounding",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a TCM question-answering system and tests the addition of retrieval grounding (knowledge graph-based RAG) versus LLMs without RAG on safety, faithfulness, and usability metrics.",
+  "jev": {
+   "id": "pmid:39839612",
+   "empirical": 0.88,
+   "tests_practice": 0.82,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,343 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 117,
+   "sample_unit": "guideline-anchored vignettes",
+   "models_evaluated": [
+    "C-Mind (neuro-symbolic Clinical Knowledge Graph + LLM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Unsolicited clinical monologues, diagnoses and medication advice with vs without KG governance",
+     "effect": "Ungoverned model produced unsolicited clinical monologues on 100% of turns vs 9% governed; delivered diagnoses and medication advice the governed system never produced.",
+     "quote": "Stripped of governance, the same model produced unsolicited clinical monologues on 100% of turns (vs 9% governed) and delivered diagnoses and medication advice the governed system never produced."
+    },
+    {
+     "rec_id": "R238",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Crisis detection sensitivity/specificity on adversarial probes and external dialogues",
+     "effect": "Adversarial sensitivity 96.7%, specificity 95.4% (277 probes); detected 98.5% of 600 external dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn.",
+     "quote": "Adversarial crisis-detection sensitivity was 96.7% and specificity 95.4% (277 probes); on external validation, the system detected 98.5% of 600 dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of high-risk presentations and hard-halt escalation",
+     "effect": "KG detected all 18 high-risk presentations, firing a therapy-suppressing hard halt on 16/18.",
+     "quote": "The KG routed 116/117 vignettes (99.1%) to guideline-appropriate care and detected all 18 high-risk presentations, firing a therapy-suppressing hard halt on 16/18."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Repeatability of KG decisions across repeated runs",
+     "effect": "Decisions were 99.1% repeatable, 100% reconstructable per turn, and 100% provenance-auditable across all 354 KG nodes.",
+     "quote": "Decisions were 99.1% repeatable, 100% reconstructable per turn, and 100% provenance-auditable across all 354 KG nodes."
+    }
+   ],
+   "unlisted_practices": [
+    "Neuro-symbolic knowledge graph governing LLM therapeutic decision routing",
+    "Provider-set diagnosis, goals and safety context deterministically governing chatbot behavior"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 994,
+   "sample_unit": "vignettes, adversarial probes, and external dialogues",
+   "models_evaluated": [
+    "C-Mind",
+    "same model stripped of governance"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnosis and medication advice outside scope",
+     "effect": "Stripped model: unsolicited clinical monologues on 100% of turns vs 9% governed; diagnoses and medication advice never produced by governed system.",
+     "quote": "Stripped of governance, the same model produced unsolicited clinical monologues on 100% of turns (vs 9% governed) and delivered diagnoses and medication advice the governed system never produced."
+    },
+    {
+     "rec_id": "R238",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "High-risk presentation halt",
+     "effect": "Detected all 18 high-risk presentations; therapy-suppressing hard halt fired on 16/18.",
+     "quote": "The KG routed 116/117 vignettes (99.1%) to guideline-appropriate care and detected all 18 high-risk presentations, firing a therapy-suppressing hard halt on 16/18."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Adversarial crisis-detection misses and false alarms",
+     "effect": "Sensitivity 96.7% and specificity 95.4% on 277 probes; external detection 98.5% of 600 dialogues.",
+     "quote": "Adversarial crisis-detection sensitivity was 96.7% and specificity 95.4% (277 probes); on external validation, the system detected 98.5% of 600 dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Guideline-appropriate routing",
+     "effect": "KG routed 116/117 vignettes (99.1%) to guideline-appropriate care and detected all 18 high-risk presentations.",
+     "quote": "The KG routed 116/117 vignettes (99.1%) to guideline-appropriate care and detected all 18 high-risk presentations, firing a therapy-suppressing hard halt on 16/18."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Decision repeatability",
+     "effect": "Decisions were 99.1% repeatable, 100% reconstructable per turn, and 100% provenance-auditable across all 354 KG nodes.",
+     "quote": "Decisions were 99.1% repeatable, 100% reconstructable per turn, and 100% provenance-auditable across all 354 KG nodes."
+    }
+   ],
+   "unlisted_practices": [
+    "Provider-set treatment goals controlling counseling behavior",
+    "Per-turn decision traceability and KG provenance auditability",
+    "Counselor technique adherence assessment across psychotherapy modalities"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "vignettes, probes, and dialogues",
+   "models_evaluated": [
+    "C-Mind"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R238",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Crisis detection accuracy and high-risk presentation response",
+     "effect": "Sensitivity was 96.7% and specificity 95.4% across 277 adversarial probes; detected 98.5% of 600 dialogues with ongoing suicidal ideation or self-harm.",
+     "quote": "Adversarial crisis-detection sensitivity was 96.7% and specificity 95.4% (277 probes); on external validation, the system detected 98.5% of 600 dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn."
+    }
+   ],
+   "unlisted_practices": [
+    "Clinical knowledge graph governance of large language models for mental health counseling"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "Not reported",
+ "sample_unit": "guideline-anchored vignettes",
+ "sample_size": 555,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "C-Mind",
+  "C-Mind (neuro-symbolic Clinical Knowledge Graph + LLM)",
+  "same model stripped of governance"
+ ],
+ "links": [
+  {
+   "rec_id": "R063",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Unsolicited clinical monologues, diagnoses and medication advice with vs without KG governance",
+   "effect": "Ungoverned model produced unsolicited clinical monologues on 100% of turns vs 9% governed; delivered diagnoses and medication advice the governed system never produced.",
+   "quote": "Stripped of governance, the same model produced unsolicited clinical monologues on 100% of turns (vs 9% governed) and delivered diagnoses and medication advice the governed system never produced.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R238",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Crisis detection sensitivity/specificity on adversarial probes and external dialogues",
+   "effect": "Adversarial sensitivity 96.7%, specificity 95.4% (277 probes); detected 98.5% of 600 external dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn.",
+   "quote": "Adversarial crisis-detection sensitivity was 96.7% and specificity 95.4% (277 probes); on external validation, the system detected 98.5% of 600 dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of high-risk presentations and hard-halt escalation",
+   "effect": "KG detected all 18 high-risk presentations, firing a therapy-suppressing hard halt on 16/18.",
+   "quote": "The KG routed 116/117 vignettes (99.1%) to guideline-appropriate care and detected all 18 high-risk presentations, firing a therapy-suppressing hard halt on 16/18.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Repeatability of KG decisions across repeated runs",
+   "effect": "Decisions were 99.1% repeatable, 100% reconstructable per turn, and 100% provenance-auditable across all 354 KG nodes.",
+   "quote": "Decisions were 99.1% repeatable, 100% reconstructable per turn, and 100% provenance-auditable across all 354 KG nodes.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Adversarial crisis-detection misses and false alarms",
+   "effect": "Sensitivity 96.7% and specificity 95.4% on 277 probes; external detection 98.5% of 600 dialogues.",
+   "quote": "Adversarial crisis-detection sensitivity was 96.7% and specificity 95.4% (277 probes); on external validation, the system detected 98.5% of 600 dialogues with ongoing suicidal ideation or self-harm at or before the annotator confirming turn.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Clinical knowledge graph governance of large language models for mental health counseling",
+  "Counselor technique adherence assessment across psychotherapy modalities",
+  "Neuro-symbolic knowledge graph governing LLM therapeutic decision routing",
+  "Per-turn decision traceability and KG provenance auditability",
+  "Provider-set diagnosis, goals and safety context deterministically governing chatbot behavior",
+  "Provider-set treatment goals controlling counseling behavior"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1289414",
+ "screen": {
+  "id": "epmc:PPR1289414",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "knowledge graph governance and crisis escalation guardrails",
+  "user": "patient",
+  "reason": "Evaluates a neuro-symbolic knowledge graph governance system over an LLM for mental health counseling, explicitly comparing governed vs ungoverned model behaviors and testing crisis-detection hard halts and deterministic provider controls.",
+  "jev": {
+   "id": "epmc:PPR1289414",
+   "empirical": 0.89,
+   "tests_practice": 0.82,
+   "real_deployment": 0.05
+  }
+ }
+}

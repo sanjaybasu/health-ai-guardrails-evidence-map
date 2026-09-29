@@ -1,0 +1,129 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 2044,
+ "sample_unit": "oncology exam questions",
+ "models_evaluated": [
+  "LLaMA 1",
+  "PaLM 2",
+  "Claude-v1",
+  "GPT-3.5",
+  "GPT-4",
+  "GPT-4 Turbo",
+  "Gemini 1.0 Ultra",
+  "Mixtral 8x7B",
+  "LLaMA 2"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM accuracy on oncology questions versus human exam benchmark",
+   "effect": "Only GPT-4 performed above the 50th percentile of the human benchmark; performance was worse in clinical oncology subcategories than in foundational topics; all LLMs had clinically significant error rates.",
+   "quote": "Relative to a human benchmark (2013 and 2014 examination results), GPT-4 was the only model to perform above the 50th percentile.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy of question subsets selected by prompt repetition consistency and self-appraised confidence",
+   "effect": "Combining model selection, prompt repetition, and confidence self-appraisal identified high-performing question subgroups with accuracies of 81.7% (Claude-v1) and 81.1% (GPT-4).",
+   "quote": "A combination of model selection, prompt repetition, and confidence self-appraisal allowed for the identification of high-performing subgroups of questions with observed accuracies of 81.7 and 81.1% in the Claude-v1 and GPT-4 models, respectively.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Overconfidence in LLM self-appraised confidence scores",
+   "effect": "Study reports examples of overconfidence and consistent inaccuracies across all LLMs, despite confidence self-appraisal being useful for identifying higher-accuracy subgroups.",
+   "quote": "Although this performance is impressive, all LLMs continue to have clinically significant error rates, including examples of overconfidence and consistent inaccuracies.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R322",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model accuracy differences across malignancy types by patient sex predominance",
+   "effect": "Worse performance observed within clinical oncology for female-predominant malignancies.",
+   "quote": "Within the clinical oncology subdomain, worse performance was observed in female-predominant malignancies.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Comparing multiple LLMs head-to-head on a standardized question battery",
+  "Using a novel validation question set to avoid training-data contamination"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:39131700",
+ "screen": {
+  "id": "pmid:39131700",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompt repetition and confidence self-appraisal to flag reliable outputs",
+  "user": "none",
+  "reason": "The study benchmarks several LLMs on clinical oncology questions and explicitly tests strategies (prompt repetition consistency and self-appraised confidence score filtering) as a deployment guardrail to identify reliable model outputs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt repetition and confidence self-appraisal filtering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39131700",
+   "empirical": 0.97,
+   "tests_practice": 0.37,
+   "real_deployment": 0.03
+  }
+ }
+}

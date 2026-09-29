@@ -1,0 +1,332 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 201,
+   "sample_unit": "patients (3,364 original and 35,457 augmented CT images)",
+   "models_evaluated": [
+    "hybrid CNN-Transformer",
+    "ResNet-18",
+    "convolution-free Transformer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and AUC under leakage-free patient-wise split versus leaky image-level split",
+     "effect": "Patient-wise: AUC 0.946, accuracy 0.905; leaky image-level split: accuracy 0.991, AUC 0.999, roughly nine percentage points inflation, consistent across seeds.",
+     "quote": "These findings show that image-level splitting substantially overstates real-world performance, and that patient-wise, calibrated evaluation offers a more trustworthy basis for clinical deployment."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance across held-out hospitals in leave-one-hospital-out testing",
+     "effect": "Performance held up reasonably well across held-out hospitals.",
+     "quote": "performance held up reasonably well across held-out hospitals."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Sex disparity in sensitivity after pooling across patients",
+     "effect": "No sex disparity in sensitivity found once pooled across patients, though one appeared spuriously at the image level.",
+     "quote": "no sex disparity in sensitivity was found once results were pooled across patients, though one appeared spuriously at the image level."
+    }
+   ],
+   "unlisted_practices": [
+    "patient-wise data splitting to prevent leakage",
+    "temperature scaling calibration and conformal prediction for selective classification"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 201,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "hybrid CNN-Transformer detector",
+    "ResNet-18",
+    "convolution-free Transformer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy and AUC under leakage-free versus leaky splits",
+     "effect": "Patient-wise: AUC 0.946, accuracy 0.905; leaky image-level: AUC 0.999, accuracy 0.991; roughly nine percentage-point inflation.",
+     "quote": "Under the patient-wise protocol, the detector achieved an AUC of 0.946, accuracy of 0.905, sensitivity of 0.889, specificity of 0.942, and Matthews correlation coefficient of 0.796, whereas the leaky image-level split raised accuracy to 0.991 and AUC to 0.999, an inflation of roughly nine percentage points that was consistent across seeds."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance versus comparator architectures",
+     "effect": "Plain ResNet-18 performed comparably to hybrid model; convolution-free Transformer performed near chance.",
+     "quote": "A plain ResNet-18 performed comparably to the hybrid model, while a convolution-free Transformer performed near chance, and performance held up reasonably well across held-out hospitals."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "held-out-hospital performance",
+     "effect": "Performance held up reasonably well across held-out hospitals; no numeric site-specific effect reported.",
+     "quote": "A plain ResNet-18 performed comparably to the hybrid model, while a convolution-free Transformer performed near chance, and performance held up reasonably well across held-out hospitals."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "reliability after calibration and selective classification",
+     "effect": "Calibration and selective classification further improved reliability; no numeric effect reported.",
+     "quote": "Calibration and selective classification further improved reliability, and no sex disparity in sensitivity was found once results were pooled across patients, though one appeared spuriously at the image level."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "sex disparity in sensitivity",
+     "effect": "No sex disparity in sensitivity after pooling across patients; one appeared spuriously at image level.",
+     "quote": "Calibration and selective classification further improved reliability, and no sex disparity in sensitivity was found once results were pooled across patients, though one appeared spuriously at the image level."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 201,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "hybrid CNN-Transformer",
+    "ResNet-18",
+    "convolution-free Transformer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection accuracy and AUC under patient-wise versus leaky image-level splits",
+     "effect": "accuracy 0.905 vs 0.991; AUC 0.946 vs 0.999 (accuracy inflation of roughly nine percentage points)",
+     "quote": "Under the patient-wise protocol, the detector achieved an AUC of 0.946, accuracy of 0.905, sensitivity of 0.889, specificity of 0.942, and Matthews correlation coefficient of 0.796, whereas the leaky image-level split raised accuracy to 0.991 and AUC to 0.999, an inflation of roughly nine percentage points that was consistent across seeds."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "patients",
+ "sample_size": 201,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "ResNet-18",
+  "convolution-free Transformer",
+  "hybrid CNN-Transformer",
+  "hybrid CNN-Transformer detector"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy and AUC under leakage-free patient-wise split versus leaky image-level split",
+   "effect": "Patient-wise: AUC 0.946, accuracy 0.905; leaky image-level split: accuracy 0.991, AUC 0.999, roughly nine percentage points inflation, consistent across seeds.",
+   "quote": "These findings show that image-level splitting substantially overstates real-world performance, and that patient-wise, calibrated evaluation offers a more trustworthy basis for clinical deployment.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance across held-out hospitals in leave-one-hospital-out testing",
+   "effect": "Performance held up reasonably well across held-out hospitals.",
+   "quote": "performance held up reasonably well across held-out hospitals.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Sex disparity in sensitivity after pooling across patients",
+   "effect": "No sex disparity in sensitivity found once pooled across patients, though one appeared spuriously at the image level.",
+   "quote": "no sex disparity in sensitivity was found once results were pooled across patients, though one appeared spuriously at the image level.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "performance versus comparator architectures",
+   "effect": "Plain ResNet-18 performed comparably to hybrid model; convolution-free Transformer performed near chance.",
+   "quote": "A plain ResNet-18 performed comparably to the hybrid model, while a convolution-free Transformer performed near chance, and performance held up reasonably well across held-out hospitals.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "reliability after calibration and selective classification",
+   "effect": "Calibration and selective classification further improved reliability; no numeric effect reported.",
+   "quote": "Calibration and selective classification further improved reliability, and no sex disparity in sensitivity was found once results were pooled across patients, though one appeared spuriously at the image level.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "sex disparity in sensitivity",
+   "effect": "No sex disparity in sensitivity after pooling across patients; one appeared spuriously at image level.",
+   "quote": "Calibration and selective classification further improved reliability, and no sex disparity in sensitivity was found once results were pooled across patients, though one appeared spuriously at the image level.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "patient-wise data splitting to prevent leakage",
+  "temperature scaling calibration and conformal prediction for selective classification"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1303776",
+ "screen": {
+  "id": "epmc:PPR1303776",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "leakage-free patient-wise validation with calibration and uncertainty-based selective classification",
+  "user": "none",
+  "reason": "Empirically investigates data leakage from image-level splitting vs patient-wise splitting, alongside calibration and conformal prediction as validation practices to avoid inflated diagnostic accuracy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "patient-wise data partitioning and calibration/uncertainty quantification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1303776",
+   "empirical": 0.97,
+   "tests_practice": 0.42,
+   "real_deployment": 0.04
+  }
+ }
+}

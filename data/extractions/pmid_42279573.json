@@ -1,0 +1,87 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Unknown",
+ "sample_size": null,
+ "sample_unit": "CT images (two public datasets: BHX and RSNA 2019+)",
+ "models_evaluated": [
+  "Swin-RT-DETR",
+  "Faster R-CNN ResNeXt101",
+  "six deep learning detectors (CNN one-stage, two-stage, RT-DETR variant)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop under cross-dataset external validation due to domain shift and dataset differences",
+   "effect": "External validation showed substantial degradation; Swin-RT-DETR BB-DSC reductions of ~0.54-0.79 (BHX-to-RSNA+) and 0.17-0.74 (RSNA+-to-BHX).",
+   "quote": "External validation showed substantial performance degradation across architectures, subtypes, and validation directions.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Overestimated performance from internal validation versus external test data",
+   "effect": "Internal validation showed competitive performance, but external testing revealed substantial degradation with attenuation of architecture-specific advantages under domain shift.",
+   "quote": "Although Transformer-based hierarchical feature extraction showed subtype-dependent advantages under internal validation, these advantages diminished under bidirectional external validation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Dataset characterization (subtype prevalence, bounding-box geometry, annotation density) before model evaluation",
+  "Patient-level evaluation in addition to image-level evaluation"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42279573",
+ "screen": {
+  "id": "pmid:42279573",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study benchmarks the cross-dataset generalizability and domain shift degradation of multiple deep learning architectures for intracranial hemorrhage detection on public CT datasets, without testing a specific organizational deployment safeguard or practice.",
+  "jev": {
+   "id": "pmid:42279573",
+   "empirical": 0.97,
+   "tests_practice": 0.03,
+   "real_deployment": 0.02
+  }
+ }
+}

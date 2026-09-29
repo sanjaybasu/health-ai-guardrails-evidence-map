@@ -1,0 +1,345 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Finland",
+   "sample_size": 278,
+   "sample_unit": "patients with early psychosis",
+   "models_evaluated": [
+    "PsyMetRiC full model",
+    "PsyMetRiC partial model",
+    "PsyMetRiC-Fi (recalibrated)",
+    "FINDRISC"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Finnish"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration of PsyMetRiC before vs after local logistic recalibration",
+     "effect": "Calibration intercept improved from 0.16 to 0.01 (full) and -0.14 to 0.01 (partial); discrimination unchanged (C 0.72/0.70); net benefit improved further after recalibration.",
+     "quote": "Following recalibration of PsyMetRiC-Fi to account for population differences, calibration of both models improved substantially with no detriment to discriminative accuracy."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Miscalibration of UK-developed model in Finnish sample with differing population characteristics",
+     "effect": "Finnish sample differed from UK development sample on most sociodemographic, lifestyle and biochemical characteristics; PsyMetRiC full model underpredicted and partial model overpredicted risk.",
+     "quote": "The Finnish sample differed from the UK PsyMetRiC development sample on most sociodemographic, lifestyle and biochemical characteristics (Table 1 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and net benefit of PsyMetRiC compared with FINDRISC on same data",
+     "effect": "C-statistic 0.72 (full) and 0.70 (partial) vs 0.63 for FINDRISC; at 15% threshold net benefit 0.13 for PsyMetRiC-Fi vs 0.01 for FINDRISC.",
+     "quote": "Both PsyMetRiC versions showed superior discriminative accuracy in this early psychosis population compared with using FINDRISC."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local historical data validation of predictive model against reference standard",
+     "effect": "External validation in 278 Finnish patients found acceptable discrimination but miscalibration that required recalibration, showing local validation identified performance problems.",
+     "quote": "Calibration plots (Figure 2 , Figure S3 ) show varying degrees of miscalibration for PsyMetRiC across imputed datasets, with predominantly risk underprediction in the full-model, and overprediction in the partial-model."
+    }
+   ],
+   "unlisted_practices": [
+    "Recalibrating a risk model using decision curve analysis to estimate net benefit versus treat-all/treat-none strategies"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Finland",
+   "sample_size": 278,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "PsyMetRiC full model",
+    "PsyMetRiC partial model",
+    "PsyMetRiC-Fi full model",
+    "PsyMetRiC-Fi partial model",
+    "FINDRISC"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Finnish"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external predictive performance",
+     "effect": "PsyMetRiC full C = 0.72, partial C = 0.70; FINDRISC C = 0.63 in Finnish validation data.",
+     "quote": "In summary, there was acceptable discriminative performance of PsyMetRiC (full\u2010model C = 0.72, 95% C.I., 0.59, 0.82; partial\u2010model C = 0.70, 95% CI, 0.59\u20130.80), but poor discriminative performance of FINDRISC ( C = 0.63, 95% CI, 0.54\u20130.71)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model calibration",
+     "effect": "PsyMetRiC full model predominantly underpredicted risk; partial model overpredicted risk across imputed datasets.",
+     "quote": "Calibration plots (Figure 2 , Figure S3 ) show varying degrees of miscalibration for PsyMetRiC across imputed datasets, with predominantly risk underprediction in the full\u2010model, and overprediction in the partial\u2010model."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination versus FINDRISC",
+     "effect": "PsyMetRiC full C\u2009=\u20090.72, partial C\u2009=\u20090.70, and FINDRISC C\u2009=\u20090.63.",
+     "quote": "Discrimination was marginally better in the PsyMetRiC full model (C\u2009=\u20090.72, 95% CI, 0.59-0.82) compared with partial model (C\u2009=\u20090.70, 95% CI 0.59-0.80) or FINDRISC (C\u2009=\u20090.63, 95% CI 0.54-0.71)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "development-validation population comparison",
+     "effect": "Finnish and UK samples differed; White European/NR 100% vs 55.3%, male 58.60% vs 67.59%.",
+     "quote": "The Finnish sample differed from the UK PsyMetRiC development sample on most sociodemographic, lifestyle and biochemical characteristics (Table 1 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration after Finnish recalibration",
+     "effect": "After logistic calibration, full intercept 0.01 and slope 1.00; partial intercept 0.01 and slope 1.01; discrimination unchanged.",
+     "quote": "Following recalibration of PsyMetRiC\u2010Fi to account for population differences, calibration of both models improved substantially with no detriment to discriminative accuracy."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Finland",
+   "sample_size": 278,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "PsyMetRiC",
+    "PsyMetRiC-Fi",
+    "FINDRISC"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Finnish"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predictive calibration and net benefit after local recalibration",
+     "effect": "calibration intercept improved to 0.01 for full and partial models, slope to 1.00 and 1.01, C-statistic remained 0.72 and 0.70, and net benefit increased",
+     "quote": "Calibration plots displayed evidence of minor miscalibration for PsyMetRiC, which corrected following recalibration."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Finland",
+ "sample_unit": "patients with early psychosis",
+ "sample_size": 278,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Finnish"
+ ],
+ "models_evaluated": [
+  "FINDRISC",
+  "PsyMetRiC",
+  "PsyMetRiC full model",
+  "PsyMetRiC partial model",
+  "PsyMetRiC-Fi",
+  "PsyMetRiC-Fi (recalibrated)",
+  "PsyMetRiC-Fi full model",
+  "PsyMetRiC-Fi partial model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of PsyMetRiC before vs after local logistic recalibration",
+   "effect": "Calibration intercept improved from 0.16 to 0.01 (full) and -0.14 to 0.01 (partial); discrimination unchanged (C 0.72/0.70); net benefit improved further after recalibration.",
+   "quote": "Following recalibration of PsyMetRiC-Fi to account for population differences, calibration of both models improved substantially with no detriment to discriminative accuracy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and net benefit of PsyMetRiC compared with FINDRISC on same data",
+   "effect": "C-statistic 0.72 (full) and 0.70 (partial) vs 0.63 for FINDRISC; at 15% threshold net benefit 0.13 for PsyMetRiC-Fi vs 0.01 for FINDRISC.",
+   "quote": "Both PsyMetRiC versions showed superior discriminative accuracy in this early psychosis population compared with using FINDRISC.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local historical data validation of predictive model against reference standard",
+   "effect": "External validation in 278 Finnish patients found acceptable discrimination but miscalibration that required recalibration, showing local validation identified performance problems.",
+   "quote": "Calibration plots (Figure 2 , Figure S3 ) show varying degrees of miscalibration for PsyMetRiC across imputed datasets, with predominantly risk underprediction in the full-model, and overprediction in the partial-model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "development-validation population comparison",
+   "effect": "Finnish and UK samples differed; White European/NR 100% vs 55.3%, male 58.60% vs 67.59%.",
+   "quote": "The Finnish sample differed from the UK PsyMetRiC development sample on most sociodemographic, lifestyle and biochemical characteristics (Table 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Recalibrating a risk model using decision curve analysis to estimate net benefit versus treat-all/treat-none strategies"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39209447",
+ "screen": {
+  "id": "pmid:39209447",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and site-specific recalibration before deployment",
+  "user": "none",
+  "reason": "The study conducts external validation and demonstrates site-specific recalibration of a predictive risk calculator (PsyMetRiC) in a new geographic cohort.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39209447",
+   "empirical": 0.75,
+   "tests_practice": 0.61,
+   "real_deployment": 0.08
+  }
+ }
+}

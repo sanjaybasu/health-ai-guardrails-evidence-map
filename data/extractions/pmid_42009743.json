@@ -1,0 +1,418 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 1161,
+   "sample_unit": "whole slide images",
+   "models_evaluated": [
+    "HSFLA",
+    "MaxMIL",
+    "MeanMIL",
+    "MIL-RNN",
+    "ABMIL",
+    "CLAM",
+    "TransMIL",
+    "DS-MIL",
+    "IB-MIL",
+    "CI-MIL",
+    "DTFD-MIL",
+    "ResNet-50+FC"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist diagnostic accuracy with vs without AI invasive-lesion prompts",
+     "effect": "Reader study (3 pathologists, n=137 WSIs): accuracy gains 11.7%, 28.5%, 28.5%; panel AUC 0.616 to 0.921. Prospective 70 patients: 82.86% manual vs 92.9% with AI; 5 surgical approaches modified.",
+     "quote": "The analysis revealed that HSFLA improved the pathologists\u2019 diagnostic AUC from 0.616 to 0.921."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance on external second-center test set vs internal test set",
+     "effect": "HSFLA accuracy 95.62% internal vs 91.7% external (AUC 98.71% vs 94.2%); weakly supervised methods dropped more substantially.",
+     "quote": "In the three-classification task, it achieved a classification accuracy of 91.7% and an AUC of 94.2%."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Registration failure due to tissue damage/fragmentation in consecutive slides",
+     "effect": "2.6% of WSIs failed registration (Dice <75%); tissue tearing caused 3D reconstruction distortion affecting volume estimation and subtype.",
+     "quote": "Defining passed registration for 3D spatial diagnosis as a Dice Similarity of >75% for intact tissue boundaries, 2.6% of WSIs are unqualified (Supplementary Information 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 1161,
+   "sample_unit": "whole-slide images, including 417 serial images from 70 prospective patients",
+   "models_evaluated": [
+    "HSFLA",
+    "MaxMIL",
+    "MeanMIL",
+    "MIL-RNN",
+    "ABMIL",
+    "CLAM",
+    "TransMIL",
+    "DS-MIL",
+    "IB-MIL",
+    "CI-MIL",
+    "DTFD-MIL",
+    "ResNet-50 + FC",
+    "DeeperHistReg"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist diagnostic accuracy with versus without AI assistance",
+     "effect": "Three readers achieved absolute accuracy gains of 11.7%, 28.5%, and 28.5% on 137 WSIs. Prospectively, diagnostic accuracy improved from 82.86% to 92.9%; surgical approaches changed for 5 patients (among 70).",
+     "quote": "Notably, HSFLA\u2019s ROI suggestion feature reduced misdiagnosis rates by 11.7%, 28.5%, and 28.5% for the three pathologists, respectively."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Classification performance across internal and external hospital test sets",
+     "effect": "Internal accuracy was 95.62% and AUC 98.71%; external accuracy was 91.7% and AUC 94.2% on 60 WSIs.",
+     "quote": "In the three-classification task, it achieved a classification accuracy of 91.7% and an AUC of 94.2%."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Consecutive-slide registration failures associated with tissue damage and morphological distortion",
+     "effect": "Using Dice Similarity of >75% for intact tissue boundaries as the passing criterion, 2.6% of WSIs failed registration quality requirements; reconstruction distortion affected invasive-volume estimation and subtype determination.",
+     "quote": "Defining passed registration for 3D spatial diagnosis as a Dice Similarity of >75% for intact tissue boundaries, 2.6% of WSIs are unqualified (Supplementary Information 3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Combine slide-level labels with expert patch-level annotations through hybrid supervision to improve subtype classification.",
+    "Register consecutive pathological sections for three-dimensional reconstruction and measurement of invasive lesions."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 1161,
+   "sample_unit": "whole slide images",
+   "models_evaluated": [
+    "HSFLA",
+    "ResNet-50",
+    "CLAM",
+    "TransMIL",
+    "DTFD-MIL"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external classification accuracy",
+     "effect": "accuracy of 91.7% and an AUC of 94.2%",
+     "quote": "In the three-classification task, it achieved a classification accuracy of 91.7% and an AUC of 94.2%."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "dataset misdiagnoses",
+     "effect": "102 WSIs of misdiagnosis were identified and corrected",
+     "quote": "Under the double review, 102 WSIs of misdiagnosis were identified and corrected."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "manual diagnostic accuracy",
+     "effect": "manual diagnostic accuracy improved by 22.9%",
+     "quote": "With its assistance, manual diagnostic accuracy improved by 22.9% ( n = 3, 11.7%, 28.5%, 28.5%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "subtype classification accuracy",
+     "effect": "accuracy of 95.6%, outperforming manual (84.7%) and other methods (66.2%)",
+     "quote": "Specifically, HSFLA achieved an accuracy of 95.6% in subtype classification, significantly outperforming manual diagnosis (84.7%) and weakly supervised learning methods (66.2% \u00b1 3.0%)."
+    },
+    {
+     "rec_id": "R142",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "precise surgical resection ranges",
+     "effect": "leaded to more precise surgical resection ranges for 5 patients (among 70)",
+     "quote": "Compared to manual diagnosis alone, the \u201chuman-machine interaction\u201d diagnostic mode leaded to more precise surgical resection ranges for 5 patients (among 70)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "manual diagnostic accuracy",
+     "effect": "manual diagnostic accuracy improved by 22.9%",
+     "quote": "With its assistance, manual diagnostic accuracy improved by 22.9% ( n = 3, 11.7%, 28.5%, 28.5%)."
+    }
+   ],
+   "unlisted_practices": [
+    "hybrid-supervised learning combining weak slide-level and patch-level labels",
+    "3D reconstruction and volume calculation from consecutive registered WSIs"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "whole slide images",
+ "sample_size": 1161,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "ABMIL",
+  "CI-MIL",
+  "CLAM",
+  "DS-MIL",
+  "DTFD-MIL",
+  "DeeperHistReg",
+  "HSFLA",
+  "IB-MIL",
+  "MIL-RNN",
+  "MaxMIL",
+  "MeanMIL",
+  "ResNet-50",
+  "ResNet-50 + FC",
+  "ResNet-50+FC",
+  "TransMIL"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Pathologist diagnostic accuracy with vs without AI invasive-lesion prompts",
+   "effect": "Reader study (3 pathologists, n=137 WSIs): accuracy gains 11.7%, 28.5%, 28.5%; panel AUC 0.616 to 0.921. Prospective 70 patients: 82.86% manual vs 92.9% with AI; 5 surgical approaches modified.",
+   "quote": "The analysis revealed that HSFLA improved the pathologists\u2019 diagnostic AUC from 0.616 to 0.921.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance on external second-center test set vs internal test set",
+   "effect": "HSFLA accuracy 95.62% internal vs 91.7% external (AUC 98.71% vs 94.2%); weakly supervised methods dropped more substantially.",
+   "quote": "In the three-classification task, it achieved a classification accuracy of 91.7% and an AUC of 94.2%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Registration failure due to tissue damage/fragmentation in consecutive slides",
+   "effect": "2.6% of WSIs failed registration (Dice <75%); tissue tearing caused 3D reconstruction distortion affecting volume estimation and subtype.",
+   "quote": "Defining passed registration for 3D spatial diagnosis as a Dice Similarity of >75% for intact tissue boundaries, 2.6% of WSIs are unqualified (Supplementary Information 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "external classification accuracy",
+   "effect": "accuracy of 91.7% and an AUC of 94.2%",
+   "quote": "In the three-classification task, it achieved a classification accuracy of 91.7% and an AUC of 94.2%.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "dataset misdiagnoses",
+   "effect": "102 WSIs of misdiagnosis were identified and corrected",
+   "quote": "Under the double review, 102 WSIs of misdiagnosis were identified and corrected.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "subtype classification accuracy",
+   "effect": "accuracy of 95.6%, outperforming manual (84.7%) and other methods (66.2%)",
+   "quote": "Specifically, HSFLA achieved an accuracy of 95.6% in subtype classification, significantly outperforming manual diagnosis (84.7%) and weakly supervised learning methods (66.2% \u00b1 3.0%).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R142",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "precise surgical resection ranges",
+   "effect": "leaded to more precise surgical resection ranges for 5 patients (among 70)",
+   "quote": "Compared to manual diagnosis alone, the \u201chuman-machine interaction\u201d diagnostic mode leaded to more precise surgical resection ranges for 5 patients (among 70).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "manual diagnostic accuracy",
+   "effect": "manual diagnostic accuracy improved by 22.9%",
+   "quote": "With its assistance, manual diagnostic accuracy improved by 22.9% ( n = 3, 11.7%, 28.5%, 28.5%).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "3D reconstruction and volume calculation from consecutive registered WSIs",
+  "Combine slide-level labels with expert patch-level annotations through hybrid supervision to improve subtype classification.",
+  "Register consecutive pathological sections for three-dimensional reconstruction and measurement of invasive lesions.",
+  "hybrid-supervised learning combining weak slide-level and patch-level labels"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42009743",
+ "screen": {
+  "id": "pmid:42009743",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "human-machine interaction (pathologist review with AI aid) vs manual diagnosis alone",
+  "user": "clinician_or_staff",
+  "reason": "The study prospective evaluated a hybrid deep learning tool for intraoperative frozen section pathology in a real clinical setting, comparing AI-assisted clinician review (human-machine interaction) to manual diagnosis alone.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "AI-assisted pathologist review / human-machine interaction"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42009743",
+   "empirical": 0.96,
+   "tests_practice": 0.7,
+   "real_deployment": 0.87
+  }
+ }
+}

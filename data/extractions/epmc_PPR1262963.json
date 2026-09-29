@@ -1,0 +1,241 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Multinational (internal data plus external data from ~70 sites in 7 countries)",
+   "sample_size": 500,
+   "sample_unit": "patients (400 internal, 100 external)",
+   "models_evaluated": [
+    "3D nnU-Net",
+    "Pairwise Surface DSC",
+    "Pairwise DSC"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity, AUROC, balanced accuracy of OOD detectors flagging segmentation failures on internal and external CT",
+     "effect": "Pairwise Surface DSC had perfect sensitivities (1.00), AUROCs of 0.97 internal and 1.00 external, and balanced accuracies of 0.94 internal and 0.88 external (p < 0.001).",
+     "quote": "Pairwise Surface DSC was the top-performing method, with perfect sensitivities (1.00), near-perfect AUROCs (0.97 internal; 1.00 external), and the highest balanced accuracies (0.94 internal; 0.88 external;  p < 0.001)."
+    },
+    {
+     "rec_id": "R510",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of output-based failure detectors to flag implausible or failed segmentations",
+     "effect": "Pairwise Surface DSC detected segmentation failures with sensitivity 1.00 and balanced accuracy 0.94 internal, 0.88 external.",
+     "quote": "These results show that automated failure detection for liver CT segmentation is clinically feasible and that Pairwise Surface DSC is a promising candidate for deployment."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "7 countries (not specified)",
+   "sample_size": 900,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "3D nnU-Net",
+    "Pairwise Surface DSC",
+    "six OOD detection methods"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Segmentation failure detection performance",
+     "effect": "Pairwise Surface DSC achieved sensitivity 1.00, AUROC 0.97 internal/1.00 external, balanced accuracy 0.94 internal/0.88 external (p < 0.001).",
+     "quote": "Pairwise Surface DSC was the top-performing method, with perfect sensitivities (1.00), near-perfect AUROCs (0.97 internal; 1.00 external), and the highest balanced accuracies (0.94 internal; 0.88 external;  p < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "International",
+   "sample_size": 500,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "3D nnU-Net"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R510",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "segmentation failure detection performance",
+     "effect": "Sensitivity 1.00, AUROC 0.97 internal and 1.00 external, balanced accuracy 0.94 internal and 0.88 external (p < 0.001)",
+     "quote": "Pairwise Surface DSC was the top-performing method, with perfect sensitivities (1.00), near-perfect AUROCs (0.97 internal; 1.00 external), and the highest balanced accuracies (0.94 internal; 0.88 external;  p < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Multinational (internal data plus external data from ~70 sites in 7 countries)",
+ "sample_unit": "patients",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "3D nnU-Net",
+  "Pairwise DSC",
+  "Pairwise Surface DSC",
+  "six OOD detection methods"
+ ],
+ "links": [
+  {
+   "rec_id": "R510",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of output-based failure detectors to flag implausible or failed segmentations",
+   "effect": "Pairwise Surface DSC detected segmentation failures with sensitivity 1.00 and balanced accuracy 0.94 internal, 0.88 external.",
+   "quote": "These results show that automated failure detection for liver CT segmentation is clinically feasible and that Pairwise Surface DSC is a promising candidate for deployment.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity, AUROC, balanced accuracy of OOD detectors flagging segmentation failures on internal and external CT",
+   "effect": "Pairwise Surface DSC had perfect sensitivities (1.00), AUROCs of 0.97 internal and 1.00 external, and balanced accuracies of 0.94 internal and 0.88 external (p < 0.001).",
+   "quote": "Pairwise Surface DSC was the top-performing method, with perfect sensitivities (1.00), near-perfect AUROCs (0.97 internal; 1.00 external), and the highest balanced accuracies (0.94 internal; 0.88 external;  p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation failure detection performance",
+   "effect": "Pairwise Surface DSC achieved sensitivity 1.00, AUROC 0.97 internal/1.00 external, balanced accuracy 0.94 internal/0.88 external (p < 0.001).",
+   "quote": "Pairwise Surface DSC was the top-performing method, with perfect sensitivities (1.00), near-perfect AUROCs (0.97 internal; 1.00 external), and the highest balanced accuracies (0.94 internal; 0.88 external;  p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1262963",
+ "screen": {
+  "id": "epmc:PPR1262963",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "OOD/failure detection for segmentation with threshold selection",
+  "user": "none",
+  "reason": "Evaluates OOD/failure detection methods as a safeguard monitoring strategy for an existing liver CT segmentation model across multi-site clinical datasets.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "automated failure and out-of-distribution detection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1262963",
+   "empirical": 0.96,
+   "tests_practice": 0.25,
+   "real_deployment": 0.56
+  }
+ }
+}

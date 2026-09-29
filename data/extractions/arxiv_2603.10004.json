@@ -1,0 +1,89 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "United States",
+ "sample_size": null,
+ "sample_unit": "annotated text chunks from clinical notes",
+ "models_evaluated": [
+  "GatorTron",
+  "Llama"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Classifier F1 when fine-tuned on in-domain versus other-specialty data",
+   "effect": "GatorTron fine-tuned on OB-GYN reached F1 0.96 in-domain; tested on MIMIC-IV, F1 fell below 0.70 (44% drop). Training on MIMIC-IV then testing on OB-GYN gave F1 0.71 (11% drop) with reduced precision.",
+   "quote": "Our findings demonstrate that fine-tuning outperforms prompting for emotional valence classification and that models must be adapted to specific medical specialties to achieve clinically appropriate performance.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop when model applied to a different specialty and health system",
+   "effect": "External validation on MIMIC-IV showed F1 below 0.70, a 44% drop from the OB-GYN test set.",
+   "quote": "External validation on MIMIC-IV revealed limited cross-domain generalizability (F1 < 0.70, 44% drop).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Supervised fine-tuning with lexically primed inputs outperforms zero-shot and in-context prompting for clinical-note bias detection",
+  "Detecting stigmatizing language in clinical documentation"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2603.10004",
+ "screen": {
+  "id": "arxiv:2603.10004",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates NLP/LLM classification strategies (prompting vs fine-tuning) on an annotated dataset of clinical notes to detect biased/stigmatizing language, with no organizational deployment safeguard tested.",
+  "jev": {
+   "id": "arxiv:2603.10004",
+   "empirical": 0.96,
+   "tests_practice": 0.17,
+   "real_deployment": 0.06
+  }
+ }
+}

@@ -1,0 +1,361 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "United States (simulated, loosely modeled)",
+   "sample_size": 500000,
+   "sample_unit": "simulated women per run (100 simulation runs)",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of error-rate parity mitigation on group mortality disparity and privileged group mortality",
+     "effect": "EqOdds/EqOppTPR reduced mortality rate ratio from 3.77 to ~3.05-3.07 but raised privileged group mortality via leveling down; EqOppFPR slightly raised disparity (3.82).",
+     "quote": "Although the reduced disparity in mortality rates implies a positive health equity outcome, it is notable that in the EqOppTPR and EqOdds scenarios, the privileged group's mortality rate increased (Fig. 2A )."
+    },
+    {
+     "rec_id": "R320",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Simulated group-wise mortality and socioeconomic outcomes under fairness-constrained AI",
+     "effect": "Stark mortality disparities persisted regardless of algorithmic fairness constraints; equalized odds reduced disparity by only ~12 per 100k versus ~57 per 100k from improving screening access.",
+     "quote": "We observed stark differences in annual mortality rates between the privileged and unprivileged groups, regardless of the algorithmic fairness constraints imposed."
+    },
+    {
+     "rec_id": "R325",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fair distribution of AI-enabled care benefits when access barriers differ between groups",
+     "effect": "Access barriers had greater impact on disparities than AI fairness; enforcing equalized odds reduced disparity ~12 per 100k vs ~57 per 100k with 93% screening access.",
+     "quote": "The sensitivity analysis for parameters determining the likelihood of screening, treatment delays, and adjuvant treatment within the simulation showed that barriers to accessing appropriate healthcare had a greater impact on health disparities than AI-based interventions."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of radiologist reliance on biased AI on mortality rate disparity",
+     "effect": "Mortality rate disparity surged with higher reliance on AI under Naive and EqOppFPR scenarios (with TPR disparities); unaffected under EqOdds.",
+     "quote": "Here, it can be seen that the mortality rate disparity surged with a higher degree of reliance on the AI system under both the Naive and EqOppFPR scenarios."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Impact of subgroup TPR/FPR disparities in AI on group-wise outcomes",
+     "effect": "Lowering unprivileged TPR by 30% increased mortality rate ratio by over 15%; 30% higher privileged FPR reduced ratio by under 5%.",
+     "quote": "For instance, at a given \u0394FPR, lowering the TPR for the unprivileged group by 30% increased the mortality rate ratio by over 15%."
+    }
+   ],
+   "unlisted_practices": [
+    "Using sociotechnical simulation to evaluate fairness metrics' effect on long-term outcomes",
+    "Prioritizing TPR parity over FPR parity in fairness targets",
+    "Addressing structural access barriers (screening access) alongside algorithmic fairness",
+    "Avoiding leveling-down fairness methods (e.g., Pareto fairness)"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "world_model_simulation"
+   ],
+   "country": "United States",
+   "sample_size": 500000,
+   "sample_unit": "simulated women",
+   "models_evaluated": [
+    "Naive AI-assisted mammography model",
+    "Equal Opportunity TPR parity (EqOppTPR)",
+    "Equal Opportunity FPR parity (EqOppFPR)",
+    "Equalized Odds (EqOdds)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "mortality disparity by fairness constraint",
+     "effect": "EqOppFPR worsened ratio 3.82 vs 3.77 Naive; EqOppTPR/EqOdds reduced ratios to 3.05/3.07, with EqOdds reducing disparity 12.22 per 100k.",
+     "quote": "This was reduced to 3.05 (95% CI:3.04, 3.06) and 3.07 (95% CI:3.06, 3.08) under the EqOppTPR and EqOdds algorithmic fairness scenarios, respectively."
+    },
+    {
+     "rec_id": "R302",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "metric choice and mortality disparity",
+     "effect": "30% lower unprivileged TPR increased mortality ratio over 15%; 30% higher privileged FPR caused less than 5% reduction.",
+     "quote": "For instance, at a given \u0394FPR, lowering the TPR for the unprivileged group by 30% increased the mortality rate ratio by over 15%."
+    },
+    {
+     "rec_id": "R320",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "group mortality disparities",
+     "effect": "Average mortality-rate ratios were 3.77 Naive, 3.82 EqOppFPR, 3.05 EqOppTPR, and 3.07 EqOdds.",
+     "quote": "We observed stark differences in annual mortality rates between the privileged and unprivileged groups, regardless of the algorithmic fairness constraints imposed."
+    },
+    {
+     "rec_id": "R325",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "screening access and mortality disparity",
+     "effect": "Increasing unprivileged screening from about 65% to 93% reduced Naive mortality disparity from 105.48 to 56.88 per 100k.",
+     "quote": "In particular, when approximately 93% of the unprivileged group was able to be screened, the mortality rate disparity in the Naive scenario was reduced to 56.88 (95% CI:56.68, 57.08) per 100k, from 105.48 (95% CI:105.26, 105.71) per 100k in the baseline setting when approximately 65% of the unprivileged group was screened (illustrated in Fig. 2A )."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "reliance and group misdiagnosis",
+     "effect": "Naive FNR privileged/unprivileged: 27.11/26.74 at \u03b1=0.0; 22.94/30.01 at \u03b1=0.5; 18.79/33.33 at \u03b1=1.0.",
+     "quote": "Here, it can be seen that the mortality rate disparity surged with a higher degree of reliance on the AI system under both the Naive and EqOppFPR scenarios."
+    }
+   ],
+   "unlisted_practices": [
+    "Increasing screening access for the unprivileged group",
+    "Reducing treatment delays for the unprivileged group",
+    "Increasing access to adjuvant treatment for the unprivileged group"
+   ]
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "world_model_simulation"
+   ],
+   "country": "Canada",
+   "sample_size": 500000,
+   "sample_unit": "simulated individuals",
+   "models_evaluated": [
+    "Simulated AI breast cancer screening model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "breast cancer mortality rate disparity between groups",
+     "effect": "Absolute reduction in mortality rate disparity was 12.22 (95% CI: 11.91, 12.53) per 100k for EqOdds vs naive, while mortality rate ratio was 3.82 for EqOppFPR vs 3.77 for naive.",
+     "quote": "Comparing the Naive and EqOdds scenarios, this amounted to an absolute reduction in mortality rate disparity of 12.22 (95% CI:11.91,12.53) per 100k individuals."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States (simulated, loosely modeled)",
+ "sample_unit": "simulated women per run (100 simulation runs)",
+ "sample_size": 500000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": true,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Equal Opportunity FPR parity (EqOppFPR)",
+  "Equal Opportunity TPR parity (EqOppTPR)",
+  "Equalized Odds (EqOdds)",
+  "Naive AI-assisted mammography model",
+  "Simulated AI breast cancer screening model"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of error-rate parity mitigation on group mortality disparity and privileged group mortality",
+   "effect": "EqOdds/EqOppTPR reduced mortality rate ratio from 3.77 to ~3.05-3.07 but raised privileged group mortality via leveling down; EqOppFPR slightly raised disparity (3.82).",
+   "quote": "Although the reduced disparity in mortality rates implies a positive health equity outcome, it is notable that in the EqOppTPR and EqOdds scenarios, the privileged group's mortality rate increased (Fig. 2A ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R320",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Simulated group-wise mortality and socioeconomic outcomes under fairness-constrained AI",
+   "effect": "Stark mortality disparities persisted regardless of algorithmic fairness constraints; equalized odds reduced disparity by only ~12 per 100k versus ~57 per 100k from improving screening access.",
+   "quote": "We observed stark differences in annual mortality rates between the privileged and unprivileged groups, regardless of the algorithmic fairness constraints imposed.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R325",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Fair distribution of AI-enabled care benefits when access barriers differ between groups",
+   "effect": "Access barriers had greater impact on disparities than AI fairness; enforcing equalized odds reduced disparity ~12 per 100k vs ~57 per 100k with 93% screening access.",
+   "quote": "The sensitivity analysis for parameters determining the likelihood of screening, treatment delays, and adjuvant treatment within the simulation showed that barriers to accessing appropriate healthcare had a greater impact on health disparities than AI-based interventions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Impact of subgroup TPR/FPR disparities in AI on group-wise outcomes",
+   "effect": "Lowering unprivileged TPR by 30% increased mortality rate ratio by over 15%; 30% higher privileged FPR reduced ratio by under 5%.",
+   "quote": "For instance, at a given \u0394FPR, lowering the TPR for the unprivileged group by 30% increased the mortality rate ratio by over 15%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "reliance and group misdiagnosis",
+   "effect": "Naive FNR privileged/unprivileged: 27.11/26.74 at \u03b1=0.0; 22.94/30.01 at \u03b1=0.5; 18.79/33.33 at \u03b1=1.0.",
+   "quote": "Here, it can be seen that the mortality rate disparity surged with a higher degree of reliance on the AI system under both the Naive and EqOppFPR scenarios.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R302",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Addressing structural access barriers (screening access) alongside algorithmic fairness",
+  "Avoiding leveling-down fairness methods (e.g., Pareto fairness)",
+  "Increasing access to adjuvant treatment for the unprivileged group",
+  "Increasing screening access for the unprivileged group",
+  "Prioritizing TPR parity over FPR parity in fairness targets",
+  "Reducing treatment delays for the unprivileged group",
+  "Using sociotechnical simulation to evaluate fairness metrics' effect on long-term outcomes"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41419484",
+ "screen": {
+  "id": "pmid:41419484",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "world_model_simulation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "fairness criterion selection (threshold adjustment) and clinician reliance on AI",
+  "user": "clinician_or_staff",
+  "reason": "This study uses a sociotechnical simulation of AI-assisted breast cancer screening to evaluate how implementing different algorithmic fairness criteria affects clinical outcomes and health disparities.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "algorithmic fairness criteria optimization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41419484",
+   "empirical": 0.65,
+   "tests_practice": 0.49,
+   "real_deployment": 0.04
+  }
+ }
+}

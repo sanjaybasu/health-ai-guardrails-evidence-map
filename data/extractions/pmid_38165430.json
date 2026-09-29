@@ -1,0 +1,334 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Sweden",
+   "sample_size": 758,
+   "sample_unit": "screening mammography exams (women)",
+   "models_evaluated": [
+    "Insight MMG (Lunit)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Reader sensitivity and specificity with vs without concurrent AI support; overreliance on erroneous AI",
+     "effect": "Recall sensitivity fell from 81% (307/379) to 75% (284/379) with AI; specificity rose from 67% to 86%; net 23 fewer cancers detected; readers changed positive to negative in 21-41% of exams.",
+     "quote": "When using AI, 39 of the cancers detected by study radiologists without AI were missed, and 16 cancers previously missed were detected with AI, resulting in a net decrease of 23 cancers detected when using AI decision support."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether radiologists detect and resist incorrect AI outputs (automation bias)",
+     "effect": "Radiologists changed assessment from positive to negative in 21 to 41% of exams even though this was incorrect in 31 to 38% of cases.",
+     "quote": "In our study, radiologists changed their assessment from positive to negative in 21 to 41% of the exams even though this was incorrect in 31 to 38% of cases."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Reader performance with AI in workflow versus standalone AI metrics",
+     "effect": "With AI, reader sensitivity shifted toward AI operating point: sensitivity 75% vs 81% without AI, specificity 86% vs 67%; reading time fell 38%.",
+     "quote": "The shift in study radiologist operating point caused by concurrent AI decision support demonstrates automation bias which is in line with the results of two recent publications [ 8 , 9 ]."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Change in combined human-AI performance and reliance after AI deployment",
+     "effect": "Radiologist operating point nudged toward AI's; authors call for careful monitoring of radiologist performance overall and individually in real-world AI implementation.",
+     "quote": "These interaction effects may not be possible to estimate beforehand, calling for careful monitoring of radiologist performance, overall and individually, in real-world implementations of AI for screening mammography."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reader performance in cancer-enriched test set versus original non-enriched screening",
+     "effect": "Reader sensitivity was 81% without AI vs 61% originally, and specificity 67% vs 98%, showing performance in an enriched set is unrepresentative of the intended population.",
+     "quote": "Compared to the original setting sensitivity of 61% (232/379), the reader study sensitivity was higher at 81% (307/379) without AI, which decreased to 75% (284/379) with AI decision support, a relative decrease of 7% ( p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Calibrating AI operating threshold to screening-population specificity before showing binary flags to readers",
+    "Accounting for reader operating-point shift when AI triage creates high-prevalence reading lists"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Sweden",
+   "sample_size": 758,
+   "sample_unit": "women and screening mammography exams",
+   "models_evaluated": [
+    "Insight MMG (Lunit Inc.)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity, specificity, and reading time",
+     "effect": "AI decision support resulted in 7% decreased sensitivity, 28% increased specificity, and 38% decreased radiologist time.",
+     "quote": "In our strongly cancer-enriched study population, AI decision support resulted in 7% decrease in sensitivity, 28% increase in specificity, and 38% decrease in radiologist time."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI workflow performance",
+     "effect": "AI decision support resulted in 7% decreased sensitivity, 28% increased specificity, and 38% decreased radiologist time.",
+     "quote": "In our strongly cancer-enriched study population, AI decision support resulted in 7% decrease in sensitivity, 28% increase in specificity, and 38% decrease in radiologist time."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Erroneous positive-to-negative read changes",
+     "effect": "Positive-to-negative changes occurred in 21 to 41% of exams; 31 to 38% of those changes were incorrect.",
+     "quote": "In our study, radiologists changed their assessment from positive to negative in 21 to 41% of the exams even though this was incorrect in 31 to 38% of cases."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Passive acceptance of erroneous AI",
+     "effect": "Positive-to-negative changes occurred in 21 to 41% of exams; 31 to 38% of those changes were incorrect.",
+     "quote": "In our study, radiologists changed their assessment from positive to negative in 21 to 41% of the exams even though this was incorrect in 31 to 38% of cases."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating how cancer-enriched or high-prevalence mammography worklists shift radiologist operating point"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Sweden",
+   "sample_size": 758,
+   "sample_unit": "exams",
+   "models_evaluated": [
+    "Insight MMG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Radiologist assessment change from positive to negative following incorrect AI",
+     "effect": "Radiologists changed assessment from positive to negative in 21% to 41% of exams, which was incorrect in 31% to 38% of cases.",
+     "quote": "In our study, radiologists changed their assessment from positive to negative in 21 to 41% of the exams even though this was incorrect in 31 to 38% of cases."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Sweden",
+ "sample_unit": "screening mammography exams (women)",
+ "sample_size": 758,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Insight MMG",
+  "Insight MMG (Lunit Inc.)",
+  "Insight MMG (Lunit)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Reader sensitivity and specificity with vs without concurrent AI support; overreliance on erroneous AI",
+   "effect": "Recall sensitivity fell from 81% (307/379) to 75% (284/379) with AI; specificity rose from 67% to 86%; net 23 fewer cancers detected; readers changed positive to negative in 21-41% of exams.",
+   "quote": "When using AI, 39 of the cancers detected by study radiologists without AI were missed, and 16 cancers previously missed were detected with AI, resulting in a net decrease of 23 cancers detected when using AI decision support.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether radiologists detect and resist incorrect AI outputs (automation bias)",
+   "effect": "Radiologists changed assessment from positive to negative in 21 to 41% of exams even though this was incorrect in 31 to 38% of cases.",
+   "quote": "In our study, radiologists changed their assessment from positive to negative in 21 to 41% of the exams even though this was incorrect in 31 to 38% of cases.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Reader performance with AI in workflow versus standalone AI metrics",
+   "effect": "With AI, reader sensitivity shifted toward AI operating point: sensitivity 75% vs 81% without AI, specificity 86% vs 67%; reading time fell 38%.",
+   "quote": "The shift in study radiologist operating point caused by concurrent AI decision support demonstrates automation bias which is in line with the results of two recent publications [ 8 , 9 ].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reader performance in cancer-enriched test set versus original non-enriched screening",
+   "effect": "Reader sensitivity was 81% without AI vs 61% originally, and specificity 67% vs 98%, showing performance in an enriched set is unrepresentative of the intended population.",
+   "quote": "Compared to the original setting sensitivity of 61% (232/379), the reader study sensitivity was higher at 81% (307/379) without AI, which decreased to 75% (284/379) with AI decision support, a relative decrease of 7% ( p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R156",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Passive acceptance of erroneous AI",
+   "effect": "Positive-to-negative changes occurred in 21 to 41% of exams; 31 to 38% of those changes were incorrect.",
+   "quote": "In our study, radiologists changed their assessment from positive to negative in 21 to 41% of the exams even though this was incorrect in 31 to 38% of cases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R371",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Accounting for reader operating-point shift when AI triage creates high-prevalence reading lists",
+  "Calibrating AI operating threshold to screening-population specificity before showing binary flags to readers",
+  "Evaluating how cancer-enriched or high-prevalence mammography worklists shift radiologist operating point"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38165430",
+ "screen": {
+  "id": "pmid:38165430",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI decision support for radiologists (with vs without AI reads)",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests the effect of providing AI decision support to radiologists in a reader study comparing diagnostic performance with and without AI assistance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI decision support with double-reading consensus"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38165430",
+   "empirical": 0.96,
+   "tests_practice": 0.41,
+   "real_deployment": 0.05
+  }
+ }
+}

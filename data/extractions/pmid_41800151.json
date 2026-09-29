@@ -1,0 +1,308 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 80,
+   "sample_unit": "daily medication logs",
+   "models_evaluated": [
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R480",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Machine scores of AI logs before vs after pharmacist review and correction",
+     "effect": "After manual modification, BERT F1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05; ROUGE also improved significantly.",
+     "quote": "After manual modification, the BERT score and ROUGE of the generated text were both improved significantly (e.g. BERT F 1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05; Figure 6 and Supplemental Figure 2 ), which suggested that this step of manual revision was essential."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Frequency of content errors and omissions in AI-generated medication logs",
+     "effect": "Errors in Prompt 4 multi-source logs: incorrect/missing administration dates 11 (13.75%), redundant content 7 (8.75%), incomplete medication analysis 4 (5%), incorrect medication interpretation 3 (3.75%).",
+     "quote": "Incomplete medication analysis Missing indication, monitoring parameters, or dose rationale 4 (5) Moderate Incorrect medication interpretation Misclassification of drug purpose or inappropriate assessment 3 (3.75) High Incorrect or missing administration dates Incorrect or missing administration dates 11 (13.75) Low to moderate"
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether pharmacist review of AI-generated logs identifies and corrects errors",
+     "effect": "Pharmacist review identified recurrent errors and corrected them, with BERT F1 rising from 0.68 to 0.71 (P<0.05), showing review was essential.",
+     "quote": "Therefore, the review of DeepSeek-R1-generated texts by clinical pharmacists is indispensable."
+    }
+   ],
+   "unlisted_practices": [
+    "Multi-source input integration (dialogue plus records and tests) to improve LLM documentation quality",
+    "Structured prompt engineering with SOAP templates (Prompts 4-5) for output consistency"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 80,
+   "sample_unit": "daily medication logs",
+   "models_evaluated": [
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R500",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "pharmacist-rated SOAP medication-log quality",
+     "effect": "Prompt 4 7DI multi-source vs single-source: R1 29.35 \u00b1 1.54 vs. 25.66 \u00b1 1.90; R2 29.55 \u00b1 2.92 vs. 25.15 \u00b1 1.77; R3 30.60 \u00b1 1.85 vs. 27.49 \u00b1 2.07; all P < 0.01.",
+     "quote": "All three raters agreed that text generated from multi-information-source was superior to text from single-information-source with consistently higher mean 7DI scores across prompts (e.g. Prompt 4\u2014Rater 1: 29.35 \u00b1 1.54 vs. 25.66 \u00b1 1.90; Rater 2: 29.55 \u00b1 2.92 vs. 25.15 \u00b1 1.77; Rater 3: 30.60 \u00b1 1.85 vs. 27.49 \u00b1 2.07; all P < 0.01; Supplemental Table 3 )."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "post-review medication-log similarity",
+     "effect": "BERT F 1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05 after manual modification; ROUGE improved significantly.",
+     "quote": "After manual modification, the BERT score and ROUGE of the generated text were both improved significantly (e.g. BERT F 1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05; Figure 6 and Supplemental Figure 2 ), which suggested that this step of manual revision was essential."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "content errors in generated medication logs",
+     "effect": "Errors included incomplete analysis 4 (5); incorrect interpretation 3 (3.75); incorrect/missing dates 11 (13.75); redundant content 7 (8.75); formatting issues 1 (1.25).",
+     "quote": "During manual review of the DeepSeek-R1-generated medication logs, we similarly found a number of errors in the content, which was consistent with conclusions reported in previous studies."
+    }
+   ],
+   "unlisted_practices": [
+    "Use increasingly constrained SOAP-format prompts or CRISPE prompts to improve LLM medication-log generation."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 80,
+   "sample_unit": "daily logs",
+   "models_evaluated": [
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "BERT score of generated medication logs after pharmacist review and modification",
+     "effect": "BERT F1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05 (P < 0.05) after pharmacist modification",
+     "quote": "After manual modification, the BERT score and ROUGE of the generated text were both improved significantly (e.g. BERT F 1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05; Figure 6 and Supplemental Figure 2 ), which suggested that this step of manual revision was essential."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert-rated 7DI quality scores for multi-source versus single-source inputs",
+     "effect": "Multi-source yielded significantly higher 7DI scores (Prompt 4: Rater 1 29.35\u00b11.54 vs 25.66\u00b11.90, Rater 2 29.55\u00b12.92 vs 25.15\u00b11.77, Rater 3 30.60\u00b11.85 vs 27.49\u00b12.07; all P<0.01)",
+     "quote": "All three raters agreed that text generated from multi-information-source was superior to text from single-information-source with consistently higher mean 7DI scores across prompts (e.g. Prompt 4\u2014Rater 1: 29.35 \u00b1 1.54 vs. 25.66 \u00b1 1.90; Rater 2: 29.55 \u00b1 2.92 vs. 25.15 \u00b1 1.77; Rater 3: 30.60 \u00b1 1.85 vs. 27.49 \u00b1 2.07; all P < 0.01; Supplemental Table 3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured prompt engineering incorporating role definitions and output formatting constraints"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "daily medication logs",
+ "sample_size": 80,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1"
+ ],
+ "links": [
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether pharmacist review of AI-generated logs identifies and corrects errors",
+   "effect": "Pharmacist review identified recurrent errors and corrected them, with BERT F1 rising from 0.68 to 0.71 (P<0.05), showing review was essential.",
+   "quote": "Therefore, the review of DeepSeek-R1-generated texts by clinical pharmacists is indispensable.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R500",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "pharmacist-rated SOAP medication-log quality",
+   "effect": "Prompt 4 7DI multi-source vs single-source: R1 29.35 \u00b1 1.54 vs. 25.66 \u00b1 1.90; R2 29.55 \u00b1 2.92 vs. 25.15 \u00b1 1.77; R3 30.60 \u00b1 1.85 vs. 27.49 \u00b1 2.07; all P < 0.01.",
+   "quote": "All three raters agreed that text generated from multi-information-source was superior to text from single-information-source with consistently higher mean 7DI scores across prompts (e.g. Prompt 4\u2014Rater 1: 29.35 \u00b1 1.54 vs. 25.66 \u00b1 1.90; Rater 2: 29.55 \u00b1 2.92 vs. 25.15 \u00b1 1.77; Rater 3: 30.60 \u00b1 1.85 vs. 27.49 \u00b1 2.07; all P < 0.01; Supplemental Table 3 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Machine scores of AI logs before vs after pharmacist review and correction",
+   "effect": "After manual modification, BERT F1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05; ROUGE also improved significantly.",
+   "quote": "After manual modification, the BERT score and ROUGE of the generated text were both improved significantly (e.g. BERT F 1 increased from 0.68 \u00b1 0.03 to 0.71 \u00b1 0.05, P < 0.05; Figure 6 and Supplemental Figure 2 ), which suggested that this step of manual revision was essential.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Frequency of content errors and omissions in AI-generated medication logs",
+   "effect": "Errors in Prompt 4 multi-source logs: incorrect/missing administration dates 11 (13.75%), redundant content 7 (8.75%), incomplete medication analysis 4 (5%), incorrect medication interpretation 3 (3.75%).",
+   "quote": "Incomplete medication analysis Missing indication, monitoring parameters, or dose rationale 4 (5) Moderate Incorrect medication interpretation Misclassification of drug purpose or inappropriate assessment 3 (3.75) High Incorrect or missing administration dates Incorrect or missing administration dates 11 (13.75) Low to moderate",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Multi-source input integration (dialogue plus records and tests) to improve LLM documentation quality",
+  "Structured prompt engineering incorporating role definitions and output formatting constraints",
+  "Structured prompt engineering with SOAP templates (Prompts 4-5) for output consistency",
+  "Use increasingly constrained SOAP-format prompts or CRISPE prompts to improve LLM medication-log generation."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41800151",
+ "screen": {
+  "id": "pmid:41800151",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt engineering and pharmacist review of LLM outputs",
+  "user": "clinician_or_staff",
+  "reason": "The study tests prompt engineering variations (differing complexity and multi-source context) and explicitly measures output improvement after pharmacist review/correction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering and clinician review of outputs"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41800151",
+   "empirical": 0.96,
+   "tests_practice": 0.71,
+   "real_deployment": 0.05
+  }
+ }
+}

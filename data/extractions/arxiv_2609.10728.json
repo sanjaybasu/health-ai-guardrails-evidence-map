@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "not reported",
+ "sample_size": 1100,
+ "sample_unit": "benchmark cases (MedCalc-Bench Verified, 55 calculators)",
+ "models_evaluated": [
+  "Qwen2.5-7B",
+  "Qwen2.5-32B-AWQ"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Accuracy of clinical calculator results from direct model arithmetic versus solver hand-off",
+   "effect": "Direct model arithmetic reached 72.02% (7B) and 83.47% (32B); solver hand-off gave 75.31% (7B, not reliably better) and 90.53% (32B, +7.05 points).",
+   "quote": "With formulas and gold variables supplied and both routes reading the whole note, handing off to the solver is not a reliable advantage at 7B (75.31% against 72.02%, a paired +3.29 points with a 95% calculator-cluster interval of [-3.49, 10.38]) but is one at 32B (90.53% against 83.47%, +7.05 [0.47, 14.60], clear of zero).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Having the LLM write case-specific code that a restricted deterministic executor runs instead of doing arithmetic itself",
+  "Auditing benchmark calculator formulas against current clinical guidelines (16 of 55 flagged for version, use or coefficient concerns)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2609.10728",
+ "screen": {
+  "id": "arxiv:2609.10728",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "deterministic code executor for LLM clinical calculations",
+  "user": "none",
+  "reason": "Empirical benchmark evaluating whether handing arithmetic off to a deterministic Python executor/solver safeguards against LLM calculation errors in clinical calculator tasks compared to direct LLM generation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "code execution guardrail for clinical calculations"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2609.10728",
+   "empirical": 0.93,
+   "tests_practice": 0.39,
+   "real_deployment": 0.03
+  }
+ }
+}

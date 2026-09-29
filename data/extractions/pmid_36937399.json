@@ -1,0 +1,392 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Italy",
+   "sample_size": 111,
+   "sample_unit": "patients (7765 volumes of interest delineated)",
+   "models_evaluated": [
+    "MVision AI cloud-based deep learning auto-segmentation (v1.2.1 and research version for lymph nodes)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local external validation of CE/FDA-approved auto-segmentation against expert contours and similarity thresholds",
+     "effect": "Unedited MV contours needed adjustment for many OARs; median DSC of adjusted versus MV contours was above 0.8 for all organs except esophagus and glottis in H&N; DSC and MDA thresholds (0.8, 3 mm) used.",
+     "quote": "In this study, we evaluated the performance of a DL-based auto-segmentation algorithm on local data, representing an external validation."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Contouring time and inter-observer agreement with versus without AI assistance",
+     "effect": "Median manual contouring 25.0 min versus 12.3 min for retrieving and editing DL contours (p<0.001); manually adjusted DL contours showed better inter-RO agreement than manual ones.",
+     "quote": "The overall time for retrieving VOIs and their modification was 12.3 minutes (1.9-48.8), resulting in statistically significantly lower than that of the manual contouring (p<0.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of DL auto-contours and DL-assisted contours versus manual expert contours on same CT data",
+     "effect": "DSC of adjusted MV contours statistically significantly higher than manual ones overall; median DSC 0.99/0.98 versus 0.83/0.81 by slice thickness.",
+     "quote": "Overall, the DSC values obtained in the MD&MV subgroup were statistically significantly higher than MD one."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "DSC performance across scanners, slice thicknesses and contrast use",
+     "effect": "DSC of adjusted contours higher than manual irrespective of slice thickness, scanner, and contrast; slight but significant DSC drop from 0.99 to 0.98 with thicker slices in adjusted group.",
+     "quote": "Also, in these subsets of patients, the DSC values obtained in the MD&MV subgroup were statistically significantly higher than MD one, irrespective of slice thickness and CT scanner (see Supplementary Material Figures S1, S2 )."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI segmentation failures or missed structures requiring clinician correction",
+     "effect": "MV did not delineate a maxilla, two penile bulbs, four seminal vesicles, one femoral head, and three lenses; many OARs needed manual adjustment; only unusual anatomy affected.",
+     "quote": "MV generally delineated all the planned VOIs reported in Table 1 with few exceptions: a whole maxilla, two penile bulbs, four seminal vesicles, one femoral head, and three lenses."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiation oncologist satisfaction with the tool on Likert scale and correlation with time saved",
+     "effect": "44% rated 4 and 43% rated 5; satisfaction correlated with time saved (p<0.001); scores higher for seniors than juniors (p=0.01).",
+     "quote": "Overall, the system was generally appreciated by ROs, with 44% of vote 4 (well done) and 43% of vote 5 (very well done) correlated with the spared time for the delineation correction after MV automatic contouring (p<0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Building a multi-expert contour dataset and QA platform to commission auto-segmentation tools"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Italy",
+   "sample_size": 7765,
+   "sample_unit": "VOIs from 111 patients",
+   "models_evaluated": [
+    "MVision"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predeployment external validation",
+     "effect": "111 patients/7765 VOIs across 6 sites; AI+correction took 12.3 vs manual 25.0 minutes (p<0.001), with 44% vote 4 and 43% vote 5.",
+     "quote": "The application of the DL-tool resulted satisfactory, especially in complex delineation cases, improving the ROs inter-agreement of delineated VOIs and saving time."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local historical CT validation",
+     "effect": "Random local cancer cases; CT from 2 scanners; rV within 10% significantly increased after manual modification for most organs.",
+     "quote": "The number of OARs with rV within 10% (compared to the VOIs delineated by MV) significantly increased after the manual modification of MV VOIs for most organs ( Figure 4 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "altered-anatomy segmentation failures",
+     "effect": "MV missed a whole maxilla, 2 penile bulbs, 4 seminal vesicles, 1 femoral head, and 3 lenses.",
+     "quote": "MV generally delineated all the planned VOIs reported in Table 1 with few exceptions: a whole maxilla, two penile bulbs, four seminal vesicles, one femoral head, and three lenses."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician-plus-AI contouring time",
+     "effect": "Median manual contouring 25.0 minutes (8.0-115.0); retrieving and modification 12.3 minutes (1.9-48.8), p<0.001.",
+     "quote": "The overall time for retrieving VOIs and their modification was 12.3 minutes (1.9-48.8), resulting in statistically significantly lower than that of the manual contouring (p<0.001)."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinical review of auto-contours",
+     "effect": "Many OARs required adjustment; manual adjustment statistically significantly increased DSC; MD&MV median DSC >0.8 except H&N esophagus/glottis.",
+     "quote": "The manual adjustment of MV VOIs statistically significantly increases the DSC values (i.e., comparing the DSC between MD&MV and MV VOIs and the DSC between MD and MV VOIs)."
+    },
+    {
+     "rec_id": "R521",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician acceptance and burden",
+     "effect": "44% voted 4 (well done), 43% voted 5 (very well done); appreciation correlated with saved correction time (p<0.001).",
+     "quote": "Overall, the system was generally appreciated by ROs, with 44% of vote 4 (well done) and 43% of vote 5 (very well done) correlated with the spared time for the delineation correction after MV automatic contouring (p<0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Italy",
+   "sample_size": 111,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "MVision"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-observer agreement of delineated volumes of interest",
+     "effect": "Manually adjusted AI volumes showed better inter-agreement than manually segmented volumes alone, with retrieving and modification time of 12.3 minutes versus 25.0 minutes for manual contouring (p<0.001).",
+     "quote": "The relative volume differences and similarity indexes suggested a better inter-agreement of manually adjusted DL-based VOIs than manually segmented ones."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Italy",
+ "sample_unit": "patients (7765 volumes of interest delineated)",
+ "sample_size": 111,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "MVision",
+  "MVision AI cloud-based deep learning auto-segmentation (v1.2.1 and research version for lymph nodes)"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local external validation of CE/FDA-approved auto-segmentation against expert contours and similarity thresholds",
+   "effect": "Unedited MV contours needed adjustment for many OARs; median DSC of adjusted versus MV contours was above 0.8 for all organs except esophagus and glottis in H&N; DSC and MDA thresholds (0.8, 3 mm) used.",
+   "quote": "In this study, we evaluated the performance of a DL-based auto-segmentation algorithm on local data, representing an external validation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Contouring time and inter-observer agreement with versus without AI assistance",
+   "effect": "Median manual contouring 25.0 min versus 12.3 min for retrieving and editing DL contours (p<0.001); manually adjusted DL contours showed better inter-RO agreement than manual ones.",
+   "quote": "The overall time for retrieving VOIs and their modification was 12.3 minutes (1.9-48.8), resulting in statistically significantly lower than that of the manual contouring (p<0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of DL auto-contours and DL-assisted contours versus manual expert contours on same CT data",
+   "effect": "DSC of adjusted MV contours statistically significantly higher than manual ones overall; median DSC 0.99/0.98 versus 0.83/0.81 by slice thickness.",
+   "quote": "Overall, the DSC values obtained in the MD&MV subgroup were statistically significantly higher than MD one.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "DSC performance across scanners, slice thicknesses and contrast use",
+   "effect": "DSC of adjusted contours higher than manual irrespective of slice thickness, scanner, and contrast; slight but significant DSC drop from 0.99 to 0.98 with thicker slices in adjusted group.",
+   "quote": "Also, in these subsets of patients, the DSC values obtained in the MD&MV subgroup were statistically significantly higher than MD one, irrespective of slice thickness and CT scanner (see Supplementary Material Figures S1, S2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R145",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Radiation oncologist satisfaction with the tool on Likert scale and correlation with time saved",
+   "effect": "44% rated 4 and 43% rated 5; satisfaction correlated with time saved (p<0.001); scores higher for seniors than juniors (p=0.01).",
+   "quote": "Overall, the system was generally appreciated by ROs, with 44% of vote 4 (well done) and 43% of vote 5 (very well done) correlated with the spared time for the delineation correction after MV automatic contouring (p<0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-observer agreement of delineated volumes of interest",
+   "effect": "Manually adjusted AI volumes showed better inter-agreement than manually segmented volumes alone, with retrieving and modification time of 12.3 minutes versus 25.0 minutes for manual contouring (p<0.001).",
+   "quote": "The relative volume differences and similarity indexes suggested a better inter-agreement of manually adjusted DL-based VOIs than manually segmented ones.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R521",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Building a multi-expert contour dataset and QA platform to commission auto-segmentation tools"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36937399",
+ "screen": {
+  "id": "pmid:36937399",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "independent local validation with clinician correction of auto-contours before implementation",
+  "user": "clinician_or_staff",
+  "reason": "Empirical pre-implementation external validation and clinician evaluation of an approved commercial deep learning contouring tool compared to manual workflows.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation before clinical implementation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36937399",
+   "empirical": 0.97,
+   "tests_practice": 0.56,
+   "real_deployment": 0.35
+  }
+ }
+}

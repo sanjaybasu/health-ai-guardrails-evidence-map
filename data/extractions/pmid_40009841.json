@@ -1,0 +1,391 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Italy",
+   "sample_size": 5344,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "logistic regression",
+    "support vector machine",
+    "random forest",
+    "XGBoost",
+    "decision tree",
+    "Partial Decision Rule (cautious decision rule)",
+    "Mindray SVM",
+    "COMPOSER"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External validation performance across cohorts with distribution shifts versus internal validation",
+     "effect": "Internal AUC 0.91-0.98; external AUC 0.75-0.95 across 5 external cohorts; performance worsened vs internal but differences not significant.",
+     "quote": "While the performance of all models worsened compared with the internal test sets, the differences were not significant, as shown in Figure S11 in Multimedia Appendix 1 ."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ML models compared against baseline biomarkers and prior ML models on same internal test data",
+     "effect": "XGB, RF, and LR significantly outperformed MDW, CRP, Sepsis Index, COMPOSER, and Mindray SVM baselines across all decision thresholds.",
+     "quote": "XGB, RF, and LR significantly outperformed all the baseline comparison methods (ie, MDW [ 37 ], CRP [ 44 ], Sepsis Index [ 45 ], COMPOSER [ 25 ], as well as the SVM model developed in the study by Aguirre and Urrechaga [ 31 ]; Figures 1 and 2 ; Figure S1 in Multimedia Appendix 1 ) and did so across all possible decision thresholds."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance under dataset shift (covariate, label, missingness) between training and external cohorts",
+     "effect": "Good generalization overall, but XGB had low sNB on UD-ED (most dissimilar to training set) and low PPV and sNB on OGSA-ICU (missing MDW, second most dissimilar).",
+     "quote": "The XGB model achieved acceptable-to-excellent performance on all external datasets and with respect to all metrics, except for the sNB on the UD-ED: this dataset was, among the external validation datasets, the most dissimilar to the internal training set (PA-ED)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model performance reported separately across five external sites/settings and analyzers",
+     "effect": "Performance varied by site: acceptable-to-excellent on external cohorts, but low PPV and sNB in OGSA-ICU with a different analyzer and no MDW.",
+     "quote": "The XGB-based system achieved low PPV and sNB on the OGSA-ICU dataset, as also shown in Figure S13 in Multimedia Appendix 1 , which was also the second most dissimilar to the internal training set (PA-ED)."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance when a key input (MDW) was entirely missing, using imputation",
+     "effect": "Lack of MDW (100% missing) led to a large decrease in PPV despite imputation, though overall performance was acceptable.",
+     "quote": "While, indeed, the obtained results show that acceptable results could be obtained even in the presence of significant missingness shift, the lack of MDW led to a relevant drop in performance, thus highlighting the need for collecting complete data in practical scenarios."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Cautious classifiers (abstention when confidence uncertain) versus standard models on sensitivity, PPV, NPV",
+     "effect": "For XGB, PDR, RF, LR (except OGSA-ICU), cautious classification improved both sensitivity and PPV with equal or better NPV; coverage >50% in all cases and >70% in all but 3.",
+     "quote": "For XGB, PDR, RF, and LR (except for the OGSA-ICU dataset), cautious classification led to an improvement in both sensitivity and PPV and equivalent or better performance in terms of NPV."
+    }
+   ],
+   "unlisted_practices": [
+    "Cautious classification (abstention below confidence threshold) to control error rates",
+    "Derivation of interpretable decision rules from decision trees with clinical experts",
+    "Imputation model for missing MDW input in settings lacking the biomarker"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Italy",
+   "sample_size": 5344,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "logistic regression",
+    "support vector machine",
+    "random forest",
+    "extreme gradient boosting",
+    "decision tree",
+    "Partial Decision Rule",
+    "Mindray SVM",
+    "MDW threshold",
+    "CRP threshold",
+    "Sepsis Index",
+    "COMPOSER"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "internal and external sepsis detection performance",
+     "effect": "Internal AUC 0.91-0.98; external AUC 0.75-0.95 across validation datasets.",
+     "quote": "The developed models achieved good performance on the internal validation (area under the receiver operating characteristic curve between 0.91 and 0.98), as well as consistent generalization performance across the external validation datasets (area under the receiver operating characteristic curve between 0.75 and 0.95), outperforming baseline biomarkers and state-of-the-art ML models for sepsis detection."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "robustness to missingness and distribution shifts",
+     "effect": "External validation was generally acceptable, but missing MDW caused a relevant performance drop, especially PPV.",
+     "quote": "While, indeed, the obtained results show that acceptable results could be obtained even in the presence of significant missingness shift, the lack of MDW led to a relevant drop in performance, thus highlighting the need for collecting complete data in practical scenarios."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate models versus biomarker and ML baselines",
+     "effect": "XGB, RF, and LR significantly outperformed MDW, CRP, Sepsis Index, COMPOSER, and Mindray SVM across all thresholds.",
+     "quote": "XGB, RF, and LR significantly outperformed all the baseline comparison methods (ie, MDW [ 37 ], CRP [ 44 ], Sepsis Index [ 45 ], COMPOSER [ 25 ], as well as the SVM model developed in the study by Aguirre and Urrechaga [ 31 ]; Figures 1 and 2 ; Figure S1 in Multimedia Appendix 1 ) and did so across all possible decision thresholds."
+    }
+   ],
+   "unlisted_practices": [
+    "Cautious classification that abstains from low-confidence sepsis predictions",
+    "Interpretable partial decision rule model derived from machine learning models",
+    "Imputation-based non-MDW system for settings lacking monocyte distribution width"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Italy",
+   "sample_size": 5344,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Support Vector Machine",
+    "Random Forest",
+    "XGBoost",
+    "Decision Tree",
+    "Partial Decision Rule",
+    "Mindray SVM",
+    "COMPOSER"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "en"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "discrimination across external sites and acquisition devices",
+     "effect": "AUC was 0.91-0.98 on internal validation versus 0.75-0.95 across external validation cohorts, with performance dropping substantially on the cohort using an analyzer lacking MDW",
+     "quote": "The developed models achieved good performance on the internal validation (area under the receiver operating characteristic curve between 0.91 and 0.98), as well as consistent generalization performance across the external validation datasets (area under the receiver operating characteristic curve between 0.75 and 0.95), outperforming baseline biomarkers and state-of-the-art ML models for sepsis detection."
+    }
+   ],
+   "unlisted_practices": [
+    "Cautious classification / model abstention based on confidence thresholding to control error rates"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Italy",
+ "sample_unit": "patients",
+ "sample_size": 5344,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "en"
+ ],
+ "models_evaluated": [
+  "COMPOSER",
+  "CRP threshold",
+  "Decision Tree",
+  "Logistic Regression",
+  "MDW threshold",
+  "Mindray SVM",
+  "Partial Decision Rule",
+  "Partial Decision Rule (cautious decision rule)",
+  "Random Forest",
+  "Sepsis Index",
+  "Support Vector Machine",
+  "XGBoost",
+  "decision tree",
+  "extreme gradient boosting",
+  "logistic regression",
+  "random forest",
+  "support vector machine"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External validation performance across cohorts with distribution shifts versus internal validation",
+   "effect": "Internal AUC 0.91-0.98; external AUC 0.75-0.95 across 5 external cohorts; performance worsened vs internal but differences not significant.",
+   "quote": "While the performance of all models worsened compared with the internal test sets, the differences were not significant, as shown in Figure S11 in Multimedia Appendix 1 .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "ML models compared against baseline biomarkers and prior ML models on same internal test data",
+   "effect": "XGB, RF, and LR significantly outperformed MDW, CRP, Sepsis Index, COMPOSER, and Mindray SVM baselines across all decision thresholds.",
+   "quote": "XGB, RF, and LR significantly outperformed all the baseline comparison methods (ie, MDW [ 37 ], CRP [ 44 ], Sepsis Index [ 45 ], COMPOSER [ 25 ], as well as the SVM model developed in the study by Aguirre and Urrechaga [ 31 ]; Figures 1 and 2 ; Figure S1 in Multimedia Appendix 1 ) and did so across all possible decision thresholds.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance reported separately across five external sites/settings and analyzers",
+   "effect": "Performance varied by site: acceptable-to-excellent on external cohorts, but low PPV and sNB in OGSA-ICU with a different analyzer and no MDW.",
+   "quote": "The XGB-based system achieved low PPV and sNB on the OGSA-ICU dataset, as also shown in Figure S13 in Multimedia Appendix 1 , which was also the second most dissimilar to the internal training set (PA-ED).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Performance under dataset shift (covariate, label, missingness) between training and external cohorts",
+   "effect": "Good generalization overall, but XGB had low sNB on UD-ED (most dissimilar to training set) and low PPV and sNB on OGSA-ICU (missing MDW, second most dissimilar).",
+   "quote": "The XGB model achieved acceptable-to-excellent performance on all external datasets and with respect to all metrics, except for the sNB on the UD-ED: this dataset was, among the external validation datasets, the most dissimilar to the internal training set (PA-ED).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R509",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance when a key input (MDW) was entirely missing, using imputation",
+   "effect": "Lack of MDW (100% missing) led to a large decrease in PPV despite imputation, though overall performance was acceptable.",
+   "quote": "While, indeed, the obtained results show that acceptable results could be obtained even in the presence of significant missingness shift, the lack of MDW led to a relevant drop in performance, thus highlighting the need for collecting complete data in practical scenarios.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "robustness to missingness and distribution shifts",
+   "effect": "External validation was generally acceptable, but missing MDW caused a relevant performance drop, especially PPV.",
+   "quote": "While, indeed, the obtained results show that acceptable results could be obtained even in the presence of significant missingness shift, the lack of MDW led to a relevant drop in performance, thus highlighting the need for collecting complete data in practical scenarios.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Cautious classification (abstention below confidence threshold) to control error rates",
+  "Cautious classification / model abstention based on confidence thresholding to control error rates",
+  "Cautious classification that abstains from low-confidence sepsis predictions",
+  "Derivation of interpretable decision rules from decision trees with clinical experts",
+  "Imputation model for missing MDW input in settings lacking the biomarker",
+  "Imputation-based non-MDW system for settings lacking monocyte distribution width",
+  "Interpretable partial decision rule model derived from machine learning models"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40009841",
+ "screen": {
+  "id": "pmid:40009841",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "cautious classification (abstention) and explainability for robustness to distribution shift",
+  "user": "none",
+  "reason": "The study develops and externally validates a sepsis prediction model across multiple hospital datasets experiencing distribution shifts, specifically testing the safeguard practice of cautious classification (abstaining from uncertain predictions) to maintain reliability under distribution shift.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "cautious classification with model abstention"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40009841",
+   "empirical": 0.97,
+   "tests_practice": 0.23,
+   "real_deployment": 0.07
+  }
+ }
+}

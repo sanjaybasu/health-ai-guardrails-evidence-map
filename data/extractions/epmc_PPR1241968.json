@@ -1,0 +1,359 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 42,
+   "sample_unit": "tracked physician complaint cases",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Binary check pass rate and fabrication failures with deterministic post-processing rules",
+     "effect": "In an ablation on 25 cases, 166 deterministic post-processing rules improved binary check pass rate by 11.7 percentage points and eliminated all 6 fabrication-class failures.",
+     "quote": "We initially deployed 166 such rules across 6 profiles; in a controlled ablation on 25 cases (  n = 25, drawn from the multi-site case pool), these rules improved binary check pass rate by 11.7 per-centage points and eliminated all 6 fabrication-class failures."
+    },
+    {
+     "rec_id": "R548",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Regressions after verified updates to production documentation agents",
+     "effect": "Closed-loop verification resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations; unverified prompt optimization of an assembly agent produced 18\u201328 point regressions.",
+     "quote": "A closed-loop quality system deployed across thirteen US hospital sites resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations, while a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s;  n = 100 pre,  n = 100 post)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Inter-rater agreement among physician raters of note preference",
+     "effect": "Cohen's \u03ba = 0.028 (95% CI \u22120.30 to 0.36) between two board-certified emergency physicians on 35 overlapping pairs; consistent with no agreement above chance.",
+     "quote": "Third, a calibration study expanding from one physician rater to three (  n = 84 ratings across 36 blind pairs) found that the physician-preference signal is rater-fragile at this sample size: between two board-certified emergency physicians, Cohen\u2019s  \u03ba = 0.028 with 95% CI [\u22120.30, 0.36] on  n = 35 overlapping pairs."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Correlation of binary check scores with physician preference",
+     "effect": "Notes scoring 90%+ on binary checks were rejected by physicians; \u03c1 = \u22120.077, p = 0.652, n = 36.",
+     "quote": "Second, the same binary check instrument produces opposite outcomes depending on how it is used: as an optimization target, it yields notes scoring 90%+ that physicians reject (  \u03c1 = \u22120.077,  p = 0.652,  n = 36; not statistically significant); as a deployment gate asking \u201cdid this specific fabrication stop?\u201d, it provides rater-invariant commit decisions."
+    }
+   ],
+   "unlisted_practices": [
+    "Replacing LLM assembly agents with deterministic templates plus sandboxed scripting",
+    "Per-physician pairwise preference tracking as a monitoring signal"
+   ]
+  },
+  "openai": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 42,
+   "sample_unit": "tracked cases",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Interrater agreement on physician preference for generated documentation",
+     "effect": "Between two board-certified emergency physicians, Cohen\u2019s \u03ba = 0.028 with 95% CI [\u22120.30, 0.36] on n = 35 overlapping pairs, indicating rater-fragile preference judgments.",
+     "quote": "Third, a calibration study expanding from one physician rater to three (  n = 84 ratings across 36 blind pairs) found that the physician-preference signal is rater-fragile at this sample size: between two board-certified emergency physicians, Cohen\u2019s  \u03ba = 0.028 with 95% CI [\u22120.30, 0.36] on  n = 35 overlapping pairs."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Alignment between binary check scores and physician acceptance",
+     "effect": "Notes scoring 90%+ were rejected by physicians; association with physician preference was not statistically significant (\u03c1 = \u22120.077, p = 0.652, n = 36).",
+     "quote": "Second, the same binary check instrument produces opposite outcomes depending on how it is used: as an optimization target, it yields notes scoring 90%+ that physicians reject (  \u03c1 = \u22120.077,  p = 0.652,  n = 36; not statistically significant); as a deployment gate asking \u201cdid this specific fabrication stop?\u201d, it provides rater-invariant commit decisions."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance regressions following assembly-agent prompt optimization",
+     "effect": "Four consecutive optimization attempts on one assembly agent produced 18\u201328 point regressions, whereas prompt optimization worked on reasoning agents.",
+     "quote": "In our pipeline, prompt optimization worked on the reasoning agents but did not work on the assembly agent: four consecutive optimization attempts on one assembly agent produced 18\u201328 point regressions."
+    },
+    {
+     "rec_id": "R382",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Physician complaint resolution and regressions during closed-loop quality improvement",
+     "effect": "Across thirteen US hospital sites, the closed-loop system resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations.",
+     "quote": "A closed-loop quality system deployed across thirteen US hospital sites resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations, while a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s;  n = 100 pre,  n = 100 post)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Binary check pass rate and fabrication failures with deterministic post-processing",
+     "effect": "166 rules across 6 profiles improved binary check pass rate by 11.7 percentage points and eliminated all 6 fabrication-class failures in a controlled ablation on 25 cases.",
+     "quote": "We initially deployed 166 such rules across 6 profiles; in a controlled ablation on 25 cases (  n = 25, drawn from the multi-site case pool), these rules improved binary check pass rate by 11.7 per-centage points and eliminated all 6 fabrication-class failures."
+    }
+   ],
+   "unlisted_practices": [
+    "Replace assembly-only LLM calls with deterministic templates and sandboxed scripting that arrange upstream agent outputs."
+   ]
+  },
+  "gemini": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 100,
+   "sample_unit": "cases",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "H+P trace latency",
+     "effect": "cut latency from 19.6 s to 10.8 s (-8.8 s, 95% CI [-10.5, -7.1] s)",
+     "quote": "A closed-loop quality system deployed across thirteen US hospital sites resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations, while a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s;  n = 100 pre,  n = 100 post)."
+    },
+    {
+     "rec_id": "R382",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "regressions after complaint resolution",
+     "effect": "resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations",
+     "quote": "A closed-loop quality system deployed across thirteen US hospital sites resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations, while a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s;  n = 100 pre,  n = 100 post)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "binary check pass rate and fabrications",
+     "effect": "improved pass rate by 11.7 percentage points and eliminated all 6 fabrication-class failures",
+     "quote": "We initially deployed 166 such rules across 6 profiles; in a controlled ablation on 25 cases (  n = 25, drawn from the multi-site case pool), these rules improved binary check pass rate by 11.7 per-centage points and eliminated all 6 fabrication-class failures."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "inter-rater agreement on preferences",
+     "effect": "Cohen's kappa was 0.028 with 95% CI [-0.30, 0.36] on 35 overlapping pairs, indicating no agreement above chance",
+     "quote": "Third, a calibration study expanding from one physician rater to three (  n = 84 ratings across 36 blind pairs) found that the physician-preference signal is rater-fragile at this sample size: between two board-certified emergency physicians, Cohen\u2019s  \u03ba = 0.028 with 95% CI [\u22120.30, 0.36] on  n = 35 overlapping pairs."
+    }
+   ],
+   "unlisted_practices": [
+    "Using binary checks as deployment gates rather than optimization targets",
+    "Differentiating optimization strategies for reasoning agents versus assembly agents"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "tracked physician complaint cases",
+ "sample_size": 42,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [],
+ "links": [
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Binary check pass rate and fabrication failures with deterministic post-processing rules",
+   "effect": "In an ablation on 25 cases, 166 deterministic post-processing rules improved binary check pass rate by 11.7 percentage points and eliminated all 6 fabrication-class failures.",
+   "quote": "We initially deployed 166 such rules across 6 profiles; in a controlled ablation on 25 cases (  n = 25, drawn from the multi-site case pool), these rules improved binary check pass rate by 11.7 per-centage points and eliminated all 6 fabrication-class failures.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-rater agreement among physician raters of note preference",
+   "effect": "Cohen's \u03ba = 0.028 (95% CI \u22120.30 to 0.36) between two board-certified emergency physicians on 35 overlapping pairs; consistent with no agreement above chance.",
+   "quote": "Third, a calibration study expanding from one physician rater to three (  n = 84 ratings across 36 blind pairs) found that the physician-preference signal is rater-fragile at this sample size: between two board-certified emergency physicians, Cohen\u2019s  \u03ba = 0.028 with 95% CI [\u22120.30, 0.36] on  n = 35 overlapping pairs.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Correlation of binary check scores with physician preference",
+   "effect": "Notes scoring 90%+ on binary checks were rejected by physicians; \u03c1 = \u22120.077, p = 0.652, n = 36.",
+   "quote": "Second, the same binary check instrument produces opposite outcomes depending on how it is used: as an optimization target, it yields notes scoring 90%+ that physicians reject (  \u03c1 = \u22120.077,  p = 0.652,  n = 36; not statistically significant); as a deployment gate asking \u201cdid this specific fabrication stop?\u201d, it provides rater-invariant commit decisions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R382",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Physician complaint resolution and regressions during closed-loop quality improvement",
+   "effect": "Across thirteen US hospital sites, the closed-loop system resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations.",
+   "quote": "A closed-loop quality system deployed across thirteen US hospital sites resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations, while a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s;  n = 100 pre,  n = 100 post).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R548",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Regressions after verified updates to production documentation agents",
+   "effect": "Closed-loop verification resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations; unverified prompt optimization of an assembly agent produced 18\u201328 point regressions.",
+   "quote": "A closed-loop quality system deployed across thirteen US hospital sites resolved physician complaints with zero regressions on 42 tracked cases across 1,089 optimization iterations, while a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s;  n = 100 pre,  n = 100 post).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance regressions following assembly-agent prompt optimization",
+   "effect": "Four consecutive optimization attempts on one assembly agent produced 18\u201328 point regressions, whereas prompt optimization worked on reasoning agents.",
+   "quote": "In our pipeline, prompt optimization worked on the reasoning agents but did not work on the assembly agent: four consecutive optimization attempts on one assembly agent produced 18\u201328 point regressions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Differentiating optimization strategies for reasoning agents versus assembly agents",
+  "Per-physician pairwise preference tracking as a monitoring signal",
+  "Replace assembly-only LLM calls with deterministic templates and sandboxed scripting that arrange upstream agent outputs.",
+  "Replacing LLM assembly agents with deterministic templates plus sandboxed scripting",
+  "Using binary checks as deployment gates rather than optimization targets"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "epmc:PPR1241968",
+ "screen": {
+  "id": "epmc:PPR1241968",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic",
+   "speech_ambient"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "closed-loop quality assurance and deterministic output guardrails/gates",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study evaluating an active real-world deployment across 13 hospitals testing closed-loop quality assurance, deterministic post-processing rules/gates, and monitoring protocols for clinical AI documentation.",
+  "jev": {
+   "id": "epmc:PPR1241968",
+   "empirical": 0.93,
+   "tests_practice": 0.82,
+   "real_deployment": 0.91
+  }
+ }
+}

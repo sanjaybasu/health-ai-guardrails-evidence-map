@@ -1,0 +1,438 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 28369,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "VAE-kNN",
+    "logistic regression with elastic net",
+    "random forest",
+    "multinomial Naive Bayes",
+    "kNN",
+    "gradient boosting machine"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R122",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance and behavior during 77-day silent deployment on live EHR data",
+     "effect": "Overall AUC fell from 0.80 (test) to 0.76 (production), delta \u22120.04; calibration was maintained; silent deployment revealed an EHR data feed outage before clinical use.",
+     "quote": "The reduced number of visits to the ED may have been a driving factor in our discrimination performance dropping slightly, on average, across the production assessment period (Fig. 4e )."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of data pipeline failures via prediction volume and PSI monitoring",
+     "effect": "Leading indicators (prediction volume drop, PSI spike) detected a 2-week EHR API/data feed outage causing incomplete inputs; issue quickly resolved; would likely not be caught by performance monitoring alone.",
+     "quote": "We note that this issue would likely not have been noticed if we were monitoring for model performance alone."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Subgroup AUC during production versus test",
+     "effect": "Subgroup production AUC 0.74\u20130.82; Hispanic/Latino AUC fell from 0.81 to 0.71 (\u22120.10), breast \u22120.07, Black \u22120.06, while other groups changed little.",
+     "quote": "Performance of the VAE-kNN algorithm is exceptional (Area under the receiver-operating characteristics, AUC = 0.80) and remains stable across demographic and disease groups over the production period (AUC 0.74-0.82)."
+    }
+   ],
+   "unlisted_practices": [
+    "Use of leading indicators (prediction volume, data drift, prediction drift) to monitor model health before ground-truth outcomes are available"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 184138,
+   "sample_unit": "EHR observations in training and held-out testing cohorts",
+   "models_evaluated": [
+    "Variational autoencoder k-nearest neighbors (VAE-kNN)",
+    "Logistic regression with elastic net penalty",
+    "Random forest",
+    "Multinomial Naive Bayes",
+    "k-nearest neighbors without VAE encoding",
+    "Gradient boosting machine"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Discrimination and calibration during silent prospective validation",
+     "effect": "Overall AUC decreased from 0.80 [0.79, 0.80] in testing to 0.76 [0.74, 0.77] in production (Delta \u22120.04); calibration was maintained.",
+     "quote": "The reduced number of visits to the ED may have been a driving factor in our discrimination performance dropping slightly, on average, across the production assessment period (Fig. 4e )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Held-out discrimination across demographic and clinical subgroups",
+     "effect": "Test AUCs: male 0.79; female 0.79; White/Caucasian 0.79; Black/African American 0.81; Asian 0.77; Hispanic/Latino 0.81; Not Hispanic/Latino 0.79. Authors reported equitable performance.",
+     "quote": "The VAE- k NN performed equitably across all sensitive groups (Fig. 2c )."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of EHR data-feed failures through data-health monitoring",
+     "effect": "Monitoring detected a 2-week period of reduced prediction volume caused by EHR API connection issues during the 77-day production assessment.",
+     "quote": "We were able to detect a 2-week period in which prediction volume was far lower due to issues with the application processing interface (API) connection to the EHR."
+    },
+    {
+     "rec_id": "R382",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Resolution of identified data-feed failures and recovery of data-health metrics",
+     "effect": "EHR data-feed outages during the weeks of May 16th and May 23rd, 2022 were investigated and resolved; data-health metrics returned to expected ranges.",
+     "quote": "Using the data health monitors in place and collaboration between the data teams at both institutions, the issues were quickly resolved, which is reflected in our data health metrics returning to their expected ranges."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 28369,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "VAE-kNN",
+    "logistic regression",
+    "random forest",
+    "multinomial Naive Bayes",
+    "gradient boosting machine",
+    "kNN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Observation of model behavior",
+     "effect": "Validated production model was subjected to a 77-day simulated deployment on live data without outputs fed back to clinical teams.",
+     "quote": "Following successful model training and validation we put our validated production model into a simulated deployment lasting 77 days where it was exposed to live data, but model outputs were not fed back to clinical teams."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Demographic subgroup monitoring",
+     "effect": "Monitored AUC overall performance and for demographic subgroups on a weekly basis as patient outcomes became known.",
+     "quote": "After the true outcomes of patients were known we measured AUC overall performance as well as for the demographic subgroups on a weekly basis."
+    },
+    {
+     "rec_id": "R319",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Subgroup parity threshold",
+     "effect": "Monitored fairness using a predefined rule to ensure the AUC in every demographic subgroup remained within 80% of all other subgroups.",
+     "quote": "Similarly, the 4/5th rule is applied to ensure that the AUC in each demographic subgroup is within 80% of all others."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of missing predictions",
+     "effect": "Continuous monitoring identified a 2-week period with significantly lower prediction volume caused by EHR API connection issues.",
+     "quote": "We were able to detect a 2-week period in which prediction volume was far lower due to issues with the application processing interface (API) connection to the EHR."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of pipeline failure",
+     "effect": "Monitoring data quality and drift successfully revealed that an outage in EHR data feeds was causing corrupted inputs.",
+     "quote": "An investigation found that data quality had dropped due to outages in EHR data feeds that the presented ED risk model relies upon."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automated incident alerts",
+     "effect": "Established automated alerts that triggered investigations whenever data drift or performance metrics breached their acceptable ranges.",
+     "quote": "Breaches in our data drift and performance metrics resulted in automated alerts notifying the Ronin team to investigate and resolve any issues that might affect model performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Differentiating between leading indicators (e.g., prediction volume, data drift) and lagging indicators (e.g., AUC, calibration) to detect issues before ground truth labels are available.",
+    "Using SHAP values and k-nearest neighbor visualizations to provide visual explainability of individual risk predictions to clinicians."
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 28369,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Gradient boosting machine",
+  "Logistic regression with elastic net penalty",
+  "Multinomial Naive Bayes",
+  "Random forest",
+  "VAE-kNN",
+  "Variational autoencoder k-nearest neighbors (VAE-kNN)",
+  "gradient boosting machine",
+  "k-nearest neighbors without VAE encoding",
+  "kNN",
+  "logistic regression",
+  "logistic regression with elastic net",
+  "multinomial Naive Bayes",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of data pipeline failures via prediction volume and PSI monitoring",
+   "effect": "Leading indicators (prediction volume drop, PSI spike) detected a 2-week EHR API/data feed outage causing incomplete inputs; issue quickly resolved; would likely not be caught by performance monitoring alone.",
+   "quote": "We note that this issue would likely not have been noticed if we were monitoring for model performance alone.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R122",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance and behavior during 77-day silent deployment on live EHR data",
+   "effect": "Overall AUC fell from 0.80 (test) to 0.76 (production), delta \u22120.04; calibration was maintained; silent deployment revealed an EHR data feed outage before clinical use.",
+   "quote": "The reduced number of visits to the ED may have been a driving factor in our discrimination performance dropping slightly, on average, across the production assessment period (Fig. 4e ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Subgroup AUC during production versus test",
+   "effect": "Subgroup production AUC 0.74\u20130.82; Hispanic/Latino AUC fell from 0.81 to 0.71 (\u22120.10), breast \u22120.07, Black \u22120.06, while other groups changed little.",
+   "quote": "Performance of the VAE-kNN algorithm is exceptional (Area under the receiver-operating characteristics, AUC = 0.80) and remains stable across demographic and disease groups over the production period (AUC 0.74-0.82).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration during silent prospective validation",
+   "effect": "Overall AUC decreased from 0.80 [0.79, 0.80] in testing to 0.76 [0.74, 0.77] in production (Delta \u22120.04); calibration was maintained.",
+   "quote": "The reduced number of visits to the ED may have been a driving factor in our discrimination performance dropping slightly, on average, across the production assessment period (Fig. 4e ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Held-out discrimination across demographic and clinical subgroups",
+   "effect": "Test AUCs: male 0.79; female 0.79; White/Caucasian 0.79; Black/African American 0.81; Asian 0.77; Hispanic/Latino 0.81; Not Hispanic/Latino 0.79. Authors reported equitable performance.",
+   "quote": "The VAE- k NN performed equitably across all sensitive groups (Fig. 2c ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R382",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Resolution of identified data-feed failures and recovery of data-health metrics",
+   "effect": "EHR data-feed outages during the weeks of May 16th and May 23rd, 2022 were investigated and resolved; data-health metrics returned to expected ranges.",
+   "quote": "Using the data health monitors in place and collaboration between the data teams at both institutions, the issues were quickly resolved, which is reflected in our data health metrics returning to their expected ranges.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of missing predictions",
+   "effect": "Continuous monitoring identified a 2-week period with significantly lower prediction volume caused by EHR API connection issues.",
+   "quote": "We were able to detect a 2-week period in which prediction volume was far lower due to issues with the application processing interface (API) connection to the EHR.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Automated incident alerts",
+   "effect": "Established automated alerts that triggered investigations whenever data drift or performance metrics breached their acceptable ranges.",
+   "quote": "Breaches in our data drift and performance metrics resulted in automated alerts notifying the Ronin team to investigate and resolve any issues that might affect model performance.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R318",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R319",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Differentiating between leading indicators (e.g., prediction volume, data drift) and lagging indicators (e.g., AUC, calibration) to detect issues before ground truth labels are available.",
+  "Use of leading indicators (prediction volume, data drift, prediction drift) to monitor model health before ground-truth outcomes are available",
+  "Using SHAP values and k-nearest neighbor visualizations to provide visual explainability of individual risk predictions to clinicians."
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37349541",
+ "screen": {
+  "id": "pmid:37349541",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "proactive in-production drift and fairness monitoring",
+  "user": "clinician_or_staff",
+  "reason": "The study demonstrates and evaluates a proactive in-production monitoring process with predefined metrics during a simulated deployment / silent mode period exposed to live EHR data to detect data feed issues and track performance and equity.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "proactive in-production drift and data feed monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37349541",
+   "empirical": 0.95,
+   "tests_practice": 0.51,
+   "real_deployment": 0.84
+  }
+ }
+}

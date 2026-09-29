@@ -1,0 +1,81 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 43,
+ "sample_unit": "PICC-related queries",
+ "models_evaluated": [
+  "fine-tuned GPT-4o-mini (FT)",
+  "fine-tuned GPT-4o-mini + RAG",
+  "fine-tuned GPT-4o-mini + RAG + finite state machine (FSM)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Expert preference between fine-tuned model with and without RAG grounding",
+   "effect": "Model 2 (FT+RAG) did not differ from model 1 (FT only) in expert preference after Bonferroni correction; adding FSM (model 3) was preferred in 34/43 (79.1%) scenarios.",
+   "quote": "Pairwise McNemar tests showed model 3 was preferred significantly more often than model 1 and model 2 (both P<.001), while model 1 versus model 2 did not differ after Bonferroni correction.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Finite state machine-guided dialogue control layered on RAG to enforce structured consultation logic in a patient-facing chatbot"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42579604",
+ "screen": {
+  "id": "pmid:42579604",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "patient",
+  "reason": "The study conducts an ablation comparison testing whether adding retrieval-augmented generation (RAG) and finite state machine (FSM) dialogue guardrails to a fine-tuned LLM improves clinical acceptability for patient queries.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and dialogue state machine control"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42579604",
+   "empirical": 0.97,
+   "tests_practice": 0.33,
+   "real_deployment": 0.05
+  }
+ }
+}

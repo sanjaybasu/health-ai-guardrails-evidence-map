@@ -1,0 +1,134 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Not reported",
+ "sample_size": 1400,
+ "sample_unit": "cephalometric radiographs (400 ISBI 2015 + 1000 Aariz)",
+ "models_evaluated": [
+  "heatmap CNN (from scratch)",
+  "two-stage cascade",
+  "coordinate-regression Vision Transformer",
+  "pretrained ResNet-50"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Cross-dataset generalization drop in landmark error versus in-domain performance",
+   "effect": "In-domain MRE 2.47-3.04 mm (Aariz) and 4.12-5.55 mm (ISBI); cross-dataset error rose 155-426%; single-dataset accuracy substantially overstates clinical generalizability.",
+   "quote": "Single-dataset accuracy substantially overstates clinical generalizability, and the best in-domain architecture is not the most transferable, so in-domain leaderboards are an unreliable basis for selecting a model for clinical deployment; balanced multi-source training recovers most of the loss across the architectures tested.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Device-specific performance shift under leave-one-device-out evaluation",
+   "effect": "Leave-one-device-out revealed reproducible device-specific shift with held-out MRE 1.89-7.94 mm.",
+   "quote": "Leave-one-device-out revealed reproducible device-specific shift (held-out MRE 1.89-7.94 mm).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance degradation when test data differ from development data",
+   "effect": "Cross-domain errors were 15-44x the 0.53 mm inter-observer band; Generalization Drop 155-426%; A-point, B-point, Nasion, Menton exceeded 2 mm threshold out-of-domain.",
+   "quote": "A-point, B-point, Nasion, and Menton all exceeded the 2 mm clinical threshold out-of-domain, including points localized to sub-millimeter accuracy in-domain.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Effect of balanced multi-source joint training on cross-domain error gap",
+   "effect": "Balanced joint training reduced the cross-domain gap for all four architectures (both domains about 2.1-3.5 mm) without harming in-domain accuracy.",
+   "quote": "Balanced joint training reduced the cross-domain gap for all four architectures (both domains \u2248 2.1-3.5 mm) without harming in-domain accuracy.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Whether in-domain ranking of architectures predicts cross-domain ranking",
+   "effect": "Best in-domain model (from-scratch heatmap CNN, 2.47 mm) showed the largest drop; in-domain ranking did not predict cross-domain ranking.",
+   "quote": "The most accurate model in-domain (a from-scratch heatmap CNN, 2.47 mm) showed the largest drop, and every pretrained estimate fell below every from-scratch estimate (family means 248% vs. 380%): in-domain ranking did not predict cross-domain ranking.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Pretraining on large datasets to improve cross-domain transfer (mixed: halved error Aariz to ISBI, 7.73 vs 16.36 mm, but not in reverse)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42739157",
+ "screen": {
+  "id": "pmid:42739157",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study empirically tests how in-domain benchmarking fails to generalize across different clinical devices/datasets for cephalometric landmark detection, and evaluates multi-source training and pretraining strategies to mitigate cross-device/domain generalization drops before clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "multi-source balanced joint training and external cross-domain validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42739157",
+   "empirical": 0.96,
+   "tests_practice": 0.25,
+   "real_deployment": 0.03
+  }
+ }
+}

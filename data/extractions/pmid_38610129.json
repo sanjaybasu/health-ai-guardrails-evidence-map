@@ -1,0 +1,334 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 477,
+   "sample_unit": "patients (chest radiograph examinations)",
+   "models_evaluated": [
+    "InferRead DR Chest v1.0.0 (Infervision)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of locally adjusted DL thresholds on workload reduction and NPV in chest radiograph screening",
+     "effect": "Threshold adjustment to 95% sensitivity ruled out about 40% of cases for single-disease screening with NPV around 99%; default Youden thresholds gave sensitivity 85.33%, specificity 75.1%.",
+     "quote": "It might enable a significant workload reduction of about 40% in ruling out specific diseases, thereby maintaining sensitivities above 95% and NPVs around 99% when reasonable optimized cutoff values for DL results are applied."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Influence of sex, age, multimorbidity on DL-radiologist agreement",
+     "effect": "In gold-standard negatives, multimorbidity (\u03b2=0.151), age (\u03b2=0.089) and sex (\u03b2=-0.038) significantly influenced DL results; in positives, female sex (\u03b2=0.153, p=0.026) linked to lower DL results.",
+     "quote": "Significant effects were found for the parameters of multimorbidity ( \u03b2 = 0.151, p < 0.001), age ( \u03b2 = 0.089, p < 0.001), and sex ( \u03b2 = \u22120.038, p = 0.031; sex was dummy coded using \u201c0\u201d for male and \u201c1\u201d for female)."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of combined comprehensive reading of seven abnormalities without human supervision",
+     "effect": "Combined reading: sensitivity 31.37%, specificity 14.55%; 364 (76.31%) patients with false positives and 35 (7.34%) with missed findings; not suitable for unsupervised use.",
+     "quote": "Therefore and as of today, DL applications appear not to be suitable for completely unsupervised application in the clinical setting."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Single-site performance dependence and generalizability of DL",
+     "effect": "Monocentric study with one X-ray machine; authors recommend institution-specific cutoff validation; foreign material did not significantly affect results.",
+     "quote": "In a next step, DL software such as presented in this study could be applied as a second layer, thereby generating specific diagnoses for the \u201cabnormal\u201d cases using tailor-made cutoff values, which at best can be validated by test data for every institution."
+    }
+   ],
+   "unlisted_practices": [
+    "Adjusting DL cutoff thresholds per disease and application purpose (ruling out vs confirmation)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 477,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "InferRead DR Chest version 1.0.0"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missed findings in standalone comprehensive reporting",
+     "effect": "About 13% workload reduction, but missed findings in around 7.34% of patients.",
+     "quote": "The findings for these cutoff values would allow for some workload reduction of about 13% but at the cost of missing findings in around 7.34% of patients, which is not acceptable, as the minimum goal of applying DL tools in the clinical setting should be noninferiority to the current gold standard to avert potential danger for patients."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "threshold effects on single-disease screening",
+     "effect": "At \u226595% sensitivity cutoffs: 31 (6.5%) true positive, 197 (41.3%) true negative, 248 (51.99%) false positive, 1 (0.21%) false negative.",
+     "quote": "When scanning for only one kind of abnormal finding using these cutoff values, on average around 31 (6.5%) of all cases were classfied true positive, 197 (41.3%) true negative, 248 (51.99%) false positive, and 1 (0.21%) case false negative."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup effects on DL results",
+     "effect": "Gold-standard negatives: multimorbidity \u03b2 = 0.151, age \u03b2 = 0.089, and sex \u03b2 = \u22120.038 were significant.",
+     "quote": "Significant effects were found for the parameters of multimorbidity ( \u03b2 = 0.151, p < 0.001), age ( \u03b2 = 0.089, p < 0.001), and sex ( \u03b2 = \u22120.038, p = 0.031; sex was dummy coded using \u201c0\u201d for male and \u201c1\u201d for female)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 477,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "InferRead DR Chest (version 1.0.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "de"
+   ],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missed findings when autonomously ruling out cases",
+     "effect": "Autonomous triage using Youden-optimized cutoffs achieved 13% workload reduction but missed positive findings in 35 patients (7.34%).",
+     "quote": "The findings for these cutoff values would allow for some workload reduction of about 13% but at the cost of missing findings in around 7.34% of patients, which is not acceptable, as the minimum goal of applying DL tools in the clinical setting should be noninferiority to the current gold standard to avert potential danger for patients."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "demographic and clinical subgroup performance disparities",
+     "effect": "Multimorbidity (beta=0.151, p<0.001), age (beta=0.089, p<0.001), and sex (beta=-0.038, p=0.031) significantly predicted gold-standard negative discrepancies, indicating performance disparities across patient subgroups.",
+     "quote": "Significant effects were found for the parameters of multimorbidity ( \u03b2 = 0.151, p < 0.001), age ( \u03b2 = 0.089, p < 0.001), and sex ( \u03b2 = \u22120.038, p = 0.031; sex was dummy coded using \u201c0\u201d for male and \u201c1\u201d for female)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "patients",
+ "sample_size": 477,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "de"
+ ],
+ "models_evaluated": [
+  "InferRead DR Chest (version 1.0.0)",
+  "InferRead DR Chest v1.0.0 (Infervision)",
+  "InferRead DR Chest version 1.0.0"
+ ],
+ "links": [
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of combined comprehensive reading of seven abnormalities without human supervision",
+   "effect": "Combined reading: sensitivity 31.37%, specificity 14.55%; 364 (76.31%) patients with false positives and 35 (7.34%) with missed findings; not suitable for unsupervised use.",
+   "quote": "Therefore and as of today, DL applications appear not to be suitable for completely unsupervised application in the clinical setting.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "subgroup effects on DL results",
+   "effect": "Gold-standard negatives: multimorbidity \u03b2 = 0.151, age \u03b2 = 0.089, and sex \u03b2 = \u22120.038 were significant.",
+   "quote": "Significant effects were found for the parameters of multimorbidity ( \u03b2 = 0.151, p < 0.001), age ( \u03b2 = 0.089, p < 0.001), and sex ( \u03b2 = \u22120.038, p = 0.031; sex was dummy coded using \u201c0\u201d for male and \u201c1\u201d for female).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of locally adjusted DL thresholds on workload reduction and NPV in chest radiograph screening",
+   "effect": "Threshold adjustment to 95% sensitivity ruled out about 40% of cases for single-disease screening with NPV around 99%; default Youden thresholds gave sensitivity 85.33%, specificity 75.1%.",
+   "quote": "It might enable a significant workload reduction of about 40% in ruling out specific diseases, thereby maintaining sensitivities above 95% and NPVs around 99% when reasonable optimized cutoff values for DL results are applied.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Influence of sex, age, multimorbidity on DL-radiologist agreement",
+   "effect": "In gold-standard negatives, multimorbidity (\u03b2=0.151), age (\u03b2=0.089) and sex (\u03b2=-0.038) significantly influenced DL results; in positives, female sex (\u03b2=0.153, p=0.026) linked to lower DL results.",
+   "quote": "Significant effects were found for the parameters of multimorbidity ( \u03b2 = 0.151, p < 0.001), age ( \u03b2 = 0.089, p < 0.001), and sex ( \u03b2 = \u22120.038, p = 0.031; sex was dummy coded using \u201c0\u201d for male and \u201c1\u201d for female).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "threshold effects on single-disease screening",
+   "effect": "At \u226595% sensitivity cutoffs: 31 (6.5%) true positive, 197 (41.3%) true negative, 248 (51.99%) false positive, 1 (0.21%) false negative.",
+   "quote": "When scanning for only one kind of abnormal finding using these cutoff values, on average around 31 (6.5%) of all cases were classfied true positive, 197 (41.3%) true negative, 248 (51.99%) false positive, and 1 (0.21%) case false negative.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "missed findings when autonomously ruling out cases",
+   "effect": "Autonomous triage using Youden-optimized cutoffs achieved 13% workload reduction but missed positive findings in 35 patients (7.34%).",
+   "quote": "The findings for these cutoff values would allow for some workload reduction of about 13% but at the cost of missing findings in around 7.34% of patients, which is not acceptable, as the minimum goal of applying DL tools in the clinical setting should be noninferiority to the current gold standard to avert potential danger for patients.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adjusting DL cutoff thresholds per disease and application purpose (ruling out vs confirmation)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38610129",
+ "screen": {
+  "id": "pmid:38610129",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert threshold adjustment (local operating point selection)",
+  "user": "none",
+  "reason": "The study retrospectively evaluates a commercial deep learning chest radiograph tool and explicitly tests adjusting decision thresholds for specific use cases (e.g., high-sensitivity rule-out screening) and examines subgroup performance biases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "threshold adjustment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38610129",
+   "empirical": 0.97,
+   "tests_practice": 0.53,
+   "real_deployment": 0.08
+  }
+ }
+}

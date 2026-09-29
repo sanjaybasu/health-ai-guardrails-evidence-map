@@ -1,0 +1,265 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 600,
+   "sample_unit": "trials (100 repeated queries at each of 6 dialogue history lengths)",
+   "models_evaluated": [
+    "gpt-5-mini",
+    "GPT-5 (automated evaluator)",
+    "OpenAI o3 (history generation)",
+    "text-embedding-ada-002"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination rate of RAG responses to identical query across repeated runs and dialogue history lengths",
+     "effect": "Hallucination rate rose from 5% (no history) to 40% with 10 prior exchanges, with the identical query run 100 times per history length.",
+     "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Factual consistency of guideline-grounded RAG output with retrieved source chunks",
+     "effect": "Despite grounding in the ESC guideline, hallucination rate increased from 5% (no history) to 40% with 10 prior exchanges.",
+     "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode."
+    }
+   ],
+   "unlisted_practices": [
+    "Testing RAG systems with multi-turn conversation history length before clinical deployment"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 600,
+   "sample_unit": "RAG query-response trials",
+   "models_evaluated": [
+    "gpt-5-mini RAG system with text-embedding-ada-002 embeddings"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucination under longer dialogue history",
+     "effect": "Hallucination rate rose from 5%(no history) to 40% with 10 prior exchanges.",
+     "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "factual consistency of grounded RAG answers",
+     "effect": "Despite RAG grounding, hallucinations increased from 5%(no history) to 40% with 10 prior exchanges.",
+     "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 600,
+   "sample_unit": "trials",
+   "models_evaluated": [
+    "gpt-5-mini",
+    "OpenAI o3",
+    "GPT-5",
+    "text-embedding-ada-002"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination rate across dialogue history lengths and repeated trials",
+     "effect": "Surged from 5% with no history to 40% with 10 prior exchanges across 100 independent trials of the identical query.",
+     "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "trials (100 repeated queries at each of 6 dialogue history lengths)",
+ "sample_size": 600,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-5",
+  "GPT-5 (automated evaluator)",
+  "OpenAI o3",
+  "OpenAI o3 (history generation)",
+  "gpt-5-mini",
+  "gpt-5-mini RAG system with text-embedding-ada-002 embeddings",
+  "text-embedding-ada-002"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucination rate of RAG responses to identical query across repeated runs and dialogue history lengths",
+   "effect": "Hallucination rate rose from 5% (no history) to 40% with 10 prior exchanges, with the identical query run 100 times per history length.",
+   "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Factual consistency of guideline-grounded RAG output with retrieved source chunks",
+   "effect": "Despite grounding in the ESC guideline, hallucination rate increased from 5% (no history) to 40% with 10 prior exchanges.",
+   "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "factual consistency of grounded RAG answers",
+   "effect": "Despite RAG grounding, hallucinations increased from 5%(no history) to 40% with 10 prior exchanges.",
+   "quote": "The hallucination rate surged from 5%(no history) to 40% with just 10 prior exchanges, revealing a critical failure mode.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Testing RAG systems with multi-turn conversation history length before clinical deployment"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42527530",
+ "screen": {
+  "id": "pmid:42527530",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG) with multi-turn conversational testing",
+  "user": "none",
+  "reason": "The study empirically tests the conversational failure modes and hallucination drift of a clinical RAG system across multi-turn interactions to evaluate safety testing practices.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "multi-turn dialogue stress testing / conversational history limits"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42527530",
+   "empirical": 0.84,
+   "tests_practice": 0.2,
+   "real_deployment": 0.07
+  }
+ }
+}

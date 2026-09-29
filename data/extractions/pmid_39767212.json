@@ -1,0 +1,335 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 210,
+   "sample_unit": "patients (CT scans with clinically approved contours)",
+   "models_evaluated": [
+    "RayMachine vendor-pretrained 3D U-Net (RayStation 11B)",
+    "RayMachine custom-trained 3D U-Net (HN, left breast, right breast, prostate)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Segmentation accuracy (DSC, MSD) of locally custom-trained vs vendor-pretrained models on institutional data",
+     "effect": "Average DSC vendor vs custom: 0.81 vs 0.86 (HN), 0.67 vs 0.80 (breast), 0.87 vs 0.92 (prostate); custom models significantly better for 14 of 24 OARs.",
+     "quote": "Overall, the custom-trained models showed significantly improved conformity with clinically approved contours in the three different sites ( p < 0.001)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Vendor-pretrained model performance on local data vs clinically approved local contours",
+     "effect": "Vendor-pretrained models had lower DSC (breast 0.67 vs 0.80 custom) and larger MSD (breast 4.85 vs 2.42 mm) on local institutional data.",
+     "quote": "The performance of the vendor-pretrained model was significantly worse than the custom-trained model when a rectal spacer was present, as shown in Figure 4 ."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of differences between vendor training data/guidelines and local practice on performance",
+     "effect": "Vendor model followed different contouring guidelines and lacked exposure to rectal spacers, misclassifying the spacer as prostate or rectum; larger dose errors in breast LN_Ax_L2 from delineation preference discrepancy.",
+     "quote": "The vendor-pretrained model misclassified the rectal spacer as part of the prostate or rectum [ Figure 4 (A1,A2)], probably because of a lack of exposure to this specific data during the training phase."
+    }
+   ],
+   "unlisted_practices": [
+    "Training custom auto-segmentation models from scratch using vendor toolkits with small institutional datasets (~30 patients)",
+    "Dosimetric evaluation of auto-segmented contours (dose-volume error) as a clinical impact measure"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 210,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RayMachine/RayStation 11B vendor-pretrained deep learning auto-segmentation models",
+    "Custom-trained RayMachine 3D U-Net auto-segmentation models for head-and-neck, left breast, right breast, and prostate cancers"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Segmentation accuracy after local custom training",
+     "effect": "Custom training improved average DSCs: HN 0.81 \u00b1 0.12 to 0.86 \u00b1 0.11, breast 0.67 \u00b1 0.16 to 0.80 \u00b1 0.11, prostate 0.87 \u00b1 0.09 to 0.92 \u00b1 0.06.",
+     "quote": "The average DSCs for all structures in vendor-pretrained and custom-trained models were as follows: 0.81 \u00b1 0.12 and 0.86 \u00b1 0.11 in HN; 0.67 \u00b1 0.16 and 0.80 \u00b1 0.11 in the breast; and 0.87 \u00b1 0.09 and 0.92 \u00b1 0.06 in the prostate."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of data and contouring variation",
+     "effect": "Custom-trained models significantly improved over vendor-pretrained models for 14 of 24 OARs.",
+     "quote": "Notably, custom-trained models showed significant improvements over vendor-pretrained models for 14 of 24 OARs, reflecting the influence of data/contouring variations in segmentation performance."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Alignment with institutional contouring practice",
+     "effect": "Vendor breast contours excluded pectoralis major and retracted from skin, unlike local institutional practice; custom contours aligned with local 3D CRT practice.",
+     "quote": "In contrast, the vendor-pretrained model adheres to guidelines that exclude the pectoralis major, and the breast contour is retracted from the skin to accommodate dose buildup within the breast in Volumetric Modulated Arc Therapy (VMAT) [ Figure 2 (Case 3-A1, Case 4-C1)]."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Rectal spacer segmentation failure",
+     "effect": "Vendor-pretrained model misclassified the rectal spacer as prostate or rectum; custom-trained model accurately separated spacer, prostate, and rectum.",
+     "quote": "The vendor-pretrained model misclassified the rectal spacer as part of the prostate or rectum [ Figure 4 (A1,A2)], probably because of a lack of exposure to this specific data during the training phase."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Auto-contour surface distance error",
+     "effect": "Average MSD vendor vs custom: HN 0.81 \u00b1 0.76 vs 0.76 \u00b1 0.56 mm; breast 4.85 \u00b1 2.44 vs 2.42 \u00b1 1.49 mm; prostate 2.17 \u00b1 1.39 vs 1.21 \u00b1 1.00 mm.",
+     "quote": "The corresponding average MSDs were 0.81 \u00b1 0.76 mm and 0.76 \u00b1 0.56 mm (HN), 4.85 \u00b1 2.44 mm and 2.42 \u00b1 1.49 mm (breast), and 2.17 \u00b1 1.39 mm and 1.21 \u00b1 1.00 mm (prostate)."
+    }
+   ],
+   "unlisted_practices": [
+    "Dosimetric comparison of AI-generated contours against clinically approved contours"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 210,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RayMachine",
+    "RayStation 11B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "auto-segmentation accuracy across anatomic sites",
+     "effect": "Custom-trained models significantly improved contour conformity (p < 0.001) across 3 cancer sites, outperforming vendor models for 14 of 24 structures, with average DSC 0.86 vs 0.81 (HN), 0.80 vs 0.67 (breast), 0.92 vs 0.87 (prostate).",
+     "quote": "Notably, custom-trained models showed significant improvements over vendor-pretrained models for 14 of 24 OARs, reflecting the influence of data/contouring variations in segmentation performance."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "vendor AI alignment with institutional preferences and clinical practices",
+     "effect": "Vendor models conflicted with local practice for breast, lymph node, humeral head, and prostate spacer contouring, yielding lower average DSCs (0.81 vs 0.86 HN, 0.67 vs 0.80 breast, 0.87 vs 0.92 prostate) and misclassifying rectal spacers.",
+     "quote": "These findings underscore the substantial impact of institutional preferences and clinical practices on the implementation of vendor-pretrained models."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 210,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Custom-trained RayMachine 3D U-Net auto-segmentation models for head-and-neck, left breast, right breast, and prostate cancers",
+  "RayMachine",
+  "RayMachine custom-trained 3D U-Net (HN, left breast, right breast, prostate)",
+  "RayMachine vendor-pretrained 3D U-Net (RayStation 11B)",
+  "RayMachine/RayStation 11B vendor-pretrained deep learning auto-segmentation models",
+  "RayStation 11B"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation accuracy (DSC, MSD) of locally custom-trained vs vendor-pretrained models on institutional data",
+   "effect": "Average DSC vendor vs custom: 0.81 vs 0.86 (HN), 0.67 vs 0.80 (breast), 0.87 vs 0.92 (prostate); custom models significantly better for 14 of 24 OARs.",
+   "quote": "Overall, the custom-trained models showed significantly improved conformity with clinically approved contours in the three different sites ( p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of differences between vendor training data/guidelines and local practice on performance",
+   "effect": "Vendor model followed different contouring guidelines and lacked exposure to rectal spacers, misclassifying the spacer as prostate or rectum; larger dose errors in breast LN_Ax_L2 from delineation preference discrepancy.",
+   "quote": "The vendor-pretrained model misclassified the rectal spacer as part of the prostate or rectum [ Figure 4 (A1,A2)], probably because of a lack of exposure to this specific data during the training phase.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R141",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Alignment with institutional contouring practice",
+   "effect": "Vendor breast contours excluded pectoralis major and retracted from skin, unlike local institutional practice; custom contours aligned with local 3D CRT practice.",
+   "quote": "In contrast, the vendor-pretrained model adheres to guidelines that exclude the pectoralis major, and the breast contour is retracted from the skin to accommodate dose buildup within the breast in Volumetric Modulated Arc Therapy (VMAT) [ Figure 2 (Case 3-A1, Case 4-C1)].",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Vendor-pretrained model performance on local data vs clinically approved local contours",
+   "effect": "Vendor-pretrained models had lower DSC (breast 0.67 vs 0.80 custom) and larger MSD (breast 4.85 vs 2.42 mm) on local institutional data.",
+   "quote": "The performance of the vendor-pretrained model was significantly worse than the custom-trained model when a rectal spacer was present, as shown in Figure 4 .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Rectal spacer segmentation failure",
+   "effect": "Vendor-pretrained model misclassified the rectal spacer as prostate or rectum; custom-trained model accurately separated spacer, prostate, and rectum.",
+   "quote": "The vendor-pretrained model misclassified the rectal spacer as part of the prostate or rectum [ Figure 4 (A1,A2)], probably because of a lack of exposure to this specific data during the training phase.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dosimetric comparison of AI-generated contours against clinically approved contours",
+  "Dosimetric evaluation of auto-segmented contours (dose-volume error) as a clinical impact measure",
+  "Training custom auto-segmentation models from scratch using vendor toolkits with small institutional datasets (~30 patients)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39767212",
+ "screen": {
+  "id": "pmid:39767212",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local custom training of vendor segmentation models on institutional data",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the deployment practice of local custom training vs. off-the-shelf vendor-pretrained commercial models to account for institutional preferences and data variations in radiation oncology auto-segmentation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local model custom training and validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39767212",
+   "empirical": 0.97,
+   "tests_practice": 0.64,
+   "real_deployment": 0.11
+  }
+ }
+}

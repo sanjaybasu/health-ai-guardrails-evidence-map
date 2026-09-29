@@ -1,0 +1,254 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Chile",
+   "sample_size": 65,
+   "sample_unit": "CT scans (64 patients)",
+   "models_evaluated": [
+    "3D-UNet",
+    "Gaussian Mixture Model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Segmentation Dice improvement after local retraining of internationally pretrained 3D-UNet",
+     "effect": "HITL retraining with local CT scans improved DSC by ~0.2 (normal lung) and ~0.5 (COVID-19 pneumonia); DSC >0.96/0.81 after three cycles.",
+     "quote": "The HITL strategy improved the DSC by 0.2 and 0.5 for the normal lung parenchyma and COVID-19 pneumonia segmentation, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-in-the-loop iterative annotation with hierarchical expert teams (interns, residents, radiologists) to build local ground truth",
+    "Patient-specific Gaussian mixture model thresholds instead of fixed HU thresholds"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Chile",
+   "sample_size": 65,
+   "sample_unit": "CT scans",
+   "models_evaluated": [
+    "3D-UNet",
+    "patient-specific Gaussian Mixture Model (GMM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local validation against predefined Dice criteria",
+     "effect": "DSCs exceeded radiologist criteria of DSC \u22650.95/0.8 for lung parenchyma/COVID-19 pneumonia on non-contrast and contrast-enhanced CT scans.",
+     "quote": "The performance of the HITL approach in terms of the DSC for non-contrast and contrast-enhanced CT scans yielded values that were superior to the coefficients defined by radiologists (DSC \u2265 0.95/0.8 for normal lung parenchyma/COVID-19 pneumonia)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Dice improvement after local HITL retraining",
+     "effect": "DSC improved by 0.2 for normal lung parenchyma and 0.5 for COVID-19 pneumonia segmentation.",
+     "quote": "The HITL strategy improved the DSC by 0.2 and 0.5 for the normal lung parenchyma and COVID-19 pneumonia segmentation, respectively."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automated segmentation versus expert-team variability",
+     "effect": "Expert-team DSC was 0.98 \u00b1 0.01 lung and 0.86 \u00b1 0.03 pneumonia, comparable to automated segmentation after the third HITL cycle.",
+     "quote": "The DSC yielded 0.98 \u00b1 0.01 for the normal lung parenchyma and 0.86 \u00b1 0.03 for COVID-19 pneumonia ( \u03bc \u00b1 \u03c3 ), which was comparable to or within the quality of the automated segmentation achieved after the third HITL cycle."
+    }
+   ],
+   "unlisted_practices": [
+    "Using patient-specific Gaussian mixture modeling rather than fixed Hounsfield-unit thresholds to classify ground-glass opacity and consolidation."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Chile",
+   "sample_size": 64,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "3D-UNet",
+    "Gaussian Mixture Model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Lung and COVID-19 pneumonia segmentation Dice Similarity Coefficient after local retraining",
+     "effect": "Retraining with local CT scans improved DSC by ~0.2 for normal lung parenchyma and ~0.5 for COVID-19 pneumonia, reaching >0.96 and >0.81.",
+     "quote": "The HITL approach, trained with the international dataset and re-trained with local CT scans, demonstrated an improvement in the DSC for automatic segmentation by ~0.2 for the normal lung parenchyma and ~0.5 for COVID-19 pneumonia for non-contrast and contrast-enhanced CT scans."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-in-the-loop hierarchical annotation and retraining workflow for medical image segmentation"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Chile",
+ "sample_unit": "CT scans (64 patients)",
+ "sample_size": 65,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "3D-UNet",
+  "Gaussian Mixture Model",
+  "patient-specific Gaussian Mixture Model (GMM)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation Dice improvement after local retraining of internationally pretrained 3D-UNet",
+   "effect": "HITL retraining with local CT scans improved DSC by ~0.2 (normal lung) and ~0.5 (COVID-19 pneumonia); DSC >0.96/0.81 after three cycles.",
+   "quote": "The HITL strategy improved the DSC by 0.2 and 0.5 for the normal lung parenchyma and COVID-19 pneumonia segmentation, respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local validation against predefined Dice criteria",
+   "effect": "DSCs exceeded radiologist criteria of DSC \u22650.95/0.8 for lung parenchyma/COVID-19 pneumonia on non-contrast and contrast-enhanced CT scans.",
+   "quote": "The performance of the HITL approach in terms of the DSC for non-contrast and contrast-enhanced CT scans yielded values that were superior to the coefficients defined by radiologists (DSC \u2265 0.95/0.8 for normal lung parenchyma/COVID-19 pneumonia).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Human-in-the-loop hierarchical annotation and retraining workflow for medical image segmentation",
+  "Human-in-the-loop iterative annotation with hierarchical expert teams (interns, residents, radiologists) to build local ground truth",
+  "Patient-specific Gaussian mixture model thresholds instead of fixed HU thresholds",
+  "Using patient-specific Gaussian mixture modeling rather than fixed Hounsfield-unit thresholds to classify ground-glass opacity and consolidation."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39274444",
+ "screen": {
+  "id": "pmid:39274444",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop annotation and local retraining of segmentation model",
+  "user": "none",
+  "reason": "This is a model-development study using human-in-the-loop active learning / iterative manual annotation to train a segmentation model on CT scans, rather than an evaluation of clinical deployment practices or safeguards.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39274444",
+   "empirical": 0.96,
+   "tests_practice": 0.84,
+   "real_deployment": 0.17
+  }
+ }
+}

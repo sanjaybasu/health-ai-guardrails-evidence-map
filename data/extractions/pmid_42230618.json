@@ -1,0 +1,456 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Belgium (multicentre: Netherlands, USA, Brazil, China, Germany, Israel)",
+   "sample_size": 341,
+   "sample_unit": "participants with Parkinson's disease (85 local, 256 external)",
+   "models_evaluated": [
+    "LTContext",
+    "ASFormer",
+    "MS-TCN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": true
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-cohort agreement (ICC %TF) before vs after fine-tuning on local annotated data",
+     "effect": "Fine-tuning with 50 min of external data raised mean ICC(%TF) from 0.562 to 0.732 \u00b1 0.138 (+30.2%) and ICC(#FOG) from 0.298 to 0.623 \u00b1 0.214 (+108.9%); more data-efficient than training from scratch.",
+     "quote": "At that point, fine-tuned ICC(%TF) reached 0.732 \u00b1 0.138 (+30.2 %), and ICC(#FOG) reached 0.623 \u00b1 0.214 (+108.9 %)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop of model on external cohorts versus local cohort",
+     "effect": "ICC(%TF) fell from 0.886 locally to 0.562 \u00b1 0.141 on external cohorts; ICC(#FOG) 0.298 \u00b1 0.270; false positives per non-FOG trial rose to 1.690.",
+     "quote": "When tested on the external cohorts (Table 3 ), agreement in terms of FOG severity dropped: mean ICC for %TF across external datasets reduced to 0.562 \u00b1 0.141"
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across sites and sensor configurations",
+     "effect": "Performance varied by cohort; per-dataset ICC(%TF) pre-trained ranged from 0.417 to 0.824, with many false positives in cohorts with 1-2 IMUs and poor results in the Mobilise-D cohort.",
+     "quote": "Similarly, Fig. 3 c, d, and f illustrate the model\u2019s tendency to generate multiple FPs in datasets with only one or two IMUs, i.e., Federal, Twente, and Xuanwu"
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset shift from task, annotation criteria, sensor setup, and patient spectrum differences",
+     "effect": "Cohort differences (tasks, annotation criteria, IMU number, mild freezers) reduced pre-trained model performance; Mobilise-D mild freezers had shortest episodes (0.983 s) and smallest fine-tuning gains.",
+     "quote": "Additionally, detecting FOG in the predominantly mild-freezer Mobilise-D cohort was particularly challenging, illustrating the risks of applying models trained on severe freezers to mildly affected populations."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of model trained on one cohort to new populations and contexts",
+     "effect": "Agreement dropped from ICC(%TF) 0.886 locally to 0.562 externally; #FOG ICC fell to 0.298 (poor).",
+     "quote": "This reduction reflects a lowered agreement in both %TF and #FOG, showing that differences between cohorts can reduce model performance."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of simulated expert review (false-positive removal) on model agreement in Radboud cohort",
+     "effect": "Simulated expert removal of FPs increased ICC(%TF) from 0.481 to 0.893 and ICC(#FOG) from 0.098 to 0.642 in the Radboud cohort.",
+     "quote": "This correction markedly improved agreement with ground truth annotations, as shown in Table 3 , increasing ICC(%TF) from 0.481 to 0.893 and ICC(#FOG) from 0.098 to 0.642."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Annotation reliability and variability of reference standard across cohorts and raters",
+     "effect": "Differing annotation criteria across cohorts; Xuanwu criteria not reported; for Mobilise-D a third rater vs ground truth ICC was 0.757 (%TF) and 0.543 (#FOG), showing intrinsic rater difficulty.",
+     "quote": "These findings suggest that FOG detection in the Mobilise-D dataset is intrinsically challenging, even for experienced human raters."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning pretrained model with limited (~50 min) annotated local data versus training from scratch",
+    "Human-in-the-loop expert review and iterative fine-tuning workflow for AI annotation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Belgium; Netherlands; United States; Brazil; Germany; Israel; China",
+   "sample_size": 341,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "MS-TCN",
+    "ASFormer",
+    "LTContext"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external validation agreement",
+     "effect": "Performance dropped from local ICC(%TF)=0.886 and ICC(#FOG)=0.573 to external ICC(%TF)=0.562 \u00b1 0.141 and ICC(#FOG)=0.298 \u00b1 0.270.",
+     "quote": "Our results showed that while the DLA model achieved strong agreement on the local KU Leuven cohort for %TF (ICC = 0.886, CI = [0.79, 0.90]) and fair agreement for #FOG (ICC = 0.573, CI = [0.28, 0.71]), its performance dropped on the external datasets, averaging fair agreement for %TF (ICC = 0.562 \u00b1 0.141, CI = [\u22120.01, 0.78]) and poor agreement for #FOG (ICC = 0.298 \u00b1 0.270, CI = [\u22120.16, 0.49])."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "architecture selection by ICC",
+     "effect": "LTContext: ICC(%TF) 0.562 \u00b1 0.141, ICC(#FOG) 0.298 \u00b1 0.270; ASFormer 0.494/0.133; MS-TCN 0.438/0.179.",
+     "quote": "LTContext was selected for further experiments, as it achieved the highest ICC for both %TF and #FOG across all external datasets."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "agreement after local fine-tuning",
+     "effect": "Fine-tuning with 50 min improved ICC(%TF) to 0.732 \u00b1 0.138 (+30.2%) and ICC(#FOG) to 0.623 \u00b1 0.214 (+108.9%).",
+     "quote": "Our analysis demonstrated that fine-tuning the model reached a plateau for both ICC(%TF) and ICC(#FOG) using 50 min of annotated data for training, with improved ICC(%TF) to 0.732 \u00b1 0.138 (+30.2%) and ICC(#FOG) to 0.623 \u00b1 0.214 (+108.9%)."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert false-positive removal",
+     "effect": "Expert FP removal increased ICC(%TF) from 0.481 to 0.893 and ICC(#FOG) from 0.098 to 0.642.",
+     "quote": "This correction markedly improved agreement with ground truth annotations, as shown in Table 3 , increasing ICC(%TF) from 0.481 to 0.893 and ICC(#FOG) from 0.098 to 0.642."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "false positives from missing IMU channels",
+     "effect": "Pre-trained #FPs/trial were 4.787 Federal, 1.052 Twente, and 2.462 Xuanwu in one/two-IMU datasets.",
+     "quote": "Similarly, Fig. 3 c, d, and f illustrate the model\u2019s tendency to generate multiple FPs in datasets with only one or two IMUs, i.e., Federal, Twente, and Xuanwu, potentially due to zero-filling of missing channels to match the 5-IMU input of the pre-trained model."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ground-truth annotation reliability",
+     "effect": "In 29 Mobilise-D trials, third rater versus ground truth ICC was 0.757 for %TF and 0.543 for #FOG.",
+     "quote": "The ICC between the fine-tuned model and the original ground truth was 0.540 for %TF and 0.756 for #FOG, whereas the ICC between the third rater and the ground truth was 0.757 and 0.543, respectively."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Belgium",
+   "sample_size": 341,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "LTContext",
+    "ASFormer",
+    "MS-TCN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": true
+   },
+   "languages": [
+    "en"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "freezing of gait severity agreement across external cohorts",
+     "effect": "mean ICC for %TF dropped from 0.886 locally to 0.562 \u00b1 0.141 across external datasets, and ICC for #FOG dropped from 0.573 to 0.298 \u00b1 0.270",
+     "quote": "When tested on the external cohorts (Table 3 ), agreement in terms of FOG severity dropped: mean ICC for %TF across external datasets reduced to 0.562 \u00b1 0.141 (mean \u00b1 standard deviation (SD) across six datasets; 95% CI [-0.01, 0.78]) and for #FOG to 0.298 \u00b1 0.270 (mean \u00b1 SD across six datasets; 95 % CI [-0.16, 0.49])."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "freezing of gait detection agreement after fine-tuning",
+     "effect": "fine-tuned ICC for %TF reached 0.732 \u00b1 0.138 (+30.2%) and ICC for #FOG reached 0.623 \u00b1 0.214 (+108.9%) with 50 minutes of external cohort data",
+     "quote": "At that point, fine-tuned ICC(%TF) reached 0.732 \u00b1 0.138 (+30.2 %), and ICC(#FOG) reached 0.623 \u00b1 0.214 (+108.9 %)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Belgium (multicentre: Netherlands, USA, Brazil, China, Germany, Israel)",
+ "sample_unit": "participants",
+ "sample_size": 341,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": true
+ },
+ "languages": [
+  "en"
+ ],
+ "models_evaluated": [
+  "ASFormer",
+  "LTContext",
+  "MS-TCN"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External-cohort agreement (ICC %TF) before vs after fine-tuning on local annotated data",
+   "effect": "Fine-tuning with 50 min of external data raised mean ICC(%TF) from 0.562 to 0.732 \u00b1 0.138 (+30.2%) and ICC(#FOG) from 0.298 to 0.623 \u00b1 0.214 (+108.9%); more data-efficient than training from scratch.",
+   "quote": "At that point, fine-tuned ICC(%TF) reached 0.732 \u00b1 0.138 (+30.2 %), and ICC(#FOG) reached 0.623 \u00b1 0.214 (+108.9 %).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Annotation reliability and variability of reference standard across cohorts and raters",
+   "effect": "Differing annotation criteria across cohorts; Xuanwu criteria not reported; for Mobilise-D a third rater vs ground truth ICC was 0.757 (%TF) and 0.543 (#FOG), showing intrinsic rater difficulty.",
+   "quote": "These findings suggest that FOG detection in the Mobilise-D dataset is intrinsically challenging, even for experienced human raters.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drop of model on external cohorts versus local cohort",
+   "effect": "ICC(%TF) fell from 0.886 locally to 0.562 \u00b1 0.141 on external cohorts; ICC(#FOG) 0.298 \u00b1 0.270; false positives per non-FOG trial rose to 1.690.",
+   "quote": "When tested on the external cohorts (Table 3 ), agreement in terms of FOG severity dropped: mean ICC for %TF across external datasets reduced to 0.562 \u00b1 0.141",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across sites and sensor configurations",
+   "effect": "Performance varied by cohort; per-dataset ICC(%TF) pre-trained ranged from 0.417 to 0.824, with many false positives in cohorts with 1-2 IMUs and poor results in the Mobilise-D cohort.",
+   "quote": "Similarly, Fig. 3 c, d, and f illustrate the model\u2019s tendency to generate multiple FPs in datasets with only one or two IMUs, i.e., Federal, Twente, and Xuanwu",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dataset shift from task, annotation criteria, sensor setup, and patient spectrum differences",
+   "effect": "Cohort differences (tasks, annotation criteria, IMU number, mild freezers) reduced pre-trained model performance; Mobilise-D mild freezers had shortest episodes (0.983 s) and smallest fine-tuning gains.",
+   "quote": "Additionally, detecting FOG in the predominantly mild-freezer Mobilise-D cohort was particularly challenging, illustrating the risks of applying models trained on severe freezers to mildly affected populations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of model trained on one cohort to new populations and contexts",
+   "effect": "Agreement dropped from ICC(%TF) 0.886 locally to 0.562 externally; #FOG ICC fell to 0.298 (poor).",
+   "quote": "This reduction reflects a lowered agreement in both %TF and #FOG, showing that differences between cohorts can reduce model performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "external validation agreement",
+   "effect": "Performance dropped from local ICC(%TF)=0.886 and ICC(#FOG)=0.573 to external ICC(%TF)=0.562 \u00b1 0.141 and ICC(#FOG)=0.298 \u00b1 0.270.",
+   "quote": "Our results showed that while the DLA model achieved strong agreement on the local KU Leuven cohort for %TF (ICC = 0.886, CI = [0.79, 0.90]) and fair agreement for #FOG (ICC = 0.573, CI = [0.28, 0.71]), its performance dropped on the external datasets, averaging fair agreement for %TF (ICC = 0.562 \u00b1 0.141, CI = [\u22120.01, 0.78]) and poor agreement for #FOG (ICC = 0.298 \u00b1 0.270, CI = [\u22120.16, 0.49]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "architecture selection by ICC",
+   "effect": "LTContext: ICC(%TF) 0.562 \u00b1 0.141, ICC(#FOG) 0.298 \u00b1 0.270; ASFormer 0.494/0.133; MS-TCN 0.438/0.179.",
+   "quote": "LTContext was selected for further experiments, as it achieved the highest ICC for both %TF and #FOG across all external datasets.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "expert false-positive removal",
+   "effect": "Expert FP removal increased ICC(%TF) from 0.481 to 0.893 and ICC(#FOG) from 0.098 to 0.642.",
+   "quote": "This correction markedly improved agreement with ground truth annotations, as shown in Table 3 , increasing ICC(%TF) from 0.481 to 0.893 and ICC(#FOG) from 0.098 to 0.642.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "false positives from missing IMU channels",
+   "effect": "Pre-trained #FPs/trial were 4.787 Federal, 1.052 Twente, and 2.462 Xuanwu in one/two-IMU datasets.",
+   "quote": "Similarly, Fig. 3 c, d, and f illustrate the model\u2019s tendency to generate multiple FPs in datasets with only one or two IMUs, i.e., Federal, Twente, and Xuanwu, potentially due to zero-filling of missing channels to match the 5-IMU input of the pre-trained model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "freezing of gait severity agreement across external cohorts",
+   "effect": "mean ICC for %TF dropped from 0.886 locally to 0.562 \u00b1 0.141 across external datasets, and ICC for #FOG dropped from 0.573 to 0.298 \u00b1 0.270",
+   "quote": "When tested on the external cohorts (Table 3 ), agreement in terms of FOG severity dropped: mean ICC for %TF across external datasets reduced to 0.562 \u00b1 0.141 (mean \u00b1 standard deviation (SD) across six datasets; 95% CI [-0.01, 0.78]) and for #FOG to 0.298 \u00b1 0.270 (mean \u00b1 SD across six datasets; 95 % CI [-0.16, 0.49]).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Fine-tuning pretrained model with limited (~50 min) annotated local data versus training from scratch",
+  "Human-in-the-loop expert review and iterative fine-tuning workflow for AI annotation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42230618",
+ "screen": {
+  "id": "pmid:42230618",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning and human-in-the-loop expert review",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates multicentre validation and tests whether local fine-tuning with limited external data alongside expert review mitigates cohort heterogeneity for sensor-based freezing of gait assessment.",
+  "jev": {
+   "id": "pmid:42230618",
+   "empirical": 0.97,
+   "tests_practice": 0.88,
+   "real_deployment": 0.16
+  }
+ }
+}

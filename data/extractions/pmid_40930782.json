@@ -1,0 +1,96 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Japan",
+ "sample_size": 599,
+ "sample_unit": "exam questions",
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o-mini",
+  "GPT-4o-RAG"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Accuracy and response consistency of GPT-4o with vs without guideline retrieval grounding",
+   "effect": "GPT-4o-RAG 83.5% vs GPT-4o 82.1% accuracy (p=0.12, not significant); consistency 97.3% vs 91.2-95.2% (p<0.001); lower variance.",
+   "quote": "While the accuracy improvement of GPT-4o-RAG over GPT-4o was not statistically significant (p = 0.12), it exhibited significantly lower variance and higher response consistency (97.3% vs. 91.2-95.2%, p < 0.001).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model performance on numerical/calculation questions and association of errors with numerical terms",
+   "effect": "GPT-4o-RAG showed limited performance on numerical questions; TF-IDF analysis linked incorrect answers more frequently to numerical terms.",
+   "quote": "GPT-4o-RAG outperformed other models in applied and clinical nutrition categories but showed limited performance on numerical questions.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "TF-IDF word analysis of correctly versus incorrectly answered questions to characterize error patterns"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40930782",
+ "screen": {
+  "id": "pmid:40930782",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval grounding with guideline documents",
+  "user": "none",
+  "reason": "The study directly evaluates the effect of adding retrieval-augmented generation (RAG) to GPT-4o compared to baseline GPT-4o on a nutritionist exam benchmark, specifically assessing changes in accuracy, response consistency, and variance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40930782",
+   "empirical": 0.93,
+   "tests_practice": 0.59,
+   "real_deployment": 0.02
+  }
+ }
+}

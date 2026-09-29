@@ -1,0 +1,309 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "discharge summaries",
+   "models_evaluated": [
+    "GPT-4o",
+    "DeepSeek-V3",
+    "Qwen-3",
+    "Kimi-2",
+    "Doubao-1.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ICD coding accuracy with grounding in curated code knowledge (RAG or contextual) versus few-shot only",
+     "effect": "Few-shot without external coding knowledge achieved 41%, 27%, 31% accuracy; specialty RAG achieved 80%, 78%, 79%; specialty contextual prompting achieved 84%, 85%, 82% (GPT-4o, n=200).",
+     "quote": "Prompting Strategy 1 exhibited the lowest accuracy across all tasks, with rates of 41%, 27%, and 31%, respectively."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM coding accuracy against gold-standard codes with blinded senior coder review",
+     "effect": "Against front-page gold standard codes, DeepSeek-V3 reached 89.5%, 88.6%, and 93.3% accuracy across primary, secondary, and procedure coding; other models ranged 61.0%-88%.",
+     "quote": "In the principal diagnosis coding task, DeepSeek-V3 achieved the highest performance, with an accuracy of 89.5%, an F1 score of 0.90, and a Kappa coefficient of 0.89 (the relevant performance metrics for each model are presented in Table 1 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparing five LLMs and five prompt strategies on the same coding data",
+     "effect": "DeepSeek-V3 significantly outperformed other models across all three tasks (P<0.002); Doubao-1.5 was lowest at 61.0% primary diagnosis accuracy.",
+     "quote": "Overall, DeepSeek-V3 significantly outperformed the other models across all three coding tasks, demonstrating comprehensive and consistent superiority."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Use of blinded independent expert coders and gold standard for evaluating outputs",
+     "effect": "Five senior coders formed an independent panel, with blinded, randomized assessment using expert-confirmed front-page codes as gold standard.",
+     "quote": "The ICD codes confirmed through expert review of inpatient record front pages were used as the gold standard, and model outputs were evaluated using a blinded, randomized assessment protocol."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing contextual prompt injection of a specialty code table versus retrieval-augmented generation for exact-match coding tasks",
+    "Restricting the knowledge injected to a specialty-specific code subset rather than the full code database"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "discharge summaries",
+   "models_evaluated": [
+    "GPT-4o",
+    "DeepSeek-V3",
+    "Qwen-3",
+    "Kimi-2",
+    "Doubao-1.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ICD coding accuracy with grounded prompts",
+     "effect": "In n=200, RAG-specialty achieved 80%, 78%, and 79% accuracy and significantly outperformed the few-shot baseline (P < 0.002).",
+     "quote": "Prompting Strategy 2 also demonstrated strong performance, achieving accuracies of 80% for principal diagnosis coding, 78% for secondary diagnosis coding, and 79% for procedure coding, and significantly outperformed Prompting Strategy 1 ( P < 0.002)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy across candidate LLMs",
+     "effect": "In n=600, DeepSeek-V3 led at 89.5%, 88.6%, and 93.3% accuracy; Doubao-1.5 was lowest at 61.0%, 72.1%, and 69.0%.",
+     "quote": "Overall, DeepSeek-V3 significantly outperformed the other models across all three coding tasks, demonstrating comprehensive and consistent superiority."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Primary diagnosis coding errors",
+     "effect": "Doubao-1.5 had the highest frequencies in all five error categories; diagnostic coding inconsistency error count reached 60.",
+     "quote": "Overall, Doubao-1.5 recorded the highest frequencies across all five error categories\u2014core treatment omission, insufficient diagnostic specificity, tumor staging deviation, misuse of mixed codes, and diagnostic coding inconsistency\u2014with particularly prominent performance issues in \u201cdiagnostic coding inconsistency,\u201d where the error count reached 60."
+    }
+   ],
+   "unlisted_practices": [
+    "Use specialty-specific contextual ICD code tables rather than full-database long-context prompts for ICD coding."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "discharge summaries",
+   "models_evaluated": [
+    "GPT-4o",
+    "DeepSeek-V3",
+    "Qwen-3",
+    "Kimi-2",
+    "Doubao-1.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ICD coding accuracy across primary diagnosis, secondary diagnosis, and procedure coding",
+     "effect": "Grounding in official ICD knowledge via RAG achieved 78-80% accuracy across tasks, significantly outperforming ungrounded base prompting with few-shot examples (27-41% accuracy, P < 0.002).",
+     "quote": "Prompting Strategy 2 also demonstrated strong performance, achieving accuracies of 80% for principal diagnosis coding, 78% for secondary diagnosis coding, and 79% for procedure coding, and significantly outperformed Prompting Strategy 1 ( P < 0.002)."
+    }
+   ],
+   "unlisted_practices": [
+    "Contextual knowledge injection via static structured in-prompt tables versus retrieval-augmented generation for closed-domain clinical coding"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "discharge summaries",
+ "sample_size": 800,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "DeepSeek-V3",
+  "Doubao-1.5",
+  "GPT-4o",
+  "Kimi-2",
+  "Qwen-3"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "ICD coding accuracy with grounding in curated code knowledge (RAG or contextual) versus few-shot only",
+   "effect": "Few-shot without external coding knowledge achieved 41%, 27%, 31% accuracy; specialty RAG achieved 80%, 78%, 79%; specialty contextual prompting achieved 84%, 85%, 82% (GPT-4o, n=200).",
+   "quote": "Prompting Strategy 1 exhibited the lowest accuracy across all tasks, with rates of 41%, 27%, and 31%, respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparing five LLMs and five prompt strategies on the same coding data",
+   "effect": "DeepSeek-V3 significantly outperformed other models across all three tasks (P<0.002); Doubao-1.5 was lowest at 61.0% primary diagnosis accuracy.",
+   "quote": "Overall, DeepSeek-V3 significantly outperformed the other models across all three coding tasks, demonstrating comprehensive and consistent superiority.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing contextual prompt injection of a specialty code table versus retrieval-augmented generation for exact-match coding tasks",
+  "Contextual knowledge injection via static structured in-prompt tables versus retrieval-augmented generation for closed-domain clinical coding",
+  "Restricting the knowledge injected to a specialty-specific code subset rather than the full code database",
+  "Use specialty-specific contextual ICD code tables rather than full-database long-context prompts for ICD coding."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41836610",
+ "screen": {
+  "id": "pmid:41836610",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "specialty-tailored contextual knowledge prompting",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates the empirical performance of LLMs for administrative ICD coding on real retrospective discharge summaries, comparing multiple knowledge injection and prompting strategies to improve automated coding accuracy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "contextual knowledge-based prompting strategy"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41836610",
+   "empirical": 0.94,
+   "tests_practice": 0.04,
+   "real_deployment": 0.05
+  }
+ }
+}

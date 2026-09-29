@@ -1,0 +1,366 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 32346,
+   "sample_unit": "ED visits",
+   "models_evaluated": [
+    "ACS risk prediction model (age, sex, chief complaint) embedded as EHR clinical decision support"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement of live silent CDS with retrospective model; detection of problems before activation",
+     "effect": "Silent pilot showed 96.8% raw agreement, Kappa 91.2% (95% CI 90.7\u201391.8%); uncovered monitoring data-capture flaw that would otherwise have been missed",
+     "quote": "Without this prespecified quality check, we may have missed a major issue and attempted to correct calculation errors that were not actually occurring."
+    },
+    {
+     "rec_id": "R122",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Silent mode CDS decisions versus original model and actual human decisions",
+     "effect": "CDS sensitivity 81.7% vs in vitro model 82.0% vs human 80.2%; specificity 67.3% vs 67.3% vs 67.4%; raw agreement 96.8%, Kappa 91.2%",
+     "quote": "We found 96.8% raw agreement and a Kappa of 91.2% (95% CI 90.7% to 91.8%)."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Technical component analysis of CDS population capture, calculation, threshold, data capture",
+     "effect": "No errors in population capture, risk calculation, threshold, or decision alignment; data capture for monitoring found to record overwritten values, not data used by CDS; corrected",
+     "quote": "In the evaluation of the data capture for monitoring and transparency, we discovered that the \u2018live care\u2019 data that was recorded in the report were not what the CDS used for its calculations."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Differences between live input data and completed retrospective data",
+     "effect": "Data differences affected about 13% of encounters, 96% from chief complaints; live vs completed-data model agreement 97.2%, Kappa 92.3%; sensitivity barely changed",
+     "quote": "These data differences impacted about 13% of all encounters; 96% of all data differences were associated with the arrival chief complaints."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CDS screening performance versus human standard-of-care screening",
+     "effect": "CDS sensitivity 81.7% (77.1\u201385.8%) vs human 80.2% (75.4\u201384.4%); specificity 67.3% vs 67.4%; no notable difference",
+     "quote": "There was no notable difference between human performance and the CDS given overlapping CIs."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 32346,
+   "sample_unit": "adult emergency department visits",
+   "models_evaluated": [
+    "ACS prediction model (in vitro)",
+    "EHR-embedded ACS clinical decision support (in vivo)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between live silent-mode CDS and retrospective model screening decisions",
+     "effect": "Live CDS versus retrospective model: raw agreement 96.8%; Kappa 91.2% (95% CI 90.7% to 91.8%). ACS sensitivity was 81.7% versus 82.0%, respectively.",
+     "quote": "We found 96.8% raw agreement and a Kappa of 91.2% (95% CI 90.7% to 91.8%)."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection and correction of technical implementation faults before activation",
+     "effect": "Technical checks found monitoring reports did not preserve the actual calculation inputs. Correcting this problem enabled accurate measurement of CDS activity rather than erroneous attribution to calculation failures.",
+     "quote": "These differences created the impression that the CDS was making errors, but capturing and correcting this problem allowed us to measure actual CDS activity."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ACS screening performance compared with existing human screening",
+     "effect": "ACS sensitivity: CDS 81.7% (95% CI 77.1% to 85.8%) versus humans 80.2% (95% CI 75.4% to 84.4%); specificity 67.3% versus 67.4%. No notable performance difference was found.",
+     "quote": "There was no notable difference between human performance and the CDS given overlapping CIs."
+    },
+    {
+     "rec_id": "R526",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "STEMI cases missed by early-ECG screening decisions",
+     "effect": "The live CDS missed 25.8% of STEMI cases, compared with 29.0% for the in vitro model.",
+     "quote": "The CDS missed 25.8% of STEMI cases compared with the in vitro model\u2019s 29.0% ( table 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 32346,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "ACS prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "sensitivity and specificity compared to humans",
+     "effect": "Sensitivity for acute coronary syndrome was 81.7% in the clinical decision support system versus 80.2% observed in humans.",
+     "quote": "Sensitivity for ACS was 81.7% (95% CI 77.1% to 85.8%) in CDS versus 80.2% (95% CI 75.4% to 84.4%) observed in humans."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prospective performance in silent mode",
+     "effect": "The CDS evaluated in prospective live data achieved 81.7% sensitivity compared to 82.0% for the in vitro model on retrospective data.",
+     "quote": "In the comparative effectiveness analysis, we found that the CDS had a sensitivity of 81.7% (95% CI 77.1% to 85.8%) compared with the in vitro model at 82.0% (95% CI 77.4% to 86.1%)."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of data flow errors",
+     "effect": "Component analysis revealed that live care data recorded in reports differed from the data actually used for CDS calculations due to software limitations.",
+     "quote": "In the evaluation of the data capture for monitoring and transparency, we discovered that the \u2018live care\u2019 data that was recorded in the report were not what the CDS used for its calculations."
+    }
+   ],
+   "unlisted_practices": [
+    "technical component analysis",
+    "technical fidelity analysis"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ED visits",
+ "sample_size": 32346,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "ACS prediction model",
+  "ACS prediction model (in vitro)",
+  "ACS risk prediction model (age, sex, chief complaint) embedded as EHR clinical decision support",
+  "EHR-embedded ACS clinical decision support (in vivo)"
+ ],
+ "links": [
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement of live silent CDS with retrospective model; detection of problems before activation",
+   "effect": "Silent pilot showed 96.8% raw agreement, Kappa 91.2% (95% CI 90.7\u201391.8%); uncovered monitoring data-capture flaw that would otherwise have been missed",
+   "quote": "Without this prespecified quality check, we may have missed a major issue and attempted to correct calculation errors that were not actually occurring.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R119",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Technical component analysis of CDS population capture, calculation, threshold, data capture",
+   "effect": "No errors in population capture, risk calculation, threshold, or decision alignment; data capture for monitoring found to record overwritten values, not data used by CDS; corrected",
+   "quote": "In the evaluation of the data capture for monitoring and transparency, we discovered that the \u2018live care\u2019 data that was recorded in the report were not what the CDS used for its calculations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "CDS screening performance versus human standard-of-care screening",
+   "effect": "CDS sensitivity 81.7% (77.1\u201385.8%) vs human 80.2% (75.4\u201384.4%); specificity 67.3% vs 67.4%; no notable difference",
+   "quote": "There was no notable difference between human performance and the CDS given overlapping CIs.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R122",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Silent mode CDS decisions versus original model and actual human decisions",
+   "effect": "CDS sensitivity 81.7% vs in vitro model 82.0% vs human 80.2%; specificity 67.3% vs 67.3% vs 67.4%; raw agreement 96.8%, Kappa 91.2%",
+   "quote": "We found 96.8% raw agreement and a Kappa of 91.2% (95% CI 90.7% to 91.8%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "Differences between live input data and completed retrospective data",
+   "effect": "Data differences affected about 13% of encounters, 96% from chief complaints; live vs completed-data model agreement 97.2%, Kappa 92.3%; sensitivity barely changed",
+   "quote": "These data differences impacted about 13% of all encounters; 96% of all data differences were associated with the arrival chief complaints.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R526",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "STEMI cases missed by early-ECG screening decisions",
+   "effect": "The live CDS missed 25.8% of STEMI cases, compared with 29.0% for the in vitro model.",
+   "quote": "The CDS missed 25.8% of STEMI cases compared with the in vitro model\u2019s 29.0% ( table 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "sensitivity and specificity compared to humans",
+   "effect": "Sensitivity for acute coronary syndrome was 81.7% in the clinical decision support system versus 80.2% observed in humans.",
+   "quote": "Sensitivity for ACS was 81.7% (95% CI 77.1% to 85.8%) in CDS versus 80.2% (95% CI 75.4% to 84.4%) observed in humans.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "technical component analysis",
+  "technical fidelity analysis"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42712348",
+ "screen": {
+  "id": "pmid:42712348",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "silent-mode pilot testing before go-live",
+  "user": "none",
+  "reason": "The study evaluated a predictive risk model via a prospective silent pilot (shadow deployment) in an emergency department to measure performance replication between in vitro and in vivo deployment before full implementation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "silent-mode deployment and validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42712348",
+   "empirical": 0.97,
+   "tests_practice": 0.37,
+   "real_deployment": 0.97
+  }
+ }
+}

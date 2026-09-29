@@ -1,0 +1,421 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 90,
+   "sample_unit": "LLM responses (3 models x 6 prompt strategies x 5 scenarios)",
+   "models_evaluated": [
+    "OpenAI O3",
+    "Claude Sonnet 4",
+    "Google Gemini 2.5 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Critical safety concerns in LLM responses to clinical scenarios by complexity",
+     "effect": "Critical safety concerns in 11 of 90 responses (12.2%); Level 5 ethical scenarios 23.1% vs 2.3% in Level 1 (\u03c7\u00b2=15.7, p<0.001).",
+     "quote": "Level 5 ethical scenarios demonstrated 23.1% critical safety incidents, compared to only 2.3% in Level 1 cases (\u03c7\u00b2 = 15.7, p < 0.001)."
+    },
+    {
+     "rec_id": "R322",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differential LLM recommendations by patient age and gender in identical presentations",
+     "effect": "Age bias in 8 of 30 elderly responses (26.7%; OR 2.34, p=0.02); gender bias in 6 of 15 cardiovascular scenarios (40%), delayed cardiac workup for women (2.3 vs 0.8 recommendations, p=0.003).",
+     "quote": "Gender bias appeared in 6 of 15 cardiovascular scenarios (40%), with female presentations receiving delayed cardiac workup recommendations despite identical risk profiles (mean delay: 2.3 vs. 0.8 recommendations before cardiac evaluation, p = 0.003)."
+    },
+    {
+     "rec_id": "R321",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Biased or population-specific knowledge gaps in generated content (cultural, age, gender, socioeconomic)",
+     "effect": "Bias patterns in 17 of 90 responses (18.9%); cultural bias in 7 of 15 multicultural scenarios (46.7%); residual bias 11.7% with safety-first prompting.",
+     "quote": "Cultural bias affected 7 of 15 multicultural scenarios (46.7%), particularly in end-of-life discussions where Western bioethical frameworks were assumed without consideration of alternative cultural approaches to family decision-making and advance directives."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Critical safety concerns with safety-first vs zero-shot prompting",
+     "effect": "Safety-first prompting reduced critical safety concerns 45% versus zero-shot (8.9% vs 16.2%; OR 0.49, 95% CI 0.26-0.91, p=0.02).",
+     "quote": "Safety-first prompting demonstrated measurable improvements in clinical safety metrics, reducing critical safety concerns by 45% compared to zero-shot approaches (8.9% vs. 16.2%; OR = 0.49, 95% CI: 0.26\u20130.91, p = 0.02)."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Total clinical performance score by prompt strategy (meta-cognitive vs zero-shot)",
+     "effect": "Meta-cognitive prompts scored 73.2 vs 64.8 for zero-shot (p<0.001, d=0.62); safety-first 72.1; residual safety and bias concerns persisted.",
+     "quote": "This approach demonstrated significant advantages over zero-shot reasoning (64.8 \u00b1 15.3 points, 95% CI: 58.2\u201371.4, 58.9%; p < 0.001, Cohen\u2019s d = 0.62) and structured reasoning (67.9 \u00b1 13.7 points, 61.7%; p = 0.02, Cohen\u2019s d = 0.42), with effect sizes indicating moderate to large practical significance."
+    },
+    {
+     "rec_id": "R064",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and safety incidents by case complexity",
+     "effect": "Performance declined from 81.2 (Level 1) to 52.3 (Level 5); r=-0.78; critical safety incidents 23.1% at Level 5 vs 2.3% at Level 1.",
+     "quote": "A robust negative correlation was observed between case complexity and overall performance ( r = -0.78, p < 0.001, R\u00b2 = 0.61), indicating that 61% of the variance in performance was attributable to case difficulty."
+    }
+   ],
+   "unlisted_practices": [
+    "Meta-cognitive prompting to elicit transparent reasoning chains (4.2 vs 1.8 explicit steps)",
+    "Safety-first prompt framing to reduce critical safety incidents"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 90,
+   "sample_unit": "LLM responses",
+   "models_evaluated": [
+    "OpenAI O3",
+    "Claude Sonnet 4",
+    "Google Gemini 2.5 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "prompt engineering clinical performance",
+     "effect": "13.0% enhancement; 45% fewer critical safety concerns, but best strategy only 66.5% maximum performance.",
+     "quote": "Although meta-cognitive prompting achieved statistically significant improvements over zero-shot approaches (13.0% enhancement) and safety-first prompting reduced critical safety concerns by 45%, these improvements remain insufficient to address fundamental performance limitations."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "transparent reasoning steps",
+     "effect": "Meta-cognitive produced 4.2 explicit reasoning steps vs zero-shot 1.8; t = 8.34, p < 0.001.",
+     "quote": "Meta-cognitive prompting yielded significantly more transparent reasoning chains (mean of 4.2 explicit reasoning steps) compared to zero-shot approaches (mean of 1.8 steps; t = 8.34, p < 0.001)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "critical safety concerns",
+     "effect": "11 of 90 responses (12.2%) had critical safety concerns.",
+     "quote": "Critical safety concerns, as assessed through traditional clinical error evaluation criteria, were identified in 11 of 90 responses (12.2%), with notable disparities related to case complexity."
+    },
+    {
+     "rec_id": "R067",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "safety incidents by case complexity",
+     "effect": "Level 5: 23.1% critical safety incidents vs Level 1: 2.3%; \u03c7\u00b2 = 15.7, p < 0.001.",
+     "quote": "Level 5 ethical scenarios demonstrated 23.1% critical safety incidents, compared to only 2.3% in Level 1 cases (\u03c7\u00b2 = 15.7, p < 0.001)."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "communication and empathy quality",
+     "effect": "Communication/empathy overall mean 10.3 \u00b1 2.5 points, 51.5% of maximum.",
+     "quote": "Significant variations emerged across evaluation domains, with communication & empathy consistently representing the lowest-performing area across all prompt strategies (overall mean: 10.3 \u00b1 2.5 points, 51.5% of maximum)."
+    },
+    {
+     "rec_id": "R321",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "bias in generated clinical recommendations",
+     "effect": "Systematic bias patterns in 18.9% of responses across cultural, age, gender, and socioeconomic dimensions.",
+     "quote": "Systematic bias patterns were identified across cultural, age, gender, and socioeconomic dimensions in 18.9% of responses."
+    }
+   ],
+   "unlisted_practices": [
+    "Meta-cognitive self-reflection prompting for clinical reasoning",
+    "Safety-first risk-focused prompting before clinical recommendations",
+    "Few-shot prompting with clinical reasoning examples",
+    "Structured clinical reasoning or SOAP-format prompting",
+    "Collaborative multidisciplinary-perspective prompting"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 90,
+   "sample_unit": "responses",
+   "models_evaluated": [
+    "OpenAI O3",
+    "Claude Sonnet 4",
+    "Google Gemini 2.5 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R067",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "critical safety incidents by case complexity",
+     "effect": "23.1% critical safety incidents in Level 5 ethical scenarios versus 2.3% in Level 1 cases (\u03c7\u00b2 = 15.7, p < 0.001)",
+     "quote": "Level 5 ethical scenarios demonstrated 23.1% critical safety incidents, compared to only 2.3% in Level 1 cases (\u03c7\u00b2 = 15.7, p < 0.001)."
+    },
+    {
+     "rec_id": "R322",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "gender bias in cardiovascular workup recommendations",
+     "effect": "delayed cardiac workup recommendations in 40% of female presentations despite identical risk profiles (mean delay: 2.3 vs. 0.8 recommendations, p = 0.003)",
+     "quote": "Gender bias appeared in 6 of 15 cardiovascular scenarios (40%), with female presentations receiving delayed cardiac workup recommendations despite identical risk profiles (mean delay: 2.3 vs. 0.8 recommendations before cardiac evaluation, p = 0.003)."
+    }
+   ],
+   "unlisted_practices": [
+    "meta-cognitive prompting",
+    "safety-first prompting"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "LLM responses (3 models x 6 prompt strategies x 5 scenarios)",
+ "sample_size": 90,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude Sonnet 4",
+  "Google Gemini 2.5 Pro",
+  "OpenAI O3"
+ ],
+ "links": [
+  {
+   "rec_id": "R322",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differential LLM recommendations by patient age and gender in identical presentations",
+   "effect": "Age bias in 8 of 30 elderly responses (26.7%; OR 2.34, p=0.02); gender bias in 6 of 15 cardiovascular scenarios (40%), delayed cardiac workup for women (2.3 vs 0.8 recommendations, p=0.003).",
+   "quote": "Gender bias appeared in 6 of 15 cardiovascular scenarios (40%), with female presentations receiving delayed cardiac workup recommendations despite identical risk profiles (mean delay: 2.3 vs. 0.8 recommendations before cardiac evaluation, p = 0.003).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R321",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Biased or population-specific knowledge gaps in generated content (cultural, age, gender, socioeconomic)",
+   "effect": "Bias patterns in 17 of 90 responses (18.9%); cultural bias in 7 of 15 multicultural scenarios (46.7%); residual bias 11.7% with safety-first prompting.",
+   "quote": "Cultural bias affected 7 of 15 multicultural scenarios (46.7%), particularly in end-of-life discussions where Western bioethical frameworks were assumed without consideration of alternative cultural approaches to family decision-making and advance directives.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Total clinical performance score by prompt strategy (meta-cognitive vs zero-shot)",
+   "effect": "Meta-cognitive prompts scored 73.2 vs 64.8 for zero-shot (p<0.001, d=0.62); safety-first 72.1; residual safety and bias concerns persisted.",
+   "quote": "This approach demonstrated significant advantages over zero-shot reasoning (64.8 \u00b1 15.3 points, 95% CI: 58.2\u201371.4, 58.9%; p < 0.001, Cohen\u2019s d = 0.62) and structured reasoning (67.9 \u00b1 13.7 points, 61.7%; p = 0.02, Cohen\u2019s d = 0.42), with effect sizes indicating moderate to large practical significance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R067",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "safety incidents by case complexity",
+   "effect": "Level 5: 23.1% critical safety incidents vs Level 1: 2.3%; \u03c7\u00b2 = 15.7, p < 0.001.",
+   "quote": "Level 5 ethical scenarios demonstrated 23.1% critical safety incidents, compared to only 2.3% in Level 1 cases (\u03c7\u00b2 = 15.7, p < 0.001).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "critical safety concerns",
+   "effect": "11 of 90 responses (12.2%) had critical safety concerns.",
+   "quote": "Critical safety concerns, as assessed through traditional clinical error evaluation criteria, were identified in 11 of 90 responses (12.2%), with notable disparities related to case complexity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "communication and empathy quality",
+   "effect": "Communication/empathy overall mean 10.3 \u00b1 2.5 points, 51.5% of maximum.",
+   "quote": "Significant variations emerged across evaluation domains, with communication & empathy consistently representing the lowest-performing area across all prompt strategies (overall mean: 10.3 \u00b1 2.5 points, 51.5% of maximum).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R064",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Collaborative multidisciplinary-perspective prompting",
+  "Few-shot prompting with clinical reasoning examples",
+  "Meta-cognitive prompting to elicit transparent reasoning chains (4.2 vs 1.8 explicit steps)",
+  "Meta-cognitive self-reflection prompting for clinical reasoning",
+  "Safety-first prompt framing to reduce critical safety incidents",
+  "Safety-first risk-focused prompting before clinical recommendations",
+  "Structured clinical reasoning or SOAP-format prompting",
+  "meta-cognitive prompting",
+  "safety-first prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41024005",
+ "screen": {
+  "id": "pmid:41024005",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "safety-first prompt engineering guardrails",
+  "user": "none",
+  "reason": "Empirical study evaluating different prompt engineering strategies (such as safety-first and meta-cognitive prompting vs. zero-shot baseline) to improve clinical safety, ethical reasoning, and bias in general-purpose LLMs across clinical scenarios.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41024005",
+   "empirical": 0.92,
+   "tests_practice": 0.41,
+   "real_deployment": 0.04
+  }
+ }
+}

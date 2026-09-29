@@ -1,0 +1,85 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 646,
+ "sample_unit": "word-level medical fabrications",
+ "models_evaluated": [],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Accuracy of fabrication detectors (macro F1) across evidence conditions, including expert clinicians",
+   "effect": "Expert clinicians reached 53.3% macro F1 and no detector family cleared about 60% without gold evidence. A strong LLM scored 91% with gold evidence and 35% with wrong evidence.",
+   "quote": "On MedFabric the task is unsolved: expert clinicians reach only 53.3% macro F1 and no detector family clears about 60% without gold evidence.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Expert clinicians' ability to detect word-level medical fabrications (macro F1)",
+   "effect": "Expert clinicians reached only 53.3% macro F1 detecting fabrications, so unverified fluent but wrong LLM statements may not be caught.",
+   "quote": "On MedFabric the task is unsolved: expert clinicians reach only 53.3% macro F1 and no detector family clears about 60% without gold evidence.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Retrieval-confidence gate that abstains on low-confidence evidence, raising macro F1 from 61% to 74%",
+  "Benchmark design that removes authorship-style shortcuts when evaluating fabrication detectors"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2605.04180",
+ "screen": {
+  "id": "arxiv:2605.04180",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval-confidence gate abstention",
+  "user": "none",
+  "reason": "The study develops and tests a benchmark for medical hallucination/fabrication detection and evaluates a specific safeguard/deployment practice (a retrieval-confidence gate that abstains on low-confidence evidence).",
+  "jev": {
+   "id": "arxiv:2605.04180",
+   "empirical": 0.93,
+   "tests_practice": 0.83,
+   "real_deployment": 0.04
+  }
+ }
+}

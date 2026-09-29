@@ -1,0 +1,332 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 130486,
+   "sample_unit": "retinal fundus images",
+   "models_evaluated": [
+    "ResNet-50 DR grading classifier",
+    "C2ST (classifier-based two-sample test)",
+    "MMDD (deep kernel test)",
+    "MUKS (multiple univariate Kolmogorov-Smirnov tests)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection rate of simulated distribution shifts (population and image quality) by deep-learning shift detection tests",
+     "effect": "Classifier-based C2ST achieved perfect detection for quality and co-morbidity subgroup shifts at n=1000; only method detecting sex shifts (0.79 at 30,000 training images); type I error stayed near 5%.",
+     "quote": "Classifier-based tests performed best overall, with perfect detection rates for quality and co-morbidity subgroup shifts at a sample size of 1000."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "DR detection performance disparities across patient subgroups (ethnicity, quality, comorbidity, sex)",
+     "effect": "Referable DR sensitivity ranged 0.50 to 0.79 across ethnicities; performance reduced for lower image quality; accuracy dropped for patients with co-morbidities.",
+     "quote": "For example, the referable DR detection performance for different ethnicities ranged between 0.50 and 0.79 sensitivity, and classification performance in all metrics was reduced for images with lower quality."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance gaps hidden by aggregate metrics in DR grading",
+     "effect": "Overall referable DR sensitivity 0.66 but 0.50 for Native American and 0.79 for Indian subgroups; co-morbidity sensitivity 0.82 vs 0.58 without.",
+     "quote": "We found considerable performance differences across subgroups in all reported metrics (right column in Table 1 )."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Statistical threshold-based alerts for detecting distribution shift with controlled false positive rate",
+     "effect": "Type I error remained approximately within the chosen 5% significance level for all tests; detection rates high for many shifts, enabling alerts.",
+     "quote": "For all tests, the type I error (i.e. the false positive detection rate) remained approximately within the chosen significance level (Fig. 3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Task-agnostic neural-network two-sample hypothesis tests on unlabelled deployment images to detect subgroup and acquisition distribution shift for manufacturer postmarket surveillance"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 130486,
+   "sample_unit": "retinal images",
+   "models_evaluated": [
+    "ResNet-50 diabetic retinopathy classifier",
+    "C2ST classifier-based shift detector",
+    "MMDD deep kernel shift detector",
+    "MUKS multiple univariate Kolmogorov-Smirnov shift detector"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup diagnostic performance",
+     "effect": "Referable DR sensitivity ranged 0.50 to 0.79 across ethnic subgroups.",
+     "quote": "In particular, the sensitivity at detecting referable DR varied severely between 0.50 and 0.79 for different ethnic subgroups."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "subgroup distribution shift detection",
+     "effect": "C2ST detected quality and co-morbidity subgroup shifts with perfect detection using 500 training examples.",
+     "quote": "C2ST required only 500 training examples for detecting quality and co-morbidity subgroup shifts with perfect detection rate (dashed vertical lines in Fig. 2 a, b)."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "out-of-distribution input shift detection",
+     "effect": "OOD low-quality shift: all methods had perfect test power with 100 training examples; test sample m = 50 for C2ST/MUKS and m = 200 for MMDD.",
+     "quote": "For such a shift, all methods reached perfect test power with only 100 training examples, and even the test sample size could be reduced drastically to ca. m = 50 for C2ST and MUKS and m = 200 for MMDD."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 130486,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "ResNet-50",
+    "C2ST",
+    "MMDD",
+    "MUKS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "distribution shift detection rate",
+     "effect": "Classifier-based tests achieved perfect detection for quality and co-morbidity shifts at n=1000, and out-of-distribution shifts at n<=300, though sex shifts required >30,000 samples.",
+     "quote": "Classifier-based tests performed best overall, with perfect detection rates for quality and co-morbidity subgroup shifts at a sample size of 1000."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup performance disparities in diabetic retinopathy grading",
+     "effect": "Referable diabetic retinopathy sensitivity ranged from 0.50 to 0.79 across ethnic subgroups, and classification performance was reduced for lower-quality images.",
+     "quote": "For example, the referable DR detection performance for different ethnicities ranged between 0.50 and 0.79 sensitivity, and classification performance in all metrics was reduced for images with lower quality."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "USA",
+ "sample_unit": "retinal fundus images",
+ "sample_size": 130486,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "C2ST",
+  "C2ST (classifier-based two-sample test)",
+  "C2ST classifier-based shift detector",
+  "MMDD",
+  "MMDD (deep kernel test)",
+  "MMDD deep kernel shift detector",
+  "MUKS",
+  "MUKS (multiple univariate Kolmogorov-Smirnov tests)",
+  "MUKS multiple univariate Kolmogorov-Smirnov shift detector",
+  "ResNet-50",
+  "ResNet-50 DR grading classifier",
+  "ResNet-50 diabetic retinopathy classifier"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection rate of simulated distribution shifts (population and image quality) by deep-learning shift detection tests",
+   "effect": "Classifier-based C2ST achieved perfect detection for quality and co-morbidity subgroup shifts at n=1000; only method detecting sex shifts (0.79 at 30,000 training images); type I error stayed near 5%.",
+   "quote": "Classifier-based tests performed best overall, with perfect detection rates for quality and co-morbidity subgroup shifts at a sample size of 1000.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup performance gaps hidden by aggregate metrics in DR grading",
+   "effect": "Overall referable DR sensitivity 0.66 but 0.50 for Native American and 0.79 for Indian subgroups; co-morbidity sensitivity 0.82 vs 0.58 without.",
+   "quote": "We found considerable performance differences across subgroups in all reported metrics (right column in Table 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "DR detection performance disparities across patient subgroups (ethnicity, quality, comorbidity, sex)",
+   "effect": "Referable DR sensitivity ranged 0.50 to 0.79 across ethnicities; performance reduced for lower image quality; accuracy dropped for patients with co-morbidities.",
+   "quote": "For example, the referable DR detection performance for different ethnicities ranged between 0.50 and 0.79 sensitivity, and classification performance in all metrics was reduced for images with lower quality.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Statistical threshold-based alerts for detecting distribution shift with controlled false positive rate",
+   "effect": "Type I error remained approximately within the chosen 5% significance level for all tests; detection rates high for many shifts, enabling alerts.",
+   "quote": "For all tests, the type I error (i.e. the false positive detection rate) remained approximately within the chosen significance level (Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "out-of-distribution input shift detection",
+   "effect": "OOD low-quality shift: all methods had perfect test power with 100 training examples; test sample m = 50 for C2ST/MUKS and m = 200 for MMDD.",
+   "quote": "For such a shift, all methods reached perfect test power with only 100 training examples, and even the test sample size could be reduced drastically to ca. m = 50 for C2ST and MUKS and m = 200 for MMDD.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Task-agnostic neural-network two-sample hypothesis tests on unlabelled deployment images to detect subgroup and acquisition distribution shift for manufacturer postmarket surveillance"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38724581",
+ "screen": {
+  "id": "pmid:38724581",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "distribution shift detection for postmarket drift monitoring",
+  "user": "none",
+  "reason": "Empirically tests and compares distribution shift detection techniques as postmarket surveillance monitoring practices for a medical imaging AI model.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "distribution shift detection / postmarket drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38724581",
+   "empirical": 0.93,
+   "tests_practice": 0.4,
+   "real_deployment": 0.04
+  }
+ }
+}

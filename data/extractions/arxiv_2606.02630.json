@@ -1,0 +1,96 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "multi-turn adversarial conversations",
+ "models_evaluated": [
+  "GPT-4.1-mini",
+  "Claude Sonnet 4.5"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R098",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Unsafe response rate across four adversarial turns under live attack",
+   "effect": "Unsafe responses rose from 35% to nearly 80% by Turn 4 under live attack; GPT-4.1-mini and Claude Sonnet 4.5 diverged to a 19x gap by Turn 4.",
+   "quote": "Unsafe responses rise from 35% to nearly 80% by Turn 4 under live attack.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R246",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Turn 4 unsafe responses with input-side classifier, and false alarm rate on benign queries",
+   "effect": "The classifier reduced Turn 4 unsafe responses by 52 percentage points despite severe accuracy degradation, but produced a 45% false alarm rate on benign queries.",
+   "quote": "A lightweight input-side classifier reduces Turn 4 unsafe responses by 52 percentage points despite severe accuracy degradation, but the 45% false alarm rate on benign queries is the primary deployment constraint.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Evaluating chatbot safety with multi-turn adversarial benchmarks rather than single-turn prompts",
+  "Using live adversarial LLM attackers for red-teaming"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2606.02630",
+ "screen": {
+  "id": "arxiv:2606.02630",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "input-side classifier guardrail against jailbreak prompts",
+  "user": "patient",
+  "reason": "Evaluates multi-turn adversarial jailbreak safety in medical AI chatbots and specifically tests an input-side classifier defense/guardrail to prevent unsafe responses.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "classifier-based input guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.02630",
+   "empirical": 0.94,
+   "tests_practice": 0.78,
+   "real_deployment": 0.05
+  }
+ }
+}

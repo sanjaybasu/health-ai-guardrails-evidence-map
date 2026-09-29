@@ -1,0 +1,301 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Thailand",
+   "sample_size": null,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Qwen3.6-35B-A3B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Thai",
+    "English",
+    "eight languages (others unspecified)"
+   ],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Out-of-scope and drug-dosing responses with vs without safety prompt",
+     "effect": "Without the safety prompt, the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests (71-question no-retrieval probe).",
+     "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Verifiable provider recommendations with vs without knowledge-base grounding",
+     "effect": "Without the knowledge base, the model produced zero verifiable provider recommendations; forced-retrieval routing was necessary for reliable grounding.",
+     "quote": "We further report two transferable deployment findings: English-calibrated 4-bit AWQ quantization corrupts Thai tone marks, and forced-retrieval routing is necessary for reliable grounding."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Test-retest reproducibility of production QA cases",
+     "effect": "91.1% test-retest pass over 259 cases.",
+     "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    }
+   ],
+   "unlisted_practices": [
+    "Validating quantization effects on non-English script output (English-calibrated 4-bit AWQ quantization corrupts Thai tone marks)",
+    "Translate-then-retrieve for zero-shot multilingual serving",
+    "First-turn query classifier forcing tool-based retrieval for entity lookups"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Thailand",
+   "sample_size": 259,
+   "sample_unit": "production QA test cases",
+   "models_evaluated": [
+    "Qwen3.6-35B-A3B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Thai",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R061",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Compliance with out-of-scope requests after removing the safety prompt",
+     "effect": "In the 71-question frontier no-retrieval probe, removing the safety prompt led the backend model family to produce a full drug-dosing schedule and comply with out-of-scope requests.",
+     "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Production QA test-retest pass rate",
+     "effect": "Production QA logs showed 91.1% test-retest pass over 259 cases.",
+     "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Verifiability of provider recommendations without knowledge-base grounding",
+     "effect": "The 71-question frontier no-retrieval probe produced zero verifiable provider recommendations without the knowledge base; forced-retrieval routing was reported necessary for reliable grounding.",
+     "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    }
+   ],
+   "unlisted_practices": [
+    "English-calibrated 4-bit AWQ quantization for Thai-language generation, reported to corrupt Thai tone marks."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Thailand",
+   "sample_size": 71,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Qwen3.6-35B-A3B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Thai",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "compliance with out-of-scope requests",
+     "effect": "Without the safety prompt, the model produced a full drug-dosing schedule and complied with out-of-scope requests.",
+     "quote": "without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "verifiable recommendations",
+     "effect": "Without the knowledge base, the model produced zero verifiable provider recommendations.",
+     "quote": "without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations."
+    }
+   ],
+   "unlisted_practices": [
+    "using forced-retrieval routing for entity lookups to ensure reliable grounding",
+    "avoiding English-calibrated quantization for non-English languages to prevent text corruption"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "Thailand",
+ "sample_unit": "questions",
+ "sample_size": 165,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Thai",
+  "eight languages (others unspecified)"
+ ],
+ "models_evaluated": [
+  "Qwen3.6-35B-A3B"
+ ],
+ "links": [
+  {
+   "rec_id": "R063",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Out-of-scope and drug-dosing responses with vs without safety prompt",
+   "effect": "Without the safety prompt, the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests (71-question no-retrieval probe).",
+   "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Verifiable provider recommendations with vs without knowledge-base grounding",
+   "effect": "Without the knowledge base, the model produced zero verifiable provider recommendations; forced-retrieval routing was necessary for reliable grounding.",
+   "quote": "We further report two transferable deployment findings: English-calibrated 4-bit AWQ quantization corrupts Thai tone marks, and forced-retrieval routing is necessary for reliable grounding.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Test-retest reproducibility of production QA cases",
+   "effect": "91.1% test-retest pass over 259 cases.",
+   "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R061",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Compliance with out-of-scope requests after removing the safety prompt",
+   "effect": "In the 71-question frontier no-retrieval probe, removing the safety prompt led the backend model family to produce a full drug-dosing schedule and comply with out-of-scope requests.",
+   "quote": "We release the first Thai traditional-medicine/wellness retrieval benchmark (50 questions with gold document IDs; Recall@5 = 0.88), production QA logs (91.1% test-retest pass over 259 cases), and a 71-question frontier no-retrieval probe showing what each grounding pillar contributes: without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "English-calibrated 4-bit AWQ quantization for Thai-language generation, reported to corrupt Thai tone marks.",
+  "First-turn query classifier forcing tool-based retrieval for entity lookups",
+  "Translate-then-retrieve for zero-shot multilingual serving",
+  "Validating quantization effects on non-English script output (English-calibrated 4-bit AWQ quantization corrupts Thai tone marks)",
+  "avoiding English-calibrated quantization for non-English languages to prevent text corruption",
+  "using forced-retrieval routing for entity lookups to ensure reliable grounding"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "arxiv:2608.22917",
+ "screen": {
+  "id": "arxiv:2608.22917",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "retrieval grounding, rule-based safety layer, and query routing",
+  "user": "patient",
+  "reason": "Evaluates a deployed multilingual conversational health/wellness advisor and directly tests the impact of safeguards (retrieval-augmented grounding, rule-based safety layer/prompting, and forced retrieval routing) versus ungrounded/unguarded baselines.",
+  "jev": {
+   "id": "arxiv:2608.22917",
+   "empirical": 0.94,
+   "tests_practice": 0.93,
+   "real_deployment": 0.66
+  }
+ }
+}

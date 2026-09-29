@@ -1,0 +1,381 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Qatar",
+   "sample_size": 20,
+   "sample_unit": "patient education questions (12 LLMs x 4 setups); 50 PEMs for validation agent test",
+   "models_evaluated": [
+    "AceGPT-v2-32B",
+    "Fanar-S-1-7B",
+    "Jais-adapted-13B",
+    "Jais-family-13B",
+    "Qwen2.5-7B",
+    "Qwen2.5-14B",
+    "Qwen2.5-32B",
+    "Gemma-2-27B",
+    "Phi-4",
+    "Phi-4-mini",
+    "Mistral-Small-2409",
+    "Falcon3-10B",
+    "ChatGPT o3-mini (evaluator)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Arabic"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PEM generation quality with vs without RAG grounding across 12 LLMs",
+     "effect": "ARAG-enabled setups (3 and 4) yielded the highest scores for 10 of the 12 models; ARAG positively contributed for most models.",
+     "quote": "Based on the resulting scores, the top 5 experiments were identified."
+    },
+    {
+     "rec_id": "R246",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Validation agent accuracy in blocking harmful patient education content",
+     "effect": "Accuracy correlated with model size; Gemma-2-27b 0.82, Qwen2.5-32b 0.80; models <14B generally <0.50; Jais and Fanar 0.40 (blocked none); top performers failed on category 3 harmful PEMs.",
+     "quote": "Models under 14B parameters generally scored below 0.50 accuracy, whereas only those with \u226527B parameters exceeded 0.80, suggesting sufficient parameter capacity is needed for reliable content validation in PE workflows."
+    },
+    {
+     "rec_id": "R486",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "LLM validation agent blocking of harmful generated PEMs",
+     "effect": "Accuracy 0.40-0.82 across 12 LLMs; only models \u226527B exceeded 0.80; even top performers failed to dependably block category 3 unscientific advice.",
+     "quote": "It is noteworthy that the full results from the VA evaluation ( online supplemental results , sheet \u2018VA Eval\u2019) show that even the top performers failed to dependably block harmful PEMs belonging to category 3 (unscientific or time-wasting medical advice)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between automated LLM evaluator ranking and blinded expert ranking of top configurations",
+     "effect": "Expert ranking exactly matched automated ranking for the top five configurations, though absolute scores differed, largely in general medicine.",
+     "quote": "A key finding was the exact match between the expert ranking and the automated ranking for these top five configurations."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Language adherence and consistency of outputs across setups",
+     "effect": "Several models occasionally produced non-Arabic text despite Arabic-only inputs and RAG context; Jais-family-13b ranks ranged from 8th to 47th across setups.",
+     "quote": "Despite receiving Arabic-only inputs and RAG context, several models (eg, Qwen-7b/32b, Gemma-2-27b, Jais-family-13b) occasionally produced non-Arabic text."
+    }
+   ],
+   "unlisted_practices": [
+    "Using language-specific (Arabic-centred) LLMs for non-English patient education generation",
+    "Language validation rule scoring non-Arabic output as zero",
+    "Sentence-wise chunking and embedding model selection for RAG"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Qatar",
+   "sample_size": 70,
+   "sample_unit": "20 patient questions and 50 PEM examples",
+   "models_evaluated": [
+    "AceGPT-v2-32b",
+    "Fanar-S-1-7B",
+    "Jais-adapted-13b",
+    "Jais-family-13b",
+    "Qwen2.5-14b",
+    "Gemma-2-27b",
+    "Phi4-14b",
+    "Qwen2.5-32b",
+    "Qwen2.5-7b",
+    "Phi4-mini-3.8b",
+    "Mistral-small-22b-2409",
+    "Falcon3-10b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Arabic"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Arabic PEM generation quality",
+     "effect": "ARAG setups had highest scores for 10/12 models; AceGPT-v2-32B setup 4 ranked first with 4.69 automated and 4.32 expert overall.",
+     "quote": "Results, detailed in table 1 , indicated a performance trend favouring ARAG-enabled setups (setups 3 and 4), which yielded the highest scores for 10 of the 12 models."
+    },
+    {
+     "rec_id": "R486",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "harmful PEM blocking accuracy",
+     "effect": "Accuracy ranged from 0.40 (Jais variants, Fanar-S-1-7B) to 0.82 (Gemma-2-27b); even top performers failed to dependably block category 3 harmful PEMs.",
+     "quote": "Top performers like \u2018Gemma-2-27b\u2019 (0.82 accuracy), \u2018Qwen2.5-32b\u2019 (0.80 accuracy) and \u2018AceGPT-v2-32b\u2019 (0.78 accuracy) reliably blocked harmful content from categories 1 and 2 (the most harmful PEMs), while smaller models including \u2018Jais\u2019 variants and \u2018Fanar-S-1-7B\u2019 performed poorly (0.40 accuracy)."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering for Arabic patient education material generation",
+    "Using automated LLM evaluation to rank generated patient education materials compared with expert review",
+    "Selecting Arabic-centred LLMs for Arabic patient education material generation"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Qatar",
+   "sample_size": 20,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "AceGPT-v2-32B",
+    "Fanar-S-1-7B",
+    "Jais-adapted-13B",
+    "Jais-family-13B",
+    "Qwen2.5-14B",
+    "Gemma-2-27B",
+    "Phi-4-14B",
+    "Qwen2.5-32B",
+    "Qwen2.5-7B",
+    "Phi-4-mini-3.8B",
+    "Mistral-Small-22B-2409",
+    "Falcon3-10B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "ar"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Arabic PEM generation quality across 12 LLMs",
+     "effect": "ARAG-enabled setups yielded the highest generation scores for 10 of 12 evaluated models",
+     "quote": "Results, detailed in table 1 , indicated a performance trend favouring ARAG-enabled setups (setups 3 and 4), which yielded the highest scores for 10 of the 12 models."
+    },
+    {
+     "rec_id": "R486",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "harmful advice blocking accuracy of validation agents",
+     "effect": "Models >=27B achieved 0.78-0.82 accuracy blocking harmful advice; models <14B achieved <=0.46 and failed to block",
+     "quote": "Top performers like \u2018Gemma-2-27b\u2019 (0.82 accuracy), \u2018Qwen2.5-32b\u2019 (0.80 accuracy) and \u2018AceGPT-v2-32b\u2019 (0.78 accuracy) reliably blocked harmful content from categories 1 and 2 (the most harmful PEMs), while smaller models including \u2018Jais\u2019 variants and \u2018Fanar-S-1-7B\u2019 performed poorly (0.40 accuracy)."
+    }
+   ],
+   "unlisted_practices": [
+    "prompt engineering"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "country": "Qatar",
+ "sample_unit": "patient education questions (12 LLMs x 4 setups); 50 PEMs for validation agent test",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Arabic",
+  "ar"
+ ],
+ "models_evaluated": [
+  "AceGPT-v2-32B",
+  "AceGPT-v2-32b",
+  "ChatGPT o3-mini (evaluator)",
+  "Falcon3-10B",
+  "Falcon3-10b",
+  "Fanar-S-1-7B",
+  "Gemma-2-27B",
+  "Gemma-2-27b",
+  "Jais-adapted-13B",
+  "Jais-adapted-13b",
+  "Jais-family-13B",
+  "Jais-family-13b",
+  "Mistral-Small-22B-2409",
+  "Mistral-Small-2409",
+  "Mistral-small-22b-2409",
+  "Phi-4",
+  "Phi-4-14B",
+  "Phi-4-mini",
+  "Phi-4-mini-3.8B",
+  "Phi4-14b",
+  "Phi4-mini-3.8b",
+  "Qwen2.5-14B",
+  "Qwen2.5-14b",
+  "Qwen2.5-32B",
+  "Qwen2.5-32b",
+  "Qwen2.5-7B",
+  "Qwen2.5-7b"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "PEM generation quality with vs without RAG grounding across 12 LLMs",
+   "effect": "ARAG-enabled setups (3 and 4) yielded the highest scores for 10 of the 12 models; ARAG positively contributed for most models.",
+   "quote": "Based on the resulting scores, the top 5 experiments were identified.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R486",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "LLM validation agent blocking of harmful generated PEMs",
+   "effect": "Accuracy 0.40-0.82 across 12 LLMs; only models \u226527B exceeded 0.80; even top performers failed to dependably block category 3 unscientific advice.",
+   "quote": "It is noteworthy that the full results from the VA evaluation ( online supplemental results , sheet \u2018VA Eval\u2019) show that even the top performers failed to dependably block harmful PEMs belonging to category 3 (unscientific or time-wasting medical advice).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R246",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Validation agent accuracy in blocking harmful patient education content",
+   "effect": "Accuracy correlated with model size; Gemma-2-27b 0.82, Qwen2.5-32b 0.80; models <14B generally <0.50; Jais and Fanar 0.40 (blocked none); top performers failed on category 3 harmful PEMs.",
+   "quote": "Models under 14B parameters generally scored below 0.50 accuracy, whereas only those with \u226527B parameters exceeded 0.80, suggesting sufficient parameter capacity is needed for reliable content validation in PE workflows.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Language validation rule scoring non-Arabic output as zero",
+  "Prompt engineering for Arabic patient education material generation",
+  "Selecting Arabic-centred LLMs for Arabic patient education material generation",
+  "Sentence-wise chunking and embedding model selection for RAG",
+  "Using automated LLM evaluation to rank generated patient education materials compared with expert review",
+  "Using language-specific (Arabic-centred) LLMs for non-English patient education generation",
+  "prompt engineering"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40713064",
+ "screen": {
+  "id": "pmid:40713064",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding and validation agent blocking harmful content",
+  "user": "none",
+  "reason": "Evaluates the addition of retrieval augmented generation (ARAG) and prompt engineering to base LLMs, and evaluates LLM-based validation agents for blocking harmful content.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval augmented generation and automated validation agent guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40713064",
+   "empirical": 0.96,
+   "tests_practice": 0.77,
+   "real_deployment": 0.04
+  }
+ }
+}

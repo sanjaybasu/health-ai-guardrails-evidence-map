@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": 963565,
+ "sample_unit": "surgical cases (temporal test set, 2024 ACS NSQIP)",
+ "models_evaluated": [
+  "logistic regression",
+  "FT-Transformer",
+  "six tabular model families",
+  "three pretrained clinical text-encoder embedding classifiers",
+  "ACS NSQIP Surgical Risk Calculator"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "AUROC of complex ML models versus logistic regression and NSQIP Surgical Risk Calculator on identical cases",
+   "effect": "FT-Transformer exceeded logistic regression by only 0.009\u20130.030 AUROC; calculator matched best model for mortality but trailed for any complication.",
+   "quote": "The FT-Transformer led or tied on AUROC for all four outcomes (0.755\u20130.955), exceeding logistic regression by only 0.009\u20130.030; the three encoders fell 0.005\u20130.009 short of the best tabular model and spanned 0.003 or less.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model ranking consistency between national test data and a single-institution deployment check",
+   "effect": "Rankings changed under AUPRC and did not hold in a 3,490-case single-institution deployment check.",
+   "quote": "Rankings changed under AUPRC and did not hold in a 3,490-case single-institution deployment check, not independent of the PUF.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Comparing architecture and text-encoder choice for tabular perioperative risk prediction with fixed predictor set"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1315108",
+ "screen": {
+  "id": "epmc:PPR1315108",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates machine learning models for perioperative risk and tests how model rankings change during a local single-institution evaluation check compared to national benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation before deployment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1315108",
+   "empirical": 0.96,
+   "tests_practice": 0.23,
+   "real_deployment": 0.21
+  }
+ }
+}

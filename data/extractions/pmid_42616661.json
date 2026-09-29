@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "multimodal_foundation",
+  "imaging_diagnostic"
+ ],
+ "country": "unknown",
+ "sample_size": 900,
+ "sample_unit": "queries (200 dental radiographs, 12 landmarks, 3 repetitions; 10,800 API calls)",
+ "models_evaluated": [
+  "GPT-5.4",
+  "Gemini 3.1 Pro"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "MLLM landmark localisation versus fourth-year dental student consensus on same radiographs",
+   "effect": "Both models remained inferior to student consensus on all periapical and panoramic comparisons; GPT-5.4 matched students only on cephalometric landmarks; Gemini approached parity only on cephalometric points under guided prompting.",
+   "quote": "Both models remained inferior to the student consensus on all periapical and panoramic comparisons, with Gemini 3.1 Pro approaching parity only on cephalometric points under guided prompting.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model behavior variation under different prompting and repeated runs",
+   "effect": "Guided prompting had heterogeneous effects, improving some landmarks and severely regressing others; GPT-5.4 sent most lower-left canine apex predictions to the wrong lower-right molar region, a prompt-resistant pattern absent in Gemini.",
+   "quote": "Guided prompting produced heterogeneous effects, improving localisation of some landmarks while causing severe regression on others; most notably, GPT-5.4 directed the majority of lower-left canine apex predictions to the incorrect lower-right molar region, a prompt-resistant mislocalisation pattern absent in Gemini 3.1 Pro.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Grid-based coordinate framework for benchmarking spatial landmark localisation of multimodal LLMs on dental radiographs"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42616661",
+ "screen": {
+  "id": "pmid:42616661",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "generative_llm",
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "guided prompting vs zero-shot prompting",
+  "user": "none",
+  "reason": "The study empirically evaluates multimodal LLMs against human dental student consensus on dental radiograph landmark identification and tests guided prompting versus zero-shot prompting as a prompt guardrail/strategy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "guided prompting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42616661",
+   "empirical": 0.94,
+   "tests_practice": 0.26,
+   "real_deployment": 0.02
+  }
+ }
+}

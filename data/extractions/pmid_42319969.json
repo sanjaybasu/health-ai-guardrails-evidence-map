@@ -1,0 +1,318 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Canada",
+   "sample_size": 65,
+   "sample_unit": "patient questions",
+   "models_evaluated": [
+    "GPT-5",
+    "GPT-5 with custom prompt",
+    "GPT-5 with custom prompt plus RAG",
+    "GPT-5-nano with custom prompt",
+    "GPT-5-nano with custom prompt plus RAG",
+    "GPT-4o (LLM grader)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pairwise rater preference for RAG-grounded vs non-RAG LLM pathology explanations",
+     "effect": "GPT-5-nano with RAG scored 0.40 higher than without (P=.02; 60% win rate); GPT-5 RAG vs no RAG not significant; GPT-5_p_rag only config significantly preferred over pathologists (0.33; P=.04).",
+     "quote": "Although the difference between GPT-5_p_rag and GPT-5_p was not statistically significant, GPT-5-n_p_rag scored 0.40 points higher than GPT-5-n_p ( P = .02; 60% win rate)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM configurations compared with pathologist-written explanations on same questions",
+     "effect": "GPT-5_p_rag met noninferiority (\u0394=1.5) and was significantly preferred over pathologist responses (58% win rate, P=.04); GPT-5-n_p performed worse (36% win rate, P<.001).",
+     "quote": "Among all configurations, GPT-5_p_rag achieved the highest ability estimate and was the only model statistically significantly preferred over pathologist-written responses (difference, 0.33; P = .04; 58% win rate)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Agreement between LLM grader and pathologist graders on rubric scores",
+     "effect": "LLM evaluator scored LLM-generated responses 1.20 points higher than pathologists (P<.001), but did not differ for pathologist-written responses (-0.25; P=.67).",
+     "quote": "In contrast, for LLM-generated responses, the LLM evaluator assigned higher scores than pathologist evaluators (paired mean difference, 1.20; P < .001) ( Table 1 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing model size (GPT-5 vs GPT-5-nano) for patient-facing explanations",
+    "Custom system prompt restricting the assistant to education and avoiding patient-specific advice, prognosis, or treatment (did not improve preference)"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 65,
+   "sample_unit": "patient-submitted pathology questions",
+   "models_evaluated": [
+    "OpenAI GPT-5 (2025-08-07)",
+    "GPT-5 with custom prompt",
+    "GPT-5 with custom prompt plus RAG",
+    "GPT-5-nano with custom prompt",
+    "GPT-5-nano with custom prompt plus RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM grader bias versus pathologist graders",
+     "effect": "For LLM-generated responses, LLM evaluator scored higher than pathologists: mean difference 1.20; P < .001.",
+     "quote": "In contrast, for LLM-generated responses, the LLM evaluator assigned higher scores than pathologist evaluators (paired mean difference, 1.20; P < .001) ( Table 1 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Preference versus pathologist responses",
+     "effect": "GPT-5-n_p performed worse than pathologist responses: difference, \u22120.58; P < .001; 36% win rate.",
+     "quote": "Conversely, GPT-5-n_p was the only model that performed statistically significantly worse than pathologist responses (difference, \u22120.58; P < .001; 36% win rate)."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Empathy relative to other response domains",
+     "effect": "Empathy scores were lower than accuracy, clarity, and relevance; all adjusted P < .01.",
+     "quote": "Empathy scores were consistently lower than scores for accuracy, clarity, and relevance (all adjusted P < .01)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "RAG versus non-RAG response preference",
+     "effect": "GPT-5_p_rag vs GPT-5_p was not significant; GPT-5-n_p_rag was 0.40 higher (P = .02; 60% win rate).",
+     "quote": "Although the difference between GPT-5_p_rag and GPT-5_p was not statistically significant, GPT-5-n_p_rag scored 0.40 points higher than GPT-5-n_p ( P = .02; 60% win rate)."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing larger versus smaller LLM model size for patient-facing pathology explanations",
+    "Testing a custom prompting strategy versus the base model prompt"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Canada",
+   "sample_size": 65,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "GPT-5",
+    "GPT-5-nano",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Response preference in pairwise arena testing",
+     "effect": "GPT-5-n_p_rag scored 0.40 points higher than GPT-5-n_p (P = .02; 60% win rate)",
+     "quote": "Although the difference between GPT-5_p_rag and GPT-5_p was not statistically significant, GPT-5-n_p_rag scored 0.40 points higher than GPT-5-n_p ( P = .02; 60% win rate)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "Canada",
+ "sample_unit": "patient questions",
+ "sample_size": 65,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o (LLM grader)",
+  "GPT-5",
+  "GPT-5 with custom prompt",
+  "GPT-5 with custom prompt plus RAG",
+  "GPT-5-nano",
+  "GPT-5-nano with custom prompt",
+  "GPT-5-nano with custom prompt plus RAG",
+  "OpenAI GPT-5 (2025-08-07)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Pairwise rater preference for RAG-grounded vs non-RAG LLM pathology explanations",
+   "effect": "GPT-5-nano with RAG scored 0.40 higher than without (P=.02; 60% win rate); GPT-5 RAG vs no RAG not significant; GPT-5_p_rag only config significantly preferred over pathologists (0.33; P=.04).",
+   "quote": "Although the difference between GPT-5_p_rag and GPT-5_p was not statistically significant, GPT-5-n_p_rag scored 0.40 points higher than GPT-5-n_p ( P = .02; 60% win rate).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement between LLM grader and pathologist graders on rubric scores",
+   "effect": "LLM evaluator scored LLM-generated responses 1.20 points higher than pathologists (P<.001), but did not differ for pathologist-written responses (-0.25; P=.67).",
+   "quote": "In contrast, for LLM-generated responses, the LLM evaluator assigned higher scores than pathologist evaluators (paired mean difference, 1.20; P < .001) ( Table 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM configurations compared with pathologist-written explanations on same questions",
+   "effect": "GPT-5_p_rag met noninferiority (\u0394=1.5) and was significantly preferred over pathologist responses (58% win rate, P=.04); GPT-5-n_p performed worse (36% win rate, P<.001).",
+   "quote": "Among all configurations, GPT-5_p_rag achieved the highest ability estimate and was the only model statistically significantly preferred over pathologist-written responses (difference, 0.33; P = .04; 58% win rate).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing larger versus smaller LLM model size for patient-facing pathology explanations",
+  "Comparing model size (GPT-5 vs GPT-5-nano) for patient-facing explanations",
+  "Custom system prompt restricting the assistant to education and avoiding patient-specific advice, prognosis, or treatment (did not improve preference)",
+  "Testing a custom prompting strategy versus the base model prompt"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42319969",
+ "screen": {
+  "id": "pmid:42319969",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation grounding and prompting configuration",
+  "user": "patient",
+  "reason": "The study empirically tests real patient questions against LLMs varying by configuration practices (specifically retrieval-augmented generation and prompting strategies) to evaluate quality, safety, and performance compared to pathologist-written answers.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and prompting strategy"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42319969",
+   "empirical": 0.96,
+   "tests_practice": 0.7,
+   "real_deployment": 0.09
+  }
+ }
+}

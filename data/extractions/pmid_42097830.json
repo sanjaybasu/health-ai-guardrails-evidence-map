@@ -1,0 +1,333 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Switzerland",
+   "sample_size": 4212,
+   "sample_unit": "medical reports (100 reports rated by 9 experts)",
+   "models_evaluated": [
+    "Phi-4",
+    "Gemma-3-27B",
+    "MedGemma",
+    "GPT-OSS-20B",
+    "Llama3-8B",
+    "Llama3-70B",
+    "OpenBioLLM-8B",
+    "OpenBioLLM-70B",
+    "MediPhi",
+    "Qwen-3-8B",
+    "Qwen-3-32B",
+    "GPT-5",
+    "EuroBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "French"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Ability of clinician experts to identify AI-generated versus human-written reports as a proxy for review",
+     "effect": "Experts identified report origin with 0.60 accuracy (near chance), while an automated classifier reached 0.98; human verification called an increasingly unreliable safety control.",
+     "quote": "Overall accuracy ranged from 58% to 61% (0.60 per average) across document types and languages."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Report accuracy, fluency, completeness against source EHR using automatic metrics and expert Likert ratings",
+     "effect": "Phi-4 ROUGE-1 0.70, BERTScore 0.83; expert ratings overall 4.6/5 (accuracy 4.4-4.9, completeness 4.6-4.8).",
+     "quote": "Quality evaluation by 9 medical experts in 100 medical reports resulted in most scores exceeding 4.0/5.0 in the 5-point Likert scale, with accuracy ranging from 4.4 to 4.9, fluency from 4.0 to 4.5, and completeness from 4.6 to 4.8."
+    },
+    {
+     "rec_id": "R484",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of AI-generated reports by automated classifier versus human experts",
+     "effect": "EuroBERT classifier achieved overall accuracy 0.98 versus experts 0.60, supporting automated detection tools for provenance.",
+     "quote": "As shown in Table 3 , in contrast to human experts, the machine learning-based classifier leveraging EuroBERT 18 achieved a robust detection performance with an overall accuracy of 0.98 ( P < 0.001)."
+    },
+    {
+     "rec_id": "R270",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Generated report quality in English versus French",
+     "effect": "Comparable ROUGE/BERTScore across languages; natively authored French reports accuracy 4.9/5, but machine-translated French transcripts fluency 4.0 versus 4.5 English.",
+     "quote": "In contrast, machine-translated French transcripts scored significantly lower in fluency (4.0/5.0) compared to their English counterparts (4.5/5.0)."
+    }
+   ],
+   "unlisted_practices": [
+    "Automated detection classifiers for AI-generated text to audit provenance of clinical documentation",
+    "Using open-weight, privacy-preserving locally deployable models for report generation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 4212,
+   "sample_unit": "medical reports",
+   "models_evaluated": [
+    "Gemma-3-27B",
+    "MedGemma",
+    "GPT-OSS",
+    "Llama-3-8B",
+    "Llama-3-70B",
+    "OpenBioLLM-8B",
+    "OpenBioLLM-70B",
+    "Phi-4",
+    "MediPhi",
+    "Qwen-3-8B",
+    "Qwen-3-32B",
+    "GPT-5",
+    "EuroBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "French"
+   ],
+   "links": [
+    {
+     "rec_id": "R484",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI provenance detection",
+     "effect": "EuroBERT classifier accuracy 0.98 (P < 0.001); human experts averaged 0.60.",
+     "quote": "As shown in Table 3 , in contrast to human experts, the machine learning-based classifier leveraging EuroBERT 18 achieved a robust detection performance with an overall accuracy of 0.98 ( P < 0.001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "generated report quality",
+     "effect": "Expert scores: accuracy 4.4-4.9/5.0, fluency 4.0-4.5/5.0, completeness 4.6-4.8/5.0.",
+     "quote": "Quality evaluation by 9 medical experts in 100 medical reports resulted in most scores exceeding 4.0/5.0 in the 5-point Likert scale, with accuracy ranging from 4.4 to 4.9, fluency from 4.0 to 4.5, and completeness from 4.6 to 4.8."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot prompting with three exemplars for medical report generation",
+    "Enabling reasoning mode for reasoning-capable LLM report generation"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Switzerland",
+   "sample_size": 4212,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "Phi-4",
+    "Llama-3-8B",
+    "Llama-3-70B",
+    "Gemma-3-27B",
+    "MedGemma",
+    "GPT-OSS",
+    "Qwen-3-8B",
+    "Qwen-3-32B",
+    "MediPhi",
+    "OpenBioLLM-8B",
+    "OpenBioLLM-70B",
+    "GPT-5",
+    "EuroBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "French"
+   ],
+   "links": [
+    {
+     "rec_id": "R484",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "automated classifier accuracy identifying machine-generated medical reports",
+     "effect": "EuroBERT classifier achieved 0.98 detection accuracy (P < 0.001) compared to 0.60 accuracy for human medical experts",
+     "quote": "As shown in Table 3 , in contrast to human experts, the machine learning-based classifier leveraging EuroBERT 18 achieved a robust detection performance with an overall accuracy of 0.98 ( P < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Switzerland",
+ "sample_unit": "medical reports (100 reports rated by 9 experts)",
+ "sample_size": 4212,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "French"
+ ],
+ "models_evaluated": [
+  "EuroBERT",
+  "GPT-5",
+  "GPT-OSS",
+  "GPT-OSS-20B",
+  "Gemma-3-27B",
+  "Llama-3-70B",
+  "Llama-3-8B",
+  "Llama3-70B",
+  "Llama3-8B",
+  "MedGemma",
+  "MediPhi",
+  "OpenBioLLM-70B",
+  "OpenBioLLM-8B",
+  "Phi-4",
+  "Qwen-3-32B",
+  "Qwen-3-8B"
+ ],
+ "links": [
+  {
+   "rec_id": "R484",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of AI-generated reports by automated classifier versus human experts",
+   "effect": "EuroBERT classifier achieved overall accuracy 0.98 versus experts 0.60, supporting automated detection tools for provenance.",
+   "quote": "As shown in Table 3 , in contrast to human experts, the machine learning-based classifier leveraging EuroBERT 18 achieved a robust detection performance with an overall accuracy of 0.98 ( P < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R270",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated detection classifiers for AI-generated text to audit provenance of clinical documentation",
+  "Enabling reasoning mode for reasoning-capable LLM report generation",
+  "Few-shot prompting with three exemplars for medical report generation",
+  "Using open-weight, privacy-preserving locally deployable models for report generation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42097830",
+ "screen": {
+  "id": "pmid:42097830",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human expert review vs automated detection of LLM-generated reports",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests the limits of human oversight by having physicians detect AI-generated vs human-written medical reports in a blinded evaluation, comparing human review to automated detection.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "human oversight vs automated detection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42097830",
+   "empirical": 0.97,
+   "tests_practice": 0.36,
+   "real_deployment": 0.06
+  }
+ }
+}

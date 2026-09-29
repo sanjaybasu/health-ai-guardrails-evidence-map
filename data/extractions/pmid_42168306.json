@@ -1,0 +1,400 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "neuroradiology reports (brain MRI, head CT, spine MRI); 60 impressions translated to Spanish",
+   "models_evaluated": [
+    "GPT-4o (2024-05-13) for simplification",
+    "GPT-4o (2024-08-06) for Spanish translation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": true,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Readability of radiology impressions before vs after LLM simplification",
+     "effect": "Flesch-Kincaid Grade median 13.4 original vs 7.0 simplified (p<0.001, r=0.9); Flesch Reading Ease 23.3 vs 72.9; college level to middle-school level.",
+     "quote": "On average, LLM-driven simplification brought reports from a college reading level to that of a middle schooler."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reading grade level of patient-facing report text relative to target literacy level",
+     "effect": "Flesch-Kincaid Grade fell from median 13.4 to 7.0; Gunning Fog 16.3 to 10.0; ARI 12.3 to 6.9 (all p<0.001).",
+     "quote": "In pooled readability analyses combining report types ( N = 490), the median [IQR: Q1,Q3] for original vs. simplified impressions, respectively, was 13.4 [IQR: 11.3,15.4] vs. 7.0 [IQR: 5.2,8.6] for Flesch-Kincaid Grade (W = 688, p < 0.001, r = 0.9);"
+    },
+    {
+     "rec_id": "R299",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Emotional tone (fear, neutrality) of original vs simplified impressions via sentiment model",
+     "effect": "Median change in neutrality 0.2 (d=1.5) and fear -0.3 (r=0.9) after simplification, both p<0.001.",
+     "quote": "Qualitatively, the most prominent changes are an increase in neutrality and decrease in fear following LLM-driven simplification."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Rates of omissions, hallucinations, imprecisions in LLM-simplified impressions vs originals by two radiologists",
+     "effect": "Major omissions 0.5%, 2.0%, 5.5%; malignant hallucinations 0.5%, 0%, 1.0%; major imprecisions 1.5%, 1.0%, 6.0% for brain MRI, head CT, spine MRI.",
+     "quote": "Major omissions occurred in 0.5% of brain MRI reports, 2.0% of head CT reports, and 5.5% of spine MRI reports."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinically relevant errors in AI-simplified reports that clinician review would need to catch",
+     "effect": "Major omissions, malignant hallucinations and major imprecisions occurred at low but nonzero rates (up to 5.5%, 1.0%, 6.0% in spine MRI), so authors state human oversight is necessary.",
+     "quote": "The presence of major/malignant mistakes necessitates human oversight, at least in the current implementation strategy."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM Spanish translation quality vs manual bilingual translations rated by certified interpreters",
+     "effect": "Interpreter scores not significantly different: brain MRI 4.6 vs 4.4/4.7 (p=0.29); head CT 4.6 vs 4.6/4.7 (p=0.63); spine MRI 4.5 vs 4.3/4.5 (p=0.28).",
+     "quote": "Machine generated translations were not significantly different from either reference translation, and reference translations were not significantly different from each other (Brain MRI mean scores 4.6, 4.4, and 4.7, p = 0.29; Head CT mean scores 4.6, 4.6, and 4.7, p = 0.63; and Spine MRI mean scores 4.5, 4.3, and 4.5, p = 0.28 for Hypothesis, Reference 1, and Reference 2, respectively; p s from Kruskal-Wallis test)."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM simplification of radiology report impressions to 8th grade reading level",
+    "LLM translation of simplified patient-facing results into Spanish",
+    "Sentiment analysis of patient-facing text for fear and neutrality",
+    "Radiologist review of AI-simplified impression before release to patient"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "radiology reports; 490 unique in pooled analyses; 60 translated to Spanish",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Readability of patient-facing AI radiology impressions",
+     "effect": "Flesch-Kincaid median 13.4 to 7.0; Gunning Fog 16.3 to 10.0; ARI 12.3 to 6.9; Reading Ease 23.3 to 72.9; all p < 0.001.",
+     "quote": "On average, LLM-driven simplification brought reports from a college reading level to that of a middle schooler."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reading level after AI simplification",
+     "effect": "Flesch-Kincaid Grade decreased from median 13.4 [11.3,15.4] to 7.0 [5.2,8.6], W = 688, p < 0.001, r = 0.9.",
+     "quote": "In pooled readability analyses combining report types ( N = 490), the median [IQR: Q1,Q3] for original vs. simplified impressions, respectively, was 13.4 [IQR: 11.3,15.4] vs. 7.0 [IQR: 5.2,8.6] for Flesch-Kincaid Grade (W = 688, p < 0.001, r = 0.9); 16.3 [IQR: 13.8,18.6] vs. 10.0 [IQR: 8.0,11.9] for Gunning Fog Index (W = 1738, p < 0.001, r = 0.8); 12.3 [IQR: 9.6,14.6] vs. 6.9 [IQR: 4.4,8.9] for Automated Readability Index (W = 1394, p < 0.001, r = 0.8); 23.3 [IQR: 10.3,34.3] vs. 72.9 [IQR: 64.6,81.2] for Flesch Reading Ease (W = 7, p < 0.001, r = 0.9)."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Emotional tone of AI-simplified reports",
+     "effect": "Neutrality increased by 0.2; fear decreased by -0.3; anger decreased by -0.01; these had large effect sizes.",
+     "quote": "The only emotional tone changes that had a large effect size were neutrality (increase), fear (decrease) and anger (decrease), with neutrality and fear demonstrating the largest effects, showing differences an order of magnitude larger than that for other emotions (0.2, -0.3 respectively vs. -0.01 to 0.03)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Major omissions, hallucinations, and imprecisions",
+     "effect": "Malignant hallucinations 0\u20131.0%; major omissions 0.5\u20135.5%; major imprecisions 1.0\u20136.0% across modalities.",
+     "quote": "In our sample, malignant hallucinations were rare (0\u20131.0% across imaging modalities), and major omissions (0.5\u20135.5%) / imprecisions (1.0\u20136.0%) were infrequent\u2014suggesting that GPT-4o, when applied with guardrails, is viable for producing patient-facing radiology summaries."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Errors requiring clinician verification",
+     "effect": "Major/malignant mistakes occurred despite low frequency, including malignant hallucinations 0\u20131.0%, major omissions 0.5\u20135.5%, and major imprecisions 1.0\u20136.0%.",
+     "quote": "First, even low-frequency mistakes can pose significant clinical risks, particularly in scenarios where patients make decisions or assumptions based on AI-generated summaries."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus manual Spanish translations",
+     "effect": "Interpreter scores for LLM vs references: Brain MRI 4.6, 4.4, 4.7 (p = 0.29); Head CT 4.6, 4.6, 4.7 (p = 0.63); Spine MRI 4.5, 4.3, 4.5 (p = 0.28).",
+     "quote": "Machine generated translations were not significantly different from either reference translation, and reference translations were not significantly different from each other (Brain MRI mean scores 4.6, 4.4, and 4.7, p = 0.29; Head CT mean scores 4.6, 4.6, and 4.7, p = 0.63; and Spine MRI mean scores 4.5, 4.3, and 4.5, p = 0.28 for Hypothesis, Reference 1, and Reference 2, respectively; p s from Kruskal-Wallis test)."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM translation of simplified radiology impressions into International Spanish compared with manual medical translations."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "reading grade level of simplified radiology report impressions",
+     "effect": "median Flesch-Kincaid Grade decreased from 13.4 to 7.0 (W = 688, p < 0.001, r = 0.9), Gunning Fog from 16.3 to 10.0, ARI from 12.3 to 6.9, and Flesch Reading Ease increased from 23.3 to 72.9",
+     "quote": "On average, LLM-driven simplification brought reports from a college reading level to that of a middle schooler."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "emotional tone and neutrality of simplified impressions",
+     "effect": "neutrality increased (median change +0.2, d = 1.5, p < 0.001) and fear decreased (median change -0.3, r = 0.9, p < 0.001); other emotion changes were small",
+     "quote": "The only emotional tone changes that had a large effect size were neutrality (increase), fear (decrease) and anger (decrease), with neutrality and fear demonstrating the largest effects, showing differences an order of magnitude larger than that for other emotions (0.2, -0.3 respectively vs. -0.01 to 0.03)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "neuroradiology reports (brain MRI, head CT, spine MRI); 60 impressions translated to Spanish",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Spanish"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o (2024-05-13) for simplification",
+  "GPT-4o (2024-08-06) for Spanish translation"
+ ],
+ "links": [
+  {
+   "rec_id": "R289",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Readability of radiology impressions before vs after LLM simplification",
+   "effect": "Flesch-Kincaid Grade median 13.4 original vs 7.0 simplified (p<0.001, r=0.9); Flesch Reading Ease 23.3 vs 72.9; college level to middle-school level.",
+   "quote": "On average, LLM-driven simplification brought reports from a college reading level to that of a middle schooler.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R292",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reading grade level of patient-facing report text relative to target literacy level",
+   "effect": "Flesch-Kincaid Grade fell from median 13.4 to 7.0; Gunning Fog 16.3 to 10.0; ARI 12.3 to 6.9 (all p<0.001).",
+   "quote": "In pooled readability analyses combining report types ( N = 490), the median [IQR: Q1,Q3] for original vs. simplified impressions, respectively, was 13.4 [IQR: 11.3,15.4] vs. 7.0 [IQR: 5.2,8.6] for Flesch-Kincaid Grade (W = 688, p < 0.001, r = 0.9);",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Emotional tone (fear, neutrality) of original vs simplified impressions via sentiment model",
+   "effect": "Median change in neutrality 0.2 (d=1.5) and fear -0.3 (r=0.9) after simplification, both p<0.001.",
+   "quote": "Qualitatively, the most prominent changes are an increase in neutrality and decrease in fear following LLM-driven simplification.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Rates of omissions, hallucinations, imprecisions in LLM-simplified impressions vs originals by two radiologists",
+   "effect": "Major omissions 0.5%, 2.0%, 5.5%; malignant hallucinations 0.5%, 0%, 1.0%; major imprecisions 1.5%, 1.0%, 6.0% for brain MRI, head CT, spine MRI.",
+   "quote": "Major omissions occurred in 0.5% of brain MRI reports, 2.0% of head CT reports, and 5.5% of spine MRI reports.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Clinically relevant errors in AI-simplified reports that clinician review would need to catch",
+   "effect": "Major omissions, malignant hallucinations and major imprecisions occurred at low but nonzero rates (up to 5.5%, 1.0%, 6.0% in spine MRI), so authors state human oversight is necessary.",
+   "quote": "The presence of major/malignant mistakes necessitates human oversight, at least in the current implementation strategy.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM Spanish translation quality vs manual bilingual translations rated by certified interpreters",
+   "effect": "Interpreter scores not significantly different: brain MRI 4.6 vs 4.4/4.7 (p=0.29); head CT 4.6 vs 4.6/4.7 (p=0.63); spine MRI 4.5 vs 4.3/4.5 (p=0.28).",
+   "quote": "Machine generated translations were not significantly different from either reference translation, and reference translations were not significantly different from each other (Brain MRI mean scores 4.6, 4.4, and 4.7, p = 0.29; Head CT mean scores 4.6, 4.6, and 4.7, p = 0.63; and Spine MRI mean scores 4.5, 4.3, and 4.5, p = 0.28 for Hypothesis, Reference 1, and Reference 2, respectively; p s from Kruskal-Wallis test).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "emotional tone and neutrality of simplified impressions",
+   "effect": "neutrality increased (median change +0.2, d = 1.5, p < 0.001) and fear decreased (median change -0.3, r = 0.9, p < 0.001); other emotion changes were small",
+   "quote": "The only emotional tone changes that had a large effect size were neutrality (increase), fear (decrease) and anger (decrease), with neutrality and fear demonstrating the largest effects, showing differences an order of magnitude larger than that for other emotions (0.2, -0.3 respectively vs. -0.01 to 0.03).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "LLM simplification of radiology report impressions to 8th grade reading level",
+  "LLM translation of simplified patient-facing results into Spanish",
+  "LLM translation of simplified radiology impressions into International Spanish compared with manual medical translations.",
+  "Radiologist review of AI-simplified impression before release to patient",
+  "Sentiment analysis of patient-facing text for fear and neutrality"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42168306",
+ "screen": {
+  "id": "pmid:42168306",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "reading-level constraint prompt and translation quality check",
+  "user": "patient",
+  "reason": "Evaluates LLM prompting with reading-level constraints and translation safeguards to simplify neuroradiology reports for patients, verified by expert clinicians and certified interpreters.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "reading-level constraint prompting and translation verification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42168306",
+   "empirical": 0.96,
+   "tests_practice": 0.27,
+   "real_deployment": 0.08
+  }
+ }
+}

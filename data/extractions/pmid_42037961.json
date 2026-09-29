@@ -1,0 +1,366 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 3342,
+   "sample_unit": "valid model outputs (synthetic persona-vignette pairs)",
+   "models_evaluated": [
+    "gpt-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Primary-action under-triage of red-flag emergency vignettes",
+     "effect": "Hard under-triage of primary action in red-flag slice was 100.0% for both prompts at T=0, 100.0% P1 and 99.7% P2 stochastic, 100.0% under schema.",
+     "quote": "Under near-deterministic decoding, both P1 and P2 produced hard under-triage in 100.0% of red-flag outputs."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Under-escalation of urgent situations and unnecessary escalation in self-triage",
+     "effect": "Red-flag cases were almost universally under-triaged (99.7-100%), while hard over-triage was absent in mild and non-red-flag slices.",
+     "quote": "Low-risk cases were handled conservatively, whereas urgent cases were almost always under-triaged in the primary action field."
+    },
+    {
+     "rec_id": "R526",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Failure to recognize safety-critical states and issue urgent escalation",
+     "effect": "Emergency department and ambulance actions were rare in red-flag slice; modal primary action was self-care (A1) for headache, throat swelling, and bleeding examples.",
+     "quote": "Emergency department and ambulance actions remained rare even when the symptom pattern had been operationally labeled as urgent."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Output reproducibility across repeated runs under near-deterministic versus stochastic decoding",
+     "effect": "Modal agreement rose (red-flag 0.44 to 0.91 for P1, 0.46 to 0.93 for P2) at T=0, but urgent-case under-triage stayed ~100%.",
+     "quote": "In the red-flag slice, agreement increased from 0.44 to 0.91 for P1 and from 0.46 to 0.93 for P2."
+    },
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Under-triage across persona strata including health literacy and anxiety",
+     "effect": "Red-flag hard under-triage remained between 99.7% and 100.0% across age groups, health-literacy strata, and anxiety-tendency strata.",
+     "quote": "This failure pattern was not confined to a narrow subset of personas: across all red-flag outputs, hard under-triage remained between 99.7% and 100.0% across age groups, health-literacy strata, and anxiety-tendency strata."
+    },
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Safety performance differences by persona health literacy",
+     "effect": "Hard under-triage was 99.7-100% across health-literacy strata, so no differential performance by literacy was seen (uniformly unsafe).",
+     "quote": "This failure pattern was not confined to a narrow subset of personas: across all red-flag outputs, hard under-triage remained between 99.7% and 100.0% across age groups, health-literacy strata, and anxiety-tendency strata."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Deployed generative AI configuration performance on intended-use triage competency",
+     "effect": "gpt-4o-mini handled low-risk cases conservatively but under-triaged red-flag cases nearly universally in a Japanese lay self-triage task.",
+     "quote": "A model that is reproducible but consistently assigns unsafe primary actions in urgent scenarios should not be considered deployment-ready."
+    }
+   ],
+   "unlisted_practices": [
+    "Report primary-action safety, auxiliary urgency cues, decoding configuration, and schema mode separately in LLM triage audits",
+    "Response-schema enforcement as safety intervention (did not reduce urgent under-triage)"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 3342,
+   "sample_unit": "valid model outputs",
+   "models_evaluated": [
+    "gpt-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "red-flag primary-action under-triage",
+     "effect": "Near-deterministic: 100.0% for P1/P2; stochastic prompt-only: 100.0% P1, 99.7% P2; schema: 100.0% both.",
+     "quote": "Under near-deterministic decoding, both P1 and P2 produced hard under-triage in 100.0% of red-flag outputs."
+    },
+    {
+     "rec_id": "R526",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "failure to escalate urgent red-flag symptoms",
+     "effect": "Emergency department and ambulance actions were rare; modal action was self-care A1 for three A8-A9 red-flag examples.",
+     "quote": "Emergency department and ambulance actions remained rare even when the symptom pattern had been operationally labeled as urgent."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "run-to-run reproducibility and unsafe repeated outputs",
+     "effect": "Red-flag agreement increased from 0.44 to 0.91 for P1 and 0.46 to 0.93 for P2, but urgent under-triage persisted.",
+     "quote": "Near-deterministic decoding improved run-to-run modal agreement, but this reproducibility gain did not improve urgent-case safety."
+    }
+   ],
+   "unlisted_practices": [
+    "Near-deterministic decoding to improve run-to-run reproducibility",
+    "Response-schema enforcement for structured self-triage outputs",
+    "Structured versus narrative prompt formatting for self-triage"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 3342,
+   "sample_unit": "outputs",
+   "models_evaluated": [
+    "gpt-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hard under-triage of primary self-triage action in urgent red-flag scenarios",
+     "effect": "Hard under-triage in red-flag scenarios was 100.0% under near-deterministic decoding, 99.7% to 100.0% under stochastic prompt-only decoding, and 100.0% under stochastic response-schema decoding.",
+     "quote": "In contrast, the red-flag slice showed near-universal hard under-triage of the primary action: 100.0% for both prompts under near-deterministic decoding, 100.0% for P1 and 99.7% for P2 under stochastic prompt-only decoding, and 100.0% for both prompts under stochastic response-schema decoding."
+    }
+   ],
+   "unlisted_practices": [
+    "Near-deterministic decoding to improve self-triage reproducibility",
+    "Response-schema enforcement to improve triage output regularity"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "Japan",
+ "sample_unit": "valid model outputs (synthetic persona-vignette pairs)",
+ "sample_size": 3342,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese"
+ ],
+ "models_evaluated": [
+  "gpt-4o-mini"
+ ],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Under-escalation of urgent situations and unnecessary escalation in self-triage",
+   "effect": "Red-flag cases were almost universally under-triaged (99.7-100%), while hard over-triage was absent in mild and non-red-flag slices.",
+   "quote": "Low-risk cases were handled conservatively, whereas urgent cases were almost always under-triaged in the primary action field.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R526",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Failure to recognize safety-critical states and issue urgent escalation",
+   "effect": "Emergency department and ambulance actions were rare in red-flag slice; modal primary action was self-care (A1) for headache, throat swelling, and bleeding examples.",
+   "quote": "Emergency department and ambulance actions remained rare even when the symptom pattern had been operationally labeled as urgent.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Primary-action under-triage of red-flag emergency vignettes",
+   "effect": "Hard under-triage of primary action in red-flag slice was 100.0% for both prompts at T=0, 100.0% P1 and 99.7% P2 stochastic, 100.0% under schema.",
+   "quote": "Under near-deterministic decoding, both P1 and P2 produced hard under-triage in 100.0% of red-flag outputs.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Output reproducibility across repeated runs under near-deterministic versus stochastic decoding",
+   "effect": "Modal agreement rose (red-flag 0.44 to 0.91 for P1, 0.46 to 0.93 for P2) at T=0, but urgent-case under-triage stayed ~100%.",
+   "quote": "In the red-flag slice, agreement increased from 0.44 to 0.91 for P1 and from 0.46 to 0.93 for P2.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R297",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Safety performance differences by persona health literacy",
+   "effect": "Hard under-triage was 99.7-100% across health-literacy strata, so no differential performance by literacy was seen (uniformly unsafe).",
+   "quote": "This failure pattern was not confined to a narrow subset of personas: across all red-flag outputs, hard under-triage remained between 99.7% and 100.0% across age groups, health-literacy strata, and anxiety-tendency strata.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R272",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Near-deterministic decoding to improve run-to-run reproducibility",
+  "Near-deterministic decoding to improve self-triage reproducibility",
+  "Report primary-action safety, auxiliary urgency cues, decoding configuration, and schema mode separately in LLM triage audits",
+  "Response-schema enforcement as safety intervention (did not reduce urgent under-triage)",
+  "Response-schema enforcement for structured self-triage outputs",
+  "Response-schema enforcement to improve triage output regularity",
+  "Structured versus narrative prompt formatting for self-triage"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42037961",
+ "screen": {
+  "id": "pmid:42037961",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "decoding configuration and response-schema enforcement",
+  "user": "patient",
+  "reason": "The study conducts a safety audit of an LLM for patient self-triage using vignettes, comparing deployment/configuration practices (near-deterministic vs stochastic decoding, and response-schema enforcement) on safety and reproducibility.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "decoding parameter tuning and response schema enforcement"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42037961",
+   "empirical": 0.96,
+   "tests_practice": 0.35,
+   "real_deployment": 0.03
+  }
+ }
+}

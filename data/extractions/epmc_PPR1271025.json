@@ -1,0 +1,86 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "US",
+ "sample_size": 20,
+ "sample_unit": "patient cases (head and neck cancer notes from MIMIC-IV-Note)",
+ "models_evaluated": [
+  "VanillaLLM",
+  "Hippocrates-Karkinos-o1",
+  "Hippocrates-Chirurgos-o1",
+  "Hippocrates-Angios-o1"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Expert-rated hallucination audit and reasoning scores, guideline-informed retrieval pipeline versus vanilla LLM",
+   "effect": "Hallucination Audit rose from 3.90\u00b11.32 to 4.74\u00b10.76; Overall Reasoning rose from 3.40\u00b10.90 to 4.00\u00b10.73 (p<0.001). Effect is confounded with structured prompts and self-refinement.",
+   "quote": "Domain scores increased for Clinical Knowledge Application (2.87\u00b11.20 to 3.70\u00b11.03), Contextual Understanding (3.48\u00b10.95 to 3.98\u00b10.95), Hallucination Audit (3.90\u00b11.32 to 4.74\u00b10.76), Reasoning Transparency (3.45\u00b11.02 to 3.86\u00b10.87), and Chain-of-Thought Quality (3.32\u00b11.04 to 3.69\u00b11.00), all p\u22640.001.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "iterative self-refinement of LLM outputs",
+  "structured prompting with specialty-specific reasoning pipelines",
+  "orchestrated multi-step clinical reasoning protocol"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1271025",
+ "screen": {
+  "id": "epmc:PPR1271025",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates whether adding guideline-informed retrieval and self-refinement scaffolding to an LLM improves clinical reasoning, transparency, and hallucination reduction on real EHR cases judged by clinicians.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "guideline-informed retrieval and iterative self-refinement"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1271025",
+   "empirical": 0.93,
+   "tests_practice": 0.28,
+   "real_deployment": 0.05
+  }
+ }
+}

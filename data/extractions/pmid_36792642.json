@@ -1,0 +1,341 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Spain, Denmark, Egypt, Algeria, Uganda, Ghana, Malawi",
+   "sample_size": null,
+   "sample_unit": "patients (1792 Spain, 1008 Denmark, 25 per African centre)",
+   "models_evaluated": [
+    "DenseNet-169"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC of model fine-tuned on small local African samples versus trained from scratch",
+     "effect": "Fine-tuning raised AUC to 99.2%, 98.8%, 99.8% (Malawi, Egypt, Algeria) versus 93.3%, 90.8%, 90.3% from scratch; maximum AUC reached with about 4-6 local patients.",
+     "quote": "For example, in the case of Malawi, Egypt and Algeria, the maximum average AUC when training from scratch is 93.3%, 90.8% and 90.3%, respectively, while transfer learning increases the average performance to 99.2%, 98.8% and 99.8%."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of Spanish-trained model on African low-resource centres versus Danish high-resource centre",
+     "effect": "Danish AUC >95% with n>500; African centres showed inconsistent and lower performance, especially with scarce training samples; single-centre model did not reach desired performance.",
+     "quote": "Although the Spanish model has a good generalisation ability in another European dataset, the African clinical centres with low-resource settings manifest an inconsistent pattern and lower performance, especially when the number of training samples is scarce."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across sites and scanner devices",
+     "effect": "Performance varied across five African centres with different scanners; Algeria with similar protocol reached AUC 97.9 \u00b1 1.9% with over 1000 training samples, others lower and inconsistent.",
+     "quote": "In the case where the images are acquired using a similar protocol to that of the European datasets, such as Algeria (Table 1 ), the model shows a competitive performance (average AUC of 97.9 \u00b1 1.9 %) when more than 1000 samples are used for training."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalisation of model to new population/context (low-resource African centres)",
+     "effect": "Single-centre model trained in Spain did not reach desired performance in Malawi, Egypt, Algeria, Uganda or Ghana.",
+     "quote": "Our results showed that a model trained using a single-centre approach did not reach the desired performance when applied to a new centre in low-resource settings acquired in Malawi, Egypt, Algeria, Uganda or Ghana."
+    }
+   ],
+   "unlisted_practices": [
+    "Transfer learning/fine-tuning versus combining datasets for domain adaptation to low-resource sites",
+    "Estimating minimum local sample size needed for model adaptation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Spain; Denmark; Malawi; Egypt; Uganda; Ghana; Algeria",
+   "sample_size": 2925,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DenseNet-169 fetal ultrasound plane classifier",
+    "Spanish-trained single-centre model",
+    "multi-centre combination-trained model",
+    "transfer-learning fine-tuned model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External generalisation AUC",
+     "effect": "Denmark average AUC >95% when n>500; African low-resource centres had inconsistent/lower performance; Algeria 97.9 \u00b1 1.9% when protocol was similar.",
+     "quote": "Although the Spanish model has a good generalisation ability in another European dataset, the African clinical centres with low-resource settings manifest an inconsistent pattern and lower performance, especially when the number of training samples is scarce."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local low-resource performance",
+     "effect": "Single-centre Spanish model did not reach desired performance in Malawi, Egypt, Algeria, Uganda or Ghana; Denmark AUC was >95% when n>500.",
+     "quote": "Our results showed that a model trained using a single-centre approach did not reach the desired performance when applied to a new centre in low-resource settings acquired in Malawi, Egypt, Algeria, Uganda or Ghana."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC after local fine-tuning",
+     "effect": "Training from scratch AUC 93.3%, 90.8%, 90.3% in Malawi, Egypt, Algeria; transfer learning improved to 99.2%, 98.8%, 99.8%.",
+     "quote": "For example, in the case of Malawi, Egypt and Algeria, the maximum average AUC when training from scratch is 93.3%, 90.8% and 90.3%, respectively, while transfer learning increases the average performance to 99.2%, 98.8% and 99.8%."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Site-specific AUC variation",
+     "effect": "Baseline performance differed by African site: Malawi 93.3%, Egypt 90.8%, Algeria 90.3%, while Uganda and Ghana were 99.5% and 97.6%.",
+     "quote": "In Uganda and Ghana, the improvement given by transfer learning is smaller since the maximum baseline performance is already high: 99.5% and 97.6% versus 100% and 98.6% with fine-tuning, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing computational cost of combination training versus transfer learning for domain adaptation"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Spain, Denmark, Egypt, Algeria, Uganda, Ghana, Malawi",
+   "sample_size": 2925,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DenseNet-169"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-site generalisation of fetal plane classifier",
+     "effect": "Spanish model achieved >95% AUC in Denmark but exhibited inconsistent patterns and lower performance across low-resource African centres.",
+     "quote": "Although the Spanish model has a good generalisation ability in another European dataset, the African clinical centres with low-resource settings manifest an inconsistent pattern and lower performance, especially when the number of training samples is scarce."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fetal plane classification AUC with local transfer learning",
+     "effect": "Transfer learning increased average AUC from 93.3%, 90.8%, and 90.3% (training from scratch) to 99.2%, 98.8%, and 99.8% in Malawi, Egypt, and Algeria, respectively.",
+     "quote": "For example, in the case of Malawi, Egypt and Algeria, the maximum average AUC when training from scratch is 93.3%, 90.8% and 90.3%, respectively, while transfer learning increases the average performance to 99.2%, 98.8% and 99.8%."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Spain, Denmark, Egypt, Algeria, Uganda, Ghana, Malawi",
+ "sample_unit": "patients",
+ "sample_size": 2925,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "DenseNet-169",
+  "DenseNet-169 fetal ultrasound plane classifier",
+  "Spanish-trained single-centre model",
+  "multi-centre combination-trained model",
+  "transfer-learning fine-tuned model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUC of model fine-tuned on small local African samples versus trained from scratch",
+   "effect": "Fine-tuning raised AUC to 99.2%, 98.8%, 99.8% (Malawi, Egypt, Algeria) versus 93.3%, 90.8%, 90.3% from scratch; maximum AUC reached with about 4-6 local patients.",
+   "quote": "For example, in the case of Malawi, Egypt and Algeria, the maximum average AUC when training from scratch is 93.3%, 90.8% and 90.3%, respectively, while transfer learning increases the average performance to 99.2%, 98.8% and 99.8%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of Spanish-trained model on African low-resource centres versus Danish high-resource centre",
+   "effect": "Danish AUC >95% with n>500; African centres showed inconsistent and lower performance, especially with scarce training samples; single-centre model did not reach desired performance.",
+   "quote": "Although the Spanish model has a good generalisation ability in another European dataset, the African clinical centres with low-resource settings manifest an inconsistent pattern and lower performance, especially when the number of training samples is scarce.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across sites and scanner devices",
+   "effect": "Performance varied across five African centres with different scanners; Algeria with similar protocol reached AUC 97.9 \u00b1 1.9% with over 1000 training samples, others lower and inconsistent.",
+   "quote": "In the case where the images are acquired using a similar protocol to that of the European datasets, such as Algeria (Table 1 ), the model shows a competitive performance (average AUC of 97.9 \u00b1 1.9 %) when more than 1000 samples are used for training.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalisation of model to new population/context (low-resource African centres)",
+   "effect": "Single-centre model trained in Spain did not reach desired performance in Malawi, Egypt, Algeria, Uganda or Ghana.",
+   "quote": "Our results showed that a model trained using a single-centre approach did not reach the desired performance when applied to a new centre in low-resource settings acquired in Malawi, Egypt, Algeria, Uganda or Ghana.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External generalisation AUC",
+   "effect": "Denmark average AUC >95% when n>500; African low-resource centres had inconsistent/lower performance; Algeria 97.9 \u00b1 1.9% when protocol was similar.",
+   "quote": "Although the Spanish model has a good generalisation ability in another European dataset, the African clinical centres with low-resource settings manifest an inconsistent pattern and lower performance, especially when the number of training samples is scarce.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local low-resource performance",
+   "effect": "Single-centre Spanish model did not reach desired performance in Malawi, Egypt, Algeria, Uganda or Ghana; Denmark AUC was >95% when n>500.",
+   "quote": "Our results showed that a model trained using a single-centre approach did not reach the desired performance when applied to a new centre in low-resource settings acquired in Malawi, Egypt, Algeria, Uganda or Ghana.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing computational cost of combination training versus transfer learning for domain adaptation",
+  "Estimating minimum local sample size needed for model adaptation",
+  "Transfer learning/fine-tuning versus combining datasets for domain adaptation to low-resource sites"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36792642",
+ "screen": {
+  "id": "pmid:36792642",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration via transfer learning before deployment at new site",
+  "user": "none",
+  "reason": "Evaluates transfer learning / domain adaptation strategies as a practice to mitigate domain-shift and restore model performance when deploying ultrasound AI models to low-resource African clinical settings.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "transfer learning domain adaptation for low-resource settings"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36792642",
+   "empirical": 0.94,
+   "tests_practice": 0.5,
+   "real_deployment": 0.12
+  }
+ }
+}

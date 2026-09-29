@@ -1,0 +1,382 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Thailand",
+   "sample_size": 474,
+   "sample_unit": "patients with iron deficiency anemia undergoing GI endoscopy",
+   "models_evaluated": [
+    "IDIOM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local validation of UK-developed IDIOM model discrimination and calibration on local retrospective data",
+     "effect": "AuROC 62.9% (95% CI 56.8-68.9) vs 69.7-77.1% in UK cohorts; calibration slope 0.27, CITL 3.47, indicating poor local calibration and underestimated risk.",
+     "quote": "The model demonstrated lower performance in our Thai cohort compared to the original UK cohorts (AuROC 62.9% vs. 69.7%\u201377.1%)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of development and local populations to explain performance differences",
+     "effect": "GI malignancy prevalence was 21.3% vs 7.6-8.4% in UK datasets; median age 63 vs 69-74; different IDA criteria; these differences likely explain the risk underestimation.",
+     "quote": "This disparity may be largely attributed to the higher prevalence of GI malignancy observed in our cohort (21.3% vs. 7.6%\u20138.4% in the original dataset) [ 15 ]."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of recalibration and refitting on local model calibration and discrimination",
+     "effect": "Recalibration fixed CITL (3.465 to 0.000) and slope (0.272 to 1.000) with unchanged AuROC; refitting raised AuROC from 62.87% to 67.23%, only marginal discrimination improvement.",
+     "quote": "However, despite these adjustments, the discrimination ability showed only marginal improvement in the AuROC."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of a UK-developed predictive model to a new population",
+     "effect": "IDIOM showed AuROC 62.9% in Thai patients with extreme risk underestimation (CITL 3.47, slope 0.27); very-low-risk group still had 18.1% GI malignancy prevalence.",
+     "quote": "Moreover, the calibration of the model in our cohort showed an extreme underestimation of the risk."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Recalibration of model after population change to correct miscalibration",
+     "effect": "Recalibration-in-the-large brought CITL from 3.465 to 0.000; logistic recalibration adjusted calibration slope from 0.272 to 1.000.",
+     "quote": "Initially, recalibration\u2010in\u2010the\u2010large adjusted the CITL in the validation study from 3.465 to 0.000, while the calibration slope and AuROC remained unchanged."
+    }
+   ],
+   "unlisted_practices": [
+    "Developing region-specific prediction models incorporating local features such as symptoms and FIT results"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Thailand",
+   "sample_size": 474,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "IDIOM model",
+    "recalibrated-in-the-large IDIOM model",
+    "recalibrated IDIOM model",
+    "refitted IDIOM model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local calibration",
+     "effect": "Calibration slope 0.27 (95% CI 0.14\u20130.40) and CITL 3.47 (95% CI 3.20\u20133.73).",
+     "quote": "In addition, the calibration parameters also indicated a poorly calibrated model [calibration slope of 0.27 (95% CI 0.14\u20130.40) and CITL of 3.47 (95% CI 3.20\u20133.73)] (Table 3 ) [ 23 ]."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cross-population performance",
+     "effect": "Thai AuROC 62.9% versus original UK cohorts 69.7%\u201377.1%.",
+     "quote": "The model demonstrated lower performance in our Thai cohort compared to the original UK cohorts (AuROC 62.9% vs. 69.7%\u201377.1%)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Local updating performance",
+     "effect": "CITL improved 3.465 to 0.000 and slope 0.272 to 1.000; refitted AuROC increased 62.87% to 67.23%.",
+     "quote": "However, despite these adjustments, the discrimination ability showed only marginal improvement in the AuROC."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance by thalassemia status",
+     "effect": "AuROC 78.57% in thalassemia vs 61.43% nonthalassemia; CITL 2.674 vs 3.514.",
+     "quote": "Discrimination and calibration performance were higher in the thalassemia group than in the nonthalassemia group (Table 5 )."
+    },
+    {
+     "rec_id": "R247",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Malignancy in very-low-risk group",
+     "effect": "Very-low-risk group still had 18.1% GI malignancy prevalence.",
+     "quote": "However, even in the very low\u2010risk group, the prevalence of GI malignancy remained high at 18.1% (Table S3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Thailand",
+   "sample_size": 474,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "IDIOM model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination and calibration of IDIOM model in Thai cohort",
+     "effect": "AuROC was 62.9% (95% CI 56.8\u201368.9%), CITL was 3.47 (95% CI 3.20\u20133.73), and calibration slope was 0.27 (95% CI 0.14\u20130.40), underestimating risk.",
+     "quote": "The external discriminative performance of the updated IDIOM model in the Chiang Mai dataset was only fair (AuROC 62.9%, 95% confidence intervals (CI) 56.8\u201368.9) and the AuROC values were also lower than those found in previous external validations (Table 3 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Model discrimination and calibration after recalibration and refitting",
+     "effect": "Refitting improved AuROC to 67.23% (95% CI 61.13\u201373.34%), CITL to 0.000 (95% CI -0.228 to 0.228), and calibration slope to 1.000 (95% CI 0.637\u20131.363).",
+     "quote": "The refitted model showed an AuROC of 67.23%, a CITL of 0.000, and a calibration slope of 1.000."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Thailand",
+ "sample_unit": "patients",
+ "sample_size": 474,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "IDIOM",
+  "IDIOM model",
+  "recalibrated IDIOM model",
+  "recalibrated-in-the-large IDIOM model",
+  "refitted IDIOM model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of recalibration and refitting on local model calibration and discrimination",
+   "effect": "Recalibration fixed CITL (3.465 to 0.000) and slope (0.272 to 1.000) with unchanged AuROC; refitting raised AuROC from 62.87% to 67.23%, only marginal discrimination improvement.",
+   "quote": "However, despite these adjustments, the discrimination ability showed only marginal improvement in the AuROC.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local calibration",
+   "effect": "Calibration slope 0.27 (95% CI 0.14\u20130.40) and CITL 3.47 (95% CI 3.20\u20133.73).",
+   "quote": "In addition, the calibration parameters also indicated a poorly calibrated model [calibration slope of 0.27 (95% CI 0.14\u20130.40) and CITL of 3.47 (95% CI 3.20\u20133.73)] (Table 3 ) [ 23 ].",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local validation of UK-developed IDIOM model discrimination and calibration on local retrospective data",
+   "effect": "AuROC 62.9% (95% CI 56.8-68.9) vs 69.7-77.1% in UK cohorts; calibration slope 0.27, CITL 3.47, indicating poor local calibration and underestimated risk.",
+   "quote": "The model demonstrated lower performance in our Thai cohort compared to the original UK cohorts (AuROC 62.9% vs. 69.7%\u201377.1%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of a UK-developed predictive model to a new population",
+   "effect": "IDIOM showed AuROC 62.9% in Thai patients with extreme risk underestimation (CITL 3.47, slope 0.27); very-low-risk group still had 18.1% GI malignancy prevalence.",
+   "quote": "Moreover, the calibration of the model in our cohort showed an extreme underestimation of the risk.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Recalibration of model after population change to correct miscalibration",
+   "effect": "Recalibration-in-the-large brought CITL from 3.465 to 0.000; logistic recalibration adjusted calibration slope from 0.272 to 1.000.",
+   "quote": "Initially, recalibration\u2010in\u2010the\u2010large adjusted the CITL in the validation study from 3.465 to 0.000, while the calibration slope and AuROC remained unchanged.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Cross-population performance",
+   "effect": "Thai AuROC 62.9% versus original UK cohorts 69.7%\u201377.1%.",
+   "quote": "The model demonstrated lower performance in our Thai cohort compared to the original UK cohorts (AuROC 62.9% vs. 69.7%\u201377.1%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R247",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Malignancy in very-low-risk group",
+   "effect": "Very-low-risk group still had 18.1% GI malignancy prevalence.",
+   "quote": "However, even in the very low\u2010risk group, the prevalence of GI malignancy remained high at 18.1% (Table S3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Developing region-specific prediction models incorporating local features such as symptoms and FIT results"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40657468",
+ "screen": {
+  "id": "pmid:40657468",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration before deployment",
+  "user": "none",
+  "reason": "The study validates and recalibrates the IDIOM model, which is a simple statistical risk score / logistic regression model based on 4 clinical parameters (age, sex, Hb, MCV), not an advanced AI or machine learning system of interest, and lacks health care deployment/safeguard evaluation.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40657468",
+   "empirical": 0.67,
+   "tests_practice": 0.53,
+   "real_deployment": 0.04
+  }
+ }
+}

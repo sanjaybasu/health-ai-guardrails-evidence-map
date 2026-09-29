@@ -1,0 +1,353 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 159224,
+   "sample_unit": "patients (eICU, 185 hospitals)",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration (ECE) of ICU mortality models across external hospitals versus hospital prevalence difference",
+     "effect": "Hospital-level prevalence difference explained substantial variance in ECE (r=0.52\u20130.75, p<10\u221214), while AUROC showed no significant correlation (r=\u22120.03\u20130.22).",
+     "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Mean ECE after local prevalence correction or Platt scaling versus uncorrected",
+     "effect": "Bayesian prevalence correction reduced mean ECE from 0.071\u20130.085 to 0.027\u20130.037, comparable to Platt scaling with 30% labeled data (ECE = 0.022\u20130.024).",
+     "quote": "A closed-form Bayesian prevalence correction requiring only the local mortality rate, and no labeled target data, reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037, comparable to Platt scaling applied with 30% labeled data (ECE = 0.022\u20130.024)."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration error after recalibrating for local prevalence",
+     "effect": "Prevalence correction cut mean ECE from 0.071\u20130.085 to 0.027\u20130.037; prevalence shift explains ~55\u201365% of calibration error for well-calibrated models.",
+     "quote": "A closed-form Bayesian prevalence correction requiring only the local mortality rate, and no labeled target data, reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037, comparable to Platt scaling applied with 30% labeled data (ECE = 0.022\u20130.024)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Site-level variation in calibration across 185 hospitals",
+     "effect": "Calibration error varied by hospital and correlated with hospital prevalence (r=0.52\u20130.75) while AUROC did not.",
+     "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration degradation under population/prevalence drift across institutions",
+     "effect": "Prevalence mismatch is a dominant source of deployment miscalibration; mean ECE 0.071\u20130.085 before correction.",
+     "quote": "These results establish prevalence mismatch as a dominant, analytically tractable source of deployment miscalibration, correctable using a single population statistic available at every institution."
+    }
+   ],
+   "unlisted_practices": [
+    "Closed-form Bayesian label-shift prior correction using only local outcome prevalence, without labeled target data"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 159224,
+   "sample_unit": "patients evaluated across 185 hospitals",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration versus AUROC under prevalence shift",
+     "effect": "ECE correlated with prevalence difference r=0.52\u2013 0.75, p<10\u221214; AUROC r=\u22120.03\u20130.22, p=0.01\u20130.75.",
+     "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration error from prevalence mismatch",
+     "effect": "Hospital prevalence difference explained ECE variance: r=0.52\u2013 0.75, p<10\u221214.",
+     "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hospital-level calibration variation",
+     "effect": "Across 185 hospitals, prevalence shift explained approximately 55\u201365% of calibration error for well-calibrated models.",
+     "quote": "Synthetic validation with controlled prevalence shifts confirmed causality, and empirical attribution analysis revealed that prevalence shift explains approximately 55\u201365% of calibration error for well-calibrated models."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "mean ECE after prevalence correction",
+     "effect": "Bayesian correction reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037; Platt scaling ECE = 0.022\u20130.024.",
+     "quote": "A closed-form Bayesian prevalence correction requiring only the local mortality rate, and no labeled target data, reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037, comparable to Platt scaling applied with 30% labeled data (ECE = 0.022\u20130.024)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 159224,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "correlation of hospital prevalence shift with calibration versus discrimination",
+     "effect": "Prevalence differences correlated strongly with ECE (r=0.52\u20130.75, p<10\u221214) while AUROC showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75), concealing calibration failure.",
+     "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expected Calibration Error after local prevalence adjustment",
+     "effect": "Bayesian prevalence correction using local mortality rate reduced mean ECE from 0.071\u20130.085 to 0.027\u20130.037, comparable to Platt scaling with 30% labeled data (ECE=0.022\u20130.024).",
+     "quote": "A closed-form Bayesian prevalence correction requiring only the local mortality rate, and no labeled target data, reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037, comparable to Platt scaling applied with 30% labeled data (ECE = 0.022\u20130.024)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients (eICU, 185 hospitals)",
+ "sample_size": 159224,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "LightGBM",
+  "Logistic Regression",
+  "Random Forest",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Mean ECE after local prevalence correction or Platt scaling versus uncorrected",
+   "effect": "Bayesian prevalence correction reduced mean ECE from 0.071\u20130.085 to 0.027\u20130.037, comparable to Platt scaling with 30% labeled data (ECE = 0.022\u20130.024).",
+   "quote": "A closed-form Bayesian prevalence correction requiring only the local mortality rate, and no labeled target data, reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037, comparable to Platt scaling applied with 30% labeled data (ECE = 0.022\u20130.024).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration error after recalibrating for local prevalence",
+   "effect": "Prevalence correction cut mean ECE from 0.071\u20130.085 to 0.027\u20130.037; prevalence shift explains ~55\u201365% of calibration error for well-calibrated models.",
+   "quote": "A closed-form Bayesian prevalence correction requiring only the local mortality rate, and no labeled target data, reduced mean ECE from 0.071\u20130.085 to 0.027\u2013 0.037, comparable to Platt scaling applied with 30% labeled data (ECE = 0.022\u20130.024).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Site-level variation in calibration across 185 hospitals",
+   "effect": "Calibration error varied by hospital and correlated with hospital prevalence (r=0.52\u20130.75) while AUROC did not.",
+   "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "calibration versus AUROC under prevalence shift",
+   "effect": "ECE correlated with prevalence difference r=0.52\u2013 0.75, p<10\u221214; AUROC r=\u22120.03\u20130.22, p=0.01\u20130.75.",
+   "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration (ECE) of ICU mortality models across external hospitals versus hospital prevalence difference",
+   "effect": "Hospital-level prevalence difference explained substantial variance in ECE (r=0.52\u20130.75, p<10\u221214), while AUROC showed no significant correlation (r=\u22120.03\u20130.22).",
+   "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration degradation under population/prevalence drift across institutions",
+   "effect": "Prevalence mismatch is a dominant source of deployment miscalibration; mean ECE 0.071\u20130.085 before correction.",
+   "quote": "These results establish prevalence mismatch as a dominant, analytically tractable source of deployment miscalibration, correctable using a single population statistic available at every institution.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "calibration error from prevalence mismatch",
+   "effect": "Hospital prevalence difference explained ECE variance: r=0.52\u2013 0.75, p<10\u221214.",
+   "quote": "Hospital-level prevalence difference explained substantial variance in Expected Calibration Error (ECE: r=0.52\u2013 0.75, p<10\u221214), while the area under the receiver operating characteristic curve (AUROC) showed no significant correlation (r=\u22120.03\u20130.22, p=0.01\u20130.75).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Closed-form Bayesian label-shift prior correction using only local outcome prevalence, without labeled target data"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1274302",
+ "screen": {
+  "id": "epmc:PPR1274302",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local prevalence recalibration",
+  "user": "none",
+  "reason": "Evaluates hospital-level miscalibration due to outcome prevalence shift across 185 hospitals and tests an analytic Bayesian prevalence recalibration safeguard to restore calibration upon deployment.",
+  "jev": {
+   "id": "epmc:PPR1274302",
+   "empirical": 0.94,
+   "tests_practice": 0.85,
+   "real_deployment": 0.07
+  }
+ }
+}

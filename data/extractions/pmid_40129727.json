@@ -1,0 +1,357 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Africa and United Kingdom",
+   "sample_size": 81,
+   "sample_unit": "patients (CT scans)",
+   "models_evaluated": [
+    "Netherton et al. vertebral body autocontouring tool (X-Net localization, deep learning contouring, random forest QA model)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance across two external sites versus original site (identification rate, QA accuracy)",
+     "effect": "Off-the-shelf IR reduced by 11% and QA accuracy by 14% at dataset A; IR reduced 2% and QA accuracy 7% at dataset B versus baseline.",
+     "quote": "Compared to the performance metrics obtained on MDA data, IR was reduced by 11 % and QA accuracy was reduced by 14 % across all vertebral bodies when used on dataset A ( Table 1 )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation when applied to external populations and scanner settings differing from development data",
+     "effect": "Performance metrics decreased on average for all spinal regions on external data; dataset A had higher metastatic burden and thicker slices (3 mm vs optimal 2.5 mm).",
+     "quote": "When the tool was used off-of-the shelf, performance metrics were decreased on average for all spinal regions for external data when compared to baseline data."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Identification rate before vs after local post-processing adjustment",
+     "effect": "Post-processing adaptation increased identification rate by 4% on average (p<0.01) for dataset A and 4% (p=0.01) for dataset B; QA performance improved for A only (p=0.02) in results.",
+     "quote": "This technique improved IR on dataset A by 4 % (p < 0.01) on average and also 4 % on dataset B (p = 0.01) on average across all regions ( Table 1 )."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local performance on external institution data versus baseline",
+     "effect": "Off-the-shelf accurate identification 83% (A) and 92% (B); identification, contour acceptability and QA accuracy reduced versus original testing dataset.",
+     "quote": "Identification rate, contour acceptability rate and QA accuracy were reduced on both datasets compared to accuracies and rates measured on the model's orginal testing dataset."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding a secondary independent model-based automated QA check to flag contouring and labeling errors",
+    "Post-processing anatomical constraint to correct localization failures"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Africa; United Kingdom",
+   "sample_size": 81,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Netherton et al. vertebral body autocontouring and QA tool",
+    "adapted post-processing version of the vertebral body autocontouring and QA tool",
+    "X-Net localization models",
+    "random forest QA classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external versus baseline performance",
+     "effect": "Dataset A: IR reduced by 11 % and QA accuracy by 14 % versus MDA data.",
+     "quote": "Compared to the performance metrics obtained on MDA data, IR was reduced by 11 % and QA accuracy was reduced by 14 % across all vertebral bodies when used on dataset A ( Table 1 )."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local historical-data performance",
+     "effect": "Dataset B: IR reduced by 2 % and QA accuracy by 7 % versus baseline data.",
+     "quote": "Compared to the performance metrics obtained on baseline data, IR was reduced by 2 % and QA accuracy was reduced by 7 % across all vertebral bodies when used on dataset B ( Table 1 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "identification rate after adaptation",
+     "effect": "Post-processing improved IR by 4 % on dataset A (p < 0.01) and 4 % on dataset B (p = 0.01).",
+     "quote": "This technique improved IR on dataset A by 4 % (p < 0.01) on average and also 4 % on dataset B (p = 0.01) on average across all regions ( Table 1 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "site-specific performance variation",
+     "effect": "Off-shelf all-region IR/CR/QA accuracy: A 83 %/77 %/71 %; B 92 %/84 %/76 %; F1 A 0.58, B 0.54.",
+     "quote": "All performance metrics, except for F1-score, were higher for dataset B than those from the dataset A when the tool was used off-the-shelf ( Table 1 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "atypical anatomy and poor CT quality",
+     "effect": "Struggled with several patients with extensive metastases and two patients with very poor CT scan image quality.",
+     "quote": "The tool also struggled to identify certain vertebral levels with several of the patients from both institutions due to extensive metastases throughout the spine ( Fig. 3 A) as well as two patients with very poor CT scan image quality."
+    }
+   ],
+   "unlisted_practices": [
+    "Automated quality-assurance classifier using secondary contours to flag vertebral mislabeling or autocontouring errors"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Africa, United Kingdom",
+   "sample_size": 81,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "X-Net",
+    "Random forest QA classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "autocontouring and QA performance on external datasets",
+     "effect": "IR, CR, and QA accuracy were reduced on datasets A and B compared to original testing data: IR 83% and 92% vs 94%; CR 77% and 84% vs 88%; QA accuracy 71% and 76% vs 82%",
+     "quote": "Identification rate, contour acceptability rate and QA accuracy were reduced on both datasets compared to accuracies and rates measured on the model's orginal testing dataset."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance on local clinical data versus developer baseline",
+     "effect": "IR was reduced by 11% and QA accuracy by 14% on dataset A, and IR was reduced by 2% and QA accuracy by 7% on dataset B versus MDA baseline",
+     "quote": "Compared to the performance metrics obtained on MDA data, IR was reduced by 11 % and QA accuracy was reduced by 14 % across all vertebral bodies when used on dataset A ( Table 1 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Anatomical bounding post-processing adjustment to correct localization errors on external data"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Africa and United Kingdom",
+ "sample_unit": "patients",
+ "sample_size": 81,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Netherton et al. vertebral body autocontouring and QA tool",
+  "Netherton et al. vertebral body autocontouring tool (X-Net localization, deep learning contouring, random forest QA model)",
+  "Random forest QA classifier",
+  "X-Net",
+  "X-Net localization models",
+  "adapted post-processing version of the vertebral body autocontouring and QA tool",
+  "random forest QA classifier"
+ ],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance across two external sites versus original site (identification rate, QA accuracy)",
+   "effect": "Off-the-shelf IR reduced by 11% and QA accuracy by 14% at dataset A; IR reduced 2% and QA accuracy 7% at dataset B versus baseline.",
+   "quote": "Compared to the performance metrics obtained on MDA data, IR was reduced by 11 % and QA accuracy was reduced by 14 % across all vertebral bodies when used on dataset A ( Table 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Identification rate before vs after local post-processing adjustment",
+   "effect": "Post-processing adaptation increased identification rate by 4% on average (p<0.01) for dataset A and 4% (p=0.01) for dataset B; QA performance improved for A only (p=0.02) in results.",
+   "quote": "This technique improved IR on dataset A by 4 % (p < 0.01) on average and also 4 % on dataset B (p = 0.01) on average across all regions ( Table 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local performance on external institution data versus baseline",
+   "effect": "Off-the-shelf accurate identification 83% (A) and 92% (B); identification, contour acceptability and QA accuracy reduced versus original testing dataset.",
+   "quote": "Identification rate, contour acceptability rate and QA accuracy were reduced on both datasets compared to accuracies and rates measured on the model's orginal testing dataset.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external versus baseline performance",
+   "effect": "Dataset A: IR reduced by 11 % and QA accuracy by 14 % versus MDA data.",
+   "quote": "Compared to the performance metrics obtained on MDA data, IR was reduced by 11 % and QA accuracy was reduced by 14 % across all vertebral bodies when used on dataset A ( Table 1 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation when applied to external populations and scanner settings differing from development data",
+   "effect": "Performance metrics decreased on average for all spinal regions on external data; dataset A had higher metastatic burden and thicker slices (3 mm vs optimal 2.5 mm).",
+   "quote": "When the tool was used off-of-the shelf, performance metrics were decreased on average for all spinal regions for external data when compared to baseline data.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "atypical anatomy and poor CT quality",
+   "effect": "Struggled with several patients with extensive metastases and two patients with very poor CT scan image quality.",
+   "quote": "The tool also struggled to identify certain vertebral levels with several of the patients from both institutions due to extensive metastases throughout the spine ( Fig. 3 A) as well as two patients with very poor CT scan image quality.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding a secondary independent model-based automated QA check to flag contouring and labeling errors",
+  "Anatomical bounding post-processing adjustment to correct localization errors on external data",
+  "Automated quality-assurance classifier using secondary contours to flag vertebral mislabeling or autocontouring errors",
+  "Post-processing anatomical constraint to correct localization failures"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40129727",
+ "screen": {
+  "id": "pmid:40129727",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local external validation before deployment with post-processing adjustment",
+  "user": "none",
+  "reason": "The study conducts external validation across two clinical centers and tests a post-processing QA safeguard/adjustment to catch errors and improve clinical acceptability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "post-processing error screening and QA adjustment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40129727",
+   "empirical": 0.96,
+   "tests_practice": 0.71,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,308 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 2170,
+   "sample_unit": "patients (hospital external validation cohort; 375 in held-out test set)",
+   "models_evaluated": [
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Change in AUPRC and Brier score after fine-tuning synthetic-pretrained models on local hospital data versus zero-shot",
+     "effect": "Domain adaptation improved AUPRC in 8/12 combinations (4 significant; best \u0394AUPRC +0.1474, P<.001) and Brier in 11/12; zero-shot reduced AUPRC in most settings.",
+     "quote": "The domain adaptation model showed \u0394AUPRC>0 in 8 out of 12 combinations, with significant improvement over the baseline model observed in 4 combinations."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Distribution differences between synthetic development data and local hospital population",
+     "effect": "Statistically significant differences for all variables (P<.05); adenocarcinoma 97.2% vs 55.6%; perineural invasion 29.4% vs 0.7%; zero-shot models degraded performance.",
+     "quote": "A clear domain shift was observed between synthetic and hospital data, necessitating the use of domain adaptation techniques to ensure model performance in real-world settings."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Zero-shot performance of synthetic-trained models on local hospital data versus hospital-only baseline",
+     "effect": "Zero-shot only 2 of 12 combinations had \u0394AUPRC>0, none significant; 3 significantly degraded; AUPRC 0.2706-0.4171 vs baseline 0.3576-0.4663.",
+     "quote": "Only 2 of 12 combinations exhibited \u0394AUPRC>0, and none of these improvements were statistically significant."
+    }
+   ],
+   "unlisted_practices": [
+    "Using synthetic data for pretraining predictive models with local fine-tuning (domain adaptation) as a privacy-preserving development strategy",
+    "Ensemble of synthetic-pretrained and locally trained models"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 32853,
+   "sample_unit": "patients (30,683 synthetic; 2,170 hospital; 375 held-out test)",
+   "models_evaluated": [
+    "LightGBM",
+    "XGBoost",
+    "hospital-only baseline",
+    "zero-shot Synthetic\u2192Hospital",
+    "domain adaptation Synthetic\u2192Hospital",
+    "ensemble Synthetic\u2192Hospital"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "training-versus-hospital dataset shift",
+     "effect": "All variables differed (P<.05); adenocarcinoma 97.2% vs 55.6%, perineural invasion 29.4% vs 0.7%, vascular invasion 19.2% vs 9.4%.",
+     "quote": "The prevalence of adenocarcinoma (histology) was significantly higher in the hospital data than in the synthetic data (97.2% vs 55.6%, P <.001), and perineural invasion (29.4% vs 0.7%, P <.001) and vascular invasion (19.2% vs 9.4%, P <.001) were higher in hospital data."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "zero-shot external discrimination",
+     "effect": "Only 2/12 zero-shot combinations had \u0394AUPRC>0; none were statistically significant.",
+     "quote": "Only 2 of 12 combinations exhibited \u0394AUPRC>0, and none of these improvements were statistically significant."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUPRC after domain adaptation",
+     "effect": "\u0394AUPRC>0 in 8/12 combinations; 4 statistically significant improvements over baseline.",
+     "quote": "The domain adaptation model showed \u0394AUPRC>0 in 8 out of 12 combinations, with significant improvement over the baseline model observed in 4 combinations."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalization to external hospital data",
+     "effect": "10/12 zero-shot combinations showed no improvement, including 3 statistically significant degradations.",
+     "quote": "The remaining 10 combinations showed no improvement, including 3 with statistically significant degradation."
+    }
+   ],
+   "unlisted_practices": [
+    "Zero-shot application of synthetic-data-trained models to real hospital data",
+    "Soft ensemble of synthetic-pretrained, fine-tuned, and hospital-only models",
+    "Class-imbalance sampling strategies: no sampling, RUS, and SMOTEENN",
+    "Optimizing model selection for AUPRC versus F1-score"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 32853,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LightGBM",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "colorectal cancer survival prediction AUPRC and calibration",
+     "effect": "Domain adaptation improved AUPRC in 8/12 combinations (4 significant; best \u0394AUPRC=+0.1474, P<.001) and improved Brier scores in 11/12 combinations (8 significant) over hospital baseline, outperforming zero-shot transfer.",
+     "quote": "In contrast, the domain adaptation model improved AUPRC in 8/12 combinations, with 4 statistically significant gains; the best setting (XGBoost+RUS+F1 optimization) achieved AUPRC=0.5391 (\u0394+0.1474; P<.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Pretraining clinical prediction models on privacy-preserving synthetic data combined with local fine-tuning"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "patients (hospital external validation cohort; 375 in held-out test set)",
+ "sample_size": 32853,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "LightGBM",
+  "XGBoost",
+  "domain adaptation Synthetic\u2192Hospital",
+  "ensemble Synthetic\u2192Hospital",
+  "hospital-only baseline",
+  "zero-shot Synthetic\u2192Hospital"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Change in AUPRC and Brier score after fine-tuning synthetic-pretrained models on local hospital data versus zero-shot",
+   "effect": "Domain adaptation improved AUPRC in 8/12 combinations (4 significant; best \u0394AUPRC +0.1474, P<.001) and Brier in 11/12; zero-shot reduced AUPRC in most settings.",
+   "quote": "The domain adaptation model showed \u0394AUPRC>0 in 8 out of 12 combinations, with significant improvement over the baseline model observed in 4 combinations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Distribution differences between synthetic development data and local hospital population",
+   "effect": "Statistically significant differences for all variables (P<.05); adenocarcinoma 97.2% vs 55.6%; perineural invasion 29.4% vs 0.7%; zero-shot models degraded performance.",
+   "quote": "A clear domain shift was observed between synthetic and hospital data, necessitating the use of domain adaptation techniques to ensure model performance in real-world settings.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Zero-shot performance of synthetic-trained models on local hospital data versus hospital-only baseline",
+   "effect": "Zero-shot only 2 of 12 combinations had \u0394AUPRC>0, none significant; 3 significantly degraded; AUPRC 0.2706-0.4171 vs baseline 0.3576-0.4663.",
+   "quote": "Only 2 of 12 combinations exhibited \u0394AUPRC>0, and none of these improvements were statistically significant.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "generalization to external hospital data",
+   "effect": "10/12 zero-shot combinations showed no improvement, including 3 statistically significant degradations.",
+   "quote": "The remaining 10 combinations showed no improvement, including 3 with statistically significant degradation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Class-imbalance sampling strategies: no sampling, RUS, and SMOTEENN",
+  "Ensemble of synthetic-pretrained and locally trained models",
+  "Optimizing model selection for AUPRC versus F1-score",
+  "Pretraining clinical prediction models on privacy-preserving synthetic data combined with local fine-tuning",
+  "Soft ensemble of synthetic-pretrained, fine-tuned, and hospital-only models",
+  "Using synthetic data for pretraining predictive models with local fine-tuning (domain adaptation) as a privacy-preserving development strategy",
+  "Zero-shot application of synthetic-data-trained models to real hospital data"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42412950",
+ "screen": {
+  "id": "pmid:42412950",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local adaptation/recalibration of models pretrained on synthetic data",
+  "user": "none",
+  "reason": "This is a technical machine learning study evaluating synthetic data training and model transfer strategies (domain adaptation, zero-shot, ensemble) for survival prediction. It does not address clinical deployment, clinical workflow, or organizational governance/safeguards.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42412950",
+   "empirical": 0.95,
+   "tests_practice": 0.59,
+   "real_deployment": 0.04
+  }
+ }
+}

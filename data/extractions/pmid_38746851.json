@@ -1,0 +1,290 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 62142,
+   "sample_unit": "procedures",
+   "models_evaluated": [
+    "LSTM neural network intraoperative duration model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Prospective silent-mode performance versus bias-corrected scheduled duration",
+     "effect": "Mean CRPS 27.19 min (se 0.016) for model vs 51.66 min (se 0.029) for bias-corrected scheduled duration over 6,173,435 predictions on 62,142 procedures; performance preserved.",
+     "quote": "The mean CRPS across all predictions was 27.19 mins ( se , 0.016 min), compared with 51.66 min ( se , 0.029 min) for the bias-corrected scheduled duration."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Performance drift over 10-month prospective period",
+     "effect": "Weekly CRPS ratio slope 0.0003 per week (95% CI 0.0003\u20130.0009); no measurable decline; proximally retrained model 27.41 vs primary 27.62 min.",
+     "quote": "Linear regression on this ratio demonstrated a slope of 0.0003 per week (95% confidence interval, 0.0003\u20130.0009)."
+    }
+   ],
+   "unlisted_practices": [
+    "Retraining the model on more recent (proximal) data to mitigate performance drift, compared head-to-head with the original model"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 62142,
+   "sample_unit": "procedures",
+   "models_evaluated": [
+    "Primary LSTM-based neural network for intraoperative duration prediction",
+    "Secondary neural network trained on more proximal data",
+    "Bias-corrected scheduled duration using linear regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Prediction error compared with bias-corrected scheduled duration",
+     "effect": "Mean CRPS was 27.19 mins (standard error 0.016 min) for the model versus 51.66 min (standard error 0.029 min) for bias-corrected scheduled duration.",
+     "quote": "The mean CRPS across all predictions was 27.19 mins ( se , 0.016 min), compared with 51.66 min ( se , 0.029 min) for the bias-corrected scheduled duration."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Prediction performance drift over 10 months",
+     "effect": "Authors reported no measurable decline over 10 months; CRPS-ratio slope was 0.0003 per week (95% confidence interval, 0.0003\u20130.0009).",
+     "quote": "Linear regression models showed that there was no measurable decline in model performance over this period."
+    }
+   ],
+   "unlisted_practices": [
+    "Retraining on more temporally proximal data to mitigate performance drift."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 62142,
+   "sample_unit": "procedures",
+   "models_evaluated": [
+    "Neural network"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model error vs scheduled duration",
+     "effect": "During silent prospective deployment, the ML model had a mean error of 27.19 minutes compared with 51.66 minutes for the bias-corrected scheduled duration.",
+     "quote": "Mean continuous ranked probability score for the ML model was 27.19 (standard error 0.016) min compared with 51.66 (standard error 0.029) min for the bias-corrected scheduled duration."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Performance drift over time",
+     "effect": "Linear regression over the 10-month prospective testing period showed no measurable decline in model performance.",
+     "quote": "Linear regression models showed that there was no measurable decline in model performance over this period."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Availability of data elements in live pipeline",
+     "effect": "The real-time data capture pipeline lacked data elements like surgeon identity and a structured procedure vocabulary, limiting prediction techniques.",
+     "quote": "Third, our technique for capturing real-time data lacks certain data elements such as the surgeon identity and does not contain a structured vocabulary for procedure names."
+    }
+   ],
+   "unlisted_practices": [
+    "comparing models trained on older vs more recent proximal data to assess the need for retraining"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "USA",
+ "sample_unit": "procedures",
+ "sample_size": 62142,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Bias-corrected scheduled duration using linear regression",
+  "LSTM neural network intraoperative duration model",
+  "Neural network",
+  "Primary LSTM-based neural network for intraoperative duration prediction",
+  "Secondary neural network trained on more proximal data"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drift over 10-month prospective period",
+   "effect": "Weekly CRPS ratio slope 0.0003 per week (95% CI 0.0003\u20130.0009); no measurable decline; proximally retrained model 27.41 vs primary 27.62 min.",
+   "quote": "Linear regression on this ratio demonstrated a slope of 0.0003 per week (95% confidence interval, 0.0003\u20130.0009).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Prediction error compared with bias-corrected scheduled duration",
+   "effect": "Mean CRPS was 27.19 mins (standard error 0.016 min) for the model versus 51.66 min (standard error 0.029 min) for bias-corrected scheduled duration.",
+   "quote": "The mean CRPS across all predictions was 27.19 mins ( se , 0.016 min), compared with 51.66 min ( se , 0.029 min) for the bias-corrected scheduled duration.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model error vs scheduled duration",
+   "effect": "During silent prospective deployment, the ML model had a mean error of 27.19 minutes compared with 51.66 minutes for the bias-corrected scheduled duration.",
+   "quote": "Mean continuous ranked probability score for the ML model was 27.19 (standard error 0.016) min compared with 51.66 (standard error 0.029) min for the bias-corrected scheduled duration.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Retraining on more temporally proximal data to mitigate performance drift.",
+  "Retraining the model on more recent (proximal) data to mitigate performance drift, compared head-to-head with the original model",
+  "comparing models trained on older vs more recent proximal data to assess the need for retraining"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:38746851",
+ "screen": {
+  "id": "pmid:38746851",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "silent-mode deployment with drift monitoring",
+  "user": "none",
+  "reason": "The study prospective silently deployed a machine learning model for intraoperative surgical duration prediction on real-time live data and monitored for performance drift over 10 months, evaluating model accuracy and stability without testing a deployment guardrail comparison.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38746851",
+   "empirical": 0.96,
+   "tests_practice": 0.25,
+   "real_deployment": 0.96
+  }
+ }
+}

@@ -1,0 +1,446 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Portugal",
+   "sample_size": 30,
+   "sample_unit": "simulated clinical vignettes (each in Portuguese and English)",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-5",
+    "GPT-4.1",
+    "Claude Sonnet 4.5",
+    "Gemini 2.5 Pro",
+    "Claude Opus 4.1",
+    "DeepSeek V3",
+    "Gemini 2.0 Flash",
+    "Grok-3",
+    "Llama 3.3 70B Instruct",
+    "GPT-5 Nano"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Portuguese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Standalone LLM agreement with reference versus individual clinicians without AI on ESC risk category",
+     "effect": "Pooled clinician benchmark \u03baw 0.52 (95% CI 0.28-0.67); five of eleven LLMs equalled or exceeded it; best GPT-4o \u03baw 0.69. Human-AI team not tested.",
+     "quote": "Notably, five of eleven LLMs equalled or exceeded this pooled clinician benchmark, suggesting that top-performing models reach the performance level of the average individual physician on this task."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM performance compared with clinicians on the same vignettes for ESC risk classification",
+     "effect": "Eight clinicians pooled \u03baw 0.52 (0.28-0.67); best LLM GPT-4o \u03baw 0.69 (0.44-0.84); clinicians made no major two-class errors whereas several LLMs did.",
+     "quote": "Notably, five of eleven LLMs equalled or exceeded this pooled clinician benchmark, suggesting that top-performing models reach the performance level of the average individual physician on this task."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Numeric SCORE2 estimation accuracy and internal consistency of LLM calculations",
+     "effect": "MAE 1.22 to 3.16 percentage points across models; bias toward underestimation; numeric-category agreement ranged from 37.5% to 85.0%; deterministic recalculation raised \u03baw to 0.85-0.90.",
+     "quote": "Mean absolute error (MAE) ranged from 1.22 percentage points for Claude Sonnet 4.5 (95% CI, 0.53\u20132.29; n = 18) to 3.16 for Gemini 2.0 Flash (95% CI, 2.44\u20133.87; n = 38), with all models exceeding one percentage point on average."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement with gold standard after deterministic external SCORE2 recalculation versus native model output",
+     "effect": "Deterministic \u03baw 0.85-0.90 versus original 0.15-0.61 in eligible vignettes; all eleven models improved, \u0394\u03baw +0.29 to +0.72.",
+     "quote": "Deterministic risk recalculation yielded substantially and consistently higher agreement with the Gold Standard across all models ( Table 5 )."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of guideline-based risk classification and direction of errors",
+     "effect": "\u03baw 0.40-0.69; accuracy 42%-67%; ten of eleven models systematically underestimated risk; major errors in six models (GPT-5 Nano 13%).",
+     "quote": "Ten of eleven models systematically underestimated risk, with the sole exception being Claude Sonnet 4.5, which overestimated more frequently."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance consistency across Portuguese and English versions of same vignettes",
+     "effect": "Risk factor Micro-F1 >0.95 in both languages; largest \u03baw difference 0.22 (Llama 3.3); no significant language effects after FDR correction. Repeated-run reproducibility untested.",
+     "quote": "No statistically significant language effects were identified after FDR correction."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Suitability of LLM final risk categorization as stand-alone tool",
+     "effect": "Only moderate final classification agreement and major errors in six models; authors conclude LLMs suit supervised augmentation, not autonomous end-to-end risk stratification.",
+     "quote": "LLMs may therefore already have practical value as supervised tools for information structuring and eligibility assessment, but not as autonomous end-to-end risk stratification systems."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model handling of uncertain or missing inputs, including withholding classification",
+     "effect": "GPT-5 withheld classification in four vignettes lacking smoking status; Llama 3.3 and GPT-5 Nano omitted classifications for one and five vignettes without explanation.",
+     "quote": "GPT-5 withheld classification in four vignettes where smoking status was absent; Llama 3.3 70B Instruct and GPT-5 Nano omitted classifications for one and five vignettes, respectively, without explanation."
+    }
+   ],
+   "unlisted_practices": [
+    "Modular workflow using LLM for extraction and deterministic calculator for risk computation",
+    "Zero-shot prompting benchmark of LLM guideline recall"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Portugal",
+   "sample_size": 30,
+   "sample_unit": "simulated outpatient clinical vignettes",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-5",
+    "GPT-4.1",
+    "Claude Sonnet 4.5",
+    "Gemini 2.5 Pro",
+    "Claude Opus 4.1",
+    "DeepSeek V3",
+    "Gemini 2.0 Flash",
+    "Grok-3",
+    "Llama 3.3 70B Instruct",
+    "GPT-5 Nano"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Portuguese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Three-class ESC risk accuracy",
+     "effect": "Accuracy ranged from 67% (GPT-4o) to 42% (GPT-5 Nano).",
+     "quote": "Overall classification accuracy ranged from 67% (GPT-4o) to 42% (GPT-5 Nano)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Deterministic risk recalculation",
+     "effect": "Deterministic \u03baw 0.85\u20130.90; \u0394\u03baw positive in all models, with CIs excluding zero in 9/11.",
+     "quote": "Deterministic \u03baw clustered narrowly between 0.85 and 0.90, and all eleven models showed a positive \u0394\u03baw\u2014with confidence intervals excluding zero in nine of eleven models."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Clinician benchmark comparison",
+     "effect": "Five of eleven LLMs equalled or exceeded the pooled clinician benchmark.",
+     "quote": "Notably, five of eleven LLMs equalled or exceeded this pooled clinician benchmark, suggesting that top-performing models reach the performance level of the average individual physician on this task."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Portuguese-English robustness",
+     "effect": "Risk-classification \u0394\u03baw ranged \u22120.16 to +0.22; no statistically significant effects after FDR.",
+     "quote": "No statistically significant language effects were identified after FDR correction."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "PRT",
+   "sample_size": 30,
+   "sample_unit": "vignettes",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-5",
+    "GPT-4.1",
+    "Claude Sonnet 4.5",
+    "Gemini 2.5 Pro",
+    "Claude Opus 4.1",
+    "DeepSeek V3",
+    "Gemini 2.0 Flash",
+    "Grok-3",
+    "Llama 3.3 70B Instruct",
+    "GPT-5 Nano"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "por",
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Missed guideline-specified contraindications and exceptions to risk score calculation",
+     "effect": "Missed exceptions were uncommon across 10 of 11 models, but reached 15.0% (95% CI 0.0-38.5%) in Gemini 2.0 Flash.",
+     "quote": "Missed exceptions were uncommon for all models except with Gemini 2.0 Flash (15.0%, 95% CI: 0.0\u201338.5%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Modular hybrid workflow coupling LLM variable extraction from clinical text with deterministic rule-based calculation of risk scores and categories"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Portugal",
+ "sample_unit": "simulated clinical vignettes (each in Portuguese and English)",
+ "sample_size": 30,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Portuguese",
+  "eng",
+  "por"
+ ],
+ "models_evaluated": [
+  "Claude Opus 4.1",
+  "Claude Sonnet 4.5",
+  "DeepSeek V3",
+  "GPT-4.1",
+  "GPT-4o",
+  "GPT-5",
+  "GPT-5 Nano",
+  "Gemini 2.0 Flash",
+  "Gemini 2.5 Pro",
+  "Grok-3",
+  "Llama 3.3 70B Instruct"
+ ],
+ "links": [
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement with gold standard after deterministic external SCORE2 recalculation versus native model output",
+   "effect": "Deterministic \u03baw 0.85-0.90 versus original 0.15-0.61 in eligible vignettes; all eleven models improved, \u0394\u03baw +0.29 to +0.72.",
+   "quote": "Deterministic risk recalculation yielded substantially and consistently higher agreement with the Gold Standard across all models ( Table 5 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Accuracy of guideline-based risk classification and direction of errors",
+   "effect": "\u03baw 0.40-0.69; accuracy 42%-67%; ten of eleven models systematically underestimated risk; major errors in six models (GPT-5 Nano 13%).",
+   "quote": "Ten of eleven models systematically underestimated risk, with the sole exception being Claude Sonnet 4.5, which overestimated more frequently.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM performance compared with clinicians on the same vignettes for ESC risk classification",
+   "effect": "Eight clinicians pooled \u03baw 0.52 (0.28-0.67); best LLM GPT-4o \u03baw 0.69 (0.44-0.84); clinicians made no major two-class errors whereas several LLMs did.",
+   "quote": "Notably, five of eleven LLMs equalled or exceeded this pooled clinician benchmark, suggesting that top-performing models reach the performance level of the average individual physician on this task.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance consistency across Portuguese and English versions of same vignettes",
+   "effect": "Risk factor Micro-F1 >0.95 in both languages; largest \u03baw difference 0.22 (Llama 3.3); no significant language effects after FDR correction. Repeated-run reproducibility untested.",
+   "quote": "No statistically significant language effects were identified after FDR correction.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Suitability of LLM final risk categorization as stand-alone tool",
+   "effect": "Only moderate final classification agreement and major errors in six models; authors conclude LLMs suit supervised augmentation, not autonomous end-to-end risk stratification.",
+   "quote": "LLMs may therefore already have practical value as supervised tools for information structuring and eligibility assessment, but not as autonomous end-to-end risk stratification systems.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician benchmark comparison",
+   "effect": "Five of eleven LLMs equalled or exceeded the pooled clinician benchmark.",
+   "quote": "Notably, five of eleven LLMs equalled or exceeded this pooled clinician benchmark, suggesting that top-performing models reach the performance level of the average individual physician on this task.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Modular hybrid workflow coupling LLM variable extraction from clinical text with deterministic rule-based calculation of risk scores and categories",
+  "Modular workflow using LLM for extraction and deterministic calculator for risk computation",
+  "Zero-shot prompting benchmark of LLM guideline recall"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42211774",
+ "screen": {
+  "id": "pmid:42211774",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "deterministic recalculation of risk score outside the LLM",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates LLMs on cardiovascular risk stratification vignettes compared to clinicians and tests post-hoc deterministic recalculation of risk scores using extracted variables as a safeguard against calculation errors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "deterministic recalculation / external computation guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42211774",
+   "empirical": 0.97,
+   "tests_practice": 0.08,
+   "real_deployment": 0.02
+  }
+ }
+}

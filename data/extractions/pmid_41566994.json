@@ -1,0 +1,341 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 110,
+   "sample_unit": "patients (test set; 547 total, read by 6 radiologists)",
+   "models_evaluated": [
+    "DL-3DABUV (ResNet50 with multi-instance learning)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist diagnostic performance with vs without AI assistance (independent vs second vs concurrent reading)",
+     "effect": "Experienced AUC 0.83 to 0.90 (P<0.001); novice AUC 0.68 to 0.84 (second) and 0.85 (concurrent), P<0.001; specificity in novices 57.4% to 82.7%/83.3%.",
+     "quote": "Similarly, novice radiologists also showed significantly improved AUC (second-reading: 0.84 vs. 0.68, P<0.001; concurrent-reading: 0.85 vs. 0.68, P<0.001), sensitivity (second-reading: 87.5% vs. 79.2%, P<0.001; concurrent-reading: 88.1% vs. 79.2%, P<0.001), and specificity (second-reading: 82.7% vs. 57.4%, P<0.001; concurrent-reading: 83.3% vs. 57.4%, P<0.001) compared with independent-reading."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician performance with AI in intended reading workflow vs standalone model",
+     "effect": "Experienced radiologists with AI outperformed DL-3DABUV alone (AUC 0.90 vs 0.82); novices reached parity with the AI (0.84-0.85 vs 0.82).",
+     "quote": "Experienced radiologists achieved significantly better diagnostic performance in both second-reading and concurrent-reading modes compared with DL-3DABUV alone (all P<0.01 for AUC, sensitivity, and specificity; Table 1 and Supplementary Table 1 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI diagnostic performance compared with experienced and novice radiologists on same data",
+     "effect": "AI vs experienced: AUC 0.82 vs 0.83 (P=0.230); vs novice: AUC 0.82 vs 0.68 (P<0.001), specificity 81.5% vs 57.4% (P<0.001).",
+     "quote": "Compared with novice radiologists in independent-reading mode, DL-3DABUV showed significantly higher AUC (0.82 vs. 0.68, P<0.001) and specificity (81.5% vs. 57.4%, P<0.001), while maintaining comparable sensitivity (82.1% vs. 79.2%, P=0.590)."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Diagnostic performance and reading time by AI presentation timing (second vs concurrent reading)",
+     "effect": "No significant differences in diagnostic performance between second and concurrent reading (e.g., experienced AUC 0.90 vs 0.90, P=0.500); concurrent reading saved 33.6 s per case (P<0.001).",
+     "quote": "However, there were no significant differences between second-reading and concurrent-reading in AUC (experienced radiologists: 0.90 vs. 0.90, P=0.500; novice radiologists: 0.84 vs. 0.85, P>0.99), sensitivity (experienced radiologists: 90.5% vs. 91.7%, P>0.99; novice radiologists: 87.5% vs. 88.1%, P>0.99), or specificity (experienced radiologists: 92.0% vs. 92.0%, P=0.156; novice radiologists: 82.7% vs. 83.3%, P=0.157)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Test-set leakage and single-center generalizability of model development",
+     "effect": "Model parameters were optimized using the test set; single-center retrospective random split without external validation.",
+     "quote": "Network training was performed on the training set, with parameters optimized using the test set."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing second-reading versus concurrent-reading AI workflow for reading time efficiency",
+    "Direct video-level deep learning without manual annotation",
+    "Using AI to assist novice radiologists to reduce unnecessary biopsies"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 547,
+   "sample_unit": "patients; 110 test patients evaluated by 6 radiologists",
+   "models_evaluated": [
+    "DL-3DABUV",
+    "ResNet50 with multi-instance learning"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Standalone DL-3DABUV versus radiologists",
+     "effect": "AUC 0.82 vs experienced 0.83 (P=0.230); sensitivity 82.1% vs 81.6%; specificity 81.5% vs 88.3%.",
+     "quote": "As shown in Table 1 and Supplementary Table 1 , DL-3DABUV demonstrated diagnostic performance comparable to that of experienced radiologists in independent-reading mode, with no significant differences in AUC (0.82 vs. 0.83, P=0.230), sensitivity (82.1% vs. 81.6%, P>0.99), or specificity (81.5% vs. 88.3%, P=0.126)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist performance with versus without AI",
+     "effect": "Experienced AUC: 0.90 in both assisted modes vs 0.83 independent; novice AUC: 0.84/0.85 vs 0.68, all P<0.001.",
+     "quote": "According to Table 1 and Supplementary Table 1 , both second-reading and concurrent-reading modes significantly improved diagnostic performance compared with independent-reading for both experienced and novice radiologists."
+    },
+    {
+     "rec_id": "R521",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reading time by AI reading mode",
+     "effect": "Concurrent reading reduced mean time by 13.5 seconds vs independent and 33.6 seconds vs second-reading; both P<0.001.",
+     "quote": "Compared with both independent-reading and second-reading, concurrent-reading resulted in significantly shorter reading times for all radiologists, with mean differences of 13.5 seconds (95% confidence interval [CI], 12.7 to 14.2; P<0.001) and 33.6 seconds (95% CI, 32.5 to 34.6; P<0.001), respectively ( Table 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 110,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DL-3DABUV (ResNet50 + MIL)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R503",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic performance of human-AI integration vs standalone AI",
+     "effect": "Experienced radiologists assisted by DL-3DABUV achieved significantly higher AUC (0.90 vs 0.82), sensitivity (90.5%-91.7% vs 82.1%), and specificity (92.0% vs 81.5%) than DL-3DABUV alone (all P<0.01).",
+     "quote": "Experienced radiologists achieved significantly better diagnostic performance in both second-reading and concurrent-reading modes compared with DL-3DABUV alone (all P<0.01 for AUC, sensitivity, and specificity; Table 1 and Supplementary Table 1 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Concurrent-reading mode versus second-reading mode for integrating AI assistance into image review workflows"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "patients (test set; 547 total, read by 6 radiologists)",
+ "sample_size": 110,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "DL-3DABUV",
+  "DL-3DABUV (ResNet50 + MIL)",
+  "DL-3DABUV (ResNet50 with multi-instance learning)",
+  "ResNet50 with multi-instance learning"
+ ],
+ "links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician performance with AI in intended reading workflow vs standalone model",
+   "effect": "Experienced radiologists with AI outperformed DL-3DABUV alone (AUC 0.90 vs 0.82); novices reached parity with the AI (0.84-0.85 vs 0.82).",
+   "quote": "Experienced radiologists achieved significantly better diagnostic performance in both second-reading and concurrent-reading modes compared with DL-3DABUV alone (all P<0.01 for AUC, sensitivity, and specificity; Table 1 and Supplementary Table 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "AI diagnostic performance compared with experienced and novice radiologists on same data",
+   "effect": "AI vs experienced: AUC 0.82 vs 0.83 (P=0.230); vs novice: AUC 0.82 vs 0.68 (P<0.001), specificity 81.5% vs 57.4% (P<0.001).",
+   "quote": "Compared with novice radiologists in independent-reading mode, DL-3DABUV showed significantly higher AUC (0.82 vs. 0.68, P<0.001) and specificity (81.5% vs. 57.4%, P<0.001), while maintaining comparable sensitivity (82.1% vs. 79.2%, P=0.590).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist diagnostic performance with vs without AI assistance (independent vs second vs concurrent reading)",
+   "effect": "Experienced AUC 0.83 to 0.90 (P<0.001); novice AUC 0.68 to 0.84 (second) and 0.85 (concurrent), P<0.001; specificity in novices 57.4% to 82.7%/83.3%.",
+   "quote": "Similarly, novice radiologists also showed significantly improved AUC (second-reading: 0.84 vs. 0.68, P<0.001; concurrent-reading: 0.85 vs. 0.68, P<0.001), sensitivity (second-reading: 87.5% vs. 79.2%, P<0.001; concurrent-reading: 88.1% vs. 79.2%, P<0.001), and specificity (second-reading: 82.7% vs. 57.4%, P<0.001; concurrent-reading: 83.3% vs. 57.4%, P<0.001) compared with independent-reading.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic performance and reading time by AI presentation timing (second vs concurrent reading)",
+   "effect": "No significant differences in diagnostic performance between second and concurrent reading (e.g., experienced AUC 0.90 vs 0.90, P=0.500); concurrent reading saved 33.6 s per case (P<0.001).",
+   "quote": "However, there were no significant differences between second-reading and concurrent-reading in AUC (experienced radiologists: 0.90 vs. 0.90, P=0.500; novice radiologists: 0.84 vs. 0.85, P>0.99), sensitivity (experienced radiologists: 90.5% vs. 91.7%, P>0.99; novice radiologists: 87.5% vs. 88.1%, P>0.99), or specificity (experienced radiologists: 92.0% vs. 92.0%, P=0.156; novice radiologists: 82.7% vs. 83.3%, P=0.157).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Test-set leakage and single-center generalizability of model development",
+   "effect": "Model parameters were optimized using the test set; single-center retrospective random split without external validation.",
+   "quote": "Network training was performed on the training set, with parameters optimized using the test set.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R521",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reading time by AI reading mode",
+   "effect": "Concurrent reading reduced mean time by 13.5 seconds vs independent and 33.6 seconds vs second-reading; both P<0.001.",
+   "quote": "Compared with both independent-reading and second-reading, concurrent-reading resulted in significantly shorter reading times for all radiologists, with mean differences of 13.5 seconds (95% confidence interval [CI], 12.7 to 14.2; P<0.001) and 33.6 seconds (95% CI, 32.5 to 34.6; P<0.001), respectively ( Table 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R503",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic performance of human-AI integration vs standalone AI",
+   "effect": "Experienced radiologists assisted by DL-3DABUV achieved significantly higher AUC (0.90 vs 0.82), sensitivity (90.5%-91.7% vs 82.1%), and specificity (92.0% vs 81.5%) than DL-3DABUV alone (all P<0.01).",
+   "quote": "Experienced radiologists achieved significantly better diagnostic performance in both second-reading and concurrent-reading modes compared with DL-3DABUV alone (all P<0.01 for AUC, sensitivity, and specificity; Table 1 and Supplementary Table 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing second-reading versus concurrent-reading AI workflow for reading time efficiency",
+  "Concurrent-reading mode versus second-reading mode for integrating AI assistance into image review workflows",
+  "Direct video-level deep learning without manual annotation",
+  "Using AI to assist novice radiologists to reduce unnecessary biopsies"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41566994",
+ "screen": {
+  "id": "pmid:41566994",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "concurrent vs second-reading workflow integration",
+  "user": "clinician_or_staff",
+  "reason": "The study tests different clinical reading modes (second-reader vs concurrent-reader AI assistance vs unassisted) and measures their impact on diagnostic performance and reading time.",
+  "jev": {
+   "id": "pmid:41566994",
+   "empirical": 0.98,
+   "tests_practice": 0.85,
+   "real_deployment": 0.07
+  }
+ }
+}

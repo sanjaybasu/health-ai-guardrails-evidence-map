@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "China",
+ "sample_size": 1000,
+ "sample_unit": "whole-body 18F-FDG PET/CT reports",
+ "models_evaluated": [
+  "Claude-Opus-4.8",
+  "GPT-5.5",
+  "MiMo",
+  "GLM-5",
+  "DeepSeek"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Mandarin"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "LLM error detection versus human physicians and between competing domestic and international models on same reports",
+   "effect": "Missed-diagnosis detection best 0.467, the one category where human physicians outperformed every model; domestic vs international detection did not differ (\u0394macro-F1 = \u22120.011, P = 0.84).",
+   "quote": "Missed-diagnosis detection was the universal weakness (best 0.467) and the one category where the human physicians outperformed every model.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Dissociation between error-detection macro-F1 and overall-score calibration (ICC) across models",
+   "effect": "Macro-F1 0.356\u20130.667 and ICC 0.099\u20130.627, weakly correlated (\u03c1 = 0.38, p = 0.18); strongest detector Claude-Opus-4.8 (0.667) calibrated poorly (0.491).",
+   "quote": "Raw detection ability does not guarantee a trustworthy score, and domestic and international models differ by deployment-relevant profile rather than by overall performance rank; both essential distinctions for performing clinical nuclear-medicine QC.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Controlling for access channel (agent channel vs clean API) when benchmarking LLMs to avoid inflated performance",
+  "Comparing domestic versus international LLMs on cost and on-premise deployability"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1260403",
+ "screen": {
+  "id": "epmc:PPR1260403",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study benchmarks the performance of multiple commercial and open-source LLMs on automated quality control and error detection in PET/CT reports, evaluating raw model performance and calibration across API/agent access modalities without testing a specific organizational deployment practice or safeguard.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1260403",
+   "empirical": 0.97,
+   "tests_practice": 0.47,
+   "real_deployment": 0.04
+  }
+ }
+}

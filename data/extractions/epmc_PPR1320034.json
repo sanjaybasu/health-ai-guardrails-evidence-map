@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "speech_ambient",
+  "generative_llm"
+ ],
+ "country": "United Kingdom",
+ "sample_size": 59819,
+ "sample_unit": "transcription-error occurrences",
+ "models_evaluated": [
+  "production ambient AI scribe (unnamed)",
+  "three external-provider LLM raters (unnamed)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "77 languages (translated from 99), including high-resource and low-resource languages",
+  "English source scripts"
+ ],
+ "links": [
+  {
+   "rec_id": "R270",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Ambient scribe transcription quality and serious clinical risk by language resource level",
+   "effect": "Low-resource languages had worse WER than high-resource (\u03b2=+0.078, 95% CI +0.045 to +0.111; p<0.0001) but no detectable difference in CRITICAL/HIGH risk (OR 1.21, 95% CI 0.43 to 3.43; p=0.72).",
+   "quote": "At complexity level 3, low-resource languages had worse WER than high-resource languages (\u03b2=+0.078, 95% CI +0.045 to +0.111; p<0.0001), without a detectable difference in CRITICAL/HIGH risk (OR 1.21, 95% CI 0.43 to 3.43; p=0.72).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R479",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether frequency metrics like WER track clinically consequential scribe transcription errors",
+   "effect": "None of six frequency metrics showed detectable association with serious clinical risk (|Spearman \u03c1|<0.16); 251 (0.42%) of 59,819 errors CRITICAL/HIGH; clinical-risk assessment complements WER.",
+   "quote": "None of six frequency metrics showed a statistically detectable association with serious clinical risk across languages; correlations were small (absolute Spearman \u03c1<0.16).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using severity-by-likelihood clinical-risk rating (LLM-as-rater) of scribe errors instead of WER alone for evaluation"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1320034",
+ "screen": {
+  "id": "epmc:PPR1320034",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study benchmarks ambient scribes across 77 languages and specifically evaluates a deployment validation practice: using a clinical safety risk framework (Severity x Likelihood) versus standard WER metrics to safeguard against consequential transcription errors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "clinical risk evaluation framework for ambient scribes"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1320034",
+   "empirical": 0.95,
+   "tests_practice": 0.04,
+   "real_deployment": 0.05
+  }
+ }
+}

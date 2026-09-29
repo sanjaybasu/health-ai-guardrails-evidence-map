@@ -1,0 +1,326 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "Not reported (Cardiac Atlas Project open datasets)",
+   "sample_size": null,
+   "sample_unit": "images and tabular records (sample counts inconsistently reported: 45 cine-MRI, 10,000 or 70,000 tabular records)",
+   "models_evaluated": [
+    "YOLOv5",
+    "Mask R-CNN",
+    "ResNet18",
+    "SCIR",
+    "SIR",
+    "Capuchin",
+    "Fairlearn",
+    "adversarial debiasing"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fairness metrics and accuracy before vs after bias mitigation (adversarial debiasing, BPA, equalised odds)",
+     "effect": "Disparate impact rose from 0.80 to 0.95 and equal opportunity difference fell from 0.20 to 0.05. BPA cut FPR for males 0.0059 to 0.0033 and females 0.0096 to 0.0064. Overall accuracy effect after mitigation not clearly reported.",
+     "quote": "For example, disparate impact increased from 0.80 to 0.95, and equal opportunity difference decreased from 0.20 to 0.05, demonstrating significant reductions in demographic bias."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Class-level and gender-level performance gaps hidden behind aggregate metrics",
+     "effect": "YOLO overall mAP 0.88, but the 'abnormal' class had precision 78% and recall 72% (28% miss rate) vs 94% recall for 'serious'. Gender mean outcome differences were also observed.",
+     "quote": "The mean average precision (mAP) of 0.88 underscores an overall solid performance, but the lower precision and recall for the \u201cabnormal\u201d class reveal a masked bias that could exacerbate health disparities."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model robustness to input noise perturbation",
+     "effect": "ResNet18 prediction accuracy dropped 29.7% (111 to 78 correct) as noise increased from 0.01 to 0.05, while YOLO perturbation sensitivity was 0.0.",
+     "quote": "The ResNet\u2019s significant 29.7% prediction accuracy drop (111 to 78) under increased noise conditions (0.01 to 0.05) particularly threatens the project\u2019s aim of fair diagnostics across different healthcare settings, potentially discriminating against facilities with limited resources or older equipment."
+    }
+   ],
+   "unlisted_practices": [
+    "Use of SCIR/SIR compartmental models to simulate population-level effects of algorithmic bias",
+    "Replacing binary smoking variable with cumulative pack-years metric",
+    "Class reweighting and loss adjustment for underrepresented classes",
+    "Interpretability with LIME and SHAP to identify bias"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 70000,
+   "sample_unit": "samples",
+   "models_evaluated": [
+    "SCIR",
+    "SIR",
+    "YOLOv5",
+    "Mask R-CNN",
+    "ResNet18",
+    "SMOTE-based cardiovascular health model",
+    "Fairlearn Threshold Optimiser",
+    "adversarial debiasing",
+    "balanced probability adjustment"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy under increased noise",
+     "effect": "ResNet prediction accuracy dropped 29.7% (111 to 78) as noise increased 0.01 to 0.05.",
+     "quote": "The ResNet\u2019s significant 29.7% prediction accuracy drop (111 to 78) under increased noise conditions (0.01 to 0.05) particularly threatens the project\u2019s aim of fair diagnostics across different healthcare settings, potentially discriminating against facilities with limited resources or older equipment."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "SCIR versus SIR model recovery",
+     "effect": "SCIR recovery rate was 1.38 vs SIR 0.83, with a -10% transmission bias impact.",
+     "quote": "The SCIR model outperformed the SIR model (recovery rate: 1.38 vs 0.83) with a -10% transmission bias impact."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "class-specific diagnostic performance",
+     "effect": "Recall differed by 22% between serious (94%) and abnormal (72%) cases.",
+     "quote": "This 22% discrepancy in the recall between \u201cserious\u201d (94%) and \u201cabnormal\u201d (72%) cases poses a critical challenge as early-stage abnormalities often require timely intervention but remain underdetected."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness after bias mitigation",
+     "effect": "Disparate impact improved 0.80 to 0.95; equal opportunity difference fell 0.20 to 0.05; false favourable rates fell for males and females.",
+     "quote": "Bias mitigation improved disparate impact (0.80 to 0.95), reduced equal opportunity difference (0.20 to 0.05), and decreased false favourable rates for males (0.0059 to 0.0033) and females (0.0096 to 0.0064) through balanced probability adjustment."
+    }
+   ],
+   "unlisted_practices": [
+    "Use of LIME and SHAP to interpret cardiovascular prediction models",
+    "SCIR simulation of diagnostic-confirmation disparities"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 70000,
+   "sample_unit": "samples",
+   "models_evaluated": [
+    "ResNet18",
+    "Mask R-CNN",
+    "YOLOv5",
+    "SIR model",
+    "SCIR model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness metrics and false positive rates across demographic groups",
+     "effect": "Disparate impact improved from 0.80 to 0.95, equal opportunity difference decreased from 0.20 to 0.05, and false positive rates decreased from 0.0059 to 0.0033 for males and 0.0096 to 0.0064 for females.",
+     "quote": "Bias mitigation improved disparate impact (0.80 to 0.95), reduced equal opportunity difference (0.20 to 0.05), and decreased false favourable rates for males (0.0059 to 0.0033) and females (0.0096 to 0.0064) through balanced probability adjustment."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "samples",
+ "sample_size": 70000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "Capuchin",
+  "Fairlearn",
+  "Fairlearn Threshold Optimiser",
+  "Mask R-CNN",
+  "ResNet18",
+  "SCIR",
+  "SCIR model",
+  "SIR",
+  "SIR model",
+  "SMOTE-based cardiovascular health model",
+  "YOLOv5",
+  "adversarial debiasing",
+  "balanced probability adjustment"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness metrics and accuracy before vs after bias mitigation (adversarial debiasing, BPA, equalised odds)",
+   "effect": "Disparate impact rose from 0.80 to 0.95 and equal opportunity difference fell from 0.20 to 0.05. BPA cut FPR for males 0.0059 to 0.0033 and females 0.0096 to 0.0064. Overall accuracy effect after mitigation not clearly reported.",
+   "quote": "For example, disparate impact increased from 0.80 to 0.95, and equal opportunity difference decreased from 0.20 to 0.05, demonstrating significant reductions in demographic bias.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Class-level and gender-level performance gaps hidden behind aggregate metrics",
+   "effect": "YOLO overall mAP 0.88, but the 'abnormal' class had precision 78% and recall 72% (28% miss rate) vs 94% recall for 'serious'. Gender mean outcome differences were also observed.",
+   "quote": "The mean average precision (mAP) of 0.88 underscores an overall solid performance, but the lower precision and recall for the \u201cabnormal\u201d class reveal a masked bias that could exacerbate health disparities.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model robustness to input noise perturbation",
+   "effect": "ResNet18 prediction accuracy dropped 29.7% (111 to 78 correct) as noise increased from 0.01 to 0.05, while YOLO perturbation sensitivity was 0.0.",
+   "quote": "The ResNet\u2019s significant 29.7% prediction accuracy drop (111 to 78) under increased noise conditions (0.01 to 0.05) particularly threatens the project\u2019s aim of fair diagnostics across different healthcare settings, potentially discriminating against facilities with limited resources or older equipment.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Class reweighting and loss adjustment for underrepresented classes",
+  "Interpretability with LIME and SHAP to identify bias",
+  "Replacing binary smoking variable with cumulative pack-years metric",
+  "SCIR simulation of diagnostic-confirmation disparities",
+  "Use of LIME and SHAP to interpret cardiovascular prediction models",
+  "Use of SCIR/SIR compartmental models to simulate population-level effects of algorithmic bias"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39682584",
+ "screen": {
+  "id": "pmid:39682584",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "fairness-aware bias mitigation (debiasing, equalised odds post-processing)",
+  "user": "none",
+  "reason": "The study empirically tests and compares bias mitigation and post-processing fairness methods (adversarial debiasing, Fairlearn, equalized odds post-processing) on cardiovascular imaging/risk prediction models to measure reduction in demographic bias metrics.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "algorithmic bias mitigation techniques"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39682584",
+   "empirical": 0.81,
+   "tests_practice": 0.23,
+   "real_deployment": 0.05
+  }
+ }
+}

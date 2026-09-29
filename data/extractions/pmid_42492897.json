@@ -1,0 +1,277 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "quasi_experimental",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 100,
+   "sample_unit": "operative reports",
+   "models_evaluated": [
+    "GPT-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correct OPS coding and hallucination counts with versus without retrieved/curated context files",
+     "effect": "Correct coding rose from 44% (no context) to 79% (rules), 70% (examples), 86% (combined); hallucinations fell from 105 to 8, 2, and 6 respectively (p<0.001).",
+     "quote": "Our data strongly support the thesis that contextualization significantly reduces hallucinations and thus leads to a great increase in quality."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Inaccurate GPT-5 OPS code output versus in-hospital ground-truth coding",
+     "effect": "Unenhanced GPT-5 achieved only 44% correct coding, with 132 total mistakes, 105 hallucinations, 9% chaotic LLM failure, and 26% vital mistakes.",
+     "quote": "GPT-5s and GPT-5o showed identical accuracy (44/100 correct codes), followed by GPT-5e (70/100) and GPT-5r (79/100)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinated or incorrect codes in AI-generated outputs requiring verification",
+     "effect": "Baseline GPT-5 produced 105 hallucinations (misuse and nonsense codes); even the best configuration had 14 mistakes and 6 hallucinations across 100 reports.",
+     "quote": "The main pitfall in practical application is failing to recognize hallucinations as such without verification."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether GPT-5 performance generalizes beyond a single-center, single-procedure test to real deployment",
+     "effect": "Authors note single-center, single-procedure testing and say generalizability and local applicability need research before clinical application.",
+     "quote": "However, before clinical application, great research is required focusing on generalizability and local applicability."
+    }
+   ],
+   "unlisted_practices": [
+    "Context enhancement of LLM prompts with domain-specific rules and example phrases to improve medical code extraction"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 100,
+   "sample_unit": "operative reports",
+   "models_evaluated": [
+    "GPT-5s",
+    "GPT-5o",
+    "GPT-5r",
+    "GPT-5e",
+    "GPT-5c"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "coding accuracy, hallucinations, and mistakes",
+     "effect": "Rules/examples/combined improved accuracy to 79%/70%/86% and reduced hallucinations to 8/2/6 and mistakes to 21/35/14 versus GPT-5s/GPT-5o (p<0.001).",
+     "quote": "All other models were significantly superior to GPT-5s and GPT-5o in accuracy (GPT-5r 79%, GPT-5e 70%, GPT-5c 86%, <i>p</i> < 0.001), hallucinations (GPT-5r 8, GPT-5e 2, GPT-5c 6, <i>p</i> < 0.001) and mistakes (GPT-5r 21, GPT-5e 35, GPT-5c 14, <i>p</i> < 0.001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "incorrect OPS coding and hallucinations",
+     "effect": "No-context GPT-5s had 44% correct coding, 105 hallucinations, and 132 total mistakes.",
+     "quote": "Non context enhanced GPT-5s showed the lowest rate of correct coding (44%) and highest number of hallucinations (105) and total mistakes (132)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 100,
+   "sample_unit": "operative reports",
+   "models_evaluated": [
+    "GPT-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "OPS coding accuracy, mistakes, and hallucinations",
+     "effect": "Accuracy increased from 44% without context to 86% with combined context (p<0.001); total mistakes fell from 132 to 14 (p<0.001); hallucinations fell from 105 to 6 (p<0.001).",
+     "quote": "We show, that specific context enhancement significantly improves GPT-5s ability to perform OPS-code extraction from operational reports, while significantly lowering mistake- and hallucination rates."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "quasi_experimental",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "operative reports",
+ "sample_size": 100,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German"
+ ],
+ "models_evaluated": [
+  "GPT-5",
+  "GPT-5c",
+  "GPT-5e",
+  "GPT-5o",
+  "GPT-5r",
+  "GPT-5s"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Correct OPS coding and hallucination counts with versus without retrieved/curated context files",
+   "effect": "Correct coding rose from 44% (no context) to 79% (rules), 70% (examples), 86% (combined); hallucinations fell from 105 to 8, 2, and 6 respectively (p<0.001).",
+   "quote": "Our data strongly support the thesis that contextualization significantly reduces hallucinations and thus leads to a great increase in quality.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Inaccurate GPT-5 OPS code output versus in-hospital ground-truth coding",
+   "effect": "Unenhanced GPT-5 achieved only 44% correct coding, with 132 total mistakes, 105 hallucinations, 9% chaotic LLM failure, and 26% vital mistakes.",
+   "quote": "GPT-5s and GPT-5o showed identical accuracy (44/100 correct codes), followed by GPT-5e (70/100) and GPT-5r (79/100).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R135",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Context enhancement of LLM prompts with domain-specific rules and example phrases to improve medical code extraction"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42492897",
+ "screen": {
+  "id": "pmid:42492897",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "context enhancement (catalogue, rules, example phrases) via prompt grounding",
+  "user": "none",
+  "reason": "The study compares LLM coding accuracy and hallucinations across different prompt engineering and context grounding strategies (providing rules, catalogues, and sample phrases).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "context enhancement and prompt grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42492897",
+   "empirical": 0.94,
+   "tests_practice": 0.26,
+   "real_deployment": 0.05
+  }
+ }
+}

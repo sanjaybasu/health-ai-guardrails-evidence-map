@@ -1,0 +1,86 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Multinational (12 hospitals worldwide; BraTS 2021 plus clinical data)",
+ "sample_size": null,
+ "sample_unit": "patients (MRI cases)",
+ "models_evaluated": [
+  "DeepMedic",
+  "nn-Unet",
+  "NVIDIA-net (nv-Net)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Segmentation performance with missing MRI sequences using sparsified training",
+   "effect": "With Sparsified training, missing MRI sequences did not statistically affect performance; nn-Unet gave accurate segmentations despite incomplete MRI datasets.",
+   "quote": "By applying Sparsified training, missing MRI sequences did not statistically affect the performance.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Performance on external test set from other hospitals versus internal test set",
+   "effect": "All models' median DSC on both internal and external test sets were within or above human inter-rater agreement (0.74-0.85); nn-Unet DSC internal 0.86, external 0.93.",
+   "quote": "All models' median Dice similarity coefficient (DSC) for both test sets were within, or higher than, previously reported human inter-rater agreement (range of 0.74-0.85).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Sparsified training to make segmentation models robust to missing MRI sequences"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:37919354",
+ "screen": {
+  "id": "pmid:37919354",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates generalizability and robustness of deep learning segmentation models across multi-center clinical MRI datasets with missing sequences, but does not test organizational deployment practices or safeguards.",
+  "jev": {
+   "id": "pmid:37919354",
+   "empirical": 0.97,
+   "tests_practice": 0.04,
+   "real_deployment": 0.06
+  }
+ }
+}

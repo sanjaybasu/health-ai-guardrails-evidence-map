@@ -1,0 +1,305 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Korea",
+   "sample_size": 194,
+   "sample_unit": "patients (mammograms with BI-RADS 4 lesions)",
+   "models_evaluated": [
+    "Lunit INSIGHT MMG v1.1.9.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Sensitivity at a single AI threshold (35) by BI-RADS subgroup",
+     "effect": "At threshold 35, sensitivity for BI-RADS 4A was 41.2% (specificity 84.7%) versus 88.7% sensitivity (specificity 70.2%) for 4B/C, showing a single threshold conceals subgroup underperformance.",
+     "quote": "At a threshold of 35, the sensitivity for BI-RADS 4A cases was only 41.2%, with a specificity of 84.7%."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity and specificity of category-specific versus single AI cutoffs",
+     "effect": "Youden-optimal thresholds were 19 (4A; sens 0.71, spec 0.64) and 63 (4B/4C; sens 0.82, spec 0.92); a single threshold of 35 cut 4A sensitivity to 41.2%. Thresholds were not selected with clinician input or response capacity.",
+     "quote": "These findings suggest that separate thresholds for different BI-RADS categories are necessary to avoid missing cancers in the BI-RADS 4A group."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI score discrimination in BI-RADS 4A and discordant cases, supporting decision-support use only",
+     "effect": "AUC 0.685 for 4A; in 4B/4C lesions with AI scores <35, 19.5% were malignant with no significant AI score difference between benign and malignant, so AI cannot be relied on alone.",
+     "quote": "the thresholds should be applied with caution, as current AI systems may not be reliable enough for independent decision-making in the absence of radiologist input."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Malignancy rate among cases AI scored low but radiologists rated BI-RADS 4B/4C",
+     "effect": "41 BI-RADS 4B/4C cases had AI scores <35; 8 (19.5%) were malignant, so low AI scores can miss cancers.",
+     "quote": "Eight malignant cases (19.5%) were confirmed, including six DCIS and two IDC."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Multi-site validation of AI performance",
+     "effect": "Single center, single radiologist, single vendor device (Hologic); generalizability limited and not evaluated across sites.",
+     "quote": "First, it was conducted at a single center with a single radiologist, which may limit its generalizability."
+    }
+   ],
+   "unlisted_practices": [
+    "Use category-specific (BI-RADS subgroup) AI score thresholds rather than a single fixed threshold",
+    "Use sensitivity-prioritized lower thresholds for low-suspicion BI-RADS 4A lesions"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Republic of Korea",
+   "sample_size": 194,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Lunit INSIGHT MMG, version 1.1.9.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "BI-RADS-specific AI threshold performance",
+     "effect": "Youden thresholds: 19 for 4A (sensitivity 0.71, specificity 0.64); 63 for 4B/4C (sensitivity 0.82, specificity 0.92).",
+     "quote": "Youden-optimal thresholds were 19 for BI-RADS 4A (sensitivity: 0.71, specificity: 0.64; AUC = 0.685), 63 for BI-RADS 4B/4C (sensitivity: 0.82, specificity: 0.92; AUC = 0.908), and 63 for the overall cohort (sensitivity: 0.72, specificity: 0.95; AUC = 0.872)."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone AI threshold miss risk",
+     "effect": "At AI threshold 35, BI-RADS 4A sensitivity was only 41.2%, specificity 84.7%.",
+     "quote": "At a threshold of 35, the sensitivity for BI-RADS 4A cases was only 41.2%, with a specificity of 84.7%."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "malignancy in AI-low discordant lesions",
+     "effect": "BI-RADS 4B/4C lesions with AI scores <35 had a malignancy rate of 19.5%.",
+     "quote": "In discordant cases, BI-RADS 4A lesions with scores of \u226535 had a malignancy rate of 43.8%, while BI-RADS 4B/4C lesions with scores of <35 had a malignancy rate of 19.5%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "KOR",
+   "sample_size": 194,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Lunit INSIGHT MMG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Malignancy rate in radiologist-suspicious lesions with low AI scores",
+     "effect": "Among 41 BI-RADS 4B/4C lesions with AI scores <35, 8 (19.5%) were malignant (6 DCIS, 2 IDC), with no significant difference in AI scores between benign and malignant lesions (10.9 vs 13.4, p > 0.05).",
+     "quote": "Eight malignant cases (19.5%) were confirmed, including six DCIS and two IDC."
+    }
+   ],
+   "unlisted_practices": [
+    "Category-specific AI decision thresholds"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "patients",
+ "sample_size": 194,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Lunit INSIGHT MMG",
+  "Lunit INSIGHT MMG v1.1.9.2",
+  "Lunit INSIGHT MMG, version 1.1.9.2"
+ ],
+ "links": [
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity and specificity of category-specific versus single AI cutoffs",
+   "effect": "Youden-optimal thresholds were 19 (4A; sens 0.71, spec 0.64) and 63 (4B/4C; sens 0.82, spec 0.92); a single threshold of 35 cut 4A sensitivity to 41.2%. Thresholds were not selected with clinician input or response capacity.",
+   "quote": "These findings suggest that separate thresholds for different BI-RADS categories are necessary to avoid missing cancers in the BI-RADS 4A group.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI score discrimination in BI-RADS 4A and discordant cases, supporting decision-support use only",
+   "effect": "AUC 0.685 for 4A; in 4B/4C lesions with AI scores <35, 19.5% were malignant with no significant AI score difference between benign and malignant, so AI cannot be relied on alone.",
+   "quote": "the thresholds should be applied with caution, as current AI systems may not be reliable enough for independent decision-making in the absence of radiologist input.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Malignancy rate among cases AI scored low but radiologists rated BI-RADS 4B/4C",
+   "effect": "41 BI-RADS 4B/4C cases had AI scores <35; 8 (19.5%) were malignant, so low AI scores can miss cancers.",
+   "quote": "Eight malignant cases (19.5%) were confirmed, including six DCIS and two IDC.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity at a single AI threshold (35) by BI-RADS subgroup",
+   "effect": "At threshold 35, sensitivity for BI-RADS 4A was 41.2% (specificity 84.7%) versus 88.7% sensitivity (specificity 70.2%) for 4B/C, showing a single threshold conceals subgroup underperformance.",
+   "quote": "At a threshold of 35, the sensitivity for BI-RADS 4A cases was only 41.2%, with a specificity of 84.7%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Category-specific AI decision thresholds",
+  "Use category-specific (BI-RADS subgroup) AI score thresholds rather than a single fixed threshold",
+  "Use sensitivity-prioritized lower thresholds for low-suspicion BI-RADS 4A lesions"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40506940",
+ "screen": {
+  "id": "pmid:40506940",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "category-specific AI alert threshold selection",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates the deployment practice of selecting and optimizing category-specific AI decision/alert thresholds versus fixed thresholds to reduce diagnostic error and manage radiologist-AI discordance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "category-specific alert threshold selection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40506940",
+   "empirical": 0.97,
+   "tests_practice": 0.66,
+   "real_deployment": 0.1
+  }
+ }
+}

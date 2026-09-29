@@ -1,0 +1,291 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 80,
+   "sample_unit": "model-generated responses",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": true,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Readability of GPT outputs tailored to specified patient education level (health literacy proxy)",
+     "effect": "GPT-3.5 met target readability only at bachelor's level; GPT-4 met target for all groups except 6th-grade FKRE. Clinical content accuracy was not evaluated.",
+     "quote": "GPT-3.5 only aligned with the prespecified education levels at the bachelor's degree."
+    },
+    {
+     "rec_id": "R298",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Consistency of readability across prompts varying only in stated patient education level",
+     "effect": "GPT-4 outputs collapsed 6th and 8th grade into one tier with no significant difference; GPT-3.5 also failed to differentiate high school from bachelor's outputs.",
+     "quote": "GPT-3.5 also demonstrated nonsignificant differences in readability between the 6th- and 8th-grade levels, both in individual DM scenarios and when considering the overall FKGL."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether generated patient text reading level matched requested user reading level",
+     "effect": "GPT-3.5 6th-grade FKGL 9.08 and 8th-grade 10.27, above target; GPT-4 6th-grade FKRE 74.54, above target 6th-grade band (80-90 easy).",
+     "quote": "GPT-3.5 only aligned with the prespecified education levels at the bachelor's degree."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Reproducibility of output readability across repeated runs",
+     "effect": "Each scenario run 5 times; average FKRE SD 4.91 (GPT-3.5) and 4.86 (GPT-4); average FKGL SD 0.99 and 1.05, showing stable readability across repeats.",
+     "quote": "GPT-3.5 and GPT-4 demonstrated relatively consistent results in variability across all educational levels, suggesting that both versions of ChatGPT maintain uniform performance irrespective of the complexity of language in the clinical vignettes used."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 80,
+   "sample_unit": "responses",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": true,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R292",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "targeted readability of patient education outputs",
+     "effect": "GPT-4 accurate average readability in 13/16 scenarios; GPT-3.5 in 4/16, only bachelor\u2019s degree.",
+     "quote": "GPT-4 achieved accurate average readability scores in 13 out of 16 scenarios across both FKRE and FKGL, while GPT-3.5 reached accurate average readability scores in only 4 out of 16 scenarios, exclusively at the bachelor\u2019s degree education level ( Tables 2 and 3 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "readability reproducibility across repeated runs",
+     "effect": "Average FKGL SDs were 0.99 for GPT-3.5 and 1.05 for GPT-4; roughly 95% within approximately two grade levels.",
+     "quote": "Similarly, the average FKGL SDs were 0.99 for GPT-3.5 and 1.05 for GPT-4, indicating that roughly 95% of FKGL scores likely fall within approximately two grade levels, providing further evidence of output consistency."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "readability comparison between model versions",
+     "effect": "GPT-4 generally had higher FKRE/lower FKGL than GPT-3.5 except bachelor\u2019s degree scenarios.",
+     "quote": "This analysis suggests that GPT-4 generally delivered outputs with better readability (higher FKRE and lower FKGL) across various educational levels, with the exception of the bachelor\u2019s degree scenarios ( Figures 4 A-6H)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 80,
+   "sample_unit": "responses",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Readability alignment with targeted patient education levels",
+     "effect": "GPT-4 achieved accurate average readability in 13/16 scenarios, whereas GPT-3.5 achieved accurate readability in only 4/16 scenarios (bachelor's only). Aggregated 6th-grade FKGL was 6.3 for GPT-4 versus 9.08 for GPT-3.5.",
+     "quote": "GPT-4 achieved accurate average readability scores in 13 out of 16 scenarios across both FKRE and FKGL, while GPT-3.5 reached accurate average readability scores in only 4 out of 16 scenarios, exclusively at the bachelor\u2019s degree education level ( Tables 2 and 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "responses",
+ "sample_size": 80,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": true,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-3.5",
+  "GPT-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Whether generated patient text reading level matched requested user reading level",
+   "effect": "GPT-3.5 6th-grade FKGL 9.08 and 8th-grade 10.27, above target; GPT-4 6th-grade FKRE 74.54, above target 6th-grade band (80-90 easy).",
+   "quote": "GPT-3.5 only aligned with the prespecified education levels at the bachelor's degree.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of output readability across repeated runs",
+   "effect": "Each scenario run 5 times; average FKRE SD 4.91 (GPT-3.5) and 4.86 (GPT-4); average FKGL SD 0.99 and 1.05, showing stable readability across repeats.",
+   "quote": "GPT-3.5 and GPT-4 demonstrated relatively consistent results in variability across all educational levels, suggesting that both versions of ChatGPT maintain uniform performance irrespective of the complexity of language in the clinical vignettes used.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R297",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R298",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R292",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39137416",
+ "screen": {
+  "id": "pmid:39137416",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "reading-level constraints in prompts (tailoring output to patient education level)",
+  "user": "patient",
+  "reason": "Evaluates prompt constraints specifying patient education/reading levels to test whether LLM outputs actually achieve targeted readability metrics.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "reading-level constraints"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39137416",
+   "empirical": 0.96,
+   "tests_practice": 0.05,
+   "real_deployment": 0.02
+  }
+ }
+}

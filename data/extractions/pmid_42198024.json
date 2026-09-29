@@ -1,0 +1,439 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6452,
+   "sample_unit": "images (full-consensus bruise images; 968 validation/test)",
+   "models_evaluated": [
+    "Faster R-CNN (ResNet-50-FPN, MobileNetV3, MobileNetV3-320)",
+    "RetinaNet",
+    "FCOS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance inflation from image-level partitioning leakage (seen vs unseen injuries)",
+     "effect": "mAP fell from 0.82 on seen injuries to 0.70 on unseen injuries (15% relative drop); recall 0.84 to 0.73; 100% of test images belonged to injuries also in training.",
+     "quote": "These findings demonstrate that image-level partitioning, particularly under controlled acquisition conditions, can yield inflated generalization estimates."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Failure rates across skin-tone subgroups in unbalanced vs balanced training",
+     "effect": "Unbalanced failure rates were higher for darker tones (Dark 14.9%, Tan 15.0%, Brown 12.3%) than lighter ones (Light 7.0%, Very Light 8.5%); balancing significantly reduced failure for Intermediate, Brown, Dark.",
+     "quote": "In contrast, the worst-case scenario (Invalid Failed Inconsistent) shows a higher proportion of darker skin tones, indicating that misclassifications and inconsistent detections occur more frequently for these categories."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of skin-tone balancing on subgroup failure and overprediction rates",
+     "effect": "Balancing significantly cut failure for Brown (12.3% to 2.9%, p=0.004), Dark (14.9% to 5.6%, p=0.019), Intermediate (p=0.012), but raised overprediction significantly in 5 of 6 tones by 8-15 percentage points.",
+     "quote": "While skin-balanced training reduced failure rates in darker tones, it introduced a substantial and counterbalancing increase in overprediction rates ( Table 10 )."
+    },
+    {
+     "rec_id": "R309",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset representation of skin tones and its effect on performance",
+     "effect": "Dataset overrepresents light skin tones with fewer dark and very light images; unbalanced model showed higher failure rates in darker skin tones.",
+     "quote": "The skin color distribution highlights an overrepresentation of light color, with fewer images from dark and very light skin tones, suggesting potential biases in dataset composition."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Sensitivity of detection performance to confidence and IoU thresholds",
+     "effect": "At confidence 0.1/IoU 0.1 F1 was 0.036 vs 0.387 at 0.3/0.3; confidence >=0.7 caused near-zero detections and severe recall collapse.",
+     "quote": "Notably, confidence thresholds above 0.7 result in almost no detections, and IoU thresholds greater than 0.5 significantly degrade performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Training-data illumination composition (ALS-dominant vs white light) to improve detection",
+    "Injury-level rather than image-level data partitioning to avoid inflated generalization"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6452,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "Faster R-CNN",
+    "Faster R-CNN MobileNet 320",
+    "Faster R-CNN MobileNet",
+    "Faster R-CNN ResNet-50",
+    "RetinaNet",
+    "FCOS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Seen versus unseen-injury generalization",
+     "effect": "mAP declined from 0.82 (95% CI: [0.79, 0.84]) on seen injuries to 0.70 (95% CI: [0.67, 0.73]) on unseen injuries; recall 0.84 to 0.73.",
+     "quote": "These findings demonstrate that image-level partitioning, particularly under controlled acquisition conditions, can yield inflated generalization estimates."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Threshold-dependent AP and F1",
+     "effect": "At confidence/IoU 0.1/0.1, AP 0.9563 and F1 0.0358; at 0.5/0.1, AP 0.8652 and F1 0.8782.",
+     "quote": "While AP is highest at confidence = 0.1 to 0.3, F1-score peaks at confidence = 0.5."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Lighting-distribution robustness",
+     "effect": "FCOS mAP@0.5 dropped from 0.931 for ALS\u2192ALS to 0.805 for ALS+W\u2192ALS; higher W ratios raised CUM FP from 1804 (0/100) to 2582 (100/0).",
+     "quote": "Cross-dataset evaluation reveals a decline in model performance when tested on a dataset different from its training distribution."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model selection performance",
+     "effect": "FCOS AP (mAP@0.5) was 0.392 (0.673) W\u2192W, 0.584 (0.931) ALS\u2192ALS, and 0.531 (0.924) ALS+W\u2192ALS+W, higher than comparators.",
+     "quote": "When trained and tested on the same dataset, FCOS consistently outperforms Faster R-CNN and RetinaNet, achieving the highest observed AP across all conditions."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Skin-tone failure rates",
+     "effect": "Unbalanced Failed: Tan 14.99%, Brown 12.31%, Dark 14.87% versus Light 7.00%, Very Light 8.48%, Intermediate 8.51%.",
+     "quote": "The results indicate that darker skin tones exhibit higher failure rates, while intermediate skin tones achieve the highest perfect prediction rates, suggesting greater model stability and accuracy in this category."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Skin-balanced training trade-off",
+     "effect": "Skin-balanced failure: Brown 12.3% to 2.9%, Dark 14.9% to 5.6%; overprediction significant in five of six tones, 8\u201315 pp increases.",
+     "quote": "The statistical analysis reveals a fundamental tension in dataset balancing for this forensic application: improvements in detection equity (lower failure rates in darker skin tones) are achieved at the cost of reduced specificity (higher false-positive rates across most groups)."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Poor-quality imaging failures",
+     "effect": "White light Invalid Failed Consistent/Inconsistent were 15.29%/10.59%; 450 nm orange was 5.44%/0%, and 415 nm yellow was 6.01%/4.37%.",
+     "quote": "Several factors contribute to detection failures and underprediction, including low contrast (faded bruises), label inaccuracies, blurriness, camera shift, and shadows."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False positives and negatives",
+     "effect": "At confidence/IoU 0.5/0.5, FCOS W/ALS=0/100: AP 0.7483, CUM TP 125, CUM FP 31, precision/recall/F1 0.8012.",
+     "quote": "Figure 10 illustrates different detection outcomes, including true positive cases where bruises were correctly detected, false positives, overprediction and false negatives, where actual bruises were missed due to low contrast or image quality limitations."
+    }
+   ],
+   "unlisted_practices": [
+    "Prioritizing alternate-light-source images, including ALS-dominant W/ALS training ratios, for bruise-detection model development.",
+    "Selecting ALS wavelength and filter configurations, such as 450 nm with orange filters, for bruise imaging."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6452,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "Faster R-CNN",
+    "RetinaNet",
+    "FCOS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalization performance overestimation from data leakage in image-level partitioning",
+     "effect": "mAP declined from 0.82 (95% CI: [0.79, 0.84]) on seen injuries to 0.70 (95% CI: [0.67, 0.73]) on unseen injuries (a 15% relative drop), with recall decreasing from 0.84 to 0.73.",
+     "quote": "At 0.5 IoU and 0.5 confidence, mAP declined from 0.82 (95% CI: [0.79, 0.84]) on seen injuries to 0.70 (95% CI: [0.67, 0.73]) on unseen injuries (a 15% relative drop), with recall decreasing from 0.84 to 0.73."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "subgroup failure and overprediction rates following skin-tone dataset balancing",
+     "effect": "Skin balancing reduced failure rates in darker tones (dark: 5.6% vs 14.9%; brown: 2.9% vs 12.3%), but significantly increased overprediction across 5 of 6 subgroups by 8 to 15 percentage points.",
+     "quote": "The statistical analysis reveals a fundamental tension in dataset balancing for this forensic application: improvements in detection equity (lower failure rates in darker skin tones) are achieved at the cost of reduced specificity (higher false-positive rates across most groups)."
+    }
+   ],
+   "unlisted_practices": [
+    "Optimizing alternate light source (ALS) to white light image ratios during training to improve cross-illumination detection"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "images",
+ "sample_size": 6452,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "FCOS",
+  "Faster R-CNN",
+  "Faster R-CNN (ResNet-50-FPN, MobileNetV3, MobileNetV3-320)",
+  "Faster R-CNN MobileNet",
+  "Faster R-CNN MobileNet 320",
+  "Faster R-CNN ResNet-50",
+  "RetinaNet"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance inflation from image-level partitioning leakage (seen vs unseen injuries)",
+   "effect": "mAP fell from 0.82 on seen injuries to 0.70 on unseen injuries (15% relative drop); recall 0.84 to 0.73; 100% of test images belonged to injuries also in training.",
+   "quote": "These findings demonstrate that image-level partitioning, particularly under controlled acquisition conditions, can yield inflated generalization estimates.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Failure rates across skin-tone subgroups in unbalanced vs balanced training",
+   "effect": "Unbalanced failure rates were higher for darker tones (Dark 14.9%, Tan 15.0%, Brown 12.3%) than lighter ones (Light 7.0%, Very Light 8.5%); balancing significantly reduced failure for Intermediate, Brown, Dark.",
+   "quote": "In contrast, the worst-case scenario (Invalid Failed Inconsistent) shows a higher proportion of darker skin tones, indicating that misclassifications and inconsistent detections occur more frequently for these categories.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of skin-tone balancing on subgroup failure and overprediction rates",
+   "effect": "Balancing significantly cut failure for Brown (12.3% to 2.9%, p=0.004), Dark (14.9% to 5.6%, p=0.019), Intermediate (p=0.012), but raised overprediction significantly in 5 of 6 tones by 8-15 percentage points.",
+   "quote": "While skin-balanced training reduced failure rates in darker tones, it introduced a substantial and counterbalancing increase in overprediction rates ( Table 10 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity of detection performance to confidence and IoU thresholds",
+   "effect": "At confidence 0.1/IoU 0.1 F1 was 0.036 vs 0.387 at 0.3/0.3; confidence >=0.7 caused near-zero detections and severe recall collapse.",
+   "quote": "Notably, confidence thresholds above 0.7 result in almost no detections, and IoU thresholds greater than 0.5 significantly degrade performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Seen versus unseen-injury generalization",
+   "effect": "mAP declined from 0.82 (95% CI: [0.79, 0.84]) on seen injuries to 0.70 (95% CI: [0.67, 0.73]) on unseen injuries; recall 0.84 to 0.73.",
+   "quote": "These findings demonstrate that image-level partitioning, particularly under controlled acquisition conditions, can yield inflated generalization estimates.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Lighting-distribution robustness",
+   "effect": "FCOS mAP@0.5 dropped from 0.931 for ALS\u2192ALS to 0.805 for ALS+W\u2192ALS; higher W ratios raised CUM FP from 1804 (0/100) to 2582 (100/0).",
+   "quote": "Cross-dataset evaluation reveals a decline in model performance when tested on a dataset different from its training distribution.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Poor-quality imaging failures",
+   "effect": "White light Invalid Failed Consistent/Inconsistent were 15.29%/10.59%; 450 nm orange was 5.44%/0%, and 415 nm yellow was 6.01%/4.37%.",
+   "quote": "Several factors contribute to detection failures and underprediction, including low contrast (faded bruises), label inaccuracies, blurriness, camera shift, and shadows.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R309",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Injury-level rather than image-level data partitioning to avoid inflated generalization",
+  "Optimizing alternate light source (ALS) to white light image ratios during training to improve cross-illumination detection",
+  "Prioritizing alternate-light-source images, including ALS-dominant W/ALS training ratios, for bruise-detection model development.",
+  "Selecting ALS wavelength and filter configurations, such as 450 nm with orange filters, for bruise imaging.",
+  "Training-data illumination composition (ALS-dominant vs white light) to improve detection"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42198024",
+ "screen": {
+  "id": "pmid:42198024",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "skin-tone balancing in training data and operating-threshold selection",
+  "user": "none",
+  "reason": "Evaluates operational and deployment practices including skin-tone balancing during training and operating-point/threshold selection to mitigate bias across demographic subgroups in forensic bruise detection.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "skin-tone balancing and operating threshold selection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42198024",
+   "empirical": 0.94,
+   "tests_practice": 0.54,
+   "real_deployment": 0.07
+  }
+ }
+}

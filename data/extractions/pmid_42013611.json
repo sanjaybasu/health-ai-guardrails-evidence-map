@@ -1,0 +1,94 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "",
+ "sample_size": 79163,
+ "sample_unit": "post-contrast abdominal CT examinations",
+ "models_evaluated": [
+  "3D convolutional neural network for SMAO detection"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Prospective performance of the model on live CT examinations, including sensitivity, specificity, and QA-confirmed missed findings",
+   "effect": "Prospective sensitivity 67.6% and specificity 99.6% (AUC 0.917), versus 50.0% sensitivity on the test set; 237 cases flagged for QA, 83 (35.0%) confirmed as missed SMAO.",
+   "quote": "Prospectively, sensitivity was 67.6% and specificity was 99.6% (AUC = 0.917).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Findings missed on initial radiologist read and identified by AI QA review",
+   "effect": "Of 237 QA-flagged cases, 83 (35.0%) were confirmed missed SMAO, indicating 40.7% of SMAO cases were undiagnosed on the initial read.",
+   "quote": "The model flagged 237 cases for QA review, of which 83 (35.0%) were confirmed as missed SMAO, indicating that 40.7% of SMAO cases were undiagnosed on the initial read.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using AI to triage/prioritize radiology worklist and reduce reporting delays",
+  "Using AI as a retrospective quality assurance tool to identify missed findings",
+  "NLP-based identification of positive reports to build training data"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42013611",
+ "screen": {
+  "id": "pmid:42013611",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study prospectively deployed a 3D deep learning model to screen 79,163 real-time clinical CT exams, testing a quality assurance and alert workflow for detecting missed superior mesenteric artery occlusions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "real-time quality assurance flagging for missed diagnoses"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42013611",
+   "empirical": 0.98,
+   "tests_practice": 0.55,
+   "real_deployment": 0.95
+  }
+ }
+}

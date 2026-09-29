@@ -1,0 +1,457 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States, Austria, South Korea, China",
+   "sample_size": 20065,
+   "sample_unit": "ICU patients aged 65+ across eight representative validation cohorts (Table 1)",
+   "models_evaluated": [
+    "ELDER-ICU (XGBoost)",
+    "SAPS II",
+    "OASIS",
+    "SOFA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model AUROC across international ICU sites",
+     "effect": "AUROC 0.804-0.864 in US and Austrian sites but dropped to 0.753 in South Korea and 0.698 in China.",
+     "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Change in AUROC and calibration after recalibration, incremental training, and retraining",
+     "effect": "Retraining raised AUROC by +0.066 (South Korea) and +0.076 (China); incremental training +0.048 and +0.062. Platt scaling and isotonic regression improved Brier scores (P<0.001).",
+     "quote": "However, retraining markedly outperformed incremental training in Asia, achieving larger AUROC gains in both South Korea (\u0394AUROC: +0.066) and China (\u0394AUROC: +0.076)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Distribution shift in key predictors and outcome prevalence across sites",
+     "effect": "Asian cohorts showed significant divergence from US sites in GCS, urine output, respiratory rate, and ventilation. Mortality ranged 6.4% to 22.2%. Ventilation use was 24.27% in South Korea versus 78.99% in China.",
+     "quote": "While US sites exhibited relative homogeneity in GCS score, urine output and respiratory rate patterns, Asian cohorts showed significant divergence."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local performance of the externally validated model versus original validation",
+     "effect": "Local AUROC fell in South Korea (0.753) and China (0.698) compared with original validation AUROCs of 0.833-0.884.",
+     "quote": "In contrast, there was markedly degraded performance in both Asian sites."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AUROC across sex, age, ethnicity, ICU type, and CCI subgroups",
+     "effect": "Sex differences were negligible in US and Austria but pronounced in Asian sites. Estimates for Black, Asian, and Hispanic subgroups were unstable because of small samples. Surgical ICUs had higher AUROC than MICU.",
+     "quote": "Sex-based differences were negligible in the US and Austrian cohorts but pronounced in the Asian sites, where AUROCs were consistently higher among females than males."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of ELDER-ICU against conventional severity scores (SAPS II, OASIS, SOFA)",
+     "effect": "Model was benchmarked against conventional scores in each site, but specific numeric comparison results are not stated in the text.",
+     "quote": "Model performance was benchmarked against conventional severity scores (OASIS, SAPS II, SOFA)."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing recalibration, incremental training, and full retraining as model updating strategies chosen by degree of divergence from the source population"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States; Austria; South Korea; China",
+   "sample_size": 12,
+   "sample_unit": "ICU sites",
+   "models_evaluated": [
+    "ELDER-ICU original model",
+    "ELDER-ICU recalibrated with Platt scaling",
+    "ELDER-ICU recalibrated with isotonic regression",
+    "ELDER-ICU incrementally updated model",
+    "ELDER-ICU fully retrained model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External discrimination by region",
+     "effect": "US/Austria AUROC 0.804-0.864; South Korea 0.753; China 0.698.",
+     "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Distributional shift in predictors",
+     "effect": "Mechanical ventilation: South Korea 24.27%, China 78.99%, Austria 71.24%, US averages 40.17%.",
+     "quote": "Mechanical ventilation utilization further illustrated geographic contrasts: South Korea dataset had the lowest rate (24.27%), whereas China (78.99%) and Austria dataset (71.24%) significantly exceeded US averages (40.17%), a pattern mirrored in SHAP value heterogeneity."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC after local retraining",
+     "effect": "Retraining AUROC gains: South Korea +0.066; China +0.076.",
+     "quote": "However, retraining markedly outperformed incremental training in Asia, achieving larger AUROC gains in both South Korea (\u0394AUROC: +0.066) and China (\u0394AUROC: +0.076)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup discrimination heterogeneity",
+     "effect": "Sex differences were pronounced in Asian sites; AUROCs were consistently higher among females.",
+     "quote": "Sex-based differences were negligible in the US and Austrian cohorts but pronounced in the Asian sites, where AUROCs were consistently higher among females than males."
+    },
+    {
+     "rec_id": "R312",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ethnicity subgroup uncertainty",
+     "effect": "Black, Asian, and Hispanic subgroup estimates were highly unstable due to limited sample sizes.",
+     "quote": "In contrast, estimates for Black, Asian, and Hispanic subgroups were highly unstable in several sites, reflecting high uncertainty due to limited sample sizes (Supplementary Fig. 6 )."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization to new populations",
+     "effect": "US/Austria AUROC 0.804-0.864; South Korea 0.753; China 0.698.",
+     "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698)."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Brier score after recalibration",
+     "effect": "South Korea Platt: 0.057 (SD = 0.002) to 0.055 (SD = 0.002); isotonic 0.056 (SD = 0.002).",
+     "quote": "In the South Korean cohort, Platt scaling reduced the Brier score from 0.057 (SD = 0.002) to 0.055 (SD = 0.002), compared with 0.056 (SD = 0.002) achieved by isotonic regression."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States, Austria, South Korea, China",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "ELDER-ICU"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination across international external validation cohorts",
+     "effect": "AUROC remained 0.804-0.864 in US and Austrian cohorts, but dropped significantly to 0.753 in South Korea and 0.698 in China.",
+     "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination improvement after local incremental training and retraining",
+     "effect": "Incremental training improved performance across centers; retraining improved AUROC by 0.066 in South Korea and 0.076 in China (p < 0.001).",
+     "quote": "Incremental training enhanced performance in most centers, while retraining significantly improved AUROC by 0.066 and 0.076 in the two Asian sites (South Korea and China, respectively)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States, Austria, South Korea, China",
+ "sample_unit": "ICU patients aged 65+ across eight representative validation cohorts (Table 1)",
+ "sample_size": 10038,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ELDER-ICU",
+  "ELDER-ICU (XGBoost)",
+  "ELDER-ICU fully retrained model",
+  "ELDER-ICU incrementally updated model",
+  "ELDER-ICU original model",
+  "ELDER-ICU recalibrated with Platt scaling",
+  "ELDER-ICU recalibrated with isotonic regression",
+  "OASIS",
+  "SAPS II",
+  "SOFA"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Change in AUROC and calibration after recalibration, incremental training, and retraining",
+   "effect": "Retraining raised AUROC by +0.066 (South Korea) and +0.076 (China); incremental training +0.048 and +0.062. Platt scaling and isotonic regression improved Brier scores (P<0.001).",
+   "quote": "However, retraining markedly outperformed incremental training in Asia, achieving larger AUROC gains in both South Korea (\u0394AUROC: +0.066) and China (\u0394AUROC: +0.076).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Distribution shift in key predictors and outcome prevalence across sites",
+   "effect": "Asian cohorts showed significant divergence from US sites in GCS, urine output, respiratory rate, and ventilation. Mortality ranged 6.4% to 22.2%. Ventilation use was 24.27% in South Korea versus 78.99% in China.",
+   "quote": "While US sites exhibited relative homogeneity in GCS score, urine output and respiratory rate patterns, Asian cohorts showed significant divergence.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local performance of the externally validated model versus original validation",
+   "effect": "Local AUROC fell in South Korea (0.753) and China (0.698) compared with original validation AUROCs of 0.833-0.884.",
+   "quote": "In contrast, there was markedly degraded performance in both Asian sites.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Model AUROC across international ICU sites",
+   "effect": "AUROC 0.804-0.864 in US and Austrian sites but dropped to 0.753 in South Korea and 0.698 in China.",
+   "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC across sex, age, ethnicity, ICU type, and CCI subgroups",
+   "effect": "Sex differences were negligible in US and Austria but pronounced in Asian sites. Estimates for Black, Asian, and Hispanic subgroups were unstable because of small samples. Surgical ICUs had higher AUROC than MICU.",
+   "quote": "Sex-based differences were negligible in the US and Austrian cohorts but pronounced in the Asian sites, where AUROCs were consistently higher among females than males.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External discrimination by region",
+   "effect": "US/Austria AUROC 0.804-0.864; South Korea 0.753; China 0.698.",
+   "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup discrimination heterogeneity",
+   "effect": "Sex differences were pronounced in Asian sites; AUROCs were consistently higher among females.",
+   "quote": "Sex-based differences were negligible in the US and Austrian cohorts but pronounced in the Asian sites, where AUROCs were consistently higher among females than males.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R312",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Ethnicity subgroup uncertainty",
+   "effect": "Black, Asian, and Hispanic subgroup estimates were highly unstable due to limited sample sizes.",
+   "quote": "In contrast, estimates for Black, Asian, and Hispanic subgroups were highly unstable in several sites, reflecting high uncertainty due to limited sample sizes (Supplementary Fig. 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization to new populations",
+   "effect": "US/Austria AUROC 0.804-0.864; South Korea 0.753; China 0.698.",
+   "quote": "While maintaining robust performance in US and Austrian cohorts (AUROC 0.804-0.864), significant drops occurred in Asian sites (South Korea: 0.753; China: 0.698).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Brier score after recalibration",
+   "effect": "South Korea Platt: 0.057 (SD = 0.002) to 0.055 (SD = 0.002); isotonic 0.056 (SD = 0.002).",
+   "quote": "In the South Korean cohort, Platt scaling reduced the Brier score from 0.057 (SD = 0.002) to 0.055 (SD = 0.002), compared with 0.056 (SD = 0.002) achieved by isotonic regression.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing recalibration, incremental training, and full retraining as model updating strategies chosen by degree of divergence from the source population"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41957287",
+ "screen": {
+  "id": "pmid:41957287",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration/updating before go-live",
+  "user": "none",
+  "reason": "Empirical study testing model updating practices (recalibration, incremental training, and retraining) across multiple international hospital cohorts prior to clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and model updating / recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41957287",
+   "empirical": 0.97,
+   "tests_practice": 0.76,
+   "real_deployment": 0.09
+  }
+ }
+}

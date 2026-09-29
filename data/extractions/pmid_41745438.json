@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Norway and Sweden",
+ "sample_size": 423,
+ "sample_unit": "patients (early post-operative MRI scans)",
+ "models_evaluated": [
+  "Attention U-Net"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model generalization from high-quality training images to low-quality test images",
+   "effect": "Models trained on exclusively high-quality images did not generalize to low-quality images; including low-quality images in training did not deteriorate performance on high-quality images.",
+   "quote": "However, models trained on exclusively high-quality images did not generalize to low-quality images.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Curating training datasets to be representative of real-world image quality variation",
+  "Ensuring exact, high-quality ground-truth annotations for training segmentation models"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41745438",
+ "screen": {
+  "id": "pmid:41745438",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirically tests the impact of data curation practices (filtering training data by image quality and expert annotation quality) on deep learning segmentation performance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "training data quality filtering and curation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41745438",
+   "empirical": 0.94,
+   "tests_practice": 0.05,
+   "real_deployment": 0.06
+  }
+ }
+}

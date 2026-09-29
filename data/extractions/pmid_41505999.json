@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 91,
+ "sample_unit": "CT examinations (test set; 446 collected in total)",
+ "models_evaluated": [
+  "Liver cancer segmentator (LCS)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Failure detection by confidence scoring, measured by area under the risk coverage curve",
+   "effect": "Adding tumor volume and slice thickness to confidence scoring reduced the area under the risk coverage curve from 16.7 to 10.3 and improved failure detection.",
+   "quote": "Incorporating tumor volume and slice thickness into the confidence scoring process improved failure detection, enhanced reliability, and provided valuable insights for refining clinical deployment of automated segmentation algorithms.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Metadata-guided confidence scoring (tumor volume, slice thickness) to flag unreliable segmentations",
+  "Iterative training with an integrated annotation workflow to refine the training set"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41505999",
+ "screen": {
+  "id": "pmid:41505999",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates metadata-guided confidence scoring and risk-coverage thresholds as a failure-detection safeguard to improve segmentation reliability before clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "metadata-guided confidence scoring / failure detection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41505999",
+   "empirical": 0.97,
+   "tests_practice": 0.54,
+   "real_deployment": 0.07
+  }
+ }
+}

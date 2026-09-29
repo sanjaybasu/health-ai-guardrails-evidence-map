@@ -1,0 +1,408 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 40,
+   "sample_unit": "patients (2-time-point knee MRI cases) read by 11 readers",
+   "models_evaluated": [
+    "iKIMRISS (Mask R-CNN grid placement + temporal in-context 3D BML segmentation)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement of AI scoring with manual expert readers and human-human agreement on the same cases",
+     "effect": "Human-to-iKIMRISS baseline ICC mean 0.72 vs human-to-human 0.76; agreement with 2 manual readers ICC 0.75 and 0.85.",
+     "quote": "The inter-reader reliability analysis (see Supplementary Table S2-S9 ) highlights that human-to-iKIMRISS agreement in baseline KIMRISS BML scoring across the 3 scoring subregions (mean ICC = 0.72) was comparable to human-to-human agreement (mean ICC = 0.76), suggesting that iKIMRISS agreed with human readers to a similar degree as human readers did with each other ( Supplementary Table S8 )."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Scoring time and reliability of readers using AI-assisted scoring versus fully manual scoring",
+     "effect": "iKIMRISS scored in 14.5 s per case (21.6 s total) vs 813 s manual; 37.8 times faster; moderate-to-strong agreement with manual.",
+     "quote": "Thus, iKIMRISS produces KIMRISS scores 37.8 times faster than manual scoring."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Agreement of AI patella time-interval-change scores with readers in a small multi-source sample",
+     "effect": "Patella change score ICCs among experienced users were considerably lower (0.17-0.59; experts only mean 0.35), while femur baseline ICCs exceeded 0.74. Small sample of 40 cases noted as limitation.",
+     "quote": "Although we used data from diverse sources and multiple readers, the number of cases scored was relatively small because the manual scoring task is tedious."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Readers' ability to identify AI errors and their reliance on AI output",
+     "effect": "Most participants felt AI mistakes were easy to identify and correct; nearly all would disregard iKIMRISS interpretations they disagreed with in the clinic.",
+     "quote": "Despite the concerns reported about iKIMRISS\u2019 performance, most participants felt that the mistakes they observed were easy to identify and correct, and that the automation provided by iKIMRISS was ultimately worthwhile."
+    },
+    {
+     "rec_id": "R516",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Qualitative reports on integration needs into existing platforms",
+     "effect": "Readers reported the tool would need PACS integration to be useful; a separate interface was perceived as a barrier.",
+     "quote": "In one participant\u2019s assessment, the tool would need to be integrated directly into picture archiving and communication systems (PACS) to be useful."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinician need to understand AI decision-making to trust it",
+     "effect": "All readers agreed it is important to understand iKIMRISS' decision-making process to trust it; survey indicated need for clear communication of how it makes decisions.",
+     "quote": "Notably, no reader agreed that their professional role was threatened by iKIMRISS, and all readers agreed that it is important for them to understand iKIMRISS\u2019 decision-making process to trust it."
+    }
+   ],
+   "unlisted_practices": [
+    "Usability (SUS) and normalization (NoMAD) assessment of AI tool by expert readers via surveys and semistructured interviews"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 40,
+   "sample_unit": "2-time-point knee MRI cases (80 scans); 11 clinician readers",
+   "models_evaluated": [
+    "iKIMRISS",
+    "Mask R-CNN bone-fitting grid placement model",
+    "temporal in-context learning 3D BML segmentation model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R106",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "agreement with manual scoring",
+     "effect": "Baseline ICCs 0.75 and 0.85 vs two manual experts; 0.31-0.84 vs 11 readers using automated grid placement.",
+     "quote": "Overall, baseline scores produced by iKIMRISS demonstrated moderate-to-strong agreement with those produced by the 2 fully manual expert readers (KIMRISS BML score ICCs of 0.75 and 0.85) as well as the 11 readers using the automated grid placement feature (ICCs = 0.31-0.84)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-human versus human-human agreement",
+     "effect": "Mean baseline human-to-iKIMRISS ICC 0.72; human-to-human ICC 0.76 across 3 scoring subregions.",
+     "quote": "The inter-reader reliability analysis (see Supplementary Table S2-S9 ) highlights that human-to-iKIMRISS agreement in baseline KIMRISS BML scoring across the 3 scoring subregions (mean ICC = 0.72) was comparable to human-to-human agreement (mean ICC = 0.76), suggesting that iKIMRISS agreed with human readers to a similar degree as human readers did with each other ( Supplementary Table S8 )."
+    },
+    {
+     "rec_id": "R103",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "system usability",
+     "effect": "Fully automated SUS 63.1 \u00b1 21.6/100; benchmark 68; grid-placement feature 68.6 \u00b1 11.9.",
+     "quote": "SUS scores of fully automated iKIMRISS indicated moderate usability, with a mean score across all readers of 63.1 \u00b1 21.6 (out of 100)."
+    },
+    {
+     "rec_id": "R521",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "workflow normalization and role clarity",
+     "effect": "NoMAD domains: 3.84\u00b10.72, 4.06\u00b10.72, 3.42\u00b11.08, 4.04\u00b10.81; collective action lowest.",
+     "quote": "For the iKIMRISS tool as a whole, the mean scores (out of a 5-point Likert scale) for the coherence, cognitive participation, collective action, and reflexive monitoring domains of the NoMAD questionnaire were 3.84 \u00b1 0.72, 4.06 \u00b1 0.72, 3.42 \u00b1 1.08, and 4.04 \u00b1 0.81, respectively."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "regional scoring underperformance",
+     "effect": "Patella time-interval change agreement was lower: mean ICC [experts only] = 0.35.",
+     "quote": "One region where iKIMRISS performed more poorly was the patella, where the mean time interval change in BML score agreement with human readers was lower (mean ICC [experts only] = 0.35)."
+    },
+    {
+     "rec_id": "R164",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "inability to correct annotations",
+     "effect": "Some participants reported difficulty adjusting transparency and manually correcting slice-level annotations; no count reported.",
+     "quote": "Some participants noted a few minor frustrations stemming from an inability to easily adjust the transparency of BML overlays and manually correct annotations on a slice-by-slice basis."
+    },
+    {
+     "rec_id": "R516",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "PACS integration barrier",
+     "effect": "PACS integration was identified as necessary for usefulness; no quantitative frequency reported.",
+     "quote": "In one participant\u2019s assessment, the tool would need to be integrated directly into picture archiving and communication systems (PACS) to be useful."
+    }
+   ],
+   "unlisted_practices": [
+    "Use AI automation for KIMRISS bone marrow lesion scoring to reduce manual scoring time"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 40,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "iKIMRISS",
+    "Mask R-CNN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Canada",
+ "sample_unit": "patients (2-time-point knee MRI cases) read by 11 readers",
+ "sample_size": 40,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Mask R-CNN",
+  "Mask R-CNN bone-fitting grid placement model",
+  "iKIMRISS",
+  "iKIMRISS (Mask R-CNN grid placement + temporal in-context 3D BML segmentation)",
+  "temporal in-context learning 3D BML segmentation model"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement of AI scoring with manual expert readers and human-human agreement on the same cases",
+   "effect": "Human-to-iKIMRISS baseline ICC mean 0.72 vs human-to-human 0.76; agreement with 2 manual readers ICC 0.75 and 0.85.",
+   "quote": "The inter-reader reliability analysis (see Supplementary Table S2-S9 ) highlights that human-to-iKIMRISS agreement in baseline KIMRISS BML scoring across the 3 scoring subregions (mean ICC = 0.72) was comparable to human-to-human agreement (mean ICC = 0.76), suggesting that iKIMRISS agreed with human readers to a similar degree as human readers did with each other ( Supplementary Table S8 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R516",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Qualitative reports on integration needs into existing platforms",
+   "effect": "Readers reported the tool would need PACS integration to be useful; a separate interface was perceived as a barrier.",
+   "quote": "In one participant\u2019s assessment, the tool would need to be integrated directly into picture archiving and communication systems (PACS) to be useful.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Readers' ability to identify AI errors and their reliance on AI output",
+   "effect": "Most participants felt AI mistakes were easy to identify and correct; nearly all would disregard iKIMRISS interpretations they disagreed with in the clinic.",
+   "quote": "Despite the concerns reported about iKIMRISS\u2019 performance, most participants felt that the mistakes they observed were easy to identify and correct, and that the automation provided by iKIMRISS was ultimately worthwhile.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R223",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician need to understand AI decision-making to trust it",
+   "effect": "All readers agreed it is important to understand iKIMRISS' decision-making process to trust it; survey indicated need for clear communication of how it makes decisions.",
+   "quote": "Notably, no reader agreed that their professional role was threatened by iKIMRISS, and all readers agreed that it is important for them to understand iKIMRISS\u2019 decision-making process to trust it.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R106",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "agreement with manual scoring",
+   "effect": "Baseline ICCs 0.75 and 0.85 vs two manual experts; 0.31-0.84 vs 11 readers using automated grid placement.",
+   "quote": "Overall, baseline scores produced by iKIMRISS demonstrated moderate-to-strong agreement with those produced by the 2 fully manual expert readers (KIMRISS BML score ICCs of 0.75 and 0.85) as well as the 11 readers using the automated grid placement feature (ICCs = 0.31-0.84).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "regional scoring underperformance",
+   "effect": "Patella time-interval change agreement was lower: mean ICC [experts only] = 0.35.",
+   "quote": "One region where iKIMRISS performed more poorly was the patella, where the mean time interval change in BML score agreement with human readers was lower (mean ICC [experts only] = 0.35).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R164",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "inability to correct annotations",
+   "effect": "Some participants reported difficulty adjusting transparency and manually correcting slice-level annotations; no count reported.",
+   "quote": "Some participants noted a few minor frustrations stemming from an inability to easily adjust the transparency of BML overlays and manually correct annotations on a slice-by-slice basis.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R103",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R521",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Usability (SUS) and normalization (NoMAD) assessment of AI tool by expert readers via surveys and semistructured interviews",
+  "Use AI automation for KIMRISS bone marrow lesion scoring to reduce manual scoring time"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42539998",
+ "screen": {
+  "id": "pmid:42539998",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "levels of AI automation with human reader review",
+  "user": "clinician_or_staff",
+  "reason": "Empirical multi-reader validation and qualitative usability study testing human readers using manual scoring versus different levels of AI automation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "levels of AI automation in assisted reading"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42539998",
+   "empirical": 0.97,
+   "tests_practice": 0.15,
+   "real_deployment": 0.07
+  }
+ }
+}

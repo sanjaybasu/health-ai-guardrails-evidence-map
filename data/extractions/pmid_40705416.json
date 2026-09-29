@@ -1,0 +1,236 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 15,
+   "sample_unit": "discharge notes",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM discharge summary completeness and structural accuracy against original notes, highlighted vs unhighlighted input",
+     "effect": "H-summaries 96% completeness vs 88% for U-summaries (P=.01); improper headers 4 vs 30 (P=.03); misplaced information 2 vs 8; false information items 2 vs 3.",
+     "quote": "On average, the completeness of the U-summaries was 88% (SD 6%), while the completeness of the H-summaries was 96% (SD 4%), which was 8% higher."
+    }
+   ],
+   "unlisted_practices": [
+    "Highlighting key information in input notes (interface terminology) before LLM summarization to improve summary accuracy",
+    "Iterative prompt engineering for structured summaries"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 15,
+   "sample_unit": "discharge notes",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI summary omissions and erroneous information",
+     "effect": "Completeness was 96% vs 88%; erroneous information 2 vs 3; misplaced information 2 vs 8 for H-summaries vs U-summaries.",
+     "quote": "Moreover, H-summaries demonstrated better correctness than U-summaries, with fewer instances of erroneous information (2 vs 3 errors, respectively)."
+    }
+   ],
+   "unlisted_practices": [
+    "Highlighting detailed information in discharge notes using an interface terminology before LLM summarization.",
+    "Prompt engineering to produce short structured EHR note summaries."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "USA",
+   "sample_size": 15,
+   "sample_unit": "discharge notes",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "factual errors in LLM-generated discharge note summaries",
+     "effect": "3 false information items in unhighlighted summaries and 2 in highlighted summaries (0.38% vs 0.23% of items)",
+     "quote": "In our analysis, we identified 3 instances of false information in U-summaries."
+    }
+   ],
+   "unlisted_practices": [
+    "Input highlighting of clinical concepts using interface terminology to guide summarization"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "discharge notes",
+ "sample_size": 15,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o"
+ ],
+ "links": [
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "factual errors in LLM-generated discharge note summaries",
+   "effect": "3 false information items in unhighlighted summaries and 2 in highlighted summaries (0.38% vs 0.23% of items)",
+   "quote": "In our analysis, we identified 3 instances of false information in U-summaries.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Highlighting detailed information in discharge notes using an interface terminology before LLM summarization.",
+  "Highlighting key information in input notes (interface terminology) before LLM summarization to improve summary accuracy",
+  "Input highlighting of clinical concepts using interface terminology to guide summarization",
+  "Iterative prompt engineering for structured summaries",
+  "Prompt engineering to produce short structured EHR note summaries."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40705416",
+ "screen": {
+  "id": "pmid:40705416",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "Highlighting key concepts in input notes to improve LLM summary accuracy",
+  "user": "none",
+  "reason": "The study tests whether adding visual/textual highlights of key clinical concepts to input notes before LLM summarization improves summary accuracy, completeness, and structural integrity compared to standard unhighlighted inputs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "input highlighting and prompt engineering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40705416",
+   "empirical": 0.95,
+   "tests_practice": 0.43,
+   "real_deployment": 0.04
+  }
+ }
+}

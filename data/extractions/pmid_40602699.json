@@ -1,0 +1,277 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 11999,
+   "sample_unit": "CT pulmonary angiography studies",
+   "models_evaluated": [
+    "commercially vended pulmonary embolism detection AI (CVPED)",
+    "large language model for radiology report classification"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether LLM-based report classification compared against deployed AI outputs detects discrepancies and drift",
+     "effect": "Of 11,999 studies, 373 (3.1%) had discrepant classifications between CVPED and LLM; a 2.5% drop in LLM specificity led to a 1.7-fold increase in discrepancies, detected in 22 days.",
+     "quote": "A PDM framework combining LLM-based free-text classification with a human-in-the-loop alerting system can continuously track an image-based AI's performance, alert for performance drift, and provide incremental clinical value."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of simulated daily monitoring framework to detect performance drift in deployed AI",
+     "effect": "A 2% to 3% decline in model specificity caused a 2- to 3-fold increase in discrepancies; a 10% drop in sensitivity was required for a similar effect.",
+     "quote": "A 2% to 3% decline in model specificity caused a 2- to 3-fold increase in discrepancies, and a 10% drop in sensitivity was required to produce a similar effect."
+    }
+   ],
+   "unlisted_practices": [
+    "Using an LLM to classify radiology reports as a proxy ground truth for monitoring imaging AI",
+    "Human-in-the-loop selective alerting to identify incremental missed findings"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 11999,
+   "sample_unit": "CT pulmonary angiography studies",
+   "models_evaluated": [
+    "commercially vended pulmonary embolism detection AI (CVPED)",
+    "LLM-based radiology report classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance drift detection",
+     "effect": "A 2.5% drop in LLM specificity led to a 1.7-fold discrepancy increase detected in 22 days.",
+     "quote": "For example, a 2.5% drop in LLM specificity led to a 1.7-fold increase in CVPED-negative LLM-positive discrepancies, which would have taken 22 days to detect using the proposed framework."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "threshold-based drift monitoring",
+     "effect": "Optimal retrospective assessment period for drift detection was 2 months.",
+     "quote": "The optimal retrospective assessment period for drift detection was determined to be 2 months."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "human-reviewed discrepancy alerts",
+     "effect": "Among 29 alerts, 24 were CVPED false-positives, 1 LLM false-negative, and 4 true-alerts for incremental PE.",
+     "quote": "Of those, 24 were CVPED false-positives, 1 was an LLM false-negative, and the framework ultimately identified 4 true-alerts for incremental PE cases."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "radiologist noninteraction alerts",
+     "effect": "29 of 111 CVPED-positive and LLM-negative cases would have triggered alert due to no radiologist interaction.",
+     "quote": "Among 111 CVPED-positive and LLM-negative cases, 29 would have triggered an alert due to the radiologist not interacting with CVPED."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM-based radiology report classification to create monitoring labels with human discrepancy review"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 11999,
+   "sample_unit": "CT pulmonary angiography studies",
+   "models_evaluated": [
+    "CVPED"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI performance tracking, drift detection, and incremental clinical value",
+     "effect": "Discrepancies occurred in 3.1% of studies; simulated 2.5% specificity drop was detected in 22 days; selective human review of 29 alerts identified 24 CVPED false-positives, 1 LLM false-negative, and 4 incremental PE cases.",
+     "quote": "A PDM framework combining LLM-based free-text classification with a human-in-the-loop alerting system can continuously track an image-based AI's performance, alert for performance drift, and provide incremental clinical value."
+    }
+   ],
+   "unlisted_practices": [
+    "Using large language model-based classification of radiology reports with selective human-in-the-loop review of discrepancies for postdeployment monitoring of diagnostic imaging AI"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "CT pulmonary angiography studies",
+ "sample_size": 11999,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CVPED",
+  "LLM-based radiology report classifier",
+  "commercially vended pulmonary embolism detection AI (CVPED)",
+  "large language model for radiology report classification"
+ ],
+ "links": [
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether LLM-based report classification compared against deployed AI outputs detects discrepancies and drift",
+   "effect": "Of 11,999 studies, 373 (3.1%) had discrepant classifications between CVPED and LLM; a 2.5% drop in LLM specificity led to a 1.7-fold increase in discrepancies, detected in 22 days.",
+   "quote": "A PDM framework combining LLM-based free-text classification with a human-in-the-loop alerting system can continuously track an image-based AI's performance, alert for performance drift, and provide incremental clinical value.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of simulated daily monitoring framework to detect performance drift in deployed AI",
+   "effect": "A 2% to 3% decline in model specificity caused a 2- to 3-fold increase in discrepancies; a 10% drop in sensitivity was required for a similar effect.",
+   "quote": "A 2% to 3% decline in model specificity caused a 2- to 3-fold increase in discrepancies, and a 10% drop in sensitivity was required to produce a similar effect.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R371",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Human-in-the-loop selective alerting to identify incremental missed findings",
+  "LLM-based radiology report classification to create monitoring labels with human discrepancy review",
+  "Using an LLM to classify radiology reports as a proxy ground truth for monitoring imaging AI",
+  "Using large language model-based classification of radiology reports with selective human-in-the-loop review of discrepancies for postdeployment monitoring of diagnostic imaging AI"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40602699",
+ "screen": {
+  "id": "pmid:40602699",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "postdeployment monitoring and drift detection with LLM oversight",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a postdeployment monitoring safeguard/framework using an LLM to track discrepancies and detect performance drift in a deployed commercial imaging AI tool.",
+  "jev": {
+   "id": "pmid:40602699",
+   "empirical": 0.96,
+   "tests_practice": 0.87,
+   "real_deployment": 0.55
+  }
+ }
+}

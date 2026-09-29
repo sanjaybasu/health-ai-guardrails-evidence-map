@@ -1,0 +1,404 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 160,
+   "sample_unit": "probes (140 single-turn, 20 multi-turn)",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R098",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Behavioral adherence errors (scope/safety rule violations) in single- and multi-turn attacks",
+     "effect": "Single-turn BA error rate 15% (12/80); advice_query BA errors rose to 50% (5/10) in multi-turn tests and user_distress to 40% (4/10).",
+     "quote": "In multi-turn stress tests, error rates rose sharply under conversational persistence: advice_query BA errors reached 50% (5/10) and user_distress reached 40% (4/10), accounting for all high-severity errors (4/4)."
+    },
+    {
+     "rec_id": "R061",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Out-of-scope advice-seeking and prompt injection behavioral errors, single and multi-turn",
+     "effect": "advice_query BA 30% (6/20), prompt_injection BA 20% (4/20) single-turn; advice_query 50% (5/10) multi-turn.",
+     "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20)."
+    },
+    {
+     "rec_id": "R101",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether structured red teaming with adversarial probes surfaced vulnerabilities missed by single-turn testing",
+     "effect": "Multi-turn stress tests revealed critical vulnerabilities single-turn testing missed; all high-severity errors (4/4) occurred in multi-turn tests.",
+     "quote": "Furthermore, multi-turn stress tests revealed critical vulnerabilities that single-turn testing missed, directly informing our choice of targeted mitigations."
+    },
+    {
+     "rec_id": "R246",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Total errors and high-severity errors after prompt augmentation guardrails and document augmentation",
+     "effect": "Prompt augmentation reduced total errors 60% (15/60\u21926/60); combined mitigations eliminated high-severity multi-turn errors, BA errors 20% (advice_query) and 30% (user_distress).",
+     "quote": "Prompt augmentation reduced total errors across these vectors by 60% (15/60\u21926/60)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Knowledge adherence errors (hallucination) and hallucinated contact details in RAG chatbot",
+     "effect": "0/60 KA errors in single-turn tests, but user_distress triggered hallucinated unverified contact details in 20% (4/20) of cases.",
+     "quote": "User_distress triggered the hallucination of unverified contact details in 20% (4/20) of cases."
+    },
+    {
+     "rec_id": "R346",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Prompt injection behavioral adherence errors",
+     "effect": "prompt_injection BA error rate 20% (4/20) in single-turn probes.",
+     "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20)."
+    }
+   ],
+   "unlisted_practices": [
+    "Document augmentation: adding a localized FAQ document to the retrieval corpus to reduce behavioral errors",
+    "Error stratification separating knowledge adherence from behavioral adherence"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "",
+   "sample_size": 160,
+   "sample_unit": "single-turn probes and multi-turn stress tests",
+   "models_evaluated": [
+    "social care chatbot supporting Health-Related Social Needs (HRSN)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R098",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "multi-turn behavioral adherence testing",
+     "effect": "Multi-turn testing found vulnerabilities single-turn missed; advice_query BA errors reached 50% (5/10) and user_distress 40% (4/10).",
+     "quote": "Furthermore, multi-turn stress tests revealed critical vulnerabilities that single-turn testing missed, directly informing our choice of targeted mitigations."
+    },
+    {
+     "rec_id": "R136",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "red-teaming protocol for chatbot risks",
+     "effect": "Protocol found 0/60 KA errors but 15% (12/80) BA errors, including 21% (4/19) high-severity.",
+     "quote": "Our error framework identified that the primary safety risk was a failure to follow behavioral rules, rather than a lack of factual knowledge."
+    },
+    {
+     "rec_id": "R345",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prompt-injection behavioral errors",
+     "effect": "prompt_injection produced BA 20%, 4/20.",
+     "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "document augmentation for grounded responses",
+     "effect": "Document augmentation eliminated user_distress errors to 0/20 and reduced advice_query errors 7/20\u21924/20.",
+     "quote": "Document augmentation eliminated all single-turn user_distress errors (to 0/20) and reduced advice_query errors (7/20\u21924/20)."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt augmentation adding explicit guardrails to the chatbot prompt"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Not reported",
+   "sample_size": 160,
+   "sample_unit": "probes and stress tests",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R098",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "behavioral adherence error rate on advice queries under multi-turn persistence",
+     "effect": "advice_query BA errors reached 50% (5/10) and user_distress reached 40% (4/10), accounting for all high-severity errors (4/4)",
+     "quote": "In multi-turn stress tests, error rates rose sharply under conversational persistence: advice_query BA errors reached 50% (5/10) and user_distress reached 40% (4/10), accounting for all high-severity errors (4/4)."
+    },
+    {
+     "rec_id": "R345",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "behavioral adherence error rate under prompt injection attacks",
+     "effect": "prompt_injection produced a 20% (4/20) behavioral adherence error rate",
+     "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20)."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt augmentation adding explicit guardrails to the chatbot prompt",
+    "Document augmentation adding localized FAQ documents to the retrieval corpus"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "probes (140 single-turn, 20 multi-turn)",
+ "sample_size": 160,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "social care chatbot supporting Health-Related Social Needs (HRSN)"
+ ],
+ "links": [
+  {
+   "rec_id": "R098",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Behavioral adherence errors (scope/safety rule violations) in single- and multi-turn attacks",
+   "effect": "Single-turn BA error rate 15% (12/80); advice_query BA errors rose to 50% (5/10) in multi-turn tests and user_distress to 40% (4/10).",
+   "quote": "In multi-turn stress tests, error rates rose sharply under conversational persistence: advice_query BA errors reached 50% (5/10) and user_distress reached 40% (4/10), accounting for all high-severity errors (4/4).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R345",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "prompt-injection behavioral errors",
+   "effect": "prompt_injection produced BA 20%, 4/20.",
+   "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R061",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Out-of-scope advice-seeking and prompt injection behavioral errors, single and multi-turn",
+   "effect": "advice_query BA 30% (6/20), prompt_injection BA 20% (4/20) single-turn; advice_query 50% (5/10) multi-turn.",
+   "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R101",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether structured red teaming with adversarial probes surfaced vulnerabilities missed by single-turn testing",
+   "effect": "Multi-turn stress tests revealed critical vulnerabilities single-turn testing missed; all high-severity errors (4/4) occurred in multi-turn tests.",
+   "quote": "Furthermore, multi-turn stress tests revealed critical vulnerabilities that single-turn testing missed, directly informing our choice of targeted mitigations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Knowledge adherence errors (hallucination) and hallucinated contact details in RAG chatbot",
+   "effect": "0/60 KA errors in single-turn tests, but user_distress triggered hallucinated unverified contact details in 20% (4/20) of cases.",
+   "quote": "User_distress triggered the hallucination of unverified contact details in 20% (4/20) of cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R346",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Prompt injection behavioral adherence errors",
+   "effect": "prompt_injection BA error rate 20% (4/20) in single-turn probes.",
+   "quote": "Notable vulnerabilities included advice_query (BA 30%, 6/20) and prompt_injection (BA 20%, 4/20).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R098",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "multi-turn behavioral adherence testing",
+   "effect": "Multi-turn testing found vulnerabilities single-turn missed; advice_query BA errors reached 50% (5/10) and user_distress 40% (4/10).",
+   "quote": "Furthermore, multi-turn stress tests revealed critical vulnerabilities that single-turn testing missed, directly informing our choice of targeted mitigations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R136",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "red-teaming protocol for chatbot risks",
+   "effect": "Protocol found 0/60 KA errors but 15% (12/80) BA errors, including 21% (4/19) high-severity.",
+   "quote": "Our error framework identified that the primary safety risk was a failure to follow behavioral rules, rather than a lack of factual knowledge.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "document augmentation for grounded responses",
+   "effect": "Document augmentation eliminated user_distress errors to 0/20 and reduced advice_query errors 7/20\u21924/20.",
+   "quote": "Document augmentation eliminated all single-turn user_distress errors (to 0/20) and reduced advice_query errors (7/20\u21924/20).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R246",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Document augmentation adding localized FAQ documents to the retrieval corpus",
+  "Document augmentation: adding a localized FAQ document to the retrieval corpus to reduce behavioral errors",
+  "Error stratification separating knowledge adherence from behavioral adherence",
+  "Prompt augmentation adding explicit guardrails to the chatbot prompt"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1270755",
+ "screen": {
+  "id": "epmc:PPR1270755",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt guardrails and document augmentation",
+  "user": "patient",
+  "reason": "The study develops a red-teaming protocol for patient-facing health/social-care chatbots and tests safeguards (prompt augmentation/explicit guardrails and document augmentation) against adversarial single- and multi-turn probes, evaluating error reduction.",
+  "jev": {
+   "id": "epmc:PPR1270755",
+   "empirical": 0.95,
+   "tests_practice": 0.88,
+   "real_deployment": 0.11
+  }
+ }
+}

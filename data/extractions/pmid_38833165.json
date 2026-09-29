@@ -1,0 +1,346 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 778,
+   "sample_unit": "benchmark questions (337 guideline-item, 145 management-option, 216 treatment-strategy, 80 real-case QA)",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "DocOA (GPT-4-1106-preview with RAG and instruction prompts)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of RAG-grounded DocOA versus ungrounded GPT-3.5/GPT-4 on osteoarthritis benchmark",
+     "effect": "Overall benchmark accuracy 0.88 for DocOA vs 0.24 for GPT-4 and 0.16 for GPT-3.5 (P<.001); human-rated inaccuracy 19.3% vs 50% and 57%.",
+     "quote": "The rate of inaccuracy was the highest for GPT-3.5 (57%, n=1200), followed by GPT-4 and DocOA at 50% (n=1200) and 19.3% (n=1200), respectively."
+    },
+    {
+     "rec_id": "R481",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether RAG identifies the supporting evidence source for each answer, aiding explainability",
+     "effect": "Authors state DocOA identifies the evidence behind answers so professionals can evaluate rationale; shown qualitatively in examples, with no quantitative test of user verification.",
+     "quote": "When DocOA generates an OA-relevant answer, it identifies the evidence on which the answer is based and makes it clear for professionals to evaluate the rationale and accuracy of its response."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "General LLM accuracy against current clinical guidelines for osteoarthritis management",
+     "effect": "GPT-3.5 and GPT-4 accuracy was 0.01 and 0.07 on treatment strategy QA and 0.03 and 0.01 on real-case QA; GPT-3.5 and GPT-4 were unsatisfactory on guideline-based questions.",
+     "quote": "The accuracy of GPT-3.5 in GIQA, MOQA, TSQA, and RCQA was 0.26, 0.22, 0.01, and 0.03, respectively."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "General LLM performance on domain-specific clinical competencies versus general medical benchmark expectations",
+     "effect": "General LLMs had unsatisfactory performance on OA management, with marked decline as tasks shifted from knowledge to personalized treatment recommendations.",
+     "quote": "By contrast, general-purpose models such as GPT-3.5 and GPT-4 exhibit unsatisfactory performance when benchmarked against OA management."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Reproducibility across 5 repeated runs and zero-shot chain-of-thought prompt variation on accuracy",
+     "effect": "Each question was presented 5 times; chain-of-thought showed no significant improvement overall (GPT-3.5 0.16 vs 0.17, P=.41; GPT-4 0.24 vs 0.23, P=.52).",
+     "quote": "Compared with the input-output prompt technique, no significant improvements in model performance were observed."
+    }
+   ],
+   "unlisted_practices": [
+    "Combining retrieval-augmented generation with instruction prompting to create a domain-specific assistant",
+    "Building a domain-specific benchmark from clinical guidelines and real cases with physician and patient human evaluation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 778,
+   "sample_unit": "benchmark question-answer items",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "DocOA (GPT-4-1106-preview with RAG and instruction prompts)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correct retrieval of complete, relevant information",
+     "effect": "DocOA 65.8% vs GPT-4 14.3% and GPT-3.5 12.0% (n=1200).",
+     "quote": "DocOA was able to correctly recall and present complete, relevant information in 65.8% (n=1200) of the responses, followed by GPT-4 (14.3%, n=1200) and GPT-3.5 (12.0%, n=1200)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinical guideline and treatment recommendation accuracy",
+     "effect": "GPT-4 accuracy was 0.38, 0.30, 0.07, and 0.01 for GIQA, MOQA, TSQA, and RCQA.",
+     "quote": "The accuracy of GPT-4 in GIQA, MOQA, TSQA, and RCQA was 0.38, 0.30, 0.07, and 0.01, respectively."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Human-rated possible harm in outputs",
+     "effect": "Possible harm: GPT-3.5 20%, GPT-4 11.3%, DocOA 8.3% (n=1200).",
+     "quote": "GPT-3.5 presented a higher likelihood of generating harmful content (20%, n=1200) than GPT-4 (11.3%, n=1200) and DocOA (8.3%, n=1200)."
+    },
+    {
+     "rec_id": "R321",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Potentially biased generated content",
+     "effect": "GPT-3.5 13.3%, GPT-4 9.5%, DocOA 2.8% (n=1200).",
+     "quote": "The likelihoods of potentially biased content were 13.3% (n=1200), 9.5% (n=1200), and 2.8% (n=1200) for GPT-3.5, GPT-4, and DocOA, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "zero-shot chain-of-thought prompting for GPT-3.5 and GPT-4"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 1200,
+   "sample_unit": "outputs",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "DocOA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "response inaccuracy rate",
+     "effect": "Inaccuracy was 57% for GPT-3.5, 50% for GPT-4, and 19.3% for DocOA (n=1200).",
+     "quote": "The rate of inaccuracy was the highest for GPT-3.5 (57%, n=1200), followed by GPT-4 and DocOA at 50% (n=1200) and 19.3% (n=1200), respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "zero-shot chain-of-thought prompting"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "benchmark questions (337 guideline-item, 145 management-option, 216 treatment-strategy, 80 real-case QA)",
+ "sample_size": 778,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DocOA",
+  "DocOA (GPT-4-1106-preview with RAG and instruction prompts)",
+  "GPT-3.5",
+  "GPT-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of RAG-grounded DocOA versus ungrounded GPT-3.5/GPT-4 on osteoarthritis benchmark",
+   "effect": "Overall benchmark accuracy 0.88 for DocOA vs 0.24 for GPT-4 and 0.16 for GPT-3.5 (P<.001); human-rated inaccuracy 19.3% vs 50% and 57%.",
+   "quote": "The rate of inaccuracy was the highest for GPT-3.5 (57%, n=1200), followed by GPT-4 and DocOA at 50% (n=1200) and 19.3% (n=1200), respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "General LLM accuracy against current clinical guidelines for osteoarthritis management",
+   "effect": "GPT-3.5 and GPT-4 accuracy was 0.01 and 0.07 on treatment strategy QA and 0.03 and 0.01 on real-case QA; GPT-3.5 and GPT-4 were unsatisfactory on guideline-based questions.",
+   "quote": "The accuracy of GPT-3.5 in GIQA, MOQA, TSQA, and RCQA was 0.26, 0.22, 0.01, and 0.03, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "General LLM performance on domain-specific clinical competencies versus general medical benchmark expectations",
+   "effect": "General LLMs had unsatisfactory performance on OA management, with marked decline as tasks shifted from knowledge to personalized treatment recommendations.",
+   "quote": "By contrast, general-purpose models such as GPT-3.5 and GPT-4 exhibit unsatisfactory performance when benchmarked against OA management.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R321",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Potentially biased generated content",
+   "effect": "GPT-3.5 13.3%, GPT-4 9.5%, DocOA 2.8% (n=1200).",
+   "quote": "The likelihoods of potentially biased content were 13.3% (n=1200), 9.5% (n=1200), and 2.8% (n=1200) for GPT-3.5, GPT-4, and DocOA, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R481",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Building a domain-specific benchmark from clinical guidelines and real cases with physician and patient human evaluation",
+  "Combining retrieval-augmented generation with instruction prompting to create a domain-specific assistant",
+  "zero-shot chain-of-thought prompting",
+  "zero-shot chain-of-thought prompting for GPT-3.5 and GPT-4"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38833165",
+ "screen": {
+  "id": "pmid:38833165",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding with instructional prompts",
+  "user": "clinician_or_staff",
+  "reason": "Evaluated the clinical performance and explainability of LLMs in osteoarthritis management, comparing baseline models to DocOA which integrates retrieval-augmented generation and instructional prompts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38833165",
+   "empirical": 0.94,
+   "tests_practice": 0.12,
+   "real_deployment": 0.07
+  }
+ }
+}

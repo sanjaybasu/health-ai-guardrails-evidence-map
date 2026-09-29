@@ -1,0 +1,332 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Belgium",
+   "sample_size": 39,
+   "sample_unit": "failure modes",
+   "models_evaluated": [
+    "in-house CNN for MLC aperture and MU prediction (breast VMAT autoplanning)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R052",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Failure modes identified by multidisciplinary FMEA of AI planning workflow and risk after mitigation",
+     "effect": "39 failure modes identified: 33 Acceptable, five Tolerable, one Not acceptable; after mitigation two Tolerable and none Not acceptable.",
+     "quote": "Of these, 33 were \u2018Acceptable\u2019, five \u2018Tolerable\u2019, and one \u2018Not acceptable\u2019 according to the risk matrix (see Fig. 3 and Table 3 )."
+    },
+    {
+     "rec_id": "R057",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Documented risk assessment with scores updated after corrective actions across the workflow",
+     "effect": "Risk scores re-evaluated after corrective actions; risk reduced to two Tolerable failure modes and none Not acceptable.",
+     "quote": "When a corrective action was identified, its effectiveness was re-evaluated, and the risk scores were updated."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Case-specific QA flagging out-of-training-distribution inputs, effect on detectability of bad predictions",
+     "effect": "Case-specific QA report lowered lack-of-detectability score for 'prediction is bad' (8.17 to 3.51 risk score, Tolerable to Acceptable); residual ~3% risk dosimetrist overlooks report.",
+     "quote": "The case-specific QA report was chosen as a barrier against the \u2018prediction is bad\u2019 failure mode (see Table 3 ), which decreased the lack of detectability score."
+    },
+    {
+     "rec_id": "R510",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Output analysis of CNN MLC/MU predictions against validation/test distributions to detect anomalous predictions",
+     "effect": "QA report outputs metrics (AAV, LSV, MU) compared with validation/test data; risk of bad prediction reduced to Acceptable, though implementation not done and estimated only.",
+     "quote": "Metrics such as Aperture Area Variability (AAV) and Leaf Sequence Variability (LSV) [16] , [17] per arc could assess the complexity of MLC movements, while total MU and its standard deviation per arc could gauge MU consistency."
+    }
+   ],
+   "unlisted_practices": [
+    "Pop-up reminders and ESAPI scripted checks to prevent manual setting errors in AI-initiated plan optimisation",
+    "Time stamp analysis to detect patient data mix-up in cloud pseudonymisation pipeline"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Belgium",
+   "sample_size": 39,
+   "sample_unit": "failure modes",
+   "models_evaluated": [
+    "In-house CNN-based breast VMAT autoplanning tool"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R052",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Failure modes identified and risk-classified",
+     "effect": "39 failure modes were identified and classified as 33 \u2018Acceptable\u2019, five \u2018Tolerable\u2019, and one \u2018Not acceptable\u2019.",
+     "quote": "Of these, 33 were \u2018Acceptable\u2019, five \u2018Tolerable\u2019, and one \u2018Not acceptable\u2019 according to the risk matrix (see Fig. 3 and Table 3 )."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Bad predictions for atypical cases",
+     "effect": "Outside-training-range bad prediction: S=4, O=7, D=8.17; risk classified Tolerable.",
+     "quote": "Detailed in Table 3 , one \u2018Tolerable\u2019 failure mode was bad predictions by the DL model for atypical cases, such as patients with unusually large breast volumes or changes in CT scanner specifications."
+    },
+    {
+     "rec_id": "R265",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detectability of bad predictions",
+     "effect": "Case-specific QA lowered lack-of-detectability from 8.17 to 3.51 and risk from Tolerable to Acceptable.",
+     "quote": "The case-specific QA report was chosen as a barrier against the \u2018prediction is bad\u2019 failure mode (see Table 3 ), which decreased the lack of detectability score."
+    },
+    {
+     "rec_id": "R505",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Configuration-error occurrence after pop-up",
+     "effect": "For three optimization-setting failures, occurrence dropped from 8.33 to 3.79; all moved to Acceptable.",
+     "quote": "A pop-up to remind the dosimetrist to adapt the multiresolution level, the aperture shape controller, the optimisation mode and intermediate dose calculation before optimisation, decreased the occurrence score of these failure modes, moving them into the \u2018Acceptable\u2019 zone of the risk matrix."
+    },
+    {
+     "rec_id": "R517",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Patient-data switching in workflow",
+     "effect": "Before mitigation, de-pseudonymisation with wrong patient data had S=7, O=1, D=8.17; risk classified Tolerable.",
+     "quote": "Another failure involved the de-pseudonymisation of data due to an error, swapping meta information with another patient\u2019s."
+    }
+   ],
+   "unlisted_practices": [
+    "Time-stamp analysis to detect patient metadata swaps during de-pseudonymisation",
+    "Scripted checks and automatic adjustment of radiotherapy calculation models and dose prescription in the treatment planning system"
+   ]
+  },
+  "gemini": {
+   "design": "qualitative",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Belgium",
+   "sample_size": 39,
+   "sample_unit": "failure modes",
+   "models_evaluated": [
+    "Convolutional Neural Network (CNN)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R052",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "identification of failure modes in deep learning autoplanning workflow",
+     "effect": "39 failure modes were identified (33 acceptable, 5 tolerable, 1 not acceptable); proposed mitigations reduced them to 2 tolerable and 0 not acceptable",
+     "quote": "The pro-active risk analysis revealed possible risks in the implemented workflow and led to the implementation of mitigation strategies that decreased the risk scores for safer clinical use."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Belgium",
+ "sample_unit": "failure modes",
+ "sample_size": 39,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Convolutional Neural Network (CNN)",
+  "In-house CNN-based breast VMAT autoplanning tool",
+  "in-house CNN for MLC aperture and MU prediction (breast VMAT autoplanning)"
+ ],
+ "links": [
+  {
+   "rec_id": "R052",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Failure modes identified by multidisciplinary FMEA of AI planning workflow and risk after mitigation",
+   "effect": "39 failure modes identified: 33 Acceptable, five Tolerable, one Not acceptable; after mitigation two Tolerable and none Not acceptable.",
+   "quote": "Of these, 33 were \u2018Acceptable\u2019, five \u2018Tolerable\u2019, and one \u2018Not acceptable\u2019 according to the risk matrix (see Fig. 3 and Table 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Case-specific QA flagging out-of-training-distribution inputs, effect on detectability of bad predictions",
+   "effect": "Case-specific QA report lowered lack-of-detectability score for 'prediction is bad' (8.17 to 3.51 risk score, Tolerable to Acceptable); residual ~3% risk dosimetrist overlooks report.",
+   "quote": "The case-specific QA report was chosen as a barrier against the \u2018prediction is bad\u2019 failure mode (see Table 3 ), which decreased the lack of detectability score.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R265",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detectability of bad predictions",
+   "effect": "Case-specific QA lowered lack-of-detectability from 8.17 to 3.51 and risk from Tolerable to Acceptable.",
+   "quote": "The case-specific QA report was chosen as a barrier against the \u2018prediction is bad\u2019 failure mode (see Table 3 ), which decreased the lack of detectability score.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R057",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R510",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R505",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R517",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Pop-up reminders and ESAPI scripted checks to prevent manual setting errors in AI-initiated plan optimisation",
+  "Scripted checks and automatic adjustment of radiotherapy calculation models and dose prescription in the treatment planning system",
+  "Time stamp analysis to detect patient data mix-up in cloud pseudonymisation pipeline",
+  "Time-stamp analysis to detect patient metadata swaps during de-pseudonymisation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39759485",
+ "screen": {
+  "id": "pmid:39759485",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "any_ai"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "Pre-deployment FMEA risk analysis with mitigation checks",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a proactive Failure Mode and Effects Analysis (FMEA) and specific mitigation safeguards (QA reports, scripted checks, pop-ups) to reduce deployment risks of an in-house deep learning radiotherapy autoplanning tool.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "proactive failure mode and effects analysis and risk mitigation checks"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39759485",
+   "empirical": 0.87,
+   "tests_practice": 0.49,
+   "real_deployment": 0.43
+  }
+ }
+}

@@ -1,0 +1,420 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Turkey",
+   "sample_size": 352843,
+   "sample_unit": "pediatric emergency department visits",
+   "models_evaluated": [
+    "ARIMA",
+    "SARIMA",
+    "Theta",
+    "Exponential Smoothing",
+    "Croston",
+    "Prophet",
+    "Greykite",
+    "XGBoost",
+    "LightGBM",
+    "CatBoost",
+    "RNN",
+    "LSTM",
+    "GRU",
+    "D-Linear",
+    "TFT",
+    "TCN",
+    "N-HiTS",
+    "N-BEATS",
+    "TiDE-RIN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Forecast R2 with weekly retraining and model reselection versus first model fixed",
+     "effect": "Median R2 for first model used throughout simulation was 12% (IQR -12.3% to 36.3%); with weekly retraining and selection median was 44% overall and 60% for selected forecasts.",
+     "quote": "On the other hand, when only the first model was used throughout the entire simulation, the median value for the 4 models was calculated as 12% (IQR: \u221212.3% to 36.3%)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Forecast performance degradation from data and concept drift (COVID-19, earthquake)",
+     "effect": "Many models were significantly impacted by COVID-19 concept drift; the February 2023 earthquake decreased performance in N-HiTS and N-BEATS, while TiDE-RIN and TCN were more resilient.",
+     "quote": "Many of these models were significantly impacted by concept drift during the COVID-19 period and struggled to improve their performance in the post-COVID era."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of forecasting models under population/context shift after abrupt events",
+     "effect": "Model accuracy decreased after the sudden drop in admissions following the February 2023 earthquake; retraining only on post-COVID data gave lower performance than the full dataset.",
+     "quote": "Following the February 2023 earthquake in Turkey, a significant drop in patient admissions introduced a sudden data drift that impacted model accuracy."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of advanced deep learning forecasting models against traditional models on the same data",
+     "effect": "TCN R2 73%, TiDE-RIN 75%, N-BEATS 72%, N-HiTS 57% outperformed ARIMA 16%, LSTM 32%, RNN 40%.",
+     "quote": "It was observed that advanced deep learning architectures such as TCN (R 2 : 73%), TiDE-RIN (R 2 : 75%), N-BEATS (R 2 : 72%), and N-HiTS (R 2 : 57%) outperformed traditional time-series models like ARIMA (R 2 : 16%), LSTM (R 2 : 32%), and RNN (R 2 : 40%)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability across sites given single-center design",
+     "effect": "Study limited to a single PED, limiting generalizability; multicenter validation needed.",
+     "quote": "The limitations of this study are its focus on data from a single PED, which limits the generalizability of the findings."
+    }
+   ],
+   "unlisted_practices": [
+    "Using integer linear programming to optimize physician shift schedules from forecasted patient volumes",
+    "Automated MLOps pipeline with weekly retraining and automatic best-model selection",
+    "Kolmogorov-Smirnov test for concept drift detection"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "Turkey",
+   "sample_size": 352843,
+   "sample_unit": "PED visits",
+   "models_evaluated": [
+    "AutoRegressive Integrated Moving Average (ARIMA)",
+    "Seasonal AutoRegressive Integrated Moving Average (SARIMA)",
+    "Theta",
+    "Exponential Smoothing",
+    "Croston\u2019s Method",
+    "Prophet",
+    "Greykite",
+    "Extreme Gradient Boosting (XGBoost)",
+    "Light Gradient Boosting Machine (LightGBM)",
+    "CatBoost",
+    "Recurrent Neural Networks (RNN)",
+    "Long Short-Term Memory (LSTM) networks",
+    "Gated Recurrent Units (GRU)",
+    "Deep Linear Models (D-Linear)",
+    "Temporal Fusion Transformer (TFT)",
+    "Temporal Convolutional Network (TCN)",
+    "Neural High-order Time Series (N-HiTS)",
+    "Neural Basis Expansion Analysis (N-BEATS)",
+    "Time-series Dense Encoder and Reversible Instance Normalization (TiDE-RIN)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "forecasting accuracy versus traditional models",
+     "effect": "TCN R\u00b2 73%, TiDE-RIN 75%, N-BEATS 72%, and N-HiTS 57% vs ARIMA 16%, LSTM 32%, and RNN 40%.",
+     "quote": "It was observed that advanced deep learning architectures such as TCN (R 2 : 73%), TiDE-RIN (R 2 : 75%), N-BEATS (R 2 : 72%), and N-HiTS (R 2 : 57%) outperformed traditional time-series models like ARIMA (R 2 : 16%), LSTM (R 2 : 32%), and RNN (R 2 : 40%)."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "median forecasting R\u00b2",
+     "effect": "Without MLOps median R\u00b2 was around 12%; with MLOps performance improved by 38%.",
+     "quote": "Without MLOps, median R 2 values were around 12%; with MLOps, performance improved by 38%, due to robust monitoring, automatic retraining, and seamless data integration."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "data drift affecting accuracy",
+     "effect": "February 2023 earthquake caused a significant admission drop, introducing sudden data drift that impacted model accuracy.",
+     "quote": "Following the February 2023 earthquake in Turkey, a significant drop in patient admissions introduced a sudden data drift that impacted model accuracy."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance after drift-responsive selection",
+     "effect": "Automatic model selection in response to data drift improved median performance by approximately 16%.",
+     "quote": "In simulations, automatic model selection in response to data drift improved median performance by approximately 16%."
+    }
+   ],
+   "unlisted_practices": [
+    "Use AI-driven pediatric emergency department patient-volume forecasts to optimize physician shift schedules."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Turkey",
+   "sample_size": 352843,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "ARIMA",
+    "SARIMA",
+    "Theta",
+    "Exponential Smoothing",
+    "Croston's Method",
+    "Prophet",
+    "Greykite",
+    "XGBoost",
+    "LightGBM",
+    "CatBoost",
+    "RNN",
+    "LSTM",
+    "GRU",
+    "D-Linear",
+    "TFT",
+    "TCN",
+    "N-HiTS",
+    "N-BEATS",
+    "TiDE-RIN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "forecasting performance degradation without model updating",
+     "effect": "median R2 was 12% (IQR: \u221212.3% to 36.3%) across 4 models when using only the first model without updating throughout the simulation",
+     "quote": "On the other hand, when only the first model was used throughout the entire simulation, the median value for the 4 models was calculated as 12% (IQR: \u221212.3% to 36.3%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Automated weekly model retraining and dynamic model selection (MLOps) based on continuous performance monitoring",
+    "Physician shift schedule optimization using integer linear programming based on forecasted patient volume"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Turkey",
+ "sample_unit": "pediatric emergency department visits",
+ "sample_size": 352843,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "ARIMA",
+  "AutoRegressive Integrated Moving Average (ARIMA)",
+  "CatBoost",
+  "Croston",
+  "Croston's Method",
+  "Croston\u2019s Method",
+  "D-Linear",
+  "Deep Linear Models (D-Linear)",
+  "Exponential Smoothing",
+  "Extreme Gradient Boosting (XGBoost)",
+  "GRU",
+  "Gated Recurrent Units (GRU)",
+  "Greykite",
+  "LSTM",
+  "Light Gradient Boosting Machine (LightGBM)",
+  "LightGBM",
+  "Long Short-Term Memory (LSTM) networks",
+  "N-BEATS",
+  "N-HiTS",
+  "Neural Basis Expansion Analysis (N-BEATS)",
+  "Neural High-order Time Series (N-HiTS)",
+  "Prophet",
+  "RNN",
+  "Recurrent Neural Networks (RNN)",
+  "SARIMA",
+  "Seasonal AutoRegressive Integrated Moving Average (SARIMA)",
+  "TCN",
+  "TFT",
+  "Temporal Convolutional Network (TCN)",
+  "Temporal Fusion Transformer (TFT)",
+  "Theta",
+  "TiDE-RIN",
+  "Time-series Dense Encoder and Reversible Instance Normalization (TiDE-RIN)",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Forecast R2 with weekly retraining and model reselection versus first model fixed",
+   "effect": "Median R2 for first model used throughout simulation was 12% (IQR -12.3% to 36.3%); with weekly retraining and selection median was 44% overall and 60% for selected forecasts.",
+   "quote": "On the other hand, when only the first model was used throughout the entire simulation, the median value for the 4 models was calculated as 12% (IQR: \u221212.3% to 36.3%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Forecast performance degradation from data and concept drift (COVID-19, earthquake)",
+   "effect": "Many models were significantly impacted by COVID-19 concept drift; the February 2023 earthquake decreased performance in N-HiTS and N-BEATS, while TiDE-RIN and TCN were more resilient.",
+   "quote": "Many of these models were significantly impacted by concept drift during the COVID-19 period and struggled to improve their performance in the post-COVID era.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of advanced deep learning forecasting models against traditional models on the same data",
+   "effect": "TCN R2 73%, TiDE-RIN 75%, N-BEATS 72%, N-HiTS 57% outperformed ARIMA 16%, LSTM 32%, RNN 40%.",
+   "quote": "It was observed that advanced deep learning architectures such as TCN (R 2 : 73%), TiDE-RIN (R 2 : 75%), N-BEATS (R 2 : 72%), and N-HiTS (R 2 : 57%) outperformed traditional time-series models like ARIMA (R 2 : 16%), LSTM (R 2 : 32%), and RNN (R 2 : 40%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of forecasting models under population/context shift after abrupt events",
+   "effect": "Model accuracy decreased after the sudden drop in admissions following the February 2023 earthquake; retraining only on post-COVID data gave lower performance than the full dataset.",
+   "quote": "Following the February 2023 earthquake in Turkey, a significant drop in patient admissions introduced a sudden data drift that impacted model accuracy.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R150",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "median forecasting R\u00b2",
+   "effect": "Without MLOps median R\u00b2 was around 12%; with MLOps performance improved by 38%.",
+   "quote": "Without MLOps, median R 2 values were around 12%; with MLOps, performance improved by 38%, due to robust monitoring, automatic retraining, and seamless data integration.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated MLOps pipeline with weekly retraining and automatic best-model selection",
+  "Automated weekly model retraining and dynamic model selection (MLOps) based on continuous performance monitoring",
+  "Kolmogorov-Smirnov test for concept drift detection",
+  "Physician shift schedule optimization using integer linear programming based on forecasted patient volume",
+  "Use AI-driven pediatric emergency department patient-volume forecasts to optimize physician shift schedules.",
+  "Using integer linear programming to optimize physician shift schedules from forecasted patient volumes"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40124532",
+ "screen": {
+  "id": "pmid:40124532",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "MLOps automated retraining and model selection for drift",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests an MLOps architecture for continuous model retraining and drift adaptation against static models for ED crowding forecasting and shift optimization.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "MLOps automated retraining and drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40124532",
+   "empirical": 0.95,
+   "tests_practice": 0.32,
+   "real_deployment": 0.14
+  }
+ }
+}

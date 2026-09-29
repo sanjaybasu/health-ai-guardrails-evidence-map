@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 2000,
+ "sample_unit": "synthetic APTT test cases",
+ "models_evaluated": [
+  "Qwen2.5-7B (4-bit quantized, Ollama, local RAG)",
+  "rule-based baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Guideline concordance accuracy under injected semantic and lexical input noise, versus rule-based baseline",
+   "effect": "LLM-RAG kept 97.00% guideline concordance accuracy under 30% semantic and 15% lexical noise; rule-based baseline fell to 10.00%. Critical violation rate 1.50%.",
+   "quote": "The proposed LLM-RAG middleware demonstrated exceptional robustness,maintaining a Guideline Concordance Accuracy (\\((ACC_{gc})\\)) of 97.00%under high-dimensional noise, whereas the traditional rule-basedbaseline collapsed to 10.00%.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Local edge deployment of a quantized LLM on a CPU-only terminal to keep data on-premises",
+  "Schema-enforced structured output (Pydantic) with automated self-reflection retries",
+  "AI-as-Expert adjudication of outputs"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1169038",
+ "screen": {
+  "id": "epmc:PPR1169038",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates an edge LLM system with output safety guardrails (Pydantic schema constraints and self-reflection retry mechanisms) on a noisy synthetic coagulation test benchmark.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "schema validation and self-reflection retry guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1169038",
+   "empirical": 0.79,
+   "tests_practice": 0.31,
+   "real_deployment": 0.06
+  }
+ }
+}

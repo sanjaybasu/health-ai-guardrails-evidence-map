@@ -1,0 +1,259 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6209,
+   "sample_unit": "phone-recorded echocardiogram videos (from 2648 studies, 2611 patients)",
+   "models_evaluated": [
+    "Primary pretrained LVEF estimation model (Kaiser Permanente Northern California)",
+    "EchoNet-Dynamic"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance (MAE, R\u00b2, AUC) on phone videos before and after fine-tuning on local phone-video data",
+     "effect": "Primary model fine-tuning: MAE 7.00 to 6.96 pp, R\u00b2 0.49 to 0.61, AUC 0.91 to 0.93. EchoNet-Dynamic: MAE 9.36 to 7.86 pp, R\u00b2 0.37 to 0.50, AUC 0.84 to 0.89.",
+     "quote": "Fine-tuning the public EchoNet-Dynamic model improved performance from 9.36 percentage points, 0.37, and 0.84 to 7.86 percentage points, 0.50, and 0.89, respectively."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance under input variation (phone recording, progressive central zoom preprocessing)",
+     "effect": "Phone-video input reduced performance versus native DICOM (MAE 7.00 vs 6.08 pp; R\u00b2 0.49 vs 0.60; AUC 0.91 vs 0.93), and progressive central zoom degraded performance.",
+     "quote": "Progressive central zoom preprocessing degraded model performance."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6209,
+   "sample_unit": "phone-recorded echocardiographic videos",
+   "models_evaluated": [
+    "primary pretrained model",
+    "phone-video fine-tuned primary model",
+    "EchoNet-Dynamic",
+    "phone-video fine-tuned EchoNet-Dynamic"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance on phone-recorded versus native DICOM videos",
+     "effect": "Phone videos worsened performance versus native DICOM: MAE 7.00 vs 6.08, R\u00b2 0.49 vs 0.60, AUC 0.91 vs 0.93.",
+     "quote": "Without phone-video fine-tuning, the primary model achieved a mean absolute error of 7.00 percentage points, coefficient of determination of 0.49, and area under the receiver operating characteristic curve of 0.91 on phone-recorded videos; corresponding native DICOM performance was 6.08 percentage points, 0.60, and 0.93, respectively."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LVEF estimation after phone-video fine-tuning",
+     "effect": "EchoNet-Dynamic fine-tuning improved MAE/R\u00b2/AUC from 9.36/0.37/0.84 to 7.86/0.50/0.89.",
+     "quote": "Fine-tuning the public EchoNet-Dynamic model improved performance from 9.36 percentage points, 0.37, and 0.84 to 7.86 percentage points, 0.50, and 0.89, respectively."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 6209,
+   "sample_unit": "videos",
+   "models_evaluated": [
+    "EchoNet-Dynamic",
+    "primary model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R075",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LVEF estimation accuracy on phone-recorded videos versus native DICOM",
+     "effect": "MAE worsened from 6.08 to 7.00 percentage points, R\u00b2 decreased from 0.60 to 0.49, and AUC decreased from 0.93 to 0.91",
+     "quote": "Without phone-video fine-tuning, the primary model achieved a mean absolute error of 7.00 percentage points, coefficient of determination of 0.49, and area under the receiver operating characteristic curve of 0.91 on phone-recorded videos; corresponding native DICOM performance was 6.08 percentage points, 0.60, and 0.93, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning pretrained AI models on phone-recorded echocardiogram videos to adapt to point-of-care video capture"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "phone-recorded echocardiogram videos (from 2648 studies, 2611 patients)",
+ "sample_size": 6209,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "EchoNet-Dynamic",
+  "Primary pretrained LVEF estimation model (Kaiser Permanente Northern California)",
+  "phone-video fine-tuned EchoNet-Dynamic",
+  "phone-video fine-tuned primary model",
+  "primary model",
+  "primary pretrained model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance (MAE, R\u00b2, AUC) on phone videos before and after fine-tuning on local phone-video data",
+   "effect": "Primary model fine-tuning: MAE 7.00 to 6.96 pp, R\u00b2 0.49 to 0.61, AUC 0.91 to 0.93. EchoNet-Dynamic: MAE 9.36 to 7.86 pp, R\u00b2 0.37 to 0.50, AUC 0.84 to 0.89.",
+   "quote": "Fine-tuning the public EchoNet-Dynamic model improved performance from 9.36 percentage points, 0.37, and 0.84 to 7.86 percentage points, 0.50, and 0.89, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance under input variation (phone recording, progressive central zoom preprocessing)",
+   "effect": "Phone-video input reduced performance versus native DICOM (MAE 7.00 vs 6.08 pp; R\u00b2 0.49 vs 0.60; AUC 0.91 vs 0.93), and progressive central zoom degraded performance.",
+   "quote": "Progressive central zoom preprocessing degraded model performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R075",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LVEF estimation accuracy on phone-recorded videos versus native DICOM",
+   "effect": "MAE worsened from 6.08 to 7.00 percentage points, R\u00b2 decreased from 0.60 to 0.49, and AUC decreased from 0.93 to 0.91",
+   "quote": "Without phone-video fine-tuning, the primary model achieved a mean absolute error of 7.00 percentage points, coefficient of determination of 0.49, and area under the receiver operating characteristic curve of 0.91 on phone-recorded videos; corresponding native DICOM performance was 6.08 percentage points, 0.60, and 0.93, respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Fine-tuning pretrained AI models on phone-recorded echocardiogram videos to adapt to point-of-care video capture"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1257185",
+ "screen": {
+  "id": "epmc:PPR1257185",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning/recalibration on site-specific data before deployment",
+  "user": "none",
+  "reason": "The study tests the robustness and accuracy of AI models for LVEF estimation on phone-recorded echocardiogram videos versus native DICOM, including evaluating fine-tuning and preprocessing effects, but does not evaluate an organizational deployment practice or safeguard.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1257185",
+   "empirical": 0.97,
+   "tests_practice": 0.57,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,382 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Pakistan",
+   "sample_size": 200,
+   "sample_unit": "clinical notes (50 discharge summaries, 150 SOAP notes)",
+   "models_evaluated": [
+    "GPT-3.5 (ChatGPT)",
+    "GatorTron base",
+    "BioMegatron",
+    "BioBERT",
+    "ClinicalBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Change in concept extraction F1 and QA ROUGE-L/BLEU after fine-tuning on local EHR data",
+     "effect": "Local fine-tuning yielded a 7.5% to 15% increase in F1 for MCE and a 27% to 53% increase in ROUGE-L and BLEU for MQA.",
+     "quote": "However, fine-tuning the LLMs with local EHR data significantly improved model performance across both tasks, yielding a 7.5% to 15% increase in the F1 score for MCE and a 27% to 53% increase in ROUGE-L and BLEU scores for MQA."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of models fine-tuned on public data when externally validated on local Pakistani EHR data",
+     "effect": "External validation on local data was poorer than internal validation, with reductions of at least 15% in F1 for MCE and 35% in ROUGE-L and BLEU for MQA.",
+     "quote": "When clinical LLMs were not fine-tuned on the local EHR dataset, their performance during external validation on local data was notably poorer compared to internal validation on the dataset used for fine-tuning, with reductions of at least 15% in F1 scores for MCE and 35% in ROUGE-L and BLEU scores for MQA tasks."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset shift between US-derived development data and local Pakistani EHR data degrading performance",
+     "effect": "Performance of models fine-tuned on public data dropped significantly on SKMCH&RC data, and vice versa, indicating performance incompatibility across datasets.",
+     "quote": "In general, for open-source LLMs, including GatorTron, BioMegatron, ClinicalBERT, and BioBERT, when we fine-tuned the models on publicly accessible data for the purpose of our NLP tasks, their performance significantly reduced when tested on SKMCH&RC, and vice versa in both NLP tasks."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Benchmark performance versus performance on real-world local clinical notes",
+     "effect": "Models scored highly on public benchmarks (e.g., F1 0.83-0.96) but dropped on local notes (e.g., 3-label F1 0.58-0.71); benchmark-only evaluation is limited.",
+     "quote": "These findings highlight the sensitivity of LLM performance to data distribution and underscore the limitations of relying solely on benchmark-based evaluations to assess real-world reliability."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Translation of benchmark performance to real local EHR data conditions",
+     "effect": "Models fine-tuned on public benchmarks performed notably worse on real-world local EHR notes; ChatGPT was an exception, performing better locally.",
+     "quote": "Publicly available LLMs, predominantly trained on data from high-income regions, were found to be unreliable when applied in a real-world clinical setting in Pakistan."
+    }
+   ],
+   "unlisted_practices": [
+    "Local fine-tuning of open medical LLMs with expert-labelled local clinical notes to reduce dataset-shift bias",
+    "Internal-external cross-validation between public benchmark and local datasets"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Pakistan; United States public benchmark datasets",
+   "sample_size": 200,
+   "sample_unit": "free-text clinical notes",
+   "models_evaluated": [
+    "ChatGPT (GPT-3.5)",
+    "GatorTron base",
+    "BioMegatron",
+    "BioBERT",
+    "ClinicalBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External validation performance on local EHR data",
+     "effect": "External local validation showed reductions of at least 15% in MCE F1 and 35% in ROUGE-L and BLEU for MQA versus internal validation.",
+     "quote": "RESULTS: When clinical LLMs were not fine-tuned on the local EHR dataset, their performance during external validation on local data was notably poorer compared to internal validation on the dataset used for fine-tuning, with reductions of at least 15% in F1 scores for MCE and 35% in ROUGE-L and BLEU scores for MQA tasks."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local historical-data performance",
+     "effect": "Public-fine-tuned GatorTron F1 fell from 0.8375 [0.8288, 0.8447] on public data to 0.5801 [0.5629, 0.6019] on SKMCH&RC 3-label data.",
+     "quote": "In general, for open-source LLMs, including GatorTron, BioMegatron, ClinicalBERT, and BioBERT, when we fine-tuned the models on publicly accessible data for the purpose of our NLP tasks, their performance significantly reduced when tested on SKMCH&RC, and vice versa in both NLP tasks."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset-shift generalization",
+     "effect": "Cross-dataset testing reduced open-source model performance; abstract reports at least 15% F1 and 35% ROUGE-L/BLEU reductions on local data.",
+     "quote": "This observation indicates performance incompatibility in these models across different datasets, likely stemming from inherent biases in the data sources on which these models were trained."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance after local fine-tuning",
+     "effect": "Local EHR fine-tuning increased MCE F1 by 7.5% to 15% and MQA ROUGE-L/BLEU by 27% to 53%.",
+     "quote": "However, fine-tuning the LLMs with local EHR data significantly improved model performance across both tasks, yielding a 7.5% to 15% increase in the F1 score for MCE and a 27% to 53% increase in ROUGE-L and BLEU scores for MQA."
+    },
+    {
+     "rec_id": "R309",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance in Pakistani versus Global North settings",
+     "effect": "Models pretrained/fine-tuned on high-income public datasets underperformed in Pakistan, with at least 15% F1 and 35% ROUGE-L/BLEU reductions.",
+     "quote": "In conclusion, our findings highlight the underperformance of medical LLMs in a local Pakistani setting compared to those in Global North settings revealing the data-driven biases in existing publicly available medical LLMs, which are predominantly pre-trained on data from high-income settings."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Pakistan",
+   "sample_size": 200,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "ChatGPT",
+    "GatorTron (base)",
+    "BioMegatron",
+    "ClinicalBERT",
+    "BioBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external validation performance on local EHR data",
+     "effect": "reductions of at least 15% in F1 scores for MCE and 35% in ROUGE-L and BLEU scores for MQA",
+     "quote": "When clinical LLMs were not fine-tuned on the local EHR dataset, their performance during external validation on local data was notably poorer compared to internal validation on the dataset used for fine-tuning, with reductions of at least 15% in F1 scores for MCE and 35% in ROUGE-L and BLEU scores for MQA tasks."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance improvement after fine-tuning on local EHR data",
+     "effect": "7.5% to 15% increase in F1 score for MCE and 27% to 53% increase in ROUGE-L and BLEU scores for MQA",
+     "quote": "However, fine-tuning the LLMs with local EHR data significantly improved model performance across both tasks, yielding a 7.5% to 15% increase in the F1 score for MCE and a 27% to 53% increase in ROUGE-L and BLEU scores for MQA."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Pakistan",
+ "sample_unit": "clinical notes (50 discharge summaries, 150 SOAP notes)",
+ "sample_size": 200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BioBERT",
+  "BioMegatron",
+  "ChatGPT",
+  "ChatGPT (GPT-3.5)",
+  "ClinicalBERT",
+  "GPT-3.5 (ChatGPT)",
+  "GatorTron (base)",
+  "GatorTron base"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Change in concept extraction F1 and QA ROUGE-L/BLEU after fine-tuning on local EHR data",
+   "effect": "Local fine-tuning yielded a 7.5% to 15% increase in F1 for MCE and a 27% to 53% increase in ROUGE-L and BLEU for MQA.",
+   "quote": "However, fine-tuning the LLMs with local EHR data significantly improved model performance across both tasks, yielding a 7.5% to 15% increase in the F1 score for MCE and a 27% to 53% increase in ROUGE-L and BLEU scores for MQA.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of models fine-tuned on public data when externally validated on local Pakistani EHR data",
+   "effect": "External validation on local data was poorer than internal validation, with reductions of at least 15% in F1 for MCE and 35% in ROUGE-L and BLEU for MQA.",
+   "quote": "When clinical LLMs were not fine-tuned on the local EHR dataset, their performance during external validation on local data was notably poorer compared to internal validation on the dataset used for fine-tuning, with reductions of at least 15% in F1 scores for MCE and 35% in ROUGE-L and BLEU scores for MQA tasks.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dataset shift between US-derived development data and local Pakistani EHR data degrading performance",
+   "effect": "Performance of models fine-tuned on public data dropped significantly on SKMCH&RC data, and vice versa, indicating performance incompatibility across datasets.",
+   "quote": "In general, for open-source LLMs, including GatorTron, BioMegatron, ClinicalBERT, and BioBERT, when we fine-tuned the models on publicly accessible data for the purpose of our NLP tasks, their performance significantly reduced when tested on SKMCH&RC, and vice versa in both NLP tasks.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Benchmark performance versus performance on real-world local clinical notes",
+   "effect": "Models scored highly on public benchmarks (e.g., F1 0.83-0.96) but dropped on local notes (e.g., 3-label F1 0.58-0.71); benchmark-only evaluation is limited.",
+   "quote": "These findings highlight the sensitivity of LLM performance to data distribution and underscore the limitations of relying solely on benchmark-based evaluations to assess real-world reliability.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R135",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Translation of benchmark performance to real local EHR data conditions",
+   "effect": "Models fine-tuned on public benchmarks performed notably worse on real-world local EHR notes; ChatGPT was an exception, performing better locally.",
+   "quote": "Publicly available LLMs, predominantly trained on data from high-income regions, were found to be unreliable when applied in a real-world clinical setting in Pakistan.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External validation performance on local EHR data",
+   "effect": "External local validation showed reductions of at least 15% in MCE F1 and 35% in ROUGE-L and BLEU for MQA versus internal validation.",
+   "quote": "RESULTS: When clinical LLMs were not fine-tuned on the local EHR dataset, their performance during external validation on local data was notably poorer compared to internal validation on the dataset used for fine-tuning, with reductions of at least 15% in F1 scores for MCE and 35% in ROUGE-L and BLEU scores for MQA tasks.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R309",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance in Pakistani versus Global North settings",
+   "effect": "Models pretrained/fine-tuned on high-income public datasets underperformed in Pakistan, with at least 15% F1 and 35% ROUGE-L/BLEU reductions.",
+   "quote": "In conclusion, our findings highlight the underperformance of medical LLMs in a local Pakistani setting compared to those in Global North settings revealing the data-driven biases in existing publicly available medical LLMs, which are predominantly pre-trained on data from high-income settings.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Internal-external cross-validation between public benchmark and local datasets",
+  "Local fine-tuning of open medical LLMs with expert-labelled local clinical notes to reduce dataset-shift bias"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41742185",
+ "screen": {
+  "id": "pmid:41742185",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning and validation",
+  "user": "none",
+  "reason": "Evaluates LLM performance on local EHR data from Pakistan and tests the impact of local fine-tuning versus standard fine-tuning as an adaptation practice for out-of-distribution transfer.",
+  "jev": {
+   "id": "pmid:41742185",
+   "empirical": 0.97,
+   "tests_practice": 0.85,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "generative_llm",
+  "multimodal_foundation",
+  "agentic"
+ ],
+ "country": "United States",
+ "sample_size": 150,
+ "sample_unit": "held-out test patients (OCT; 124 flagged cases routed to agents)",
+ "models_evaluated": [
+  "EfficientNetV2-S",
+  "MedGemma 4B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy of multi-agent VLM versus classifier on same flagged cases",
+   "effect": "Agent system 89.5% accuracy (111/124) and 100% sensitivity versus classifier 73.4% (91/124); agents fixed 32 errors, introduced 12 new errors, net +20.",
+   "quote": "On these flagged cases, the agent system achieves 100% sensitivity\u2014detecting all 55 glaucoma cases with zero missed diagnoses\u2014and 89.5% overall accuracy (111/124), compared to the classifier\u2019s 73.4% (91/124).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Uncertainty-gated routing of low-confidence classifier predictions to multi-agent LLM deliberation",
+  "Semi-supervised pseudo-supervisor training to reduce labeled data requirements"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1265904",
+ "screen": {
+  "id": "epmc:PPR1265904",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation",
+   "agentic",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and tests an uncertainty-gated routing safeguard where ambiguous, low-confidence predictions from an automated diagnostic imaging classifier are escalated to a multi-agent LLM deliberation system to reduce diagnostic errors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "uncertainty-gated routing / multi-agent escalation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1265904",
+   "empirical": 0.93,
+   "tests_practice": 0.71,
+   "real_deployment": 0.04
+  }
+ }
+}

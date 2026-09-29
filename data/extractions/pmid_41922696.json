@@ -1,0 +1,387 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 320,
+   "sample_unit": "radiology reports (plus 800 patients in clinical setting validation)",
+   "models_evaluated": [
+    "ChatGPT-4.0 (GPT-4)",
+    "Grok-3",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Patient subjective and objective comprehension of LLM-simplified vs original reports",
+     "effect": "Subjective comprehension 3.59\u00b10.74 to 4.68\u00b10.47; objective 1.64\u00b10.84 to 2.78\u00b10.42 (P<0.05); STAI-6 anxiety 16.74 to 10.44 in 800 patients",
+     "quote": "The results of clinical setting validation showed that, compared with the original radiology reports (subjective comprehension scores: 3.59 \u00b1 0.74\uff1bobjective comprehension scores: 1.64 \u00b1 0.84), reading the reports simplified by DeepSeek-R1 significantly improved patients\u2019 subjective comprehension scores (4.68 \u00b1 0.47; P < 0.05; r = 0.91\uff1b95%CI:0.89\u20130.92) and objective comprehension scores (2.78 \u00b1 0.42; P < 0.05; r = 0.90\uff1b95%CI:0.88\u20130.91)."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Key information point accuracy with unoptimized vs optimized structured prompts",
+     "effect": "Accurate KIP: ChatGPT-4.0 52.2% to 86.1%; DeepSeek-R1 61.7% to 91.1%; Grok-3 99.4% to 100%",
+     "quote": "Using the optimized prompt framework, quantitative results showed that the optimized prompts significantly improved the translation accuracy of ChatGPT-4.0 and Deep Seek-R1, as evidenced by higher key information point (KIP) retention rates (Table 5 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output consistency across 10 repeated runs of same report",
+     "effect": "With unoptimized prompts, accurate KIP rates were 52.2% (ChatGPT-4.0), 61.7% (DeepSeek-R1), 99.4% (Grok-3) across repeated outputs",
+     "quote": "The variability within the same model\u2019s response to identical inputs highlights the inherent randomness of LLMs, which contributes to output inconsistency."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Radiologist-identified omissions and inaccuracies in LLM-simplified reports",
+     "effect": "Omissions per report: ChatGPT 0.072, Grok 0.047, DeepSeek 0.093; inaccuracies 0.038, 0.069, 0.05",
+     "quote": "The findings show that these translations regularly include information omissions and inaccuracies."
+    },
+    {
+     "rec_id": "R295",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Comprehension of LLM-simplified reports by age and education level",
+     "effect": "Significant age \u00d7 education interaction on subjective and objective comprehension (P<0.05); lower education associated with lower comprehension",
+     "quote": "The results of the second-stage 2 \u00d7 2 factorial analysis (age \u00d7 educational level) demonstrated that age and educational level had significant interactive effects on both subjective and objective comprehension scores ( P < 0.05)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 320,
+   "sample_unit": "radiology reports in the retrospective stage; a subsequent standardized-report evaluation included 800 patients",
+   "models_evaluated": [
+    "ChatGPT-4.0",
+    "Grok-3",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Patient subjective and objective comprehension of simplified versus original radiology reports",
+     "effect": "Subjective comprehension increased from 3.59 \u00b1 0.74 to 4.68 \u00b1 0.47; objective comprehension increased from 1.64 \u00b1 0.84 to 2.78 \u00b1 0.42 (both P < 0.05).",
+     "quote": "The results of clinical setting validation showed that, compared with the original radiology reports (subjective comprehension scores: 3.59 \u00b1 0.74\uff1bobjective comprehension scores: 1.64 \u00b1 0.84), reading the reports simplified by DeepSeek-R1 significantly improved patients\u2019 subjective comprehension scores (4.68 \u00b1 0.47; P < 0.05; r = 0.91\uff1b95%CI:0.89\u20130.92) and objective comprehension scores (2.78 \u00b1 0.42; P < 0.05; r = 0.90\uff1b95%CI:0.88\u20130.91)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Omissions and inaccuracies in AI-generated patient-centric radiology reports",
+     "effect": "Mean omissions/inaccuracies per report were 0.072/0.038 for ChatGPT, 0.047/0.069 for Grok, and 0.093/0.05 for Deep Seek.",
+     "quote": "For example, translations by ChatGPT-4.0 had an average of 0.072 omissions and 0.038 inaccuracies per report, which means roughly one omission every 13.8 reports and one inaccuracy every 26.3 reports."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output consistency and key-information accuracy across repeated identical inputs",
+     "effect": "Ten outputs per model for one chest CT report showed inconsistency. Across 18 key information points, unoptimized-prompt accuracy was 52.2% for ChatGPT-4.0, 99.4% for Grok-3, and 61.7% for Deep Seek.",
+     "quote": "The variability within the same model\u2019s response to identical inputs highlights the inherent randomness of LLMs, which contributes to output inconsistency."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Key-information retention with detailed optimized versus generic prompts",
+     "effect": "Optimized prompts increased KIP accuracy from 52.2% to 86.1% for ChatGPT-4.0, 61.7% to 91.1% for Deep Seek, and 99.4% to 100% for Grok-3; testing used one chest CT report.",
+     "quote": "Using the optimized prompt framework, quantitative results showed that the optimized prompts significantly improved the translation accuracy of ChatGPT-4.0 and Deep Seek-R1, as evidenced by higher key information point (KIP) retention rates (Table 5 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Age- and education-related differences in comprehension of AI-simplified reports",
+     "effect": "Older participants had better comprehension within both educational strata: Cliff\u2019s |\u0394| = 0.32 for high education and 0.41 for low education; adjusted P < 0.05.",
+     "quote": "Results indicated significant differences: younger and older participants differed notably in understanding the reports, with older participants showing better comprehension than younger, both in high-education groups (Group 1 vs. Group 3\uff1beffect size Cliff\u2019s |\u0394| = 0.32; 95% CI: 0.21, 0.39) and low-education groups (Group 2 vs. Group 4\uff1beffect size Cliff\u2019s |\u0394| = 0.41; 95% CI: 0.32, 0.53) (adjusted P < 0.05 after Bonferroni correction; Fig. 2c, d )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "ChatGPT-4.0",
+    "Grok-3",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output consistency across repeated runs",
+     "effect": "Repeated generations for the same report showed variability, highlighting the inherent randomness and inconsistency of the LLMs.",
+     "quote": "The variability within the same model\u2019s response to identical inputs highlights the inherent randomness of LLMs, which contributes to output inconsistency."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Report omissions and inaccuracies",
+     "effect": "ChatGPT-4.0 translations had an average of 0.072 omissions and 0.038 inaccuracies per report.",
+     "quote": "For example, translations by ChatGPT-4.0 had an average of 0.072 omissions and 0.038 inaccuracies per report, which means roughly one omission every 13.8 reports and one inaccuracy every 26.3 reports."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Subjective and objective comprehension",
+     "effect": "Reading reports simplified by DeepSeek-R1 significantly improved patients' subjective (4.68 vs 3.59) and objective (2.78 vs 1.64) comprehension scores.",
+     "quote": "The results of clinical setting validation showed that, compared with the original radiology reports (subjective comprehension scores: 3.59 \u00b1 0.74\uff1bobjective comprehension scores: 1.64 \u00b1 0.84), reading the reports simplified by DeepSeek-R1 significantly improved patients\u2019 subjective comprehension scores (4.68 \u00b1 0.47; P < 0.05; r = 0.91\uff1b95%CI:0.89\u20130.92) and objective comprehension scores (2.78 \u00b1 0.42; P < 0.05; r = 0.90\uff1b95%CI:0.88\u20130.91)."
+    },
+    {
+     "rec_id": "R295",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Comprehension by age and education",
+     "effect": "Younger and older participants differed notably in understanding the reports, with older participants demonstrating better comprehension than younger participants in both educational strata.",
+     "quote": "Results indicated significant differences: younger and older participants differed notably in understanding the reports, with older participants showing better comprehension than younger, both in high-education groups (Group 1 vs. Group 3\uff1beffect size Cliff\u2019s |\u0394| = 0.32; 95% CI: 0.21, 0.39) and low-education groups (Group 2 vs. Group 4\uff1beffect size Cliff\u2019s |\u0394| = 0.41; 95% CI: 0.32, 0.53) (adjusted P < 0.05 after Bonferroni correction; Fig. 2c, d)."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Translation accuracy with optimized prompts",
+     "effect": "Optimized prompts significantly improved translation accuracy of ChatGPT-4.0 and Deep Seek-R1, resulting in higher key information point retention rates.",
+     "quote": "Using the optimized prompt framework, quantitative results showed that the optimized prompts significantly improved the translation accuracy of ChatGPT-4.0 and Deep Seek-R1, as evidenced by higher key information point (KIP) retention rates (Table 5)."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating AI generation of customized treatment recommendations based on radiological diagnoses",
+    "Measuring the effect of AI-simplified reports on patient anxiety levels in a clinical setting"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "radiology reports (plus 800 patients in clinical setting validation)",
+ "sample_size": 320,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "ChatGPT-4.0",
+  "ChatGPT-4.0 (GPT-4)",
+  "DeepSeek-R1",
+  "Grok-3"
+ ],
+ "links": [
+  {
+   "rec_id": "R289",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Patient subjective and objective comprehension of LLM-simplified vs original reports",
+   "effect": "Subjective comprehension 3.59\u00b10.74 to 4.68\u00b10.47; objective 1.64\u00b10.84 to 2.78\u00b10.42 (P<0.05); STAI-6 anxiety 16.74 to 10.44 in 800 patients",
+   "quote": "The results of clinical setting validation showed that, compared with the original radiology reports (subjective comprehension scores: 3.59 \u00b1 0.74\uff1bobjective comprehension scores: 1.64 \u00b1 0.84), reading the reports simplified by DeepSeek-R1 significantly improved patients\u2019 subjective comprehension scores (4.68 \u00b1 0.47; P < 0.05; r = 0.91\uff1b95%CI:0.89\u20130.92) and objective comprehension scores (2.78 \u00b1 0.42; P < 0.05; r = 0.90\uff1b95%CI:0.88\u20130.91).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Key information point accuracy with unoptimized vs optimized structured prompts",
+   "effect": "Accurate KIP: ChatGPT-4.0 52.2% to 86.1%; DeepSeek-R1 61.7% to 91.1%; Grok-3 99.4% to 100%",
+   "quote": "Using the optimized prompt framework, quantitative results showed that the optimized prompts significantly improved the translation accuracy of ChatGPT-4.0 and Deep Seek-R1, as evidenced by higher key information point (KIP) retention rates (Table 5 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Output consistency across 10 repeated runs of same report",
+   "effect": "With unoptimized prompts, accurate KIP rates were 52.2% (ChatGPT-4.0), 61.7% (DeepSeek-R1), 99.4% (Grok-3) across repeated outputs",
+   "quote": "The variability within the same model\u2019s response to identical inputs highlights the inherent randomness of LLMs, which contributes to output inconsistency.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist-identified omissions and inaccuracies in LLM-simplified reports",
+   "effect": "Omissions per report: ChatGPT 0.072, Grok 0.047, DeepSeek 0.093; inaccuracies 0.038, 0.069, 0.05",
+   "quote": "The findings show that these translations regularly include information omissions and inaccuracies.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R295",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Comprehension of LLM-simplified reports by age and education level",
+   "effect": "Significant age \u00d7 education interaction on subjective and objective comprehension (P<0.05); lower education associated with lower comprehension",
+   "quote": "The results of the second-stage 2 \u00d7 2 factorial analysis (age \u00d7 educational level) demonstrated that age and educational level had significant interactive effects on both subjective and objective comprehension scores ( P < 0.05).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Age- and education-related differences in comprehension of AI-simplified reports",
+   "effect": "Older participants had better comprehension within both educational strata: Cliff\u2019s |\u0394| = 0.32 for high education and 0.41 for low education; adjusted P < 0.05.",
+   "quote": "Results indicated significant differences: younger and older participants differed notably in understanding the reports, with older participants showing better comprehension than younger, both in high-education groups (Group 1 vs. Group 3\uff1beffect size Cliff\u2019s |\u0394| = 0.32; 95% CI: 0.21, 0.39) and low-education groups (Group 2 vs. Group 4\uff1beffect size Cliff\u2019s |\u0394| = 0.41; 95% CI: 0.32, 0.53) (adjusted P < 0.05 after Bonferroni correction; Fig. 2c, d ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Evaluating AI generation of customized treatment recommendations based on radiological diagnoses",
+  "Measuring the effect of AI-simplified reports on patient anxiety levels in a clinical setting"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41922696",
+ "screen": {
+  "id": "pmid:41922696",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "LLM-simplified patient-facing radiology reports (reading-level simplification) versus original reports",
+  "user": "patient",
+  "reason": "Empirical study testing the generation of simplified patient-centered radiology reports using LLMs, evaluated retrospectively and in a clinical setting with 800 patients measuring comprehension and anxiety.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41922696",
+   "empirical": 0.95,
+   "tests_practice": 0.21,
+   "real_deployment": 0.69
+  }
+ }
+}

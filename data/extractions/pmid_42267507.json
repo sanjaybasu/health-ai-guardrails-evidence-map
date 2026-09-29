@@ -1,0 +1,351 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Sweden",
+   "sample_size": 5055,
+   "sample_unit": "patients with hip fracture",
+   "models_evaluated": [
+    "Random Forest",
+    "XGBoost",
+    "Generalized Linear Model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration of XGB predicted mortality risk before vs after local recalibration with isotonic regression",
+     "effect": "Average predicted 12-month risk 0.38 vs observed 0.27 before recalibration; 0.24 after. Predicted risks after recalibration were 0.07, 0.12, 0.17, 0.24 vs observed 0.08, 0.15, 0.20, 0.27. AUC unchanged.",
+     "quote": "The calibration at large and the flexible calibration curves were initially slightly off but were greatly improved by recalibration with bootstrapped isotonic regression."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development and external validation cohort characteristics and mortality",
+     "effect": "Mortality lower in validation cohort (27% vs 32% at 1 year); differences in sex, ASA, cardiac medication, and admission source; models overestimated mortality.",
+     "quote": "Mortality across all timepoints was lower in the external validation cohort compared with the original development cohort (27% vs 32% at 1 year)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Generalization of a predictive model to a new independent cohort",
+     "effect": "XGB discrimination held (AUC 0.72, 0.74, 0.75, 0.77) but risks were overestimated (12-month predicted 0.38 vs observed 0.27), requiring recalibration.",
+     "quote": "Given the diversity in populations, treatment protocols, mortality rates, and outcome reporting across studies, it is unlikely that a single model will be applicable to all hip fracture populations without recalibration or updating during external validation before clinical use."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance on external, independent, temporally later validation cohort vs development",
+     "effect": "Discrimination confirmed on 5,055 external patients (XGB AUC 0.72-0.77), but calibration was initially off with overestimated mortality.",
+     "quote": "External validation of the previously published models confirmed the original findings, with the XGB models again demonstrating the best overall performance."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether AUC alone concealed poor calibration in mortality models",
+     "effect": "Uncalibrated models had acceptable AUC but overestimated risk; calibration slope and intercept revealed miscalibration (e.g., 1-month XGB intercept -0.80), improved after recalibration.",
+     "quote": "This is also evident by comparing the results and calibration curves in the present study before and after recalibration."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Sweden",
+   "sample_size": 5055,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Random Forest",
+    "eXtreme Gradient Boosting",
+    "Generalized Linear Models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external validation discrimination",
+     "effect": "XGB AUCs were 0.72, 0.74, 0.75, and 0.77 for 1-, 3-, 6-, and 12-month mortality.",
+     "quote": "The XGB model had AUC values of 0.72 (CI 0.70\u20130.74), 0.74 (CI 0.72\u20130.76), 0.75 (CI 0.73\u20130.76), and 0.77 (CI 0.75\u20130.78) for 1-, 3-, 6-, and 12-month mortality respectively, while the RF model had slightly lower scores except for the 1-month model that had an AUC of 0.74."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "miscalibration despite acceptable AUC",
+     "effect": "XGB acceptable AUCs 0.72\u20130.77, but average predicted risks 0.12/0.22/0.30/0.38 exceeded event rates 0.08/0.15/0.20/0.27.",
+     "quote": "It was noted that the XGB model had acceptable discrimination but was consistently overestimating mortality in line with the observation that mortality rates were higher in the development set, indicating that recalibration for the population under study should be performed."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model comparison performance",
+     "effect": "XGB was best overall; RF was slightly lower except 1-month AUC 0.74 versus XGB 0.72.",
+     "quote": "In accordance with the results from the original development of the models, the best performance overall was from the XGB model, with the exception of the AUC for 1-month mortality."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "development-validation cohort shift",
+     "effect": "Validation cohort mortality was lower than development cohort: 27% vs 32% at 1 year, with differences in sex, ASA, cardiac medication, and admission source.",
+     "quote": "Mortality across all timepoints was lower in the external validation cohort compared with the original development cohort (27% vs 32% at 1 year)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "recalibration of predicted risk",
+     "effect": "XGB average predicted risks improved from 0.12/0.22/0.30/0.38 to 0.07/0.12/0.17/0.24 after recalibration.",
+     "quote": "After recalibration the same predicted risk was 0.07, 0.12, 0.17, amd 0.24 respectively and showed minor underestimation but much improved results."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Sweden",
+   "sample_size": 5055,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "eXtreme Gradient Boosting (XGB)",
+    "Random Forest (RF)",
+    "Generalized Linear Models (GLM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model calibration before and after local recalibration",
+     "effect": "Uncalibrated XGB overestimated mortality (predicted risk 0.12\u20130.38 vs observed 0.08\u20130.27; intercept \u20130.80 to \u20130.57); isotonic recalibration improved predicted risk to 0.07\u20130.24, intercept to 0.003\u20130.16, and slope to 0.88\u20130.94.",
+     "quote": "Recalibration addressed cohort differences in mortality rates and resulted in well-aligned predictions."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Sweden",
+ "sample_unit": "patients",
+ "sample_size": 5055,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Generalized Linear Model",
+  "Generalized Linear Models",
+  "Generalized Linear Models (GLM)",
+  "Random Forest",
+  "Random Forest (RF)",
+  "XGBoost",
+  "eXtreme Gradient Boosting",
+  "eXtreme Gradient Boosting (XGB)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of XGB predicted mortality risk before vs after local recalibration with isotonic regression",
+   "effect": "Average predicted 12-month risk 0.38 vs observed 0.27 before recalibration; 0.24 after. Predicted risks after recalibration were 0.07, 0.12, 0.17, 0.24 vs observed 0.08, 0.15, 0.20, 0.27. AUC unchanged.",
+   "quote": "The calibration at large and the flexible calibration curves were initially slightly off but were greatly improved by recalibration with bootstrapped isotonic regression.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences between development and external validation cohort characteristics and mortality",
+   "effect": "Mortality lower in validation cohort (27% vs 32% at 1 year); differences in sex, ASA, cardiac medication, and admission source; models overestimated mortality.",
+   "quote": "Mortality across all timepoints was lower in the external validation cohort compared with the original development cohort (27% vs 32% at 1 year).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether AUC alone concealed poor calibration in mortality models",
+   "effect": "Uncalibrated models had acceptable AUC but overestimated risk; calibration slope and intercept revealed miscalibration (e.g., 1-month XGB intercept -0.80), improved after recalibration.",
+   "quote": "This is also evident by comparing the results and calibration curves in the present study before and after recalibration.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of a predictive model to a new independent cohort",
+   "effect": "XGB discrimination held (AUC 0.72, 0.74, 0.75, 0.77) but risks were overestimated (12-month predicted 0.38 vs observed 0.27), requiring recalibration.",
+   "quote": "Given the diversity in populations, treatment protocols, mortality rates, and outcome reporting across studies, it is unlikely that a single model will be applicable to all hip fracture populations without recalibration or updating during external validation before clinical use.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "external validation discrimination",
+   "effect": "XGB AUCs were 0.72, 0.74, 0.75, and 0.77 for 1-, 3-, 6-, and 12-month mortality.",
+   "quote": "The XGB model had AUC values of 0.72 (CI 0.70\u20130.74), 0.74 (CI 0.72\u20130.76), 0.75 (CI 0.73\u20130.76), and 0.77 (CI 0.75\u20130.78) for 1-, 3-, 6-, and 12-month mortality respectively, while the RF model had slightly lower scores except for the 1-month model that had an AUC of 0.74.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "model comparison performance",
+   "effect": "XGB was best overall; RF was slightly lower except 1-month AUC 0.74 versus XGB 0.72.",
+   "quote": "In accordance with the results from the original development of the models, the best performance overall was from the XGB model, with the exception of the AUC for 1-month mortality.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42267507",
+ "screen": {
+  "id": "pmid:42267507",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration after external validation",
+  "user": "clinician_or_staff",
+  "reason": "The study conducts an external validation of previously developed predictive risk models on an independent hospital cohort and tests recalibration (bootstrapped isotonic regression) to adjust for setting differences.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42267507",
+   "empirical": 0.94,
+   "tests_practice": 0.58,
+   "real_deployment": 0.12
+  }
+ }
+}

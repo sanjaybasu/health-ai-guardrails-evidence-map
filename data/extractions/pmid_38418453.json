@@ -1,0 +1,383 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "data points (images, patches, reviews, clinical note samples)",
+   "models_evaluated": [
+    "DeepDerm",
+    "HAM10000 model",
+    "DenseNet121",
+    "three-layer bag-of-words neural network"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance differences by skin tone (Fitzpatrick I-II vs V-VI) on dermatology images",
+     "effect": "Ground-truth NPV was 0.83 vs 0.78 for skin tones I-II vs V-VI; SUDO AUC 0.60 vs 0.58, both indicating bias favouring I-II.",
+     "quote": "Our findings demonstrate that both SUDO and the traditional approach (with ground-truth labels) identified a bias in favour of patients with a Fitzpatrick scale of I-II, which is consistent with previously-reported bias findings 14 ."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance gap by skin tone on Stanford DDI hidden without subgroup evaluation",
+     "effect": "NPV 0.83 (Fitzpatrick I-II) vs 0.78 (V-VI); SUDO AUC 0.60 vs 0.58, showing a bias in favour of lighter skin tones.",
+     "quote": "This discrepancy, calculated without ground-truth labels, is indicative of the bias we also observed when using ground-truth labels and the negative predictive value of the predictions (NPV) (NPV = 0.83 and 0.78, respectively)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation of dermatology models under distribution shift to a new deployment dataset",
+     "effect": "DeepDerm and HAM10000 AUC fell from 0.88 and 0.92 on development data to 0.56 and 0.67 on Stanford DDI data.",
+     "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of models on withheld versus in-the-wild data with distribution shift",
+     "effect": "Dermatology models performing well on withheld data (AUC 0.88, 0.92) dropped to AUC 0.56 and 0.67 on the external DDI dataset.",
+     "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift."
+    }
+   ],
+   "unlisted_practices": [
+    "Pseudo-label discrepancy (SUDO) method to estimate reliability of AI predictions on unlabeled data in the wild",
+    "Reliability-completeness curves to rank models without ground-truth labels",
+    "Flagging low-reliability predictions for human expert review"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "United States; Austria; other countries not specified",
+   "sample_size": 119328,
+   "sample_unit": "data-in-the-wild items across clinical datasets (DDI images, Camelyon17-WILDS patches, Flatiron ECOG PS samples)",
+   "models_evaluated": [
+    "SUDO (pseudo-label discrepancy)",
+    "DeepDerm",
+    "HAM10000 model",
+    "DenseNet121",
+    "Flatiron Health ECOG PS NLP model",
+    "Multi-Domain Sentiment NLP model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC after deployment on shifted DDI images",
+     "effect": "DeepDerm/HAM10000 AUC fell from 0.88/0.92 to 0.56/0.67 on DDI.",
+     "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model selection agreement with ground-truth AUC",
+     "effect": "SUDO ranked HAM10000 above DeepDerm: AURCC 0.86 vs 0.62; ground-truth AUC 0.67 vs 0.56.",
+     "quote": "Specifically, HAM10000 and DeepDerm achieve an area under the reliability-completeness curve of AURCC = 0.86 and 0.62, respectively and, with ground-truth annotations, these models achieve (AUC = 0.67 and 0.56)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Skin-tone subgroup bias detection",
+     "effect": "Fitzpatrick I-II vs V-VI: SUDO AUC 0.60 vs 0.58; NPV 0.83 vs 0.78; bias favored I-II.",
+     "quote": "Our findings demonstrate that both SUDO and the traditional approach (with ground-truth labels) identified a bias in favour of patients with a Fitzpatrick scale of I-II, which is consistent with previously-reported bias findings 14 ."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dermatology lesion classification accuracy",
+     "effect": "Despite prior AUC 0.88/0.92, models achieved DDI AUC 0.56/0.67 under distribution shift.",
+     "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift."
+    }
+   ],
+   "unlisted_practices": [
+    "Pseudo-label discrepancy (SUDO) to evaluate AI prediction reliability on unlabelled data in the wild.",
+    "Reliability-completeness curves/AURCC for selecting models when ground-truth annotations are unavailable."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "samples",
+   "models_evaluated": [
+    "DeepDerm",
+    "HAM10000",
+    "DenseNet121",
+    "bag-of-words neural network"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model discrimination under distribution shift",
+     "effect": "Models performant on development data (AUC 0.88 and 0.92) degraded to AUC 0.56 and 0.67 when deployed on diverse dermatology data.",
+     "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup performance disparity by skin tone",
+     "effect": "Negative predictive value was 0.83 for Fitzpatrick skin phototype I-II compared with 0.78 for Fitzpatrick phototype V-VI.",
+     "quote": "This discrepancy, calculated without ground-truth labels, is indicative of the bias we also observed when using ground-truth labels and the negative predictive value of the predictions (NPV) (NPV = 0.83 and 0.78, respectively)."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating AI model reliability and class contamination on unlabeled data using pseudo-label discrepancy (SUDO)",
+    "Rank-ordering and selecting AI models without ground-truth annotations using reliability-completeness curves",
+    "Assessing algorithmic bias across subgroups without ground-truth annotations using pseudo-label discrepancy"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "data points (images, patches, reviews, clinical note samples)",
+ "sample_size": 119328,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepDerm",
+  "DenseNet121",
+  "Flatiron Health ECOG PS NLP model",
+  "HAM10000",
+  "HAM10000 model",
+  "Multi-Domain Sentiment NLP model",
+  "SUDO (pseudo-label discrepancy)",
+  "bag-of-words neural network",
+  "three-layer bag-of-words neural network"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup performance gap by skin tone on Stanford DDI hidden without subgroup evaluation",
+   "effect": "NPV 0.83 (Fitzpatrick I-II) vs 0.78 (V-VI); SUDO AUC 0.60 vs 0.58, showing a bias in favour of lighter skin tones.",
+   "quote": "This discrepancy, calculated without ground-truth labels, is indicative of the bias we also observed when using ground-truth labels and the negative predictive value of the predictions (NPV) (NPV = 0.83 and 0.78, respectively).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of models on withheld versus in-the-wild data with distribution shift",
+   "effect": "Dermatology models performing well on withheld data (AUC 0.88, 0.92) dropped to AUC 0.56 and 0.67 on the external DDI dataset.",
+   "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance differences by skin tone (Fitzpatrick I-II vs V-VI) on dermatology images",
+   "effect": "Ground-truth NPV was 0.83 vs 0.78 for skin tones I-II vs V-VI; SUDO AUC 0.60 vs 0.58, both indicating bias favouring I-II.",
+   "quote": "Our findings demonstrate that both SUDO and the traditional approach (with ground-truth labels) identified a bias in favour of patients with a Fitzpatrick scale of I-II, which is consistent with previously-reported bias findings 14 .",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation of dermatology models under distribution shift to a new deployment dataset",
+   "effect": "DeepDerm and HAM10000 AUC fell from 0.88 and 0.92 on development data to 0.56 and 0.67 on Stanford DDI data.",
+   "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Skin-tone subgroup bias detection",
+   "effect": "Fitzpatrick I-II vs V-VI: SUDO AUC 0.60 vs 0.58; NPV 0.83 vs 0.78; bias favored I-II.",
+   "quote": "Our findings demonstrate that both SUDO and the traditional approach (with ground-truth labels) identified a bias in favour of patients with a Fitzpatrick scale of I-II, which is consistent with previously-reported bias findings 14 .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dermatology lesion classification accuracy",
+   "effect": "Despite prior AUC 0.88/0.92, models achieved DDI AUC 0.56/0.67 under distribution shift.",
+   "quote": "We purposefully chose two AI models (DeepDerm 15 and HAM10000 16 ) that were performant on their respective data (AUC = 0.88 and 0.92) and whose performance degraded drastically when deployed on the DDI data (AUC = 0.56 and 0.67), suggesting the presence of distribution shift.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Assessing algorithmic bias across subgroups without ground-truth annotations using pseudo-label discrepancy",
+  "Evaluating AI model reliability and class contamination on unlabeled data using pseudo-label discrepancy (SUDO)",
+  "Flagging low-reliability predictions for human expert review",
+  "Pseudo-label discrepancy (SUDO) method to estimate reliability of AI predictions on unlabeled data in the wild",
+  "Pseudo-label discrepancy (SUDO) to evaluate AI prediction reliability on unlabelled data in the wild.",
+  "Rank-ordering and selecting AI models without ground-truth annotations using reliability-completeness curves",
+  "Reliability-completeness curves to rank models without ground-truth labels",
+  "Reliability-completeness curves/AURCC for selecting models when ground-truth annotations are unavailable."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38418453",
+ "screen": {
+  "id": "pmid:38418453",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "post-deployment performance and bias monitoring without ground truth (SUDO)",
+  "user": "none",
+  "reason": "Evaluates SUDO, a framework for unsupervised validation, reliability monitoring, and bias assessment of clinical AI systems on unannotated deployment data (data in the wild).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "unsupervised performance and bias evaluation without ground-truth labels"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38418453",
+   "empirical": 0.87,
+   "tests_practice": 0.11,
+   "real_deployment": 0.18
+  }
+ }
+}

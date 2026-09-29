@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "unspecified",
+ "sample_size": null,
+ "sample_unit": "benchmark questions (medical bias benchmark; 5 prompting strategies x 5 LLMs x 15 scenarios)",
+ "models_evaluated": [
+  "DeepSeek-V3.1"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Change in accuracy gap between privileged and unprivileged groups under five prompting strategies across five LLMs",
+   "effect": "Effectiveness heterogeneous across models with no strategy universally effective and some exacerbating bias. Chain-of-thought lowered the average gap by 2.4 percentage points (max 6.2 pp, DeepSeek-V3.1-sex); significant reductions in 8/15 cases by McNemar test.",
+   "quote": "Results reveal substantial heterogeneity in both effectiveness and overhead across models, with no strategy proving universally effective and some even exacerbating bias.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R322",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM output bias against groups with specific sensitive attributes on a medical bias benchmark",
+   "effect": "Prompting strategies did not eliminate bias; some exacerbated it. Chain-of-thought reduced the average gap across all scenarios by only 2.4 percentage points.",
+   "quote": "Large language models (LLMs) demonstrate expert-level performance in various medical scenarios, yet their outputs can exhibit bias against groups or individuals with specific sensitive attributes, posing risks to patient safety and undermining trust in LLMs for healthcare.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Prompt engineering strategies (e.g., chain-of-thought) as a bias mitigation technique, with fairness-accuracy-inference overhead trade-offs"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42463224",
+ "screen": {
+  "id": "pmid:42463224",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompt engineering to mitigate bias (prompt guardrails)",
+  "user": "none",
+  "reason": "Empirical benchmark evaluation comparing the effectiveness of five prompting strategies (e.g., chain-of-thought) as deployment-time interventions to mitigate medical bias across LLMs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt engineering guardrails for bias mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42463224",
+   "empirical": 0.95,
+   "tests_practice": 0.52,
+   "real_deployment": 0.03
+  }
+ }
+}

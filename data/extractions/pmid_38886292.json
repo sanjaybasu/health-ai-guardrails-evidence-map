@@ -1,0 +1,81 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "unspecified",
+ "sample_size": null,
+ "sample_unit": "X-ray images",
+ "models_evaluated": [
+  "transfer-learning CNN classifier for chest X-ray (no pneumonia, COVID-19 pneumonia, non-COVID pneumonia)",
+  "FGSM adversarial attack",
+  "total variation minimization with patch-based regularization denoising"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R346",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Classifier accuracy under FGSM adversarial attack, before and after total variation denoising",
+   "effect": "Average accuracy fell from 95.56% to 19.83% under adversarial attack; after denoising it rose from 19.83% to 88.23% on adversarial images.",
+   "quote": "Post-denoising, the model exhibits a remarkable accuracy improvement, surging from 19.83 to 88.23% on adversarial images.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Total variation minimization and patch-based denoising of input images as a defense against adversarial noise"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:38886292",
+ "screen": {
+  "id": "pmid:38886292",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study tests an input filtering safeguard (total variation minimization and patch-based regularization denoising) to defend diagnostic image classification models against adversarial noise attacks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "adversarial noise defense via input denoising filter"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38886292",
+   "empirical": 0.93,
+   "tests_practice": 0.24,
+   "real_deployment": 0.04
+  }
+ }
+}

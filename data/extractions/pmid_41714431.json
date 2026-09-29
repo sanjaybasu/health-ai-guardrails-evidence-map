@@ -1,0 +1,89 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "unknown",
+ "sample_size": 80,
+ "sample_unit": "whole-slide histology cases (40 internal, 40 external)",
+ "models_evaluated": [
+  "Virchow + CLAM",
+  "Virchow foundation model with multi-instance learning",
+  "baseline convolutional neural networks"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "AI accuracy versus dermatopathologists and baseline CNNs on same external cohort",
+   "effect": "Virchow + CLAM 85% accuracy on external cohort vs individual readers 47.5-70.0%, consensus 62.5%, baseline CNNs 61%.",
+   "quote": "In a reader study on the same external cohort, individual dermatopathologist accuracies ranged from 47.5 to 70.0%, with a majority-vote consensus accuracy of 62.5%; our method outperformed both the average individual reader and the consensus under histology-only conditions.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Performance on an independent external validation cohort",
+   "effect": "Best configuration achieved 85% accuracy, macro-F1 0.80, AUC 0.81 on the external cohort (n=40).",
+   "quote": "Using an internal dataset (n = 40) and an external validation cohort (n = 40), equally balanced between both conditions and annotated by board-certified dermatopathologists, our best-performing configuration (Virchow + CLAM) achieved 85% accuracy, a macro-averaged F1 score of 0.80, and an AUC of 0.81 on the external cohort.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Multi-instance learning on top of a pathology foundation model to improve classification",
+  "Attention heatmaps as supportive visual context"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41714431",
+ "screen": {
+  "id": "pmid:41714431",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study evaluates a vision foundation model (Virchow) combined with MIL on histopathology slides and compares its diagnostic performance to dermatopathologists in an offline reader study, but does not test an organizational deployment practice or safeguard.",
+  "jev": {
+   "id": "pmid:41714431",
+   "empirical": 0.92,
+   "tests_practice": 0.05,
+   "real_deployment": 0.03
+  }
+ }
+}

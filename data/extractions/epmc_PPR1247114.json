@@ -1,0 +1,271 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 640,
+   "sample_unit": "benchmark runs (4 conditions x 4 temperatures x 40 genes)",
+   "models_evaluated": [
+    "VaaS pipeline",
+    "GPT-4o",
+    "llama3.2",
+    "qwen2.5:14b",
+    "mistral:7b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Citation hallucination (Type I fabricated, Type II wrong-topic) with and without live PMID verification",
+     "effect": "Unguided LLM output had 95.9% Type II hallucination; full VaaS protocol 0.0% Type I and 6.5% Type II; live PMID verification alone (C3) gave 0.0%/0.0%.",
+     "quote": "live PMID verification alone (C3) eliminated both error types entirely (0.0%/0.0%)"
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Type II wrong-topic citation hallucination rates in unguided open-weight models",
+     "effect": "Three open-weight models showed 81\u201387% Type II rates under unguided conditions.",
+     "quote": "Three independent open-weight models (  llama3.2 ,  qwen2.5:14b ,  mistral:7b ) showed 81\u201387% Type II rates under unguided conditions, confirming that wrong-topic citation hallucination is structural and model-agnostic."
+    }
+   ],
+   "unlisted_practices": [
+    "Multi-layer automated validation pipeline (Validation as a System) for citation integrity in LLM-generated scientific content"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 757,
+   "sample_unit": "model runs",
+   "models_evaluated": [
+    "llama3.2",
+    "qwen2.5:14b",
+    "mistral:7b",
+    "GPT-4o published baseline"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Citation hallucinations and PMID validity",
+     "effect": "Unguided output: 95.9% Type II; full VaaS: 0.0% Type I and 6.5% Type II; live PMID verification: 0.0%/0.0%; L3 audit: 179 PMIDs, 99.4% valid, 0 Type I.",
+     "quote": "We validated the pipeline using three complementary benchmarks: (1) VaaS-RIKER2, a 640-run prospective ablation study (4 conditions \u00d7 4 temperatures \u00d7 40 genes) plus 117 open-weight model runs on dedicated GPU hardware \u2014 unguided LLM output produced 95.9% Type II hallucination (wrong-topic citations that exist as real papers but carry a correct claim context yet do not support the cited claim); the full VaaS protocol achieved 0.0% Type I and 6.5% Type II, a  > 14-fold reduction; live PMID verification alone (C3) eliminated both error types entirely (0.0%/0.0%); (2) an independent L3 citation audit of Wave 3 (179 PMIDs, 99.4% valid, 0 Type I errors); and (3) the MedHallu clinical hallucination benchmark, on which the VaaS protocol achieved F1 = 0.9853 on the hard tier (cases where all benchmark ensemble models were fooled), compared to the published GPT-4o baseline of F1 = 0.811 (Pandit et al., 2025)."
+    },
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinical hallucination benchmark performance",
+     "effect": "VaaS F1 = 0.9853 on MedHallu hard tier versus published GPT-4o baseline F1 = 0.811.",
+     "quote": "We validated the pipeline using three complementary benchmarks: (1) VaaS-RIKER2, a 640-run prospective ablation study (4 conditions \u00d7 4 temperatures \u00d7 40 genes) plus 117 open-weight model runs on dedicated GPU hardware \u2014 unguided LLM output produced 95.9% Type II hallucination (wrong-topic citations that exist as real papers but carry a correct claim context yet do not support the cited claim); the full VaaS protocol achieved 0.0% Type I and 6.5% Type II, a  > 14-fold reduction; live PMID verification alone (C3) eliminated both error types entirely (0.0%/0.0%); (2) an independent L3 citation audit of Wave 3 (179 PMIDs, 99.4% valid, 0 Type I errors); and (3) the MedHallu clinical hallucination benchmark, on which the VaaS protocol achieved F1 = 0.9853 on the hard tier (cases where all benchmark ensemble models were fooled), compared to the published GPT-4o baseline of F1 = 0.811 (Pandit et al., 2025)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 757,
+   "sample_unit": "runs",
+   "models_evaluated": [
+    "llama3.2",
+    "qwen2.5:14b",
+    "mistral:7b",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Type II citation hallucination rate under unguided conditions",
+     "effect": "Three independent open-weight models showed 81\u201387% Type II citation hallucination rates under unguided conditions, confirming wrong-topic citation hallucination is structural.",
+     "quote": "Three independent open-weight models (  llama3.2 ,  qwen2.5:14b ,  mistral:7b ) showed 81\u201387% Type II rates under unguided conditions, confirming that wrong-topic citation hallucination is structural and model-agnostic."
+    }
+   ],
+   "unlisted_practices": [
+    "Multi-layer automated citation verification pipeline (Validation as a System / live PMID verification)"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "benchmark runs (4 conditions x 4 temperatures x 40 genes)",
+ "sample_size": 757,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o published baseline",
+  "VaaS pipeline",
+  "llama3.2",
+  "mistral:7b",
+  "qwen2.5:14b"
+ ],
+ "links": [
+  {
+   "rec_id": "R487",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Citation hallucination (Type I fabricated, Type II wrong-topic) with and without live PMID verification",
+   "effect": "Unguided LLM output had 95.9% Type II hallucination; full VaaS protocol 0.0% Type I and 6.5% Type II; live PMID verification alone (C3) gave 0.0%/0.0%.",
+   "quote": "live PMID verification alone (C3) eliminated both error types entirely (0.0%/0.0%)",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Type II wrong-topic citation hallucination rates in unguided open-weight models",
+   "effect": "Three open-weight models showed 81\u201387% Type II rates under unguided conditions.",
+   "quote": "Three independent open-weight models (  llama3.2 ,  qwen2.5:14b ,  mistral:7b ) showed 81\u201387% Type II rates under unguided conditions, confirming that wrong-topic citation hallucination is structural and model-agnostic.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinical hallucination benchmark performance",
+   "effect": "VaaS F1 = 0.9853 on MedHallu hard tier versus published GPT-4o baseline F1 = 0.811.",
+   "quote": "We validated the pipeline using three complementary benchmarks: (1) VaaS-RIKER2, a 640-run prospective ablation study (4 conditions \u00d7 4 temperatures \u00d7 40 genes) plus 117 open-weight model runs on dedicated GPU hardware \u2014 unguided LLM output produced 95.9% Type II hallucination (wrong-topic citations that exist as real papers but carry a correct claim context yet do not support the cited claim); the full VaaS protocol achieved 0.0% Type I and 6.5% Type II, a  > 14-fold reduction; live PMID verification alone (C3) eliminated both error types entirely (0.0%/0.0%); (2) an independent L3 citation audit of Wave 3 (179 PMIDs, 99.4% valid, 0 Type I errors); and (3) the MedHallu clinical hallucination benchmark, on which the VaaS protocol achieved F1 = 0.9853 on the hard tier (cases where all benchmark ensemble models were fooled), compared to the published GPT-4o baseline of F1 = 0.811 (Pandit et al., 2025).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Multi-layer automated citation verification pipeline (Validation as a System / live PMID verification)",
+  "Multi-layer automated validation pipeline (Validation as a System) for citation integrity in LLM-generated scientific content"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1247114",
+ "screen": {
+  "id": "epmc:PPR1247114",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "live PMID citation verification and multi-layer output validation guardrails",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a multi-layer hallucination reduction and citation verification guardrail pipeline (VaaS) compared to unguided LLM outputs across biomedical rare-disease synthesis and clinical hallucination benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "multi-layer verification and live PMID citation validation pipeline"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1247114",
+   "empirical": 0.81,
+   "tests_practice": 0.7,
+   "real_deployment": 0.13
+  }
+ }
+}

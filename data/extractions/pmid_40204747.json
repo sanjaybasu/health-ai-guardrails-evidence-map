@@ -1,0 +1,234 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 30000,
+   "sample_unit": "simulated records (10,000 per noise level) based on 714 SMOTE-balanced Wisconsin Breast Cancer records",
+   "models_evaluated": [
+    "one-class support vector machine (RBF kernel, nu=0.01)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Share of simulated drifted records flagged as outliers versus inliers by OCSVM at three noise levels",
+     "effect": "Records misclassified as inliers: 27/10,000 (0.27%) at 5% noise, 486 (4.86%) at 10%, 851 (8.51%) at 30%. Most drifted records were flagged, but detection fell as overlap with training data grew.",
+     "quote": "At the lowest noise level (5%), the model classified 27 records as inliers (27 out of 10,000)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of unsupervised OCSVM monitor to detect simulated input population drift without ground-truth labels",
+     "effect": "Sensitivity to drift decreased as overlap increased: inliers 27 (5% noise), 486 (10%), 851 (30%) of 10,000 each. Proof of concept on simulated data only.",
+     "quote": "We hypothesised that increased noise would correlate with more OCSVM-detected inliers, indicating a sensitivity to population drift."
+    }
+   ],
+   "unlisted_practices": [
+    "Using a one-class SVM trained on the original training data as an unsupervised, label-free detector of population drift on individual patient records"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 30000,
+   "sample_unit": "simulated records",
+   "models_evaluated": [
+    "One-class support vector machine (OCSVM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "simulated population drift detection",
+     "effect": "Inliers among drifted records: 27/10,000 at 5% noise, 486/10,000 at 10%, and 851/10,000 at 30%.",
+     "quote": "As noise increased, more inliers were detected: 5% (27 inliers), 10% (486), and 30% (851)."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "out-of-distribution input detection",
+     "effect": "Inliers among simulated outlier records increased from 27 to 486 to 851 as noise rose from 5% to 10% to 30%.",
+     "quote": "As noise increased, more inliers were detected: 5% (27 inliers), 10% (486), and 30% (851)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 30000,
+   "sample_unit": "simulated records",
+   "models_evaluated": [
+    "One-class support vector machine (OCSVM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "OCSVM sensitivity to simulated population drift across noise levels",
+     "effect": "OCSVM classified 27 (0.27%), 486 (4.86%), and 851 (8.51%) of 10,000 simulated outlier records as inliers at 5%, 10%, and 30% noise levels, respectively",
+     "quote": "As noise increased, more inliers were detected: 5% (27 inliers), 10% (486), and 30% (851)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "simulated records",
+ "sample_size": 30000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "One-class support vector machine (OCSVM)",
+  "one-class support vector machine (RBF kernel, nu=0.01)"
+ ],
+ "links": [
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Share of simulated drifted records flagged as outliers versus inliers by OCSVM at three noise levels",
+   "effect": "Records misclassified as inliers: 27/10,000 (0.27%) at 5% noise, 486 (4.86%) at 10%, 851 (8.51%) at 30%. Most drifted records were flagged, but detection fell as overlap with training data grew.",
+   "quote": "At the lowest noise level (5%), the model classified 27 records as inliers (27 out of 10,000).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of unsupervised OCSVM monitor to detect simulated input population drift without ground-truth labels",
+   "effect": "Sensitivity to drift decreased as overlap increased: inliers 27 (5% noise), 486 (10%), 851 (30%) of 10,000 each. Proof of concept on simulated data only.",
+   "quote": "We hypothesised that increased noise would correlate with more OCSVM-detected inliers, indicating a sensitivity to population drift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Using a one-class SVM trained on the original training data as an unsupervised, label-free detector of population drift on individual patient records"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40204747",
+ "screen": {
+  "id": "pmid:40204747",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "drift monitoring with one-class SVM",
+  "user": "none",
+  "reason": "The study tests an explicit deployment safeguard (one-class SVM for population drift detection on deployed ML diagnostics) on simulated drifting health data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40204747",
+   "empirical": 0.76,
+   "tests_practice": 0.47,
+   "real_deployment": 0.03
+  }
+ }
+}

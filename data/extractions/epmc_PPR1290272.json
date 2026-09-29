@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Brazil",
+ "sample_size": 28,
+ "sample_unit": "models and model committees evaluated on the synthetic AnonyMed-BR dataset",
+ "models_evaluated": [
+  "gemma4:26b",
+  "28 open-weight LLMs and model committees (local, prompted)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Portuguese (Brazilian)"
+ ],
+ "links": [
+  {
+   "rec_id": "R330",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "PII removal recall and precision of local hybrid LLM de-identification pipeline on synthetic Brazilian Portuguese notes",
+   "effect": "End-to-end pipeline F2 0.9341, recall 0.9537, precision 0.8634; best single model gemma4:26b F2 0.9595. Residual missed PII remains (about 4.6% of PII not detected).",
+   "quote": "These findings demonstrate the technical feasibility and high recall of institutionally controlled, local de-identification without requiring task-specific model fine-tuning.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Detector cascade to interrupt repetitive-generation loops in LLM inference",
+  "Withholding recurrent boilerplate text from neural inference via n-gram detection",
+  "Offline local deployment of open-weight LLMs for data sovereignty"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1290272",
+ "screen": {
+  "id": "epmc:PPR1290272",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates an offline hybrid LLM pipeline for clinical de-identification with explicit safeguards (recurrent n-gram boilerplate filtering, regex, and a 4-detector cascade to interrupt repetitive generation loops) on synthetic and real clinical notes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local hybrid de-identification pipeline with loop detection guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1290272",
+   "empirical": 0.96,
+   "tests_practice": 0.54,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,305 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Belgium",
+   "sample_size": 50,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RSL Male Pelvic CT (v1.0.0) Deep Learning Segmentation",
+    "RSL-Prostate-3625-SBRT (v3.0.0) Deep Learning Planning"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of clinically relevant AI errors by comparing AI output with clinician-corrected output",
+     "effect": "Local Surface Dice 0.93\u00b10.11 vs Standard 0.98\u00b10.04 for anorectum (p=0.006); ADD 0.9\u00b10.8 Gy anorectum D1cm3; combined metrics detected clinically relevant changes",
+     "quote": "Combining dose-volume and geometrical metrics allowed detection of clinically relevant changes, applied to both auto-segmentation and auto-planning output and the Local Surface Dice was more sensitive to local changes compared to the Standard Surface Dice."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between vendor training data and local deployment population volumes",
+     "effect": "PTV 154\u00b145 vs 120\u00b150 cm3, bladder 141\u00b151 vs 226\u00b1136 cm3, rectum 58\u00b118 vs 76\u00b129 cm3 (all p<0.001), training vs local",
+     "quote": "The geometrical analysis showed significant volume differences between the training and the local dataset for respectively PTV ((154 \u00b1 45)cm 3 ; (120 \u00b1 50)cm 3 with p < 0.001), bladder ((141 \u00b1 51)cm 3 ; (226 \u00b1 136)cm 3 with p < 0.001) and rectum ((58 \u00b1 18)cm 3 ; (76 \u00b1 29)cm 3 with p < 0.001)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinical goal fulfillment of AI plans vs clinician-reviewed/optimized plans",
+     "effect": "AI plans met all mandatory goals in 90% vs 100% after clinician review; optimal goals 32% vs 74%",
+     "quote": "Clinical goal evaluation revealed that P DL did fulfill all mandatory clinical goals ( Table 1 ) in 90 % of the cases, while all where fulfilled in P clin ."
+    }
+   ],
+   "unlisted_practices": [
+    "Use of monitoring metrics to select out-of-distribution cases as candidates for active learning/model retraining"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Belgium",
+   "sample_size": 50,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RSL Male Pelvic CT (v1.0.0)",
+    "RSL-Prostate-3625-SBRT (v3.0.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinical goal fulfillment before and after clinician review and plan optimization",
+     "effect": "Mandatory clinical goals were fulfilled in 90 % of AI plans and all clinically approved plans; optimal constraints in 32 % and 74 %, respectively.",
+     "quote": "Clinical goal evaluation revealed that P DL did fulfill all mandatory clinical goals ( Table 1 ) in 90 % of the cases, while all where fulfilled in P clin ."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity of monitoring metrics to clinically relevant segmentation corrections",
+     "effect": "Local versus Standard Surface Dice: anorectum (0.93 \u00b1 0.11) versus (0.98 \u00b1 0.04), p = 0.006; bladder (0.97 \u00b1 0.06) versus (0.98 \u00b1 0.04), p = 0.3.",
+     "quote": "The Standard Surface Dice 3 mm and the Local Surface Dice 3 mm reported values of (0.98 \u00b1 0.04) and (0.93 \u00b1 0.11) (p = 0.006) respectively for the anorectum, and (0.98 \u00b1 0.04) and (0.97 \u00b1 0.06) (p = 0.3) for bladder."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of out-of-distribution planning inputs using volume and clinical-goal analysis",
+     "effect": "Training versus local volumes: PTV (154 \u00b1 45)cm 3 versus (120 \u00b1 50)cm 3; bladder (141 \u00b1 51)cm 3 versus (226 \u00b1 136)cm 3; both p < 0.001.",
+     "quote": "The geometrical analysis showed significant volume differences between the training and the local dataset for respectively PTV ((154 \u00b1 45)cm 3 ; (120 \u00b1 50)cm 3 with p < 0.001), bladder ((141 \u00b1 51)cm 3 ; (226 \u00b1 136)cm 3 with p < 0.001) and rectum ((58 \u00b1 18)cm 3 ; (76 \u00b1 29)cm 3 with p < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Belgium",
+   "sample_size": 50,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RaySearch Deep Learning Segmentation (DLS)",
+    "RaySearch Deep Learning Planning (DLP)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "volume differences between training and local data",
+     "effect": "Significant volume differences were observed between the training dataset and the local dataset for the PTV, bladder, and rectum.",
+     "quote": "The geometrical analysis showed significant volume differences between the training and the local dataset for respectively PTV ((154 \u00b1 45)cm3; (120 \u00b1 50)cm3 with p < 0.001), bladder ((141 \u00b1 51)cm3; (226 \u00b1 136)cm3 with p < 0.001) and rectum ((58 \u00b1 18)cm3; (76 \u00b1 29)cm3 with p < 0.001)."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of clinically relevant AI performance changes",
+     "effect": "Comparing AI outputs against clinically approved structures using combined dose-volume and geometrical metrics successfully detected clinically relevant changes for monitoring.",
+     "quote": "Combining dose-volume and geometrical metrics allowed detection of clinically relevant changes, applied to both auto-segmentation and auto-planning output and the Local Surface Dice was more sensitive to local changes compared to the Standard Surface Dice."
+    }
+   ],
+   "unlisted_practices": [
+    "Using combined geometrical and dose-volume metrics for continuous performance monitoring of auto-segmentation and auto-planning models"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Belgium",
+ "sample_unit": "patients",
+ "sample_size": 50,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "RSL Male Pelvic CT (v1.0.0)",
+  "RSL Male Pelvic CT (v1.0.0) Deep Learning Segmentation",
+  "RSL-Prostate-3625-SBRT (v3.0.0)",
+  "RSL-Prostate-3625-SBRT (v3.0.0) Deep Learning Planning",
+  "RaySearch Deep Learning Planning (DLP)",
+  "RaySearch Deep Learning Segmentation (DLS)"
+ ],
+ "links": [
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of clinically relevant AI errors by comparing AI output with clinician-corrected output",
+   "effect": "Local Surface Dice 0.93\u00b10.11 vs Standard 0.98\u00b10.04 for anorectum (p=0.006); ADD 0.9\u00b10.8 Gy anorectum D1cm3; combined metrics detected clinically relevant changes",
+   "quote": "Combining dose-volume and geometrical metrics allowed detection of clinically relevant changes, applied to both auto-segmentation and auto-planning output and the Local Surface Dice was more sensitive to local changes compared to the Standard Surface Dice.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences between vendor training data and local deployment population volumes",
+   "effect": "PTV 154\u00b145 vs 120\u00b150 cm3, bladder 141\u00b151 vs 226\u00b1136 cm3, rectum 58\u00b118 vs 76\u00b129 cm3 (all p<0.001), training vs local",
+   "quote": "The geometrical analysis showed significant volume differences between the training and the local dataset for respectively PTV ((154 \u00b1 45)cm 3 ; (120 \u00b1 50)cm 3 with p < 0.001), bladder ((141 \u00b1 51)cm 3 ; (226 \u00b1 136)cm 3 with p < 0.001) and rectum ((58 \u00b1 18)cm 3 ; (76 \u00b1 29)cm 3 with p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinical goal fulfillment before and after clinician review and plan optimization",
+   "effect": "Mandatory clinical goals were fulfilled in 90 % of AI plans and all clinically approved plans; optimal constraints in 32 % and 74 %, respectively.",
+   "quote": "Clinical goal evaluation revealed that P DL did fulfill all mandatory clinical goals ( Table 1 ) in 90 % of the cases, while all where fulfilled in P clin .",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of out-of-distribution planning inputs using volume and clinical-goal analysis",
+   "effect": "Training versus local volumes: PTV (154 \u00b1 45)cm 3 versus (120 \u00b1 50)cm 3; bladder (141 \u00b1 51)cm 3 versus (226 \u00b1 136)cm 3; both p < 0.001.",
+   "quote": "The geometrical analysis showed significant volume differences between the training and the local dataset for respectively PTV ((154 \u00b1 45)cm 3 ; (120 \u00b1 50)cm 3 with p < 0.001), bladder ((141 \u00b1 51)cm 3 ; (226 \u00b1 136)cm 3 with p < 0.001) and rectum ((58 \u00b1 18)cm 3 ; (76 \u00b1 29)cm 3 with p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Use of monitoring metrics to select out-of-distribution cases as candidates for active learning/model retraining",
+  "Using combined geometrical and dose-volume metrics for continuous performance monitoring of auto-segmentation and auto-planning models"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37809056",
+ "screen": {
+  "id": "pmid:37809056",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "performance monitoring with geometric and dose-volume metrics",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests a post-deployment quality assurance/performance monitoring method (using combined geometrical and dose-volume metrics) to detect clinically relevant AI failures and identify candidates for model retraining.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "performance and drift monitoring for model retraining"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37809056",
+   "empirical": 0.96,
+   "tests_practice": 0.23,
+   "real_deployment": 0.37
+  }
+ }
+}

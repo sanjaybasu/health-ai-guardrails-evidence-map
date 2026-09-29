@@ -1,0 +1,369 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2100,
+   "sample_unit": "domain-level RCT risk-of-bias assessments (300 per domain across 7 domains; 60 per domain in human-AI collaboration round)",
+   "models_evaluated": [
+    "DeepSeek V3",
+    "Qwen-plus"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reviewer accuracy and intervention rate across human-AI collaboration modes for risk-of-bias assessment",
+     "effect": "Accuracy under M2 and M3 ranged from 0.633 to 0.900; M2 achieved highest accuracy in most tasks; M3 markedly reduced intervention rates; LLM alone accuracy 0.403 to 0.777.",
+     "quote": "Accuracy under M2 and M3 ranged from 0.633 to 0.900."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human reviewer accuracy when shown model reasoning and disagreement cues versus evidence only",
+     "effect": "M1 (evidence only) was never on the Pareto frontier; M2 (reasoning shown) had higher accuracy in five tasks, e.g., SB-IRSG 0.900 vs 0.817; M3 disagreement trigger cut intervention.",
+     "quote": "M2 demonstrated higher accuracy in five tasks, while M3 showed a clear advantage in reducing intervention rates."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI performance as used by human reviewers versus standalone model accuracy",
+     "effect": "Standalone LLM accuracy ranged 0.403-0.777, while human-AI collaboration under M2/M3 reached 0.633-0.900 and improved consistency of human judgments.",
+     "quote": "LLMs (like DeepSeek V3 and Qwen-plus) cannot yet replace human RoB assessment but well-designed Human-AI collaboration can improve accuracy and reduce manual workload."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Comparison of two candidate LLMs on risk-of-bias classification accuracy",
+     "effect": "DeepSeek V3 outperformed Qwen-plus in four of seven domains (PB, AB, RB, OB); Qwen-plus slightly better in SB-IRSG, SB-IAC, DB.",
+     "quote": "The results shown in Fig. 3 indicate that DeepSeek V3 outperforms Qwen-plus in the tasks of PB, AB, RB, and OB, whereas Qwen-plus performs slightly better in the tasks of SB-IRSG, SB-IAC, and DB."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Deferral to humans triggered by low confidence or model disagreement; accuracy and intervention rate",
+     "effect": "Predictions with confidence >0.8 were 16.78% to 29.23% more accurate than those \u22640.8; M3 reduced intervention (e.g., DB -40%) with accuracy roughly maintained in structured tasks.",
+     "quote": "Across the six domains (DB, SB-IRSG, PB, RB, OB, AB), model predictions with confidence scores above 0.8 consistently showed substantially higher accuracy than those with scores \u2264 0.8, with performance gaps ranging from 16.78% to 29.23% (Appendix 5)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-rater agreement validating ground-truth reference labels",
+     "effect": "Senior reviewer independently reassessed 60 RCTs per domain; Cohen's Kappa ranged from 0.724 to 0.942 across seven domains.",
+     "quote": "The Cohen\u2019s Kappa values ranged from 0.724 to 0.942 across all seven domains (Appendix 1), supporting its use as a high-fidelity reference standard for subsequent evaluation."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-model disagreement-triggered human review to reduce reviewer workload",
+    "Confidence-threshold-based routing (0.8) of LLM outputs to human review in evidence synthesis"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2100,
+   "sample_unit": "domain-level RoB samples; human-AI subset 420",
+   "models_evaluated": [
+    "DeepSeek V3",
+    "Qwen-plus"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ground-truth reference agreement",
+     "effect": "Senior reviewer reassessment Cohen\u2019s Kappa values ranged from 0.724 to 0.942 across seven domains.",
+     "quote": "The Cohen\u2019s Kappa values ranged from 0.724 to 0.942 across all seven domains (Appendix 1), supporting its use as a high-fidelity reference standard for subsequent evaluation."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate LLM accuracy by domain",
+     "effect": "DeepSeek V3 was higher in PB, AB, RB, OB; Qwen-plus was slightly higher in SB-IRSG, SB-IAC, DB.",
+     "quote": "The results shown in Fig. 3 indicate that DeepSeek V3 outperforms Qwen-plus in the tasks of PB, AB, RB, and OB, whereas Qwen-plus performs slightly better in the tasks of SB-IRSG, SB-IAC, and DB."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI versus standalone performance",
+     "effect": "Standalone accuracy ranged 0.403 to 0.777; human-AI M2/M3 accuracy ranged 0.633 to 0.900.",
+     "quote": "However, when integrated into a well-designed Human-AI collaboration framework, they can significantly improve both accuracy and efficiency, demonstrating strong application potential."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Collaboration mode accuracy and intervention",
+     "effect": "M2 was highest in five tasks (Acc 0.675 to 0.900); M3 intervention was 0.083 to 0.467 across tasks.",
+     "quote": "M2 demonstrated higher accuracy in five tasks, while M3 showed a clear advantage in reducing intervention rates."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Human deferral tradeoff",
+     "effect": "M3 versus M2: DB accuracy + 0.008 and intervention -0.400; AB intervention + 0.034 with no accuracy gain; RB accuracy + 0.042 and intervention + 0.333.",
+     "quote": "In RB, although M3 significantly improves accuracy (+ 4.2%), it also leads to a substantial rise in human intervention (+ 33.3%), highlighting the current limitations of models in handling complex outcome chains and contextual integration."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Standalone LLM classification accuracy",
+     "effect": "Standalone model accuracy ranged from 0.403 to 0.777 across domains.",
+     "quote": "Model accuracy ranged from 0.403 to 0.777 across domains."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2100,
+   "sample_unit": "domain-level samples",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "Qwen-plus"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy and intervention rate across confidence and disagreement deferral modes",
+     "effect": "predictions with confidence >0.8 showed 16.78% to 29.23% higher accuracy than <=0.8 across six domains; disagreement trigger reduced intervention (0.083 to 0.467) with 0.650 to 0.842 accuracy",
+     "quote": "Across the six domains (DB, SB-IRSG, PB, RB, OB, AB), model predictions with confidence scores above 0.8 consistently showed substantially higher accuracy than those with scores \u2264 0.8, with performance gaps ranging from 16.78% to 29.23% (Appendix 5)."
+    }
+   ],
+   "unlisted_practices": [
+    "Disagreement Trigger Mode (triggering human review when two distinct LLMs produce conflicting risk-of-bias classifications)",
+    "Reasoning Support Mode (combining LLM-extracted evidence with model reasoning explanations to assist human evaluators)"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "domain-level RCT risk-of-bias assessments (300 per domain across 7 domains; 60 per domain in human-AI collaboration round)",
+ "sample_size": 2100,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "DeepSeek V3",
+  "DeepSeek-V3",
+  "Qwen-plus"
+ ],
+ "links": [
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human reviewer accuracy when shown model reasoning and disagreement cues versus evidence only",
+   "effect": "M1 (evidence only) was never on the Pareto frontier; M2 (reasoning shown) had higher accuracy in five tasks, e.g., SB-IRSG 0.900 vs 0.817; M3 disagreement trigger cut intervention.",
+   "quote": "M2 demonstrated higher accuracy in five tasks, while M3 showed a clear advantage in reducing intervention rates.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance as used by human reviewers versus standalone model accuracy",
+   "effect": "Standalone LLM accuracy ranged 0.403-0.777, while human-AI collaboration under M2/M3 reached 0.633-0.900 and improved consistency of human judgments.",
+   "quote": "LLMs (like DeepSeek V3 and Qwen-plus) cannot yet replace human RoB assessment but well-designed Human-AI collaboration can improve accuracy and reduce manual workload.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Comparison of two candidate LLMs on risk-of-bias classification accuracy",
+   "effect": "DeepSeek V3 outperformed Qwen-plus in four of seven domains (PB, AB, RB, OB); Qwen-plus slightly better in SB-IRSG, SB-IAC, DB.",
+   "quote": "The results shown in Fig. 3 indicate that DeepSeek V3 outperforms Qwen-plus in the tasks of PB, AB, RB, and OB, whereas Qwen-plus performs slightly better in the tasks of SB-IRSG, SB-IAC, and DB.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Deferral to humans triggered by low confidence or model disagreement; accuracy and intervention rate",
+   "effect": "Predictions with confidence >0.8 were 16.78% to 29.23% more accurate than those \u22640.8; M3 reduced intervention (e.g., DB -40%) with accuracy roughly maintained in structured tasks.",
+   "quote": "Across the six domains (DB, SB-IRSG, PB, RB, OB, AB), model predictions with confidence scores above 0.8 consistently showed substantially higher accuracy than those with scores \u2264 0.8, with performance gaps ranging from 16.78% to 29.23% (Appendix 5).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-rater agreement validating ground-truth reference labels",
+   "effect": "Senior reviewer independently reassessed 60 RCTs per domain; Cohen's Kappa ranged from 0.724 to 0.942 across seven domains.",
+   "quote": "The Cohen\u2019s Kappa values ranged from 0.724 to 0.942 across all seven domains (Appendix 1), supporting its use as a high-fidelity reference standard for subsequent evaluation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Standalone LLM classification accuracy",
+   "effect": "Standalone model accuracy ranged from 0.403 to 0.777 across domains.",
+   "quote": "Model accuracy ranged from 0.403 to 0.777 across domains.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Confidence-threshold-based routing (0.8) of LLM outputs to human review in evidence synthesis",
+  "Disagreement Trigger Mode (triggering human review when two distinct LLMs produce conflicting risk-of-bias classifications)",
+  "Reasoning Support Mode (combining LLM-extracted evidence with model reasoning explanations to assist human evaluators)",
+  "Two-model disagreement-triggered human review to reduce reviewer workload"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41559613",
+ "screen": {
+  "id": "pmid:41559613",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-AI collaboration modes and disagreement-triggered human review",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests different Human-AI collaboration workflows (evidence extraction vs. reasoning support vs. disagreement-triggered human intervention) for risk of bias assessment in clinical evidence synthesis.",
+  "jev": {
+   "id": "pmid:41559613",
+   "empirical": 0.94,
+   "tests_practice": 0.86,
+   "real_deployment": 0.04
+  }
+ }
+}

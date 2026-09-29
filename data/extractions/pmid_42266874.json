@@ -1,0 +1,398 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 30,
+   "sample_unit": "clinical scenario questions (plus 103 multiple-choice questions; 7 questions in prompt phase)",
+   "models_evaluated": [
+    "GPT-5",
+    "GPT-4o",
+    "GPT-o3",
+    "Deepseek-V2.5",
+    "Grok-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output stability (score variance) across three repeated generations for each model",
+     "effect": "GPT-4o had lowest variance; Deepseek-V2.5 highest and most unstable. GPT-4o variance significantly lower than others in accuracy, completeness, safety, practicality (corrected p<0.005).",
+     "quote": "Among all five models, GPT-4o exhibited the lowest overall variance, indicating the most consistent output. Deepseek-V2.5 exhibited the highest variance, reflecting the most unstable performance."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Gap between exam-style MCQ accuracy and clinical scenario response quality/safety",
+     "effect": "All models exceeded 90% MCQ accuracy, but clinical scenarios yielded low-scoring responses (Deepseek-V2.5 n=51) with hallucinations and omitted safety warnings.",
+     "quote": "These discrepancies highlight a critical gap between knowledge possession and clinically reliable knowledge application, with direct implications for safe deployment."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinical knowledge errors, omissions, and missing safety warnings in guideline-based LBP responses",
+     "effect": "Deepseek-V2.5 low-scoring responses: lack of safety warnings 16% (8/51), factual errors/hallucinations 12% (6/51); GPT-o3 harmful recommendations 7% (1/14).",
+     "quote": "The most prominent causes of errors included: lack of safety warnings (Category 14: 16%, 8/51), factual errors/hallucinations (Category 1: 12%, 6/51), and incomplete or excessive content (Category 6: 10%, 5/51)."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reading difficulty and jargon in LLM outputs",
+     "effect": "Excessive jargon was a near-universal error (e.g., GPT-5 23%, GPT-4o 20%); Deepseek-V2.5 highest reading difficulty score (16.871); outputs at secondary-school level.",
+     "quote": "A near-universal pattern was the overuse of technical terminology, likely reflecting training biases toward guideline texts and specialist corpora during training."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Safety and completeness scores before vs after targeted safety prompt",
+     "effect": "Deepseek-V2.5 safety improved 3.33 to 4.24 (B=0.91) and completeness 2.91 to 3.76 (B=0.86), p<0.001; GPT-4o safety gain non-significant (B=0.19, p=0.227).",
+     "quote": "Linear mixed model estimates of marginal means ( Figure 5 and Table 4 ) showed that the corrected prompt significantly improved Deepseek-V2.5 across all five dimensions ( p < 0.001), with the largest gains in Safety ( B = 0.91, from 3.33 to 4.24) and Completeness ( B = 0.86, from 2.91 to 3.76)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of prompt requiring accurate disclosure of uncertainty and safety precautions on response quality",
+     "effect": "Prompt requiring safety verification, evidence-based statements and uncertainty disclosure significantly improved Deepseek-V2.5 on all five dimensions (p<0.001) and GPT-4o on four.",
+     "quote": "Combined with moderate-to-large Hedges' g effect sizes, these findings provide preliminary evidence of the value of targeted prompt engineering, particularly for lower-performing models."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Comparative performance of five LLMs on LBP tasks",
+     "effect": "Composite scores all >4.3; GPT-4o highest (4.593), Deepseek-V2.5 lowest (4.465); significant Deepseek deficits in accuracy, practicality, readability but not safety.",
+     "quote": "As summarized in Table 2 , Deepseek-V2.5 scored the lowest on most dimensions."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured safety-oriented prompt engineering to reduce omissions and hallucinations in LLM clinical answers",
+    "Model selection by use-case risk (e.g., prioritizing more stable models for patient education or red-flag screening)"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 133,
+   "sample_unit": "questions (103 multiple-choice and 30 clinical scenario questions; 7 used in prompt intervention)",
+   "models_evaluated": [
+    "GPT-5",
+    "GPT-4o",
+    "GPT-o3",
+    "Deepseek-V2.5",
+    "Grok-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Exam scores versus clinical competence",
+     "effect": "All models exceeded 90% multiple-choice accuracy, yet clinical-scenario performance varied across guideline adherence, completeness, practicality, safety, and readability.",
+     "quote": "Overall, although all models demonstrated strong foundational medical knowledge with overall multiple-choice question accuracy exceeding 90%, substantial variability emerged in guideline adherence, output completeness, practicality, safety, and readability when applied to realistic clinical scenarios."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Repeated-generation output stability",
+     "effect": "GPT-4o had lowest overall variance; Deepseek-V2.5 highest. Stability scores included GPT-4o accuracy 2.640* and safety 2.610*, Deepseek-V2.5 accuracy 3.330*.",
+     "quote": "Deepseek-V2.5 exhibited the highest variance, reflecting the most unstable performance."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinated, incomplete, unsafe responses",
+     "effect": "Deepseek-V2.5 low-scoring responses: safety-warning omissions 16% (8/51), factual errors/hallucinations 12% (6/51), incomplete/excessive content 10% (5/51).",
+     "quote": "The most prominent causes of errors included: lack of safety warnings (Category 14: 16%, 8/51), factual errors/hallucinations (Category 1: 12%, 6/51), and incomplete or excessive content (Category 6: 10%, 5/51)."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Readability of generated guidance",
+     "effect": "Deepseek-V2.5 highest reading difficulty score 16.871; Grok-4 15.827; recommended reading age highest for Grok-4 14.933, then Deepseek-V2.5 14.422.",
+     "quote": "Deepseek-V2.5 received the highest reading difficulty score (16.871), indicating that its outputs require a higher level of text comprehension."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Safety-oriented prompt correction",
+     "effect": "Deepseek-V2.5 improved all five dimensions (p<0.001), largest in Safety B=0.91 (3.33 to 4.24) and Completeness B=0.86 (2.91 to 3.76).",
+     "quote": "Linear mixed model estimates of marginal means ( Figure 5 and Table 4 ) showed that the corrected prompt significantly improved Deepseek-V2.5 across all five dimensions ( p < 0.001), with the largest gains in Safety ( B = 0.91, from 3.33 to 4.24) and Completeness ( B = 0.86, from 2.91 to 3.76)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 133,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "GPT-5",
+    "GPT-4o",
+    "GPT-o3",
+    "Deepseek-V2.5",
+    "Grok-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "gap between exam knowledge and clinical scenario guidance",
+     "effect": "All 5 models scored >90% on licensing exam MCQs (90.29%-93.85%), but in clinical scenarios, lower-performing models produced safety-critical errors including factual hallucinations (12% of low scores) and omissions of safety warnings (16%).",
+     "quote": "Overall, although all models demonstrated strong foundational medical knowledge with overall multiple-choice question accuracy exceeding 90%, substantial variability emerged in guideline adherence, output completeness, practicality, safety, and readability when applied to realistic clinical scenarios."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinical response quality across five evaluation dimensions",
+     "effect": "Targeted safety prompts significantly improved Deepseek-V2.5 across all 5 dimensions (p < 0.001; Safety B = 0.91, Completeness B = 0.86) and GPT-4o across 4 dimensions (Accuracy B = 0.76, Completeness B = 0.71, Practicality B = 0.48, Readability B = 0.38; Safety p = 0.227).",
+     "quote": "Linear mixed model estimates of marginal means ( Figure 5 and Table 4 ) showed that the corrected prompt significantly improved Deepseek-V2.5 across all five dimensions ( p < 0.001), with the largest gains in Safety ( B = 0.91, from 3.33 to 4.24) and Completeness ( B = 0.86, from 2.91 to 3.76)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "clinical scenario questions (plus 103 multiple-choice questions; 7 questions in prompt phase)",
+ "sample_size": 133,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "Deepseek-V2.5",
+  "GPT-4o",
+  "GPT-5",
+  "GPT-o3",
+  "Grok-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Output stability (score variance) across three repeated generations for each model",
+   "effect": "GPT-4o had lowest variance; Deepseek-V2.5 highest and most unstable. GPT-4o variance significantly lower than others in accuracy, completeness, safety, practicality (corrected p<0.005).",
+   "quote": "Among all five models, GPT-4o exhibited the lowest overall variance, indicating the most consistent output. Deepseek-V2.5 exhibited the highest variance, reflecting the most unstable performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Gap between exam-style MCQ accuracy and clinical scenario response quality/safety",
+   "effect": "All models exceeded 90% MCQ accuracy, but clinical scenarios yielded low-scoring responses (Deepseek-V2.5 n=51) with hallucinations and omitted safety warnings.",
+   "quote": "These discrepancies highlight a critical gap between knowledge possession and clinically reliable knowledge application, with direct implications for safe deployment.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reading difficulty and jargon in LLM outputs",
+   "effect": "Excessive jargon was a near-universal error (e.g., GPT-5 23%, GPT-4o 20%); Deepseek-V2.5 highest reading difficulty score (16.871); outputs at secondary-school level.",
+   "quote": "A near-universal pattern was the overuse of technical terminology, likely reflecting training biases toward guideline texts and specialist corpora during training.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Safety-oriented prompt correction",
+   "effect": "Deepseek-V2.5 improved all five dimensions (p<0.001), largest in Safety B=0.91 (3.33 to 4.24) and Completeness B=0.86 (2.91 to 3.76).",
+   "quote": "Linear mixed model estimates of marginal means ( Figure 5 and Table 4 ) showed that the corrected prompt significantly improved Deepseek-V2.5 across all five dimensions ( p < 0.001), with the largest gains in Safety ( B = 0.91, from 3.33 to 4.24) and Completeness ( B = 0.86, from 2.91 to 3.76).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Clinical knowledge errors, omissions, and missing safety warnings in guideline-based LBP responses",
+   "effect": "Deepseek-V2.5 low-scoring responses: lack of safety warnings 16% (8/51), factual errors/hallucinations 12% (6/51); GPT-o3 harmful recommendations 7% (1/14).",
+   "quote": "The most prominent causes of errors included: lack of safety warnings (Category 14: 16%, 8/51), factual errors/hallucinations (Category 1: 12%, 6/51), and incomplete or excessive content (Category 6: 10%, 5/51).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Model selection by use-case risk (e.g., prioritizing more stable models for patient education or red-flag screening)",
+  "Structured safety-oriented prompt engineering to reduce omissions and hallucinations in LLM clinical answers"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42266874",
+ "screen": {
+  "id": "pmid:42266874",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "targeted safety-oriented prompt engineering",
+  "user": "clinician_or_staff",
+  "reason": "The study directly tests whether targeted safety-oriented prompt engineering remediation (a prompt guardrail practice) improves the safety and completeness of LLM outputs compared to baseline responses on clinical vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "safety-oriented prompt engineering guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42266874",
+   "empirical": 0.96,
+   "tests_practice": 0.65,
+   "real_deployment": 0.02
+  }
+ }
+}

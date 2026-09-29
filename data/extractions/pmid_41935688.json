@@ -1,0 +1,371 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 880799,
+   "sample_unit": "deliveries (births): 183,836 in South Carolina and 696,963 in Florida",
+   "models_evaluated": [
+    "NYC postpartum hospital use LASSO logistic regression model (21 predictors)",
+    "Updated models (recalibrated intercept; re-estimated coefficients; plus driving distance and rurality)"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration of NYC-developed model applied to SC and FL populations",
+     "effect": "Original NYC coefficients gave overestimated, extreme risk in new states; calibration slope 0.64 in SC and 0.63 in FL, while AUC stayed 0.68-0.69.",
+     "quote": "Calibration slope was 0.64 in SC and 0.63 in FL, suggesting that predicted risks were more extreme compared to observed risk."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration and AUC after local intercept recalibration and coefficient re-estimation",
+     "effect": "Intercept update corrected calibration; re-estimating coefficients raised AUC to 0.69 (SC) and 0.70 (FL), with slight gains in subgroups.",
+     "quote": "Model updating improved calibration in both states ( Figure ), with substantial improvement after adjusting model intercepts"
+    },
+    {
+     "rec_id": "R546",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance when extended to new geographic populations, before and after updating",
+     "effect": "NYC model overestimated risk in SC/FL but modest updating yielded well-calibrated models with AUC 0.69-0.70.",
+     "quote": "Modest model updating, including recalibration of intercepts and re-estimation of coefficients, yielded well-calibrated models without requiring new predictors."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance across sites (states) of prediction model",
+     "effect": "Discrimination was similar across SC (AUC 0.68) and FL (0.69) versus NYC 0.69, but calibration was poor in both states.",
+     "quote": "The model achieved an AUC of 0.68 (95% CI 0.67 \u20130.68) and 0.69 (95% CI 0.68\u20130.69) in discriminating PHU among SC and FL births, respectively ( Table 3 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model discrimination across racial/ethnic, Medicaid, and rural subgroups",
+     "effect": "AUC was lower in Black (0.63-0.65), Medicaid (0.64-0.67), and rural (0.65-0.66) groups than overall (0.68-0.69) with the original model.",
+     "quote": "AUC decreased when models were run separately among Black, Hispanic, Medicaid-insured, and rural residents."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of the model in external, later-period, multi-state data versus development",
+     "effect": "External validation showed similar AUC but overestimated absolute risk, so calibration was poor.",
+     "quote": "However, calibration was poor and indicated systematic overprediction of PHU risk."
+    }
+   ],
+   "unlisted_practices": [
+    "Testing whether adding hospital access indicators (driving distance, rurality) improves prediction; no meaningful change in calibration or discrimination"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 880799,
+   "sample_unit": "deliveries",
+   "models_evaluated": [
+    "NYC postpartum hospital use prediction model",
+    "Updated Model 1: re-estimated intercept with NYC predictor coefficients",
+    "Updated Model 2: re-estimated intercept and re-estimated predictor coefficients",
+    "Updated Model 3: Model 2 plus driving distance to delivery hospital and rurality"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External validation performance",
+     "effect": "Original NYC model AUC 0.68 in SC and 0.69 in FL, but overestimated and extreme risks.",
+     "quote": "Applying the original NYC model coefficients achieved an AUC of 0.68 (95% CI 0.67-0.68) and 0.69 (95% CI 0.68-0.69) among SC and FL births, respectively, but generated overestimated and extreme risk predictions compared with observed risk."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local historical validation",
+     "effect": "Calibration slope was 0.64 in SC and 0.63 in FL, indicating overly extreme predicted risks.",
+     "quote": "Calibration slope was 0.64 in SC and 0.63 in FL, suggesting that predicted risks were more extreme compared to observed risk."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model updating performance",
+     "effect": "Intercept updating corrected calibration; coefficient re-estimation AUC was 0.69 in SC and 0.70 in FL.",
+     "quote": "Updating model intercepts corrected calibration, and additionally re-estimating coefficients resulted in an AUC of 0.69 (95% CI 0.68-0.69) in SC and 0.70 (95% CI 0.70-0.71) in FL."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup discrimination",
+     "effect": "Original AUC lower in subgroups: SC Black 0.63, Hispanic 0.65, Medicaid 0.64, rural 0.65; FL 0.65/0.68/0.67/0.66.",
+     "quote": "AUC decreased when models were run separately among Black, Hispanic, Medicaid-insured, and rural residents."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding driving distance to the delivery hospital and residential rurality as new predictors"
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 880799,
+   "sample_unit": "deliveries",
+   "models_evaluated": [
+    "NYC PHU prediction model"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model calibration and discrimination after local updating",
+     "effect": "updating intercepts corrected calibration; re-estimating coefficients increased AUC to 0.69 (95% CI 0.68-0.69) in SC and 0.70 (95% CI 0.70-0.71) in FL",
+     "quote": "Updating model intercepts corrected calibration, and additionally re-estimating coefficients resulted in an AUC of 0.69 (95% CI 0.68-0.69) in SC and 0.70 (95% CI 0.70-0.71) in FL."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup discrimination across racial, payer, and rural groups",
+     "effect": "AUC was lower for Black (0.63 SC, 0.65 FL), Medicaid (0.64 SC, 0.67 FL), and rural (0.65 SC, 0.66 FL) individuals compared to overall (0.68 SC, 0.69 FL)",
+     "quote": "Model discrimination was slightly lower when subset to Black, Medicaid-insured, and rural residents, but AUC increased within each group after re-estimating predictor coefficients."
+    }
+   ],
+   "unlisted_practices": [
+    "incorporating geographic access variables such as driving distance to delivery hospital and residential rurality into predictive risk models"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "deliveries",
+ "sample_size": 880799,
+ "population": {
+  "medicaid": true,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "NYC PHU prediction model",
+  "NYC postpartum hospital use LASSO logistic regression model (21 predictors)",
+  "NYC postpartum hospital use prediction model",
+  "Updated Model 1: re-estimated intercept with NYC predictor coefficients",
+  "Updated Model 2: re-estimated intercept and re-estimated predictor coefficients",
+  "Updated Model 3: Model 2 plus driving distance to delivery hospital and rurality",
+  "Updated models (recalibrated intercept; re-estimated coefficients; plus driving distance and rurality)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration and AUC after local intercept recalibration and coefficient re-estimation",
+   "effect": "Intercept update corrected calibration; re-estimating coefficients raised AUC to 0.69 (SC) and 0.70 (FL), with slight gains in subgroups.",
+   "quote": "Model updating improved calibration in both states ( Figure ), with substantial improvement after adjusting model intercepts",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model discrimination across racial/ethnic, Medicaid, and rural subgroups",
+   "effect": "AUC was lower in Black (0.63-0.65), Medicaid (0.64-0.67), and rural (0.65-0.66) groups than overall (0.68-0.69) with the original model.",
+   "quote": "AUC decreased when models were run separately among Black, Hispanic, Medicaid-insured, and rural residents.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of the model in external, later-period, multi-state data versus development",
+   "effect": "External validation showed similar AUC but overestimated absolute risk, so calibration was poor.",
+   "quote": "However, calibration was poor and indicated systematic overprediction of PHU risk.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of NYC-developed model applied to SC and FL populations",
+   "effect": "Original NYC coefficients gave overestimated, extreme risk in new states; calibration slope 0.64 in SC and 0.63 in FL, while AUC stayed 0.68-0.69.",
+   "quote": "Calibration slope was 0.64 in SC and 0.63 in FL, suggesting that predicted risks were more extreme compared to observed risk.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when extended to new geographic populations, before and after updating",
+   "effect": "NYC model overestimated risk in SC/FL but modest updating yielded well-calibrated models with AUC 0.69-0.70.",
+   "quote": "Modest model updating, including recalibration of intercepts and re-estimation of coefficients, yielded well-calibrated models without requiring new predictors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance across sites (states) of prediction model",
+   "effect": "Discrimination was similar across SC (AUC 0.68) and FL (0.69) versus NYC 0.69, but calibration was poor in both states.",
+   "quote": "The model achieved an AUC of 0.68 (95% CI 0.67 \u20130.68) and 0.69 (95% CI 0.68\u20130.69) in discriminating PHU among SC and FL births, respectively ( Table 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local historical validation",
+   "effect": "Calibration slope was 0.64 in SC and 0.63 in FL, indicating overly extreme predicted risks.",
+   "quote": "Calibration slope was 0.64 in SC and 0.63 in FL, suggesting that predicted risks were more extreme compared to observed risk.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding driving distance to the delivery hospital and residential rurality as new predictors",
+  "Testing whether adding hospital access indicators (driving distance, rurality) improves prediction; no meaningful change in calibration or discrimination",
+  "incorporating geographic access variables such as driving distance to delivery hospital and residential rurality into predictive risk models"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41935688",
+ "screen": {
+  "id": "pmid:41935688",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration",
+  "user": "none",
+  "reason": "The study directly evaluates external geographic validation, equity across rural and minoritized subgroups, and tests specific local recalibration strategies (updating intercepts, re-estimating coefficients) to adapt a clinical risk prediction model to new settings.",
+  "jev": {
+   "id": "pmid:41935688",
+   "empirical": 0.87,
+   "tests_practice": 0.82,
+   "real_deployment": 0.04
+  }
+ }
+}

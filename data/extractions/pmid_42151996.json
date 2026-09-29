@@ -1,0 +1,106 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "International (USA, Netherlands, Switzerland)",
+ "sample_size": null,
+ "sample_unit": "ICU patients (nearly 20,000 per database across four databases)",
+ "models_evaluated": [
+  "Temporal Pointwise Convolution (TPC)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Internal versus external validation performance (AUROC, MAPE) across ICU databases",
+   "effect": "Internal validation overestimated external performance, with MAPE increasing by up to 51.8% and AUROC dropping by up to 13.8% on external databases.",
+   "quote": "Internal validation consistently overestimated external performance, with MAPE increasing by up to 51.8% and AUROC dropping by up to 13.8% on external databases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Performance of local tuning strategies (transfer learning, pooling) versus single-source models on target databases",
+   "effect": "Data pooling and transfer learning improved specialization; pooling matched or outperformed transfer learning, e.g. RLoS MAPE 84.49 vs. 89.24; Mcomposite improved up to 8.0% over single-source models.",
+   "quote": "Data pooling emerged as the superior strategy, achieving the best generalization (Mcomposite improvement up to 8.0% over single-source models) while matching or outperforming transfer learning for specialization - particularly for RLoS (MAPE 84.49 vs. 89.24, non-overlapping confidence intervals).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance degradation due to site-specific features (dataset shift) across databases",
+   "effect": "Site-specific features such as drug exposure acted as shortcuts degrading portability.",
+   "quote": "Site-specific features such as drug exposure acted as \"shortcuts\" degrading portability.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Training on pooled multi-source harmonized data to improve generalization",
+  "Open-sourcing customizable models and democratizing local ICU datasets"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42151996",
+ "screen": {
+  "id": "pmid:42151996",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates strategies (data pooling vs transfer learning vs single-source) to mitigate performance drops and ensure generalizability across external clinical ICU databases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "multi-source data pooling and transfer learning for external site generalizability"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42151996",
+   "empirical": 0.97,
+   "tests_practice": 0.06,
+   "real_deployment": 0.04
+  }
+ }
+}

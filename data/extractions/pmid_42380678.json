@@ -1,0 +1,438 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Germany",
+   "sample_size": 664,
+   "sample_unit": "tumor board cases",
+   "models_evaluated": [
+    "HemaGuide",
+    "gpt-5-mini",
+    "gpt-5-nano",
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "qwen3-next-80b",
+    "qwen3-32b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Tumor board concordance of grounded agent versus plain LLM",
+     "effect": "Ablation: plain LLM 0% concordance (mean 4.1) vs full grounded agent 86.7% (mean 9.0); expert ratings 4.22 \u00b1 0.063 vs 3.21 \u00b1 0.39 (P = 0.0015) for gpt-oss-120b; hallucinations 2/664 (0.3%).",
+     "quote": "The plain LLM baseline achieved 0% concordance across all 15 cases (mean score 4.1); the full agent achieved 86.7% concordance (mean score 9.0)."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Prospective silent-trial concordance with tumor board decisions",
+     "effect": "1-month silent trial on 64 consecutive cases: 82.8% concordance (53/64), comparable to retrospective/external performance.",
+     "quote": "HemaGuide achieved 82.8% concordance (53/64), with entity-group rates of 81.6% for lymphomas (31/38), 82.4% for PC dyscrasias (14/17) and 88.9% for leukemias (8/9) ( \u03ba = 0.795) (Fig. 6c,d )."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Concordance at external second academic center without re-optimization",
+     "effect": "External validation on 555 cases across 47 entities: 81.8% concordance (454/555); lymphomas 79.2%, PC dyscrasias 90.9%, leukemias 84.6%, nonmalignant 70.0%.",
+     "quote": "This evaluation used the original HemaGuide configuration without local re-optimization, confirming that the decision logic is not overfit to a single institution\u2019s document structure or therapeutic style."
+    }
+   ],
+   "unlisted_practices": [
+    "Autonomous routing of cases to specialized decision modes (guideline, case-memory, molecular)",
+    "Retrieval of similar historical tumor board cases as precedent grounding",
+    "Transparent flagging of absence of grounding evidence when no sources meet similarity threshold",
+    "Automated guideline versioning alerts comparing local flowcharts to source websites"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Germany",
+   "sample_size": 664,
+   "sample_unit": "tumor board cases (45 benchmark, 555 external validation, 64 prospective silent trial)",
+   "models_evaluated": [
+    "HemaGuide",
+    "gpt-5-mini",
+    "gpt-5-nano",
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "qwen3-next-80b",
+    "qwen3-32b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Tumor board concordance with grounded, tool-constrained generation versus an ungrounded baseline",
+     "effect": "Across 15 ablation cases, concordance increased from 0% (mean score 4.1) for the plain LLM to 86.7% (mean score 9.0) for the full agent. Grounding was evaluated within a multicomponent architecture.",
+     "quote": "The plain LLM baseline achieved 0% concordance across all 15 cases (mean score 4.1); the full agent achieved 86.7% concordance (mean score 9.0)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Resident treatment-recommendation concordance with and without AI assistance",
+     "effect": "Residents (n = 4) evaluated 30 cases. Unaided concordance was approximately 60%; HemaGuide-assisted residents achieved near-senior concordance and sometimes exceeded senior subspecialists. Overreliance was not assessed.",
+     "quote": "Unaided residents matched the tumor board ground truth in approximately 60% of cases, whereas residents with HemaGuide support achieved near-senior concordance, and in some comparisons superior performance, relative to senior physicians assessing cases inside their primary disease expertise (Fig. 4e\u2013g )."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fabricated drugs, clinical facts, or treatment histories in AI recommendations",
+     "effect": "Hallucinations occurred in 2 of 664 evaluated cases (0.3%), both in external validation; none occurred in the benchmark or silent trial. Effects on clinical actions were not evaluated.",
+     "quote": "Hallucinations\u2014fabricated drugs, clinical facts or treatment histories with no basis in the input data\u2014were observed in 2 of 664 evaluated cases (0.3%), both in the external validation dataset; none occurred in the benchmark or silent trial cohorts."
+    },
+    {
+     "rec_id": "R172",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Automated somatic variant classification errors against expert reference classifications",
+     "effect": "Classification agreed with the reference for 56/70 variants; sensitivity was 0.88 and specificity 0.84. No expert likely oncogenic/oncogenic variant was classified as likely benign/benign.",
+     "quote": "Using three clinically pragmatic bins (likely benign/benign (LB/B), variant of uncertain significance (VUS), likely oncogenic/oncogenic (LO/O)), HemaGuide concurred with the reference for 56/70 variants (Fig. 3b and Supplementary Table 6 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Autonomously route cases to specialized guideline, advanced, or molecular decision modes rather than applying one component or tool combination across all case types."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Germany",
+   "sample_size": 664,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "gpt-5-mini",
+    "gpt-5-nano",
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "qwen3-next-80b",
+    "qwen3-32b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "tumor board concordance on external data",
+     "effect": "yielded 81.8% concordance across 47 entities on 555 independent cases from an external center",
+     "quote": "External validation on 555 independent cases from a second academic center yielded 81.8% concordance across 47 entities, and a prospective 1-month silent trial on 64 consecutive, unselected cases achieved 82.8% concordance."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "tumor board concordance by resident physicians",
+     "effect": "unaided residents achieved approximately 60% concordance compared to near-senior concordance with HemaGuide support",
+     "quote": "Unaided residents matched the tumor board ground truth in approximately 60% of cases, whereas residents with HemaGuide support achieved near-senior concordance, and in some comparisons superior performance, relative to senior physicians assessing cases inside their primary disease expertise (Fig. 4e\u2013g )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert ratings of recommendation quality",
+     "effect": "mean score of 4.22 with HemaGuide versus 3.21 as a plain model without the agent framework",
+     "quote": "The highest-capacity open-weight model (gpt-oss-120b) achieved the strongest overall ratings through HemaGuide (mean 4.22 \u00b1 0.063) versus substantially lower and more variable scores as a plain model (3.21 \u00b1 0.39; P = 0.0015) (Fig. 2b )."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "tumor board concordance in a prospective silent trial",
+     "effect": "achieved 82.8% concordance on 64 consecutive, unselected cases run in a silent trial",
+     "quote": "External validation on 555 independent cases from a second academic center yielded 81.8% concordance across 47 entities, and a prospective 1-month silent trial on 64 consecutive, unselected cases achieved 82.8% concordance."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "tumor board concordance",
+     "effect": "concordance increased from 0% with ungrounded plain LLM to 86.7% with the full grounded agent",
+     "quote": "The plain LLM baseline achieved 0% concordance across all 15 cases (mean score 4.1); the full agent achieved 86.7% concordance (mean score 9.0)."
+    }
+   ],
+   "unlisted_practices": [
+    "autonomous routing of clinical cases to specialized reasoning tools (guideline, advanced, molecular) based on case complexity",
+    "degrading gracefully to plain LLM generation with transparent user warnings when evidence similarity thresholds are not met"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "tumor board cases",
+ "sample_size": 664,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "German"
+ ],
+ "models_evaluated": [
+  "HemaGuide",
+  "gpt-5-mini",
+  "gpt-5-nano",
+  "gpt-oss-120b",
+  "gpt-oss-20b",
+  "qwen3-32b",
+  "qwen3-next-80b"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Tumor board concordance of grounded agent versus plain LLM",
+   "effect": "Ablation: plain LLM 0% concordance (mean 4.1) vs full grounded agent 86.7% (mean 9.0); expert ratings 4.22 \u00b1 0.063 vs 3.21 \u00b1 0.39 (P = 0.0015) for gpt-oss-120b; hallucinations 2/664 (0.3%).",
+   "quote": "The plain LLM baseline achieved 0% concordance across all 15 cases (mean score 4.1); the full agent achieved 86.7% concordance (mean score 9.0).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Resident treatment-recommendation concordance with and without AI assistance",
+   "effect": "Residents (n = 4) evaluated 30 cases. Unaided concordance was approximately 60%; HemaGuide-assisted residents achieved near-senior concordance and sometimes exceeded senior subspecialists. Overreliance was not assessed.",
+   "quote": "Unaided residents matched the tumor board ground truth in approximately 60% of cases, whereas residents with HemaGuide support achieved near-senior concordance, and in some comparisons superior performance, relative to senior physicians assessing cases inside their primary disease expertise (Fig. 4e\u2013g ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective silent-trial concordance with tumor board decisions",
+   "effect": "1-month silent trial on 64 consecutive cases: 82.8% concordance (53/64), comparable to retrospective/external performance.",
+   "quote": "HemaGuide achieved 82.8% concordance (53/64), with entity-group rates of 81.6% for lymphomas (31/38), 82.4% for PC dyscrasias (14/17) and 88.9% for leukemias (8/9) ( \u03ba = 0.795) (Fig. 6c,d ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Concordance at external second academic center without re-optimization",
+   "effect": "External validation on 555 cases across 47 entities: 81.8% concordance (454/555); lymphomas 79.2%, PC dyscrasias 90.9%, leukemias 84.6%, nonmalignant 70.0%.",
+   "quote": "This evaluation used the original HemaGuide configuration without local re-optimization, confirming that the decision logic is not overfit to a single institution\u2019s document structure or therapeutic style.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Fabricated drugs, clinical facts, or treatment histories in AI recommendations",
+   "effect": "Hallucinations occurred in 2 of 664 evaluated cases (0.3%), both in external validation; none occurred in the benchmark or silent trial. Effects on clinical actions were not evaluated.",
+   "quote": "Hallucinations\u2014fabricated drugs, clinical facts or treatment histories with no basis in the input data\u2014were observed in 2 of 664 evaluated cases (0.3%), both in the external validation dataset; none occurred in the benchmark or silent trial cohorts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R172",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Automated somatic variant classification errors against expert reference classifications",
+   "effect": "Classification agreed with the reference for 56/70 variants; sensitivity was 0.88 and specificity 0.84. No expert likely oncogenic/oncogenic variant was classified as likely benign/benign.",
+   "quote": "Using three clinically pragmatic bins (likely benign/benign (LB/B), variant of uncertain significance (VUS), likely oncogenic/oncogenic (LO/O)), HemaGuide concurred with the reference for 56/70 variants (Fig. 3b and Supplementary Table 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "tumor board concordance on external data",
+   "effect": "yielded 81.8% concordance across 47 entities on 555 independent cases from an external center",
+   "quote": "External validation on 555 independent cases from a second academic center yielded 81.8% concordance across 47 entities, and a prospective 1-month silent trial on 64 consecutive, unselected cases achieved 82.8% concordance.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "expert ratings of recommendation quality",
+   "effect": "mean score of 4.22 with HemaGuide versus 3.21 as a plain model without the agent framework",
+   "quote": "The highest-capacity open-weight model (gpt-oss-120b) achieved the strongest overall ratings through HemaGuide (mean 4.22 \u00b1 0.063) versus substantially lower and more variable scores as a plain model (3.21 \u00b1 0.39; P = 0.0015) (Fig. 2b ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "tumor board concordance in a prospective silent trial",
+   "effect": "achieved 82.8% concordance on 64 consecutive, unselected cases run in a silent trial",
+   "quote": "External validation on 555 independent cases from a second academic center yielded 81.8% concordance across 47 entities, and a prospective 1-month silent trial on 64 consecutive, unselected cases achieved 82.8% concordance.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated guideline versioning alerts comparing local flowcharts to source websites",
+  "Autonomous routing of cases to specialized decision modes (guideline, case-memory, molecular)",
+  "Autonomously route cases to specialized guideline, advanced, or molecular decision modes rather than applying one component or tool combination across all case types.",
+  "Retrieval of similar historical tumor board cases as precedent grounding",
+  "Transparent flagging of absence of grounding evidence when no sources meet similarity threshold",
+  "autonomous routing of clinical cases to specialized reasoning tools (guideline, advanced, molecular) based on case complexity",
+  "degrading gracefully to plain LLM generation with transparent user warnings when evidence similarity thresholds are not met"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42380678",
+ "screen": {
+  "id": "pmid:42380678",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "retrieval grounding in guidelines and case memory, with silent-mode testing",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates an LLM agent for hematological malignancies across reader/simulation studies (evaluating AI assistance for resident physicians) and a prospective 1-month silent trial (real deployment) to test clinical feasibility and safety.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "prospective silent-mode validation and resident AI assistance"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42380678",
+   "empirical": 0.97,
+   "tests_practice": 0.31,
+   "real_deployment": 0.89
+  }
+ }
+}

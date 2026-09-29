@@ -1,0 +1,253 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 80,
+   "sample_unit": "patients (test cohort)",
+   "models_evaluated": [
+    "3D nnU-Net dual-channel (CTA+NCCT) with checkpoint ensemble uncertainty"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether case-level uncertainty score identifies poor segmentations (Dice <0.60) for triage",
+     "effect": "U_clot AUC 0.89 for poor segmentation; threshold 0.323 gave 90% sensitivity, 96% NPV; 60% auto-accepted; volume-category agreement improved from 66% (\u03ba=0.49) to 83% (\u03ba=0.69).",
+     "quote": "As a univariate predictor of poor segmentation, U_clot achieved an AUC of 0.89; the optimal threshold (0.323) yielded 90% sensitivity and 96% negative predictive value, allowing 60% of cases to be accepted automatically while improving volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correlation between model uncertainty (U_clot) and segmentation accuracy (Dice)",
+     "effect": "U_clot strongly inversely associated with Dice (\u03c1=\u22120.70 overall) and informative within all phenotype subgroups.",
+     "quote": "U_clot was strongly inversely associated with Dice (\u03c1=\u22120.70 overall) and remained informative within all phenotype subgroups."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 80,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "3D nnU-Net with two-channel CTA+NCCT input and checkpoint-ensemble uncertainty estimation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "uncertainty detection of poor segmentation",
+     "effect": "U_clot AUC 0.89; threshold 0.323 gave 90% sensitivity and 96% NPV.",
+     "quote": "As a univariate predictor of poor segmentation, U_clot achieved an AUC of 0.89; the optimal threshold (0.323) yielded 90% sensitivity and 96% negative predictive value, allowing 60% of cases to be accepted automatically while improving volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "uncertainty triage quality control",
+     "effect": "Threshold accepted 60% automatically and improved volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69).",
+     "quote": "As a univariate predictor of poor segmentation, U_clot achieved an AUC of 0.89; the optimal threshold (0.323) yielded 90% sensitivity and 96% negative predictive value, allowing 60% of cases to be accepted automatically while improving volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "segmentation accuracy against manual masks",
+     "effect": "In 80 test patients, mean Dice was 0.64\u00b10.24; performance varied by clot phenotype and size.",
+     "quote": "In the test cohort (n=80), mean Dice was 0.64\u00b10.24 and volumetric ICC 0.83, with strong correlation between predicted and ground-truth volumes (\u03c1=0.77, R\u00b2=0.69)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 80,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "nnU-Net"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predicting poor segmentation and improving volume agreement using uncertainty triage",
+     "effect": "AUC 0.89; threshold 0.323 had 90% sensitivity and 96% NPV, accepting 60% of cases automatically while improving volume agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69)",
+     "quote": "As a univariate predictor of poor segmentation, U_clot achieved an AUC of 0.89; the optimal threshold (0.323) yielded 90% sensitivity and 96% negative predictive value, allowing 60% of cases to be accepted automatically while improving volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "patients",
+ "sample_size": 80,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "3D nnU-Net dual-channel (CTA+NCCT) with checkpoint ensemble uncertainty",
+  "3D nnU-Net with two-channel CTA+NCCT input and checkpoint-ensemble uncertainty estimation",
+  "nnU-Net"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Correlation between model uncertainty (U_clot) and segmentation accuracy (Dice)",
+   "effect": "U_clot strongly inversely associated with Dice (\u03c1=\u22120.70 overall) and informative within all phenotype subgroups.",
+   "quote": "U_clot was strongly inversely associated with Dice (\u03c1=\u22120.70 overall) and remained informative within all phenotype subgroups.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether case-level uncertainty score identifies poor segmentations (Dice <0.60) for triage",
+   "effect": "U_clot AUC 0.89 for poor segmentation; threshold 0.323 gave 90% sensitivity, 96% NPV; 60% auto-accepted; volume-category agreement improved from 66% (\u03ba=0.49) to 83% (\u03ba=0.69).",
+   "quote": "As a univariate predictor of poor segmentation, U_clot achieved an AUC of 0.89; the optimal threshold (0.323) yielded 90% sensitivity and 96% negative predictive value, allowing 60% of cases to be accepted automatically while improving volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "uncertainty triage quality control",
+   "effect": "Threshold accepted 60% automatically and improved volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69).",
+   "quote": "As a univariate predictor of poor segmentation, U_clot achieved an AUC of 0.89; the optimal threshold (0.323) yielded 90% sensitivity and 96% negative predictive value, allowing 60% of cases to be accepted automatically while improving volume-category agreement from 66% (\u03ba=0.49) to 83% (\u03ba=0.69).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1269470",
+ "screen": {
+  "id": "epmc:PPR1269470",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "uncertainty-based triage and quality control",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and specifically evaluates an uncertainty quantification metric (case-level clot uncertainty threshold) to triage poor segmentations, testing its effect as a safeguard to reject unreliable model outputs before clinical use.",
+  "jev": {
+   "id": "epmc:PPR1269470",
+   "empirical": 0.97,
+   "tests_practice": 0.88,
+   "real_deployment": 0.05
+  }
+ }
+}

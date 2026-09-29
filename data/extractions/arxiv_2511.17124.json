@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "France; United States (MIMIC-IV)",
+ "sample_size": 140000,
+ "sample_unit": "emergency department admissions (French cohort, more than 140,000)",
+ "models_evaluated": [
+  "Mistral NeMo 12B (fine-tuned)",
+  "Mistral Small 24B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "French",
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R322",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Change in predicted triage severity when only patient sex is flipped in otherwise identical records",
+   "effect": "Sex-swapped pairs were more likely to get a lower-severity score as female than male: 1.1% (95% CI 0.9-1.3) in the French cohort, 2.2% (1.7-2.7) in MIMIC-IV.",
+   "quote": "Fine-tuning Mistral NeMo 12B for triage prediction and using Mistral Small 24B for pair generation, we find otherwise identical presentations were more likely to receive a lower-severity predicted score as female than male: 1.1% (95% CI 0.9-1.3) in the French cohort, 2.2% (1.7-2.7) in MIMIC-IV.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Between-sex prediction gap after retraining on sex-neutralized inputs",
+   "effect": "Retraining on sex-neutralized inputs eliminated the between-sex prediction gap, indicating the asymmetry is mediated by explicit sex markers. Effect on overall accuracy not reported in the abstract.",
+   "quote": "A model retrained on sex-neutralized inputs eliminated the between-sex prediction gap, indicating the asymmetry is mediated by explicit sex markers.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using LLMs fine-tuned to emulate documented decisions as scalable probes for auditing bias in clinical decision-making",
+  "Analyzing whether bias varies with clinician-patient sex concordance"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2511.17124",
+ "screen": {
+  "id": "arxiv:2511.17124",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and tests a counterfactual bias-auditing approach on emergency triage models using LLMs, and evaluates a specific mitigation practice (retraining models on sex-neutralized inputs to eliminate demographic disparities in triage prediction).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "sex-neutralized input retraining / bias auditing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2511.17124",
+   "empirical": 0.93,
+   "tests_practice": 0.12,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "quasi_experimental",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 50,
+ "sample_unit": "ABG results",
+ "models_evaluated": [
+  "LLM (unspecified) with zero-shot prompting",
+  "LLM with RAG and prompt engineering",
+  "LLM with math scratchpad, RAG, and prompt engineering"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "ABG interpretation accuracy with vs without RAG grounding",
+   "effect": "Accuracy 78% (39/50) with RAG plus prompt engineering (Method 2) versus 48% (24/50) zero-shot (Method 1); 86% (43/50) with scratchpad added.",
+   "quote": "The LLM-integrated CDSS achieved an accuracy rate of 86% (43/50) [confidence interval (CI) 74%-93%] across a dataset of 50 ABG results when utilizing Method 3, compared to 78% (39/50) [CI 65%-87%] for Method 2 and 48% (24/50) [CI 35%-61%] for Method 1.",
+   "quote_score": 92.6829268292683,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM calculation errors in ABG interpretation",
+   "effect": "Zero-shot LLM accuracy was 48% (24/50); adding math scratchpad raised accuracy to 86% (43/50), overcoming calculation limitation.",
+   "quote": "The evaluation demonstrates a math scratchpad's utility in ABG interpretation by overcoming LLMs' calculation limitation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Custom math scratchpad (external calculation tool) to offload domain-specific calculations from the LLM"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41726393",
+ "screen": {
+  "id": "pmid:41726393",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates and compares deployment prompt strategies (retrieval-augmented generation and calculation scratchpad tooling) against zero-shot prompting on an arterial blood gas interpretation benchmark.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and math scratchpad prompting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41726393",
+   "empirical": 0.94,
+   "tests_practice": 0.48,
+   "real_deployment": 0.05
+  }
+ }
+}

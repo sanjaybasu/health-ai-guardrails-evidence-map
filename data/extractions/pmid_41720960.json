@@ -1,0 +1,343 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 1000,
+   "sample_unit": "screening mammograms",
+   "models_evaluated": [
+    "AI Solution #1 (FDA-cleared mammography CNN)",
+    "AI Solution #2 (FDA-cleared mammography CNN)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Head-to-head comparison of two FDA-cleared mammography AIs on same data for operational safety",
+     "effect": "AI #1 had higher AUC (0.928 vs 0.882), but at alpha=100% AI #2 ruled out 290 true negatives (29.0%) vs 167 (16.7%) for AI #1; difference 123 cases (95% CI 87.0\u2013150.0).",
+     "quote": "This represents a substantial improvement over AI #1, which cleared only 167 cases (16.7% of the cohort), with a difference of 123 cases in the Rule-out Safe Zone in favor of AI #2 (95% confidence interval: 87.0\u2013150.0)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether AUC alone versus reliability-based operational metrics distinguishes model safety",
+     "effect": "Models with nearly identical AUC 0.960 had Gray Zone Areas of 0.709 vs 0.344; the higher-AUC FDA-cleared model was less safe for high-confidence rule-out.",
+     "quote": "This result shows that the AUC can be misleading and that models should be evaluated for their operational safety to understand their true clinical utility."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Deriving decision thresholds from clinician-defined PPV/NPV targets or utility maximization",
+     "effect": "Different policies (balanced, high-precision referral, high-volume screening, strictly non-negligent, minimize FP harm) produced different thresholds and Gray Zone workloads on the same model; demonstrated, not tested against a comparator.",
+     "quote": "Beyond direct rules, the framework navigates more complex scenarios by maximizing a clinical utility function that weighs the nuanced costs of errors against the benefits of correct decisions."
+    },
+    {
+     "rec_id": "R175",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Human radiologist accuracy within AI-defined Safe Zones, including over-calling in Rule-out zone",
+     "effect": "In the Rule-out Safe Zone human accuracy was at its lowest due to high false-positive rate; radiologists frequently flagged AI-identified safe cases as suspicious.",
+     "quote": "Here, where the AI was most confident that cases were low-risk (e.g., \u03b1 \u207b = 100%), human accuracy was paradoxically at its lowest."
+    }
+   ],
+   "unlisted_practices": [
+    "Safety-aware ROC partitioning of AI scores into rule-in, rule-out and gray zones with human review mandated only in the gray zone",
+    "Gray Zone Area metric to quantify non-automated workload",
+    "Cognitive forcing functions (on-demand, provisional diagnosis, wait) proposed to limit over-reliance (not tested)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1000,
+   "sample_unit": "screening mammograms",
+   "models_evaluated": [
+    "AI Solution #1",
+    "AI Solution #2",
+    "simulated clinical AI models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC concealed operational safety",
+     "effect": "AI #1 had higher AUC than AI #2 (0.928 vs. 0.882) but at \u03b1=100% cleared 167 cases (16.7%) versus AI #2's 290 (29.0%).",
+     "quote": "Although AI Solution #1 demonstrated a higher AUC than AI Solution #2 (0.928 vs. 0.882; Fig. 3a , b ), this advantage translated to better operational efficiency only for less stringent tasks, as evidenced by its more rapid Gray Zone reduction at moderate safety levels ( \u03b1 < 95%; Fig. 3c )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Same-data comparison of AI vendors",
+     "effect": "At \u03b1=100%, AI #2 ruled out 290 true negatives (29.0%) versus AI #1's 167 (16.7%); difference 123 cases (95% CI: 87.0\u2013150.0).",
+     "quote": "This represents a substantial improvement over AI #1, which cleared only 167 cases (16.7% of the cohort), with a difference of 123 cases in the Rule-out Safe Zone in favor of AI #2 (95% confidence interval: 87.0\u2013150.0)."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Utility-based threshold policy",
+     "effect": "For a missed-cancer-is-unacceptable policy, target 100% NPV eliminated any rule-out and deferred all but most certain positives to human review.",
+     "quote": "Faced with a \u2018strictly non-negligent\u2019 policy where missing a cancer is unacceptable (Fig. 5e ), the optimal strategy becomes highly conservative: to achieve the target of 100% NPV, the AI eliminates its ability to rule out any case, deferring all but the most certain positive calls to human review."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Gray-zone deferral burden",
+     "effect": "At \u03b1=100%, AI #2 ruled out 163 cases that AI #1 left in its uncertain Gray Zone.",
+     "quote": "Crucially, 163 of the cases that AI #1 left in its uncertain Gray Zone were confidently ruled out by AI #2 (Fig. 3d )."
+    },
+    {
+     "rec_id": "R075",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Prevalence-related generalizability",
+     "effect": "Across 1%\u201340% prevalence, two high-performing AI solutions showed vastly different operational stability profiles.",
+     "quote": "Our prevalence simulation analysis (see Supplementary Note 1 ) provides a clear example, demonstrating how two high-performing AI solutions respond in vastly different ways to shifts in epidemiological context."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "USA",
+   "sample_size": 1000,
+   "sample_unit": "screening mammograms",
+   "models_evaluated": [
+    "AI Solution #1",
+    "AI Solution #2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Operational safety versus AUC ranking in cancer screening AI",
+     "effect": "AI Solution #1 had higher AUC (0.928 vs 0.882), but AI #2 ruled out 123 more true negatives (290 vs 167; 95% CI: 87.0-150.0) at maximal safety (\u03b1 = 100%).",
+     "quote": "A comparison of two FDA-cleared mammography AIs shows a notable performance reversal: the model with superior statistical performance was not the most operationally robust for high-confidence screening."
+    }
+   ],
+   "unlisted_practices": [
+    "Safety-Aware Receiver Operating Characteristic (SA-ROC) framework to evaluate operational safety and define safe automation zones",
+    "Gray Zone Area (\u0393_Area) metric to quantify operational uncertainty and non-automated workload"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "screening mammograms",
+ "sample_size": 1000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "AI Solution #1",
+  "AI Solution #1 (FDA-cleared mammography CNN)",
+  "AI Solution #2",
+  "AI Solution #2 (FDA-cleared mammography CNN)",
+  "simulated clinical AI models"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Head-to-head comparison of two FDA-cleared mammography AIs on same data for operational safety",
+   "effect": "AI #1 had higher AUC (0.928 vs 0.882), but at alpha=100% AI #2 ruled out 290 true negatives (29.0%) vs 167 (16.7%) for AI #1; difference 123 cases (95% CI 87.0\u2013150.0).",
+   "quote": "This represents a substantial improvement over AI #1, which cleared only 167 cases (16.7% of the cohort), with a difference of 123 cases in the Rule-out Safe Zone in favor of AI #2 (95% confidence interval: 87.0\u2013150.0).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Deriving decision thresholds from clinician-defined PPV/NPV targets or utility maximization",
+   "effect": "Different policies (balanced, high-precision referral, high-volume screening, strictly non-negligent, minimize FP harm) produced different thresholds and Gray Zone workloads on the same model; demonstrated, not tested against a comparator.",
+   "quote": "Beyond direct rules, the framework navigates more complex scenarios by maximizing a clinical utility function that weighs the nuanced costs of errors against the benefits of correct decisions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUC concealed operational safety",
+   "effect": "AI #1 had higher AUC than AI #2 (0.928 vs. 0.882) but at \u03b1=100% cleared 167 cases (16.7%) versus AI #2's 290 (29.0%).",
+   "quote": "Although AI Solution #1 demonstrated a higher AUC than AI Solution #2 (0.928 vs. 0.882; Fig. 3a , b ), this advantage translated to better operational efficiency only for less stringent tasks, as evidenced by its more rapid Gray Zone reduction at moderate safety levels ( \u03b1 < 95%; Fig. 3c ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether AUC alone versus reliability-based operational metrics distinguishes model safety",
+   "effect": "Models with nearly identical AUC 0.960 had Gray Zone Areas of 0.709 vs 0.344; the higher-AUC FDA-cleared model was less safe for high-confidence rule-out.",
+   "quote": "This result shows that the AUC can be misleading and that models should be evaluated for their operational safety to understand their true clinical utility.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R175",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R075",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Cognitive forcing functions (on-demand, provisional diagnosis, wait) proposed to limit over-reliance (not tested)",
+  "Gray Zone Area (\u0393_Area) metric to quantify operational uncertainty and non-automated workload",
+  "Gray Zone Area metric to quantify non-automated workload",
+  "Safety-Aware Receiver Operating Characteristic (SA-ROC) framework to evaluate operational safety and define safe automation zones",
+  "Safety-aware ROC partitioning of AI scores into rule-in, rule-out and gray zones with human review mandated only in the gray zone"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41720960",
+ "screen": {
+  "id": "pmid:41720960",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "threshold selection with human review of gray-zone cases",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a deployment/governance framework (SA-ROC defining safe zones vs mandatory human review gray zones) on two FDA-cleared cancer screening algorithms.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "threshold selection for autonomous action vs mandated human review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41720960",
+   "empirical": 0.65,
+   "tests_practice": 0.47,
+   "real_deployment": 0.17
+  }
+ }
+}

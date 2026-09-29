@@ -1,0 +1,407 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Germany",
+   "sample_size": 2035,
+   "sample_unit": "conversations",
+   "models_evaluated": [
+    "Claude Sonnet 4.5",
+    "Mistral Small 3.2",
+    "Mistral Medium (triage)",
+    "Cohere Rerank v3.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Escalation of explicit suicidal ideation to intended emergency protocol",
+     "effect": "3 escalation failures with explicit suicidality; 2 had insufficient crisis reaction, 1 did not trigger the emergency response at all",
+     "quote": "In two of these, the system did surface emergency-contact information, but specialist review judged the crisis reaction to be insufficiently aligned with the intended escalation protocol; in the third, suicidal ideation expressed shortly after a Parkinson's diagnosis did not trigger the intended emergency response at all, with no crisis contacts or direct support resources offered."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician re-review of random sample of automated 'good'-rated conversations",
+     "effect": "4/100 (4%; 95% CI 1.6\u20139.8) 'good'-rated conversations contained critical errors missed by automated triage",
+     "quote": "Of 100 conversations randomly drawn from the AI-classified \u201cgood\u201d stratum (1803 conversations), 4 contained critical safety issues after independent clinical review and adjudication (4%; 95% CI 1\u00b76\u20139\u00b78)."
+    },
+    {
+     "rec_id": "R368",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Conversation-level post-market monitoring detecting critical generative failures",
+     "effect": "Monitoring confirmed 5 critical events among 45 flagged and 4 among 100 sampled conversations; failures invisible to automated metrics alone",
+     "quote": "Tightly scoped, retrieval-augmented, patient-facing AI achieved favourable automated triage classifications while still harbouring clinically critical failures invisible to automated quality metrics alone; detecting them required conversation-level evaluation with clinical expert adjudication."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Confident outputs beyond retrieval coverage instead of uncertainty signalling",
+     "effect": "Knowledge boundary failures: 1 flagged and 4 sampled critical events with confident output filling evidence gaps",
+     "quote": "Confident model outputs when user queries exceeded the system's retrieval coverage, with the generative component filling the evidence gap rather than signalling uncertainty."
+    },
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Medication recommendations despite prompt prohibiting treatment advice",
+     "effect": "Sampled critical events included inappropriate memantine recommendation, non-first-line amantadine recommendation, levodopa duration error, and medication misidentification",
+     "quote": "All four sampled events mapped to the knowledge boundary class: an inappropriate drug recommendation for Parkinson's disease dementia (memantine), a pharmacologically inaccurate statement of prolonged-release levodopa duration, a recommendation of a non-first-line medication for tremor (amantadine), and a medication misidentification in which a levodopa/carbidopa preparation was labelled as selegiline."
+    }
+   ],
+   "unlisted_practices": [
+    "Automated LLM triage of every deployed conversation with structured expert review of flagged and negative-feedback cases",
+    "Failure-class taxonomy feedback loop linking confirmed critical events to class-specific remediation"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Germany",
+   "sample_size": 2035,
+   "sample_unit": "conversations",
+   "models_evaluated": [
+    "Claude Sonnet 4.5",
+    "Mistral Small 3.2",
+    "Mistral Medium"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Medication recommendations outside the system's intended informational scope",
+     "effect": "All four sampled critical events concerned medication; examples included inappropriate memantine and non-first-line amantadine recommendations despite the system's non-therapeutic scope.",
+     "quote": "All four sampled events mapped to the knowledge boundary class: an inappropriate drug recommendation for Parkinson's disease dementia (memantine), a pharmacologically inaccurate statement of prolonged-release levodopa duration, a recommendation of a non-first-line medication for tremor (amantadine), and a medication misidentification in which a levodopa/carbidopa preparation was labelled as selegiline."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missed or inadequate emergency escalation for explicit suicidal ideation",
+     "effect": "Three escalation failures involved explicit suicidality: two conversations provided emergency contacts but insufficient protocol adherence; the third provided no crisis contacts or direct support resources.",
+     "quote": "In two of these, the system did surface emergency-contact information, but specialist review judged the crisis reaction to be insufficiently aligned with the intended escalation protocol; in the third, suicidal ideation expressed shortly after a Parkinson's diagnosis did not trigger the intended emergency response at all, with no crisis contacts or direct support resources offered."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician sampling detected critical errors missed by automated surveillance",
+     "effect": "Independent clinical review identified critical errors in 4/100 apparently good conversations (4%; 95% CI 1\u00b76\u20139\u00b78), a conditional false-negative rate within that stratum, not an overall critical-event rate.",
+     "quote": "Of 100 conversations randomly drawn from the AI-classified \u201cgood\u201d stratum (1803 conversations), 4 contained critical safety issues after independent clinical review and adjudication (4%; 95% CI 1\u00b76\u20139\u00b78)."
+    },
+    {
+     "rec_id": "R382",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Emergency-response activation following incident remediation and re-testing",
+     "effect": "The previously missed suicidality conversation activated the intended protocol on re-test after revision; concurrent configuration changes limit attribution, and verification applies only to this specific failure.",
+     "quote": "After the post-window protocol revision, the conversation in which the emergency response had not been triggered was re-tested and now activates the intended protocol; because the current configuration differs from the evaluated one in further respects ( Supplementary Appendix Table S1 ), this verifies remediation of the specific failure only."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Confident incorrect outputs when queries exceeded retrieval coverage",
+     "effect": "Knowledge boundary failures comprised 1 flagged-pathway event and 4 sampled events; the system filled retrieval gaps with confident output rather than signalling uncertainty.",
+     "quote": "Knowledge boundary failures arose when queries exceeded retrieval coverage and the generative component filled the gap with confident output rather than signalling uncertainty; these are in principle addressable through conservative retrieval thresholds, uncertainty signalling, and targeted knowledge-base expansion."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Germany",
+   "sample_size": 2035,
+   "sample_unit": "conversations",
+   "models_evaluated": [
+    "Claude Sonnet 4.5",
+    "Mistral Small 3.2",
+    "Mistral Medium"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "inappropriate drug recommendations",
+     "effect": "Expert review identified inappropriate drug recommendations and medication misidentifications despite system prompt prohibitions.",
+     "quote": "All four sampled events mapped to the knowledge boundary class: an inappropriate drug recommendation for Parkinson's disease dementia (memantine), a pharmacologically inaccurate statement of prolonged-release levodopa duration, a recommendation of a non-first-line medication for tremor (amantadine), and a medication misidentification in which a levodopa/carbidopa preparation was labelled as selegiline."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missed emergency escalation",
+     "effect": "The model failed to trigger the intended emergency response protocol in 1 of 3 conversations expressing explicit suicidal ideation.",
+     "quote": "Three further conversations contained explicit suicidal ideation... in the third, suicidal ideation expressed shortly after a Parkinson's diagnosis did not trigger the intended emergency response at all, with no crisis contacts or direct support resources offered."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "critical errors in automatically approved outputs",
+     "effect": "Expert clinical review of a random sample of 100 conversations automatically classified as good revealed 4% contained critical safety issues.",
+     "quote": "Of 100 conversations randomly drawn from the AI-classified \u201cgood\u201d stratum (1803 conversations), 4 contained critical safety issues after independent clinical review and adjudication (4%; 95% CI 1\u00b76\u20139\u00b78)."
+    },
+    {
+     "rec_id": "R381",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "critical event detected via negative feedback",
+     "effect": "Negative user feedback correctly flagged a critical knowledge boundary failure where the system provided factually incorrect information.",
+     "quote": "In the knowledge boundary case, the system gave factually incorrect information about an ongoing clinical trial and misstated the current affiliation of its principal investigator; the user gave negative feedback in the same conversation."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "knowledge boundary failures",
+     "effect": "Critical knowledge boundary failures occurred when the model generated confident outputs instead of signaling uncertainty when queries exceeded retrieval coverage.",
+     "quote": "Knowledge boundary failures: Confident model outputs when user queries exceeded the system's retrieval coverage, with the generative component filling the evidence gap rather than signalling uncertainty."
+    }
+   ],
+   "unlisted_practices": [
+    "Implementing a multi-component post-market surveillance framework (CARE-LLM) that combines automated LLM-based triage of all conversations with human clinical review of flagged and randomly sampled cases",
+    "Separating an advisory agent for dialogue and safety from a database agent restricted to synthesized retrieval to enforce a source-of-truth principle"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "both",
+ "country": "Germany",
+ "sample_unit": "conversations",
+ "sample_size": 2035,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "German"
+ ],
+ "models_evaluated": [
+  "Claude Sonnet 4.5",
+  "Cohere Rerank v3.5",
+  "Mistral Medium",
+  "Mistral Medium (triage)",
+  "Mistral Small 3.2"
+ ],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Escalation of explicit suicidal ideation to intended emergency protocol",
+   "effect": "3 escalation failures with explicit suicidality; 2 had insufficient crisis reaction, 1 did not trigger the emergency response at all",
+   "quote": "In two of these, the system did surface emergency-contact information, but specialist review judged the crisis reaction to be insufficiently aligned with the intended escalation protocol; in the third, suicidal ideation expressed shortly after a Parkinson's diagnosis did not trigger the intended emergency response at all, with no crisis contacts or direct support resources offered.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician re-review of random sample of automated 'good'-rated conversations",
+   "effect": "4/100 (4%; 95% CI 1.6\u20139.8) 'good'-rated conversations contained critical errors missed by automated triage",
+   "quote": "Of 100 conversations randomly drawn from the AI-classified \u201cgood\u201d stratum (1803 conversations), 4 contained critical safety issues after independent clinical review and adjudication (4%; 95% CI 1\u00b76\u20139\u00b78).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Confident outputs beyond retrieval coverage instead of uncertainty signalling",
+   "effect": "Knowledge boundary failures: 1 flagged and 4 sampled critical events with confident output filling evidence gaps",
+   "quote": "Confident model outputs when user queries exceeded the system's retrieval coverage, with the generative component filling the evidence gap rather than signalling uncertainty.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R063",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Medication recommendations despite prompt prohibiting treatment advice",
+   "effect": "Sampled critical events included inappropriate memantine recommendation, non-first-line amantadine recommendation, levodopa duration error, and medication misidentification",
+   "quote": "All four sampled events mapped to the knowledge boundary class: an inappropriate drug recommendation for Parkinson's disease dementia (memantine), a pharmacologically inaccurate statement of prolonged-release levodopa duration, a recommendation of a non-first-line medication for tremor (amantadine), and a medication misidentification in which a levodopa/carbidopa preparation was labelled as selegiline.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R368",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Conversation-level post-market monitoring detecting critical generative failures",
+   "effect": "Monitoring confirmed 5 critical events among 45 flagged and 4 among 100 sampled conversations; failures invisible to automated metrics alone",
+   "quote": "Tightly scoped, retrieval-augmented, patient-facing AI achieved favourable automated triage classifications while still harbouring clinically critical failures invisible to automated quality metrics alone; detecting them required conversation-level evaluation with clinical expert adjudication.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R382",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Emergency-response activation following incident remediation and re-testing",
+   "effect": "The previously missed suicidality conversation activated the intended protocol on re-test after revision; concurrent configuration changes limit attribution, and verification applies only to this specific failure.",
+   "quote": "After the post-window protocol revision, the conversation in which the emergency response had not been triggered was re-tested and now activates the intended protocol; because the current configuration differs from the evaluated one in further respects ( Supplementary Appendix Table S1 ), this verifies remediation of the specific failure only.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R381",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Automated LLM triage of every deployed conversation with structured expert review of flagged and negative-feedback cases",
+  "Failure-class taxonomy feedback loop linking confirmed critical events to class-specific remediation",
+  "Implementing a multi-component post-market surveillance framework (CARE-LLM) that combines automated LLM-based triage of all conversations with human clinical review of flagged and randomly sampled cases",
+  "Separating an advisory agent for dialogue and safety from a database agent restricted to synthesized retrieval to enforce a source-of-truth principle"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42761851",
+ "screen": {
+  "id": "pmid:42761851",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "conversation-level post-market surveillance with expert review",
+  "user": "patient",
+  "reason": "Prospective observational evaluation of a deployed patient-facing LLM chatbot (jAImes) testing a conversation-level post-market surveillance and automated triage/expert review framework (CARE-LLM) for detecting critical safety failures.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "post-market surveillance and automated triage with expert review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42761851",
+   "empirical": 0.97,
+   "tests_practice": 0.18,
+   "real_deployment": 0.94
+  }
+ }
+}

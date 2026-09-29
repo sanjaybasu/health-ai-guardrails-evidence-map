@@ -1,0 +1,318 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 50656,
+   "sample_unit": "patients with glaucoma",
+   "models_evaluated": [
+    "XGBoost",
+    "fully connected network",
+    "DL FCN",
+    "DL Embed",
+    "Transformer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "FairOdds-AUC and equalized odds after bias mitigation versus unmitigated baseline, with AUROC effect",
+     "effect": "IPW and AFC significantly improved FairOdds-AUC over baseline (p<1e-12) across backbones and sites, e.g., IPW transformer 0.562 to 0.600 with essentially same discrimination; ColRm and ThreshOpt performed similar to baseline.",
+     "quote": "FairOdds-AUC heatmaps show that IPW (0.574 [0.556, 0.593] < FairOdds-AUC < 0.600 [0.575, 0.629]) and AFC (0.573 [0.559, 0.588] < FairOdds-AUC < 0.613 [0.595, 0.629]) were bias mitigation techniques that consistently performed significantly better than the baseline approach without bias mitigation (0.547 [0.512, 0.570] < FairOdds-AUC < 0.562 [0.544, 0.578]) across modeling architecture backbones and evaluation sets, striking a balance between AUC performance and fairness (p < 1e-12 [IPW, baseline], p < 1e-12 [AFC, baseline])."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup fairness gaps (equalized odds by sex and race/ethnicity) across internal and external sites",
+     "effect": "Baseline and column remover had sex EO >0.298; a trade-off was seen between AUROC and equalized odds gaps across sites, with no method excelling on both.",
+     "quote": "For sex EO, baseline and column remover performed poorly (EO > 0.298 [0.276, 0.322]), while adversarial classifier (EO < 0.220 [0.191, 0.257]) and, to some extent, threshold optimization performed better across test sets (EO < 0.243 [0.213, 0.299])."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Fairness and performance generalization of mitigation methods across two external sites",
+     "effect": "Inprocessing methods (IPW, AFC) generalized consistently across internal and two external sites; pre/postprocessing methods showed weaker generalizability and dataset-dependent effects.",
+     "quote": "Postprocessing and preprocessing bias mitigation strategies yielded more variable FairOdds-AUC changes (-0.009 to +0.021) and showed weaker generalizability across external sites."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether combined performance-fairness metric changes choice of best model versus accuracy alone",
+     "effect": "FairOdds-AUC with tunable lambda changed which mitigation strategy appeared optimal (ColRm/IPW at \u03bb=0.1, IPW/AFC at \u03bb=1, AFC at \u03bb=10); demonstrates accuracy-only comparison would miss fairness differences.",
+     "quote": "The choice of \u03bb alters which mitigation strategy appears optimal."
+    }
+   ],
+   "unlisted_practices": [
+    "Prioritizing inprocessing bias mitigation over pre/postprocessing methods during training",
+    "Composite fairness-penalized performance metric (FairOdds-AUC) for model selection"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 50656,
+   "sample_unit": "patients with glaucoma",
+   "models_evaluated": [
+    "XGBoost",
+    "fully connected network (FCN)",
+    "deep learning fully connected network (DL FCN)",
+    "deep learning embedding model (DL Embed)",
+    "Transformer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness-performance after mitigation",
+     "effect": "IPW FairOdds-AUC 0.574\u20130.600 and AFC 0.573\u20130.613 exceeded baseline 0.547\u20130.562; both p < 1e-12.",
+     "quote": "FairOdds-AUC heatmaps show that IPW (0.574 [0.556, 0.593] < FairOdds-AUC < 0.600 [0.575, 0.629]) and AFC (0.573 [0.559, 0.588] < FairOdds-AUC < 0.613 [0.595, 0.629]) were bias mitigation techniques that consistently performed significantly better than the baseline approach without bias mitigation (0.547 [0.512, 0.570] < FairOdds-AUC < 0.562 [0.544, 0.578]) across modeling architecture backbones and evaluation sets, striking a balance between AUC performance and fairness (p < 1e-12 [IPW, baseline], p < 1e-12 [AFC, baseline]), while ColRm (0.549 [0.533, 0.559] < FairOdds-AUC< 0.559 [0.543, 0.580]) and ThreshOpt (0.546 [0.524, 0.563] < FairOdds-AUC < 0.568 [0.546, 0.592]) performed similarly to baseline ( P < 0.0083 [ColRm, baseline], P < 0.203 [ThreshOpt, baseline])."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "sex equalized-odds disparity",
+     "effect": "Baseline and Column Remover had sex EO > 0.298 [0.276, 0.322]; AFC had EO < 0.220 [0.191, 0.257].",
+     "quote": "For sex EO, baseline and column remover performed poorly (EO > 0.298 [0.276, 0.322]), while adversarial classifier (EO < 0.220 [0.191, 0.257]) and, to some extent, threshold optimization performed better across test sets (EO < 0.243 [0.213, 0.299])."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external-site generalizability",
+     "effect": "Preprocessing/postprocessing mitigation FairOdds-AUC changes ranged -0.009 to +0.021 and showed weaker generalizability across external sites.",
+     "quote": "Postprocessing and preprocessing bias mitigation strategies yielded more variable FairOdds-AUC changes (-0.009 to +0.021) and showed weaker generalizability across external sites."
+    }
+   ],
+   "unlisted_practices": [
+    "Use FairOdds-AUC as a tunable composite metric that penalizes AUROC by equalized-odds gaps."
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 50656,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost",
+    "FCN",
+    "DL FCN",
+    "DL Embed",
+    "Transformer"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness-performance tradeoff of bias mitigation methods",
+     "effect": "IPW improved FairOdds-AUC from 0.562 (95% CI 0.540, 0.581) to 0.600 (0.575, 0.629) for transformer and 0.556 (0.534, 0.577) to 0.5922 (0.53, 0.61919) for FCN, while maintaining discrimination; AFC reached up to 0.613 (0.595, 0.629).",
+     "quote": "For example, on the internal test set, IPW improved FairOdds-AUC from 0.562 (95% confidence interval 0.540, 0.581) to 0.600 (0.575, 0.629) for the transformer model and from 0.556 (0.534, 0.577) to 0.5922 (0.53, 0.61919) for a fully connected network, while maintaining essentially the same discrimination."
+    }
+   ],
+   "unlisted_practices": [
+    "FairOdds-AUC metric: evaluating clinical models using a unified composite metric that scales discrimination (AUROC) by equalized odds disparity penalties"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients with glaucoma",
+ "sample_size": 50656,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DL Embed",
+  "DL FCN",
+  "FCN",
+  "Transformer",
+  "XGBoost",
+  "deep learning embedding model (DL Embed)",
+  "deep learning fully connected network (DL FCN)",
+  "fully connected network",
+  "fully connected network (FCN)"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "fairness-performance after mitigation",
+   "effect": "IPW FairOdds-AUC 0.574\u20130.600 and AFC 0.573\u20130.613 exceeded baseline 0.547\u20130.562; both p < 1e-12.",
+   "quote": "FairOdds-AUC heatmaps show that IPW (0.574 [0.556, 0.593] < FairOdds-AUC < 0.600 [0.575, 0.629]) and AFC (0.573 [0.559, 0.588] < FairOdds-AUC < 0.613 [0.595, 0.629]) were bias mitigation techniques that consistently performed significantly better than the baseline approach without bias mitigation (0.547 [0.512, 0.570] < FairOdds-AUC < 0.562 [0.544, 0.578]) across modeling architecture backbones and evaluation sets, striking a balance between AUC performance and fairness (p < 1e-12 [IPW, baseline], p < 1e-12 [AFC, baseline]), while ColRm (0.549 [0.533, 0.559] < FairOdds-AUC< 0.559 [0.543, 0.580]) and ThreshOpt (0.546 [0.524, 0.563] < FairOdds-AUC < 0.568 [0.546, 0.592]) performed similarly to baseline ( P < 0.0083 [ColRm, baseline], P < 0.203 [ThreshOpt, baseline]).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup fairness gaps (equalized odds by sex and race/ethnicity) across internal and external sites",
+   "effect": "Baseline and column remover had sex EO >0.298; a trade-off was seen between AUROC and equalized odds gaps across sites, with no method excelling on both.",
+   "quote": "For sex EO, baseline and column remover performed poorly (EO > 0.298 [0.276, 0.322]), while adversarial classifier (EO < 0.220 [0.191, 0.257]) and, to some extent, threshold optimization performed better across test sets (EO < 0.243 [0.213, 0.299]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness and performance generalization of mitigation methods across two external sites",
+   "effect": "Inprocessing methods (IPW, AFC) generalized consistently across internal and two external sites; pre/postprocessing methods showed weaker generalizability and dataset-dependent effects.",
+   "quote": "Postprocessing and preprocessing bias mitigation strategies yielded more variable FairOdds-AUC changes (-0.009 to +0.021) and showed weaker generalizability across external sites.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Composite fairness-penalized performance metric (FairOdds-AUC) for model selection",
+  "FairOdds-AUC metric: evaluating clinical models using a unified composite metric that scales discrimination (AUROC) by equalized odds disparity penalties",
+  "Prioritizing inprocessing bias mitigation over pre/postprocessing methods during training",
+  "Use FairOdds-AUC as a tunable composite metric that penalizes AUROC by equalized-odds gaps."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41883731",
+ "screen": {
+  "id": "pmid:41883731",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "bias mitigation (fairness-aware training/processing) with external site validation",
+  "user": "none",
+  "reason": "Evaluates and compares the effectiveness of specific bias mitigation techniques (preprocessing, inprocessing, postprocessing) and fairness metrics across multi-site EHR predictive risk models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "algorithmic bias mitigation techniques"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41883731",
+   "empirical": 0.97,
+   "tests_practice": 0.17,
+   "real_deployment": 0.04
+  }
+ }
+}

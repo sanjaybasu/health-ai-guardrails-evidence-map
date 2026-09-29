@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "agentic",
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": null,
+ "sample_unit": "agent runs (1.2 million tool calls)",
+ "models_evaluated": [
+  "GPT-4.1",
+  "GPT-4.1-nano",
+  "GPT-5-chat"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R120",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Agent withholding writes on tampered patient-identity visits (tamper detection)",
+   "effect": "GPT-4.1 withheld writing in 17.4% of header-swap runs; detection of MRN or age changes near zero. GPT-4.1-nano detected 4.4% of header swaps and <1% of MRN/age changes.",
+   "quote": "Agents usually copied codes into tampered charts.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R062",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Agent detection of erroneous inputs and tool outputs rather than propagating them",
+   "effect": "Agents usually wrote into tampered charts; GPT-5-chat never identified mismatches; other models rarely withheld writing.",
+   "quote": "Clinical agents often fail to detect patient identity inconsistencies.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Explicit patient identity verification (MRN/age/header consistency checks) in agentic EHR-writing workflows",
+  "Agent abstention when uncertain about record integrity",
+  "Benchmarks treating record integrity as a primary outcome"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42217263",
+ "screen": {
+  "id": "pmid:42217263",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates LLM-based autonomous clinical agents in a simulated EHR environment on their intrinsic ability to detect patient identity faults without evaluating an external deployment safeguard or guardrail intervention.",
+  "jev": {
+   "id": "pmid:42217263",
+   "empirical": 0.96,
+   "tests_practice": 0.08,
+   "real_deployment": 0.05
+  }
+ }
+}

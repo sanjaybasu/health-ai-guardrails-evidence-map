@@ -1,0 +1,94 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "generative_llm"
+ ],
+ "country": "",
+ "sample_size": 10,
+ "sample_unit": "patients (independent test set)",
+ "models_evaluated": [
+  "3D SegResNet (MONAI) DLAS bone segmentation hallucination screener",
+  "commercial AI-generated synthetic CT model"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Automated detection of false bone/air hallucinations in AI-generated sCT images",
+   "effect": "Screener specificity 0.78, 0.93, 0.98 at distance parameters 0.8, 1.0, 1.2 cm; flagged false high-density hallucinations in abdomen of sCT for all test patients.",
+   "quote": "The average specificity of the DLAS model was 0.78, 0.93 and 0.98 for distance parameters of 0.8, 1.0 and 1.2 cm, respectively.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Presence of AI-generated hallucinations (false bone) in commercial sCT images",
+   "effect": "Screener identified false high-density hallucination regions in the abdomen of AI-generated sCT images for all testing patients (n=10).",
+   "quote": "The screener identified false high-density hallucination regions in the abdomen of AI-generated sCT images for all testing patients, highlighting potential issues with the training data used for the AI sCT model.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Independent deep-learning segmentation screener on MR to detect hallucinated bone in AI-generated synthetic CT for radiotherapy QA"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:39946843",
+ "screen": {
+  "id": "pmid:39946843",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and tests an automated quality assurance guardrail/screener to detect generative AI hallucinations in synthetic CT images within a clinical radiotherapy workflow.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "automated hallucination detection and quality assurance screening"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39946843",
+   "empirical": 0.95,
+   "tests_practice": 0.25,
+   "real_deployment": 0.71
+  }
+ }
+}

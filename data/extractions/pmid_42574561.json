@@ -1,0 +1,367 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2510,
+   "sample_unit": "clinical notes (standard reference dataset)",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "ERNIE 3.5-8K",
+    "GPT-4o",
+    "Qwen-turbo (preannotation only)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ADE identification F1/recall with retrieval-augmented prompts versus non-augmented and static-augmented prompts",
+     "effect": "RAG raised GPT-4o L3 recall from 0.6419 (NAG) to 0.9241 (FDR P=.003); DeepSeek-V3 L3 F1 0.9638 with RAG vs 0.9022 NAG and 0.9441 SAG.",
+     "quote": "However, under the SAG prompt, GPT-4o\u2019s recall rate increased to 69.93%, and under the RAG prompt, it surged to 92.41%, representing an improvement of almost 30% (FDR P =.003)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-annotator agreement of reference standard built with blinded pharmacists and consensus adjudication",
+     "effect": "Two blinded annotators reviewed 5535 notes; Cohen kappa=0.86, disagreements resolved by consensus discussion.",
+     "quote": "Interrater reliability was assessed using Cohen \u03ba based on 5535 clinical notes independently reviewed by 2 annotators, yielding a high agreement (Cohen \u03ba=0.86)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Risk of leakage when test data share distribution with the RAG knowledge base",
+     "effect": "Authors acknowledge that evaluating on the same data distribution as the knowledge base risks overfitting and implicit leakage, limiting external validity; no external multi-site validation.",
+     "quote": "Crucially, evaluating models on the same data distribution as the knowledge base risks overfitting and implicit data leakage within the RAG framework, limiting external validity."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Accuracy of LLM ADE extraction against gold-standard reference",
+     "effect": "Best DeepSeek-V3 RAG L3 F1 0.9638; but 15 notes misidentified by all three models, mostly commission errors (~80%); L1 exact-match recall only ~0.55-0.58.",
+     "quote": "Notably, 15 critical records posed recognition challenges for all 3 models."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Performance on uncurated real-world notes with ~4.6% ADE prevalence versus curated balanced set",
+     "effect": "Real-world DeepSeek-V3 RAG L3 F1 0.8159 vs SAG 0.8134 (marginal), precision 0.7185, recall 0.9448, specificity 0.9821; NAG F1 0.6380.",
+     "quote": "At the L3 level, RAG achieved an F 1 -score of 0.8159 (95% CI 0.7736\u20100.8598), compared with 0.6380 (95% CI 0.5759\u20100.6942) for NAG and 0.8134 (95% CI 0.7600\u20100.8627) for SAG."
+    },
+    {
+     "rec_id": "R138",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Metric change at realistic prevalence versus balanced curated data",
+     "effect": "Precision dropped to 0.7185 at ~4.6% prevalence; specificity 0.9821 implies ~17 falsely flagged negative notes per 1000 screened, adding review burden or alert fatigue.",
+     "quote": "At the observed ADE prevalence of about 4.6%, this would translate into roughly 17 falsely flagged ADE-negative notes per 1000 screened notes, which could increase manual review burden or alert fatigue if deployed without clinician oversight."
+    }
+   ],
+   "unlisted_practices": [
+    "Deduplicating and balancing knowledge-base entries (max 3 per drug) to improve retrieval diversity",
+    "Static rule-based prompt augmentation (SAG) of clinical criteria",
+    "Structured JSON output schema for extraction"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2510,
+   "sample_unit": "clinical notes in final standard reference dataset",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "ERNIE 3.5-8K",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "reference-standard interrater reliability",
+     "effect": "Two annotators independently reviewed 5535 notes; Cohen \u03ba=0.86.",
+     "quote": "Interrater reliability was assessed using Cohen \u03ba based on 5535 clinical notes independently reviewed by 2 annotators, yielding a high agreement (Cohen \u03ba=0.86)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "same-data LLM comparison",
+     "effect": "Under RAG, ERNIE 3.5-8K L2 F1=94.74%, significantly outperforming DeepSeek-V3 and GPT-4o (both FDR P=.003).",
+     "quote": "Regarding the F 1 -score, there was minimal variation in the models\u2019 recognition performance: at the L1 level, ERNIE 3.5-8K marginally surpassed the others with an F 1 -score of 72.43%, though this advantage was not statistically significant compared to GPT-4o (FDR P =.86); at the L2 level, ERNIE 3.5-8K led with a score of 94.74%, significantly outperforming both DeepSeek-V3 and GPT-4o (both FDR P =.003)."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "uncurated-note ADE performance",
+     "effect": "RAG L3 F1=0.8159 (95% CI 0.7736\u20100.8598), versus NAG 0.6380 and SAG 0.8134.",
+     "quote": "At the L3 level, RAG achieved an F 1 -score of 0.8159 (95% CI 0.7736\u20100.8598), compared with 0.6380 (95% CI 0.5759\u20100.6942) for NAG and 0.8134 (95% CI 0.7600\u20100.8627) for SAG."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ADE identification recall",
+     "effect": "GPT-4o recall increased from 0.6419 under NAG to 0.9241 under RAG (FDR P=.003).",
+     "quote": "Notably, the RAG approach increased the recall of GPT-4o from 0.6419 under NAG to 0.9241 under RAG (FDR P=.003)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM ADE identification errors",
+     "effect": "ERNIE 3.5-8K alone mishandled 66 records; DeepSeek-V3 38; GPT-4o 73.",
+     "quote": "A statistical analysis of error instances revealed that ERNIE 3.5-8K incorrectly handled 66 case records alone, DeepSeek-V3 incorrectly handled 38 case records alone, and GPT-4o incorrectly handled 73 case records alone ( Figure 7 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Static prompt augmentation with ADE diagnostic rules for LLM ADE extraction",
+    "Deduplicating and balancing ADE knowledge-base records to improve retrieval diversity"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2510,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "ERNIE 3.5-8K",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Adverse drug event identification performance across prompting strategies",
+     "effect": "RAG achieved higher L3 F1-scores than NAG and SAG; DeepSeek-V3 with RAG reached 0.9638 (95% CI 0.9541-0.9727), and GPT-4o recall increased from 0.6419 to 0.9241 (FDR P=.003)",
+     "quote": "Across the tested LLMs, RAG yielded higher F1-scores than NAG and SAG at the L3 level."
+    }
+   ],
+   "unlisted_practices": [
+    "Deduplication and balancing of RAG knowledge base to reduce retrieval homogenization",
+    "Static prompt augmentation with clinical diagnostic rules and exclusion criteria"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "clinical notes (standard reference dataset)",
+ "sample_size": 2510,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "DeepSeek-V3",
+  "ERNIE 3.5-8K",
+  "GPT-4o",
+  "Qwen-turbo (preannotation only)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "ADE identification F1/recall with retrieval-augmented prompts versus non-augmented and static-augmented prompts",
+   "effect": "RAG raised GPT-4o L3 recall from 0.6419 (NAG) to 0.9241 (FDR P=.003); DeepSeek-V3 L3 F1 0.9638 with RAG vs 0.9022 NAG and 0.9441 SAG.",
+   "quote": "However, under the SAG prompt, GPT-4o\u2019s recall rate increased to 69.93%, and under the RAG prompt, it surged to 92.41%, representing an improvement of almost 30% (FDR P =.003).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-annotator agreement of reference standard built with blinded pharmacists and consensus adjudication",
+   "effect": "Two blinded annotators reviewed 5535 notes; Cohen kappa=0.86, disagreements resolved by consensus discussion.",
+   "quote": "Interrater reliability was assessed using Cohen \u03ba based on 5535 clinical notes independently reviewed by 2 annotators, yielding a high agreement (Cohen \u03ba=0.86).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Accuracy of LLM ADE extraction against gold-standard reference",
+   "effect": "Best DeepSeek-V3 RAG L3 F1 0.9638; but 15 notes misidentified by all three models, mostly commission errors (~80%); L1 exact-match recall only ~0.55-0.58.",
+   "quote": "Notably, 15 critical records posed recognition challenges for all 3 models.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance on uncurated real-world notes with ~4.6% ADE prevalence versus curated balanced set",
+   "effect": "Real-world DeepSeek-V3 RAG L3 F1 0.8159 vs SAG 0.8134 (marginal), precision 0.7185, recall 0.9448, specificity 0.9821; NAG F1 0.6380.",
+   "quote": "At the L3 level, RAG achieved an F 1 -score of 0.8159 (95% CI 0.7736\u20100.8598), compared with 0.6380 (95% CI 0.5759\u20100.6942) for NAG and 0.8134 (95% CI 0.7600\u20100.8627) for SAG.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R138",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Deduplicating and balancing ADE knowledge-base records to improve retrieval diversity",
+  "Deduplicating and balancing knowledge-base entries (max 3 per drug) to improve retrieval diversity",
+  "Deduplication and balancing of RAG knowledge base to reduce retrieval homogenization",
+  "Static prompt augmentation with ADE diagnostic rules for LLM ADE extraction",
+  "Static prompt augmentation with clinical diagnostic rules and exclusion criteria",
+  "Static rule-based prompt augmentation (SAG) of clinical criteria",
+  "Structured JSON output schema for extraction"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42574561",
+ "screen": {
+  "id": "pmid:42574561",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG) added to existing LLMs",
+  "user": "none",
+  "reason": "Evaluates the impact of adding retrieval-augmented generation (RAG) to existing LLMs (DeepSeek-V3, ERNIE 3.5, GPT-4o) compared to nonaugmented generation (NAG) to reduce hallucinations and improve adverse drug event identification.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42574561",
+   "empirical": 0.97,
+   "tests_practice": 0.44,
+   "real_deployment": 0.12
+  }
+ }
+}

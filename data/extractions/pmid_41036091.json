@@ -1,0 +1,448 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 397150,
+   "sample_unit": "patients (external VHA cohort)",
+   "models_evaluated": [
+    "Lasso logistic regression",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC drop of prolonged opioid use model from internal to external VHA data",
+     "effect": "AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001); outcome prevalence rose from 14.65% to 34.34%.",
+     "quote": "In Figure 2 , AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC after retraining model on local VHA data versus external validation",
+     "effect": "Retraining increased AUROC in the target cohort from 0.70 to 0.82 (0.12 shift), improving most subgroups, though opioid-exposed disparities persisted.",
+     "quote": "In Stage 3, retraining the model increased AUROC in the target cohort from 0.70 to 0.82 (0.12 shift)."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance disparities in external validation and after retraining",
+     "effect": "Stage 2 disparities: opioid-naive 0.68 vs opioid-exposed 0.63, Hispanic 0.68 vs non-Hispanic 0.70; disparities persisted for opioid-exposed after retraining.",
+     "quote": "Predictive performance in Stage 1 was equal across groups, but Stage 2 showed disparities: Hispanic 0.68 vs non-Hispanic 0.70 ( P < .001), opioid-naive 0.68 vs opioid-exposed 0.63 ( P < .001), depression 0.68 vs non-depression 0.69 ( P < .001), and mild comorbidity 0.71 vs severe comorbidity 0.69 ( P < .001)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup gaps masked by aggregate metrics",
+     "effect": "Forest plots revealed subgroup-level disparities masked by overall cohort metrics; opioid-exposed subgroup had greatest performance and net benefit degradation.",
+     "quote": "Forest plots revealed subgroup-level disparities in performance that were masked by overall cohort metrics."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when applied to new population (VHA) beyond development setting",
+     "effect": "AUROC fell from 0.74 to 0.70, subgroup disparities increased, and net-benefit threshold range shifted from [0.1-0.5] to [0.2-0.6].",
+     "quote": "This shows the model\u2019s performance sensitivity to outcome distribution shifts in real-world settings."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of development vs local population differences on performance",
+     "effect": "Outcome prevalence rose from 14.65% to 34.34% (P < .001); higher VHA prevalence reduced AUROC and increased subgroup disparities.",
+     "quote": "The higher prevalence of POU in the VHA population biased model predictions and contributed to reduced AUROC and increased subgroup disparities during external validation."
+    },
+    {
+     "rec_id": "R138",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinical utility via standardized net benefit across subgroups and thresholds",
+     "effect": "Net benefit range shifted from [0.1-0.5] to [0.2-0.6]; opioid-exposed required threshold ~0.5 vs ~0.2 in the general cohort, revealing utility loss not seen in AUROC.",
+     "quote": "For example, opioid-exposed patients required a threshold probability of \u223c.5 to achieve net benefit from the model, compared to \u223c.2 in the general cohort."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration and subgroup miscalibration in external validation",
+     "effect": "Model overestimates higher probabilities, and underestimates probabilities below 0.6 in opioid-exposed subgroup in Stage 2; depression and opioid-exposed showed most miscalibration.",
+     "quote": "This situation varies in the opioid-exposed subgroup, where the model underestimates probabilities below 0.6 in Stage 2."
+    }
+   ],
+   "unlisted_practices": [
+    "Standardized net benefit parity across subgroups as a fairness metric",
+    "Comparing algorithm choice (Lasso vs XGBoost) for fairness impact"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 439079,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Lasso logistic regression",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External validation AUROC",
+     "effect": "AUROC dropped from 0.74 to 0.70 in Stage 2 (6% reduction, P < .001).",
+     "quote": "In Figure 2 , AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Outcome prevalence shift",
+     "effect": "POU prevalence rose from 14.65% (N = 8301) to 34.34% (N = 397 150), P < .001.",
+     "quote": "From descriptive analysis at each stage, outcome prevalence jumped from 14.65% ( N = 8301) in Stage 1 to 34.34% ( N = 397 150) in Stage 2 ( Z -score test, P < .001)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retraining AUROC",
+     "effect": "Retraining increased target-cohort AUROC from 0.70 to 0.82 (0.12 shift).",
+     "quote": "In Stage 3, retraining the model increased AUROC in the target cohort from 0.70 to 0.82 (0.12 shift)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup AUROC disparities",
+     "effect": "Stage 2 disparities: Hispanic 0.68 vs 0.70; opioid-naive 0.68 vs opioid-exposed 0.63; all P < .001.",
+     "quote": "Predictive performance in Stage 1 was equal across groups, but Stage 2 showed disparities: Hispanic 0.68 vs non-Hispanic 0.70 ( P < .001), opioid-naive 0.68 vs opioid-exposed 0.63 ( P < .001), depression 0.68 vs non-depression 0.69 ( P < .001), and mild comorbidity 0.71 vs severe comorbidity 0.69 ( P < .001)."
+    },
+    {
+     "rec_id": "R325",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup clinical utility",
+     "effect": "Opioid-exposed zero net-benefit threshold increased from \u223c0.2 to \u223c0.5; Stage 3 net benefit nearly doubled Stage 2.",
+     "quote": "Where the treat-all strategy had zero net benefit, the threshold increased from \u223c0.2 (Stage 1) to \u223c0.5 (Stages 2 and 3) and the net benefit in Stage 3 nearly doubled that of Stage 2."
+    }
+   ],
+   "unlisted_practices": [
+    "Standardized net-benefit parity across threshold probabilities to assess clinical utility fairness"
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 439079,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Lasso logistic regression",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC drop on external validation",
+     "effect": "AUROC dropped from 0.74 in Stage 1 internal validation to 0.70 in Stage 2 external validation, representing a 6% reduction (P < .001).",
+     "quote": "In Figure 2 , AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup performance disparities masked by aggregate metrics",
+     "effect": "External validation revealed disparities (Hispanic 0.68 vs non-Hispanic 0.70, opioid-naive 0.68 vs opioid-exposed 0.63; P < .001) despite average subgroup AUROC of 0.69 (SD = 0.01) closely matching the 0.70 overall AUROC.",
+     "quote": "Forest plots revealed subgroup-level disparities in performance that were masked by overall cohort metrics."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 439079,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Lasso logistic regression",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC after retraining model on local VHA data versus external validation",
+   "effect": "Retraining increased AUROC in the target cohort from 0.70 to 0.82 (0.12 shift), improving most subgroups, though opioid-exposed disparities persisted.",
+   "quote": "In Stage 3, retraining the model increased AUROC in the target cohort from 0.70 to 0.82 (0.12 shift).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup gaps masked by aggregate metrics",
+   "effect": "Forest plots revealed subgroup-level disparities masked by overall cohort metrics; opioid-exposed subgroup had greatest performance and net benefit degradation.",
+   "quote": "Forest plots revealed subgroup-level disparities in performance that were masked by overall cohort metrics.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of development vs local population differences on performance",
+   "effect": "Outcome prevalence rose from 14.65% to 34.34% (P < .001); higher VHA prevalence reduced AUROC and increased subgroup disparities.",
+   "quote": "The higher prevalence of POU in the VHA population biased model predictions and contributed to reduced AUROC and increased subgroup disparities during external validation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC drop of prolonged opioid use model from internal to external VHA data",
+   "effect": "AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001); outcome prevalence rose from 14.65% to 34.34%.",
+   "quote": "In Figure 2 , AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup performance disparities in external validation and after retraining",
+   "effect": "Stage 2 disparities: opioid-naive 0.68 vs opioid-exposed 0.63, Hispanic 0.68 vs non-Hispanic 0.70; disparities persisted for opioid-exposed after retraining.",
+   "quote": "Predictive performance in Stage 1 was equal across groups, but Stage 2 showed disparities: Hispanic 0.68 vs non-Hispanic 0.70 ( P < .001), opioid-naive 0.68 vs opioid-exposed 0.63 ( P < .001), depression 0.68 vs non-depression 0.69 ( P < .001), and mild comorbidity 0.71 vs severe comorbidity 0.69 ( P < .001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when applied to new population (VHA) beyond development setting",
+   "effect": "AUROC fell from 0.74 to 0.70, subgroup disparities increased, and net-benefit threshold range shifted from [0.1-0.5] to [0.2-0.6].",
+   "quote": "This shows the model\u2019s performance sensitivity to outcome distribution shifts in real-world settings.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R138",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinical utility via standardized net benefit across subgroups and thresholds",
+   "effect": "Net benefit range shifted from [0.1-0.5] to [0.2-0.6]; opioid-exposed required threshold ~0.5 vs ~0.2 in the general cohort, revealing utility loss not seen in AUROC.",
+   "quote": "For example, opioid-exposed patients required a threshold probability of \u223c.5 to achieve net benefit from the model, compared to \u223c.2 in the general cohort.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration and subgroup miscalibration in external validation",
+   "effect": "Model overestimates higher probabilities, and underestimates probabilities below 0.6 in opioid-exposed subgroup in Stage 2; depression and opioid-exposed showed most miscalibration.",
+   "quote": "This situation varies in the opioid-exposed subgroup, where the model underestimates probabilities below 0.6 in Stage 2.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "External validation AUROC",
+   "effect": "AUROC dropped from 0.74 to 0.70 in Stage 2 (6% reduction, P < .001).",
+   "quote": "In Figure 2 , AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC drop on external validation",
+   "effect": "AUROC dropped from 0.74 in Stage 1 internal validation to 0.70 in Stage 2 external validation, representing a 6% reduction (P < .001).",
+   "quote": "In Figure 2 , AUROC dropped from 0.74 in Stage 1 to 0.70 in Stage 2 (6% reduction, P < .001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R325",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing algorithm choice (Lasso vs XGBoost) for fairness impact",
+  "Standardized net benefit parity across subgroups as a fairness metric",
+  "Standardized net-benefit parity across threshold probabilities to assess clinical utility fairness"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41036091",
+ "screen": {
+  "id": "pmid:41036091",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "external validation and local retraining with subgroup fairness and clinical utility assessment",
+  "user": "none",
+  "reason": "Evaluates external validation, retraining on local/target population data, and decision curve analysis across subgroups to assess clinical utility and fairness prior to deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and retraining"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41036091",
+   "empirical": 0.96,
+   "tests_practice": 0.62,
+   "real_deployment": 0.07
+  }
+ }
+}

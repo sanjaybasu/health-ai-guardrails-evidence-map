@@ -1,0 +1,350 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "England",
+   "sample_size": 9,
+   "sample_unit": "NHS trusts (500-comment stratified manually coded sample per trust for accuracy)",
+   "models_evaluated": [
+    "SVM with TF-IDF bag of words (Python scikit-learn)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Theme and sentiment accuracy before vs after local recoding/retraining with trust-specific coded data",
+     "effect": "Theme accuracy rose after recoding: Trust A 57% to 76%, B 69% to 78%, C 84% to 90%, D 67% to 82%, GP/community 64% to 77%; sentiment also improved (e.g., A 76% to 82%).",
+     "quote": "The accuracy for the theme improved in all the organizations demonstrating that while the algorithm may not initially be transferable, with some retraining and adaptations, it can easily be reused in different service settings."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Algorithm accuracy variation across care settings/sites",
+     "effect": "Initial accuracy was notably lower in pediatrics and mental health/community trusts (theme accuracy 57% to 67% before recoding) than in adult inpatient settings; final accuracy was 75% or higher after recoding.",
+     "quote": "However, the accuracy of the model was lower in organizations delivering different services, such as pediatrics and mental health."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local performance against manually coded reference standard with a 75% acceptance threshold",
+     "effect": "Accuracy was calculated on a 500-comment stratified manually coded sample per trust against a 75% threshold; initial accuracy fell below threshold in some trusts and recoding brought all to at or above 75%.",
+     "quote": "The acceptable threshold for overall accuracy for theme and sentiment for a supervised algorithm using patient feedback was determined at 75%."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Tools for periodic revalidation of accuracy on local data",
+     "effect": "Interfaces were built enabling trusts to upload labeled data, check accuracy and retrain; no outcomes of periodic revalidation reported.",
+     "quote": "The interfaces allow organizations to periodically check accuracy as part of a responsible AI strategy."
+    }
+   ],
+   "unlisted_practices": [
+    "Community of practice across sites for algorithm maintenance and shared learning",
+    "Standardized deployment pipeline and coding pack across organizations",
+    "Iterative sequential vocabulary (bag of words) expansion until thematic saturation",
+    "Automated PII redaction algorithm for feedback text"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "England",
+   "sample_size": 9,
+   "sample_unit": "NHS trusts",
+   "models_evaluated": [
+    "Support vector machine (SVM) supervised NLP classifier with bag-of-words/TF-IDF features"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Interrater reliability of manual coding reference standard",
+     "effect": "Sentiment \u03ba=0.82-1.00 and theme \u03ba=0.79-0.96 where reported; almost perfect agreement in 7 organizations.",
+     "quote": "There was almost perfect agreement (0.81\u20101.00) seen in 7 organizations."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Deployment script integration errors",
+     "effect": "Common errors were \u201cFileNotFoundError\u201d from incorrect .pkl paths and \u201cinvalid column name\u201d from SQL input-column mismatch before final deployment.",
+     "quote": "The 2 most common errors encountered were \u201cFileNotFoundError\u201d which was a result of not specifying the correct path to a .pkl file, and \u201cinvalid column name,\u201d as the code had not been adapted appropriately with the column names from the input table on the SQL server."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Per-trust validation against 75% threshold",
+     "effect": "Reported final accuracies met threshold: first 5 trusts theme 76%-90%, sentiment 80%-94%; final 4 organizations overall \u226575%.",
+     "quote": "The final 4 organizations achieved an overall accuracy rate of 75% or higher, having reached thematic saturation following the initial coding efforts of the initial 5 organizations."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Transferability to different service settings",
+     "effect": "Initial theme accuracy was 57% in community/mental health, 67% in pediatrics, and 64% in GP/community, below the 75% threshold.",
+     "quote": "However, the accuracy of the model was lower in organizations delivering different services, such as pediatrics and mental health."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy after local recoding and retraining",
+     "effect": "Theme accuracy improved 57\u219276, 69\u219278, 84\u219290, 67\u219282, and 64\u219277; sentiment improved 76\u219282, 87\u219291, 87\u219294, 72\u219282, and 69\u219280.",
+     "quote": "The overall accuracy for theme and sentiment significantly improved after using a revised coded template."
+    }
+   ],
+   "unlisted_practices": [
+    "Establishing a technical community of practice for algorithm maintenance, with at least 80% staff engagement and at least 90% reporting belonging and support."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": null,
+   "sample_unit": "comments",
+   "models_evaluated": [
+    "Support Vector Machine"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "theme and sentiment classification accuracy after local retuning",
+     "effect": "Theme accuracy improved from 57%-84% before recoding to 76%-90% after recoding, and sentiment accuracy improved from 69%-87% to 80%-94% across participating trusts.",
+     "quote": "The overall accuracy for theme and sentiment significantly improved after using a revised coded template."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "England",
+ "sample_unit": "NHS trusts (500-comment stratified manually coded sample per trust for accuracy)",
+ "sample_size": 9,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "SVM with TF-IDF bag of words (Python scikit-learn)",
+  "Support Vector Machine",
+  "Support vector machine (SVM) supervised NLP classifier with bag-of-words/TF-IDF features"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Theme and sentiment accuracy before vs after local recoding/retraining with trust-specific coded data",
+   "effect": "Theme accuracy rose after recoding: Trust A 57% to 76%, B 69% to 78%, C 84% to 90%, D 67% to 82%, GP/community 64% to 77%; sentiment also improved (e.g., A 76% to 82%).",
+   "quote": "The accuracy for the theme improved in all the organizations demonstrating that while the algorithm may not initially be transferable, with some retraining and adaptations, it can easily be reused in different service settings.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local performance against manually coded reference standard with a 75% acceptance threshold",
+   "effect": "Accuracy was calculated on a 500-comment stratified manually coded sample per trust against a 75% threshold; initial accuracy fell below threshold in some trusts and recoding brought all to at or above 75%.",
+   "quote": "The acceptable threshold for overall accuracy for theme and sentiment for a supervised algorithm using patient feedback was determined at 75%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Algorithm accuracy variation across care settings/sites",
+   "effect": "Initial accuracy was notably lower in pediatrics and mental health/community trusts (theme accuracy 57% to 67% before recoding) than in adult inpatient settings; final accuracy was 75% or higher after recoding.",
+   "quote": "However, the accuracy of the model was lower in organizations delivering different services, such as pediatrics and mental health.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R119",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Deployment script integration errors",
+   "effect": "Common errors were \u201cFileNotFoundError\u201d from incorrect .pkl paths and \u201cinvalid column name\u201d from SQL input-column mismatch before final deployment.",
+   "quote": "The 2 most common errors encountered were \u201cFileNotFoundError\u201d which was a result of not specifying the correct path to a .pkl file, and \u201cinvalid column name,\u201d as the code had not been adapted appropriately with the column names from the input table on the SQL server.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Transferability to different service settings",
+   "effect": "Initial theme accuracy was 57% in community/mental health, 67% in pediatrics, and 64% in GP/community, below the 75% threshold.",
+   "quote": "However, the accuracy of the model was lower in organizations delivering different services, such as pediatrics and mental health.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R150",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated PII redaction algorithm for feedback text",
+  "Community of practice across sites for algorithm maintenance and shared learning",
+  "Establishing a technical community of practice for algorithm maintenance, with at least 80% staff engagement and at least 90% reporting belonging and support.",
+  "Iterative sequential vocabulary (bag of words) expansion until thematic saturation",
+  "Standardized deployment pipeline and coding pack across organizations"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40638776",
+ "screen": {
+  "id": "pmid:40638776",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration with trust-specific coding templates before deployment",
+  "user": "clinician_or_staff",
+  "reason": "The study validates a text analytics NLP model across 9 diverse healthcare trusts to assess cross-contextual performance and tests the effect of applying local trust-specific coding templates and retraining to address site-specific domain shifts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and contextual retraining across sites"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40638776",
+   "empirical": 0.93,
+   "tests_practice": 0.46,
+   "real_deployment": 0.23
+  }
+ }
+}

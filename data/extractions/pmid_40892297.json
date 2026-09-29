@@ -1,0 +1,91 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Germany",
+ "sample_size": 85,
+ "sample_unit": "questions",
+ "models_evaluated": [
+  "GPT-4o-mini",
+  "Llama 3.1 405B Instruct Turbo",
+  "Mixtral 8x22B Instruct",
+  "Claude 3.5 Sonnet",
+  "BM25",
+  "BAAI/bge-m3"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Answer correctness of LLM with versus without RAG grounding in guidelines",
+   "effect": "GPT-4o-mini without RAG performed significantly worse (20.0% correct, 32.9% wrong) than with RAG (57.6% correct, 15.3% wrong); RAG models ranged 56.6%-70.6% correct.",
+   "quote": "GPT-4o-mini without RAG performed significantly worse (20.0%, 32.9% wrong).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Expert-graded output accuracy of guideline question answering against reference guidelines",
+   "effect": "Best model Claude 3.5 Sonnet 70.6% correct, 10.6% wrong; other RAG models 56.6-64.7% correct with 15.3-17.6% wrong; retrieval errors caused 80% of incorrect answers.",
+   "quote": "Claude Sonnet 3.5 achieved the highest answer correctness (70.6% correct, 10.6% wrong), followed by Llama 3.1 (64.7%, 15.3% wrong), GPT-4o-mini with RAG (57.6%, 15.3% wrong), and Mixtral (56.6%, 17.6% wrong).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Comparing retrieval strategies (BM25 vs vector embeddings) for RAG guideline question answering"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40892297",
+ "screen": {
+  "id": "pmid:40892297",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval augmented generation (RAG)",
+  "user": "none",
+  "reason": "Empirically assesses the addition of retrieval augmented generation (RAG) to an LLM baseline (GPT-4o-mini with vs. without RAG) for answering clinical guideline questions.",
+  "jev": {
+   "id": "pmid:40892297",
+   "empirical": 0.96,
+   "tests_practice": 0.81,
+   "real_deployment": 0.03
+  }
+ }
+}

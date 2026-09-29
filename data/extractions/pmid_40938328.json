@@ -1,0 +1,350 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Sweden; South Korea",
+   "sample_size": 2383,
+   "sample_unit": "patients (419 Karolinska, 438 VDB Matched, 1526 VDB Non-Matched)",
+   "models_evaluated": [
+    "CNN (Lee et al.) for intraoperative hypotension prediction",
+    "MAP threshold method"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AUC of CNN versus simple MAP threshold for predicting intraoperative hypotension across datasets",
+     "effect": "CNN beat MAP threshold in the ambiguous Karolinska data (64.41 vs 61.92) but only marginally in VDB datasets (80.29 vs 78.46; 80.64 vs 79.80); threshold metrics were comparable at 80% specificity.",
+     "quote": "In the Karolinska dataset, characterized by narrow class separation ( = 2.44 mmHg), the CNN model performed better than MAP threshold method (MAPthr), achieving a higher (64.41 vs. 61.92 )."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance inflation from selection bias excluding borderline MAP cases, tested by standardizing class separation",
+     "effect": "Baseline AUCs differed (64.41 Karolinska vs ~80 VDB); after standardizing MAP difference to 5.01 mmHg, AUCs equalized (72.48, 71.79, 73.33), indicating selection bias inflated metrics.",
+     "quote": "This standardization equalized performance ( for Karolinska, VDB Matched, and VDB Non-Matched), confirming that class separation bias inflates metrics in datasets with larger values (Table 5 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cross-center and cross-cohort AUC when training on one site and testing on another",
+     "effect": "Trained on VDB Matched, tested on Karolinska AUC fell to 63.25 (vs 80.29 within-site); VDB Non-Matched to Karolinska 63.76; Karolinska-trained models generalized to VDB at 68.28-70.62.",
+     "quote": "Cross-center validation exposed asymmetric generalizability: models trained on Karolinska\u2013with a larger Gray Zone prevalence ( 49 versus 18\u201320 in VDB datasets; see Fig. 3 , right panels)\u2013generalized moderately to VDB Matched ( = 68.28 ), while the reverse (VDB Matched Karolinska) showed significant degradation ( = 63.25 )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation when applying models across datasets with different populations and class separation",
+     "effect": "Models trained on well-separated VDB data degraded on Karolinska (AUC 63.25-63.76), while within-VDB transfer was consistent (79.16-80.63).",
+     "quote": "These findings establish realistic expectations for AI-deployment in one hospital doesn\u2019t guarantee success in another."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AUC across age groups and ASA classification subgroups",
+     "effect": "AUC higher when tested on young cohort (~80-81) than old cohort (~75); restricting to ASA 2 gave comparable AUC to baseline (e.g., 62.93 vs 64.41 Karolinska).",
+     "quote": "Finally, when restricting analysis to ASA class 2 only patients, the model maintained comparable performance to the baseline across all datasets ( )."
+    }
+   ],
+   "unlisted_practices": [
+    "Including borderline (Gray Zone) cases and standardizing class separation to avoid selection bias in evaluation dataset construction",
+    "Poisson-based sampling with slack window to avoid label leakage in prediction framing"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Sweden; South Korea",
+   "sample_size": 2383,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CNN-based model by Lee et al.",
+    "MAP threshold method (MAPthr)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "selection-bias-adjusted model performance",
+     "effect": "Baseline: 64.41/80.29/80.64; after standardized mean MAP: 72.48 \u00b1 1.63/71.79 \u00b1 0.98/73.33 \u00b1 1.33.",
+     "quote": "This virtually eliminated the class separation and demonstrated that inflated performance in some datasets can be attributed to selection bias rather than true model generalizability."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CNN versus MAP-threshold prediction",
+     "effect": "CNN vs MAPthr: Karolinska 64.41 vs 61.92; VDB Matched 80.29 vs 78.46; VDB Non-Matched 80.64 vs 79.80.",
+     "quote": "In contrast, for the VDB datasets\u2013characterized by a wider class separation ( = 11.21\u201311.96 mmHg) and clearer hemodynamic patterns\u2013the CNN model performed only marginally better than MAPthr ( = 80.29 vs. 78.46 for VDB Matched, and 80.64 vs. 79.80 for VDB Non-Matched)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-center model generalizability",
+     "effect": "Karolinska\u2192VDB Matched 68.28; VDB Matched\u2192Karolinska 63.25; Karolinska\u2192VDB Non-Matched 70.62; VDB Non-Matched\u2192Karolinska 63.76.",
+     "quote": "Cross-center validation exposed asymmetric generalizability: models trained on Karolinska\u2013with a larger Gray Zone prevalence ( 49 versus 18\u201320 in VDB datasets; see Fig. 3 , right panels)\u2013generalized moderately to VDB Matched ( = 68.28 ), while the reverse (VDB Matched Karolinska) showed significant degradation ( = 63.25 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "age-subgroup model performance",
+     "effect": "Test Young: 80.19 \u00b1 1.65 and 80.94 \u00b1 1.69; test Old: 74.86 \u00b1 1.02 and 75.01 \u00b1 1.29.",
+     "quote": "This suggest that age-related factors may introduce variability or complexity in the data for older patients, potentially making accurate prediction more challenging."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Sweden, South Korea",
+   "sample_size": 2383,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CNN (Lee et al.)",
+    "MAP threshold method"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Predictive performance of CNN versus MAP threshold method across datasets",
+     "effect": "In VDB cohorts, CNN was marginally better than MAPthr (AUC-ROC 80.29 vs 78.46, and 80.64 vs 79.80), but in Karolinska CNN was higher (64.41 vs 61.92); sensitivity, PPV, and F1 were comparable across all datasets.",
+     "quote": "In contrast, for the VDB datasets\u2013characterized by a wider class separation ( = 11.21\u201311.96 mmHg) and clearer hemodynamic patterns\u2013the CNN model performed only marginally better than MAPthr ( = 80.29 vs. 78.46 for VDB Matched, and 80.64 vs. 79.80 for VDB Non-Matched)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cross-center model generalizability and performance degradation from dataset shift",
+     "effect": "Models trained on VDB Matched dropped to AUC-ROC 63.25 when tested on Karolinska (versus 80.29 internally), whereas Karolinska-trained models generalized to VDB Matched at AUC-ROC 68.28 (versus 64.41 internally).",
+     "quote": "Cross-center validation exposed asymmetric generalizability: models trained on Karolinska\u2013with a larger Gray Zone prevalence ( 49 versus 18\u201320 in VDB datasets; see Fig. 3 , right panels)\u2013generalized moderately to VDB Matched ( = 68.28 ), while the reverse (VDB Matched Karolinska) showed significant degradation ( = 63.25 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Sweden; South Korea",
+ "sample_unit": "patients",
+ "sample_size": 2383,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CNN (Lee et al.)",
+  "CNN (Lee et al.) for intraoperative hypotension prediction",
+  "CNN-based model by Lee et al.",
+  "MAP threshold method",
+  "MAP threshold method (MAPthr)"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "AUC of CNN versus simple MAP threshold for predicting intraoperative hypotension across datasets",
+   "effect": "CNN beat MAP threshold in the ambiguous Karolinska data (64.41 vs 61.92) but only marginally in VDB datasets (80.29 vs 78.46; 80.64 vs 79.80); threshold metrics were comparable at 80% specificity.",
+   "quote": "In the Karolinska dataset, characterized by narrow class separation ( = 2.44 mmHg), the CNN model performed better than MAP threshold method (MAPthr), achieving a higher (64.41 vs. 61.92 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance inflation from selection bias excluding borderline MAP cases, tested by standardizing class separation",
+   "effect": "Baseline AUCs differed (64.41 Karolinska vs ~80 VDB); after standardizing MAP difference to 5.01 mmHg, AUCs equalized (72.48, 71.79, 73.33), indicating selection bias inflated metrics.",
+   "quote": "This standardization equalized performance ( for Karolinska, VDB Matched, and VDB Non-Matched), confirming that class separation bias inflates metrics in datasets with larger values (Table 5 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Cross-center and cross-cohort AUC when training on one site and testing on another",
+   "effect": "Trained on VDB Matched, tested on Karolinska AUC fell to 63.25 (vs 80.29 within-site); VDB Non-Matched to Karolinska 63.76; Karolinska-trained models generalized to VDB at 68.28-70.62.",
+   "quote": "Cross-center validation exposed asymmetric generalizability: models trained on Karolinska\u2013with a larger Gray Zone prevalence ( 49 versus 18\u201320 in VDB datasets; see Fig. 3 , right panels)\u2013generalized moderately to VDB Matched ( = 68.28 ), while the reverse (VDB Matched Karolinska) showed significant degradation ( = 63.25 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation when applying models across datasets with different populations and class separation",
+   "effect": "Models trained on well-separated VDB data degraded on Karolinska (AUC 63.25-63.76), while within-VDB transfer was consistent (79.16-80.63).",
+   "quote": "These findings establish realistic expectations for AI-deployment in one hospital doesn\u2019t guarantee success in another.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "age-subgroup model performance",
+   "effect": "Test Young: 80.19 \u00b1 1.65 and 80.94 \u00b1 1.69; test Old: 74.86 \u00b1 1.02 and 75.01 \u00b1 1.29.",
+   "quote": "This suggest that age-related factors may introduce variability or complexity in the data for older patients, potentially making accurate prediction more challenging.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive performance of CNN versus MAP threshold method across datasets",
+   "effect": "In VDB cohorts, CNN was marginally better than MAPthr (AUC-ROC 80.29 vs 78.46, and 80.64 vs 79.80), but in Karolinska CNN was higher (64.41 vs 61.92); sensitivity, PPV, and F1 were comparable across all datasets.",
+   "quote": "In contrast, for the VDB datasets\u2013characterized by a wider class separation ( = 11.21\u201311.96 mmHg) and clearer hemodynamic patterns\u2013the CNN model performed only marginally better than MAPthr ( = 80.29 vs. 78.46 for VDB Matched, and 80.64 vs. 79.80 for VDB Non-Matched).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Including borderline (Gray Zone) cases and standardizing class separation to avoid selection bias in evaluation dataset construction",
+  "Poisson-based sampling with slack window to avoid label leakage in prediction framing"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40938328",
+ "screen": {
+  "id": "pmid:40938328",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "cross-center external validation with baseline comparison",
+  "user": "none",
+  "reason": "Evaluates validation frameworks to address dataset selection bias and cross-center generalization for intraoperative hypotension risk prediction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "realistic validation framework and case selection standardization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40938328",
+   "empirical": 0.96,
+   "tests_practice": 0.12,
+   "real_deployment": 0.06
+  }
+ }
+}

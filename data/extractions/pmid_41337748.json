@@ -1,0 +1,301 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 239246,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "random forest",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Association between unsupervised temporal data shift clusters and clusters of yearly model performance",
+     "effect": "Fisher exact P<.05 for all random forest metrics (P .02-.03) and all gradient boosting metrics with k-means; hierarchical recall P=.08. Adjusted P values gave same results.",
+     "quote": "All metrics registered P values of <.05 for both clustering methods, indicating statistically significant differences between the clusters."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance across years relative to population and coding changes (ICD-9 to ICD-10)",
+     "effect": "Models performed best when trained and tested within the same ICD era; the ICD-9 to ICD-10 transition was a major shift source associated with performance degradation.",
+     "quote": "The transition from ICD-9 to ICD-10 was a major source of dataset shift, associated with a performance degradation."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when applied to data from other time periods",
+     "effect": "Models trained and tested across the ICD-9/ICD-10 boundary performed worse than those trained and tested within the same era; best results were in the pre-ICD-10 and post-ICD-10 quadrants.",
+     "quote": "The best results were in the lower left and upper right quadrants."
+    }
+   ],
+   "unlisted_practices": [
+    "Unsupervised model-agnostic characterization of temporal dataset shift (IGT projections) before model development to anticipate performance variation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 239246,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "random forest",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "temporal dataset shift performance degradation",
+     "effect": "ICD-9-to-ICD-10 transition was associated with performance degradation; temporal shift-performance relationship for RF/GB models reported at P<.05.",
+     "quote": "The transition from ICD-9 (International Classification of Diseases, Ninth Revision) to ICD-10 was a major source of dataset shift, associated with a performance degradation."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "drift monitoring as performance indicator",
+     "effect": "Unsupervised covariate and concept shift patterns identified by IGT were significantly related to random forest and gradient boosting performance (P<.05).",
+     "quote": "Our results demonstrate a significant relationship between the unsupervised temporal shift patterns, specifically covariate and concept shifts, identified using the IGT projection method and the performance of the random forest and gradient boosting models (P<.05)."
+    },
+    {
+     "rec_id": "R374",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "data coding change affecting performance",
+     "effect": "The ICD-9-to-ICD-10 coding change was a major dataset shift and was associated with performance degradation.",
+     "quote": "The transition from ICD-9 (International Classification of Diseases, Ninth Revision) to ICD-10 was a major source of dataset shift, associated with a performance degradation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 239246,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "random forest",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance degradation from temporal dataset shift",
+     "effect": "Temporal shift patterns were significantly associated with model performance variations (P<.05 for hierarchical and k-means clustering in random forest and gradient boosting models), reflecting degradation across coding transitions.",
+     "quote": "Our results demonstrate a significant relationship between the unsupervised temporal shift patterns, specifically covariate and concept shifts, identified using the IGT projection method and the performance of the random forest and gradient boosting models (P<.05)."
+    }
+   ],
+   "unlisted_practices": [
+    "Unsupervised characterization of temporal dataset shifts using Information Geometric Temporal projections before model development"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "admissions",
+ "sample_size": 239246,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "gradient boosting",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Association between unsupervised temporal data shift clusters and clusters of yearly model performance",
+   "effect": "Fisher exact P<.05 for all random forest metrics (P .02-.03) and all gradient boosting metrics with k-means; hierarchical recall P=.08. Adjusted P values gave same results.",
+   "quote": "All metrics registered P values of <.05 for both clustering methods, indicating statistically significant differences between the clusters.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when applied to data from other time periods",
+   "effect": "Models trained and tested across the ICD-9/ICD-10 boundary performed worse than those trained and tested within the same era; best results were in the pre-ICD-10 and post-ICD-10 quadrants.",
+   "quote": "The best results were in the lower left and upper right quadrants.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "temporal dataset shift performance degradation",
+   "effect": "ICD-9-to-ICD-10 transition was associated with performance degradation; temporal shift-performance relationship for RF/GB models reported at P<.05.",
+   "quote": "The transition from ICD-9 (International Classification of Diseases, Ninth Revision) to ICD-10 was a major source of dataset shift, associated with a performance degradation.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R374",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "data coding change affecting performance",
+   "effect": "The ICD-9-to-ICD-10 coding change was a major dataset shift and was associated with performance degradation.",
+   "quote": "The transition from ICD-9 (International Classification of Diseases, Ninth Revision) to ICD-10 was a major source of dataset shift, associated with a performance degradation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "performance degradation from temporal dataset shift",
+   "effect": "Temporal shift patterns were significantly associated with model performance variations (P<.05 for hierarchical and k-means clustering in random forest and gradient boosting models), reflecting degradation across coding transitions.",
+   "quote": "Our results demonstrate a significant relationship between the unsupervised temporal shift patterns, specifically covariate and concept shifts, identified using the IGT projection method and the performance of the random forest and gradient boosting models (P<.05).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Unsupervised characterization of temporal dataset shifts using Information Geometric Temporal projections before model development",
+  "Unsupervised model-agnostic characterization of temporal dataset shift (IGT projections) before model development to anticipate performance variation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41337748",
+ "screen": {
+  "id": "pmid:41337748",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "dataset shift monitoring for drift detection",
+  "user": "none",
+  "reason": "Empirically tests whether an unsupervised data drift monitoring technique (IGT projections) can proactively detect temporal dataset shifts and anticipate clinical AI model performance drops over time.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "temporal dataset shift and drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41337748",
+   "empirical": 0.9,
+   "tests_practice": 0.09,
+   "real_deployment": 0.04
+  }
+ }
+}

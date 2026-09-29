@@ -1,0 +1,283 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 14263,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": true,
+    "low_income": true,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "non-English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model fairness metrics across age, race, ADI, insurance, sex, language, and health literacy subgroups",
+     "effect": "AUC 0.71 overall, but bias detected for age, race, ADI and insurance type; no bias for sex, language, health literacy. Older adults TPR ratio 0.52, predictive equality 0.29.",
+     "quote": "The bias we detected in the developed models clearly shows that despite the promising overall performance of the model (AUC, 0.71; balanced accuracy, 0.64), the performance suffers significantly for some of the subcohorts."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of reweighing on subgroup bias in model performance",
+     "effect": "Reweighing reduced bias for ADI but introduced bias for language (equal opportunity ratio 0.91 to 1.35, predictive equality 0.84 to 0.29) and worsened race bias when reweighing on ADI.",
+     "quote": "Reweighing the prediction models based on each protected attribute helped reduce the bias for some cases (e.g., ADI), but it introduced bias in some other cases where there was no bias (language)."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance and fairness across patient subgroups on local data",
+     "effect": "Model biased for age, race (FPR 1.36-1.39 times higher for non-White), ADI (three of five metrics) and insurance type (three of five metrics).",
+     "quote": "The model was biased against the patients with other (non-White) races in terms of FPR."
+    }
+   ],
+   "unlisted_practices": [
+    "Reweighing training observations by protected attribute as bias mitigation",
+    "Applying the 80% rule threshold to fairness metric ratios"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 14263,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": true,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Non-English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup prediction bias",
+     "effect": "AUC 0.71; bias for age, race, ADI, insurance; no bias for sex, language, health literacy.",
+     "quote": "The machine learning model (area under the curve, 0.71) was biased in terms of age, race, ADI, and insurance type, but not in terms of sex, language, and health literacy."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local subgroup fairness",
+     "effect": "AUC 0.71, balanced accuracy 0.64, but performance suffered significantly for some subcohorts.",
+     "quote": "The bias we detected in the developed models clearly shows that despite the promising overall performance of the model (AUC, 0.71; balanced accuracy, 0.64), the performance suffers significantly for some of the subcohorts."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Bias after reweighing",
+     "effect": "Reweighing helped some cases but introduced language bias; non-English ratios changed: equal opportunity 0.91 to 1.35, accuracy 0.96 to 1.30, predictive equality 0.84 to 0.29.",
+     "quote": "Reweighing the prediction models based on each protected attribute helped reduce the bias for some cases (e.g., ADI), but it introduced bias in some other cases where there was no bias (language)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 14263,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CatBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup fairness and performance disparities across demographic attributes",
+     "effect": "Overall AUC was 0.71, but the model showed bias in age, race (non-White false positive rate 1.36 times higher), ADI, and insurance type, though not sex, language, or health literacy.",
+     "quote": "The bias we detected in the developed models clearly shows that despite the promising overall performance of the model (AUC, 0.71; balanced accuracy, 0.64), the performance suffers significantly for some of the subcohorts."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Subgroup fairness metrics following reweighing bias mitigation",
+     "effect": "Reweighing reduced bias for some attributes like ADI and race, but introduced bias for language (equal opportunity ratio 0.91 to 1.35) and reweighing ADI worsened racial bias.",
+     "quote": "Reweighing the prediction models based on each protected attribute helped reduce the bias for some cases (e.g., ADI), but it introduced bias in some other cases where there was no bias (language)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 14263,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": true,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Non-English",
+  "non-English"
+ ],
+ "models_evaluated": [
+  "CatBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model fairness metrics across age, race, ADI, insurance, sex, language, and health literacy subgroups",
+   "effect": "AUC 0.71 overall, but bias detected for age, race, ADI and insurance type; no bias for sex, language, health literacy. Older adults TPR ratio 0.52, predictive equality 0.29.",
+   "quote": "The bias we detected in the developed models clearly shows that despite the promising overall performance of the model (AUC, 0.71; balanced accuracy, 0.64), the performance suffers significantly for some of the subcohorts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of reweighing on subgroup bias in model performance",
+   "effect": "Reweighing reduced bias for ADI but introduced bias for language (equal opportunity ratio 0.91 to 1.35, predictive equality 0.84 to 0.29) and worsened race bias when reweighing on ADI.",
+   "quote": "Reweighing the prediction models based on each protected attribute helped reduce the bias for some cases (e.g., ADI), but it introduced bias in some other cases where there was no bias (language).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance and fairness across patient subgroups on local data",
+   "effect": "Model biased for age, race (FPR 1.36-1.39 times higher for non-White), ADI (three of five metrics) and insurance type (three of five metrics).",
+   "quote": "The model was biased against the patients with other (non-White) races in terms of FPR.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.78
+ },
+ "unlisted_practices": [
+  "Applying the 80% rule threshold to fairness metric ratios",
+  "Reweighing training observations by protected attribute as bias mitigation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36714611",
+ "screen": {
+  "id": "pmid:36714611",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "pre-deployment fairness auditing with reweighing bias mitigation",
+  "user": "none",
+  "reason": "Evaluates demographic algorithmic bias across 7 protected attributes for postoperative pain prediction and tests reweighing of protected attributes to mitigate bias/improve algorithmic fairness.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "data reweighing for bias mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36714611",
+   "empirical": 0.96,
+   "tests_practice": 0.25,
+   "real_deployment": 0.04
+  }
+ }
+}

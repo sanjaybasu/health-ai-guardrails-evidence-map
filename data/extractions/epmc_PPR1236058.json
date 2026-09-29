@@ -1,0 +1,88 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "any_ai",
+  "generative_llm"
+ ],
+ "country": "Finland",
+ "sample_size": null,
+ "sample_unit": "synthetic discharge summaries and patient record retrieval queries",
+ "models_evaluated": [
+  "Qwen3-Embedding-8B",
+  "multilingual-E5-large"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Finnish",
+  "Swedish"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Embedding model detection of direction of semantic change under controlled text perturbations",
+   "effect": "On average models detected direction of change correctly, but case-level performance varied; Qwen3-Embedding-8B had zero directional errors while multilingual-E5-large erred in 13.8% of cases.",
+   "quote": "Qwen3-Embedding-8B was the only model with zero directional errors, while multilingual-E5-large erred in 13.8% of cases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Performance differences between candidate embedding models on the same clinical tasks",
+   "effect": "Qwen3-Embedding-8B outperformed multilingual-E5-large in retrieval; sufficiency 3.25 vs 3.17 for first query and 2.25 vs 1.15 out of 5 for second query.",
+   "quote": "Our results show that the choice of embedding model is important: performance differences between models can be large enough to determine whether clinically relevant information reaches the end user, and model weaknesses can be both task-specific and context-dependent.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1236058",
+ "screen": {
+  "id": "epmc:PPR1236058",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates embedding models for clinical text semantic difference detection and RAG-style data retrieval from records, comparing performance across various models and distance metrics without evaluating a specific deployment practice or safeguard.",
+  "jev": {
+   "id": "epmc:PPR1236058",
+   "empirical": 0.94,
+   "tests_practice": 0.04,
+   "real_deployment": 0.09
+  }
+ }
+}

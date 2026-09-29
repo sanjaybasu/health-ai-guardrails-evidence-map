@@ -1,0 +1,347 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 19,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "Microsoft Prometheus",
+    "Custom RAG model (text-davinci-003, GPT-3 based)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and hallucination rate of retrieval-grounded RAG vs general LLMs on DLBCL questions",
+     "effect": "RAG had highest mean accuracy (2.46 vs GPT-4 2.26, GPT-3.5 1.82, Prometheus 1.74) and fewest answers with hallucinations (3/19 vs GPT-3.5 13/19, GPT-4 8/19).",
+     "quote": "Overall, the RAG model enhanced with domain specific data outperformed other LLMs with respect to accuracy and relevance of answers, and produced answers with the fewest observed hallucinations."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fabricated or incorrect references in generative AI outputs",
+     "effect": "GPT-3.5 and GPT-4 gave numerical response rates inconsistent with cited references, with fabricated or incorrect references; GPT models had hallucinations in 13/19 and 8/19 answers.",
+     "quote": "Numerical overall and complete response rates (ORR and CRR, respectively) reported by GPT-3.5 (ORR = 65.1%, CRR = 35.1%) and GPT-4 (ORR = 62.7%, CRR = 39.2%) were not consistent with their references cited and had either fabricated or provided incorrect references."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Outdated knowledge from training cutoff and incomplete retrieval corpus affecting answers",
+     "effect": "RAG answer to glofitamab response rate question was inaccurate because the key trial paper was not in the corpus; GPT models trained only up to September 2021.",
+     "quote": "The RAG model result was not accurate in answering this question because the official glofitamab trial efficacy paper [ 36 ] was not available on PubMed Central ( https://www.ncbi.nlm.nih.gov/pmc/ ) and therefore not included in the corpus."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparison of RAG versus general-purpose LLMs for biomedical question answering",
+    "Prompt instructions restricting answers to provided context"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 19,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "OpenAI GPT-3.5",
+    "OpenAI GPT-4",
+    "Microsoft Prometheus",
+    "custom RAG model based on GPT-3/text-davinci-003"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy differences between candidate LLMs",
+     "effect": "On the same 19 questions, RAG had highest accuracy 2.46/relevance 2.61, GPT-4 highest readability 2.88; hallucinations ranged from RAG 3/19 to GPT-3.5 13/19.",
+     "quote": "Results here demonstrated that the RAG model performed better on biomedical-specific tasks than the other LLMs evaluated, specifically with respect to accuracy and relevance of results."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "grounded RAG answer accuracy and hallucinations",
+     "effect": "RAG accuracy averaged 2.46 versus GPT-4 2.26, GPT-3.5 1.82, Prometheus 1.74; hallucinations were RAG 3/19 versus GPT-4 8/19, GPT-3.5 13/19, Prometheus 4/19.",
+     "quote": "Overall, the RAG model enhanced with domain specific data outperformed other LLMs with respect to accuracy and relevance of answers, and produced answers with the fewest observed hallucinations."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "biomedical answer accuracy",
+     "effect": "Average accuracy scores: RAG 2.46, GPT-4 2.26, GPT-3.5 1.82, Prometheus 1.74; high-accuracy questions were 12/19, 7/19, 2/19, and 4/19 respectively.",
+     "quote": "Across the 19 questions tested, the RAG model had the highest average score (2.46), followed by GPT-4 (2.26), GPT-3.5 (1.82), and Prometheus (1.74) ( Fig 1A )."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "fabricated references and clinical hallucinations",
+     "effect": "Answers with \u22651 hallucination: GPT-3.5 13/19, GPT-4 8/19, Prometheus 4/19, RAG 3/19; hallucinations primarily fabricated references and clinical results.",
+     "quote": "These hallucinations were primarily associated with fabrication of both references and clinical results."
+    },
+    {
+     "rec_id": "R476",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "wrong-disease retrieval in RAG",
+     "effect": "For question #13, retrieval returned multiple myeloma and chronic lymphocytic leukemia articles rather than DLBCL material, and the summarizer produced an incorrect answer.",
+     "quote": "For example, question #13 asked about minimal residual disease (MRD) in DLBCL, but the document retriever returned articles about MRD in multiple myeloma and chronic lymphocytic leukemia\u2014two distinct hematological malignancies from DLBCL."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missing trial paper in retrieval corpus",
+     "effect": "For the glofitamab ORR question, RAG was inaccurate because the official trial efficacy paper was unavailable on PubMed Central and absent from its corpus.",
+     "quote": "The RAG model result was not accurate in answering this question because the official glofitamab trial efficacy paper [ 36 ] was not available on PubMed Central ( https://www.ncbi.nlm.nih.gov/pmc/ ) and therefore not included in the corpus."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 19,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "Prometheus",
+    "RAG model (text-davinci-003)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hallucinations and answer accuracy",
+     "effect": "RAG had fewer hallucinations (3/19) than GPT-4 (8/19) and GPT-3.5 (13/19) and higher average accuracy (2.46 vs 2.26, 1.82, 1.74)",
+     "quote": "Overall, the RAG model enhanced with domain specific data outperformed other LLMs with respect to accuracy and relevance of answers, and produced answers with the fewest observed hallucinations."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "questions",
+ "sample_size": 19,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Custom RAG model (text-davinci-003, GPT-3 based)",
+  "GPT-3.5",
+  "GPT-4",
+  "Microsoft Prometheus",
+  "OpenAI GPT-3.5",
+  "OpenAI GPT-4",
+  "Prometheus",
+  "RAG model (text-davinci-003)",
+  "custom RAG model based on GPT-3/text-davinci-003"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy and hallucination rate of retrieval-grounded RAG vs general LLMs on DLBCL questions",
+   "effect": "RAG had highest mean accuracy (2.46 vs GPT-4 2.26, GPT-3.5 1.82, Prometheus 1.74) and fewest answers with hallucinations (3/19 vs GPT-3.5 13/19, GPT-4 8/19).",
+   "quote": "Overall, the RAG model enhanced with domain specific data outperformed other LLMs with respect to accuracy and relevance of answers, and produced answers with the fewest observed hallucinations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Fabricated or incorrect references in generative AI outputs",
+   "effect": "GPT-3.5 and GPT-4 gave numerical response rates inconsistent with cited references, with fabricated or incorrect references; GPT models had hallucinations in 13/19 and 8/19 answers.",
+   "quote": "Numerical overall and complete response rates (ORR and CRR, respectively) reported by GPT-3.5 (ORR = 65.1%, CRR = 35.1%) and GPT-4 (ORR = 62.7%, CRR = 39.2%) were not consistent with their references cited and had either fabricated or provided incorrect references.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R477",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Outdated knowledge from training cutoff and incomplete retrieval corpus affecting answers",
+   "effect": "RAG answer to glofitamab response rate question was inaccurate because the key trial paper was not in the corpus; GPT models trained only up to September 2021.",
+   "quote": "The RAG model result was not accurate in answering this question because the official glofitamab trial efficacy paper [ 36 ] was not available on PubMed Central ( https://www.ncbi.nlm.nih.gov/pmc/ ) and therefore not included in the corpus.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "accuracy differences between candidate LLMs",
+   "effect": "On the same 19 questions, RAG had highest accuracy 2.46/relevance 2.61, GPT-4 highest readability 2.88; hallucinations ranged from RAG 3/19 to GPT-3.5 13/19.",
+   "quote": "Results here demonstrated that the RAG model performed better on biomedical-specific tasks than the other LLMs evaluated, specifically with respect to accuracy and relevance of results.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R476",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "wrong-disease retrieval in RAG",
+   "effect": "For question #13, retrieval returned multiple myeloma and chronic lymphocytic leukemia articles rather than DLBCL material, and the summarizer produced an incorrect answer.",
+   "quote": "For example, question #13 asked about minimal residual disease (MRD) in DLBCL, but the document retriever returned articles about MRD in multiple myeloma and chronic lymphocytic leukemia\u2014two distinct hematological malignancies from DLBCL.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparison of RAG versus general-purpose LLMs for biomedical question answering",
+  "Prompt instructions restricting answers to provided context"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39167594",
+ "screen": {
+  "id": "pmid:39167594",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG)",
+  "user": "none",
+  "reason": "The study evaluates adding retrieval-augmented generation (RAG) grounding to LLMs to reduce hallucinations and improve accuracy on biomedical/clinical questions compared to baseline LLMs, evaluated by expert reviewers.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39167594",
+   "empirical": 0.84,
+   "tests_practice": 0.42,
+   "real_deployment": 0.03
+  }
+ }
+}

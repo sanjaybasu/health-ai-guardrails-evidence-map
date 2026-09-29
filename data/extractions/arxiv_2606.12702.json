@@ -1,0 +1,180 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "user feedback interactions (queries)",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Train a pre-response classifier on sparse deployment user feedback that uses query content plus deployment context (provider type, department, underlying LLM) to predict user rejection of EHR-embedded LLM responses",
+    "Use predicted query-level rejection risk to trigger targeted guardrails or abstention before response generation"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "LLM interactions with user feedback",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [],
+   "unlisted_practices": [
+    "Predict user rejection before response generation using query content and deployment-specific context, comparing performance with query content alone."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "months",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "blind spots from static benchmarks",
+     "effect": "Static benchmarks fail to measure user acceptance and require densely annotated datasets.",
+     "quote": "However, static benchmarks tend to measure correctness rather than user acceptance, aggregate performance across queries, and require densely annotated datasets -- leading to major blind spots for evaluating clinical systems."
+    }
+   ],
+   "unlisted_practices": [
+    "training a pre-response classifier using deployment-specific context to predict user rejection of LLM outputs and trigger abstention"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "user feedback interactions (queries)",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [],
+ "links": [],
+ "contested_links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Predict user rejection before response generation using query content and deployment-specific context, comparing performance with query content alone.",
+  "Train a pre-response classifier on sparse deployment user feedback that uses query content plus deployment context (provider type, department, underlying LLM) to predict user rejection of EHR-embedded LLM responses",
+  "Use predicted query-level rejection risk to trigger targeted guardrails or abstention before response generation",
+  "training a pre-response classifier using deployment-specific context to predict user rejection of LLM outputs and trigger abstention"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "arxiv:2606.12702",
+ "screen": {
+  "id": "arxiv:2606.12702",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "pre-response rejection-risk prediction to trigger guardrails or abstention",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study using 4.5 months of prospective deployment data from an EHR-embedded LLM to test a pre-response classifier that triggers guardrails or abstention based on context.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "pre-response rejection risk prediction for abstention and guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.12702",
+   "empirical": 0.96,
+   "tests_practice": 0.25,
+   "real_deployment": 0.88
+  }
+ }
+}

@@ -1,0 +1,310 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "Canada",
+   "sample_size": 239235,
+   "sample_unit": "chest radiographs",
+   "models_evaluated": [
+    "TorchXRayVision DenseNet-121 classifier",
+    "TorchXRayVision AutoEncoder",
+    "BBSD",
+    "TAE + BBSD"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of input data drift detection versus performance tracking to detect COVID-19 drift",
+     "effect": "AUROC stayed relatively stable through the first COVID-19 wave, while TAE + BBSD detected the drift (with a delay). Aggregate performance metrics changed less than 3% under synthetic drifts.",
+     "quote": "Our work has demonstrated that data-based approaches to drift detection can detect data drift (both natural and synthetic) in instances when monitoring model performance in aggregate cannot."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of out-of-distribution input shifts using image and output distribution tests",
+     "effect": "TAE + BBSD detected COVID-19-related input drift; synthetic drift detection sensitivity rose with drift size, e.g. 4000 images gave p<0.05 at 40% male enrichment while 500 images never dropped below p 0.1.",
+     "quote": "We observe correlation between the sample size and the sensitivity of drift detection: with a sample dataset size of 500 the p -value never drops below 0.1 and with 4000 images the p -value drops below 0.05 with a 40% increase."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Timeliness of drift detection given sample size requirements for alerting",
+     "effect": "Detection needs about 4000 new CXRs, which may take days at large providers or months at smaller ones, so alerts may not be timely enough for clinicians to intervene.",
+     "quote": "This finding has direct implications for the practical use of drift detection techniques: if it takes days (large radiology providers) or months (smaller providers) to perform 4000 new CXRs, then existing techniques for drift detection may not be timely enough to allow clinicians using the tool to intervene promptly."
+    },
+    {
+     "rec_id": "R365",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unequal sensitivity of drift detection across patient demographic subgroups",
+     "effect": "A 5% increase in patients aged 18-35 was detected, but a 30% increase in inpatients or patients aged 65+ was needed for significance; detection sensitivity differed across all demographic groups and methods.",
+     "quote": "For example, a 5% increase in the number of patients aged 18\u201335 is detected by TAE + BBSD, yet it takes a 30% increase in inpatients or patients aged 65+ for the observed drift to be considered significant."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether aggregate performance monitoring against gold labels reveals data drift",
+     "effect": "Aggregate performance (AUROC, F1, precision, recall, Brier) was insensitive to drift, changing less than 3%. Per-class metrics were more sensitive but noisy.",
+     "quote": "Aggregate scores change less than 3%."
+    }
+   ],
+   "unlisted_practices": [
+    "Monitor input data drift using MMD statistical tests on autoencoder embeddings and model outputs to trigger label collection and re-evaluation",
+    "Use per-class rather than aggregate performance metrics for monitoring"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 239235,
+   "sample_unit": "chest radiographs",
+   "models_evaluated": [
+    "TorchXRayVision classifier (DenseNet-121)",
+    "TorchXRayVision AutoEncoder (TAE)",
+    "Black Box Shift Detection (BBSD)",
+    "TAE + BBSD",
+    "performance monitoring using AUROC, F1, precision, recall, and Brier score"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "data drift detection",
+     "effect": "Data-based approaches detected natural and synthetic drift when aggregate performance monitoring could not.",
+     "quote": "Our work has demonstrated that data-based approaches to drift detection can detect data drift (both natural and synthetic) in instances when monitoring model performance in aggregate cannot."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup drift detection sensitivity",
+     "effect": "TAE+BBSD detected 5% increase in patients aged 18\u201335; 30% increase was needed for inpatients or patients aged 65+.",
+     "quote": "For example, a 5% increase in the number of patients aged 18\u201335 is detected by TAE + BBSD, yet it takes a 30% increase in inpatients or patients aged 65+ for the observed drift to be considered significant."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 239235,
+   "sample_unit": "chest radiographs",
+   "models_evaluated": [
+    "TorchXRayVision DenseNet-121",
+    "TorchXRayVision AutoEncoder ResNet-101"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of natural and synthetic data drift vs model performance tracking",
+     "effect": "Input and output drift methods (TAE, BBSD, TAE+BBSD) detected COVID-19 drift and synthetic demographic shifts (p<0.05), whereas aggregate performance metrics (AUROC, F1) changed <3% and failed to detect drift.",
+     "quote": "Our work has demonstrated that data-based approaches to drift detection can detect data drift (both natural and synthetic) in instances when monitoring model performance in aggregate cannot."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Canada",
+ "sample_unit": "chest radiographs",
+ "sample_size": 239235,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BBSD",
+  "Black Box Shift Detection (BBSD)",
+  "TAE + BBSD",
+  "TorchXRayVision AutoEncoder",
+  "TorchXRayVision AutoEncoder (TAE)",
+  "TorchXRayVision AutoEncoder ResNet-101",
+  "TorchXRayVision DenseNet-121",
+  "TorchXRayVision DenseNet-121 classifier",
+  "TorchXRayVision classifier (DenseNet-121)",
+  "performance monitoring using AUROC, F1, precision, recall, and Brier score"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of input data drift detection versus performance tracking to detect COVID-19 drift",
+   "effect": "AUROC stayed relatively stable through the first COVID-19 wave, while TAE + BBSD detected the drift (with a delay). Aggregate performance metrics changed less than 3% under synthetic drifts.",
+   "quote": "Our work has demonstrated that data-based approaches to drift detection can detect data drift (both natural and synthetic) in instances when monitoring model performance in aggregate cannot.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R364",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Timeliness of drift detection given sample size requirements for alerting",
+   "effect": "Detection needs about 4000 new CXRs, which may take days at large providers or months at smaller ones, so alerts may not be timely enough for clinicians to intervene.",
+   "quote": "This finding has direct implications for the practical use of drift detection techniques: if it takes days (large radiology providers) or months (smaller providers) to perform 4000 new CXRs, then existing techniques for drift detection may not be timely enough to allow clinicians using the tool to intervene promptly.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R365",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R367",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Monitor input data drift using MMD statistical tests on autoencoder embeddings and model outputs to trigger label collection and re-evaluation",
+  "Use per-class rather than aggregate performance metrics for monitoring"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38424096",
+ "screen": {
+  "id": "pmid:38424096",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "data drift monitoring",
+  "user": "none",
+  "reason": "Empirically tests methods for detecting input data drift as a post-deployment monitoring safeguard on real-world medical imaging datasets.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "data drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38424096",
+   "empirical": 0.85,
+   "tests_practice": 0.75,
+   "real_deployment": 0.39
+  }
+ }
+}

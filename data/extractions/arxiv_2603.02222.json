@@ -1,0 +1,110 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": null,
+ "sample_unit": "benchmark calculator tasks",
+ "models_evaluated": [
+  "GLM-4.6V",
+  "GLM-4.7",
+  "GPT-5.2-Thinking"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Errors in benchmark calculator implementations and ground truth",
+   "effect": "Audit identified and fixed over 20 errors, from critical formula inaccuracies to runtime bugs; residual model errors attributed mainly to ground-truth issues and dataset ambiguities.",
+   "quote": "First, we conduct a systematic audit of the benchmark's calculator implementations, identifying and fixing over 20 errors ranging from critical formula inaccuracies to runtime bugs in a NeurIPS-published dataset.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy on clinical calculator tasks with vs without calculator specification in prompt",
+   "effect": "Providing the calculator specification at inference (open-book) raised accuracy from ~52% to 81-85% on GLM-4.6V and GLM-4.7, without fine-tuning.",
+   "quote": "Second, we show that a simple intervention-providing the model with the calculator specification at inference time (\"open-book\" prompting)-raises accuracy from ~52% to 81-85% on GLM-4.6V and GLM-4.7, surpassing all published results including RL-trained systems, without any fine-tuning.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM accuracy on clinical calculation tasks under direct prompting",
+   "effect": "State-of-the-art direct prompting scores plateau around 35% on the Verified split; the study concludes the benchmark measures formula memorization and arithmetic precision.",
+   "quote": "MedCalc-Bench is a widely used benchmark for evaluating LLM performance on clinical calculator tasks, with state-of-the-art direct prompting scores plateauing around 35% on the Verified split (HELM MedHELM leaderboard) and the best published approach-RL with verifiable rewards-reaching 74%.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Open-book prompting with calculator specification / tool-use framing for clinical calculators",
+  "Audit and correction of public benchmark implementations"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2603.02222",
+ "screen": {
+  "id": "arxiv:2603.02222",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "open-book prompting with calculator specification (retrieval grounding)",
+  "user": "none",
+  "reason": "The study audits the MedCalc-Bench dataset and empirically tests a prompt/context engineering guardrail (providing calculator specifications/grounding at inference time vs closed-book prompting) to evaluate LLM accuracy on clinical calculation tasks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "open-book prompting / providing calculator specifications at inference"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2603.02222",
+   "empirical": 0.79,
+   "tests_practice": 0.35,
+   "real_deployment": 0.03
+  }
+ }
+}

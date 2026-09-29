@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "not reported",
+ "sample_size": 281,
+ "sample_unit": "medical-domain MCP-agent traces",
+ "models_evaluated": [
+  "ProvenanceGuard"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Block F1 and source accuracy of automated claim-level verifier on held-out medical agent traces",
+   "effect": "Block F1 0.802 and source accuracy 0.858 over 260 source-eligible claims on the 40-trace held-out split; outperformed source-blind baselines. Harder multi-source benchmark: block F1 0.846.",
+   "quote": "On the 40-trace held-out split, ProvenanceGuard achieves block F1 0.802 and source accuracy 0.858 over 260 source-eligible claims, outperforming source-blind baselines that do not emit claim-to-source IDs.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R487",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Detection of wrong source attribution (cross-source conflation) in clinical agent answers",
+   "effect": "Detected all injected attribution swaps in 50 clinical conflation probes with no retained wrong attribution; on a harder multi-source benchmark, source-plus-relation accuracy dropped to 0.229.",
+   "quote": "In 50 controlled clinical conflation probes, ProvenanceGuard detects all injected attribution swaps with no retained wrong attribution.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Claim-level source-provenance verification of agent answers against captured MCP tool traces",
+  "Repair-and-reverify of blocked AI answers via retrieval-augmented revision"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2606.18037",
+ "screen": {
+  "id": "arxiv:2606.18037",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "agentic",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates ProvenanceGuard as an external guardrail/verifier and repair safeguard for MCP-based LLM agents on medical domain traces and clinical conflation probes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "source-aware factuality verification and output filtering/repair"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.18037",
+   "empirical": 0.88,
+   "tests_practice": 0.35,
+   "real_deployment": 0.06
+  }
+ }
+}

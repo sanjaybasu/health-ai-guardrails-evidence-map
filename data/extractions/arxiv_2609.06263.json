@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "Not reported",
+ "sample_size": 516,
+ "sample_unit": "r/SuicideWatch posts",
+ "models_evaluated": [
+  "vendor moderation APIs",
+  "prompted LLMs",
+  "supervised baselines"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R238",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Moderation API recovery of graded suicide risk severity versus high/low risk separation",
+   "effect": "Moderation APIs reached 0.860 high-risk F1 but only 0.395 macro F1 for severity, and over-predicted the most severe category.",
+   "quote": "Vendor moderation APIs separate low- from high-severity posts well (0.860 high-risk F1) but measure severity poorly (0.395 macro F1), systematically over-predicting the most severe category.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R171",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Effect of expert-authored clinical framing on LLM suicide severity classification",
+   "effect": "Clinically grounded zero-shot prompting reached 0.562 macro F1 versus 0.395 for moderation APIs; expert-authored framing was the effective lever, not fine-tuning, reasoning, or multi-agent aggregation.",
+   "quote": "Clinically grounded zero-shot prompting recovers much of that gap (0.562 macro F1), and expert-authored framing (not fine-tuning, added reasoning, or naive multi-agent aggregation) is the effective lever.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Measuring graded clinical severity rather than a binary flag for suicide risk",
+  "Matching reasoning use in prompts to text register (helps on short clinician-authored statements, hurts on long noisy posts)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2609.06263",
+ "screen": {
+  "id": "arxiv:2609.06263",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "any_ai"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "clinically grounded prompt framing for suicide risk severity",
+  "user": "none",
+  "reason": "Evaluates moderation APIs and LLM prompt strategies against a clinical suicide risk severity scale (C-SSRS) on Reddit posts, testing the effect of clinically grounded framing guardrails.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "clinically grounded prompt framing / crisis severity escalation rules"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2609.06263",
+   "empirical": 0.92,
+   "tests_practice": 0.71,
+   "real_deployment": 0.05
+  }
+ }
+}

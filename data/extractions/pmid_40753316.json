@@ -1,0 +1,417 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 5400,
+   "sample_unit": "LLM outputs (300 vignettes x 2 formats... 6 models x 3 conditions)",
+   "models_evaluated": [
+    "GPT-4o",
+    "Distilled-DeepSeek-R1-70B",
+    "Llama-3.3-70B",
+    "Phi-4",
+    "gemma-2-27b-it",
+    "Qwen-2.5-72B",
+    "GPT-o1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Hallucination rate under temperature 0 versus default settings (reproducibility/perturbation stress test)",
+     "effect": "Temp 0 overall hallucination rate 66.5% vs 65.9% default; OR 1.05 (0.89\u20131.23; p=0.58), no significant improvement. Short cases had slightly higher odds (OR 1.22).",
+     "quote": "Under temperature 0, the overall hallucination rate was 66.5%."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Rate at which LLMs elaborate on fabricated clinical details embedded in prompts",
+     "effect": "Hallucination rates ranged from 50% to 82% across models and prompts; overall 65.9% under default prompt; no RAG or grounding was tested.",
+     "quote": "The overall hallucination rate in all models under the default prompt was 65.9%, while the mitigating prompt reduced the rate to 44.2%."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM elaboration on false clinical details that clinicians might act on without verification",
+     "effect": "Models elaborated on fabricated labs, signs, or syndromes in 50\u201382.7% of cases, producing hallucinated content.",
+     "quote": "Models explicitly hallucinated in 50\u201382.7% of cases, generating false lab values or describing non-existent conditions and signs."
+    },
+    {
+     "rec_id": "R368",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Confabulation rate of six LLMs when fabricated details embedded in prompts",
+     "effect": "Hallucination rates 50\u201382% across models; GPT-4o lowest (~50%), Distilled-DeepSeek highest (80.0% long, 82.7% short).",
+     "quote": "Under default configuration settings, Distilled-DeepSeek had the highest hallucination rates (80.0% in long cases and 82.7% in short cases), while GPT4o had the lowest (53.3% for long cases and 50.0% for short cases) (Fig. 4 )."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of mitigation prompt instructing uncertainty acknowledgement on hallucination rate",
+     "effect": "Mitigation prompt lowered mean hallucination rate from 65.9% to 44.2% (OR 0.27, 95% CI 0.23\u20130.32); GPT-4o 53% to 23%; not eliminated.",
+     "quote": "Relative to the default condition with no mitigation, a mitigating prompt was associated with reduced hallucinations (OR = 0.27, 95 % CI 0.23\u20130.32; p = 0.00002)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Models accepting non-existent diseases, signs, and lab tests as real",
+     "effect": "Models described invented syndromes, signs, and lab tests as real in 50\u201382% of outputs; 43 of 45 misinformation runs were non-hallucinated.",
+     "quote": "Only 2 runs, both from GPT\u20114o on the natural immunity versus vaccination claim, resulted in hallucinations."
+    }
+   ],
+   "unlisted_practices": [
+    "Hallucination-mitigation system prompt instructing use of only clinically validated information",
+    "Adversarial fabricated-detail hallucination testing"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 5400,
+   "sample_unit": "LLM outputs in quantitative adversarial vignette analysis",
+   "models_evaluated": [
+    "GPT-4o",
+    "Distilled-DeepSeekR1",
+    "Phi-4",
+    "gemma-2-27b-it",
+    "Qwen-2.5-72B",
+    "Llama-3.3-70B",
+    "GPT-o1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R346",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "adversarial fabricated-detail hallucinations",
+     "effect": "Hallucinated in 50\u201382.7% of cases, generating false lab values or non-existent conditions/signs.",
+     "quote": "Models explicitly hallucinated in 50\u201382.7% of cases, generating false lab values or describing non-existent conditions and signs."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "anomalous fabricated input handling",
+     "effect": "Models hallucinated in 50\u201382.7% of cases after prompts contained one fabricated detail.",
+     "quote": "Models explicitly hallucinated in 50\u201382.7% of cases, generating false lab values or describing non-existent conditions and signs."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ungrounded propagation of false details",
+     "effect": "Default prompt hallucination 65.9%; mitigation prompt 44.2%.",
+     "quote": "The overall hallucination rate in all models under the default prompt was 65.9%, while the mitigating prompt reduced the rate to 44.2%."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "validation and uncertainty mitigation prompt",
+     "effect": "Overall hallucination fell from 66% to 44% (p<0.001).",
+     "quote": "Prompt-based mitigation lowers the overall hallucination rate (mean across all models) from 66 % to 44 % (p\u2009<\u20090.001)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "format sensitivity of hallucinations",
+     "effect": "Short-format cases OR 1.22 (1.07\u20131.39; p=0.003) for hallucination.",
+     "quote": "Short-format cases had an OR of 1.22 (1.07\u20131.39; p = 0.003)."
+    }
+   ],
+   "unlisted_practices": [
+    "Setting LLM temperature to 0 to reduce hallucinations"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 5400,
+   "sample_unit": "outputs",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-o1",
+    "Distilled-DeepSeek-R1",
+    "Phi-4",
+    "gemma-2-27b-it",
+    "Qwen-2.5-72B",
+    "Llama-3.3-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R346",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucination rate under adversarial prompts",
+     "effect": "Overall hallucination rate was 65.9% under default prompting, ranging from 50.0% to 82.7% across models; mitigating prompt reduced rate to 44.2% (OR 0.27, p=0.00002), whereas temperature 0 showed no benefit (66.5%, OR 1.05, p=0.58).",
+     "quote": "The overall hallucination rate in all models under the default prompt was 65.9%, while the mitigating prompt reduced the rate to 44.2%."
+    }
+   ],
+   "unlisted_practices": [
+    "Mitigation prompting instructing models to use only clinically validated information and acknowledge uncertainty",
+    "Adjusting decoding temperature to zero to minimize speculative generation"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "LLM outputs (300 vignettes x 2 formats... 6 models x 3 conditions)",
+ "sample_size": 5400,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Distilled-DeepSeek-R1",
+  "Distilled-DeepSeek-R1-70B",
+  "Distilled-DeepSeekR1",
+  "GPT-4o",
+  "GPT-o1",
+  "Llama-3.3-70B",
+  "Phi-4",
+  "Qwen-2.5-72B",
+  "gemma-2-27b-it"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Rate at which LLMs elaborate on fabricated clinical details embedded in prompts",
+   "effect": "Hallucination rates ranged from 50% to 82% across models and prompts; overall 65.9% under default prompt; no RAG or grounding was tested.",
+   "quote": "The overall hallucination rate in all models under the default prompt was 65.9%, while the mitigating prompt reduced the rate to 44.2%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of mitigation prompt instructing uncertainty acknowledgement on hallucination rate",
+   "effect": "Mitigation prompt lowered mean hallucination rate from 65.9% to 44.2% (OR 0.27, 95% CI 0.23\u20130.32); GPT-4o 53% to 23%; not eliminated.",
+   "quote": "Relative to the default condition with no mitigation, a mitigating prompt was associated with reduced hallucinations (OR = 0.27, 95 % CI 0.23\u20130.32; p = 0.00002).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R346",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "adversarial fabricated-detail hallucinations",
+   "effect": "Hallucinated in 50\u201382.7% of cases, generating false lab values or non-existent conditions/signs.",
+   "quote": "Models explicitly hallucinated in 50\u201382.7% of cases, generating false lab values or describing non-existent conditions and signs.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM elaboration on false clinical details that clinicians might act on without verification",
+   "effect": "Models elaborated on fabricated labs, signs, or syndromes in 50\u201382.7% of cases, producing hallucinated content.",
+   "quote": "Models explicitly hallucinated in 50\u201382.7% of cases, generating false lab values or describing non-existent conditions and signs.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R368",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Confabulation rate of six LLMs when fabricated details embedded in prompts",
+   "effect": "Hallucination rates 50\u201382% across models; GPT-4o lowest (~50%), Distilled-DeepSeek highest (80.0% long, 82.7% short).",
+   "quote": "Under default configuration settings, Distilled-DeepSeek had the highest hallucination rates (80.0% in long cases and 82.7% in short cases), while GPT4o had the lowest (53.3% for long cases and 50.0% for short cases) (Fig. 4 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "anomalous fabricated input handling",
+   "effect": "Models hallucinated in 50\u201382.7% of cases after prompts contained one fabricated detail.",
+   "quote": "Models explicitly hallucinated in 50\u201382.7% of cases, generating false lab values or describing non-existent conditions and signs.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "format sensitivity of hallucinations",
+   "effect": "Short-format cases OR 1.22 (1.07\u20131.39; p=0.003) for hallucination.",
+   "quote": "Short-format cases had an OR of 1.22 (1.07\u20131.39; p = 0.003).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adjusting decoding temperature to zero to minimize speculative generation",
+  "Adversarial fabricated-detail hallucination testing",
+  "Hallucination-mitigation system prompt instructing use of only clinically validated information",
+  "Mitigation prompting instructing models to use only clinically validated information and acknowledge uncertainty",
+  "Setting LLM temperature to 0 to reduce hallucinations"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40753316",
+ "screen": {
+  "id": "pmid:40753316",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "mitigation prompt guardrail and temperature setting",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study testing vulnerability to adversarial hallucination attacks and evaluating prompt-based mitigation and temperature settings as safeguards.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "mitigating prompt engineering and temperature adjustment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40753316",
+   "empirical": 0.96,
+   "tests_practice": 0.68,
+   "real_deployment": 0.02
+  }
+ }
+}

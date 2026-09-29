@@ -1,0 +1,96 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 1925,
+ "sample_unit": "clinical CT scans (training set)",
+ "models_evaluated": [
+  "3D UNet",
+  "PatternNet",
+  "Guided backpropagation",
+  "GCAM",
+  "Guided GCAM"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R104",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Agreement of XAI attribution maps with expert reasoning for parotid segmentation",
+   "effect": "GBP and PNet-A qualitatively agreed most with expert reasoning; other XAI methods agreed less. Curated models produced cleaner GCAM attributions.",
+   "quote": "GBP and PNet-A qualitatively agreed most with expert reasoning on directly (structure borders) and indirectly (proxies used for identifying structure borders) important features for PG segmentation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Ability of XAI topological signal to flag insufficient segmentation contours a priori",
+   "effect": "Guided GCAM EC-profile PC lambda1 sensitivity>0.85, specificity>0.90; AUROC 0.66, 0.74, 0.94, 0.83 for GBP, GCAM, GGCAM, PNet-A; 87% of cases below threshold were insufficient.",
+   "quote": "Quantitative analysis showed that PC\u03bb<sub>1</sub> of guided GCAM's (GGCAM) Euler characteristic (EC) profile had good predictive value (sensitivity>0.85, specificity>0.90) of DSC for AAPM cases, with AUROC = 0.66, 0.74, 0.94, 0.83 for GBP, GCAM, GGCAM and PNet-A.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using explainable AI attribution maps and topological data analysis to flag potentially inadequate auto-contours before clinical review"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40834634",
+ "screen": {
+  "id": "pmid:40834634",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and tests a safeguard method (using topological data analysis of explainability maps to a-priori flag inadequate or failing auto-contours) to improve the safety of clinical deployment of segmentation CNNs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "automated quality assurance / failure detection of segmentation using XAI topological features"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40834634",
+   "empirical": 0.96,
+   "tests_practice": 0.36,
+   "real_deployment": 0.06
+  }
+ }
+}

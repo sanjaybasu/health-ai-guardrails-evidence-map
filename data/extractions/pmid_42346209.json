@@ -1,0 +1,345 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Turkey",
+   "sample_size": 300,
+   "sample_unit": "colorectal cancer cases discussed at MTB",
+   "models_evaluated": [
+    "Gemini 2.5",
+    "MedGemma 27B (T=0.0)",
+    "MedGemma 27B (T=1.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Concordance and safety of LLM recommendations with vs without in-context guideline grounding (non-equivalent comparison)",
+     "effect": "Guideline-integrated Gemini 2.5: kappa 0.792, exact concordance 85.0%, safe 83.7%; MedGemma without guidelines: kappa 0.566-0.610, safe 62.3-62.7% (p<0.001). Confounded by model differences.",
+     "quote": "Guideline-integrated general-purpose LLMs, exemplified by Gemini 2.5, demonstrated higher concordance with multidisciplinary tumor board decisions compared with a domain-specialized model without external retrieval."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and safety of LLM treatment recommendations against MTB reference standard with blinded expert adjudication",
+     "effect": "Gemini 2.5 safe in 83.7% of cases; MedGemma 62.3% (T=0) and 62.7% (T=1); weighted kappa 0.792 vs 0.566/0.610.",
+     "quote": "In the safety assessment, Gemini 2.5 demonstrated the highest proportion of safe recommendations (83.7%), whereas MedGemma (T = 0.0: 62.3% and T = 1.0: 62.7%) showed higher rates of potentially risky and harmful recommendations."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM concordance with current guideline-based tumor board decisions in complex clinical scenarios",
+     "effect": "Discordance concentrated in surgical/interventional planning, active surveillance, recurrent disease, stage IV and poor performance status; MedGemma concordance for surgery 11.1-22.2%, surveillance 39.3-44.0%.",
+     "quote": "The lowest concordance rates for both temperature settings were observed in active surveillance (39.3% for T = 0.0 and 44.0% for T = 1.0) and surgical/interventional procedures (11.1% and 22.2%, respectively)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of two candidate LLMs against tumor board decisions on the same cases",
+     "effect": "Gemini 2.5 (guideline-integrated) outperformed MedGemma 27B on concordance and safety (p<0.001); full concordance 81.7% vs 57.0% (T=0) and 62.3% (T=1).",
+     "quote": "Comparisons of the three-category concordance distributions showed significant differences between Gemini and MedGemma (T = 0.0) ( p < 0.001) and between Gemini and MedGemma (T = 1.0) ( p < 0.001)."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "LLM concordance across patient subgroups (sex, age, comorbidity, ECOG, stage, MSI)",
+     "effect": "Gemini concordance did not differ by sex, age, comorbidity, ECOG, location or MSI (p>0.05) but differed by TNM stage, setting and modality; MedGemma varied by stage, ECOG, MSI.",
+     "quote": "Across demographic and clinical variables, concordance between Gemini 2.5 and MTB decisions did not differ significantly by sex, age at diagnosis, comorbidity status, ECOG performance status, tumor location, or MSI status (all p > 0.05)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of temperature setting on MedGemma concordance and safety",
+     "effect": "T=1.0 improved concordance vs T=0.0 (accuracy 73.5% vs 70.3%, p=0.038) but safety did not differ (62.7% vs 62.3%, p=0.567).",
+     "quote": "These findings indicate that although increasing the temperature improved MedGemma\u2019s concordance, it did not result in a meaningful improvement in its safety profile."
+    }
+   ],
+   "unlisted_practices": [
+    "Long-context in-context guideline prompting versus domain-specialized model",
+    "Local on-premises deployment of open model for data privacy"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Turkey",
+   "sample_size": 300,
+   "sample_unit": "colorectal cancer cases",
+   "models_evaluated": [
+    "Gemini 2.5",
+    "MedGemma 27B (T = 0.0)",
+    "MedGemma 27B (T = 1.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Concordance and safety of treatment recommendations",
+     "effect": "Gemini guideline-integrated: \u03ba=0.792, exact agreement 85.0%, safety 83.7%; MedGemma no retrieval: accuracy 70.3%/73.5%, safety 62.3%/62.7%.",
+     "quote": "In this retrospective analysis of 300 colorectal cancer cases discussed at multidisciplinary tumor boards, a guideline-integrated general-purpose LLM, Gemini 2.5, demonstrated a high level of agreement with MTB treatment decisions, achieving substantial concordance (weighted Cohen\u2019s \u03ba = 0.792) and a high exact agreement rate (85.0%), whereas a domain-specialized model operating without external retrieval, MedGemma 27B, showed moderate concordance that improved modestly with higher temperature settings."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsafe or discordant treatment recommendations",
+     "effect": "Gemini safe 83.7%; MedGemma safe 62.3% (T=0.0) and 62.7% (T=1.0), with higher potentially risky/harmful rates.",
+     "quote": "In the safety assessment, Gemini 2.5 demonstrated the highest proportion of safe recommendations (83.7%), whereas MedGemma (T = 0.0: 62.3% and T = 1.0: 62.7%) showed higher rates of potentially risky and harmful recommendations."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup concordance by ECOG and MSI",
+     "effect": "MedGemma discordance was more frequent for ECOG \u22652 vs 0\u20131 (p=0.023/0.036) and MSI-unstable/unknown vs stable (p<0.001).",
+     "quote": "Discordance was more frequent in patients with ECOG \u2265 2 compared with those with ECOG 0\u20131 (T = 0.0: p = 0.023; T = 1.0: p = 0.036), and in MSI-unstable or MSI-unknown tumors compared with MSI-stable disease ( p < 0.001 for both settings)."
+    }
+   ],
+   "unlisted_practices": [
+    "Testing MedGemma response-temperature settings (T = 0.0 vs T = 1.0) for oncology recommendation concordance and safety."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Turkey",
+   "sample_size": 300,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Gemini 2.5",
+    "MedGemma 27B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "treatment recommendation concordance and clinical safety",
+     "effect": "Gemini 2.5 (guideline-integrated) achieved 83.7% safe recommendations vs 62.3% (T=0.0) and 62.7% (T=1.0) for unaugmented MedGemma (p<0.001); full concordance was 81.7% vs 57.0% and 62.3% (p<0.001).",
+     "quote": "In the safety assessment, Gemini 2.5 demonstrated the highest proportion of safe recommendations (83.7%), whereas MedGemma (T = 0.0: 62.3% and T = 1.0: 62.7%) showed higher rates of potentially risky and harmful recommendations."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating decoding temperature settings (T = 0.0 vs T = 1.0) to optimize clinical concordance and safety of open-weights LLMs in clinical decision-making"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Turkey",
+ "sample_unit": "colorectal cancer cases discussed at MTB",
+ "sample_size": 300,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Gemini 2.5",
+  "MedGemma 27B",
+  "MedGemma 27B (T = 0.0)",
+  "MedGemma 27B (T = 1.0)",
+  "MedGemma 27B (T=0.0)",
+  "MedGemma 27B (T=1.0)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Concordance and safety of LLM recommendations with vs without in-context guideline grounding (non-equivalent comparison)",
+   "effect": "Guideline-integrated Gemini 2.5: kappa 0.792, exact concordance 85.0%, safe 83.7%; MedGemma without guidelines: kappa 0.566-0.610, safe 62.3-62.7% (p<0.001). Confounded by model differences.",
+   "quote": "Guideline-integrated general-purpose LLMs, exemplified by Gemini 2.5, demonstrated higher concordance with multidisciplinary tumor board decisions compared with a domain-specialized model without external retrieval.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy and safety of LLM treatment recommendations against MTB reference standard with blinded expert adjudication",
+   "effect": "Gemini 2.5 safe in 83.7% of cases; MedGemma 62.3% (T=0) and 62.7% (T=1); weighted kappa 0.792 vs 0.566/0.610.",
+   "quote": "In the safety assessment, Gemini 2.5 demonstrated the highest proportion of safe recommendations (83.7%), whereas MedGemma (T = 0.0: 62.3% and T = 1.0: 62.7%) showed higher rates of potentially risky and harmful recommendations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of two candidate LLMs against tumor board decisions on the same cases",
+   "effect": "Gemini 2.5 (guideline-integrated) outperformed MedGemma 27B on concordance and safety (p<0.001); full concordance 81.7% vs 57.0% (T=0) and 62.3% (T=1).",
+   "quote": "Comparisons of the three-category concordance distributions showed significant differences between Gemini and MedGemma (T = 0.0) ( p < 0.001) and between Gemini and MedGemma (T = 1.0) ( p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Unsafe or discordant treatment recommendations",
+   "effect": "Gemini safe 83.7%; MedGemma safe 62.3% (T=0.0) and 62.7% (T=1.0), with higher potentially risky/harmful rates.",
+   "quote": "In the safety assessment, Gemini 2.5 demonstrated the highest proportion of safe recommendations (83.7%), whereas MedGemma (T = 0.0: 62.3% and T = 1.0: 62.7%) showed higher rates of potentially risky and harmful recommendations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Evaluating decoding temperature settings (T = 0.0 vs T = 1.0) to optimize clinical concordance and safety of open-weights LLMs in clinical decision-making",
+  "Local on-premises deployment of open model for data privacy",
+  "Long-context in-context guideline prompting versus domain-specialized model",
+  "Testing MedGemma response-temperature settings (T = 0.0 vs T = 1.0) for oncology recommendation concordance and safety."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42346209",
+ "screen": {
+  "id": "pmid:42346209",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "guideline-integrated retrieval augmentation",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates LLMs for multidisciplinary tumor board recommendations, specifically comparing a guideline-integrated LLM setup against a baseline domain model without retrieval to evaluate concordance and safety.",
+  "jev": {
+   "id": "pmid:42346209",
+   "empirical": 0.96,
+   "tests_practice": 0.85,
+   "real_deployment": 0.06
+  }
+ }
+}

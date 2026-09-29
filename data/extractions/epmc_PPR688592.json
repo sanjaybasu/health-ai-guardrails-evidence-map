@@ -1,0 +1,72 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 300,
+ "sample_unit": "randomly selected ICD code descriptions (100 each from ICD-9-CM, ICD-10-CM, ICD-10-PCS), each prompted to both models",
+ "models_evaluated": [
+  "GPT-3.5",
+  "GPT-4"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Exact-match accuracy of LLM-generated ICD billing codes against official codes",
+   "effect": "ICD-9-CM exact match GPT-4 22%, GPT-3.5 10%; ICD-10-CM 13% and 10%; ICD-10-PCS 0% for both models. Incorrect codes often semantically similar but with hallucinated details.",
+   "quote": "While the models appear to exhibit a general conceptual understanding of the codes and their descriptions, they have a propensity for hallucinating key details, suggesting underlying technological limitations of the base LLMs.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR688592",
+ "screen": {
+  "id": "epmc:PPR688592",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates base performance of GPT-3.5 and GPT-4 on an administrative healthcare benchmark task (generating ICD billing codes) without evaluating a specific deployment practice or safeguard.",
+  "jev": {
+   "id": "epmc:PPR688592",
+   "empirical": 0.96,
+   "tests_practice": 0.03,
+   "real_deployment": 0.03
+  }
+ }
+}

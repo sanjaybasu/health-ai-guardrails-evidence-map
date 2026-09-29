@@ -1,0 +1,85 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 109,
+ "sample_unit": "questions",
+ "models_evaluated": [
+  "MedCPT cross encoder",
+  "LLM-based query classifier",
+  "LLM-based response refinement classifier"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "LLM classifier accuracy in identifying answerable, deferral, and nonanswerable heart failure queries",
+   "effect": "Classifier achieved 65% accuracy for answerable and helpful deferral queries and 100% accuracy for identifying nonanswerable queries.",
+   "quote": "The pipeline first uses an LLM-based classifier, achieving 65% accuracy for answerable and helpful deferral queries and 100% accuracy for identifying nonanswerable queries.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "LLM-based query taxonomy classifier to route questions before retrieval-augmented generation",
+  "Comparison of dense retrieval configurations (MedCPT cross encoder, snippet granularity) for RAG",
+  "Second LLM-based classifier to refine generated responses"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41747226",
+ "screen": {
+  "id": "pmid:41747226",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "LLM classifier to defer high-risk queries and refine responses in RAG pipeline",
+  "user": "patient",
+  "reason": "Evaluates RAG and LLM-based query-risk triage (deferral/non-answerable classification and response refinement) safeguards for answering patient/caregiver heart failure questions on a benchmark dataset.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval grounding and query triage/escalation classifiers"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41747226",
+   "empirical": 0.94,
+   "tests_practice": 0.35,
+   "real_deployment": 0.04
+  }
+ }
+}

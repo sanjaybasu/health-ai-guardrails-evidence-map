@@ -1,0 +1,342 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 54209,
+   "sample_unit": "inpatient encounters",
+   "models_evaluated": [
+    "JHFRAT",
+    "constrained score optimization (CSO)",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination of recalibrated CSO vs existing JHFRAT and XGBoost benchmark against proxy labels",
+     "effect": "CSO AUC-ROC 0.91 vs JHFRAT 0.86 (augmented); XGBoost higher at 0.96; augmented CSO sensitivity at threshold 13 was 0.57 vs 0.29 for JHFRAT.",
+     "quote": "The CSO model demonstrated significant improvements over the current JHFRAT in classification alignment with the proxy labels (CSO AUC-ROC = 0.91, JHFRAT AUC-ROC = 0.86)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether retuning JHFRAT item weights on local data improves classification at existing thresholds",
+     "effect": "Recalibrated CSO correctly reclassified 3,788 high-risk patients (27%) from moderate/low categories; 860 low-risk (4.2%) correctly downgraded; 264 (1.3%) low-risk reclassified as high-risk.",
+     "quote": "Our augmented CSO model correctly reclassified 3,788 high-risk patients (27% of the high-risk cohort) from moderate- or low-risk categories."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Limitations on validation data representativeness and generalizability",
+     "effect": "Study used only three hospitals in one health system, with cohort exclusions by length of stay and data availability that may inflate performance; no external validation.",
+     "quote": "The systematic exclusion of encounters based on JHFRAT data availability and length of stay introduces biases to the study cohort by reducing patient heterogeneity in the model training and validation, potentially inflating model performance."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reference standard validity using proxy labels from nurse intervention patterns",
+     "effect": "Labels derived from clinician interventions rather than true fall risk introduce confounding by indication and endogeneity; models benefit from this, and gains may be smaller for actual fall prediction.",
+     "quote": "By design, the JHFRAT scores influence intervention decisions, and therefore the intervention-based labels introduce endogeneity from which our models benefit."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Stability of model feature importances under variation in labeling rules (sensitivity analysis)",
+     "effect": "CSO feature importances remained stable as fall-encounter weighting increased (largest variation 4.39 percentage points), while XGBoost importances varied more substantially (e.g., requires assistance 14.00\u201325.81%).",
+     "quote": "The constrained score optimization feature importances remain stable as the weighting of fall encounters increases, while the XGBoost feature importances vary more substantially."
+    },
+    {
+     "rec_id": "R232",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether interpretable score-based model retains clinical usability versus black-box XGBoost",
+     "effect": "CSO trades some AUC for a score retaining meaning on the JHFRAT scale, whereas projected XGBoost scores distribute to unrealistic extremes and lose interpretive meaning.",
+     "quote": "Without score clipping, projected XGBoost risk scores distribute to unrealistic extremes on the JHFRAT scale and lose interpretive meaning."
+    }
+   ],
+   "unlisted_practices": [
+    "Constrained score optimization to recalibrate an existing additive clinical risk score while preserving its structure and thresholds",
+    "Using clinician intervention patterns as proxy labels for clinician-perceived risk when ground truth is unavailable"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 54209,
+   "sample_unit": "inpatient encounters",
+   "models_evaluated": [
+    "Original JHFRAT",
+    "Optimized CSO",
+    "Augmented CSO",
+    "Optimized XGBoost",
+    "Augmented XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Classification alignment versus existing tool",
+     "effect": "CSO AUC-ROC = 0.91 versus current JHFRAT AUC-ROC = 0.86.",
+     "quote": "The CSO model demonstrated significant improvements over the current JHFRAT in classification alignment with the proxy labels (CSO AUC-ROC\u2009=\u20090.91, JHFRAT AUC-ROC\u2009=\u20090.86)."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "High-risk threshold sensitivity",
+     "effect": "At threshold 13, original JHFRAT sensitivity was 0.29 versus augmented CSO 0.57 and XGBoost 0.92.",
+     "quote": "The largest performance metric gains are in the sensitivity at the threshold of 13, with the augmented CSO and XGBoost models achieving 0.57 and 0.92 sensitivity compared to the original JHFRAT\u2019s sensitivity of 0.29."
+    }
+   ],
+   "unlisted_practices": [
+    "Recalibrating JHFRAT item weights with constrained score optimization while preserving its additive form and existing thresholds",
+    "Using intervention-based proxy labels to model clinician-perceived fall risk when fall outcomes are rare"
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 54209,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "JHFRAT",
+    "Optimized CSO",
+    "Augmented CSO",
+    "Optimized XGBoost",
+    "Augmented XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fall risk classification sensitivity and discrimination",
+     "effect": "Augmented CSO and XGBoost achieved 0.57 and 0.92 sensitivity at threshold 13 compared to 0.29 for original JHFRAT, while CSO AUROC reached 0.91 vs 0.86 for JHFRAT.",
+     "quote": "The largest performance metric gains are in the sensitivity at the threshold of 13, with the augmented CSO and XGBoost models achieving 0.57 and 0.92 sensitivity compared to the original JHFRAT\u2019s sensitivity of 0.29."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "inpatient encounters",
+ "sample_size": 54209,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Augmented CSO",
+  "Augmented XGBoost",
+  "JHFRAT",
+  "Optimized CSO",
+  "Optimized XGBoost",
+  "Original JHFRAT",
+  "XGBoost",
+  "constrained score optimization (CSO)"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination of recalibrated CSO vs existing JHFRAT and XGBoost benchmark against proxy labels",
+   "effect": "CSO AUC-ROC 0.91 vs JHFRAT 0.86 (augmented); XGBoost higher at 0.96; augmented CSO sensitivity at threshold 13 was 0.57 vs 0.29 for JHFRAT.",
+   "quote": "The CSO model demonstrated significant improvements over the current JHFRAT in classification alignment with the proxy labels (CSO AUC-ROC = 0.91, JHFRAT AUC-ROC = 0.86).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether retuning JHFRAT item weights on local data improves classification at existing thresholds",
+   "effect": "Recalibrated CSO correctly reclassified 3,788 high-risk patients (27%) from moderate/low categories; 860 low-risk (4.2%) correctly downgraded; 264 (1.3%) low-risk reclassified as high-risk.",
+   "quote": "Our augmented CSO model correctly reclassified 3,788 high-risk patients (27% of the high-risk cohort) from moderate- or low-risk categories.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reference standard validity using proxy labels from nurse intervention patterns",
+   "effect": "Labels derived from clinician interventions rather than true fall risk introduce confounding by indication and endogeneity; models benefit from this, and gains may be smaller for actual fall prediction.",
+   "quote": "By design, the JHFRAT scores influence intervention decisions, and therefore the intervention-based labels introduce endogeneity from which our models benefit.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "High-risk threshold sensitivity",
+   "effect": "At threshold 13, original JHFRAT sensitivity was 0.29 versus augmented CSO 0.57 and XGBoost 0.92.",
+   "quote": "The largest performance metric gains are in the sensitivity at the threshold of 13, with the augmented CSO and XGBoost models achieving 0.57 and 0.92 sensitivity compared to the original JHFRAT\u2019s sensitivity of 0.29.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R232",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Constrained score optimization to recalibrate an existing additive clinical risk score while preserving its structure and thresholds",
+  "Recalibrating JHFRAT item weights with constrained score optimization while preserving its additive form and existing thresholds",
+  "Using clinician intervention patterns as proxy labels for clinician-perceived risk when ground truth is unavailable",
+  "Using intervention-based proxy labels to model clinician-perceived fall risk when fall outcomes are rare"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42679022",
+ "screen": {
+  "id": "pmid:42679022",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration of risk score weights",
+  "user": "clinician_or_staff",
+  "reason": "The study directly tests recalibrating an existing clinical risk tool's item weights (JHFRAT via constrained score optimization) using local EHR data to better align with clinical risk perception without altering the workflow form factor.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local score recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42679022",
+   "empirical": 0.94,
+   "tests_practice": 0.21,
+   "real_deployment": 0.06
+  }
+ }
+}

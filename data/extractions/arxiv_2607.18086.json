@@ -1,0 +1,114 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": 1200,
+ "sample_unit": "paired model-response cells (4 models x common panel of questions, standard vs wrapper prompt)",
+ "models_evaluated": [
+  "GPT-5.5",
+  "Claude Opus 4.8",
+  "Gemini 3.5 Flash",
+  "Grok 4.3",
+  "GPT-5.4-nano (judge)",
+  "Claude Sonnet 5 (judge)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Unsafe overconfidence reduction and correct-diagnosis cost with evidence-sufficiency prompt that induces deferral/uncertainty",
+   "effect": "Unsafe overconfidence fell from 49.3% to 24.7% (paired reduction 24.7 points, 95% CI 21.8-27.7); correct diagnosis fell from 80.3% to 50.3%; near-free for GPT-5.5, near-total for Gemini (-58 points).",
+   "quote": "The gain carried a model-specific helpfulness cost (correct diagnosis 80.3% to 50.3%): near-free for GPT-5.5, near-total for Gemini (-58 points).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Reduction in unsafe overconfident answers under incomplete evidence with structured prompt",
+   "effect": "Unsafe overconfidence fell from 49.3% to 24.7%, a paired reduction of 24.7 points (95% CI 21.8-27.7; p<0.001); a different-family judge showed a smaller effect (+13.1 points).",
+   "quote": "Unsafe overconfidence fell from 49.3% to 24.7%, a paired reduction of 24.7 points (95% CI 21.8-27.7; p<0.001), robust in direction across models and paraphrases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R102",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Dependence of LLM-judged safety effect on judge choice; judge specificity against blinded clinicians",
+   "effect": "Sonnet judge nearly halved the effect (+13.1 points); primary judge had sensitivity 1.00 and specificity 0.55 versus blinded clinicians.",
+   "quote": "Blinded clinicians characterized the primary judge as a high-sensitivity (1.00), low-specificity (0.55) screen, not a calibrated rate.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Evidence-sufficiency structured prompt wrapper for LLMs to reduce overconfident answers",
+  "Using multiple LLM judges and human clinician anchoring when reporting LLM-judged safety effects",
+  "Matched scaffold controls to distinguish real behavior change from judge circularity"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2607.18086",
+ "screen": {
+  "id": "arxiv:2607.18086",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "evidence-sufficiency prompt wrapper (prompt guardrail)",
+  "user": "none",
+  "reason": "Empirical benchmark evaluation testing whether an evidence-sufficiency prompt wrapper (guardrail) reduces unsafe overconfidence in clinical LLM outputs alongside its impact on helpfulness.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "evidence-sufficiency prompt guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2607.18086",
+   "empirical": 0.96,
+   "tests_practice": 0.51,
+   "real_deployment": 0.02
+  }
+ }
+}

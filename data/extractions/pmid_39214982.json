@@ -1,0 +1,366 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Australia",
+   "sample_size": 149105,
+   "sample_unit": "screening episodes",
+   "models_evaluated": [
+    "BRAIx AI Reader v3.0.7"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI team performance under simulated positive, neutral, negative interaction (automation bias) vs standalone",
+     "effect": "Automation bias degraded multi-reader performance but improved single-reader; AI triage sensitivity could drop 5.6 points to ~73.1% (6.7 below baseline) under negative interaction, while positive interaction gave +3.4 points over baseline.",
+     "quote": "In the negative interaction case, however, the potential downside is significant."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of simulated automation bias (readers agreeing with incorrect AI) on system sensitivity/specificity",
+     "effect": "Negative interaction in AI triage dropped sensitivity by 5.6 points to about 73.1% and specificity to 93.5%; single-reader negative interaction lowered sensitivity/specificity to ~62.6% and 93.9%.",
+     "quote": "The sensitivity can quickly drop by 5.6 percentage points to about 73.1% (6.7 percentage points lower than the baseline standard of care) and the specificity can drop to 93.5% when human readers follow the mistakes made by the AI reader."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI reader and AI-integrated pathways compared with radiologists and standard of care on same data",
+     "effect": "AI standalone sensitivity 75.0 vs 66.3% for mean individual radiologist; reader-replacement achieved 82.3% sensitivity and 96.3% specificity vs standard of care 79.8%/96.0%.",
+     "quote": "The AI reader-replacement scenario produced higher system sensitivity (82.3%; 95% CI 81.5\u201383.1, P < 0.0025) and higher specificity (96.3%; 95% CI 96.2\u201396.3, P < 4.3 \u00d7 10 \u22126 ) than the current standard of care system (Fig. 3 A and Supplementary Table 2 )."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Performance of AI band-pass pathway where AI makes final decisions without human read",
+     "effect": "AI band-pass without human reads for high/low scores gave 81.7% sensitivity, 96.6% specificity vs 79.8%/96.0% standard, with 80.7% fewer human reads; authors note lack of human decision-maker faces adoption challenges.",
+     "quote": "However, having an AI reader make the final reading decision, without human involvement, faces challenges before clinical adoption."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Sequestered test set with separate development set for operating points, representative cohort",
+     "effect": "Operating points were set on a separate development set (49,796 episodes); test set 149,105 episodes from representative screening years; external datasets benchmarked.",
+     "quote": "All operating points were set on the development set (Supplementary Fig. 13 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Positioning AI reader in junior reader role versus arbitrating third reader role",
+    "Simulating alternative AI-integrated screening pathways (replacement, band-pass, triage) to choose workflow design"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Australia",
+   "sample_size": 149105,
+   "sample_unit": "screening episodes",
+   "models_evaluated": [
+    "BRAIx AI Reader (v3.0.7)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R067",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "screening performance and workload",
+     "effect": "AI band-pass: sensitivity 81.7% vs 79.8%, specificity 96.6% vs 96.0%; 779 fewer false positives, 25 more cancers, \u221280.7% human reads.",
+     "quote": "The AI band-pass screening scenario also achieved both higher system sensitivity (81.7%, P < 0.0058) and specificity (96.6%, P < 2.2 \u00d7 10 \u221225 ) than the current standard of care system (Fig. 3 A and Supplementary Table 2 )."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "standalone AI versus standard care",
+     "effect": "AI standalone sensitivity was lower than standard care, 75.0% vs 79.8%; specificity was non-inferior, 96.0% vs 96.0%.",
+     "quote": "However, operating as a sole reader, the AI reader had lower sensitivity (75.0 vs. 79.8%; P < 1.98 \u00d7 10 \u22125 ) at non-inferior specificity (96.0 vs. 96.0%: P = 0.56) than the current standard of care (two readers with arbitration; Supplementary Tables 1 , 2 )."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "automation bias across workflows",
+     "effect": "Automation bias degraded multi-reader settings but improved single-reader; AI reader-replacement sensitivity fell below standard care only after roughly 30%+ discordant reversals.",
+     "quote": "Automation bias degrades performance in multi-reader settings but improves it for single-readers."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "human review of every case",
+     "effect": "Band-pass did not require human reads for all cases yet had 779 fewer unnecessary recalls, 25 more cancers, and \u221280.7% human reads.",
+     "quote": "The AI band-pass screening scenario had 779 fewer unnecessary recalls (\u221213.3%) and detected 25 more cancers (+2.4%) with a reduction of 248,638 human reads (\u221280.7%), while also providing a 67.9% reduction in third reads (Table 1 and Supplementary Fig. 6 )."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "following incorrect AI outputs",
+     "effect": "In negative AI-triage interaction, sensitivity dropped 5.6 points to about 73.1%, 6.7 points below standard care; specificity dropped to 93.5%.",
+     "quote": "The sensitivity can quickly drop by 5.6 percentage points to about 73.1% (6.7 percentage points lower than the baseline standard of care) and the specificity can drop to 93.5% when human readers follow the mistakes made by the AI reader."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Australia",
+   "sample_size": 149105,
+   "sample_unit": "screening episodes",
+   "models_evaluated": [
+    "BRAIx AI Reader (v3.0.7)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cancer detection sensitivity of standalone AI versus standard of care",
+     "effect": "Operating as a sole reader, AI had significantly lower sensitivity (75.0% vs 79.8%, P < 1.98 x 10^-5) at non-inferior specificity (96.0% vs 96.0%, P = 0.56) than standard of care.",
+     "quote": "However, operating as a sole reader, the AI reader had lower sensitivity (75.0 vs. 79.8%; P < 1.98 \u00d7 10 \u22125 ) at non-inferior specificity (96.0 vs. 96.0%: P = 0.56) than the current standard of care (two readers with arbitration; Supplementary Tables 1 , 2 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Australia",
+ "sample_unit": "screening episodes",
+ "sample_size": 149105,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BRAIx AI Reader (v3.0.7)",
+  "BRAIx AI Reader v3.0.7"
+ ],
+ "links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of simulated automation bias (readers agreeing with incorrect AI) on system sensitivity/specificity",
+   "effect": "Negative interaction in AI triage dropped sensitivity by 5.6 points to about 73.1% and specificity to 93.5%; single-reader negative interaction lowered sensitivity/specificity to ~62.6% and 93.9%.",
+   "quote": "The sensitivity can quickly drop by 5.6 percentage points to about 73.1% (6.7 percentage points lower than the baseline standard of care) and the specificity can drop to 93.5% when human readers follow the mistakes made by the AI reader.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance of AI band-pass pathway where AI makes final decisions without human read",
+   "effect": "AI band-pass without human reads for high/low scores gave 81.7% sensitivity, 96.6% specificity vs 79.8%/96.0% standard, with 80.7% fewer human reads; authors note lack of human decision-maker faces adoption challenges.",
+   "quote": "However, having an AI reader make the final reading decision, without human involvement, faces challenges before clinical adoption.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI reader and AI-integrated pathways compared with radiologists and standard of care on same data",
+   "effect": "AI standalone sensitivity 75.0 vs 66.3% for mean individual radiologist; reader-replacement achieved 82.3% sensitivity and 96.3% specificity vs standard of care 79.8%/96.0%.",
+   "quote": "The AI reader-replacement scenario produced higher system sensitivity (82.3%; 95% CI 81.5\u201383.1, P < 0.0025) and higher specificity (96.3%; 95% CI 96.2\u201396.3, P < 4.3 \u00d7 10 \u22126 ) than the current standard of care system (Fig. 3 A and Supplementary Table 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R067",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "screening performance and workload",
+   "effect": "AI band-pass: sensitivity 81.7% vs 79.8%, specificity 96.6% vs 96.0%; 779 fewer false positives, 25 more cancers, \u221280.7% human reads.",
+   "quote": "The AI band-pass screening scenario also achieved both higher system sensitivity (81.7%, P < 0.0058) and specificity (96.6%, P < 2.2 \u00d7 10 \u221225 ) than the current standard of care system (Fig. 3 A and Supplementary Table 2 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "standalone AI versus standard care",
+   "effect": "AI standalone sensitivity was lower than standard care, 75.0% vs 79.8%; specificity was non-inferior, 96.0% vs 96.0%.",
+   "quote": "However, operating as a sole reader, the AI reader had lower sensitivity (75.0 vs. 79.8%; P < 1.98 \u00d7 10 \u22125 ) at non-inferior specificity (96.0 vs. 96.0%: P = 0.56) than the current standard of care (two readers with arbitration; Supplementary Tables 1 , 2 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "automation bias across workflows",
+   "effect": "Automation bias degraded multi-reader settings but improved single-reader; AI reader-replacement sensitivity fell below standard care only after roughly 30%+ discordant reversals.",
+   "quote": "Automation bias degrades performance in multi-reader settings but improves it for single-readers.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "cancer detection sensitivity of standalone AI versus standard of care",
+   "effect": "Operating as a sole reader, AI had significantly lower sensitivity (75.0% vs 79.8%, P < 1.98 x 10^-5) at non-inferior specificity (96.0% vs 96.0%, P = 0.56) than standard of care.",
+   "quote": "However, operating as a sole reader, the AI reader had lower sensitivity (75.0 vs. 79.8%; P < 1.98 \u00d7 10 \u22125 ) at non-inferior specificity (96.0 vs. 96.0%: P = 0.56) than the current standard of care (two readers with arbitration; Supplementary Tables 1 , 2 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Positioning AI reader in junior reader role versus arbitrating third reader role",
+  "Simulating alternative AI-integrated screening pathways (replacement, band-pass, triage) to choose workflow design"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39214982",
+ "screen": {
+  "id": "pmid:39214982",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI-integrated screening pathway design and triage filtering",
+  "user": "clinician_or_staff",
+  "reason": "Simulates five different AI-integrated workflow pathways (e.g., AI as second reader vs. triage/high-confidence filter) and examines human-AI interaction/automation bias in screening.",
+  "jev": {
+   "id": "pmid:39214982",
+   "empirical": 0.92,
+   "tests_practice": 0.88,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "China",
+ "sample_size": 1800,
+ "sample_unit": "radiology reports (human evaluation set)",
+ "models_evaluated": [
+  "LLM-RadSum",
+  "GPT-4o"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Report summarization F1 and expert-rated quality, specialized LLM versus general-purpose GPT-4o on same data",
+   "effect": "LLM-RadSum median F1 0.58 vs GPT-4o 0.30 (P<.001); 81.5% (1467/1800) LLM-RadSum outputs met standards vs at least 27.8% (501/1800) GPT-4o outputs needing adjustment.",
+   "quote": "Overall, LLM-RadSum achieved a higher median F1 score for report summarization compared with GPT-4o (0.58 [IQR: 0.44-0.77] vs 0.30 [IQR: 0.23-0.37]; P < .001); superior performance from LLM-RadSum was observed across anatomic regions, modalities, sexes, ages, and impression lengths (all P < .001).",
+   "quote_score": 96.94915254237289,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop from internal to external test sets of other hospitals",
+   "effect": "LLM-RadSum median F1 0.75 on internal test set versus 0.44 on external test set from four other hospitals.",
+   "quote": "The developed LLM-RadSum achieved median F1 scores for report summarization of 0.75 and 0.44 on the internal and external test sets and 0.58 on the human evaluation set (n = 1800).",
+   "quote_score": 96.11111111111111,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Domain-specific fine-tuning of an LLM on large radiology report corpus for summarization"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40892451",
+ "screen": {
+  "id": "pmid:40892451",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study comparing a specialized LLM (LLM-RadSum) against GPT-4o for radiology report summarization using retrospective data and human expert evaluation, but it evaluates model performance rather than testing an organizational deployment practice or safeguard.",
+  "jev": {
+   "id": "pmid:40892451",
+   "empirical": 0.97,
+   "tests_practice": 0.04,
+   "real_deployment": 0.07
+  }
+ }
+}

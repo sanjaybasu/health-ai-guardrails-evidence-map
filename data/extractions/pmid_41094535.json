@@ -1,0 +1,314 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 500,
+   "sample_unit": "radiology reports (CT and MRI), each transformed into 17 reading-grade versions",
+   "models_evaluated": [
+    "GPT-4 Turbo (gpt-4-turbo-2024-04-09)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy and potential management-altering errors of LLM reports simplified to low reading grade levels",
+     "effect": "Accuracy declined significantly below grade 11; at 7th-grade level 20% (20/100) of reports had potential changes in patient management (generalization 8/20, omission 7/20, incorrect conversion 7/20).",
+     "quote": "Among the 100 reports transformed to a 7th-grade reading level, 20% (20/100) exhibited potential changes in patient management when compared to the original reports."
+    },
+    {
+     "rec_id": "R298",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Consistency of LLM output accuracy across equivalent prompts varying in requested literacy level",
+     "effect": "Accuracy plateaued at grades 13-17 (median total score 15) but dropped significantly below grade 11; level 10 vs 13 accurate-report proportions 0.97 vs 0.89 (radiologists) and 0.95 vs 0.68 (PubMed-BERTScore).",
+     "quote": "When investigating the statistical significance of the proportion of accurate reports in descending order from reading grade level 13, the first level to show a significant difference was level 10 for both the total accuracy score assigned by radiologists (Fig. 5 ) and the PubMed-BERTScore (Fig. 6 ), with results of 0.97 vs. 0.89 and 0.95 vs. 0.68, respectively (all p = 0.0001), indicated by an asterisk and highlighted in red."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Readability of AI-generated reports versus accuracy trade-off for patient comprehension",
+     "effect": "Original reports had median readability grade 13.3; readability scores correlated strongly with prompted grade (0.80-0.84), but accurate reports were only maintained down to grade 11, above the 7th-grade target.",
+     "quote": "The readability scores exhibited a high correlation with the reading grade level, ranging from 0.80 to 0.84, indicating a very strong relationship."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reading level of radiology report text relative to recommended 6th-7th grade patient level",
+     "effect": "Original reports had median average readability 13.3 (11.8-14.8), well above the 7th-grade guideline; lowest accuracy-preserving LLM level was 11th grade.",
+     "quote": "The overall median readability score was 13.3 (11.8\u201314.8)."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Omissions, incorrect conversions and generalizations in AI-simplified reports that could reach patients unverified",
+     "effect": "At 7th grade, inaccuracies with potential to alter management: inappropriate generalization 40% (8/20), omission 35% (7/20), incorrect conversion 35% (7/20).",
+     "quote": "The inaccuracy patterns identified within these 20 cases were as follows: inappropriate generalization occurred in 40% (8/20), omission in 35% (7/20), and incorrect conversion in 35% (7/20)."
+    }
+   ],
+   "unlisted_practices": [
+    "Dual-format (simplified plus detailed) radiology reports for patients",
+    "Sentence-level traceability mapping of AI-simplified text to source report",
+    "Identifying minimum reading grade level at which LLM accuracy is preserved"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 500,
+   "sample_unit": "radiology reports",
+   "models_evaluated": [
+    "GPT-4 Turbo (GPT-4-turbo-2024-04-09)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R292",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "readability threshold preserving accuracy",
+     "effect": "The 11th-grade level was the current lower bound; 7th-grade reports had 20% with management-altering inaccuracies.",
+     "quote": "While 7th-grade readability remains an ethical ideal, current AI tools cannot reliably produce accurate reports below the 11th-grade level."
+    },
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "safety of low-reading-level reports",
+     "effect": "At 7th grade, 20% (20/100) exhibited potential changes in patient management versus original reports.",
+     "quote": "Among the 100 reports transformed to a 7th-grade reading level, 20% (20/100) exhibited potential changes in patient management when compared to the original reports."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy against original reports",
+     "effect": "First significant drop at grade 10 versus grade 13: radiologist accuracy 0.97 vs. 0.89; PubMed-BERTScore 0.95 vs. 0.68 (all p = 0.0001).",
+     "quote": "When investigating the statistical significance of the proportion of accurate reports in descending order from reading grade level 13, the first level to show a significant difference was level 10 for both the total accuracy score assigned by radiologists (Fig. 5 ) and the PubMed-BERTScore (Fig. 6 ), with results of 0.97 vs. 0.89 and 0.95 vs. 0.68, respectively (all p = 0.0001), indicated by an asterisk and highlighted in red."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "GPT-4 Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinical accuracy and potential management changes across reading levels",
+     "effect": "Accuracy declined significantly below grade 11, with 20% (20/100) of reports transformed to 7th-grade level exhibiting potential changes in patient management due to omission, incorrect conversion, or inappropriate generalization.",
+     "quote": "Among the 100 reports transformed to a 7th-grade reading level, 20% (20/100) exhibited potential changes in patient management when compared to the original reports."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "South Korea",
+ "sample_unit": "radiology reports (CT and MRI), each transformed into 17 reading-grade versions",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4 Turbo",
+  "GPT-4 Turbo (GPT-4-turbo-2024-04-09)",
+  "GPT-4 Turbo (gpt-4-turbo-2024-04-09)"
+ ],
+ "links": [
+  {
+   "rec_id": "R297",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy and potential management-altering errors of LLM reports simplified to low reading grade levels",
+   "effect": "Accuracy declined significantly below grade 11; at 7th-grade level 20% (20/100) of reports had potential changes in patient management (generalization 8/20, omission 7/20, incorrect conversion 7/20).",
+   "quote": "Among the 100 reports transformed to a 7th-grade reading level, 20% (20/100) exhibited potential changes in patient management when compared to the original reports.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Omissions, incorrect conversions and generalizations in AI-simplified reports that could reach patients unverified",
+   "effect": "At 7th grade, inaccuracies with potential to alter management: inappropriate generalization 40% (8/20), omission 35% (7/20), incorrect conversion 35% (7/20).",
+   "quote": "The inaccuracy patterns identified within these 20 cases were as follows: inappropriate generalization occurred in 40% (8/20), omission in 35% (7/20), and incorrect conversion in 35% (7/20).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R298",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R292",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dual-format (simplified plus detailed) radiology reports for patients",
+  "Identifying minimum reading grade level at which LLM accuracy is preserved",
+  "Sentence-level traceability mapping of AI-simplified text to source report"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41094535",
+ "screen": {
+  "id": "pmid:41094535",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "reading-level constraint on LLM-simplified radiology reports",
+  "user": "patient",
+  "reason": "Evaluated the impact of prompting GPT-4 across specific reading grade level constraints (grades 1-17) on clinical accuracy and potential clinical harm in patient-facing radiology reports.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "reading-level constraints"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41094535",
+   "empirical": 0.95,
+   "tests_practice": 0.3,
+   "real_deployment": 0.05
+  }
+ }
+}

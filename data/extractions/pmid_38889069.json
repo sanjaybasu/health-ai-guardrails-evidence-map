@@ -1,0 +1,355 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 227087,
+   "sample_unit": "adult cardiac surgery patients",
+   "models_evaluated": [
+    "EuroSCORE II",
+    "logistic regression",
+    "neural network",
+    "random forest",
+    "weighted support vector machine",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal performance drift of cardiac surgery mortality risk models on holdout 2017-2019 data",
+     "effect": "Strong evidence of decrease in overall performance (CEM) across all models (P<.0001); all models decreased in at least 3 of 5 metrics; XGBoost CEM median fell by 0.0288 from 2017 to 2019.",
+     "quote": "There was strong evidence of a decrease in overall performance across all models ( P <.0001)."
+    },
+    {
+     "rec_id": "R366",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Loss of accuracy relative to initial validation over time in temporally split holdout",
+     "effect": "All models showed decreased CEM, AUC, and F1 over the 2017-2019 holdout; XGBoost AUC slope -0.000678; NN net benefit fell from 0.9035 to 0.8808 in projection.",
+     "quote": "We found strong evidence that all models showed a decrease in at least 3 of the 5 individual metrics within the CEM."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance on temporally later external holdout versus development data",
+     "effect": "Temporal external validation on 2017-2019 holdout showed performance decline across all models, demonstrating that earlier data overestimate later performance.",
+     "quote": "There was strong evidence of a decrease in AUC performance across all models ( P <.0001)."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Need for predefined thresholds for acceptable metric reductions triggering model updates",
+     "effect": "Authors state metric-specific thresholds for acceptable performance reductions must be established before mandating updates; thresholds not determined in this study.",
+     "quote": "Before mandating model updates, it is critical to establish metric-specific thresholds for acceptable reductions."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of ML models against EuroSCORE II on same data",
+     "effect": "XGBoost CEM 0.728 and RF 0.727 vs EuroSCORE II 0.541; EuroSCORE II performed worst across all comparisons (CEM difference to XGBoost 0.1876).",
+     "quote": "Furthermore, EuroSCORE II substantially underperformed against all ML models across all comparisons; this presents an urgent need to understand the drift effects of this score and is not limited to calibration drift."
+    }
+   ],
+   "unlisted_practices": [
+    "variable importance drift (SHAP) monitoring to detect dataset drift",
+    "consensus composite metric (CEM) for ranking models over time"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 227087,
+   "sample_unit": "adult cardiac surgery procedures",
+   "models_evaluated": [
+    "logistic regression",
+    "neural network",
+    "random forest",
+    "weighted support vector machine",
+    "XGBoost",
+    "EuroSCORE II"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate model performance comparison",
+     "effect": "XGBoost CEM 0.728 (95% CI 0.728-0.729) and RF 0.727 (95% CI 0.727-0.728) were top-ranked.",
+     "quote": "Table 3 shows that XGBoost (CEM 0.728, 95% CI 0.728-0.729) and RF (CEM 0.727, 95% CI 0.727-0.728) were the overall best-performing models, with moderate to strong evidence (nonoverlapping CIs) of the former outperforming the latter."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and dataset drift",
+     "effect": "Overall performance decreased across all models (P<.0001).",
+     "quote": "There was strong evidence of a decrease in overall performance across all models ( P <.0001)."
+    },
+    {
+     "rec_id": "R366",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Loss of performance over time",
+     "effect": "All models decreased in at least 3 of 5 individual CEM metrics.",
+     "quote": "We found strong evidence that all models showed a decrease in at least 3 of the 5 individual metrics within the CEM."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration drift",
+     "effect": "Adjusted ECE decreased across all models (P<.0001) except LR (P>.05).",
+     "quote": "There was strong evidence of a decrease in adjusted ECE performance across all models ( P <.0001), except LR ( P >.05)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 227087,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost",
+    "Random Forest",
+    "Logistic Regression",
+    "Neural Network",
+    "Weighted SVM",
+    "EuroSCORE II"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model performance drift over time",
+     "effect": "overall performance significantly decreased across all models (P<.0001), with all models declining in at least 3 of 5 individual performance metrics",
+     "quote": "There was strong evidence of a decrease in overall performance across all models (P<.0001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "adult cardiac surgery patients",
+ "sample_size": 227087,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "EuroSCORE II",
+  "Logistic Regression",
+  "Neural Network",
+  "Random Forest",
+  "Weighted SVM",
+  "XGBoost",
+  "logistic regression",
+  "neural network",
+  "random forest",
+  "weighted support vector machine"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Temporal performance drift of cardiac surgery mortality risk models on holdout 2017-2019 data",
+   "effect": "Strong evidence of decrease in overall performance (CEM) across all models (P<.0001); all models decreased in at least 3 of 5 metrics; XGBoost CEM median fell by 0.0288 from 2017 to 2019.",
+   "quote": "There was strong evidence of a decrease in overall performance across all models ( P <.0001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R366",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Loss of accuracy relative to initial validation over time in temporally split holdout",
+   "effect": "All models showed decreased CEM, AUC, and F1 over the 2017-2019 holdout; XGBoost AUC slope -0.000678; NN net benefit fell from 0.9035 to 0.8808 in projection.",
+   "quote": "We found strong evidence that all models showed a decrease in at least 3 of the 5 individual metrics within the CEM.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of ML models against EuroSCORE II on same data",
+   "effect": "XGBoost CEM 0.728 and RF 0.727 vs EuroSCORE II 0.541; EuroSCORE II performed worst across all comparisons (CEM difference to XGBoost 0.1876).",
+   "quote": "Furthermore, EuroSCORE II substantially underperformed against all ML models across all comparisons; this presents an urgent need to understand the drift effects of this score and is not limited to calibration drift.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance on temporally later external holdout versus development data",
+   "effect": "Temporal external validation on 2017-2019 holdout showed performance decline across all models, demonstrating that earlier data overestimate later performance.",
+   "quote": "There was strong evidence of a decrease in AUC performance across all models ( P <.0001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R550",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration drift",
+   "effect": "Adjusted ECE decreased across all models (P<.0001) except LR (P>.05).",
+   "quote": "There was strong evidence of a decrease in adjusted ECE performance across all models ( P <.0001), except LR ( P >.05).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R364",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "consensus composite metric (CEM) for ranking models over time",
+  "variable importance drift (SHAP) monitoring to detect dataset drift"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38889069",
+ "screen": {
+  "id": "pmid:38889069",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "drift monitoring",
+  "user": "none",
+  "reason": "The study directly evaluates performance and dataset drift over time in cardiac surgery risk prediction models using temporal holdouts, assessing drift detection as a deployment safeguarding issue.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38889069",
+   "empirical": 0.95,
+   "tests_practice": 0.04,
+   "real_deployment": 0.04
+  }
+ }
+}

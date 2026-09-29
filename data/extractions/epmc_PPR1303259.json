@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "not reported",
+ "sample_size": 100,
+ "sample_unit": "clinical-style queries",
+ "models_evaluated": [
+  "OncoGenRAG (BioBERT classifier + retrieval)",
+  "ungrounded baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Hallucination rate of evidence-grounded retrieval system versus ungrounded baseline on 100 clinical-style queries",
+   "effect": "No hallucinated answer observed with grounding (100% database grounding) versus a 41.0% no-hallucination rate for the ungrounded baseline; internal validation only.",
+   "quote": "No hallucinated answer was observed under the study\u2019s operational definition, compared with a 41.0% no-hallucination rate for the ungrounded baseline.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Abstention/rejection rule that suppresses answers when retrieval support falls below a prespecified threshold",
+  "Entity-aware retrieval (gene, variant, cancer-type matching) over a curated multi-source oncology knowledge base"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1303259",
+ "screen": {
+  "id": "epmc:PPR1303259",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study evaluates a RAG framework incorporating evidence retrieval and confidence-based rejection rules against an ungrounded baseline, specifically measuring hallucination reduction and grounding.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval grounding and rejection thresholding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1303259",
+   "empirical": 0.9,
+   "tests_practice": 0.51,
+   "real_deployment": 0.04
+  }
+ }
+}

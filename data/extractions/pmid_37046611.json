@@ -1,0 +1,324 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Netherlands",
+   "sample_size": 12,
+   "sample_unit": "gastroenterologists (6 AI-assisted, 6 unassisted) reading static endocytoscopy images",
+   "models_evaluated": [
+    "ResNet-based CNN ensemble (5 models, fivefold cross-validation)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Gastroenterologist sensitivity and accuracy with versus without AI assistance at follow-up; overreliance assessed",
+     "effect": "AI-assisted gastroenterologists had higher sensitivity (+20.0%, p=0.025) and accuracy (+12.22%, p=0.050) than unassisted ones at follow-up; untrained users showed reduced reliance on AI after training.",
+     "quote": "When tested at 23.3 (\u00b19.1) days after training, AI-assisted gastroenterologists maintained higher sensitivity (+20.0% (3.14\u201336.86), p = 0.025) and accuracy (+12.22% (0.03\u201324.48), p = 0.050) for recognizing dysplasia than the unassisted gastroenterologists."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician diagnostic performance with AI support versus without, compared with AI alone",
+     "effect": "After cross-over, gastroenterologists with AI exceeded their own sensitivity (+24.45%, p=0.020) and accuracy (+13.33%, p=0.039) and outperformed the AI model alone on sensitivity (+12.89%, p=0.024).",
+     "quote": "Additionally, they outperformed the sensitivity of the AI model alone (+12.89% (2.11\u201323.67), p = 0.024) ( Figure 4 D)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether users detect incorrect AI outputs / overreliance before and after training",
+     "effect": "Trained gastroenterologists made fewer false negatives on AI-correct images (6.7% vs 37.5%, p=0.038); rejection of correct AI positives 3.8% vs 7.9% (p=0.325); AI calls fell from 90% to 57.8% after training.",
+     "quote": "Notably, the trained gastroenterologists made fewer false negative diagnoses in images that otherwise would have been correctly predicted by AI (6.7% (3/45) vs. 37.5% (3/8), p = 0.038)."
+    },
+    {
+     "rec_id": "R419",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of training on reliance on AI and diagnostic performance",
+     "effect": "Untrained gastroenterologists with AI access called for AI in 90% of cases before training, dropping to 57.8% after training (p<0.001) and 75.6% at follow-up; trained users better acknowledged correct AI and compensated for AI misses.",
+     "quote": "Gastroenterologists who had access to AI support called for AI support in 90% (162/180) of the cases before training, which dropped to 57.8% (104/180) after training ( p < 0.001)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External validation of CNN on out-of-distribution data",
+     "effect": "AI was tested only on a single-centre dataset split by patient; no external dataset testing was possible and performance on out-of-distribution data remains unknown.",
+     "quote": "As we generated a unique in vivo endocytoscopic high-quality BE dataset of 520-fold magnified images, we were unable to test the performance of the CNN with external datasets."
+    }
+   ],
+   "unlisted_practices": [
+    "Training clinicians in a novel classification system before AI-assisted interpretation",
+    "Letting clinicians optionally request AI as a second assessor"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Netherlands",
+   "sample_size": 12,
+   "sample_unit": "gastroenterologists",
+   "models_evaluated": [
+    "ResNet-based CNN ensemble"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI vs unassisted diagnostic performance",
+     "effect": "At follow-up, AI-assisted sensitivity +20.0% (p = 0.025) and accuracy +12.22% (p = 0.050).",
+     "quote": "When tested at 23.3 (\u00b19.1) days after training, AI-assisted gastroenterologists maintained higher sensitivity (+20.0% (3.14\u201336.86), p = 0.025) and accuracy (+12.22% (0.03\u201324.48), p = 0.050) for recognizing dysplasia than the unassisted gastroenterologists."
+    },
+    {
+     "rec_id": "R163",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI collaboration versus AI alone",
+     "effect": "Cross-over gastroenterologists with AI had sensitivity +12.89% (2.11\u201323.67), p = 0.024 versus AI model alone.",
+     "quote": "Additionally, they outperformed the sensitivity of the AI model alone (+12.89% (2.11\u201323.67), p = 0.024) ( Figure 4 D)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-assisted versus unassisted clinicians",
+     "effect": "AI-assisted follow-up sensitivity 91.11% vs 71.11%; accuracy 82.78% vs 70.56%.",
+     "quote": "AI-assisted gastroenterologists scored substantially better than unassisted gastroenterologists in establishing an optical biopsy of Barrett\u2019s-associated dysplasia through EC."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Netherlands",
+   "sample_size": 12,
+   "sample_unit": "gastroenterologists",
+   "models_evaluated": [
+    "ResNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Dysplasia detection sensitivity of AI-assisted gastroenterologists versus standalone AI",
+     "effect": "AI-assisted gastroenterologists outperformed the sensitivity of the AI model alone (+12.89% [95% CI 2.11\u201323.67], p = 0.024).",
+     "quote": "Additionally, they outperformed the sensitivity of the AI model alone (+12.89% (2.11\u201323.67), p = 0.024) ( Figure 4 D)."
+    }
+   ],
+   "unlisted_practices": [
+    "On-demand AI assistance requested at the clinician's discretion"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Netherlands",
+ "sample_unit": "gastroenterologists",
+ "sample_size": 12,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "ResNet",
+  "ResNet-based CNN ensemble",
+  "ResNet-based CNN ensemble (5 models, fivefold cross-validation)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Gastroenterologist sensitivity and accuracy with versus without AI assistance at follow-up; overreliance assessed",
+   "effect": "AI-assisted gastroenterologists had higher sensitivity (+20.0%, p=0.025) and accuracy (+12.22%, p=0.050) than unassisted ones at follow-up; untrained users showed reduced reliance on AI after training.",
+   "quote": "When tested at 23.3 (\u00b19.1) days after training, AI-assisted gastroenterologists maintained higher sensitivity (+20.0% (3.14\u201336.86), p = 0.025) and accuracy (+12.22% (0.03\u201324.48), p = 0.050) for recognizing dysplasia than the unassisted gastroenterologists.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician diagnostic performance with AI support versus without, compared with AI alone",
+   "effect": "After cross-over, gastroenterologists with AI exceeded their own sensitivity (+24.45%, p=0.020) and accuracy (+13.33%, p=0.039) and outperformed the AI model alone on sensitivity (+12.89%, p=0.024).",
+   "quote": "Additionally, they outperformed the sensitivity of the AI model alone (+12.89% (2.11\u201323.67), p = 0.024) ( Figure 4 D).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI-assisted versus unassisted clinicians",
+   "effect": "AI-assisted follow-up sensitivity 91.11% vs 71.11%; accuracy 82.78% vs 70.56%.",
+   "quote": "AI-assisted gastroenterologists scored substantially better than unassisted gastroenterologists in establishing an optical biopsy of Barrett\u2019s-associated dysplasia through EC.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Dysplasia detection sensitivity of AI-assisted gastroenterologists versus standalone AI",
+   "effect": "AI-assisted gastroenterologists outperformed the sensitivity of the AI model alone (+12.89% [95% CI 2.11\u201323.67], p = 0.024).",
+   "quote": "Additionally, they outperformed the sensitivity of the AI model alone (+12.89% (2.11\u201323.67), p = 0.024) ( Figure 4 D).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R419",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R163",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Letting clinicians optionally request AI as a second assessor",
+  "On-demand AI assistance requested at the clinician's discretion",
+  "Training clinicians in a novel classification system before AI-assisted interpretation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37046611",
+ "screen": {
+  "id": "pmid:37046611",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI assistance as second reader",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates gastroenterologists interpreting endocytoscopic images with versus without AI assistance as a second assessor.",
+  "jev": {
+   "id": "pmid:37046611",
+   "empirical": 0.97,
+   "tests_practice": 0.83,
+   "real_deployment": 0.43
+  }
+ }
+}

@@ -1,0 +1,314 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 6,
+   "sample_unit": "synthetic acute-care cases (3 timepoints, 21 prompt variants, 3 runs, 3 models)",
+   "models_evaluated": [
+    "DeepSeek-R1 14B",
+    "Gemma 3 12B",
+    "gpt-oss 20B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Output divergence under paraphrased/perturbed prompts and repeated runs across three local LLMs, with and without stability prompt",
+     "effect": "Mean total JS distance ranged 0.126 to 0.306 across nine cells; STABLE cut it 27.2% for Gemma 3 12B (0.173 to 0.126) but only minimally for DeepSeek-R1 and gpt-oss; terminal top-action switching 0.253-0.584.",
+     "quote": "Ordinary prompt variation was sufficient to produce measurable output divergence under both BASE and STABLE conditions, and management-action distributions were consistently more prompt-sensitive than diagnosis distributions."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Invalid structured-output rates and internal inconsistency between top action and probability argmax",
+     "effect": "gpt-oss 20B invalid rate rose to 0.399 under STABLE at T3; DeepSeek-R1 reached 0.198 at T3; Gemma 3 12B had 0 invalid outputs but top-action argmax agreement fell to 0.389-0.397.",
+     "quote": "gpt-oss 20B showed the opposite trade-off: among valid outputs, top-action argmax agreement remained very high, but invalid rates were substantial and rose to 0.399 under STABLE at the terminal timepoint."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Consistency between self-declared top action and returned action-probability vector",
+     "effect": "Gemma 3 12B top-action argmax agreement deteriorated from about 0.87 at T1 to 0.389-0.397 at T3, whereas gpt-oss 20B stayed above 0.97 among valid outputs.",
+     "quote": "Gemma 3 12B produced no invalid outputs in the primary analysis set, but its agreement between the self-declared top action and the argmax of action probabilities deteriorated over time, falling to 0.389-0.397 at the terminal timepoint."
+    }
+   ],
+   "unlisted_practices": [
+    "Recompute top-label fields from returned probability vectors rather than trusting model-declared labels",
+    "Use pair-valid analysis rather than zero-filling invalid outputs when auditing LLM robustness",
+    "Report distributional stability and structured-output integrity as separate endpoints",
+    "Validate stability prompt layers separately for each model family",
+    "Trajectory-level multi-turn testing of prompt sensitivity",
+    "Use retry, fallback, or parser-repair pipelines for models with high invalid output rates"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 6,
+   "sample_unit": "synthetic acute-care cases",
+   "models_evaluated": [
+    "DeepSeek-R1 14B",
+    "Gemma 3 12B",
+    "gpt-oss 20B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prompt-induced distribution divergence",
+     "effect": "Mean total Jensen-Shannon distance ranged from 0.126 to 0.306 across nine model-condition cells.",
+     "quote": "Across the nine model-condition cells, the mean total Jensen-Shannon distance ranged from 0.126 to 0.306."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "top-action switching under prompt variation",
+     "effect": "T3 top-action switching ranged 0.253 for Gemma STABLE to 0.584 for gpt-oss BASE.",
+     "quote": "At the terminal timepoint, top-1 action switching remained appreciable across all cells, ranging from 0.253 for Gemma 3 12B under STABLE to 0.584 for gpt-oss 20B under BASE."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-field structured-output inconsistency",
+     "effect": "Gemma had 0 invalid outputs, but T3 top-action argmax agreement fell to 0.389-0.397.",
+     "quote": "Gemma 3 12B produced no invalid outputs in the primary analysis set, but its agreement between the self-declared top action and the argmax of action probabilities deteriorated over time, falling to 0.389-0.397 at the terminal timepoint."
+    }
+   ],
+   "unlisted_practices": [
+    "Pair-valid comparison of perturbed and baseline prompts instead of zero-filling invalid responses"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 6,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "DeepSeek-R1 14B",
+    "Gemma 3 12B",
+    "gpt-oss 20B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prompt-induced output divergence across prompt variants",
+     "effect": "Mean total Jensen-Shannon distance ranged from 0.126 to 0.306 across cells, with terminal top-action switching between 0.253 and 0.584.",
+     "quote": "Across the nine model-condition cells, the mean total Jensen-Shannon distance ranged from 0.126 to 0.306."
+    }
+   ],
+   "unlisted_practices": [
+    "prompt-layer stabilization to reduce output variability"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "synthetic acute-care cases (3 timepoints, 21 prompt variants, 3 runs, 3 models)",
+ "sample_size": 6,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1 14B",
+  "Gemma 3 12B",
+  "gpt-oss 20B"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "prompt-induced distribution divergence",
+   "effect": "Mean total Jensen-Shannon distance ranged from 0.126 to 0.306 across nine model-condition cells.",
+   "quote": "Across the nine model-condition cells, the mean total Jensen-Shannon distance ranged from 0.126 to 0.306.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "top-action switching under prompt variation",
+   "effect": "T3 top-action switching ranged 0.253 for Gemma STABLE to 0.584 for gpt-oss BASE.",
+   "quote": "At the terminal timepoint, top-1 action switching remained appreciable across all cells, ranging from 0.253 for Gemma 3 12B under STABLE to 0.584 for gpt-oss 20B under BASE.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R491",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "cross-field structured-output inconsistency",
+   "effect": "Gemma had 0 invalid outputs, but T3 top-action argmax agreement fell to 0.389-0.397.",
+   "quote": "Gemma 3 12B produced no invalid outputs in the primary analysis set, but its agreement between the self-declared top action and the argmax of action probabilities deteriorated over time, falling to 0.389-0.397 at the terminal timepoint.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Pair-valid comparison of perturbed and baseline prompts instead of zero-filling invalid responses",
+  "Recompute top-label fields from returned probability vectors rather than trusting model-declared labels",
+  "Report distributional stability and structured-output integrity as separate endpoints",
+  "Trajectory-level multi-turn testing of prompt sensitivity",
+  "Use pair-valid analysis rather than zero-filling invalid outputs when auditing LLM robustness",
+  "Use retry, fallback, or parser-repair pipelines for models with high invalid output rates",
+  "Validate stability prompt layers separately for each model family",
+  "prompt-layer stabilization to reduce output variability"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42291874",
+ "screen": {
+  "id": "pmid:42291874",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "stability-oriented prompt-layer guardrail",
+  "user": "none",
+  "reason": "The study directly benchmarks whether a stability-oriented prompt condition (STABLE) reduces output divergence and maintains structured-output integrity across prompt variations in synthetic clinical scenarios.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt guardrails / stability-oriented prompt engineering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42291874",
+   "empirical": 0.9,
+   "tests_practice": 0.32,
+   "real_deployment": 0.01
+  }
+ }
+}

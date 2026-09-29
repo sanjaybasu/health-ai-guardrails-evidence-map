@@ -1,0 +1,356 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United States",
+   "sample_size": 12,
+   "sample_unit": "simulated standardized patient\u2013student encounters (audio recordings)",
+   "models_evaluated": [
+    "NotebookLM (Gemini 2.5 Flash)",
+    "Otter.ai",
+    "AssemblyAI",
+    "Google Cloud Speech-to-Text"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM transcription errors: omissions, substitutions, speaker misattribution, medical terminology errors",
+     "effect": "Mean 73 target word errors (3.3%), 51 deletions (2.3%), 19 semantic errors, 8 medical terminology semantic errors; 15 turn-taking errors (7.3% of turns); 48 mis-attributed speaker word errors (2.2%).",
+     "quote": "The LLM produced a mean of 73 \u00b1 26 target word errors (3.3% of all target words), comprising 22 \u00b1 13 substitutions (1.0%) and 51 \u00b1 22 deletions (2.3%)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Transcription errors under higher-fidelity audio versus original audio",
+     "effect": "HFA had fewer target word errors than OFA (23 \u00b1 10, 1.0% vs. 71 \u00b1 25, 3.2%, p = 0.001); semantic errors 10 \u00b1 5 vs. 19 \u00b1 5 (p = 0.011).",
+     "quote": "Semantic word/phrase errors were also significantly lower in HFA recordings (10 \u00b1 5 vs. 19 \u00b1 5, p = 0.011)."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Medical terminology mis-transcription by LLM",
+     "effect": "Medical terminology errors averaged 13 \u00b1 5 per interaction (15% of total word errors), producing 8 \u00b1 4 semantic errors (42% of semantic errors); prompt modification did not help.",
+     "quote": "Medical terminology errors averaged 13 \u00b1 5 incorrect words per interaction, accounting for 15% of total word errors."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Errors in AI-generated transcripts that could enter clinical notes if unreviewed",
+     "effect": "Even modest error rates (3.3% target word errors, 19 semantic errors per interaction) could undermine documentation accuracy; authors caution against autonomous note generation.",
+     "quote": "Our study found modest error rates, yet meaningful errors persisted that could undermine documentation accuracy, confuse clinicians, and cause patient harm."
+    }
+   ],
+   "unlisted_practices": [
+    "Improving audio recording quality to reduce ambient transcription errors",
+    "Prompt modification to alert LLM to expected medical terminology (no effect)"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United States",
+   "sample_size": 12,
+   "sample_unit": "simulated standardized-patient encounters; 6 re-recorded with higher-fidelity audio",
+   "models_evaluated": [
+    "NotebookLM (Gemini 2.5 Flash)",
+    "AssemblyAI",
+    "Otter.ai"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Competing transcription tools' word error rates",
+     "effect": "NotebookLM: 96 errors, 4.0%; AssemblyAI: 252, 10.4%; Otter.ai: 448, 18.5%.",
+     "quote": "Across the two interactions with a mean 2416 target words, NotebookLM demonstrated substantially lower overall word error rates (96 total word errors; 4.0% of target words) compared with AssemblyAI (252; 10.4%) and Otter.ai (448; 18.5%)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Errors associated with overlapping speech",
+     "effect": "Overlapping speech was associated with 16 \u00b1 12 word errors and 8 \u00b1 7 mis-attributed speaker word errors, 19.1% and 16.3% respectively.",
+     "quote": "Out of all total word errors (substitutions, deletions, and insertions) and mis-attributed speaker word errors, 16 \u00b1 12 total word errors and 8 \u00b1 7 mis-attributed speaker word errors were associated with overlapping speech, representing 19.1% of total word errors and 16.3% of mis-attributed speaker word errors."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Audio fidelity and transcription errors",
+     "effect": "HFA had fewer target word errors than OFA: 23 \u00b1 10, 1.0% vs. 71 \u00b1 25, 3.2%, p = 0.001.",
+     "quote": "Recordings obtained using higher-fidelity audio (HFA) (Supplemental Table 2 ) demonstrated significantly fewer total target word errors than original-fidelity audio (OFA) (23 \u00b1 10, 1.0% vs. 71 \u00b1 25, 3.2%, respectively, p = 0.001), primarily due to reduced deletions (8 \u00b1 5, 0.4% vs. 56 \u00b1 25, 2.5%, respectively, p = 0.001)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Transcription omissions, substitutions, and insertions",
+     "effect": "Mean 73 \u00b1 26 target word errors: 22 \u00b1 13 substitutions, 51 \u00b1 22 deletions, and 9 \u00b1 4 insertions.",
+     "quote": "The LLM produced a mean of 73 \u00b1 26 target word errors (3.3% of all target words), comprising 22 \u00b1 13 substitutions (1.0%) and 51 \u00b1 22 deletions (2.3%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Using higher-fidelity audio recording conditions to reduce LLM transcription errors",
+    "Prompting the LLM with expected medical terminology to reduce transcription errors"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 12,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "NotebookLM (Gemini 2.5 Flash)",
+    "AssemblyAI",
+    "Otter.ai"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transcription and semantic errors in LLM-generated transcripts",
+     "effect": "mean 73 \u00b1 26 target word errors (3.3%), comprising 22 \u00b1 13 substitutions (1.0%) and 51 \u00b1 22 deletions (2.3%), with 9 \u00b1 4 insertions (0.4%) and 19 \u00b1 5 semantic errors",
+     "quote": "The LLM produced a mean of 73 \u00b1 26 target word errors (3.3% of all target words), comprising 22 \u00b1 13 substitutions (1.0%) and 51 \u00b1 22 deletions (2.3%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Re-recording encounters with higher-fidelity audio equipment and close-proximity microphones to reduce transcription errors",
+    "Prompting LLMs to anticipate expected medical terminology to reduce transcription errors"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "simulated standardized patient\u2013student encounters (audio recordings)",
+ "sample_size": 12,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "AssemblyAI",
+  "Google Cloud Speech-to-Text",
+  "NotebookLM (Gemini 2.5 Flash)",
+  "Otter.ai"
+ ],
+ "links": [
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM transcription errors: omissions, substitutions, speaker misattribution, medical terminology errors",
+   "effect": "Mean 73 target word errors (3.3%), 51 deletions (2.3%), 19 semantic errors, 8 medical terminology semantic errors; 15 turn-taking errors (7.3% of turns); 48 mis-attributed speaker word errors (2.2%).",
+   "quote": "The LLM produced a mean of 73 \u00b1 26 target word errors (3.3% of all target words), comprising 22 \u00b1 13 substitutions (1.0%) and 51 \u00b1 22 deletions (2.3%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Errors in AI-generated transcripts that could enter clinical notes if unreviewed",
+   "effect": "Even modest error rates (3.3% target word errors, 19 semantic errors per interaction) could undermine documentation accuracy; authors caution against autonomous note generation.",
+   "quote": "Our study found modest error rates, yet meaningful errors persisted that could undermine documentation accuracy, confuse clinicians, and cause patient harm.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Competing transcription tools' word error rates",
+   "effect": "NotebookLM: 96 errors, 4.0%; AssemblyAI: 252, 10.4%; Otter.ai: 448, 18.5%.",
+   "quote": "Across the two interactions with a mean 2416 target words, NotebookLM demonstrated substantially lower overall word error rates (96 total word errors; 4.0% of target words) compared with AssemblyAI (252; 10.4%) and Otter.ai (448; 18.5%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Errors associated with overlapping speech",
+   "effect": "Overlapping speech was associated with 16 \u00b1 12 word errors and 8 \u00b1 7 mis-attributed speaker word errors, 19.1% and 16.3% respectively.",
+   "quote": "Out of all total word errors (substitutions, deletions, and insertions) and mis-attributed speaker word errors, 16 \u00b1 12 total word errors and 8 \u00b1 7 mis-attributed speaker word errors were associated with overlapping speech, representing 19.1% of total word errors and 16.3% of mis-attributed speaker word errors.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Audio fidelity and transcription errors",
+   "effect": "HFA had fewer target word errors than OFA: 23 \u00b1 10, 1.0% vs. 71 \u00b1 25, 3.2%, p = 0.001.",
+   "quote": "Recordings obtained using higher-fidelity audio (HFA) (Supplemental Table 2 ) demonstrated significantly fewer total target word errors than original-fidelity audio (OFA) (23 \u00b1 10, 1.0% vs. 71 \u00b1 25, 3.2%, respectively, p = 0.001), primarily due to reduced deletions (8 \u00b1 5, 0.4% vs. 56 \u00b1 25, 2.5%, respectively, p = 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Improving audio recording quality to reduce ambient transcription errors",
+  "Prompt modification to alert LLM to expected medical terminology (no effect)",
+  "Prompting LLMs to anticipate expected medical terminology to reduce transcription errors",
+  "Prompting the LLM with expected medical terminology to reduce transcription errors",
+  "Re-recording encounters with higher-fidelity audio equipment and close-proximity microphones to reduce transcription errors",
+  "Using higher-fidelity audio recording conditions to reduce LLM transcription errors"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41808126",
+ "screen": {
+  "id": "pmid:41808126",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "speech_ambient"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "higher-fidelity audio recording",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study testing the error rates of LLM transcription and speaker diarization on simulated clinical encounters, specifically testing the deployment factor of high-fidelity audio recording on transcription error reduction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "high-fidelity audio recording"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41808126",
+   "empirical": 0.97,
+   "tests_practice": 0.11,
+   "real_deployment": 0.02
+  }
+ }
+}

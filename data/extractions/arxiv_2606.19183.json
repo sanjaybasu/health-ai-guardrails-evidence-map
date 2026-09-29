@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "Germany",
+ "sample_size": null,
+ "sample_unit": "patients",
+ "models_evaluated": [
+  "ClaMPAPP (LLM feature extraction + XGBoost)",
+  "XGBoost",
+  "end-to-end LLM baselines (open-source and proprietary, unnamed)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Robustness of end-to-end LLM diagnostic performance to sentence-order permutation of narratives",
+   "effect": "End-to-end LLMs showed unstable sensitivity-specificity trade-offs and greater degradation under narrative reordering than the hybrid ClaMPAPP system.",
+   "quote": "End-to-end LLMs showed unstable sensitivity-specificity trade-offs and greater degradation under narrative reordering.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using an LLM only as a schema-constrained feature-extraction interface feeding a structured ML classifier rather than as the final decision-maker",
+  "Deterministic plausibility checks on LLM-extracted features before passing them to a downstream predictive model"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2606.19183",
+ "screen": {
+  "id": "arxiv:2606.19183",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a deployment architecture safeguard (hybrid pipeline using schema-constrained extraction and deterministic plausibility checks before risk scoring vs. end-to-end LLM) on clinical cohorts and tests robustness against narrative reordering.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "hybrid LLM-feature-extractor with deterministic plausibility checks vs end-to-end LLM"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.19183",
+   "empirical": 0.95,
+   "tests_practice": 0.13,
+   "real_deployment": 0.05
+  }
+ }
+}

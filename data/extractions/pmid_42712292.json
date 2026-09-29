@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 1273,
+ "sample_unit": "clinical case vignettes",
+ "models_evaluated": [
+  "Llama-3.3-70B",
+  "Qwen3-32B",
+  "Gemini-2.5-Flash",
+  "reasoning-enhanced variants of Llama-3.3-70B, Qwen3-32B and Gemini-2.5-Flash"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model accuracy under unpublished bias-inducing prompt variations versus published prompts",
+   "effect": "Gemini-2.5-Flash accuracy dropped from 80.0-88.6% to 47.4-86.1% with four unpublished bias-inducing prompts, exposing brittleness.",
+   "quote": "The performance of Gemini-2.5-Flash dropped considerably when exposing it to four additional unpublished bias-inducing prompts (from 80.0-88.6% to 47.4-86.1%), hinting at potential contamination of its training data and exposing underlying brittleness.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Gap between public benchmark performance and performance on unpublished prompts (possible contamination)",
+   "effect": "Gemini-2.5-Flash fell from 80.0-88.6% on public BiasMedQA prompts to 47.4-86.1% on unpublished prompts, hinting at training data contamination.",
+   "quote": "The performance of Gemini-2.5-Flash dropped considerably when exposing it to four additional unpublished bias-inducing prompts (from 80.0-88.6% to 47.4-86.1%), hinting at potential contamination of its training data and exposing underlying brittleness.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Debiasing prompt instructing the LLM to actively mitigate cognitive bias",
+  "Few-shot prompting with sample cases of biased responses to reduce biased responses",
+  "Reasoning-enhanced LLM variants to reduce susceptibility to cognitive bias-inducing prompts"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42712292",
+ "screen": {
+  "id": "pmid:42712292",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "debiasing prompt and few-shot prompt guardrails",
+  "user": "none",
+  "reason": "Empirically tests prompt-based debiasing safeguards (debiasing instructions and few-shot examples) to mitigate cognitive biases in LLMs on clinical QA benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "debiasing and few-shot prompt guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42712292",
+   "empirical": 0.91,
+   "tests_practice": 0.24,
+   "real_deployment": 0.02
+  }
+ }
+}

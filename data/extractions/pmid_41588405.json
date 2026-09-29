@@ -1,0 +1,322 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 194,
+   "sample_unit": "patients undergoing elective hepatic resection",
+   "models_evaluated": [
+    "POSSUM",
+    "P-POSSUM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration of POSSUM/P-POSSUM before and after local logistic recalibration",
+     "effect": "Original models underestimated events; bootstrap-corrected recalibration gave slopes 0.837-0.907 and intercepts 0.16 to -0.34, improving calibration without materially changing AUC.",
+     "quote": "Our findings support the notion that logistic recalibration can reduce systematic calibration errors without materially changing discrimination [ 13 , 25 ]."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of POSSUM/P-POSSUM on local historical data against observed outcomes",
+     "effect": "Local validation showed fair discrimination (AUC 0.696-0.755) and miscalibration, with observed event rates higher than median predicted risks, supporting local model updating.",
+     "quote": "These observed rates were higher than the median predicted risks for both endpoints, indicating that the models tended to underestimate the event probability in this population."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model discrimination and calibration by extent of resection subgroup (major vs minor hepatectomy)",
+     "effect": "Major hepatectomy AUC 0.633 (slope 0.437) vs minor AUC 0.770 (slope 0.846); calibration differed between subgroups.",
+     "quote": "Calibration differed between subgroups, with calibration slopes of 0.437(major) and 0.846 (minor) and calibration intercepts of \u2212 0.067 (major) and \u2212 0.456 (minor)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of established generic risk models applied to a new specialized surgical population",
+     "effect": "POSSUM/P-POSSUM showed fair discrimination and slopes below 1 in hepatic resection, needing recalibration.",
+     "quote": "OOB bootstrap calibration showed slopes below 1 for all endpoints (clinically relevant morbidity: \u03b1 0.16, \u03b2 0.837, Brier 0.172; major morbidity: \u03b1 \u2212 0.051, \u03b2 0.907, Brier 0.215; mortality: \u03b1 \u2212 0.34, \u03b2 0.843, Brier 0.068), supporting the need for local model updating."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Net benefit of recalibrated models versus treat-all and operative severity proxy in decision curve analysis",
+     "effect": "For any morbidity, no incremental benefit over treat-all or proxy; major morbidity exceeded treat-all in 76.3% of thresholds and proxy in 46.1%; mortality exceeded proxy in 85.2%.",
+     "quote": "Compared with the operative severity proxy (mean net benefit 0.173), the recalibrated model was higher in 46.1% of the thresholds, suggesting a modest and threshold-dependent incremental advantage (Fig. 4 B)."
+    }
+   ],
+   "unlisted_practices": [
+    "Bootstrap optimism-corrected internal validation of prediction model calibration"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 194,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "POSSUM",
+    "P-POSSUM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local morbidity and mortality prediction performance",
+     "effect": "AUCs: 0.696 clinically relevant morbidity, 0.697 major morbidity, 0.755 mortality; calibration slopes below 1 supported local updating.",
+     "quote": "OOB bootstrap calibration showed slopes below 1 for all endpoints (clinically relevant morbidity: \u03b1 0.16, \u03b2 0.837, Brier 0.172; major morbidity: \u03b1\u2009\u2212\u20090.051, \u03b2 0.907, Brier 0.215; mortality: \u03b1\u2009\u2212\u20090.34, \u03b2 0.843, Brier 0.068), supporting the need for local model updating."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local logistic recalibration of risk models",
+     "effect": "After recalibration/OOB: \u2265II \u03b1 0.16, \u03b2 0.837, Brier 0.172; \u2265IIIa \u03b1 \u22120.051, \u03b2 0.907, Brier 0.215; mortality \u03b1 \u22120.34, \u03b2 0.843, Brier 0.068.",
+     "quote": "In this single-center cohort of 194 elective hepatic resections, POSSUM showed fair discrimination and imperfect calibration for morbidity outcomes, which improved after bootstrap-corrected logistic recalibration, supporting its use for institutional benchmarking and preoperative risk communication when locally validated and updated."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup discrimination by resection extent",
+     "effect": "Major hepatectomy AUC 0.633 versus minor hepatectomy AUC 0.770; calibration slopes 0.437 versus 0.846.",
+     "quote": "For the prediction of major morbidity (Clavien\u2013Dindo \u2265 IIIa) using the POSSUM predicted morbidity risk, discrimination was AUC 0.633 (95% CI 0.535\u20130.733) in major hepatectomy ( n = 126, events = 56) and AUC 0.770 (95% CI 0.638\u20130.885) in minor hepatectomy ( n = 68, events = 17)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "net benefit versus reference strategies",
+     "effect": "Any morbidity: mean NB 0.645 identical to treat-all; major: exceeded treat-all 76.3%, proxy 46.1%; mortality: exceeded treat-all 97.7%, proxy 85.2%.",
+     "quote": "Overall, the decision curves suggest the greatest incremental clinical utility of recalibrated predictions for major morbidity and in-hospital mortality, while for any morbidity, the net benefit was comparable to treat-all and the operative severity proxy within the examined threshold range."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 194,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "POSSUM",
+    "P-POSSUM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration of morbidity and mortality predictions",
+     "effect": "Calibration slopes were 0.837 for clinically relevant morbidity, 0.907 for major morbidity, and 0.843 for mortality (Brier scores 0.172, 0.215, 0.068), improving model fit after bootstrap-corrected logistic recalibration.",
+     "quote": "In this single-center cohort of 194 elective hepatic resections, POSSUM showed fair discrimination and imperfect calibration for morbidity outcomes, which improved after bootstrap-corrected logistic recalibration, supporting its use for institutional benchmarking and preoperative risk communication when locally validated and updated."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "patients",
+ "sample_size": 194,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "P-POSSUM",
+  "POSSUM"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of POSSUM/P-POSSUM before and after local logistic recalibration",
+   "effect": "Original models underestimated events; bootstrap-corrected recalibration gave slopes 0.837-0.907 and intercepts 0.16 to -0.34, improving calibration without materially changing AUC.",
+   "quote": "Our findings support the notion that logistic recalibration can reduce systematic calibration errors without materially changing discrimination [ 13 , 25 ].",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of POSSUM/P-POSSUM on local historical data against observed outcomes",
+   "effect": "Local validation showed fair discrimination (AUC 0.696-0.755) and miscalibration, with observed event rates higher than median predicted risks, supporting local model updating.",
+   "quote": "These observed rates were higher than the median predicted risks for both endpoints, indicating that the models tended to underestimate the event probability in this population.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Net benefit of recalibrated models versus treat-all and operative severity proxy in decision curve analysis",
+   "effect": "For any morbidity, no incremental benefit over treat-all or proxy; major morbidity exceeded treat-all in 76.3% of thresholds and proxy in 46.1%; mortality exceeded proxy in 85.2%.",
+   "quote": "Compared with the operative severity proxy (mean net benefit 0.173), the recalibrated model was higher in 46.1% of the thresholds, suggesting a modest and threshold-dependent incremental advantage (Fig. 4 B).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of established generic risk models applied to a new specialized surgical population",
+   "effect": "POSSUM/P-POSSUM showed fair discrimination and slopes below 1 in hepatic resection, needing recalibration.",
+   "quote": "OOB bootstrap calibration showed slopes below 1 for all endpoints (clinically relevant morbidity: \u03b1 0.16, \u03b2 0.837, Brier 0.172; major morbidity: \u03b1 \u2212 0.051, \u03b2 0.907, Brier 0.215; mortality: \u03b1 \u2212 0.34, \u03b2 0.843, Brier 0.068), supporting the need for local model updating.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Bootstrap optimism-corrected internal validation of prediction model calibration"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41588405",
+ "screen": {
+  "id": "pmid:41588405",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration before implementation",
+  "user": "none",
+  "reason": "The study directly evaluates the deployment practice of local validation and logistic recalibration of existing risk prediction models (POSSUM and P-POSSUM) before clinical implementation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41588405",
+   "empirical": 0.48,
+   "tests_practice": 0.72,
+   "real_deployment": 0.04
+  }
+ }
+}

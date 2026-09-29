@@ -1,0 +1,93 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "France",
+ "sample_size": 12600,
+ "sample_unit": "classifications (from 100 patient feedback samples); benchmark of 49,140 classifications from 1,170 feedbacks",
+ "models_evaluated": [
+  "GPT-4",
+  "Llama-3.1 405B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Logical hallucination rate in LLM feedback classification with vs without SLCA (self-consistency across repeated runs)",
+   "effect": "SLCA reduced logical hallucinations among detected categories from 15.80% (168/1063) to 0.51% (4/786) with GPT-4 and from 7.17% (51/711) to 1.67% (10/599) with Llama-3.1.",
+   "quote": "SLCA reduced logical hallucinations among detected categories from 15.80% (168/1063) to 0.51% (4/786) with GPT-4 and from 7.17% (51/711) to 1.67% (10/599) with Llama-3.1, with residual errors confined to the emergency feedback category.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Residual errors in emergency feedback category after SLCA",
+   "effect": "Residual logical hallucinations after SLCA were confined to the emergency feedback category.",
+   "quote": "SLCA reduced logical hallucinations among detected categories from 15.80% (168/1063) to 0.51% (4/786) with GPT-4 and from 7.17% (51/711) to 1.67% (10/599) with Llama-3.1, with residual errors confined to the emergency feedback category.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Self-consistency plus logical-consistency validation (chain-of-thought enforcement) to reduce LLM logical hallucinations in text classification"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR881555",
+ "screen": {
+  "id": "epmc:PPR881555",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a self-logical consistency assessment guardrail/verification framework applied to LLMs to mitigate logical hallucinations in classifying patient feedback.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "self-logical consistency verification guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR881555",
+   "empirical": 0.94,
+   "tests_practice": 0.4,
+   "real_deployment": 0.07
+  }
+ }
+}

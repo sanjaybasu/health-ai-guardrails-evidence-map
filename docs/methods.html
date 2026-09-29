@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methods · Guardrail Evidence Map</title>
+<meta name="description" content="A weekly-updated map linking each recommended guardrail for deploying artificial intelligence in health care (large language models, predictive models, imaging software, multimodal models, and agents) to the sources that endorse it and the studies that tested it, with attention to Medicaid, safety-net, limited English proficiency, and low-literacy populations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="index.html">Guardrail Evidence Map</a>
+    <nav>
+      <a href="index.html">Map</a>
+      <a href="methods.html">Methods</a>
+      <a href="changelog.html">Updates</a>
+      <a href="https://github.com/sanjaybasu/health-ai-guardrails-evidence-map">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<article class="prose">
+<h1>Methods</h1>
+
+<h2>Question</h2>
+<p>For each practice that governance documents recommend for deploying artificial intelligence in health care, including large language models, multimodal and foundation models, predictive risk models, imaging and diagnostic software, ambient documentation, and AI agents, we ask how many sources endorse it, whether any study has tested it, how strong the strongest test is, and whether any test included Medicaid, safety-net, limited English proficiency, or low-literacy populations. The design follows interactive evidence tools that attach the evidence to each option a decision-maker is choosing among, such as the statin ranking platform of Hopkin and colleagues (Med Decis Making 2019; <a href="https://doi.org/10.1177/0272989X19835239">doi:10.1177/0272989X19835239</a>).</p>
+
+<h2>Recommendations and endorsements</h2>
+<p>We fetched the full text of 19 governance sources (frameworks, accreditation guidance, federal regulation, state statutes, and peer-reviewed commentaries; listed in <a href="https://github.com/sanjaybasu/health-ai-guardrails-evidence-map/blob/main/data/governance_sources.yaml">governance_sources.yaml</a>). Three models from three vendors (Anthropic claude-opus-5-5, OpenAI gpt-6-astra, Google gemini-3.1-pro-preview) each extracted every atomic, checkable deployment recommendation with a verbatim supporting quote and tagged the kinds of AI it concerns. We kept a candidate only if its quote appears in the source text after whitespace and punctuation normalization. Candidates were embedded, clustered by cosine similarity, and merged into canonical recommendations by one model; the other two vendors critiqued the merged list for bundled, duplicate, untestable, or overreaching items, and the merging model revised it. Endorsements are counted as distinct sources; commentaries retrieved from the literature add endorsements only when the abstract states the recommendation verbatim. Endorsements are never counted as evidence.</p>
+
+<h2>Literature</h2>
+<p>Each week we run two queries, one for large language models and generative AI and one for deployment, validation, monitoring, and governance of any health care AI, against Europe PMC, which indexes PubMed and MEDLINE together with medRxiv, bioRxiv, Research Square, and other preprint servers, and arXiv, restricting terms to titles and abstracts. OpenAlex supplies citation counts. Bibliographic details come only from these services, never from model output. The corpus holds 37,707 records, of which 6,767 are preprints.</p>
+
+<h2>Screening and extraction</h2>
+<p>A low-cost model (gemini-3.8-flash) screens each title and abstract into empirical studies, recommendation-bearing commentaries, reviews, and out-of-scope records, tags the kinds of AI involved, and flags studies that test a deployment practice. A calibrated classifier (Jev, TypeSafe) independently estimates the probability that each record tests a practice and that the test took place in a real deployment; records on which the two disagree, or on which Jev's probability lies between 0.2 and 0.8, are re-screened by a third model (claude-sonnet-5-5), whose decision is used. A second vendor also re-screens a random 5% sample of exclusions each month; in the latest audit it disagreed on 104 of 1202 sampled exclusions.</p>
+<p>Studies that test a practice in a real deployment go to a panel of three frontier models from three vendors (claude-opus-5-5, gpt-6-astra, gemini-3.1-pro-preview); studies that test a practice offline or in simulation go to a panel of three faster models from the same three vendors (claude-sonnet-5-5, gpt-5.5, gemini-3.8-flash). Each panel reads the abstract and, when open access, the methods and results, and it sees every recommendation in the domains a routing model judged relevant to the study. A link between a study and a recommendation is kept when at least two of three vendors make it independently, or when one vendor makes it and at least one other vendor, shown the study and the proposed link, agrees. Every supporting quote must appear verbatim in the text. Categorical fields are resolved by majority vote, and the site reports per-field agreement. Studies that only document a hazard are extracted by a single model; commentaries are extracted from open-access full text only, because abstracts rarely state a recommendation verbatim.</p>
+<p>For every link, Jev also estimates the probability that the quoted sentence reports a result bearing on the linked recommendation. The site shows this as quote support, and links below 50% are queued first for human review. Human review determines whether a link is marked verified.</p>
+<p>Across 1413 panel-extracted studies, mean three-vendor agreement was design 0.757; setting 0.932; user 0.976; country 0.730; sample unit 0.597; sample size 0.916; population 0.992.</p>
+
+<h2>Two kinds of evidence</h2>
+<p>A <em>test</em> compares outcomes with and without a practice, or measures whether the practice achieves its aim (for example, whether clinician review catches errors in AI-drafted messages). A <em>hazard study</em> measures the failure a practice targets (for example, the reading level of LLM answers to patient questions) without testing the practice. Most published LLM studies are hazard studies. They show that a problem exists; they do not show that a given guardrail solves it.</p>
+
+<h2>Evidence levels</h2>
+<table class="small"><thead><tr><th>Level</th><th>Design</th></tr></thead><tbody>
+<tr><td>1</td><td>Randomized trial of the practice in a real deployment</td></tr>
+<tr><td>2</td><td>Controlled comparison in a real deployment (quasi-experimental or prospective with a comparator)</td></tr>
+<tr><td>3</td><td>Deployment data without a comparator (pre-post, descriptive, qualitative)</td></tr>
+<tr><td>4</td><td>Simulation, vignette, or retrospective replay with human raters</td></tr>
+<tr><td>5</td><td>Automated benchmark only</td></tr>
+</tbody></table>
+<p>Levels describe design and setting; they are not a full risk-of-bias assessment. A recommendation is labelled supported only when its strongest test is level 1 or 2, that test favours the practice, and no test at the same or a stronger level found against it.</p>
+
+<h2>Limitations</h2>
+<p>Every link is machine-extracted until a person verifies it, and the site marks verification status on each item. Paywalled full text is not read, so some tests reported only in full text are missed. The taxonomy began as a machine draft and is curated by hand; the weekly update proposes new recommendations but adds them only after human review. Non-English literature is not searched.</p>
+
+<h2>Updates</h2>
+<p>A scheduled GitHub Actions workflow runs every Monday, adds new records, re-fetches governance sources to detect revisions, rebuilds this site, and opens a pull request summarizing the changes for human review before they are published.</p>
+</article>
+
+</main>
+<footer class="wrap foot">
+  <p>Updated 2026-09-29. Maintained by Sanjay Basu (Waymark; University of California San Francisco). Conflict of interest: the maintainers are employees of Waymark, a public benefit organization that provides free social and medical services for patients receiving Medicaid; studies by Waymark authors are included under the same rules as all others.</p>
+  <p>Links between recommendations and studies are produced by a three-vendor model panel with verbatim-quote verification and are marked machine-extracted until a person verifies them. Report an error through <a href="https://github.com/sanjaybasu/health-ai-guardrails-evidence-map/issues">GitHub issues</a>. Code MIT; data CC BY 4.0.</p>
+</footer>
+
+</body>
+</html>

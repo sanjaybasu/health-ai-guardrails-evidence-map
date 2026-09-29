@@ -1,0 +1,265 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 3031,
+   "sample_unit": "patients (test cohort discharge summaries)",
+   "models_evaluated": [
+    "NYUTron (fine-tuned cardiac surgery-specific LLM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model AUC drift over time due to documentation changes",
+     "effect": "AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024; discharge summaries doubled in length; 13% AUC decline.",
+     "quote": "Performance was strongest in the first year; AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity maintained after monthly dynamic recalibration of threshold despite drift",
+     "effect": "Monthly threshold recalibration using prior 6 months; calibrated model achieved sensitivity 78.6% and specificity 50.2% despite AUC decline.",
+     "quote": "Despite a temporal trend in both yearly and monthly prediction scores ( Figures 2 C, 2 D), the calibrated model demonstrated resilience to evolving documentation patterns, achieving a sensitivity and specificity of 78.6% and 50.2%."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal validation performance on later unseen cohort",
+     "effect": "Strict temporal split with no leakage; AUC 0.71 overall in test cohort but degraded over time, from 0.78 to 0.67.",
+     "quote": "All admissions before June 2021 were assigned to training, calibration, and model selection to ensure no data leakage from the original NYUTron training set."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 8275,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "cardiac surgery-specific fine-tuned NYUTron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC decline with drift",
+     "effect": "AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024.",
+     "quote": "Performance was strongest in the first year; AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "dynamic recalibration under drift",
+     "effect": "Calibrated model achieved sensitivity 78.6% and specificity 50.2% despite temporal prediction-score trends.",
+     "quote": "Despite a temporal trend in both yearly and monthly prediction scores ( Figures 2 C, 2 D), the calibrated model demonstrated resilience to evolving documentation patterns, achieving a sensitivity and specificity of 78.6% and 50.2%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 8275,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "NYUTron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "screening sensitivity and specificity following dynamic threshold recalibration",
+     "effect": "The calibrated model achieved a sensitivity of 78.6% and specificity of 50.2% despite documentation drift.",
+     "quote": "Despite a temporal trend in both yearly and monthly prediction scores ( Figures 2 C, 2 D), the calibrated model demonstrated resilience to evolving documentation patterns, achieving a sensitivity and specificity of 78.6% and 50.2%."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "temporal degradation in model discrimination AUC over time",
+     "effect": "AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024.",
+     "quote": "Performance was strongest in the first year; AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 8275,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "NYUTron",
+  "NYUTron (fine-tuned cardiac surgery-specific LLM)",
+  "cardiac surgery-specific fine-tuned NYUTron"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model AUC drift over time due to documentation changes",
+   "effect": "AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024; discharge summaries doubled in length; 13% AUC decline.",
+   "quote": "Performance was strongest in the first year; AUC decreased from 0.78 in 2022 to 0.70 in 2023 and 0.67 in 2024.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity maintained after monthly dynamic recalibration of threshold despite drift",
+   "effect": "Monthly threshold recalibration using prior 6 months; calibrated model achieved sensitivity 78.6% and specificity 50.2% despite AUC decline.",
+   "quote": "Despite a temporal trend in both yearly and monthly prediction scores ( Figures 2 C, 2 D), the calibrated model demonstrated resilience to evolving documentation patterns, achieving a sensitivity and specificity of 78.6% and 50.2%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42719618",
+ "screen": {
+  "id": "pmid:42719618",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "recalibration to mitigate temporal drift",
+  "user": "none",
+  "reason": "The study develops and temporally validates an LLM-based readmission prediction tool on electronic discharge summaries and explicitly evaluates dynamic recalibration to mitigate temporal performance degradation/drift.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "dynamic recalibration over time"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42719618",
+   "empirical": 0.97,
+   "tests_practice": 0.56,
+   "real_deployment": 0.07
+  }
+ }
+}

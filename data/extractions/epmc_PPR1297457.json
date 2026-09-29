@@ -1,0 +1,117 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "generative_llm",
+  "multimodal_foundation"
+ ],
+ "country": "Unknown",
+ "sample_size": 300,
+ "sample_unit": "CBCT mid-sagittal slices",
+ "models_evaluated": [
+  "ChatGPT",
+  "BERT-base",
+  "DenseNet-121",
+  "Eight vision architectures (CNNs and ViTs)",
+  "Seven language classifiers",
+  "Five VLMs",
+  "Three generative models for note-drafting"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Model performance on ChatGPT-only labels versus radiologist-confirmed reference labels",
+   "effect": "Radiologist reclassified 62 of 297 cases (21%) versus ChatGPT's provisional read; language model AUC fell from ChatGPT-only to radiologist-confirmed labels (BERT-base 0\u00b7999 to 0\u00b7837), showing self-generated labels inflate performance.",
+   "quote": "The radiologist reclassified 62 of 297 cases (21%) relative to ChatGPT\u2019s provisional read, and a meaningful proportion of raw ChatGPT text was clinically uninterpretable or unsupported by the imaging.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Clinical interpretability and image support of raw ChatGPT-generated findings text",
+   "effect": "A meaningful proportion of raw ChatGPT text was clinically uninterpretable or unsupported by the imaging; 21% of provisional labels were reclassified by the radiologist.",
+   "quote": "The radiologist reclassified 62 of 297 cases (21%) relative to ChatGPT\u2019s provisional read, and a meaningful proportion of raw ChatGPT text was clinically uninterpretable or unsupported by the imaging.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Apparent benchmark performance of raw AI text versus verified performance",
+   "effect": "Raw ChatGPT text gave language-model AUC 0\u00b7992 to 1\u00b7000, but performance fell substantially against radiologist-confirmed labels (BERT-base AUC 0\u00b7999 to 0\u00b7837), overstating true competence.",
+   "quote": "On the 297-case pre/post analysis, this advantage depended heavily on label source: language and text-derived VLM performance fell substantially from ChatGPT-only to radiologist-confirmed labels (e.g. BERT-base AUC 0\u00b7999 to 0\u00b7837), while vision-model performance was stable or modestly improved (e.g. DenseNet-121 0\u00b7867 to 0\u00b7891).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Reporting multimodal AI performance separately by modality and label provenance (raw AI-generated versus radiologist-verified text)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1297457",
+ "screen": {
+  "id": "epmc:PPR1297457",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "multimodal_foundation",
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "radiologist verification of AI-generated text and labels",
+  "user": "none",
+  "reason": "The study directly tests and compares performance outcomes with raw unverified AI-generated text/labels versus radiologist-verified text and labels, examining how this verification practice prevents overestimating multimodal AI diagnostic performance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "radiologist verification of AI text and labels"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1297457",
+   "empirical": 0.97,
+   "tests_practice": 0.76,
+   "real_deployment": 0.03
+  }
+ }
+}

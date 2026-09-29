@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 4800,
+ "sample_unit": "evaluations (120 RAG configurations x 40 questions)",
+ "models_evaluated": [
+  "Phi-3-mini-128k-instruct",
+  "BioMistral-7B",
+  "bge-large-en-v1.5",
+  "Bio_ClinicalBERT"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Semantic similarity to reference answers across RAG configurations, including database size and embedding model",
+   "effect": "Larger database sizes significantly improved semantic similarity (size 5: +0.043, p = 0.001); bge-large-en-v1.5 improved performance (p = 0.0016); Bio_ClinicalBERT reduced it (p < 0.001). Mean similarity up to 0.786.",
+   "quote": "Larger database sizes significantly improved semantic similarity, with the largest gain at intermediate sizes (e.g., size 5: +0.043, p = 0.001).",
+   "quote_score": 95.13888888888889,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Selecting lightweight open-source models and RAG configurations (embedding model, chunk size, database size) for low-resource settings"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42072172",
+ "screen": {
+  "id": "pmid:42072172",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirically benchmarks different lightweight retrieval-augmented generation (RAG) configurations (embedding models, database size, chunk size) to evaluate grounding and hallucination reduction for clinical Q&A in resource-constrained environments.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation configuration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42072172",
+   "empirical": 0.95,
+   "tests_practice": 0.22,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "South Korea",
+ "sample_size": 116,
+ "sample_unit": "patients (surgical videos; 56 biportal SNUBH, 60 uniportal SEA)",
+ "models_evaluated": [
+  "U-Net",
+  "Attention U-Net",
+  "U-Net++",
+  "SegFormer-B0",
+  "DeepLabV3+",
+  "nnU-Net",
+  "MedSAM2-Tiny + YOLOv8-nano"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Segmentation DSC on internal, temporal external, and cross-dataset external test sets with patient-level splits",
+   "effect": "Foundation-model pipeline ranked last on cross-dataset external testing (DSC 0.776) with biportal-only training, about 9 points below DeepLabV3+ (0.865); external testing exposed a performance drop.",
+   "quote": "With biportal-only training, the fully automatic foundation-model pipeline ranked last on cross-dataset external testing (DSC 0.776; 0.737 under a strict empty-mask convention), about 9% points below DeepLabV3+ (0.865).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Effect of adding uniportal data to training on external segmentation accuracy",
+   "effect": "With combined training all seven pipelines exceeded DSC 0.94; the foundation-model pipeline rose from 0.776 to 0.962, driven primarily by detector rather than segmentor learning.",
+   "quote": "With combined training, all seven pipelines exceeded DSC 0.94; nnU-Net was highest (0.978), and the foundation-model pipeline (0.962) was not significantly different from SegFormer-B0 (0.960) or DeepLabV3+ (0.958) after Bonferroni correction, although the small external sample does not establish equivalence.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Deployment-mode (automatic detector-prompted) versus oracle bounding-box-prompted performance",
+   "effect": "MedSAM2-Tiny reached DSC 0.946 with ground-truth box prompts versus 0.776 fully automatic, a 16.9-point oracle-to-deployment gap; 61% missed detections and 39% box-localization error.",
+   "quote": "The same MedSAM2-Tiny segmentor reached DSC 0.946 with ground-truth bounding-box prompts, leaving a 16.9-point oracle-to-deployment gap driven by detector domain mismatch: 61% missed detections and 39% box-localization error.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Reporting deployment DSC alongside the ground-truth bounding-box upper bound in surgical segmentation benchmarks",
+  "Benchmarking real-time inference speed against a 30 frames-per-second threshold"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42481769",
+ "screen": {
+  "id": "pmid:42481769",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates and benchmarks multiple computer vision architectures (including foundation models like MedSAM2) for surgical instrument segmentation across datasets under deployment-realistic offline conditions, focusing on model pipeline accuracy and detector dependency rather than testing an organizational deployment safeguard.",
+  "jev": {
+   "id": "pmid:42481769",
+   "empirical": 0.97,
+   "tests_practice": 0.09,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 394,
+ "sample_unit": "patients",
+ "models_evaluated": [
+  "U-Net with residual backbone (multi-physician models MD1-7 and MD1-6; individual-physician models)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Effect of inter-physician variation in reference segmentations on auto-segmentation model Dice performance",
+   "effect": "Model trained on MD7 (highest edge roughness 0.106) had lower Dice than MD6 (58.5\u00b115.8% vs 67.1\u00b116.8%, p<0.001). Including MD7 data gave 7 cases with Dice \u226440% versus 4 without MD7.",
+   "quote": "This study demonstrates that there is significant variation in style and quality in manual segmentations in clinical care, and that training AI auto-segmentation algorithms from real-world, clinical datasets may result in unexpectedly under-performing algorithms with the inclusion of outliers.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Filter clinical training data using a slice-to-slice inconsistency metric (edge roughness) to remove low-quality physician segmentations",
+  "Compare models trained on multiple versus individual physicians' segmentations"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR710841",
+ "screen": {
+  "id": "epmc:PPR710841",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study investigates how physician variation in clinical training labels affects AI auto-segmentation performance and tests a data-curation practice (filtering out inconsistent annotators using an edge-roughness metric) to improve model robustness.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "training data quality filtering based on physician inconsistency metrics"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR710841",
+   "empirical": 0.95,
+   "tests_practice": 0.19,
+   "real_deployment": 0.23
+  }
+ }
+}

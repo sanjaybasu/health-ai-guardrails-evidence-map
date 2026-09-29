@@ -1,0 +1,437 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "Russia",
+   "sample_size": 86,
+   "sample_unit": "intraoperative OCT scans (27 patients; 5 neurosurgeon raters)",
+   "models_evaluated": [
+    "SVM (linear kernel)",
+    "Gemini 3.1 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic accuracy/sensitivity of surgeons with AI segmentation maps versus AI alone and surgeons without AI",
+     "effect": "HITL accuracy 94% [88-98], sensitivity 98% vs SVM alone accuracy 84%, sensitivity 83%; Gemini accuracy 90%, sensitivity 86%; structural scans without ML 80%. Surgeons overrode 9 of 13 AI false positives.",
+     "quote": "Yet, human inference on the segmented scans achieved a superior, statistically significant accuracy of 94% [95% CI: 88\u201398%]."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI performance as used by clinicians in workflow versus standalone model metrics",
+     "effect": "Surgeon-plus-segmentation-map accuracy 94% and sensitivity 98% exceeded standalone SVM (84%, 83%) and Gemini (90%, 86%); sensitivity edge over Gemini significant, accuracy not.",
+     "quote": "The human\u2013model fusion significantly improves overall performance above both the autonomous ML output and human-only assessments of raw scans."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether clinicians detect incorrect AI outputs rather than passively accepting them",
+     "effect": "Surgeons rejected 9 of 13 (69%) AI false-positive cases; HITL accuracy exceeded SVM baseline, indicating no blind adherence. Limitation: 4 of 13 errors were still confirmed.",
+     "quote": "Relying on their domain knowledge of tissue topology, the surgeon rejects the AI\u2019s suggestion in 9 of these cases and overrides the machine."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician verification of AI segmentation outputs catching AI errors",
+     "effect": "Surgeons overrode algorithmic false positives in 69% (9/13) of cases; HITL accuracy 94% vs SVM 84%.",
+     "quote": "They successfully override algorithmic noise in 69% (9 out of 13) of false-positive cases because tissue topology and signal margins provide vital contextual cues that the algorithm currently lacks."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of AI (SVM, Gemini) against clinician-in-the-loop on same scans",
+     "effect": "On same 86 scans, HITL accuracy 94% vs SVM 84% and Gemini 90%; sensitivity 98% vs 83% and 86%.",
+     "quote": "While advanced reasoning models like Gemini exhibit powerful contextual capabilities, the direct integration of human domain knowledge proved superior, firmly establishing the value of HITL over fully autonomous \u201cmodels-only\u201d pipelines."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Validation data leakage/circularity and lack of external validation",
+     "effect": "Single-center, 27 patients; SVM trained on prior work from same group creating risk of circular validation; no external cohort, so performance claims may be overly optimistic.",
+     "quote": "The lack of an independent, external validation cohort increases the risk of overfitting and may lead to overly optimistic performance claims."
+    }
+   ],
+   "unlisted_practices": [
+    "Presenting ML-generated segmentation maps (higher abstraction) rather than raw parametric maps to improve clinician interpretability and inter-rater consistency"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation",
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 86,
+   "sample_unit": "intraoperative OCT scans",
+   "models_evaluated": [
+    "Support Vector Machine (SVM) classifier",
+    "Gemini 3.1 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "HITL adjunct versus standalone model diagnosis",
+     "effect": "HITL sensitivity 98% [92\u2013100] versus Gemini 86% [74\u201395].",
+     "quote": "When compared to the advanced Gemini 3.1 Pro baseline, the human inference on Segmentation maps maintained a pronounced and significant edge in sensitivity (98% [92\u2013100] vs. 86% [74\u201395])."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison against standalone SVM and Gemini",
+     "effect": "HITL outperformed SVM accuracy 84% [81\u201387%], sensitivity 83% [78\u201388%]; surpassed Gemini accuracy 90% [83\u201395%], sensitivity 86% [74\u201395%].",
+     "quote": "By directly benchmarking this HITL inference against fully autonomous \u201cmodels-only\u201d pipelines, we demonstrated its clear superiority."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician review of real AI segmentation outputs",
+     "effect": "Operators filtered 69% (9 out of 13) algorithmic false positives.",
+     "quote": "Crucially, despite the inevitable presence of algorithmic false positives that autonomous models alone could not resolve, operators successfully apply their contextual domain knowledge of tumor invasion patterns and topological priors to recognize and filter out 69% (9 out of 13) of this algorithmic noise."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Segmentation-map presentation interpretability",
+     "effect": "Consensus 0.98 [0.95\u20131.00]; accuracy 94% [88\u201398%]; sensitivity 98% [92\u2013100%].",
+     "quote": "The segmentation maps bridge this gap, simplifying the visual landscape and maximizing diagnostic consensus among operators to 0.98 [95% CI: 0.95\u20131.00], while achieving the highest overall diagnostic performance (Accuracy 94% [95% CI: 88\u201398%] and Sensitivity 98% [95% CI: 92\u2013100%])."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinicians verified AI outputs with domain judgment",
+     "effect": "Surgeons filtered 69% (9 out of 13) false-positive algorithmic noise.",
+     "quote": "Crucially, despite the inevitable presence of algorithmic false positives that autonomous models alone could not resolve, operators successfully apply their contextual domain knowledge of tumor invasion patterns and topological priors to recognize and filter out 69% (9 out of 13) of this algorithmic noise."
+    },
+    {
+     "rec_id": "R163",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician-controlled HITL diagnostic inference",
+     "effect": "HITL achieved accuracy 94% [88\u201398%] and sensitivity 98% [92\u2013100%], exceeding model-only baselines.",
+     "quote": "This HITL synergy not only improves overall diagnostic performance by optimally utilizing human contextual intelligence over purely algorithmic reasoning, but also ensures that the ultimate decision-making responsibility remains safely with the clinician."
+    },
+    {
+     "rec_id": "R164",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician override of incorrect AI suggestions",
+     "effect": "Surgeons rejected AI suggestions in 9 of 13 algorithmic false-positive cases.",
+     "quote": "Relying on their domain knowledge of tissue topology, the surgeon rejects the AI\u2019s suggestion in 9 of these cases and overrides the machine."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI workflow versus standalone metrics",
+     "effect": "Human-model fusion improved over autonomous ML and human-only raw-scan assessment; HITL accuracy 94% [88\u201398%].",
+     "quote": "The human\u2013model fusion significantly improves overall performance above both the autonomous ML output and human-only assessments of raw scans."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Detection of incorrect AI outputs",
+     "effect": "Operators filtered 69% (9/13) false positives, but some plausible AI errors remained uncorrected.",
+     "quote": "They successfully override algorithmic noise in 69% (9 out of 13) of false-positive cases because tissue topology and signal margins provide vital contextual cues that the algorithm currently lacks."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "Russia",
+   "sample_size": 86,
+   "sample_unit": "scans",
+   "models_evaluated": [
+    "linear SVM",
+    "Gemini 3.1 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic accuracy and sensitivity of human-in-the-loop vs standalone AI",
+     "effect": "HITL accuracy was 94% [95% CI: 88-98%] and sensitivity 98% [95% CI: 92-100%], outperforming standalone SVM (accuracy 84%, sensitivity 83%) and Gemini 3.1 Pro (accuracy 90%, sensitivity 86%).",
+     "quote": "Compared to the standalone models, the HITL approach significantly outperformed the SVM baseline (Accuracy 84% [95% CI: 81-87%]; Sensitivity 83% [95% CI: 78-88%])."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician override rate of machine learning false positive errors",
+     "effect": "Surgeons filtered algorithmic noise, overriding machine learning errors in 69% (9 out of 13) false positive cases that models alone could not resolve.",
+     "quote": "By utilizing their clinical domain knowledge of tumor invasion patterns and topological priors, surgeons effectively filtered algorithmic noise-overriding ML errors in 69% (9 out of 13) false positive cases that models alone could not resolve."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Russia",
+ "sample_unit": "intraoperative OCT scans (27 patients; 5 neurosurgeon raters)",
+ "sample_size": 86,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Gemini 3.1 Pro",
+  "SVM (linear kernel)",
+  "Support Vector Machine (SVM) classifier",
+  "linear SVM"
+ ],
+ "links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance as used by clinicians in workflow versus standalone model metrics",
+   "effect": "Surgeon-plus-segmentation-map accuracy 94% and sensitivity 98% exceeded standalone SVM (84%, 83%) and Gemini (90%, 86%); sensitivity edge over Gemini significant, accuracy not.",
+   "quote": "The human\u2013model fusion significantly improves overall performance above both the autonomous ML output and human-only assessments of raw scans.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Whether clinicians detect incorrect AI outputs rather than passively accepting them",
+   "effect": "Surgeons rejected 9 of 13 (69%) AI false-positive cases; HITL accuracy exceeded SVM baseline, indicating no blind adherence. Limitation: 4 of 13 errors were still confirmed.",
+   "quote": "Relying on their domain knowledge of tissue topology, the surgeon rejects the AI\u2019s suggestion in 9 of these cases and overrides the machine.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician verification of AI segmentation outputs catching AI errors",
+   "effect": "Surgeons overrode algorithmic false positives in 69% (9/13) of cases; HITL accuracy 94% vs SVM 84%.",
+   "quote": "They successfully override algorithmic noise in 69% (9 out of 13) of false-positive cases because tissue topology and signal margins provide vital contextual cues that the algorithm currently lacks.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of AI (SVM, Gemini) against clinician-in-the-loop on same scans",
+   "effect": "On same 86 scans, HITL accuracy 94% vs SVM 84% and Gemini 90%; sensitivity 98% vs 83% and 86%.",
+   "quote": "While advanced reasoning models like Gemini exhibit powerful contextual capabilities, the direct integration of human domain knowledge proved superior, firmly establishing the value of HITL over fully autonomous \u201cmodels-only\u201d pipelines.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "HITL adjunct versus standalone model diagnosis",
+   "effect": "HITL sensitivity 98% [92\u2013100] versus Gemini 86% [74\u201395].",
+   "quote": "When compared to the advanced Gemini 3.1 Pro baseline, the human inference on Segmentation maps maintained a pronounced and significant edge in sensitivity (98% [92\u2013100] vs. 86% [74\u201395]).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic accuracy/sensitivity of surgeons with AI segmentation maps versus AI alone and surgeons without AI",
+   "effect": "HITL accuracy 94% [88-98], sensitivity 98% vs SVM alone accuracy 84%, sensitivity 83%; Gemini accuracy 90%, sensitivity 86%; structural scans without ML 80%. Surgeons overrode 9 of 13 AI false positives.",
+   "quote": "Yet, human inference on the segmented scans achieved a superior, statistically significant accuracy of 94% [95% CI: 88\u201398%].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R163",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician-controlled HITL diagnostic inference",
+   "effect": "HITL achieved accuracy 94% [88\u201398%] and sensitivity 98% [92\u2013100%], exceeding model-only baselines.",
+   "quote": "This HITL synergy not only improves overall diagnostic performance by optimally utilizing human contextual intelligence over purely algorithmic reasoning, but also ensures that the ultimate decision-making responsibility remains safely with the clinician.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R164",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician override of incorrect AI suggestions",
+   "effect": "Surgeons rejected AI suggestions in 9 of 13 algorithmic false-positive cases.",
+   "quote": "Relying on their domain knowledge of tissue topology, the surgeon rejects the AI\u2019s suggestion in 9 of these cases and overrides the machine.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Presenting ML-generated segmentation maps (higher abstraction) rather than raw parametric maps to improve clinician interpretability and inter-rater consistency"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42201055",
+ "screen": {
+  "id": "pmid:42201055",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop review",
+  "user": "clinician_or_staff",
+  "reason": "The study directly tests and compares a human-in-the-loop (clinician review/synergy) deployment paradigm against autonomous model-only inference for intraoperative OCT glioma detection.",
+  "jev": {
+   "id": "pmid:42201055",
+   "empirical": 0.96,
+   "tests_practice": 0.94,
+   "real_deployment": 0.14
+  }
+ }
+}

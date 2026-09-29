@@ -1,0 +1,380 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "India",
+   "sample_size": 51,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LKB",
+    "EUD",
+    "RS",
+    "ANN",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Institution-specific recalibration of NTCP model parameters versus published QUANTEC values",
+     "effect": "Institutional parotid TD50 34.1 Gy vs QUANTEC 39.0 Gy (m 0.11 vs 0.18); traditional models performed acceptably after local calibration (LKB AUC 0.88-0.91).",
+     "quote": "In particular, the parotid TD50 was estimated at 34.1 Gy, compared with 39.0 Gy reported in QUANTEC, with a corresponding slope parameter m of 0.11 versus 0.18 as shown in the institute-specific dose-response curves ( Figure 4 )."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between two independent NTCP computational pipelines against predefined acceptance criteria",
+     "effect": "Mean bias 0.8%, 95% limits of agreement -1.9% to +3.5%, meeting predefined criteria (bias <3%, limits within \u00b15%); max deviation 2.4%.",
+     "quote": "The mean bias was 0.8%, with 95% limits of agreement ranging from \u22121.9% to +3.5%, meeting the predefined acceptability criteria (mean bias <3% and limits within \u00b15%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "ANN and XGBoost versus best traditional NTCP model (LKB) discrimination on hold-out test set",
+     "effect": "ANN AUC 0.93 vs LKB 0.89 (p=0.420) parotid; 0.95 vs 0.91 (p=0.380) oral cavity; 0.91 vs 0.88 (p=0.150) larynx; no significant differences; XGBoost overfit (test AUC 0.67-0.82).",
+     "quote": "No statistically significant differences were observed between ANN and the best traditional model (LKB) for any organ."
+    }
+   ],
+   "unlisted_practices": [
+    "Dual independent computational implementation of dosimetric models for cross-verification"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "India",
+   "sample_size": 51,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Lyman-Kutcher-Burman (LKB)",
+    "Equivalent Uniform Dose (EUD/gEUD)",
+    "Relative Seriality (RS)",
+    "artificial neural network (ANN)",
+    "XGBoost",
+    "MATLAB-based RBMODELv1",
+    "Python NTCP implementation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Training versus hold-out test AUC",
+     "effect": "XGBoost training AUC 0.98\u20131.00 fell to test AUC 0.67\u20130.82, showing overfitting.",
+     "quote": "Extreme gradient boosting (XGBoost) models showed lower generalisation performance compared with ANN across all endpoints, with evidence of overfitting despite regularisation (training AUC 0.98\u20131.00; test AUC 0.67\u20130.82)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Majority-class accuracy under severe imbalance",
+     "effect": "Accuracy 85.0%\u201394.1% mostly reflected predicting absence of Grade \u22652 toxicity, not clinical utility.",
+     "quote": "Reported accuracy values (85.0%\u201394.1%) largely reflected correct classification of the majority class (absence of Grade \u2265 2 toxicity) and were therefore not interpreted as indicators of clinical utility in the context of severe class imbalance [ 51 ]."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ANN versus LKB discrimination",
+     "effect": "ANN \u0394AUC was +0.04 parotid, +0.04 oral cavity, +0.03 larynx; no significant advantage.",
+     "quote": "When comparing ANN against the best-performing traditional model (LKB) for each organ, differences were modest across all endpoints: parotid glands (\u0394AUC +0.04), oral cavity (\u0394AUC +0.04) and mixed-architecture larynx (\u0394AUC +0.03), no statistically significant advantage for ML was observed for any organ architecture."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local NTCP discrimination against toxicity",
+     "effect": "Local LKB AUCs were 0.89 parotid, 0.88 laryngeal, and 0.91 oral cavity.",
+     "quote": "The LKB probit model demonstrated the highest discrimination across all three endpoints, with AUC values of 0.89 for parotid toxicity, 0.88 for laryngeal toxicity and 0.91 for oral cavity toxicity, although confidence intervals were wide owing to the limited number of events."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local representativeness of QUANTEC parameters",
+     "effect": "Local TD50 was lower than QUANTEC: parotid 34.1 vs 39.0 Gy, oral 48.5 vs 50.0, larynx 43.6 vs 46.0.",
+     "quote": "Institution-specific LKB parameter estimates differed systematically from QUANTEC-recommended values across organs, with lower TD50 estimates observed for the parotid glands (34.1 Gy versus QUANTEC 39.0 Gy), oral cavity (48.5 Gy versus 50.0 Gy) and larynx (43.6 Gy versus 46.0 Gy)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local calibration of NTCP parameters",
+     "effect": "After local calibration, LKB had AUC 0.88\u20130.91 and institution-specific parameters differed from QUANTEC.",
+     "quote": "Following local calibration, traditional radiobiological models demonstrated robust toxicity risk stratification, with the LKB model achieving the highest discrimination (AUC 0.88\u20130.91) and institution-specific parameters differing from QUANTEC values."
+    }
+   ],
+   "unlisted_practices": [
+    "Dual independent computational pipelines to verify reproducibility of NTCP calculations"
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "India",
+   "sample_size": 51,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LKB",
+    "EUD",
+    "RS",
+    "ANN",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI discrimination compared to simpler traditional radiobiological models",
+     "effect": "ANN showed no statistically significant advantage over LKB (parotid \u0394AUC +0.04, oral cavity \u0394AUC +0.04, larynx \u0394AUC +0.03; all p>0.05); XGBoost overfitted (training AUC 0.98\u20131.00; test AUC 0.67\u20130.82).",
+     "quote": "When comparing ANN against the best-performing traditional model (LKB) for each organ, differences were modest across all endpoints: parotid glands (\u0394AUC +0.04), oral cavity (\u0394AUC +0.04) and mixed-architecture larynx (\u0394AUC +0.03), no statistically significant advantage for ML was observed for any organ architecture."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "India",
+ "sample_unit": "patients",
+ "sample_size": 51,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ANN",
+  "EUD",
+  "Equivalent Uniform Dose (EUD/gEUD)",
+  "LKB",
+  "Lyman-Kutcher-Burman (LKB)",
+  "MATLAB-based RBMODELv1",
+  "Python NTCP implementation",
+  "RS",
+  "Relative Seriality (RS)",
+  "XGBoost",
+  "artificial neural network (ANN)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Institution-specific recalibration of NTCP model parameters versus published QUANTEC values",
+   "effect": "Institutional parotid TD50 34.1 Gy vs QUANTEC 39.0 Gy (m 0.11 vs 0.18); traditional models performed acceptably after local calibration (LKB AUC 0.88-0.91).",
+   "quote": "In particular, the parotid TD50 was estimated at 34.1 Gy, compared with 39.0 Gy reported in QUANTEC, with a corresponding slope parameter m of 0.11 versus 0.18 as shown in the institute-specific dose-response curves ( Figure 4 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "ANN and XGBoost versus best traditional NTCP model (LKB) discrimination on hold-out test set",
+   "effect": "ANN AUC 0.93 vs LKB 0.89 (p=0.420) parotid; 0.95 vs 0.91 (p=0.380) oral cavity; 0.91 vs 0.88 (p=0.150) larynx; no significant differences; XGBoost overfit (test AUC 0.67-0.82).",
+   "quote": "No statistically significant differences were observed between ANN and the best traditional model (LKB) for any organ.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R119",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement between two independent NTCP computational pipelines against predefined acceptance criteria",
+   "effect": "Mean bias 0.8%, 95% limits of agreement -1.9% to +3.5%, meeting predefined criteria (bias <3%, limits within \u00b15%); max deviation 2.4%.",
+   "quote": "The mean bias was 0.8%, with 95% limits of agreement ranging from \u22121.9% to +3.5%, meeting the predefined acceptability criteria (mean bias <3% and limits within \u00b15%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Training versus hold-out test AUC",
+   "effect": "XGBoost training AUC 0.98\u20131.00 fell to test AUC 0.67\u20130.82, showing overfitting.",
+   "quote": "Extreme gradient boosting (XGBoost) models showed lower generalisation performance compared with ANN across all endpoints, with evidence of overfitting despite regularisation (training AUC 0.98\u20131.00; test AUC 0.67\u20130.82).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Majority-class accuracy under severe imbalance",
+   "effect": "Accuracy 85.0%\u201394.1% mostly reflected predicting absence of Grade \u22652 toxicity, not clinical utility.",
+   "quote": "Reported accuracy values (85.0%\u201394.1%) largely reflected correct classification of the majority class (absence of Grade \u2265 2 toxicity) and were therefore not interpreted as indicators of clinical utility in the context of severe class imbalance [ 51 ].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local representativeness of QUANTEC parameters",
+   "effect": "Local TD50 was lower than QUANTEC: parotid 34.1 vs 39.0 Gy, oral 48.5 vs 50.0, larynx 43.6 vs 46.0.",
+   "quote": "Institution-specific LKB parameter estimates differed systematically from QUANTEC-recommended values across organs, with lower TD50 estimates observed for the parotid glands (34.1 Gy versus QUANTEC 39.0 Gy), oral cavity (48.5 Gy versus 50.0 Gy) and larynx (43.6 Gy versus 46.0 Gy).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI discrimination compared to simpler traditional radiobiological models",
+   "effect": "ANN showed no statistically significant advantage over LKB (parotid \u0394AUC +0.04, oral cavity \u0394AUC +0.04, larynx \u0394AUC +0.03; all p>0.05); XGBoost overfitted (training AUC 0.98\u20131.00; test AUC 0.67\u20130.82).",
+   "quote": "When comparing ANN against the best-performing traditional model (LKB) for each organ, differences were modest across all endpoints: parotid glands (\u0394AUC +0.04), oral cavity (\u0394AUC +0.04) and mixed-architecture larynx (\u0394AUC +0.03), no statistically significant advantage for ML was observed for any organ architecture.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Dual independent computational implementation of dosimetric models for cross-verification",
+  "Dual independent computational pipelines to verify reproducibility of NTCP calculations"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42453164",
+ "screen": {
+  "id": "pmid:42453164",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local institutional validation and recalibration of NTCP models before clinical use",
+  "user": "clinician_or_staff",
+  "reason": "The study directly performs and evaluates institutional validation and recalibration of NTCP models prior to clinical use, comparing pipelines and local parameter adaptation versus generic published values.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42453164",
+   "empirical": 0.91,
+   "tests_practice": 0.3,
+   "real_deployment": 0.04
+  }
+ }
+}

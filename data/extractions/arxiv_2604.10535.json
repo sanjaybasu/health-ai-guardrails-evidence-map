@@ -1,0 +1,75 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "both",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Unspecified",
+ "sample_size": 1500,
+ "sample_unit": "responses (50 MedQuAD questions x 10 runs x 3 models)",
+ "models_evaluated": [
+  "Llama 3.1 8B",
+  "Gemma 3 12B",
+  "MedGemma 1.5 4B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Output reproducibility across 10 repeated runs per question at low temperature",
+   "effect": "Self-agreement across runs reaches at most 0.20 despite T=0.2, while 87-97% of all outputs per model are unique.",
+   "quote": "Evaluating three models (Llama 3.1 8B, Gemma 3 12B, MedGemma 1.5 4B) on 50 MedQuAD questions (N=1,500 total responses) reveals that despite low-temperature generation (T=0.2), self-agreement across runs reaches at most 0.20, while 87-97% of all outputs per model are unique -- a safety gap that single-pass benchmarks entirely miss.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Treating within-model reproducibility across repeated inference as a first-class metric alongside accuracy in model selection"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2604.10535",
+ "screen": {
+  "id": "arxiv:2604.10535",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirical benchmarking paper evaluating small open LLMs on medical QA reproducibility and consistency using automated metrics and repeated runs.",
+  "jev": {
+   "id": "arxiv:2604.10535",
+   "empirical": 0.95,
+   "tests_practice": 0.06,
+   "real_deployment": 0.03
+  }
+ }
+}

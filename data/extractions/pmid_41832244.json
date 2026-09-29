@@ -1,0 +1,461 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "generative_llm"
+   ],
+   "country": "China and United States",
+   "sample_size": 174292,
+   "sample_unit": "ED visits",
+   "models_evaluated": [
+    "LightGBM",
+    "XGBoost",
+    "CatBoost",
+    "Random Forest",
+    "Logistic Regression",
+    "Decision Tree",
+    "KNN",
+    "MedGemma",
+    "DeepSeek-V3",
+    "GPT-4.1",
+    "Baichuan-M1",
+    "LLaMA-3.3",
+    "Qwen-3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PPV and NPV of high-risk alerts under varied tiered risk cutoffs",
+     "effect": "Raising k2 to 0.79 in H3 increased PPV from 9.8% to 35.7%, with coverage falling from 21.28% to 2.15% of patients; tiering raised H2 PPV from 11.03% to 40.49%.",
+     "quote": "In contrast, raising k 2 to 0.79 increases the PPV to 35.7%, albeit at the cost of reduced coverage (2.15% of patients)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Need for local calibration of thresholds because PPV varies with local prevalence",
+     "effect": "PPV depends on local event prevalence and varies by institution; thresholds must be locally calibrated before deployment.",
+     "quote": "Therefore, the decision thresholds ( k 1 , k 2 ) must be locally calibrated prior to deployment."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model discrimination on temporal external validation cohort vs internal cross-validation",
+     "effect": "External temporal validation AUROC 0.87 (95% CI 0.83-0.90), AUPRC 0.40, mirroring internal results (AUROC 0.84-0.91).",
+     "quote": "In the external cohort, the model maintained robust discrimination with an AUROC of 0.87 (95% CI, 0.83\u20130.90) and an AUPRC of 0.40 (95% CI, 0.31\u20130.50), closely mirroring its internal validation results."
+    },
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Mortality rate across risk-tiered subgroups to prioritize response",
+     "effect": "Upper-intermediate subgroup mortality 20.14% vs 7.64% (intermediate) and 3.22% (lower-intermediate), enabling graded clinical response.",
+     "quote": "Notably, the M+ subgroup had a markedly higher mortality rate (20.14%) compared to M (7.64%) and M- (3.22%), indicating meaningful risk stratification within the intermediate zone."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Compared LLM-based direct risk assessment against ML-based stratification",
+     "effect": "LLMs used as standalone classifiers had lower PPV and weaker risk separation than ML risk stratification.",
+     "quote": "A direct comparison of the ML-based risk stratification with an LLM-based direct risk assessment (Supplementary Fig. S7 ) revealed that LLMs used as standalone classifiers exhibit lower PPV and weaker risk separation, reinforcing their optimal role as complementary reasoning tools rather than independent prognostic models."
+    },
+    {
+     "rec_id": "R527",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False alarm burden (low PPV) from single-threshold IHM alerts",
+     "effect": "At Youden thresholds PPVs were 13.9% in H1, 11.0% in H2, 9.8% in H3, implying most alerts are false positives.",
+     "quote": "However, PPVs remained low (13.9% in H1, 11.0% in H2, and 9.8% in H3), revealing a high false positive burden under realistic deployment conditions."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reasons LLM filter returned Uncertain in external cohort",
+     "effect": "Uncertainty arose from missing critical clinical features (66.7%), conflicting features (26.2%), insufficient context (7.1%).",
+     "quote": "In the external validation set ( H2 Ext ), uncertainty most commonly arose from missing critical clinical features (66.7%), followed by conflicting clinical features (26.2%) and insufficient contextual information (7.1%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Multitiered risk stratification of predictive model outputs to raise PPV",
+    "LLM-based post-hoc alert filtering of ML risk alerts",
+    "SHAP plus LLM natural-language explanations of risk alerts",
+    "Down-sampling of training data to address class imbalance"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "generative_llm"
+   ],
+   "country": "China; United States",
+   "sample_size": 174292,
+   "sample_unit": "ED visits",
+   "models_evaluated": [
+    "CatBoost",
+    "LightGBM",
+    "XGBoost",
+    "Decision Tree Classifier",
+    "Random Forest",
+    "K-Nearest Neighbors",
+    "Logistic Regression",
+    "MedGemma",
+    "DeepSeek-V3",
+    "Baichuan-M1",
+    "LLaMA-3.3",
+    "Qwen-3",
+    "GPT-4.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Temporal external validation performance",
+     "effect": "External AUROC 0.87 (95% CI, 0.83\u20130.90); AUPRC 0.40 (95% CI, 0.31\u20130.50).",
+     "quote": "In the external cohort, the model maintained robust discrimination with an AUROC of 0.87 (95% CI, 0.83\u20130.90) and an AUPRC of 0.40 (95% CI, 0.31\u20130.50), closely mirroring its internal validation results."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Low PPV under class imbalance",
+     "effect": "At Youden thresholds, PPVs were 13.9% in H1, 11.0% in H2, and 9.8% in H3.",
+     "quote": "However, PPVs remained low (13.9% in H1, 11.0% in H2, and 9.8% in H3), revealing a high false positive burden under realistic deployment conditions."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of candidate models",
+     "effect": "LightGBM had highest AUROC: 0.84 H1, 0.87 H2, 0.91 H3, all with 95% CIs reported.",
+     "quote": "Among all methods, LightGBM consistently achieved the highest AUROC: 0.84 (95% CI, 0.81\u20130.86) in H1, 0.87 (95% CI, 0.85\u20130.90) in H2, and 0.91 (95% CI, 0.90\u20130.91) in H3."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Optimized threshold risk stratification",
+     "effect": "In H2, PPV improved from 11.0 to 40.5%; low-risk NPV was ~99.37%.",
+     "quote": "This approach substantially improved PPV for high-risk patients (from 11.0 to 40.5% in H2) while enhancing NPV (~99.37%) for low-risk individuals (Fig. 5 ), enabling safer de-escalation of care and more efficient allocation of limited resources."
+    },
+    {
+     "rec_id": "R513",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Three-tier risk categories PPV",
+     "effect": "External high-risk PPV improved from 18.81 in two-tier scheme to 37.17% with three-tier stratification.",
+     "quote": "As shown in Fig. 5C , in the external validation cohort, the PPV of the high-risk group similarly improved from 18.81 (two-tier scheme) to 37.17% after applying the three-tier stratification, demonstrating consistent performance gains across independent populations."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM post-hoc alert filtering",
+     "effect": "MedGemma PPV was 45.8% internal and 48.7% external; sensitivities were 90.9% and 90.5%.",
+     "quote": "MedGemma achieved the highest PPV in both internal (45.8%) and external (48.7%) validation, with sensitivities of 90.9% and 90.5%, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Down-sampling negative cases to mitigate class imbalance during model training",
+    "Using LLMs as standalone direct risk classifiers for in-hospital mortality"
+   ]
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "generative_llm"
+   ],
+   "country": "China, United States",
+   "sample_size": 174292,
+   "sample_unit": "ED visits",
+   "models_evaluated": [
+    "LightGBM",
+    "CatBoost",
+    "XGBoost",
+    "Decision Tree Classifier",
+    "Random Forest",
+    "K-Nearest Neighbors",
+    "Logistic Regression",
+    "MedGemma",
+    "DeepSeek-V3",
+    "Baichuan-M1",
+    "LLaMA-3.3",
+    "Qwen-3",
+    "GPT-4.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "positive predictive value and false positive burden at standard decision thresholds",
+     "effect": "PPVs remained low at 13.9% in H1, 11.0% in H2, and 9.8% in H3 under Youden index thresholds, revealing a high false positive alert burden under realistic deployment conditions.",
+     "quote": "However, PPVs remained low (13.9% in H1, 11.0% in H2, and 9.8% in H3), revealing a high false positive burden under realistic deployment conditions."
+    }
+   ],
+   "unlisted_practices": [
+    "Tiered risk stratification with multi-threshold optimization calibrated via decision curve analysis utility functions to reduce false alarms in predictive early warning systems",
+    "Large language model (LLM)-based post-hoc alert filtering using clinical feature attributions and patient context to suppress false positive early warning alerts"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China and United States",
+ "sample_unit": "ED visits",
+ "sample_size": 174292,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Baichuan-M1",
+  "CatBoost",
+  "Decision Tree",
+  "Decision Tree Classifier",
+  "DeepSeek-V3",
+  "GPT-4.1",
+  "K-Nearest Neighbors",
+  "KNN",
+  "LLaMA-3.3",
+  "LightGBM",
+  "Logistic Regression",
+  "MedGemma",
+  "Qwen-3",
+  "Random Forest",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model discrimination on temporal external validation cohort vs internal cross-validation",
+   "effect": "External temporal validation AUROC 0.87 (95% CI 0.83-0.90), AUPRC 0.40, mirroring internal results (AUROC 0.84-0.91).",
+   "quote": "In the external cohort, the model maintained robust discrimination with an AUROC of 0.87 (95% CI, 0.83\u20130.90) and an AUPRC of 0.40 (95% CI, 0.31\u20130.50), closely mirroring its internal validation results.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Compared LLM-based direct risk assessment against ML-based stratification",
+   "effect": "LLMs used as standalone classifiers had lower PPV and weaker risk separation than ML risk stratification.",
+   "quote": "A direct comparison of the ML-based risk stratification with an LLM-based direct risk assessment (Supplementary Fig. S7 ) revealed that LLMs used as standalone classifiers exhibit lower PPV and weaker risk separation, reinforcing their optimal role as complementary reasoning tools rather than independent prognostic models.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R518",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Mortality rate across risk-tiered subgroups to prioritize response",
+   "effect": "Upper-intermediate subgroup mortality 20.14% vs 7.64% (intermediate) and 3.22% (lower-intermediate), enabling graded clinical response.",
+   "quote": "Notably, the M+ subgroup had a markedly higher mortality rate (20.14%) compared to M (7.64%) and M- (3.22%), indicating meaningful risk stratification within the intermediate zone.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R527",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "False alarm burden (low PPV) from single-threshold IHM alerts",
+   "effect": "At Youden thresholds PPVs were 13.9% in H1, 11.0% in H2, 9.8% in H3, implying most alerts are false positives.",
+   "quote": "However, PPVs remained low (13.9% in H1, 11.0% in H2, and 9.8% in H3), revealing a high false positive burden under realistic deployment conditions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Low PPV under class imbalance",
+   "effect": "At Youden thresholds, PPVs were 13.9% in H1, 11.0% in H2, and 9.8% in H3.",
+   "quote": "However, PPVs remained low (13.9% in H1, 11.0% in H2, and 9.8% in H3), revealing a high false positive burden under realistic deployment conditions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "positive predictive value and false positive burden at standard decision thresholds",
+   "effect": "PPVs remained low at 13.9% in H1, 11.0% in H2, and 9.8% in H3 under Youden index thresholds, revealing a high false positive alert burden under realistic deployment conditions.",
+   "quote": "However, PPVs remained low (13.9% in H1, 11.0% in H2, and 9.8% in H3), revealing a high false positive burden under realistic deployment conditions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R509",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R513",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Down-sampling negative cases to mitigate class imbalance during model training",
+  "Down-sampling of training data to address class imbalance",
+  "LLM-based post-hoc alert filtering of ML risk alerts",
+  "Large language model (LLM)-based post-hoc alert filtering using clinical feature attributions and patient context to suppress false positive early warning alerts",
+  "Multitiered risk stratification of predictive model outputs to raise PPV",
+  "SHAP plus LLM natural-language explanations of risk alerts",
+  "Tiered risk stratification with multi-threshold optimization calibrated via decision curve analysis utility functions to reduce false alarms in predictive early warning systems",
+  "Using LLMs as standalone direct risk classifiers for in-hospital mortality"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41832244",
+ "screen": {
+  "id": "pmid:41832244",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "decision threshold optimization and LLM-based alert filtering",
+  "user": "none",
+  "reason": "The study tests deployment practices to mitigate alert fatigue, specifically evaluating tiered decision threshold selection and an LLM-based knowledge filtering layer on predictive risk alerts using retrospective multi-site cohorts.",
+  "jev": {
+   "id": "pmid:41832244",
+   "empirical": 0.95,
+   "tests_practice": 0.85,
+   "real_deployment": 0.08
+  }
+ }
+}

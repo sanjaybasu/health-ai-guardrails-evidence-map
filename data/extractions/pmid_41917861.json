@@ -1,0 +1,327 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 454,
+   "sample_unit": "cases (300 real-world dialogues plus 154 standardized cases)",
+   "models_evaluated": [
+    "DeepSeek-V3.1",
+    "Qwen3",
+    "Baichuan-M2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Depression and suicide risk classification F1 with versus without RAG grounding in clinical knowledge base",
+     "effect": "RAG consistently improved diagnostic performance; Qwen3 suicide risk F1 0.9548 on the Standard Case Set, about 0.15 F1 improvement over non-RAG; summary BLEU-2 up 44.1-207.2%.",
+     "quote": "Notably, RAG integration consistently enhanced four-class severity stratification ( Fig. 3 , S2 ) : Qwen3 with RAG attained a suicide risk F1-score of 0.9548 on the Standard Case Set, substantially outperforming its non-RAG counterpart (\u0394F1 \u2248 0.15 improvement) (Fig. S2 C)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reproducibility of diagnostic and suicide risk outputs across 10 repeated runs of 30 transcripts",
+     "effect": "Overall consistency kappa 0.93 (95% CI 0.91-0.95); diagnostic classification kappa 0.97; risk level kappa 0.97; symptom description kappa 0.86.",
+     "quote": "The overall consistency index (\u03ba = 0.93, SD = 0.04, 95% CI: 0.91\u20130.95) further confirms the system\u2019s stability across repeated assessments ( Table 1 )."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference standard creation with independent annotators and senior adjudication",
+     "effect": "Two board-certified psychiatrists independently annotated all cases, with discrepancies resolved by a third senior psychiatrist; ICC(2,1)=0.85 for ratings by blinded psychiatrists.",
+     "quote": "Any diagnostic discrepancies were resolved through a final review by a third, senior psychiatrist to reach a definitive consensus."
+    }
+   ],
+   "unlisted_practices": [
+    "On-premises local deployment of LLM and knowledge base for privacy",
+    "Hybrid retrieval with keyword re-ranking prioritizing suicide-related content",
+    "Mandatory human-in-the-loop verification before suicide-risk alerts are sent (proposed, not tested)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 554,
+   "sample_unit": "cases/profiles/scenarios",
+   "models_evaluated": [
+    "DeepSeek-V3.1",
+    "DeepSeek-V3.1 + RAG",
+    "Qwen3",
+    "Qwen3 + RAG",
+    "Baichuan-M2",
+    "Baichuan-M2 + RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "suicide risk stratification accuracy",
+     "effect": "Qwen3 + RAG suicide risk F1-score 0.9548; \u0394F1 \u2248 0.15 versus non-RAG.",
+     "quote": "Notably, RAG integration consistently enhanced four-class severity stratification ( Fig. 3 , S2 ) : Qwen3 with RAG attained a suicide risk F1-score of 0.9548 on the Standard Case Set, substantially outperforming its non-RAG counterpart (\u0394F1 \u2248 0.15 improvement) (Fig. S2 C)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "repeated-run diagnostic consistency",
+     "effect": "Overall consistency \u03ba = 0.93, SD = 0.04, 95% CI: 0.91\u20130.95.",
+     "quote": "The overall consistency index (\u03ba = 0.93, SD = 0.04, 95% CI: 0.91\u20130.95) further confirms the system\u2019s stability across repeated assessments ( Table 1 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "suicide-risk class accuracy",
+     "effect": "Qwen3 + RAG F1-scores: 0.94 no risk, 0.80 low, 0.74 moderate, 0.83 high.",
+     "quote": "For suicide risk four-class classification on the Hao Daifu dataset, the Qwen3 + RAG model achieved F1-scores of 0.94 (no risk), 0.80 (low risk), 0.74 (moderate risk), and 0.83 (high risk)."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "empathy of AI communication",
+     "effect": "Base empathy scores 3.20\u20133.80; RAG mean scores increased to 4.23\u20134.98/5.",
+     "quote": "Base configurations without clinical knowledge retrieval demonstrated moderate empathy scores, ranging from 3.20 to 3.80 across emotional matching, dialogue consistency, and care expression domains."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 554,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "DeepSeek-V3.1",
+    "Qwen3",
+    "Baichuan-M2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "suicide risk and depression classification accuracy",
+     "effect": "RAG-enhanced Qwen3 model suicide risk classification F1-score was 0.15 higher than non-RAG version",
+     "quote": "Notably, the F1-score of the RAG-enhanced Qwen3 model for suicide risk classification was 0.15 higher than that of its non-RAG version."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "cases (300 real-world dialogues plus 154 standardized cases)",
+ "sample_size": 554,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "Baichuan-M2",
+  "Baichuan-M2 + RAG",
+  "DeepSeek-V3.1",
+  "DeepSeek-V3.1 + RAG",
+  "Qwen3",
+  "Qwen3 + RAG"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Depression and suicide risk classification F1 with versus without RAG grounding in clinical knowledge base",
+   "effect": "RAG consistently improved diagnostic performance; Qwen3 suicide risk F1 0.9548 on the Standard Case Set, about 0.15 F1 improvement over non-RAG; summary BLEU-2 up 44.1-207.2%.",
+   "quote": "Notably, RAG integration consistently enhanced four-class severity stratification ( Fig. 3 , S2 ) : Qwen3 with RAG attained a suicide risk F1-score of 0.9548 on the Standard Case Set, substantially outperforming its non-RAG counterpart (\u0394F1 \u2248 0.15 improvement) (Fig. S2 C).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of diagnostic and suicide risk outputs across 10 repeated runs of 30 transcripts",
+   "effect": "Overall consistency kappa 0.93 (95% CI 0.91-0.95); diagnostic classification kappa 0.97; risk level kappa 0.97; symptom description kappa 0.86.",
+   "quote": "The overall consistency index (\u03ba = 0.93, SD = 0.04, 95% CI: 0.91\u20130.95) further confirms the system\u2019s stability across repeated assessments ( Table 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "repeated-run diagnostic consistency",
+   "effect": "Overall consistency \u03ba = 0.93, SD = 0.04, 95% CI: 0.91\u20130.95.",
+   "quote": "The overall consistency index (\u03ba = 0.93, SD = 0.04, 95% CI: 0.91\u20130.95) further confirms the system\u2019s stability across repeated assessments ( Table 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "empathy of AI communication",
+   "effect": "Base empathy scores 3.20\u20133.80; RAG mean scores increased to 4.23\u20134.98/5.",
+   "quote": "Base configurations without clinical knowledge retrieval demonstrated moderate empathy scores, ranging from 3.20 to 3.80 across emotional matching, dialogue consistency, and care expression domains.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Hybrid retrieval with keyword re-ranking prioritizing suicide-related content",
+  "Mandatory human-in-the-loop verification before suicide-risk alerts are sent (proposed, not tested)",
+  "On-premises local deployment of LLM and knowledge base for privacy"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41917861",
+ "screen": {
+  "id": "pmid:41917861",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG) added to existing LLMs",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the addition of retrieval-augmented generation (RAG) to baseline LLMs for depression screening, suicide risk stratification, and dialogue quality.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41917861",
+   "empirical": 0.96,
+   "tests_practice": 0.8,
+   "real_deployment": 0.18
+  }
+ }
+}

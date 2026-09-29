@@ -1,0 +1,258 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "unknown",
+   "sample_size": 60,
+   "sample_unit": "breast cancer decision-snapshot cases (1,260 system outputs across three arms)",
+   "models_evaluated": [
+    "EGDA",
+    "unconstrained LLM",
+    "RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Unjustified inference rate with RAG grounding vs unconstrained LLM",
+     "effect": "RAG did not reduce unjustified inference (47.7% vs. 48.7%, p = 0.870) and gave no improvement in appropriate refusal (56.9% vs. 56.9%, p = 1.0).",
+     "quote": "An unexpected finding was that retrieval-augmented generation without an authorization gate failed to reduce unjustified inference relative to the unconstrained baseline (47.7% vs. 48.7%, p = 0.870) and produced no improvement in appropriate refusal (56.9% vs. 56.9%, p = 1.0), showing that information supply alone is not sufficient for inferential governance."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Factual correctness and unjustified inference under evidence-graded authorization vs baselines",
+     "effect": "EGDA reduced unjustified inference to 8.0% (vs 48.7% unconstrained, 47.7% RAG) and raised factual correctness to 96.4% (vs 69.8% and 74.5%).",
+     "quote": "In a controlled experiment using 60 breast cancer decision-snapshot cases (1,260 system outputs across three arms evaluated by LLM-as-Judge with expert calibration), EGDA reduced the unjustified inference rate to 8.0% (vs. 48.7% for unconstrained LLM and 47.7% for RAG; risk difference vs. unconstrained \u221240.7%, 95% CI \u221246.9 to \u221234.0, p < 0.001), raised the appropriate refusal rate to 95.0% (vs. 56.9% and 56.9%; risk difference vs. unconstrained +38.1%, 95% CI +31.3 to +44.5, p < 0.001), and achieved the highest factual correctness at 96.4% (vs. 69.8% and 74.5%)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unjustified inference and inappropriate refusal behavior of unconstrained LLM and RAG",
+     "effect": "Unconstrained LLM made unjustified inferences in 48.7% of outputs and RAG in 47.7%; appropriate refusal only 56.9% in both.",
+     "quote": "EGDA reduced the unjustified inference rate to 8.0% (vs. 48.7% for unconstrained LLM and 47.7% for RAG; risk difference vs. unconstrained \u221240.7%, 95% CI \u221246.9 to \u221234.0, p < 0.001)"
+    }
+   ],
+   "unlisted_practices": [
+    "Evidence-graded decision authorization gate separating evidence extraction, sufficiency assessment, and claim-level authorization"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 1260,
+   "sample_unit": "system outputs",
+   "models_evaluated": [
+    "Evidence-Graded Decision Authorization (EGDA)",
+    "unconstrained LLM",
+    "retrieval-augmented generation (RAG)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "unjustified inference and appropriate refusal",
+     "effect": "RAG 47.7% vs 48.7% unjustified inference, p = 0.870; appropriate refusal 56.9% vs 56.9%, p = 1.0.",
+     "quote": "An unexpected finding was that retrieval-augmented generation without an authorization gate failed to reduce unjustified inference relative to the unconstrained baseline (47.7% vs. 48.7%, p = 0.870) and produced no improvement in appropriate refusal (56.9% vs. 56.9%, p = 1.0), showing that information supply alone is not sufficient for inferential governance."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "unjustified inference and factual correctness",
+     "effect": "Unconstrained LLM: 48.7% unjustified inference and 69.8% factual correctness; RAG: 47.7% and 74.5%.",
+     "quote": "In a controlled experiment using 60 breast cancer decision-snapshot cases (1,260 system outputs across three arms evaluated by LLM-as-Judge with expert calibration), EGDA reduced the unjustified inference rate to 8.0% (vs. 48.7% for unconstrained LLM and 47.7% for RAG; risk difference vs. unconstrained \u221240.7%, 95% CI \u221246.9 to \u221234.0, p < 0.001), raised the appropriate refusal rate to 95.0% (vs. 56.9% and 56.9%; risk difference vs. unconstrained +38.1%, 95% CI +31.3 to +44.5, p < 0.001), and achieved the highest factual correctness at 96.4% (vs. 69.8% and 74.5%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Evidence-graded decision authorization with evidence extraction, sufficiency assessment, and claim-level authorization through domain-specific rules"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 1260,
+   "sample_unit": "system outputs",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "unjustified inference and appropriate refusal rates",
+     "effect": "unjustified inference 47.7% vs. 48.7% (p = 0.870); appropriate refusal 56.9% vs. 56.9% (p = 1.0)",
+     "quote": "An unexpected finding was that retrieval-augmented generation without an authorization gate failed to reduce unjustified inference relative to the unconstrained baseline (47.7% vs. 48.7%, p = 0.870) and produced no improvement in appropriate refusal (56.9% vs. 56.9%, p = 1.0), showing that information supply alone is not sufficient for inferential governance."
+    }
+   ],
+   "unlisted_practices": [
+    "Evidence-Graded Decision Authorization (EGDA) framework separating evidence extraction, sufficiency assessment, and claim-level authorization through domain-specific rules"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "unknown",
+ "sample_unit": "system outputs",
+ "sample_size": 1260,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "EGDA",
+  "Evidence-Graded Decision Authorization (EGDA)",
+  "RAG",
+  "retrieval-augmented generation (RAG)",
+  "unconstrained LLM"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "unjustified inference and appropriate refusal",
+   "effect": "RAG 47.7% vs 48.7% unjustified inference, p = 0.870; appropriate refusal 56.9% vs 56.9%, p = 1.0.",
+   "quote": "An unexpected finding was that retrieval-augmented generation without an authorization gate failed to reduce unjustified inference relative to the unconstrained baseline (47.7% vs. 48.7%, p = 0.870) and produced no improvement in appropriate refusal (56.9% vs. 56.9%, p = 1.0), showing that information supply alone is not sufficient for inferential governance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Evidence-Graded Decision Authorization (EGDA) framework separating evidence extraction, sufficiency assessment, and claim-level authorization through domain-specific rules",
+  "Evidence-graded decision authorization gate separating evidence extraction, sufficiency assessment, and claim-level authorization",
+  "Evidence-graded decision authorization with evidence extraction, sufficiency assessment, and claim-level authorization through domain-specific rules"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1237467",
+ "screen": {
+  "id": "epmc:PPR1237467",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "evidence-graded decision authorization / reasoning guardrail",
+  "user": "none",
+  "reason": "The study tests an explicit reasoning and output authorization guardrail (EGDA) added to an LLM/RAG pipeline against unconstrained and RAG-only baselines on clinical decision vignettes.",
+  "jev": {
+   "id": "epmc:PPR1237467",
+   "empirical": 0.94,
+   "tests_practice": 0.84,
+   "real_deployment": 0.04
+  }
+ }
+}

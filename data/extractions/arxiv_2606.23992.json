@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 3744,
+ "sample_unit": "value sets (RASC test split)",
+ "models_evaluated": [
+  "GPT-5",
+  "Qwen3 retrieval",
+  "SAPBert cross-encoder"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Value set completion macro F1 with retrieval-constrained LLM adjudication versus SAPBert selector over same pool",
+   "effect": "Full-test macro F1 rose from 0.287 (SAPBert) to 0.549 (GPT-5); held-out-publisher macro F1 rose from 0.233 to 0.533, with all codes drawn from an auditable candidate pool.",
+   "quote": "These results show that retrieval-constrained LLM adjudication can substantially improve value set completion while preserving the safety constraint that all returned codes must come from an auditable candidate pool.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Two-stage pipeline with recall-optimized candidate retrieval and constrained LLM adjudicator for terminology code selection",
+  "Vocabulary-aware query expansion and code-display rescue retrieval to raise candidate-pool recall"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2606.23992",
+ "screen": {
+  "id": "arxiv:2606.23992",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a retrieval-constrained adjudication safeguard (restricting generation to auditable, retrieved candidate codes) versus standard zero-shot generation / baseline cross-encoders on a clinical value set authoring benchmark.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval grounding and candidate-pool safety constraint"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.23992",
+   "empirical": 0.91,
+   "tests_practice": 0.49,
+   "real_deployment": 0.03
+  }
+ }
+}

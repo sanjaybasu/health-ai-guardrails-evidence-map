@@ -1,0 +1,417 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 19468,
+   "sample_unit": "UK Biobank participants with type 2 diabetes (17,574 White British, 1,145 South Asian, 749 African/Caribbean) tested; 4,098 ADVANCE participants used for training",
+   "models_evaluated": [
+    "Mondrian Cross-Conformal Prediction with logistic regression",
+    "logistic regression-based stratification (LR-SP)",
+    "multi-polygenic risk score (multiPRS)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Discrimination and calibration of PRS-based prediction by ancestry subgroup",
+     "effect": "Performance highest in White British with ADVANCE training; MCCP under-coverage for MI in African population (empirical miscoverage 0.076 vs alpha 0.05) and Low eGFR (0.067 to 0.111); stroke conservative.",
+     "quote": "These findings indicate that calibration performance was not uniform across phenotype\u2013population combinations."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether conformal uncertainty flags give valid, prespecified error control across ancestries",
+     "effect": "MCCP gave prediction sets with prespecified error control in most settings and flagged individuals lacking reliable prediction, but discrimination was equivalent to LR-SP (e.g., stroke WB AUROC 0.69 vs 0.68); under-coverage for MI in AFR and Low eGFR.",
+     "quote": "Across two independent training frameworks, MCCP delivered prediction sets with explicit, prespecified control of the error rate, maintained valid calibration in most settings, and identified individuals for whom no reliable prediction could be made."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Patient-level confidence/credibility estimates alongside predictions; accuracy and validity of error control",
+     "effect": "MCCP issued per-individual prediction with confidence and credibility; discrimination no better than probability stratification (total NRI not significantly different from zero, WB p \u2265 0.36); calibration not uniform across populations. No clinician use tested.",
+     "quote": "Rather than increasing predictive accuracy, MCCP provides clinicians with explicit information regarding the confidence associated with each prediction, an important property for the future clinical implementation of polygenic risk scores in diverse populations."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and error control when a model developed in European ancestry is applied to other ancestries",
+     "effect": "Conformal error control could not be assumed in new populations; observed error exceeded expected error for MI and Low eGFR in AFR under ADVANCE-trained models; distribution shift compatible with results.",
+     "quote": "Overall, these findings indicate that conformal error control should be assessed empirically in each target population rather than assumed to transfer automatically from one ancestry group to another."
+    },
+    {
+     "rec_id": "R309",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Impact of underrepresentation of non-European groups in genomic data on PRS performance",
+     "effect": "Model trained on European ancestry performed best in White British; SA and AFR cohorts substantially smaller with few outcome events, reducing statistical precision and limiting generalizability.",
+     "quote": "As expected, performance in the ADVANCE-trained analyses was highest in the WB population, likely reflecting its closer genetic similarity to the European ancestry population used for model development."
+    }
+   ],
+   "unlisted_practices": [
+    "Applying Mondrian cross-conformal prediction to give uncertainty-aware prediction sets and abstain on unreliable individuals",
+    "Comparing race-inclusive versus race-free CKD-EPI eGFR definitions for outcome labels"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom; ADVANCE multinational cohort recruited from 20 countries",
+   "sample_size": 23566,
+   "sample_unit": "individuals with type 2 diabetes",
+   "models_evaluated": [
+    "Mondrian Cross-Conformal Prediction (MCCP) with logistic regression",
+    "logistic regression\u2013based stratification by predicted probabilities (LR-SP)",
+    "multi-polygenic risk score (multiPRS)",
+    "logistic regression",
+    "linear discriminant analysis",
+    "ridge classifier",
+    "CatBoost Classifier",
+    "Extreme Gradient Boosting (XGBoost)",
+    "Decision Tree Classifier",
+    "Dummy Classifier",
+    "Extra Trees Classifier",
+    "Gradient Boosting Classifier",
+    "K Neighbors Classifier",
+    "Light Gradient Boosting Machine",
+    "Naive Bayes",
+    "Quadratic Discriminant Analysis",
+    "Random Forest Classifier",
+    "SVM - Linear Kernel",
+    "Ada Boost Classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "MCCP versus LR-SP discrimination",
+     "effect": "At \u03b1\u22480.05 in WB, AUROC was 0.69 vs 0.68 for stroke, 0.75 vs 0.76 for MI, and 0.79 vs 0.78 for Low eGFR.",
+     "quote": "Compared with coverage-matched LR-SP (top/bottom 5.1%, 5.2%, and 10.3%, respectively), the two methods showed comparable discrimination: stroke (MCCP: 0.69, 95% CI: 0.65\u20130.73; LR-SP: 0.68, 95% CI: 0.64\u20130.73), MI (0.75, 95% CI: 0.71\u20130.79 vs. 0.76, 95% CI: 0.73\u20130.79), and Low eGFR (0.79, 95% CI: 0.76\u20130.82 vs. 0.78, 95% CI: 0.76\u20130.81)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "uncertainty calibration",
+     "effect": "At \u03b1\u22480.05, stroke miscoverage was 0.025\u20130.064, MI 0.023\u20130.099, and Low eGFR 0.067\u20130.111; calibration differed by phenotype.",
+     "quote": "Beyond discrimination, MCCP also demonstrated generally good calibration, although calibration performance differed across phenotypes."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup calibration gaps",
+     "effect": "At \u03b1\u22480.05, MI AFR miscoverage was 0.076 for ADVANCE-trained and 0.099 for WB-trained; Low eGFR exceeded target at 0.067\u20130.111.",
+     "quote": "In contrast, under-coverage was observed for MI in the AFR population and for Low eGFR, where empirical miscoverage exceeded the target error rate."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "generalization to new ancestries",
+     "effect": "Under cross-population transfer, stroke maintained error control, but MI and Low eGFR did not uniformly; MI AFR miscoverage reached 0.076 and 0.099.",
+     "quote": "As described above, empirical error control was generally maintained for stroke but not uniformly for MI or Low eGFR."
+    },
+    {
+     "rec_id": "R312",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup statistical precision",
+     "effect": "WB n=17,574, SA n=1,145, AFR n=749; limited events reduced precision and prevented finer ancestry-substructure analyses.",
+     "quote": "Limited numbers of outcome events reduced statistical precision for some phenotype\u2013population combinations and prevented more detailed analyses of ancestry substructure."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating Low eGFR predictions with a race-free CKD-EPI 2021 definition",
+    "Stratified random subsampling of larger ancestry groups to match the African/Caribbean sample size"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 23566,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Mondrian Cross-Conformal Prediction",
+    "Logistic Regression",
+    "Ridge Classifier",
+    "Linear Discriminant Analysis",
+    "CatBoost",
+    "XGBoost",
+    "Random Forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Cross-ancestry transferability of polygenic risk prediction and conformal error control",
+     "effect": "Discrimination was comparable across ancestries, but empirical error control failed for MI (miscoverage 0.076-0.099 vs target 0.05) and Low eGFR in African participants.",
+     "quote": "In contrast, under-coverage was observed for MI in the AFR population and for Low eGFR, where empirical miscoverage exceeded the target error rate."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of complex machine learning vs linear models for polygenic risk score prediction",
+     "effect": "Linear discriminant analysis, ridge classifier, and logistic regression achieved the best AUROC among 16 evaluated machine learning algorithms.",
+     "quote": "Linear discriminant analysis (LDA), ridge classifier and logistic regression (LR) performed the best, with similar AUROC between the three ethnic groups ( S1 Fig )."
+    }
+   ],
+   "unlisted_practices": [
+    "Mondrian Cross-Conformal Prediction for uncertainty quantification and error-rate control in clinical risk prediction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "UK Biobank participants with type 2 diabetes (17,574 White British, 1,145 South Asian, 749 African/Caribbean) tested; 4,098 ADVANCE participants used for training",
+ "sample_size": 23566,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Ada Boost Classifier",
+  "CatBoost",
+  "CatBoost Classifier",
+  "Decision Tree Classifier",
+  "Dummy Classifier",
+  "Extra Trees Classifier",
+  "Extreme Gradient Boosting (XGBoost)",
+  "Gradient Boosting Classifier",
+  "K Neighbors Classifier",
+  "Light Gradient Boosting Machine",
+  "Linear Discriminant Analysis",
+  "Logistic Regression",
+  "Mondrian Cross-Conformal Prediction",
+  "Mondrian Cross-Conformal Prediction (MCCP) with logistic regression",
+  "Mondrian Cross-Conformal Prediction with logistic regression",
+  "Naive Bayes",
+  "Quadratic Discriminant Analysis",
+  "Random Forest",
+  "Random Forest Classifier",
+  "Ridge Classifier",
+  "SVM - Linear Kernel",
+  "XGBoost",
+  "linear discriminant analysis",
+  "logistic regression",
+  "logistic regression-based stratification (LR-SP)",
+  "logistic regression\u2013based stratification by predicted probabilities (LR-SP)",
+  "multi-polygenic risk score (multiPRS)",
+  "ridge classifier"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Discrimination and calibration of PRS-based prediction by ancestry subgroup",
+   "effect": "Performance highest in White British with ADVANCE training; MCCP under-coverage for MI in African population (empirical miscoverage 0.076 vs alpha 0.05) and Low eGFR (0.067 to 0.111); stroke conservative.",
+   "quote": "These findings indicate that calibration performance was not uniform across phenotype\u2013population combinations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Whether conformal uncertainty flags give valid, prespecified error control across ancestries",
+   "effect": "MCCP gave prediction sets with prespecified error control in most settings and flagged individuals lacking reliable prediction, but discrimination was equivalent to LR-SP (e.g., stroke WB AUROC 0.69 vs 0.68); under-coverage for MI in AFR and Low eGFR.",
+   "quote": "Across two independent training frameworks, MCCP delivered prediction sets with explicit, prespecified control of the error rate, maintained valid calibration in most settings, and identified individuals for whom no reliable prediction could be made.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "generalization to new ancestries",
+   "effect": "Under cross-population transfer, stroke maintained error control, but MI and Low eGFR did not uniformly; MI AFR miscoverage reached 0.076 and 0.099.",
+   "quote": "As described above, empirical error control was generally maintained for stroke but not uniformly for MI or Low eGFR.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "MCCP versus LR-SP discrimination",
+   "effect": "At \u03b1\u22480.05 in WB, AUROC was 0.69 vs 0.68 for stroke, 0.75 vs 0.76 for MI, and 0.79 vs 0.78 for Low eGFR.",
+   "quote": "Compared with coverage-matched LR-SP (top/bottom 5.1%, 5.2%, and 10.3%, respectively), the two methods showed comparable discrimination: stroke (MCCP: 0.69, 95% CI: 0.65\u20130.73; LR-SP: 0.68, 95% CI: 0.64\u20130.73), MI (0.75, 95% CI: 0.71\u20130.79 vs. 0.76, 95% CI: 0.73\u20130.79), and Low eGFR (0.79, 95% CI: 0.76\u20130.82 vs. 0.78, 95% CI: 0.76\u20130.81).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of complex machine learning vs linear models for polygenic risk score prediction",
+   "effect": "Linear discriminant analysis, ridge classifier, and logistic regression achieved the best AUROC among 16 evaluated machine learning algorithms.",
+   "quote": "Linear discriminant analysis (LDA), ridge classifier and logistic regression (LR) performed the best, with similar AUROC between the three ethnic groups ( S1 Fig ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R309",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R312",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Applying Mondrian cross-conformal prediction to give uncertainty-aware prediction sets and abstain on unreliable individuals",
+  "Comparing race-inclusive versus race-free CKD-EPI eGFR definitions for outcome labels",
+  "Evaluating Low eGFR predictions with a race-free CKD-EPI 2021 definition",
+  "Mondrian Cross-Conformal Prediction for uncertainty quantification and error-rate control in clinical risk prediction",
+  "Stratified random subsampling of larger ancestry groups to match the African/Caribbean sample size"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42594161",
+ "screen": {
+  "id": "pmid:42594161",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "conformal prediction uncertainty flagging of unreliable predictions",
+  "user": "none",
+  "reason": "The study tests adding Mondrian Cross-Conformal Prediction (an uncertainty quantification and abstention/flagging safeguard) to baseline predictive polygenic risk scoring models across diverse ancestries.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "conformal prediction for uncertainty quantification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42594161",
+   "empirical": 0.85,
+   "tests_practice": 0.35,
+   "real_deployment": 0.04
+  }
+ }
+}

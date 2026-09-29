@@ -1,0 +1,275 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 22,
+   "sample_unit": "lung cancer cases",
+   "models_evaluated": [
+    "In-house deep-learning 3D UNet thoracic OAR auto-segmentation models (9 single-organ models)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correlation of standalone geometric metrics with clinician correction times",
+     "effect": "Weak to negligible Spearman correlations between geometric metrics and correction times for most OARs; significant only for aorta, esophagus, left lung. Time savings could not be predicted from geometric metrics.",
+     "quote": "Time saving potential could not be estimated from model geometric performance metrics."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Contouring time with AI-assisted correction versus manual contouring",
+     "effect": "Median total contouring time reduced by 12.6 min (50.3%, p<0.01); significant for lungs and heart, but increases for left bronchial tree (+22.9%), esophagus (+10.3%), trachea (+20.8%).",
+     "quote": "Statistically significant median time reductions \u2013 based on a p < 0 . 025 threshold \u2013 were observed for the right lung (5.7 min, a 90.7% reduction), left lung (5.9 min, a 92.7% reduction), heart (1.1 min, a 52.9% reduction) and total contouring time (12.6 min, a 50.3% reduction)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 22,
+   "sample_unit": "lung cancer cases",
+   "models_evaluated": [
+    "In-house 3D UNet thoracic auto-segmentation models for nine organs-at-risk"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Physician contouring time with auto-segmentation assistance versus manual contouring",
+     "effect": "Median total contouring time was 750 s with assistance versus 1509 s manually, a 50.3% reduction (p-value <0.01). Interface use and model execution totaling approximately 3 min were excluded.",
+     "quote": "Statistically significant median time reductions \u2013 based on a p < 0 . 025 threshold \u2013 were observed for the right lung (5.7 min, a 90.7% reduction), left lung (5.9 min, a 92.7% reduction), heart (1.1 min, a 52.9% reduction) and total contouring time (12.6 min, a 50.3% reduction)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Association between geometric segmentation metrics and physician correction time",
+     "effect": "Correlations were weak to negligible for most organs. DSC\u2013correction-time correlations included right lung \u22120.35 [0.36] and heart \u22120.15 [0.70], with p-values in brackets.",
+     "quote": "The Spearman correlation coefficients and corresponding p-values reveal weak to negligible correlations of individual geometric metrics versus correction times for most organs."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Incomplete auto-generated organ contours identified during clinical correction",
+     "effect": "Aorta and heart auto-segmentations contained missing slices in 5 cases, with one to three missing slices each.",
+     "quote": "These anomalies were primarily due to missing slices in the auto-segmentations for these structures, which were present in 5 cases with one to three missing slices each and disproportionately impacted totalAPL."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 22,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "in-house PyTorch/MONAI 3D UNet auto-segmentation models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "contouring time",
+     "effect": "AI-assisted contouring reduced median total contouring time by 50.3% (12.6 min) compared to manual contouring.",
+     "quote": "Median contouring times were reduced for six out of nine OARs leading to a reduction of 50.3 % or 12.6 min in median total contouring time."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "correlation between geometric metrics and correction time",
+     "effect": "Standalone geometric performance metrics showed weak to negligible correlations with the manual correction time required by clinicians.",
+     "quote": "The Spearman correlation coefficients and corresponding p-values reveal weak to negligible correlations of individual geometric metrics versus correction times for most organs."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "lung cancer cases",
+ "sample_size": 22,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "In-house 3D UNet thoracic auto-segmentation models for nine organs-at-risk",
+  "In-house deep-learning 3D UNet thoracic OAR auto-segmentation models (9 single-organ models)",
+  "in-house PyTorch/MONAI 3D UNet auto-segmentation models"
+ ],
+ "links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Correlation of standalone geometric metrics with clinician correction times",
+   "effect": "Weak to negligible Spearman correlations between geometric metrics and correction times for most OARs; significant only for aorta, esophagus, left lung. Time savings could not be predicted from geometric metrics.",
+   "quote": "Time saving potential could not be estimated from model geometric performance metrics.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Contouring time with AI-assisted correction versus manual contouring",
+   "effect": "Median total contouring time reduced by 12.6 min (50.3%, p<0.01); significant for lungs and heart, but increases for left bronchial tree (+22.9%), esophagus (+10.3%), trachea (+20.8%).",
+   "quote": "Statistically significant median time reductions \u2013 based on a p < 0 . 025 threshold \u2013 were observed for the right lung (5.7 min, a 90.7% reduction), left lung (5.9 min, a 92.7% reduction), heart (1.1 min, a 52.9% reduction) and total contouring time (12.6 min, a 50.3% reduction).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Association between geometric segmentation metrics and physician correction time",
+   "effect": "Correlations were weak to negligible for most organs. DSC\u2013correction-time correlations included right lung \u22120.35 [0.36] and heart \u22120.15 [0.70], with p-values in brackets.",
+   "quote": "The Spearman correlation coefficients and corresponding p-values reveal weak to negligible correlations of individual geometric metrics versus correction times for most organs.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Incomplete auto-generated organ contours identified during clinical correction",
+   "effect": "Aorta and heart auto-segmentations contained missing slices in 5 cases, with one to three missing slices each.",
+   "quote": "These anomalies were primarily due to missing slices in the auto-segmentations for these structures, which were present in 5 cases with one to three missing slices each and disproportionately impacted totalAPL.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:40894267",
+ "screen": {
+  "id": "pmid:40894267",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "physician review and correction of auto-segmented contours",
+  "user": "clinician_or_staff",
+  "reason": "Prospective clinical workflow implementation evaluating deep-learning auto-segmentation compared to standard manual contouring, assessing physician correction time and workload impact.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "physician review and editing of auto-segmentation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40894267",
+   "empirical": 0.97,
+   "tests_practice": 0.49,
+   "real_deployment": 0.88
+  }
+ }
+}

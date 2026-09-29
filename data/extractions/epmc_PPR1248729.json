@@ -1,0 +1,272 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "ICU discharge summaries (MIMIC-III notes); 60 notes for blinded human review",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reading level of original ICU discharge summaries (Flesch grade level)",
+     "effect": "Original notes had grade level 9.4 \u00b1 1.2 and Flesch Reading Ease 51.2 \u00b1 6.1; simplification reduced grade level to 7.6\u20138.0.",
+     "quote": "increasing Flesch Reading Ease from 51.2 \u00b1 6.1 to 58.3\u201360.3 and reducing grade level from 9.4 \u00b1 1.2 to 7.6\u20138.0."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Omission and hallucination rates in LLM-simplified discharge summaries",
+     "effect": "GPT-4o few-shot: medication omission 2.2%, diagnosis omission 0.4%; GPT-4o chain-of-thought had perfect faithfulness and 0% hallucination in human review of 60 notes.",
+     "quote": "In blinded human evaluation, GPT-4o with chain-of-thought prompting achieved perfect faithfulness and 0% hallucination, while GPT-4o few-shot showed the best combined faithfulness, readability, and actionability."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt-based (zero-shot, few-shot, chain-of-thought) LLM simplification of discharge summaries to improve readability",
+    "Section-aware constraints on LLM simplification of discharge summaries"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 500,
+   "sample_unit": "ICU discharge summaries",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "readability of simplified discharge summaries",
+     "effect": "Flesch Reading Ease increased from 51.2\u2009\u00b1\u20096.1 to 58.3\u201360.3; grade level decreased from 9.4\u2009\u00b1\u20091.2 to 7.6\u20138.0.",
+     "quote": "All six prompting conditions significantly improved readability versus the original notes (all p\u2009<\u20090.0001), increasing Flesch Reading Ease from 51.2\u2009\u00b1\u20096.1 to 58.3\u201360.3 and reducing grade level from 9.4\u2009\u00b1\u20091.2 to 7.6\u20138.0."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "omission and preservation in AI simplification",
+     "effect": "GPT-4o few-shot: similarity 0.844\u2009\u00b1\u20090.071, lexical overlap 0.638\u2009\u00b1\u20090.072, medication omission 2.2%, diagnosis omission 0.4%.",
+     "quote": "GPT-4o few-shot provided the strongest automated overall balance of simplification and preservation (similarity 0.844\u2009\u00b1\u20090.071, lexical overlap 0.638\u2009\u00b1\u20090.072, medication omission 2.2%, diagnosis omission 0.4%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparison of zero-shot, few-shot, and chain-of-thought prompting for simplifying ICU discharge summaries",
+    "Deterministic extraction of discharge-summary sections intended for patient use"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "notes",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "medication and diagnosis omission rates in simplified summaries",
+     "effect": "GPT-4o few-shot resulted in 2.2% medication omission and 0.4% diagnosis omission",
+     "quote": "GPT-4o few-shot provided the strongest automated overall balance of simplification and preservation (similarity 0.844\u2009\u00b1\u20090.071, lexical overlap 0.638\u2009\u00b1\u20090.072, medication omission 2.2%, diagnosis omission 0.4%)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "ICU discharge summaries (MIMIC-III notes); 60 notes for blinded human review",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o-mini"
+ ],
+ "links": [
+  {
+   "rec_id": "R289",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "readability of simplified discharge summaries",
+   "effect": "Flesch Reading Ease increased from 51.2\u2009\u00b1\u20096.1 to 58.3\u201360.3; grade level decreased from 9.4\u2009\u00b1\u20091.2 to 7.6\u20138.0.",
+   "quote": "All six prompting conditions significantly improved readability versus the original notes (all p\u2009<\u20090.0001), increasing Flesch Reading Ease from 51.2\u2009\u00b1\u20096.1 to 58.3\u201360.3 and reducing grade level from 9.4\u2009\u00b1\u20091.2 to 7.6\u20138.0.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "medication and diagnosis omission rates in simplified summaries",
+   "effect": "GPT-4o few-shot resulted in 2.2% medication omission and 0.4% diagnosis omission",
+   "quote": "GPT-4o few-shot provided the strongest automated overall balance of simplification and preservation (similarity 0.844\u2009\u00b1\u20090.071, lexical overlap 0.638\u2009\u00b1\u20090.072, medication omission 2.2%, diagnosis omission 0.4%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparison of zero-shot, few-shot, and chain-of-thought prompting for simplifying ICU discharge summaries",
+  "Deterministic extraction of discharge-summary sections intended for patient use",
+  "Prompt-based (zero-shot, few-shot, chain-of-thought) LLM simplification of discharge summaries to improve readability",
+  "Section-aware constraints on LLM simplification of discharge summaries"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1248729",
+ "screen": {
+  "id": "epmc:PPR1248729",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompting strategy (zero-shot, few-shot, chain-of-thought) for readability and safety",
+  "user": "patient",
+  "reason": "The study empirically tests prompting strategies (zero-shot, few-shot, chain-of-thought) and deterministic section-aware pipelines as safeguards to prevent omission and hallucination when simplifying ICU discharge summaries for patients.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompting strategies and section-aware constraints for safe simplification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1248729",
+   "empirical": 0.97,
+   "tests_practice": 0.4,
+   "real_deployment": 0.03
+  }
+ }
+}

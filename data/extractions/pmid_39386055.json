@@ -1,0 +1,375 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 39090,
+   "sample_unit": "patients with glaucoma",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and fairness variation across internal and external sites",
+     "effect": "Best modeling approach for AUROC and equalized odds differed between internal test set and external sites #1 and #2; AUROC external #1 0.73-0.81, external #2 0.67-0.70 vs internal 0.77-0.82.",
+     "quote": "These results underscore the importance of external validation and subpopulation analyses for uncovering potential biases in AI models."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fairness and performance under demographic dataset shift between training and external sites",
+     "effect": "White 65.6% vs 16.1% vs 46.0%, Black 20.7% vs 76.3% vs 8.7% across training, external #1, external #2; fairness did not generalize consistently across sites.",
+     "quote": "The failure of modeling approaches to remain consistently fair when deployed to external validation sets could be considered as a specific case of the failure of model performance metrics to generalize in the face of dataset shifts, 11 , 40 , 41 , 42 which occur when data distributions differ between the training and testing/deployment environments."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup fairness (equalized odds) by sex, race, ethnicity across sites",
+     "effect": "Bias found for sex, race, and ethnicity; models fairest on internal test were not necessarily fairest at external sites; M2/M3 showed much more bias for sex and race at external sites.",
+     "quote": "We found that models trained with sensitive attributes as input features (M2) or trained separately for different groups (M3) demonstrated much more bias for sex and race when evaluated on external test sites."
+    },
+    {
+     "rec_id": "R306",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of including versus excluding sensitive attributes on performance and fairness",
+     "effect": "Excluding attributes gave better AUROC (0.77-0.82) but worse fairness internally; at external #1 including gave better AUROC but worse fairness; at external #2 including gave both better. Removal did not eliminate bias.",
+     "quote": "Since removing sex, race, and ethnicity is not a comprehensive solution to eliminate bias in glaucoma algorithm predictions, it may be reasonable to include them if external validation and thorough subpopulation analyses are performed."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Internal versus external test set performance and fairness",
+     "effect": "Models appearing fairest on internal test set were not fairest at independent external sites; AUROC dropped at external sites (external #2 0.67-0.70 vs internal 0.77-0.82).",
+     "quote": "These results lead to a second key insight, which is that models that appear fairest when evaluated on a standard internal test set are not necessarily the fairest models for completely independent external sites."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Site-specific/group-specific model training effect on fairness and performance",
+     "effect": "Separate models per group (M3) were most fair for ethnicity but showed much more bias for sex and race at external sites; results varied by site.",
+     "quote": "Models may need to be exclusively trained and deployed within a single hospital setting to optimize both fairness and performance or retrained for each specific site."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing models that include, exclude, or stratify by sensitive attributes for fairness"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 39090,
+   "sample_unit": "patients with glaucoma",
+   "models_evaluated": [
+    "XGBoost M1 excluding sensitive attributes",
+    "XGBoost M2 including sensitive attributes",
+    "XGBoost M3 separate subgroup-stratified models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Internal versus external generalizability",
+     "effect": "External sites reversed internal pattern: including sensitive attributes gave AUROC [0.73-0.81] at site #1 and [0.67-0.70] at site #2, with sex/race fairness varying.",
+     "quote": "However, on external test sites, the opposite was true: including sensitive attributes resulted in better classification performance (AUROC: external #1 - [0.73-0.81], external #2 - [0.67-0.70]), but varying degrees of fairness for sex and race as measured by equalized odds."
+    },
+    {
+     "rec_id": "R308",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Demographic shift across sites",
+     "effect": "Training/external demographics differed: White 65.6% vs. 16.1% vs. 46.0%; Black 20.7% vs. 76.3% vs. 8.7%; Hispanic 4.26% vs. 2.3% vs. 12.0%.",
+     "quote": "For example, there is a substantial demographic shift in regards to White (65.6% vs. 16.1% vs. 46.0%), Black (20.7% vs. 76.3% vs. 8.7%), and Hispanic (4.26% vs. 2.3% vs. 12.0%) patients between the training set, external site #1, and external site #2, respectively."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup AUROC by sex and site",
+     "effect": "Sex subgroup AUROCs shifted by site: internal M1 0.779 male/0.768 female; external #1 M2 0.731/0.764; external #2 M2 0.681/0.674.",
+     "quote": "For sex, the model excluding sex as an input feature (M1) achieved the highest AUROCs on the internal testing set (0.779 [95% CI 0.779\u20130.780] male, 0.768 [95% CI 0.766\u20130.769] female), but the performance of the model including sex as an input feature (M2) achieved the highest AUROCs on external site #1 (0.731 [95% CI 0.730\u20130.734] male, 0.764 [95% CI 0.764\u20130.765] female) and external site #2 (0.681 [95% CI 0.679\u20130.682] male, 0.674 [95% CI 0.671\u20130.676] female)."
+    },
+    {
+     "rec_id": "R306",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Bias after removing sensitive attributes",
+     "effect": "Excluding sensitive attributes improved internal AUROC (0.77-0.82) but worsened fairness; removing sex, race, and ethnicity did not eliminate bias.",
+     "quote": "We found evidence of bias for sex, race, and ethnicity that was not wholly ameliorated by removing these sensitive attributes as inputs to the models."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing exclusion, inclusion, and subgroup-stratified use of sensitive attributes in predictive models for fairness and performance."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 39090,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC and fairness across internal versus external evaluation sites",
+     "effect": "Classification performance differed across sites, dropping from AUROC 0.77-0.82 internally to 0.73-0.81 on external site #1 and 0.67-0.70 on external site #2, with varying fairness across sex and race.",
+     "quote": "However, on external test sites, the opposite was true: including sensitive attributes resulted in better classification performance (AUROC: external #1 - [0.73-0.81], external #2 - [0.67-0.70]), but varying degrees of fairness for sex and race as measured by equalized odds."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Algorithmic bias across sex, race, and ethnicity",
+     "effect": "Classification complexity differed significantly between subgroups (P < 0.001); internal AUROC varied by race (0.776 White vs 0.762 non-White) and sex (0.779 male vs 0.768 female), with persistent equalized odds disparities.",
+     "quote": "Artificial intelligence models predicting whether patients with glaucoma progress to surgery demonstrated bias with respect to sex, race, and ethnicity."
+    }
+   ],
+   "unlisted_practices": [
+    "Exclusion of sensitive attributes (fairness through unawareness) versus explicit inclusion or group-stratified models to mitigate algorithmic bias"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients with glaucoma",
+ "sample_size": 39090,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "XGBoost",
+  "XGBoost M1 excluding sensitive attributes",
+  "XGBoost M2 including sensitive attributes",
+  "XGBoost M3 separate subgroup-stratified models"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup fairness (equalized odds) by sex, race, ethnicity across sites",
+   "effect": "Bias found for sex, race, and ethnicity; models fairest on internal test were not necessarily fairest at external sites; M2/M3 showed much more bias for sex and race at external sites.",
+   "quote": "We found that models trained with sensitive attributes as input features (M2) or trained separately for different groups (M3) demonstrated much more bias for sex and race when evaluated on external test sites.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Internal versus external test set performance and fairness",
+   "effect": "Models appearing fairest on internal test set were not fairest at independent external sites; AUROC dropped at external sites (external #2 0.67-0.70 vs internal 0.77-0.82).",
+   "quote": "These results lead to a second key insight, which is that models that appear fairest when evaluated on a standard internal test set are not necessarily the fairest models for completely independent external sites.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness and performance under demographic dataset shift between training and external sites",
+   "effect": "White 65.6% vs 16.1% vs 46.0%, Black 20.7% vs 76.3% vs 8.7% across training, external #1, external #2; fairness did not generalize consistently across sites.",
+   "quote": "The failure of modeling approaches to remain consistently fair when deployed to external validation sets could be considered as a specific case of the failure of model performance metrics to generalize in the face of dataset shifts, 11 , 40 , 41 , 42 which occur when data distributions differ between the training and testing/deployment environments.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R306",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of including versus excluding sensitive attributes on performance and fairness",
+   "effect": "Excluding attributes gave better AUROC (0.77-0.82) but worse fairness internally; at external #1 including gave better AUROC but worse fairness; at external #2 including gave both better. Removal did not eliminate bias.",
+   "quote": "Since removing sex, race, and ethnicity is not a comprehensive solution to eliminate bias in glaucoma algorithm predictions, it may be reasonable to include them if external validation and thorough subpopulation analyses are performed.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R308",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Demographic shift across sites",
+   "effect": "Training/external demographics differed: White 65.6% vs. 16.1% vs. 46.0%; Black 20.7% vs. 76.3% vs. 8.7%; Hispanic 4.26% vs. 2.3% vs. 12.0%.",
+   "quote": "For example, there is a substantial demographic shift in regards to White (65.6% vs. 16.1% vs. 46.0%), Black (20.7% vs. 76.3% vs. 8.7%), and Hispanic (4.26% vs. 2.3% vs. 12.0%) patients between the training set, external site #1, and external site #2, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R306",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Bias after removing sensitive attributes",
+   "effect": "Excluding sensitive attributes improved internal AUROC (0.77-0.82) but worsened fairness; removing sex, race, and ethnicity did not eliminate bias.",
+   "quote": "We found evidence of bias for sex, race, and ethnicity that was not wholly ameliorated by removing these sensitive attributes as inputs to the models.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Comparing exclusion, inclusion, and subgroup-stratified use of sensitive attributes in predictive models for fairness and performance.",
+  "Comparing models that include, exclude, or stratify by sensitive attributes for fairness",
+  "Exclusion of sensitive attributes (fairness through unawareness) versus explicit inclusion or group-stratified models to mitigate algorithmic bias"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39386055",
+ "screen": {
+  "id": "pmid:39386055",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "Fairness evaluation and sensitive-attribute handling with external validation before deployment",
+  "user": "none",
+  "reason": "Empirically evaluates the effect of a modeling/deployment choice (inclusion vs. exclusion of sensitive attributes such as race, ethnicity, and sex, or subgroup-specific modeling) on algorithmic fairness across internal and external validation sets.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "inclusion vs exclusion of sensitive demographic attributes in model training"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39386055",
+   "empirical": 0.97,
+   "tests_practice": 0.16,
+   "real_deployment": 0.04
+  }
+ }
+}

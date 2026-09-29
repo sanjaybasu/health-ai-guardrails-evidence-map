@@ -1,0 +1,439 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 450,
+   "sample_unit": "consultation transcript-note pairs",
+   "models_evaluated": [
+    "GPT-4 (GPT-4-32k-0613)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Hallucination and omission rates in LLM-generated notes across 18 experiments, clinician-annotated by severity",
+     "effect": "Of 12,999 sentences, 191 had hallucinations (1.47%), 84 (44%) major; 1712 of 49,590 transcript sentences omitted (3.45%), 286 (16.7%) major. Iterative refinement cut major omissions from 61 to 0.",
+     "quote": "Of 12,999 sentences in 450 clinical notes, 191 sentences had hallucinations (1.47%), of which 84 sentences (44%) were major (could impact patient diagnosis and management if left uncorrected)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference standard via dual clinician annotation with senior clinician adjudication of discrepancies",
+     "effect": "Two clinician reviewers evaluated each note sentence, with consolidation by a senior clinician for discrepancies; the study applied this protocol but did not compare outcomes with or without it.",
+     "quote": "In cases of discrepancy between the two reviewers, consolidation was performed by a senior clinician with over 20 years of clinical experience."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM-generated vs clinician-written notes: hallucinations and omissions on same transcripts",
+     "effect": "Clinician-written notes had slightly more hallucinations but fewer omissions than LLM notes (Experiment 17); LLM best configurations had fewer errors per note than reported human rates.",
+     "quote": "Interestingly, findings suggested slightly more hallucinations in clinician-written notes but fewer omissions, highlighting key differences in human vs. LLM-generated note content."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Major hallucinations concentrated in Plan section of generated clinical notes",
+     "effect": "Hallucinations occurred in all sections, most commonly (20%) in the Plan section; negation hallucinations were 30% of hallucinations.",
+     "quote": "Hallucinations occurred in all sections, but most commonly (20%) in the Plan section of the clinical note."
+    },
+    {
+     "rec_id": "R368",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination and omission rates of generative LLM clinical notes",
+     "effect": "1.47% hallucination rate and 3.45% omission rate; hallucinations more often major (44%) than omissions (16.7%).",
+     "quote": "Our experiment results show that omissions are more common than hallucinations (3.45% to 1.47%, respectively)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Re-testing errors after prompt and workflow changes to note-generation pipeline",
+     "effect": "Prompt change from Exp 3 to 8 reduced major hallucinations 75% (4 to 1), major omissions 58% (24 to 10); atomisation (Exp 5) increased major hallucinations from 4 to 25, showing changes can degrade safety.",
+     "quote": "The change in the prompt from Experiments 3 to 8 reduced the incidence of major hallucinations by 75% (from 4 to 1), major omissions by 58% (24 to 10), and minor omissions by 35% (114 to 74) (Fig. 8 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of prompt/workflow variations on hallucinations and omissions using fixed seed and temperature",
+     "effect": "Structured prompts, function calls, and atomisation changed error counts; function-call iterations eliminated major omissions (61 to 0) and cut minor omissions 58% (130 to 54).",
+     "quote": "As a result of these changes, we eliminated major omissions completely, decreasing them from 61 to 0, and reduced minor omissions by 58%, from 130 to 54."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt engineering and workflow refinement guided by clinician-annotated error metrics",
+    "Error taxonomy with clinical safety risk grading of hallucinations and omissions (medical device style likelihood x consequence)",
+    "Additional LLM revision step to correct note errors"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 450,
+   "sample_unit": "consultation transcript-note pairs",
+   "models_evaluated": [
+    "GPT-4 (GPT-4-32k-0613)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "major hallucinations in AI clinical notes",
+     "effect": "191/12,999 note sentences hallucinated (1.47%); 84 (44%) were major and could affect diagnosis or management if uncorrected.",
+     "quote": "Of 12,999 sentences in 450 clinical notes, 191 sentences had hallucinations (1.47%), of which 84 sentences (44%) were major (could impact patient diagnosis and management if left uncorrected)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "omissions in AI clinical notes",
+     "effect": "1712/49,590 transcript sentences were omitted (3.45%); 286 (16.7%) major and 1426 (83.3%) minor.",
+     "quote": "Of the 49,590 sentences from our consultation transcripts, 1712 sentences were omitted (3.45%), of which 286 (16.7%) of which were classified as major and 1426 (83.3%) as minor."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "structured prompt changes reduced note errors",
+     "effect": "Major hallucinations reduced 75% (4 to 1), major omissions 58% (24 to 10), and minor omissions 35% (114 to 74).",
+     "quote": "The change in the prompt from Experiments 3 to 8 reduced the incidence of major hallucinations by 75% (from 4 to 1), major omissions by 58% (24 to 10), and minor omissions by 35% (114 to 74) (Fig. 8 )."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "workflow modification worsened note errors",
+     "effect": "Atomisation increased major hallucinations 4 to 25, minor hallucinations 5 to 29, major omissions 24 to 47, and minor omissions 114 to 188.",
+     "quote": "We found that major hallucinations increased from 4 to 25, minor hallucinations from 5 to 29, major omissions from 24 to 47, and minor omissions from 114 to 188 (Fig. 10 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "framework-guided function-call iteration reduced omissions",
+     "effect": "Major omissions decreased from 61 to 0; minor omissions decreased 58%, from 130 to 54.",
+     "quote": "As a result of these changes, we eliminated major omissions completely, decreasing them from 61 to 0, and reduced minor omissions by 58%, from 130 to 54."
+    }
+   ],
+   "unlisted_practices": [
+    "Function calling and JSON-based output structures for clinical note generation",
+    "Atomisation or chain-of-thought intermediate fact extraction before note generation",
+    "Second LLM revision step to review and refine generated notes"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 12999,
+   "sample_unit": "sentences",
+   "models_evaluated": [
+    "GPT-4-32k-0613"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination rate in generated clinical notes",
+     "effect": "1.47% of sentences (191/12,999) had hallucinations, of which 44% (84 sentences) were major errors.",
+     "quote": "Of 12,999 sentences in 450 clinical notes, 191 sentences had hallucinations (1.47%), of which 84 sentences (44%) were major (could impact patient diagnosis and management if left uncorrected)."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt engineering with structured formatting, explicit negations, and 'unknown' tags for missing information to reduce note errors",
+    "Function calling and JSON schema-constrained output to enforce clinical note structure",
+    "Chain-of-thought fact extraction (atomisation) from consultation transcripts before clinical note generation",
+    "Secondary LLM revision pass to review and refine generated clinical notes"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "consultation transcript-note pairs",
+ "sample_size": 450,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4 (GPT-4-32k-0613)",
+  "GPT-4-32k-0613"
+ ],
+ "links": [
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "omissions in AI clinical notes",
+   "effect": "1712/49,590 transcript sentences were omitted (3.45%); 286 (16.7%) major and 1426 (83.3%) minor.",
+   "quote": "Of the 49,590 sentences from our consultation transcripts, 1712 sentences were omitted (3.45%), of which 286 (16.7%) of which were classified as major and 1426 (83.3%) as minor.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Hallucination and omission rates in LLM-generated notes across 18 experiments, clinician-annotated by severity",
+   "effect": "Of 12,999 sentences, 191 had hallucinations (1.47%), 84 (44%) major; 1712 of 49,590 transcript sentences omitted (3.45%), 286 (16.7%) major. Iterative refinement cut major omissions from 61 to 0.",
+   "quote": "Of 12,999 sentences in 450 clinical notes, 191 sentences had hallucinations (1.47%), of which 84 sentences (44%) were major (could impact patient diagnosis and management if left uncorrected).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM-generated vs clinician-written notes: hallucinations and omissions on same transcripts",
+   "effect": "Clinician-written notes had slightly more hallucinations but fewer omissions than LLM notes (Experiment 17); LLM best configurations had fewer errors per note than reported human rates.",
+   "quote": "Interestingly, findings suggested slightly more hallucinations in clinician-written notes but fewer omissions, highlighting key differences in human vs. LLM-generated note content.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R368",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucination and omission rates of generative LLM clinical notes",
+   "effect": "1.47% hallucination rate and 3.45% omission rate; hallucinations more often major (44%) than omissions (16.7%).",
+   "quote": "Our experiment results show that omissions are more common than hallucinations (3.45% to 1.47%, respectively).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Re-testing errors after prompt and workflow changes to note-generation pipeline",
+   "effect": "Prompt change from Exp 3 to 8 reduced major hallucinations 75% (4 to 1), major omissions 58% (24 to 10); atomisation (Exp 5) increased major hallucinations from 4 to 25, showing changes can degrade safety.",
+   "quote": "The change in the prompt from Experiments 3 to 8 reduced the incidence of major hallucinations by 75% (from 4 to 1), major omissions by 58% (24 to 10), and minor omissions by 35% (114 to 74) (Fig. 8 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "major hallucinations in AI clinical notes",
+   "effect": "191/12,999 note sentences hallucinated (1.47%); 84 (44%) were major and could affect diagnosis or management if uncorrected.",
+   "quote": "Of 12,999 sentences in 450 clinical notes, 191 sentences had hallucinations (1.47%), of which 84 sentences (44%) were major (could impact patient diagnosis and management if left uncorrected).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "structured prompt changes reduced note errors",
+   "effect": "Major hallucinations reduced 75% (4 to 1), major omissions 58% (24 to 10), and minor omissions 35% (114 to 74).",
+   "quote": "The change in the prompt from Experiments 3 to 8 reduced the incidence of major hallucinations by 75% (from 4 to 1), major omissions by 58% (24 to 10), and minor omissions by 35% (114 to 74) (Fig. 8 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "workflow modification worsened note errors",
+   "effect": "Atomisation increased major hallucinations 4 to 25, minor hallucinations 5 to 29, major omissions 24 to 47, and minor omissions 114 to 188.",
+   "quote": "We found that major hallucinations increased from 4 to 25, minor hallucinations from 5 to 29, major omissions from 24 to 47, and minor omissions from 114 to 188 (Fig. 10 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Additional LLM revision step to correct note errors",
+  "Atomisation or chain-of-thought intermediate fact extraction before note generation",
+  "Chain-of-thought fact extraction (atomisation) from consultation transcripts before clinical note generation",
+  "Error taxonomy with clinical safety risk grading of hallucinations and omissions (medical device style likelihood x consequence)",
+  "Function calling and JSON schema-constrained output to enforce clinical note structure",
+  "Function calling and JSON-based output structures for clinical note generation",
+  "Iterative prompt engineering and workflow refinement guided by clinician-annotated error metrics",
+  "Iterative prompt engineering with structured formatting, explicit negations, and 'unknown' tags for missing information to reduce note errors",
+  "Second LLM revision step to review and refine generated notes",
+  "Secondary LLM revision pass to review and refine generated clinical notes"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40360677",
+ "screen": {
+  "id": "pmid:40360677",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt and workflow refinement with clinician annotation of errors",
+  "user": "clinician_or_staff",
+  "reason": "Empirical evaluation of 18 configurations/prompts/workflows for clinical note summarisation with human clinician error and safety annotation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt refinement and workflow safety framework"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40360677",
+   "empirical": 0.96,
+   "tests_practice": 0.29,
+   "real_deployment": 0.18
+  }
+ }
+}

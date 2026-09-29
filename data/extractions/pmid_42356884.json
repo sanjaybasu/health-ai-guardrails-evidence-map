@@ -1,0 +1,503 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "USA, China, India, UK",
+   "sample_size": 714,
+   "sample_unit": "validation images (CBIS-DDSM; external: CMMD 1032, DMID 509, MIAS 322)",
+   "models_evaluated": [
+    "ResNet-50",
+    "DINOv2-B14",
+    "Rad-DINO",
+    "Mammo-CLIP B5",
+    "Mammo-FM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC drop at external sites/sensors versus in-distribution",
+     "effect": "Every model lost 0.165 to 0.320 AUC points at transfer; ResNet-50 fell from 0.867 to 0.568 on CMMD, 0.547 on DMID, 0.630 on MIAS; sensitivity at 95% specificity fell from 0.31-0.47 to 0.11-0.22.",
+     "quote": "Every model, at every target population, lost more than 0.165 AUC points relative to its in-distribution performance, and sensitivity at 95% specificity dropped from 0.31 to 0.47 in-distribution to 0.11 to 0.22 across the three external targets."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of internally validated models on external unrepresentative cohorts",
+     "effect": "In-distribution AUC 0.867 for ResNet-50 collapsed to 0.547-0.630 on external cohorts; all models lost 0.165-0.320 AUC.",
+     "quote": "AUC measured on the training population is not a reliable proxy for in-clinic performance."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and calibration on non-local data versus source data",
+     "effect": "Sensitivity at 95% specificity fell to 0.107 for ResNet-50 on DMID; ECE rose from 0.055 in-distribution to 0.186-0.253 at transfer targets.",
+     "quote": "Mammography AI products approved in one national context cannot be safely deployed in another without subgroup-stratified external validation and local recalibration."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "ECE change from temperature scaling fitted on source data applied to transfer targets",
+     "effect": "Temperature scaling gave modest ECE improvements (\u0394 \u22120.009 to \u22120.049); worst transfer cells remained at ECE 0.30 or higher.",
+     "quote": "Even after recalibration, the worst transfer cells remain at ECE 0.30 or higher, well above any clinically acceptable level."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset shift across sensor, prevalence, label source, and demographics",
+     "effect": "Cohorts differed in detector, prevalence (40%/70%/23%/16%), labels, demographics; intensity distributions differed (mean 0.40, 0.64, 0.47); large transfer AUC drops.",
+     "quote": "The visible distributional differences across these three cohorts support, but do not by themselves prove, a sensor-shift contribution to the cross-population transfer drops in Table 5 ."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AUC across BI-RADS density subgroups on CBIS-DDSM",
+     "effect": "ResNet-50 D1 0.912 to D4 0.842; Mammo-FM D4 0.870 vs ResNet-50 0.842 (n=140, CIs overlap); all models lose AUC as density increases.",
+     "quote": "Second, all models lose AUC points as tissue density increases, which matches the clinical expectation."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Aggregate AUC masking subgroup performance differences",
+     "effect": "Aggregate AUC favored ResNet-50 (0.867 vs 0.846) while Mammo-FM led in D4 (0.870 vs 0.842); subgroup AUCs varied by density for all models.",
+     "quote": "The per-subgroup analysis in Table 4 shows that aggregate AUC obscures the cells where domain-specific pretraining actually helps."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Foundation models compared to simpler ResNet-50 baseline on same data",
+     "effect": "ResNet-50 (AUC 0.867) outperformed Mammo-CLIP (0.847), Mammo-FM (0.846), DINOv2 (0.813), Rad-DINO (0.703); all gaps p_adj<0.05.",
+     "quote": "No foundation model beats the ResNet-50 baseline, and the gaps are statistically significant once predictions are stacked across seeds and run through a paired DeLong test."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Effect of density-aware loss mitigation on AUC and calibration",
+     "effect": "Density-aware focal loss reduced AUC by 0.031-0.061 and doubled ECE (0.055 to 0.104-0.116) at every weight.",
+     "quote": "Adding the density-aware auxiliary loss degraded performance on every weight setting tested."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration deterioration hidden by discrimination metrics at transfer",
+     "effect": "Mammo-CLIP ECE on CMMD reached 0.403 and DINOv2 on MIAS 0.446, versus 0.055-0.105 in-distribution.",
+     "quote": "Mammo-CLIP\u2019s ECE on CMMD reaches 0.403, meaning its predicted probabilities are on average 40 percentage points off from the actual prevalence after distribution shift."
+    }
+   ],
+   "unlisted_practices": [
+    "Density-aware focal loss for subgroup-conditioned training",
+    "Post hoc temperature scaling recalibration",
+    "Per-seed Stouffer meta-analysis for significance testing"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "United States; China; India; United Kingdom",
+   "sample_size": 2577,
+   "sample_unit": "mammography images",
+   "models_evaluated": [
+    "ResNet-50",
+    "DINOv2-B14",
+    "Rad-DINO",
+    "Mammo-CLIP B5",
+    "Mammo-FM (BatmanLab)",
+    "ResNet-50 + DAF (w = 0.1)",
+    "ResNet-50 + DAF (w = 0.3)",
+    "ResNet-50 + DAF (w = 0.5)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External validation AUC and sensitivity",
+     "effect": "Every model lost >0.165 AUC; sensitivity at 95% specificity dropped from 0.31\u20130.47 in-distribution to 0.11\u20130.22 externally.",
+     "quote": "Every model, at every target population, lost more than 0.165 AUC points relative to its in-distribution performance, and sensitivity at 95% specificity dropped from 0.31 to 0.47 in-distribution to 0.11 to 0.22 across the three external targets."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Backbone AUC versus simpler baseline",
+     "effect": "ResNet-50 AUC 0.867; Mammo-CLIP 0.847, Mammo-FM 0.846, DINOv2 0.813, Rad-DINO 0.703; all gaps p_adj<0.05.",
+     "quote": "No foundation model beats the ResNet-50 baseline, and the gaps are statistically significant once predictions are stacked across seeds and run through a paired DeLong test."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Development-to-target dataset shift",
+     "effect": "External cohorts differed in detector, prevalence, label source, and demographics; transfer AUC drops were 0.165\u20130.320.",
+     "quote": "The three external evaluation cohorts differ from CBIS-DDSM along at least four axes simultaneously: X-ray detector technology, malignancy prevalence, label source, and patient demographics (see Section 5.4 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC by external cohort and sensor",
+     "effect": "Across CMMD, DMID, and MIAS, all 12 model-target AUC drops were negative, \u22120.165 to \u22120.320.",
+     "quote": "All 12 transfer cells show negative drops between \u22120.165 and \u22120.320."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Dense-breast subgroup performance",
+     "effect": "Aggregate ResNet-50 led Mammo-FM 0.867 vs 0.846, but D4 subgroup reversed direction: Mammo-FM 0.870 vs ResNet-50 0.842; CIs overlapped.",
+     "quote": "At the subgroup level, Mammo-FM outperforms ResNet-50 in the extremely dense bin (D4 AUC 0.870 vs. 0.842), although the 95% CIs of the two models overlap heavily at the D4 sample size of n = 140, so this cell should be interpreted as a directional signal worth following up rather than a statistically supported advantage."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration under distribution shift",
+     "effect": "Mammo-CLIP ECE on CMMD 0.403; DINOv2 ECE on MIAS 0.446; after temperature scaling, worst cells remained ECE \u22650.30.",
+     "quote": "Mammo-CLIP\u2019s ECE on CMMD reaches 0.403, meaning its predicted probabilities are on average 40 percentage points off from the actual prevalence after distribution shift."
+    }
+   ],
+   "unlisted_practices": [
+    "Density-aware focal loss conditioned on BI-RADS density bin",
+    "Source-fitted temperature scaling recalibration applied to external cohorts"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "United States, China, India, United Kingdom",
+   "sample_size": 2577,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "ResNet-50",
+    "DINOv2-B14",
+    "Rad-DINO",
+    "Mammo-CLIP B5",
+    "Mammo-FM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-population external transfer discrimination and sensitivity collapse",
+     "effect": "Every model lost 0.165 to 0.320 AUC points at transfer, with sensitivity at 95% specificity collapsing from 0.31-0.47 in-distribution to 0.11-0.22 across the three external targets.",
+     "quote": "At transfer, every model lost 0.165 to 0.320 AUC points relative to in-distribution performance, with sensitivity at 95% specificity collapsing from 0.31 to 0.47 in-distribution to 0.11 to 0.22 across the three external targets."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "in-distribution discrimination of foundation models versus simpler ResNet-50 baseline",
+     "effect": "ResNet-50 outperformed all four foundation models on CBIS-DDSM (AUC 0.867 vs. 0.847, 0.846, 0.813, and 0.703; all gaps p_adj < 0.05).",
+     "quote": "Within this single-source three-seed evaluation, ResNet-50 outperformed all four foundation models on CBIS-DDSM (AUC 0.867 vs. 0.847, 0.846, 0.813, and 0.703; all gaps p_adj < 0.05)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "USA, China, India, UK",
+ "sample_unit": "validation images (CBIS-DDSM; external: CMMD 1032, DMID 509, MIAS 322)",
+ "sample_size": 2577,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "DINOv2-B14",
+  "Mammo-CLIP B5",
+  "Mammo-FM",
+  "Mammo-FM (BatmanLab)",
+  "Rad-DINO",
+  "ResNet-50",
+  "ResNet-50 + DAF (w = 0.1)",
+  "ResNet-50 + DAF (w = 0.3)",
+  "ResNet-50 + DAF (w = 0.5)"
+ ],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUC drop at external sites/sensors versus in-distribution",
+   "effect": "Every model lost 0.165 to 0.320 AUC points at transfer; ResNet-50 fell from 0.867 to 0.568 on CMMD, 0.547 on DMID, 0.630 on MIAS; sensitivity at 95% specificity fell from 0.31-0.47 to 0.11-0.22.",
+   "quote": "Every model, at every target population, lost more than 0.165 AUC points relative to its in-distribution performance, and sensitivity at 95% specificity dropped from 0.31 to 0.47 in-distribution to 0.11 to 0.22 across the three external targets.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance and calibration on non-local data versus source data",
+   "effect": "Sensitivity at 95% specificity fell to 0.107 for ResNet-50 on DMID; ECE rose from 0.055 in-distribution to 0.186-0.253 at transfer targets.",
+   "quote": "Mammography AI products approved in one national context cannot be safely deployed in another without subgroup-stratified external validation and local recalibration.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dataset shift across sensor, prevalence, label source, and demographics",
+   "effect": "Cohorts differed in detector, prevalence (40%/70%/23%/16%), labels, demographics; intensity distributions differed (mean 0.40, 0.64, 0.47); large transfer AUC drops.",
+   "quote": "The visible distributional differences across these three cohorts support, but do not by themselves prove, a sensor-shift contribution to the cross-population transfer drops in Table 5 .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Aggregate AUC masking subgroup performance differences",
+   "effect": "Aggregate AUC favored ResNet-50 (0.867 vs 0.846) while Mammo-FM led in D4 (0.870 vs 0.842); subgroup AUCs varied by density for all models.",
+   "quote": "The per-subgroup analysis in Table 4 shows that aggregate AUC obscures the cells where domain-specific pretraining actually helps.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Foundation models compared to simpler ResNet-50 baseline on same data",
+   "effect": "ResNet-50 (AUC 0.867) outperformed Mammo-CLIP (0.847), Mammo-FM (0.846), DINOv2 (0.813), Rad-DINO (0.703); all gaps p_adj<0.05.",
+   "quote": "No foundation model beats the ResNet-50 baseline, and the gaps are statistically significant once predictions are stacked across seeds and run through a paired DeLong test.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration deterioration hidden by discrimination metrics at transfer",
+   "effect": "Mammo-CLIP ECE on CMMD reached 0.403 and DINOv2 on MIAS 0.446, versus 0.055-0.105 in-distribution.",
+   "quote": "Mammo-CLIP\u2019s ECE on CMMD reaches 0.403, meaning its predicted probabilities are on average 40 percentage points off from the actual prevalence after distribution shift.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of internally validated models on external unrepresentative cohorts",
+   "effect": "In-distribution AUC 0.867 for ResNet-50 collapsed to 0.547-0.630 on external cohorts; all models lost 0.165-0.320 AUC.",
+   "quote": "AUC measured on the training population is not a reliable proxy for in-clinic performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "AUC across BI-RADS density subgroups on CBIS-DDSM",
+   "effect": "ResNet-50 D1 0.912 to D4 0.842; Mammo-FM D4 0.870 vs ResNet-50 0.842 (n=140, CIs overlap); all models lose AUC as density increases.",
+   "quote": "Second, all models lose AUC points as tissue density increases, which matches the clinical expectation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of density-aware loss mitigation on AUC and calibration",
+   "effect": "Density-aware focal loss reduced AUC by 0.031-0.061 and doubled ECE (0.055 to 0.104-0.116) at every weight.",
+   "quote": "Adding the density-aware auxiliary loss degraded performance on every weight setting tested.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External validation AUC and sensitivity",
+   "effect": "Every model lost >0.165 AUC; sensitivity at 95% specificity dropped from 0.31\u20130.47 in-distribution to 0.11\u20130.22 externally.",
+   "quote": "Every model, at every target population, lost more than 0.165 AUC points relative to its in-distribution performance, and sensitivity at 95% specificity dropped from 0.31 to 0.47 in-distribution to 0.11 to 0.22 across the three external targets.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "in-distribution discrimination of foundation models versus simpler ResNet-50 baseline",
+   "effect": "ResNet-50 outperformed all four foundation models on CBIS-DDSM (AUC 0.867 vs. 0.847, 0.846, 0.813, and 0.703; all gaps p_adj < 0.05).",
+   "quote": "Within this single-source three-seed evaluation, ResNet-50 outperformed all four foundation models on CBIS-DDSM (AUC 0.867 vs. 0.847, 0.846, 0.813, and 0.703; all gaps p_adj < 0.05).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Density-aware focal loss conditioned on BI-RADS density bin",
+  "Density-aware focal loss for subgroup-conditioned training",
+  "Per-seed Stouffer meta-analysis for significance testing",
+  "Post hoc temperature scaling recalibration",
+  "Source-fitted temperature scaling recalibration applied to external cohorts"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42356884",
+ "screen": {
+  "id": "pmid:42356884",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration (temperature scaling) and external validation before deployment",
+  "user": "none",
+  "reason": "Empirical multi-dataset benchmark testing cross-sensor and cross-population generalization across four countries, specifically testing post hoc recalibration (temperature scaling) and assessing requirements for local validation prior to deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "post hoc recalibration and local external validation across sensors/populations"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42356884",
+   "empirical": 0.97,
+   "tests_practice": 0.4,
+   "real_deployment": 0.03
+  }
+ }
+}

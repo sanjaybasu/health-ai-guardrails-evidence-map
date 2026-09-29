@@ -1,0 +1,262 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "US, Italy, Germany",
+   "sample_size": 102,
+   "sample_unit": "patients (MRI-CT pairs across five centers)",
+   "models_evaluated": [
+    "FedSynthCT-Brain (2D UNet, FedAvg+FedProx)",
+    "SecAgg+",
+    "FedMedian",
+    "DLG",
+    "FedMIA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R347",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Membership inference AUC with vs without Secure Aggregation",
+     "effect": "FedMIA AUC 0.92-0.99 without SecAgg; SecAgg reduced AUC to 0.23, 0.46, 0.56, 0.54 for Centers A-D with negligible impact on synthesis quality.",
+     "quote": "The implementation of SecAgg substantially reduced the attack efficacy, as evidenced by the AUC values, which decreased to 0.23, 0.46, 0.56, and 0.54 for Centers A, B, C, and D, respectively (see Fig. 3 )."
+    },
+    {
+     "rec_id": "R346",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of poisoning on MAE under FedAvg versus Byzantine-robust FedMedian aggregation",
+     "effect": "At 100% noise FedAvg MAE reached 504-841 HU (Center C poisoned); FedMedian restored MAE near baseline (>80% reduction for Center D), with residual degradation and inconsistent benefit at 10% noise.",
+     "quote": "The FedMedian aggregation strategy consistently mitigated or severely limited the attack under all poisoning scenarios at"
+    }
+   ],
+   "unlisted_practices": [
+    "Secure aggregation in federated learning to hide individual client updates",
+    "Byzantine-robust median aggregation against data poisoning in federated learning",
+    "Security analysis of federated learning frameworks against gradient inversion attacks"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "US; Italy; Germany; Centers D and E from SynthRAD Grand Challenge 2023",
+   "sample_size": 102,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "FedSynthCT-Brain",
+    "2D UNet-based model",
+    "FedAvg+FedProx",
+    "SecAgg",
+    "FedMedian"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R347",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "membership inference mitigation",
+     "effect": "SecAgg reduced FedMIA AUC to 0.23-0.56 across centers without impacting synthesis quality.",
+     "quote": "The introduction of SecAgg reduced AUC values to near-random levels (0.23-0.56) across all centers without impacting synthesis quality."
+    },
+    {
+     "rec_id": "R346",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "data poisoning robustness",
+     "effect": "FedMedian limited 100% and 50% poisoning; >80% MAE reduction for 100% Center D poisoning, but 10% noise advantage was less consistent.",
+     "quote": "At 10% noise injection, the advantage of FedMedian over FedAvg was less consistent, and in several configurations FedAvg achieved equivalent MAE."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States, Italy, Germany",
+   "sample_size": 102,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "FedSynthCT-Brain (2D UNet)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R346",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model synthesis error under data poisoning attacks",
+     "effect": "FedMedian restored MAE close to baseline under 50% and 100% noise (reducing MAE >80% vs FedAvg), but had less consistent advantage at 10% noise.",
+     "quote": "Under high-noise poisoning, the standard federated averaging (FedAvg) aggregation rendered the federation inoperative, while FedMedian restored performance close to the no-poisoning baseline in most scenarios, with significant residual degradation in specific center configurations."
+    },
+    {
+     "rec_id": "R347",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Membership inference attack AUC",
+     "effect": "FedMIA AUC decreased from 0.92-0.99 under FedAvg to near-random levels (0.23-0.56) across all centers with SecAgg, without impacting synthesis quality.",
+     "quote": "The introduction of SecAgg reduced AUC values to near-random levels (0.23-0.56) across all centers without impacting synthesis quality."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "US, Italy, Germany",
+ "sample_unit": "patients",
+ "sample_size": 102,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "2D UNet-based model",
+  "DLG",
+  "FedAvg+FedProx",
+  "FedMIA",
+  "FedMedian",
+  "FedSynthCT-Brain",
+  "FedSynthCT-Brain (2D UNet)",
+  "FedSynthCT-Brain (2D UNet, FedAvg+FedProx)",
+  "SecAgg",
+  "SecAgg+"
+ ],
+ "links": [
+  {
+   "rec_id": "R347",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Membership inference AUC with vs without Secure Aggregation",
+   "effect": "FedMIA AUC 0.92-0.99 without SecAgg; SecAgg reduced AUC to 0.23, 0.46, 0.56, 0.54 for Centers A-D with negligible impact on synthesis quality.",
+   "quote": "The implementation of SecAgg substantially reduced the attack efficacy, as evidenced by the AUC values, which decreased to 0.23, 0.46, 0.56, and 0.54 for Centers A, B, C, and D, respectively (see Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R346",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Effect of poisoning on MAE under FedAvg versus Byzantine-robust FedMedian aggregation",
+   "effect": "At 100% noise FedAvg MAE reached 504-841 HU (Center C poisoned); FedMedian restored MAE near baseline (>80% reduction for Center D), with residual degradation and inconsistent benefit at 10% noise.",
+   "quote": "The FedMedian aggregation strategy consistently mitigated or severely limited the attack under all poisoning scenarios at",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Byzantine-robust median aggregation against data poisoning in federated learning",
+  "Secure aggregation in federated learning to hide individual client updates",
+  "Security analysis of federated learning frameworks against gradient inversion attacks"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42400864",
+ "screen": {
+  "id": "pmid:42400864",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "Secure aggregation and Byzantine-robust median aggregation as federated learning security safeguards",
+  "user": "none",
+  "reason": "Evaluates adversarial attacks and compares outcomes with and without specific deployment/training safeguards (SecAgg, FedMedian) on a federated medical imaging translation framework.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "privacy and security defenses in federated learning (Secure Aggregation, FedMedian)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42400864",
+   "empirical": 0.93,
+   "tests_practice": 0.61,
+   "real_deployment": 0.07
+  }
+ }
+}

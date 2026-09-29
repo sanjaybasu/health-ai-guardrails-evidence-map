@@ -1,0 +1,293 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 7296,
+   "sample_unit": "people with type 2 diabetes and CKD",
+   "models_evaluated": [
+    "Kidney Failure Risk Equation (four-variable, UK-recalibrated)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "KFRE calibration on local historical data against ESKD endpoint",
+     "effect": "Discrimination good (C-index 0.842 at 2y, 0.816 at 5y) but KFRE under-predicted ESKD risk overall and by ethnic group; underprediction larger at 5 years.",
+     "quote": "Figure 2 suggests that the KFRE is underpredicting risks overall as well as in both ethnic groups ( online supplemental table S3 , online supplemental figure S4A )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of local recalibration on KFRE calibration metrics",
+     "effect": "Recalibration using local cohort data improved ICI by more than 50%, E50 by more than 38% and E90 by more than 80% versus UK-recalibrated KFRE.",
+     "quote": "Recalibration of the original KFRE performed far better than the KFRE (UK-recalibrated) with more than 50% improvement in ICI, more than 38% in E50 and more than 80% in E90 ( online supplemental table S6 and online supplemental figure S10 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "KFRE discrimination and calibration across ethnic subgroups",
+     "effect": "Discrimination unchanged in African Caribbean and Caucasian groups; underprediction in both, with 5-year E90 higher in Caucasian (0.078) than African Caribbean (0.057).",
+     "quote": "These metrics are higher in Caucasian than in African Caribbean and particularly the E90 for 5 years (0.078, 95% CI 0.057 to 0.100 and 0.057 95% CI 0.036 to 0.078 for Caucasian and African Caribbean, respectively) ( online supplemental table S3 )."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "KFRE calibration when applied to a new endpoint (ESKD) and population (T2DM with CKD)",
+     "effect": "KFRE under-predicted ESKD risk; underprediction worse for eGFR<15 endpoint than eGFR<10, despite good discrimination (C-index 0.843 at 2y, 0.801 at 5y).",
+     "quote": "With the threshold 15 mL/min defining the study event, we also observed an underprediction of the 2-year and 5-year risks, but it was more significant compared with what was found with the primary event definition ( table 2 and online supplemental figure S3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 7296,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "UK recalibrated four-variable Kidney Failure Risk Equation (KFRE)",
+    "Original four-variable Kidney Failure Risk Equation (recalibrated to cohort)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local KFRE calibration and discrimination",
+     "effect": "KFRE underpredicted ESKD risk; primary-endpoint C-index was 0.842 at 2 years and 0.816 at 5 years.",
+     "quote": "We noted that KFRE \u2018under-predicted\u2019 the risk of ESKD in all the risk groups we defined by decile of 2-year and 5-year predicted risks suggesting a consistent pattern."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of KFRE recalibration",
+     "effect": "Recalibration improved ICI >50%, E50 >38%, and E90 >80% versus UK-recalibrated KFRE.",
+     "quote": "Recalibration of the original KFRE performed far better than the KFRE (UK-recalibrated) with more than 50% improvement in ICI, more than 38% in E50 and more than 80% in E90 ( online supplemental table S6 and online supplemental figure S10 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ethnic subgroup calibration differences",
+     "effect": "5-year E90 was 0.078 (95% CI 0.057 to 0.100) in Caucasian vs 0.057 (0.036 to 0.078) in African Caribbean.",
+     "quote": "These metrics are higher in Caucasian than in African Caribbean and particularly the E90 for 5 years (0.078, 95% CI 0.057 to 0.100 and 0.057 95% CI 0.036 to 0.078 for Caucasian and African Caribbean, respectively) ( online supplemental table S3 )."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Generalization to ESKD endpoints",
+     "effect": "Discrimination was adequate, but greater calibration was required for ESKD defined as sustained eGFR <10 or <15 mL/min/1.73 m2.",
+     "quote": "Our observations suggest that although an adequate KFRE discrimination was obtained, greater calibration would be required for its application to predict ESKD whether defined as a sustained eGFR <10 or as a sustained eGFR <15 mL/min/1.73 m 2 ."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 7296,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Kidney Failure Risk Equation (KFRE)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration improvement after local recalibration",
+     "effect": "Recalibration improved ICI by >50%, E50 by >38%, and E90 by >80% compared with the UK-recalibrated KFRE.",
+     "quote": "Recalibration of the original KFRE performed far better than the KFRE (UK-recalibrated) with more than 50% improvement in ICI, more than 38% in E50 and more than 80% in E90 ( online supplemental table S6 and online supplemental figure S10 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "patients",
+ "sample_size": 7296,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Kidney Failure Risk Equation (KFRE)",
+  "Kidney Failure Risk Equation (four-variable, UK-recalibrated)",
+  "Original four-variable Kidney Failure Risk Equation (recalibrated to cohort)",
+  "UK recalibrated four-variable Kidney Failure Risk Equation (KFRE)"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "KFRE calibration on local historical data against ESKD endpoint",
+   "effect": "Discrimination good (C-index 0.842 at 2y, 0.816 at 5y) but KFRE under-predicted ESKD risk overall and by ethnic group; underprediction larger at 5 years.",
+   "quote": "Figure 2 suggests that the KFRE is underpredicting risks overall as well as in both ethnic groups ( online supplemental table S3 , online supplemental figure S4A ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of local recalibration on KFRE calibration metrics",
+   "effect": "Recalibration using local cohort data improved ICI by more than 50%, E50 by more than 38% and E90 by more than 80% versus UK-recalibrated KFRE.",
+   "quote": "Recalibration of the original KFRE performed far better than the KFRE (UK-recalibrated) with more than 50% improvement in ICI, more than 38% in E50 and more than 80% in E90 ( online supplemental table S6 and online supplemental figure S10 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "KFRE discrimination and calibration across ethnic subgroups",
+   "effect": "Discrimination unchanged in African Caribbean and Caucasian groups; underprediction in both, with 5-year E90 higher in Caucasian (0.078) than African Caribbean (0.057).",
+   "quote": "These metrics are higher in Caucasian than in African Caribbean and particularly the E90 for 5 years (0.078, 95% CI 0.057 to 0.100 and 0.057 95% CI 0.036 to 0.078 for Caucasian and African Caribbean, respectively) ( online supplemental table S3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "KFRE calibration when applied to a new endpoint (ESKD) and population (T2DM with CKD)",
+   "effect": "KFRE under-predicted ESKD risk; underprediction worse for eGFR<15 endpoint than eGFR<10, despite good discrimination (C-index 0.843 at 2y, 0.801 at 5y).",
+   "quote": "With the threshold 15 mL/min defining the study event, we also observed an underprediction of the 2-year and 5-year risks, but it was more significant compared with what was found with the primary event definition ( table 2 and online supplemental figure S3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39277182",
+ "screen": {
+  "id": "pmid:39277182",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration of risk equation",
+  "user": "none",
+  "reason": "The study validates and recalibrates the Kidney Failure Risk Equation (KFRE), a standard regression-based clinical risk equation rather than modern AI/machine learning, and does not evaluate clinical deployment or implementation safeguards.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39277182",
+   "empirical": 0.46,
+   "tests_practice": 0.58,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,93 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "China",
+ "sample_size": 368,
+ "sample_unit": "whole-slide images (208 patients, 2 centers)",
+ "models_evaluated": [
+  "PANseg",
+  "fully supervised baseline (FSB)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Pathologist diagnostic accuracy and time with vs without AI assistance for lymph node metastasis detection",
+   "effect": "PANseg augmented the diagnostic accuracy of 6 pathologists from 0.888 to 0.961, while reducing the average diagnostic time by 32.6% (72.0 vs 48.5 minutes).",
+   "quote": "In lymph node metastasis detection, PANseg augmented the diagnostic accuracy of 6 pathologists from 0.888 to 0.961, while reducing the average diagnostic time by 32.6% (72.0 vs 48.5 minutes).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Performance on external test set and unseen sample types versus internal tests",
+   "effect": "External AUROC 0.950 vs FSB 0.958; unseen fresh-frozen specimens AUROC 0.878 and biopsy sections 0.821, lower than internal (0.969-0.991).",
+   "quote": "Moreover, the model demonstrated considerable generalizability with previously unseen sample types, attaining AUROCs of 0.878 on fresh-frozen specimens (20 patients/20 WSIs) and 0.821 on biopsy sections (20 patients/20 WSIs).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "weakly supervised training with image-level labels to reduce annotation burden"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40199428",
+ "screen": {
+  "id": "pmid:40199428",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study conducts a reader study with 6 pathologists comparing diagnostic accuracy and reading time with and without AI assistance (PANseg).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI-assisted pathologist review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40199428",
+   "empirical": 0.96,
+   "tests_practice": 0.29,
+   "real_deployment": 0.2
+  }
+ }
+}

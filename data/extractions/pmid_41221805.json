@@ -1,0 +1,283 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 9479,
+   "sample_unit": "patients (urine culture dataset; 1947 in blood culture dataset)",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AUROC of UTI prediction models across race, sex, and age subgroups",
+     "effect": "Overall performance similar across groups, but smaller groups showed larger differences; urine model AUROC 0.56-0.73 by race, 0.40 for ages 10-19, 0.52 for 90-99.",
+     "quote": "The fairness analysis revealed that while overall model performances were similar across demographic groups, some smaller groups had larger performance difference compared with the average value\u2014this may be due to an insufficient sample size for robust model training."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Proportion of appropriate amoxicillin recommendations across probability decision thresholds",
+     "effect": "Raising the cUTI threshold from 0.5 to 0.73 increased correctly dosed patients from 26% (79.3% of ampicillin-susceptible) to 31.9% (96.6%), with slightly more under-dosed patients; no gain for blood culture model.",
+     "quote": "Increasing the probability threshold at which a patient was classed as having cUTI to 0.73 (requiring a cUTI probability of at least 0.73 to predict cUTI, which was the decision threshold at which the proportion of correctly treated patients was the highest) further improved the proportion of correctly dosed patients (31.9%, n = 336%\u201396.6% of patients with ampicillin-susceptible isolates) at the expense of a small increase in the number of under-dosed patients."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability of models trained on single-site ICU/ED data to other populations",
+     "effect": "Models trained on single-center MIMIC-IV data (Boston) achieved only AUROC 0.62; authors state the models require validation in other populations and larger multi-region cohorts.",
+     "quote": "Secondly, our prediction models require further validation in other populations."
+    }
+   ],
+   "unlisted_practices": [
+    "Using ML-predicted infection diagnosis to individualize EUCAST antimicrobial breakpoint interpretation in laboratory reporting"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 11426,
+   "sample_unit": "patients across urine and blood culture datasets",
+   "models_evaluated": [
+    "XGBoost urine culture model",
+    "XGBoost blood culture model",
+    "ADAPT-DSR adaptive breakpoint susceptibility reporting algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correct dosing across probability thresholds",
+     "effect": "Urine correct dosing improved from 26% (n=276) at threshold 0.5 to 31.9% (n=336; 96.6% susceptible) at threshold 0.73.",
+     "quote": "Increasing the probability threshold at which a patient was classed as having cUTI to 0.73 (requiring a cUTI probability of at least 0.73 to predict cUTI, which was the decision threshold at which the proportion of correctly treated patients was the highest) further improved the proportion of correctly dosed patients (31.9%, n = 336%\u201396.6% of patients with ampicillin-susceptible isolates) at the expense of a small increase in the number of under-dosed patients."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup AUROC variation by demographics",
+     "effect": "Urine AUROC varied: White 0.62, Black 0.59, Asian 0.73, Other 0.56; age 10\u201319 0.40; blood age 90\u201399 0.47.",
+     "quote": "The fairness analysis revealed that while overall model performances were similar across demographic groups, some smaller groups had larger performance difference compared with the average value\u2014this may be due to an insufficient sample size for robust model training."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Incorrect antimicrobial regimen recommendations",
+     "effect": "At threshold 0.5, urine recommendations included 6.0% (n=63) excessive dose and 0.9% (n=9) insufficient dose.",
+     "quote": "For patients with Enterobacterales in their urine and at a decision threshold of 0.5, a total of 26% ( n = 276) of patients were recommended the correct dose of amoxicillin according to EUCAST guidelines (79.3% of patients with ampicillin-susceptible isolates), 6.0% ( n = 63) had a higher than necessary recommended dose of amoxicillin (because cUTI was predicted in a patient with uUTI), and 0.9% ( n = 9) were recommended an insufficient dosage (because uUTI was predicted in a patient with cUTI)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 11426,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Proportion of patients recommended correct amoxicillin dosage",
+     "effect": "Increasing the threshold to 0.73 improved correctly dosed patients from 79.3% (n=276) to 96.6% (n=336) among ampicillin-susceptible isolates, with a small increase in under-dosed patients.",
+     "quote": "Increasing the probability threshold at which a patient was classed as having cUTI to 0.73 (requiring a cUTI probability of at least 0.73 to predict cUTI, which was the decision threshold at which the proportion of correctly treated patients was the highest) further improved the proportion of correctly dosed patients (31.9%, n = 336%\u201396.6% of patients with ampicillin-susceptible isolates) at the expense of a small increase in the number of under-dosed patients."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model discrimination across demographic subgroups",
+     "effect": "AUROCs were similar across racial groups (0.56-0.73) and sexes (0.63), but differed across age groups, ranging from 0.40 (ages 10-19) to 0.73 (ages 30-39) in the urine culture model.",
+     "quote": "The fairness analysis revealed that while overall model performances were similar across demographic groups, some smaller groups had larger performance difference compared with the average value\u2014this may be due to an insufficient sample size for robust model training."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients (urine culture dataset; 1947 in blood culture dataset)",
+ "sample_size": 11426,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ADAPT-DSR adaptive breakpoint susceptibility reporting algorithm",
+  "XGBoost",
+  "XGBoost blood culture model",
+  "XGBoost urine culture model"
+ ],
+ "links": [
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "AUROC of UTI prediction models across race, sex, and age subgroups",
+   "effect": "Overall performance similar across groups, but smaller groups showed larger differences; urine model AUROC 0.56-0.73 by race, 0.40 for ages 10-19, 0.52 for 90-99.",
+   "quote": "The fairness analysis revealed that while overall model performances were similar across demographic groups, some smaller groups had larger performance difference compared with the average value\u2014this may be due to an insufficient sample size for robust model training.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Proportion of appropriate amoxicillin recommendations across probability decision thresholds",
+   "effect": "Raising the cUTI threshold from 0.5 to 0.73 increased correctly dosed patients from 26% (79.3% of ampicillin-susceptible) to 31.9% (96.6%), with slightly more under-dosed patients; no gain for blood culture model.",
+   "quote": "Increasing the probability threshold at which a patient was classed as having cUTI to 0.73 (requiring a cUTI probability of at least 0.73 to predict cUTI, which was the decision threshold at which the proportion of correctly treated patients was the highest) further improved the proportion of correctly dosed patients (31.9%, n = 336%\u201396.6% of patients with ampicillin-susceptible isolates) at the expense of a small increase in the number of under-dosed patients.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Using ML-predicted infection diagnosis to individualize EUCAST antimicrobial breakpoint interpretation in laboratory reporting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41221805",
+ "screen": {
+  "id": "pmid:41221805",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert/probability threshold selection",
+  "user": "none",
+  "reason": "Evaluates simulated clinical recommendations using machine learning predictions and tests the effect of adjusting the probability threshold on recommendation appropriateness.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "decision threshold tuning"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41221805",
+   "empirical": 0.95,
+   "tests_practice": 0.49,
+   "real_deployment": 0.05
+  }
+ }
+}

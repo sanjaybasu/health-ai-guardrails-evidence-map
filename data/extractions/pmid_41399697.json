@@ -1,0 +1,324 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 3093,
+   "sample_unit": "regions of interest (from 545 RT structure files)",
+   "models_evaluated": [
+    "RayStation embedded DLS model (version 12A)",
+    "RayStation embedded DLS model (version 2024B)",
+    "In-house trained DLS model (Bakx et al.)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automatic detection of performance drops via SPC control limits and adapted Nelson rules",
+     "effect": "3.0% of ROIs flagged as outliers; four trend shifts automatically identified a clinically significant humerus performance drop, also recognised by end-users; sensitivity/specificity not tested",
+     "quote": "Although the current setup was not tested for sensitivity and specificity, with the integration of the CQA framework, a clinically significant performance drop of the humerus was detected automatically."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Segmentation performance change after vendor software version upgrade",
+     "effect": "After upgrade from RayStation 12A to 2024B, humerus outliers increased and 4 trend shifts occurred (none under 12A), moving average shifted outside control limits; heart outliers decreased",
+     "quote": "For RayStation version 12A, no trend shifts were reported for the humerus, whereas 4 trend shifts were reported for version 2024B."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparing DLS outputs against clinically approved segmentations to identify errors",
+     "effect": "93 outliers (3.0% of ROIs) detected: 88 with larger adjustments, 5 with less; on manual investigation 12 were human errors; 5 patients saved for retraining",
+     "quote": "These 93 outliers were manually investigated and from them 12 were found to be human errors."
+    }
+   ],
+   "unlisted_practices": [
+    "Saving anatomically unusual cases identified by monitoring for potential model retraining with the manufacturer"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 3093,
+   "sample_unit": "regions of interest with paired deep-learning and clinically approved segmentations",
+   "models_evaluated": [
+    "Embedded deep learning segmentation model in RayStation versions 12A and 2024B",
+    "In-house deep learning segmentation model trained by Bakx et al."
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automatic detection of clinically significant segmentation performance deterioration",
+     "effect": "Continuous monitoring detected a clinically significant humerus performance drop, reflected in 4 trend shifts after the software upgrade. Sensitivity and specificity were not tested.",
+     "quote": "Although the current setup was not tested for sensitivity and specificity, with the integration of the CQA framework, a clinically significant performance drop of the humerus was detected automatically."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automatic outlier detection using statistical control limits and adapted Nelson rules",
+     "effect": "Rules flagged 88 outliers with larger adjustments and 5 with fewer adjustments, representing 3.0 % of ROIs. Flagged cases underwent manual investigation.",
+     "quote": "Rule 1 detected 88 outliers with larger adjustments and 5 with less adjustments."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Identification of errors through segmentation comparison and manual investigation",
+     "effect": "Comparison of AI segmentations with clinically approved delineations flagged 93 outliers; manual investigation identified 12 human errors.",
+     "quote": "These 93 outliers were manually investigated and from them 12 were found to be human errors."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local segmentation performance deterioration following treatment-planning software upgrade",
+     "effect": "Humerus trend shifts increased from none with RayStation version 12A to 4 with version 2024B; the moving average shifted outside the control limits.",
+     "quote": "For RayStation version 12A, no trend shifts were reported for the humerus, whereas 4 trend shifts were reported for version 2024B."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 545,
+   "sample_unit": "patient scans",
+   "models_evaluated": [
+    "RaySearch RayStation embedded DLS",
+    "in-house DLS model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of deviations",
+     "effect": "The monitoring framework successfully used statistical process control to automatically report outliers and trend shifts in real-time use.",
+     "quote": "A CQA framework for DLS was successfully implemented using SPC and adapted Nelson rules to automatically report outliers and trend shifts, which led to automatic detection of such deviations."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician adjustments to AI",
+     "effect": "Logging edit rates showed that clinicians made consistently fewer adjustments to AI segmentations during live clinical practice compared to commissioning.",
+     "quote": "Although not statistically significant, the difference in Table 3 showed that consistently less adjustments were made to the DLS in clinical practice than during commissioning."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "manual investigations triggered",
+     "effect": "Predefined statistical thresholds automatically identified 93 outliers, and subsequent manual investigation found 12 human errors.",
+     "quote": "These 93 outliers were manually investigated and from them 12 were found to be human errors."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance after software update",
+     "effect": "After upgrading to a new software version, four trend shifts indicating a performance drop were reported for humerus segmentations.",
+     "quote": "For RayStation version 12A, no trend shifts were reported for the humerus, whereas 4 trend shifts were reported for version 2024B."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "regions of interest (from 545 RT structure files)",
+ "sample_size": 3093,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Embedded deep learning segmentation model in RayStation versions 12A and 2024B",
+  "In-house deep learning segmentation model trained by Bakx et al.",
+  "In-house trained DLS model (Bakx et al.)",
+  "RaySearch RayStation embedded DLS",
+  "RayStation embedded DLS model (version 12A)",
+  "RayStation embedded DLS model (version 2024B)",
+  "in-house DLS model"
+ ],
+ "links": [
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Automatic detection of performance drops via SPC control limits and adapted Nelson rules",
+   "effect": "3.0% of ROIs flagged as outliers; four trend shifts automatically identified a clinically significant humerus performance drop, also recognised by end-users; sensitivity/specificity not tested",
+   "quote": "Although the current setup was not tested for sensitivity and specificity, with the integration of the CQA framework, a clinically significant performance drop of the humerus was detected automatically.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R545",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Segmentation performance change after vendor software version upgrade",
+   "effect": "After upgrade from RayStation 12A to 2024B, humerus outliers increased and 4 trend shifts occurred (none under 12A), moving average shifted outside control limits; heart outliers decreased",
+   "quote": "For RayStation version 12A, no trend shifts were reported for the humerus, whereas 4 trend shifts were reported for version 2024B.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparing DLS outputs against clinically approved segmentations to identify errors",
+   "effect": "93 outliers (3.0% of ROIs) detected: 88 with larger adjustments, 5 with less; on manual investigation 12 were human errors; 5 patients saved for retraining",
+   "quote": "These 93 outliers were manually investigated and from them 12 were found to be human errors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Automatic detection of clinically significant segmentation performance deterioration",
+   "effect": "Continuous monitoring detected a clinically significant humerus performance drop, reflected in 4 trend shifts after the software upgrade. Sensitivity and specificity were not tested.",
+   "quote": "Although the current setup was not tested for sensitivity and specificity, with the integration of the CQA framework, a clinically significant performance drop of the humerus was detected automatically.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R371",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Saving anatomically unusual cases identified by monitoring for potential model retraining with the manufacturer"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41399697",
+ "screen": {
+  "id": "pmid:41399697",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "statistical process control drift monitoring",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a continuous quality assurance framework using statistical process control to monitor deep learning segmentation model drift and outliers during clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "continuous quality assurance and drift monitoring with statistical process control"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41399697",
+   "empirical": 0.95,
+   "tests_practice": 0.58,
+   "real_deployment": 0.84
+  }
+ }
+}

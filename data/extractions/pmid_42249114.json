@@ -1,0 +1,407 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 120,
+   "sample_unit": "clinical scenarios (270 internal questions plus 30 external questions)",
+   "models_evaluated": [
+    "GPT-4o",
+    "Gemini 2.5 Flash",
+    "Grok 4",
+    "Llama 3.3 70B",
+    "Claude Sonnet 4",
+    "DeepSeek-V2.5",
+    "GPT-4o mini",
+    "GPT-3.5 Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expert-rated hallucination rate with guideline-grounded GraphRAG versus vanilla LLM and standard RAG",
+     "effect": "Hallucination fell to 3.3% with EyeRAG vs 30.0% for Vanilla LLM; Naive RAG 16.6%, Hypothetical RAG 10.0%, Hierarchical Index RAG 6.6%.",
+     "quote": "EyeRAG achieved the lowest observed hallucination rate, decreasing to 3.3% compared with 30.0% for Vanilla LLM."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "EyeRAG performance across generation temperatures 0 to 1.0",
+     "effect": "EyeRAG average ranks ranged from 1.45 \u00b1 0.89 at temperature 0 to 1.78 \u00b1 1.12 at temperature 1.0, consistently outperforming other RAG variants and vanilla LLM (3.67\u20134.23).",
+     "quote": "EyeRAG maintained superior performance across all settings, with average ranks ranging from 1.45 \u00b1 0.89 at temperature 0 to 1.78 \u00b1 1.12 at temperature 1.0, consistently outperforming other RAG variants and the Vanilla LLM (which ranged from 3.67 \u00b1 0.78 to 4.23 \u00b1 0.95)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Performance on external hospital dataset versus internal dataset",
+     "effect": "EyeRAG average rank 1.72 \u00b1 1.18 externally vs 1.61 \u00b1 1.04 internally; ranked first in 40.37% vs 40.29% of cases.",
+     "quote": "EyeRAG maintained its superior performance, achieving an average rank of 1.72 \u00b1 1.18\u2014comparable to its 1.61 \u00b1 1.04 in the primary \u2018Overall Performance and Rankings\u2019 evaluation (Fig. 4A )\u2014and was ranked first in 40.37% of cases, on par with its 40.29% in the larger primary set."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Vanilla LLM clinical accuracy and safety versus retrieval-augmented systems",
+     "effect": "Vanilla LLM fell significantly short in Clinical Accuracy and Safety; expert clinical accuracy/safety for EyeRAG was 2.98 on a 1-3 scale, total score 2.91 vs 1.32 for Vanilla LLM.",
+     "quote": "The Vanilla LLM fell significantly short in Clinical Accuracy and Safety, highlighting the risks associated with its use in a clinical context without the safeguards provided by retrieval augmentation."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between LLM-as-a-judge and expert ophthalmologist rankings",
+     "effect": "Kendall's W was 1.000 among experts, 0.956 among LLM judges, and 0.829 across combined expert and LLM-as-a-judge rankings.",
+     "quote": "There was strong agreement across the combined expert and LLM-as-a-judge rankings, with a Kendall\u2019s W of 0.829 (Friedman test, P < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Knowledge-graph-based GraphRAG built from clinical practice guidelines to reduce hallucination",
+    "LLM-as-a-judge pairwise ranking as proxy for expert evaluation",
+    "Context distillation of retrieved graph knowledge into key points"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 300,
+   "sample_unit": "generated patient questions from 120 clinical scenarios",
+   "models_evaluated": [
+    "EyeRAG",
+    "Vanilla LLM",
+    "Naive RAG",
+    "Hypothetical RAG",
+    "Hierarchical Index RAG",
+    "GPT-4o",
+    "Gemini 2.5 Flash",
+    "Grok 4",
+    "Llama 3.3 70B",
+    "Claude Sonnet 4",
+    "DeepSeek-V2.5",
+    "GPT-4o mini",
+    "GPT-3.5 Turbo",
+    "DeepSeek-V3.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert comparative performance",
+     "effect": "Expert total score: EyeRAG 2.91\u00b10.11 vs Vanilla 1.32\u00b10.22; Naive 1.81\u00b10.26, Hypothetical 2.56\u00b10.26, Hierarchical 2.68\u00b10.26.",
+     "quote": "As shown in Fig. 7 , EyeRAG achieved the highest mean total score of 2.91 \u00b1 0.11, significantly outperforming Vanilla LLM (1.32 \u00b1 0.22; p < 0.001, Dunn\u2019s test), Naive RAG (1.81 \u00b1 0.26; p < 0.001), Hypothetical RAG (2.56 \u00b1 0.26; p < 0.01), and Hierarchical Index RAG (2.68 \u00b1 0.26; p < 0.05)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "external-site generalization",
+     "effect": "External rank 1.72\u00b11.18 vs internal 1.61\u00b11.04; first-ranked 40.37% vs 40.29%.",
+     "quote": "EyeRAG maintained its superior performance, achieving an average rank of 1.72 \u00b1 1.18\u2014comparable to its 1.61 \u00b1 1.04 in the primary \u2018Overall Performance and Rankings\u2019 evaluation (Fig. 4A )\u2014and was ranked first in 40.37% of cases, on par with its 40.29% in the larger primary set."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "stochasticity robustness",
+     "effect": "Across temperatures 0\u20131.0, EyeRAG rank ranged 1.45\u00b10.89 to 1.78\u00b11.12; Vanilla LLM 3.67\u00b10.78 to 4.23\u00b10.95.",
+     "quote": "EyeRAG maintained superior performance across all settings, with average ranks ranging from 1.45 \u00b1 0.89 at temperature 0 to 1.78 \u00b1 1.12 at temperature 1.0, consistently outperforming other RAG variants and the Vanilla LLM (which ranged from 3.67 \u00b1 0.78 to 4.23 \u00b1 0.95)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hallucination rate",
+     "effect": "EyeRAG hallucination rate was 3.3% versus 30.0% for Vanilla LLM.",
+     "quote": "EyeRAG achieved the lowest observed hallucination rate, decreasing to 3.3% compared with 30.0% for Vanilla LLM."
+    },
+    {
+     "rec_id": "R483",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "retrieval data provenance audit",
+     "effect": "Audit of 200 entities and 200 relationships found 100% guideline-presence precision and 100% description accuracy.",
+     "quote": "The audit yielded 100% precision for guideline presence and 100% accuracy for descriptions, with no errors detected."
+    }
+   ],
+   "unlisted_practices": [
+    "GraphRAG multi-hop reasoning over an ophthalmology knowledge graph versus flat text RAG",
+    "LLM-as-a-judge pairwise evaluation with response-order reversal and concordance against ophthalmologists",
+    "Context distillation of retrieved graph evidence into 20 key points before generation"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 120,
+   "sample_unit": "clinical scenarios",
+   "models_evaluated": [
+    "GPT-4o",
+    "Gemini 2.5 Flash",
+    "Grok 4",
+    "Llama 3.3 70B",
+    "Claude Sonnet 4",
+    "DeepSeek-V2.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert-assessed hallucination rate",
+     "effect": "Hallucinations decreased from 30.0% in Vanilla LLM to 16.6% in Naive RAG, 10.0% in Hypothetical RAG, 6.6% in Hierarchical Index RAG, and 3.3% in EyeRAG.",
+     "quote": "EyeRAG achieved the lowest observed hallucination rate, decreasing to 3.3% compared with 30.0% for Vanilla LLM."
+    }
+   ],
+   "unlisted_practices": [
+    "Domain-specific knowledge graph retrieval-augmented generation (GraphRAG) using structured clinical guidelines"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "clinical scenarios (270 internal questions plus 30 external questions)",
+ "sample_size": 120,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude Sonnet 4",
+  "DeepSeek-V2.5",
+  "DeepSeek-V3.2",
+  "EyeRAG",
+  "GPT-3.5 Turbo",
+  "GPT-4o",
+  "GPT-4o mini",
+  "Gemini 2.5 Flash",
+  "Grok 4",
+  "Hierarchical Index RAG",
+  "Hypothetical RAG",
+  "Llama 3.3 70B",
+  "Naive RAG",
+  "Vanilla LLM"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Expert-rated hallucination rate with guideline-grounded GraphRAG versus vanilla LLM and standard RAG",
+   "effect": "Hallucination fell to 3.3% with EyeRAG vs 30.0% for Vanilla LLM; Naive RAG 16.6%, Hypothetical RAG 10.0%, Hierarchical Index RAG 6.6%.",
+   "quote": "EyeRAG achieved the lowest observed hallucination rate, decreasing to 3.3% compared with 30.0% for Vanilla LLM.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Performance on external hospital dataset versus internal dataset",
+   "effect": "EyeRAG average rank 1.72 \u00b1 1.18 externally vs 1.61 \u00b1 1.04 internally; ranked first in 40.37% vs 40.29% of cases.",
+   "quote": "EyeRAG maintained its superior performance, achieving an average rank of 1.72 \u00b1 1.18\u2014comparable to its 1.61 \u00b1 1.04 in the primary \u2018Overall Performance and Rankings\u2019 evaluation (Fig. 4A )\u2014and was ranked first in 40.37% of cases, on par with its 40.29% in the larger primary set.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "EyeRAG performance across generation temperatures 0 to 1.0",
+   "effect": "EyeRAG average ranks ranged from 1.45 \u00b1 0.89 at temperature 0 to 1.78 \u00b1 1.12 at temperature 1.0, consistently outperforming other RAG variants and vanilla LLM (3.67\u20134.23).",
+   "quote": "EyeRAG maintained superior performance across all settings, with average ranks ranging from 1.45 \u00b1 0.89 at temperature 0 to 1.78 \u00b1 1.12 at temperature 1.0, consistently outperforming other RAG variants and the Vanilla LLM (which ranged from 3.67 \u00b1 0.78 to 4.23 \u00b1 0.95).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "stochasticity robustness",
+   "effect": "Across temperatures 0\u20131.0, EyeRAG rank ranged 1.45\u00b10.89 to 1.78\u00b11.12; Vanilla LLM 3.67\u00b10.78 to 4.23\u00b10.95.",
+   "quote": "EyeRAG maintained superior performance across all settings, with average ranks ranging from 1.45 \u00b1 0.89 at temperature 0 to 1.78 \u00b1 1.12 at temperature 1.0, consistently outperforming other RAG variants and the Vanilla LLM (which ranged from 3.67 \u00b1 0.78 to 4.23 \u00b1 0.95).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R483",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "retrieval data provenance audit",
+   "effect": "Audit of 200 entities and 200 relationships found 100% guideline-presence precision and 100% description accuracy.",
+   "quote": "The audit yielded 100% precision for guideline presence and 100% accuracy for descriptions, with no errors detected.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Context distillation of retrieved graph evidence into 20 key points before generation",
+  "Context distillation of retrieved graph knowledge into key points",
+  "Domain-specific knowledge graph retrieval-augmented generation (GraphRAG) using structured clinical guidelines",
+  "GraphRAG multi-hop reasoning over an ophthalmology knowledge graph versus flat text RAG",
+  "Knowledge-graph-based GraphRAG built from clinical practice guidelines to reduce hallucination",
+  "LLM-as-a-judge pairwise evaluation with response-order reversal and concordance against ophthalmologists",
+  "LLM-as-a-judge pairwise ranking as proxy for expert evaluation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42249114",
+ "screen": {
+  "id": "pmid:42249114",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "guideline-grounded retrieval augmentation (GraphRAG)",
+  "user": "both",
+  "reason": "The study tests a deployment guardrail/safeguard (Graph-based retrieval-augmented generation grounded in clinical guidelines) compared against vanilla LLMs and standard RAG to assess reduction in hallucinations and factual inaccuracies in ophthalmic clinical dialogue.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval grounding added to an existing tool"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42249114",
+   "empirical": 0.95,
+   "tests_practice": 0.31,
+   "real_deployment": 0.07
+  }
+ }
+}

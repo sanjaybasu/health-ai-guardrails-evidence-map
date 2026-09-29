@@ -1,0 +1,226 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "unspecified",
+   "sample_size": 97,
+   "sample_unit": "numeric candidates extracted from laboratory PDF reports",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Share of LLM-extracted lab candidates admitted by schema, packet-level, and quotation/row-level automated checks",
+     "effect": "Of 97 numeric candidates, schema validation accepted 97, the earlier packet-level check accepted 94, and the hardened policy admitted 72 and retained 25 for review. Correctness of the admitted candidates was not evaluated.",
+     "quote": "The reports produce 97 numeric candidates: schema validation accepts all 97, an earlier packet-level evidence check accepts 94, and the hardened quotation- and row-level policy admits 72 while retaining 25 for review."
+    }
+   ],
+   "unlisted_practices": [
+    "Evidence-gated trust promotion that keeps generated data provisional until a deterministic monitor verifies it against the source document",
+    "Preventing the generator from approving its own output and refusing on missing or ambiguous evidence",
+    "Preserving provenance and retaining refused candidates for human review",
+    "Conformance and mutation testing of the verification monitor"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 102,
+   "sample_unit": "manually labelled laboratory rows",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Source-grounded admission of generated candidates",
+     "effect": "Hardened quotation- and row-level policy admitted 72 of 97 numeric candidates and retained 25 for review; schema validation accepted all 97.",
+     "quote": "The reports produce 97 numeric candidates: schema validation accepts all 97, an earlier packet-level evidence check accepts 94, and the hardened quotation- and row-level policy admits 72 while retaining 25 for review."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Automated integrity-gate checks",
+     "effect": "All 22 conformance and mutation tests passed; hardened policy admitted 72 of 97 numeric candidates and retained 25 for review.",
+     "quote": "All 22 conformance and mutation tests pass."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 97,
+   "sample_unit": "numeric candidates",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate admission and review retention under verification policies",
+     "effect": "Schema validation accepted all 97 candidates, packet-level check accepted 94, and quotation- and row-level policy admitted 72 while retaining 25 for review",
+     "quote": "The reports produce 97 numeric candidates: schema validation accepts all 97, an earlier packet-level evidence check accepts 94, and the hardened quotation- and row-level policy admits 72 while retaining 25 for review."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "unspecified",
+ "sample_unit": "numeric candidates extracted from laboratory PDF reports",
+ "sample_size": 97,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [],
+ "links": [
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Share of LLM-extracted lab candidates admitted by schema, packet-level, and quotation/row-level automated checks",
+   "effect": "Of 97 numeric candidates, schema validation accepted 97, the earlier packet-level check accepted 94, and the hardened policy admitted 72 and retained 25 for review. Correctness of the admitted candidates was not evaluated.",
+   "quote": "The reports produce 97 numeric candidates: schema validation accepts all 97, an earlier packet-level evidence check accepts 94, and the hardened quotation- and row-level policy admits 72 while retaining 25 for review.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Source-grounded admission of generated candidates",
+   "effect": "Hardened quotation- and row-level policy admitted 72 of 97 numeric candidates and retained 25 for review; schema validation accepted all 97.",
+   "quote": "The reports produce 97 numeric candidates: schema validation accepts all 97, an earlier packet-level evidence check accepts 94, and the hardened quotation- and row-level policy admits 72 while retaining 25 for review.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Conformance and mutation testing of the verification monitor",
+  "Evidence-gated trust promotion that keeps generated data provisional until a deterministic monitor verifies it against the source document",
+  "Preserving provenance and retaining refused candidates for human review",
+  "Preventing the generator from approving its own output and refusing on missing or ambiguous evidence"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "arxiv:2608.29965",
+ "screen": {
+  "id": "arxiv:2608.29965",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "deterministic source-grounded verification gate with human review of refused outputs",
+  "user": "none",
+  "reason": "The paper empirically tests an architectural safeguard (deterministic source-grounded integrity gating and provenance verification) that filters AI-generated structured data before it is admitted into a personal health record.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "deterministic source-grounded integrity gates / provenance verification before persisting AI extractions"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2608.29965",
+   "empirical": 0.9,
+   "tests_practice": 0.67,
+   "real_deployment": 0.13
+  }
+ }
+}

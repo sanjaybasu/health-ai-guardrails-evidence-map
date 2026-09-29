@@ -1,0 +1,106 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Germany",
+ "sample_size": 17,
+ "sample_unit": "patients (tumor board cases)",
+ "models_evaluated": [
+  "gemma-3-12b",
+  "gpt-oss-20b"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "LLM recommendation concordance with MDT reference decisions and expert-rated medical adequacy",
+   "effect": "Curative/palliative concordance 94% (16/17) gemma-3-12b vs 59% (10/17) gpt-oss-20b; same first-line regimen 35% (6/17) and 41% (7/17); median adequacy 5 (IQR 2-5) and 4 (IQR 3-5).",
+   "quote": "Concordance regarding the curative or palliative therapy regimen reached 94% (16/17, 95% CI 71%-100%); for gemma-3-12b and 59% (10/17, 95% CI 33%-82%) for gpt-oss-20b.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "LLM recommendations compared with multidisciplinary tumor board decisions on the same cases",
+   "effect": "LLMs substantially improved the MDT recommendation in 1/17 cases (6%); first-line regimen matched MDT in 35% (gemma) and 41% (gpt-oss); LLMs cannot replace MDTs.",
+   "quote": "In one case, 6% (1/17, 95% CI 0%-29%), the LLM was able to substantially improve the MDT recommendation by underscoring a follow-up examination that had not yet been performed.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Rate of potentially hazardous information in LLM outputs rated by MDT members",
+   "effect": "Potentially hazardous information in 27% (25/93) of ratings for gemma-3-12b and 17% (14/83) of ratings for gpt-oss-20b.",
+   "quote": "MDT members stated potentially hazardous information in 27% (25/93, 95% CI 18%-37%) of ratings for gemma-3-12b and 17% (14/83, 95% CI 9%-26%) of ratings for gpt-oss-20b.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Running locally hosted open-weight LLMs on-premises for tumor board decision support"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42623176",
+ "screen": {
+  "id": "pmid:42623176",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study prospectively evaluates real-world clinical implementation of locally run LLMs into multidisciplinary tumor board (MDT) workflow, where clinicians review AI recommendations after their initial decision to determine if adjustments are warranted, assessing safety and decision impact.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "clinician review of outputs in MDT workflow"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42623176",
+   "empirical": 0.97,
+   "tests_practice": 0.24,
+   "real_deployment": 0.88
+  }
+ }
+}

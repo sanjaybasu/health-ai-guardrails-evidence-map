@@ -1,0 +1,298 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 3035,
+   "sample_unit": "patient visits",
+   "models_evaluated": [
+    "Blood culture outcome prediction machine learning model (BC stewardship tool)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Monthly AUC, AUPRC, Brier score drift via SPC charts over one year",
+     "effect": "Average AUC 0.78, AUPRC 0.41, Brier 0.10; no points outside statistical control despite a drop in hospital admission rate outside control",
+     "quote": "The AUC, AUPRC, and Brier scores showed no statistical control violations over one year, suggesting no performance drift."
+    },
+    {
+     "rec_id": "R122",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Silent-mode live performance versus original validation performance",
+     "effect": "Live background AUC 0.78 vs original 0.75-0.81; AUPRC 0.41 vs prior 0.19-0.38",
+     "quote": "The average AUC (0.78) during this follow-up is comparable to the original validations (AUCs ranging between 0.75 and 0.81), while the AUPRC (0.41) even is slightly higher (previous AUPRCs ranging between 0.19 and 0.38)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Performance under population shift from training cohort (higher positivity, COVID-19)",
+     "effect": "Positivity 13.4% vs 11.5% in training, contamination 10.3% vs 6.3%, 328 COVID-19 cases; performance stayed within statistical control",
+     "quote": "However, despite evolving practices and populations, the performance of our model consistently remained within the bounds of statistical control, negating the necessity for recalibration and indicating our model is robust to changing environments."
+    }
+   ],
+   "unlisted_practices": [
+    "Statistical process control charts to monitor monthly model performance and case-mix"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 3035,
+   "sample_unit": "unique adult patient visits",
+   "models_evaluated": [
+    "Blood culture stewardship machine learning prediction tool"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Temporal drift in discrimination and probabilistic prediction accuracy",
+     "effect": "Across 3.035 visits, average AUC was 0.78, AUPRC 0.41, and Brier score 0.10; no statistical control violations occurred over one year despite changing population characteristics.",
+     "quote": "The AUC, AUPRC, and Brier scores showed no statistical control violations over one year, suggesting no performance drift."
+    },
+    {
+     "rec_id": "R366",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Predictive performance relative to original validation",
+     "effect": "Follow-up AUC was 0.78 versus original validation AUCs between 0.75 and 0.81; AUPRC was 0.41 versus previous AUPRCs between 0.19 and 0.38.",
+     "quote": "The average AUC (0.78) during this follow-up is comparable to the original validations (AUCs ranging between 0.75 and 0.81), while the AUPRC (0.41) even is slightly higher (previous AUPRCs ranging between 0.19 and 0.38)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 3035,
+   "sample_unit": "patient visits",
+   "models_evaluated": [
+    "custom machine learning model for predicting blood culture outcomes"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R122",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model performance in shadow mode",
+     "effect": "The model achieved an average AUC of 0.78 for predicting blood culture outcomes during real-time shadow evaluation.",
+     "quote": "The average AUC for predicting BC outcomes was 0.78 (standard deviation (SD) = 0.02)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "performance drift over time",
+     "effect": "The performance metrics of the model showed no statistical control violations over a one-year monitoring period.",
+     "quote": "The AUC, AUPRC, and Brier scores showed no statistical control violations over one year, suggesting no performance drift."
+    }
+   ],
+   "unlisted_practices": [
+    "Using Statistical Process Control (SPC) charts for individuals and moving ranges to monitor model performance metrics and clinical outcomes over time for drift detection."
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Netherlands",
+ "sample_unit": "patient visits",
+ "sample_size": 3035,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Blood culture outcome prediction machine learning model (BC stewardship tool)",
+  "Blood culture stewardship machine learning prediction tool",
+  "custom machine learning model for predicting blood culture outcomes"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Monthly AUC, AUPRC, Brier score drift via SPC charts over one year",
+   "effect": "Average AUC 0.78, AUPRC 0.41, Brier 0.10; no points outside statistical control despite a drop in hospital admission rate outside control",
+   "quote": "The AUC, AUPRC, and Brier scores showed no statistical control violations over one year, suggesting no performance drift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R122",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Silent-mode live performance versus original validation performance",
+   "effect": "Live background AUC 0.78 vs original 0.75-0.81; AUPRC 0.41 vs prior 0.19-0.38",
+   "quote": "The average AUC (0.78) during this follow-up is comparable to the original validations (AUCs ranging between 0.75 and 0.81), while the AUPRC (0.41) even is slightly higher (previous AUPRCs ranging between 0.19 and 0.38).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Performance under population shift from training cohort (higher positivity, COVID-19)",
+   "effect": "Positivity 13.4% vs 11.5% in training, contamination 10.3% vs 6.3%, 328 COVID-19 cases; performance stayed within statistical control",
+   "quote": "However, despite evolving practices and populations, the performance of our model consistently remained within the bounds of statistical control, negating the necessity for recalibration and indicating our model is robust to changing environments.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R366",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive performance relative to original validation",
+   "effect": "Follow-up AUC was 0.78 versus original validation AUCs between 0.75 and 0.81; AUPRC was 0.41 versus previous AUPRCs between 0.19 and 0.38.",
+   "quote": "The average AUC (0.78) during this follow-up is comparable to the original validations (AUCs ranging between 0.75 and 0.81), while the AUPRC (0.41) even is slightly higher (previous AUPRCs ranging between 0.19 and 0.38).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R122",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "model performance in shadow mode",
+   "effect": "The model achieved an average AUC of 0.78 for predicting blood culture outcomes during real-time shadow evaluation.",
+   "quote": "The average AUC for predicting BC outcomes was 0.78 (standard deviation (SD) = 0.02).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Statistical process control charts to monitor monthly model performance and case-mix",
+  "Using Statistical Process Control (SPC) charts for individuals and moving ranges to monitor model performance metrics and clinical outcomes over time for drift detection."
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37793210",
+ "screen": {
+  "id": "pmid:37793210",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "drift monitoring with statistical process control charts",
+  "user": "none",
+  "reason": "The study evaluates a real-time deployment of a predictive model integrated into an EHR to monitor performance drift over time using Statistical Process Control (SPC) charts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "drift monitoring using statistical process control charts"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37793210",
+   "empirical": 0.97,
+   "tests_practice": 0.54,
+   "real_deployment": 0.93
+  }
+ }
+}

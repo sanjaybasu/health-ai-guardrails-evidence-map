@@ -1,0 +1,78 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": 668331,
+ "sample_unit": "EHR notes",
+ "models_evaluated": [
+  "Lang1 (100M-7B parameters)",
+  "Lang1-1B",
+  "finetuned generalist foundation models",
+  "zero-shot general-purpose and specialized foundation models"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Zero-shot foundation model AUROC on real EHR-derived hospital operations tasks versus benchmark strength",
+   "effect": "Zero-shot general-purpose and specialized models underperformed on four of five tasks (36.6%-71.7% AUROC); mortality prediction was the exception.",
+   "quote": "In zero-shot settings, both general-purpose and specialized models underperform on four of five tasks (36.6%-71.7% AUROC), with mortality prediction being an exception.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "In-domain pretraining of LLMs on EHR text",
+  "Supervised finetuning of foundation models for hospital operations prediction tasks",
+  "Joint multi-task finetuning for cross-task transfer"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2511.13703",
+ "screen": {
+  "id": "arxiv:2511.13703",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The paper introduces a specialized EHR-pretrained LLM (Lang1) and a realistic operational benchmark (ReMedE) evaluating tasks like readmission, mortality, and claims denial, testing model performance and transferability without evaluating deployment safeguards or operational practices.",
+  "jev": {
+   "id": "arxiv:2511.13703",
+   "empirical": 0.95,
+   "tests_practice": 0.05,
+   "real_deployment": 0.09
+  }
+ }
+}

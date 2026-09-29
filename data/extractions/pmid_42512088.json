@@ -1,0 +1,125 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Not reported",
+ "sample_size": 6746,
+ "sample_unit": "images (HyperKvasir); 210 patients (laryngeal CE-NBI)",
+ "models_evaluated": [
+  "ResNet-50 deep ensemble (ImageNet-pretrained)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Performance under random split versus resolution-defined acquisition-shift test on the same GI data",
+   "effect": "Random-split AUROC 0.994 (95% CI 0.990-0.996) fell to 0.723 (95% CI 0.710-0.736) under resolution shift; intervals do not overlap.",
+   "quote": "Random-split evaluation substantially overestimated performance relative to a resolution-defined acquisition-shift stress test, and entropy-based selective prediction improved reliability by identifying a high-confidence subset for automated prediction while deferring the remainder to human review.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model performance under perturbed acquisition conditions (resolution shift)",
+   "effect": "Under resolution shift, AUROC 0.723, sensitivity 0.417, specificity 0.874, accuracy 0.683.",
+   "quote": "Under resolution shift on the same data, performance fell to AUROC 0.723 (95% CI 0.710-0.736; AUPRC 0.690; sensitivity 0.417; specificity 0.874); the two intervals do not overlap.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy among retained cases when the model abstains on uncertain cases and defers to humans",
+   "effect": "Under shift, accuracy rose from 0.683 at full coverage to 0.852 (95% CI 0.835-0.871) at 25% coverage; balanced accuracy 0.646 to 0.798.",
+   "quote": "Selective prediction improved reliability among retained cases: under resolution shift, accuracy rose from 0.683 at full coverage to 0.852 (95% CI 0.835-0.871) at 25% coverage (balanced accuracy 0.646 \u2192 0.798).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Calibration (ECE) after target-domain recalibration under shift, and discrimination recovery",
+   "effect": "ECE 0.172 to 0.036 with temperature scaling and 0.017 with isotonic regression; discrimination not recovered.",
+   "quote": "Target-domain recalibration substantially restores calibration under shift (ECE 0.172 \u2192 0.036 with temperature scaling; \u2192 0.017 with isotonic regression) but does not recover discrimination; selective prediction is complementary, mitigating residual confident-wrong predictions.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance degradation from dataset/acquisition shift between development and test conditions",
+   "effect": "AUROC dropped from 0.994 in-distribution to 0.723 under resolution shift.",
+   "quote": "Under resolution shift on the same data, performance fell to AUROC 0.723 (95% CI 0.710-0.736; AUPRC 0.690; sensitivity 0.417; specificity 0.874); the two intervals do not overlap.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Entropy-based uncertainty-aware selective prediction with abstention",
+  "Deep ensembles for uncertainty estimation",
+  "Cross-domain encoder transfer between endoscopic domains"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42512088",
+ "screen": {
+  "id": "pmid:42512088",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "uncertainty-aware selective prediction / model abstention",
+  "user": "none",
+  "reason": "The study evaluates an operational safeguard (entropy-based selective prediction / abstention and target-domain recalibration) under acquisition shift to identify high-confidence subsets versus deferring uncertain cases to clinicians.",
+  "jev": {
+   "id": "pmid:42512088",
+   "empirical": 0.97,
+   "tests_practice": 0.93,
+   "real_deployment": 0.03
+  }
+ }
+}

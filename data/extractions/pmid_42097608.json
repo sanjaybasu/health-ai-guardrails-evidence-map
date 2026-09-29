@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "unspecified",
+ "sample_size": 1500,
+ "sample_unit": "documents (3 corpora x 500 documents each; 294 experimental conditions)",
+ "models_evaluated": [
+  "BioBERT",
+  "ClinicalBERT",
+  "BM25",
+  "Mistral-7B (synthetic note generation)",
+  "GPT-4o (metadata extraction for validation queries)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Variance in retrieval performance explained by corpus, query format, and model-by-corpus interactions",
+   "effect": "Combined context variables explained 49.0% of variance vs 47.6% for model-related effects. Model x corpus interaction eta-squared=0.040, P<.001, so model rankings shifted across corpora.",
+   "quote": "Clinical context variables explained as much variance in retrieval performance as embedding model choice, and model \u00d7 corpus interactions showed that rankings are not portable across documentation types.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Portability of general-domain model rankings to clinical retrieval tasks across corpora",
+   "effect": "Model rankings shifted across corpora (model x corpus eta-squared=0.040, P<.001). Domain-specific BioBERT and ClinicalBERT performed worse than general-purpose embeddings.",
+   "quote": "These results argue against reliance on general-domain leaderboards for clinical RAG deployment and support mandatory local validation as a methodological requirement.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Selecting embedding models for clinical RAG retrieval using corpus-specific benchmarking",
+  "Comparison of lexical (BM25) versus embedding retrieval baselines",
+  "Choice of document chunking strategy in RAG pipelines"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42097608",
+ "screen": {
+  "id": "pmid:42097608",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study empirically benchmarks retrieval configurations across clinical contexts and directly tests the deployment practice/necessity of local corpus validation vs relying on general-domain leaderboards for RAG pipeline design.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "local validation of retrieval models across clinical corpora and query formats"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42097608",
+   "empirical": 0.91,
+   "tests_practice": 0.35,
+   "real_deployment": 0.03
+  }
+ }
+}

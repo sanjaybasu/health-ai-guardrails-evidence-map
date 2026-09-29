@@ -1,0 +1,286 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 109,
+   "sample_unit": "fracture descriptions from radiology reports",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Agreement with expert OTA/AO labels with retrieval-augmented generation versus zero-shot and chain-of-thought prompting",
+     "effect": "On radiology reports the 3 strategies performed similarly (RAG did not improve). On ideal descriptions RAG was better: full-label accuracy 0.38 with RAG vs 0.08 without.",
+     "quote": "On the other hand, RAG did not improve performance on classification labels produced from radiology reports, which could be due to the imprecise nature of the descriptions contained within the reports, rendering the extra data less useful and providing an opportunity for future training."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM classification performance given imprecise real-world radiology report descriptions versus ideal descriptions",
+     "effect": "Agreement fell from almost perfect at bone/location level to slight at subgroup level (accuracy 0.09 zero-shot) on radiology reports; ideal descriptions performed better.",
+     "quote": "The consequence was that the LLM classifications could only be as precise as the descriptions they were generated from."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLMs to translate free-text radiology fracture descriptions into standardized classification labels for registries",
+    "Providing feedback to radiologists to improve report detail"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 109,
+   "sample_unit": "fracture descriptions from radiology reports",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "classification accuracy with RAG",
+     "effect": "Radiology full-label accuracy 0.03 RAG vs 0.05 zero-shot/0.03 CoT; ideal full-label 0.38 RAG vs 0.08 without.",
+     "quote": "On the other hand, RAG did not improve performance on classification labels produced from radiology reports, which could be due to the imprecise nature of the descriptions contained within the reports, rendering the extra data less useful and providing an opportunity for future training."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "effect of description quality",
+     "effect": "Ideal vs radiology RAG: full-label accuracy 0.38 vs 0.03; subgroup cumulative accuracy 0.56 vs 0.13.",
+     "quote": "Overall performance on the ideal descriptions was higher than the radiology report descriptions, with RAG performing better than either zero-shot or CoT ."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "OTA/AO label accuracy",
+     "effect": "Radiology reports: subgroup cumulative accuracy 0.09 zero-shot, 0.09 CoT, 0.13 RAG; full labels 0.05, 0.03, 0.03.",
+     "quote": "At the subgroup level, labels showed only slight agreement with ground truth."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "explanation fidelity",
+     "effect": "Manual subset review found hallucinated information, incorrect application of correct information, and incomplete classifications; no frequency reported.",
+     "quote": "It should be noted that the LLM occasionally provided the correct classification with incorrect explanations."
+    }
+   ],
+   "unlisted_practices": [
+    "Zero-shot prompting to assign OTA/AO fracture labels",
+    "Zero-shot chain-of-thought prompting to assign OTA/AO fracture labels"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 109,
+   "sample_unit": "fracture descriptions",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "fracture classification accuracy and agreement using retrieval-augmented generation",
+     "effect": "On radiology reports, RAG yielded similar performance to zero-shot (full accuracy 0.03 vs 0.05); on ideal descriptions, RAG improved full classification accuracy to 0.38 vs 0.08 for zero-shot.",
+     "quote": "The 3 prompting strategies tested yielded similar classification performance on radiology report fracture descriptions, with almost perfect agreement at the bone and bone and location levels."
+    }
+   ],
+   "unlisted_practices": [
+    "Chain-of-thought prompting"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "fracture descriptions from radiology reports",
+ "sample_size": 109,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement with expert OTA/AO labels with retrieval-augmented generation versus zero-shot and chain-of-thought prompting",
+   "effect": "On radiology reports the 3 strategies performed similarly (RAG did not improve). On ideal descriptions RAG was better: full-label accuracy 0.38 with RAG vs 0.08 without.",
+   "quote": "On the other hand, RAG did not improve performance on classification labels produced from radiology reports, which could be due to the imprecise nature of the descriptions contained within the reports, rendering the extra data less useful and providing an opportunity for future training.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM classification performance given imprecise real-world radiology report descriptions versus ideal descriptions",
+   "effect": "Agreement fell from almost perfect at bone/location level to slight at subgroup level (accuracy 0.09 zero-shot) on radiology reports; ideal descriptions performed better.",
+   "quote": "The consequence was that the LLM classifications could only be as precise as the descriptions they were generated from.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R104",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "explanation fidelity",
+   "effect": "Manual subset review found hallucinated information, incorrect application of correct information, and incomplete classifications; no frequency reported.",
+   "quote": "It should be noted that the LLM occasionally provided the correct classification with incorrect explanations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Chain-of-thought prompting",
+  "Providing feedback to radiologists to improve report detail",
+  "Using LLMs to translate free-text radiology fracture descriptions into standardized classification labels for registries",
+  "Zero-shot chain-of-thought prompting to assign OTA/AO fracture labels",
+  "Zero-shot prompting to assign OTA/AO fracture labels"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42078173",
+ "screen": {
+  "id": "pmid:42078173",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation grounding added to LLM prompting",
+  "user": "none",
+  "reason": "Empirical study testing different prompting and retrieval-augmented generation (RAG) strategies on an off-the-shelf LLM to extract fracture classifications from radiology reports.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and prompting strategies"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42078173",
+   "empirical": 0.97,
+   "tests_practice": 0.45,
+   "real_deployment": 0.06
+  }
+ }
+}

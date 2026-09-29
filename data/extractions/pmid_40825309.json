@@ -1,0 +1,362 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 200,
+   "sample_unit": "deidentified psychiatric interview notes",
+   "models_evaluated": [
+    "openbuddy-mistral-7b-v13.1 (fine-tuned Mistral 7B)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination rate of generated diagnostic clues against source notes, Korean vs English input",
+     "effect": "Hallucinations in 301 (30.2%) of 997 clues from Korean input vs 134 (13.4%) of 1003 clues from English-translated input.",
+     "quote": "In contrast, clues generated from English inputs were more factually consistent, with the model producing only 134 (13.4%), falling into this category."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Diagnostic accuracy by input language (Korean vs English)",
+     "effect": "Top-1 accuracy 59% (Korean) vs 74.5% (English), P<.001; top-2 accuracy comparable (90% vs 89.5%, P=.56).",
+     "quote": "For all 200 notes, the Korean input achieved a top-1 accuracy of 59% (n=118), while the English-translated input performed better, with a top-1 accuracy of 74.5% (n=149)."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance on licensing exam questions in Korean vs English",
+     "effect": "Exam accuracy 46.1% (53/115) in English vs 32.2% (37/115) in Korean; better in English in 7 of 11 categories.",
+     "quote": "The model demonstrated better overall accuracy in English, answering 53 (46.1%) of 115 total questions correctly, compared to 37 (32.2%) correct answers in Korean."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differential diagnosis quality and misclassification patterns by language",
+     "effect": "With Korean input the model misclassified 24 (48%) depression and 29 (58%) anxiety cases as bipolar disorder as first impression.",
+     "quote": "Among the 50 cases of depressive disorder, the model misclassified 24 (48%) cases as bipolar disorder as the first impression."
+    }
+   ],
+   "unlisted_practices": [
+    "Translating non-English input to English with the LLM before inference to improve output quality",
+    "Running small open-source LLMs locally on CPU-only hardware for privacy in resource-limited settings"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 200,
+   "sample_unit": "psychiatric interview notes",
+   "models_evaluated": [
+    "openbuddy-mistral-7b-v13.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "robustness to input language",
+     "effect": "Top-1 accuracy favored English (74.5% vs 59%; P<.001), while top-2 was comparable (89.5% vs 90%; P=.56).",
+     "quote": "The model showed significantly higher top-1 diagnostic accuracy with English input (74.5% vs 59%; P<.001), while top-2 accuracy was comparable (89.5% vs 90%; P=.56)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "language-stratified hallucination rates",
+     "effect": "Korean input had a higher hallucination rate than English input (30.2% vs 13.4%).",
+     "quote": "When processing Korean input, the model generated a significantly higher rate of hallucinations compared to English input (30.2% vs 13.4%)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucinated diagnostic clues",
+     "effect": "Hallucinations occurred in 301 Korean-input clues (30.2%) versus 134 English-input clues (13.4%).",
+     "quote": "Hallucinations were more frequent with Korean input (n=301, 30.2%) than with English (n=134, 13.4%)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "top-1 diagnostic accuracy",
+     "effect": "Top-1 accuracy was 59% (n=118) for Korean input and 74.5% (n=149) for English-translated input.",
+     "quote": "For all 200 notes, the Korean input achieved a top-1 accuracy of 59% (n=118), while the English-translated input performed better, with a top-1 accuracy of 74.5% (n=149)."
+    }
+   ],
+   "unlisted_practices": [
+    "Using model-generated English translations as intermediate inputs for non-English psychiatric diagnostic inference."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "KOR",
+   "sample_size": 200,
+   "sample_unit": "interview notes",
+   "models_evaluated": [
+    "openbuddy-mistral-7b-v13.1",
+    "Mistral-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "kor",
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R309",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "top-1 diagnostic accuracy by input language",
+     "effect": "Top-1 accuracy was significantly lower with Korean input compared to English input (59% vs 74.5%, P<.001).",
+     "quote": "The model showed significantly higher top-1 diagnostic accuracy with English input (74.5% vs 59%; P<.001), while top-2 accuracy was comparable (89.5% vs 90%; P=.56)."
+    },
+    {
+     "rec_id": "R321",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucination rate of generated diagnostic clues by language",
+     "effect": "Hallucinations were more frequent with Korean input (30.2%, n=301) than English input (13.4%, n=134).",
+     "quote": "When processing Korean input, the model generated a significantly higher rate of hallucinations compared to English input (30.2% vs 13.4%)."
+    }
+   ],
+   "unlisted_practices": [
+    "machine translation of non-English clinical text into English prior to LLM diagnostic inference"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "deidentified psychiatric interview notes",
+ "sample_size": 200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Korean",
+  "eng",
+  "kor"
+ ],
+ "models_evaluated": [
+  "Mistral-7B",
+  "openbuddy-mistral-7b-v13.1",
+  "openbuddy-mistral-7b-v13.1 (fine-tuned Mistral 7B)"
+ ],
+ "links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucination rate of generated diagnostic clues against source notes, Korean vs English input",
+   "effect": "Hallucinations in 301 (30.2%) of 997 clues from Korean input vs 134 (13.4%) of 1003 clues from English-translated input.",
+   "quote": "In contrast, clues generated from English inputs were more factually consistent, with the model producing only 134 (13.4%), falling into this category.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic accuracy by input language (Korean vs English)",
+   "effect": "Top-1 accuracy 59% (Korean) vs 74.5% (English), P<.001; top-2 accuracy comparable (90% vs 89.5%, P=.56).",
+   "quote": "For all 200 notes, the Korean input achieved a top-1 accuracy of 59% (n=118), while the English-translated input performed better, with a top-1 accuracy of 74.5% (n=149).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hallucinated diagnostic clues",
+   "effect": "Hallucinations occurred in 301 Korean-input clues (30.2%) versus 134 English-input clues (13.4%).",
+   "quote": "Hallucinations were more frequent with Korean input (n=301, 30.2%) than with English (n=134, 13.4%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R309",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "top-1 diagnostic accuracy by input language",
+   "effect": "Top-1 accuracy was significantly lower with Korean input compared to English input (59% vs 74.5%, P<.001).",
+   "quote": "The model showed significantly higher top-1 diagnostic accuracy with English input (74.5% vs 59%; P<.001), while top-2 accuracy was comparable (89.5% vs 90%; P=.56).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R321",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hallucination rate of generated diagnostic clues by language",
+   "effect": "Hallucinations were more frequent with Korean input (30.2%, n=301) than English input (13.4%, n=134).",
+   "quote": "When processing Korean input, the model generated a significantly higher rate of hallucinations compared to English input (30.2% vs 13.4%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Running small open-source LLMs locally on CPU-only hardware for privacy in resource-limited settings",
+  "Translating non-English input to English with the LLM before inference to improve output quality",
+  "Using model-generated English translations as intermediate inputs for non-English psychiatric diagnostic inference.",
+  "machine translation of non-English clinical text into English prior to LLM diagnostic inference"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40825309",
+ "screen": {
+  "id": "pmid:40825309",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "translating non-English notes to English before LLM processing",
+  "user": "none",
+  "reason": "The study empirically tests the deployment practice of translating non-English (Korean) clinical records to English prior to prompting an open-source LLM, comparing diagnostic accuracy, relevance, and hallucination rates against native-language processing.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "translation of non-English clinical text to English before LLM processing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40825309",
+   "empirical": 0.97,
+   "tests_practice": 0.11,
+   "real_deployment": 0.05
+  }
+ }
+}

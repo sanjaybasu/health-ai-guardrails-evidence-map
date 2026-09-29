@@ -1,0 +1,312 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 164041,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost",
+    "Random Forest",
+    "Oblique Random Forest",
+    "Support Vector Machine",
+    "Logistic Regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False positive and false negative rates by race at standard 0.5 threshold",
+     "effect": "FPR 27.71% for Black vs 5.92% for White patients (factor 4.68); FNR 43.11% vs 73.82% (factor 0.58); FPR/FNR 8 times higher for Black patients.",
+     "quote": "These statistics demonstrate that the models are biased and are more likely to classify Black patients as belonging to the very high SBP group."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of race-specific decision thresholds on error-rate parity between Black and White patients",
+     "effect": "Thresholds of 0.296 (Black) and 0.245 (White) equalized FNR at 25%; FPR became 41.11% vs 47.20%; FPR/FNR ratio factor 0.87 versus ~8 before. Weighted F1 fell to 65.77% and 60.91%.",
+     "quote": "The resulting FPR of the model for Black patients becomes 41.11% and the FPR for White patient model becomes 47.20%."
+    },
+    {
+     "rec_id": "R306",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Influence of race as a model input on predictions and bias",
+     "effect": "Race_Black was the third most important feature (OR 1.94, CI 1.90-1.98); the non-stratified model showed implicit racial disparity.",
+     "quote": "We found implicit racial disparity in the non-stratified predictive model."
+    }
+   ],
+   "unlisted_practices": [
+    "Training race-specific models to examine differing predictors",
+    "Group-specific decision threshold adjustment to equalize false negative rates"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 164041,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Logistic Regression (LR-L2)",
+    "Support Vector Machine (SVM-L2)",
+    "XGBoost",
+    "Random Forest (RF)",
+    "Oblique Random Forest (ORF)",
+    "race-specific logistic regression models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "African",
+    "American",
+    "Asian",
+    "English",
+    "European",
+    "Spanish",
+    "Middle Eastern language",
+    "other"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "racial false-positive/false-negative disparity",
+     "effect": "At threshold 0.5, FPR was 27.71% vs 5.92% (4.68); FNR was 43.11% vs 73.82% (0.58); FPR/FNR was 8 times higher for Black patients.",
+     "quote": "Under the standard 0.5 prediction threshold, FPR/FNR for Black patients is 8 times higher than the ratio for White patients."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "threshold tuning for racial fairness",
+     "effect": "Thresholds 0.296 (Black) and 0.245 (White) set FNR to 25%; FPR/FNR became 1.64 vs 1.89 (factor 0.87), with FPR 41.11% vs 47.20%.",
+     "quote": "Similarly, the treatment equality metric of FPR/FNR becomes 1.64 for the Black patients\u2019 model and 1.89 for the White patients\u2019 model (a factor of 0.87)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 164041,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Support Vector Machine",
+    "XGBoost",
+    "Random Forest",
+    "Oblique Random Forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup disparities in false positive and negative rates",
+     "effect": "Black patients had 4.7x higher FPR (27.71% vs 5.92%) and 0.58x lower FNR (43.11% vs 73.82%) than White patients at threshold 0.5",
+     "quote": "Black patients face a 4.7 \u00d7 higher False Positive Rate (FPR) and a 0.58 \u00d7 lower False Negative Rate (FNR) compared to White patients."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fairness and accuracy after decision threshold tuning",
+     "effect": "Threshold tuning equalized FNR to 25%, reduced treatment equality ratio disparity to 1.64 vs 1.89 (factor 0.87), with weighted F1 of 65.77% vs 60.91%",
+     "quote": "Similarly, the treatment equality metric of FPR/FNR becomes 1.64 for the Black patients\u2019 model and 1.89 for the White patients\u2019 model (a factor of 0.87)."
+    }
+   ],
+   "unlisted_practices": [
+    "Training race-specific models to mitigate algorithmic bias"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 164041,
+ "population": {
+  "medicaid": false,
+  "safety_net": true,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": true,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "African",
+  "American",
+  "Asian",
+  "English",
+  "European",
+  "Middle Eastern language",
+  "Spanish",
+  "other"
+ ],
+ "models_evaluated": [
+  "Logistic Regression",
+  "Logistic Regression (LR-L2)",
+  "Oblique Random Forest",
+  "Oblique Random Forest (ORF)",
+  "Random Forest",
+  "Random Forest (RF)",
+  "Support Vector Machine",
+  "Support Vector Machine (SVM-L2)",
+  "XGBoost",
+  "race-specific logistic regression models"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "False positive and false negative rates by race at standard 0.5 threshold",
+   "effect": "FPR 27.71% for Black vs 5.92% for White patients (factor 4.68); FNR 43.11% vs 73.82% (factor 0.58); FPR/FNR 8 times higher for Black patients.",
+   "quote": "These statistics demonstrate that the models are biased and are more likely to classify Black patients as belonging to the very high SBP group.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of race-specific decision thresholds on error-rate parity between Black and White patients",
+   "effect": "Thresholds of 0.296 (Black) and 0.245 (White) equalized FNR at 25%; FPR became 41.11% vs 47.20%; FPR/FNR ratio factor 0.87 versus ~8 before. Weighted F1 fell to 65.77% and 60.91%.",
+   "quote": "The resulting FPR of the model for Black patients becomes 41.11% and the FPR for White patient model becomes 47.20%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R306",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Influence of race as a model input on predictions and bias",
+   "effect": "Race_Black was the third most important feature (OR 1.94, CI 1.90-1.98); the non-stratified model showed implicit racial disparity.",
+   "quote": "We found implicit racial disparity in the non-stratified predictive model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Group-specific decision threshold adjustment to equalize false negative rates",
+  "Training race-specific models to examine differing predictors",
+  "Training race-specific models to mitigate algorithmic bias"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39901187",
+ "screen": {
+  "id": "pmid:39901187",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "Group-specific decision threshold tuning to equalize error rates",
+  "user": "none",
+  "reason": "The study develops a risk prediction model for hypertension control and specifically tests a deployment/fairness practice (decision threshold differentiation / race-specific threshold adjustment) to mitigate algorithmic bias and equalize false negative rates across racial groups.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "decision threshold differentiation for algorithmic fairness"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39901187",
+   "empirical": 0.91,
+   "tests_practice": 0.56,
+   "real_deployment": 0.04
+  }
+ }
+}

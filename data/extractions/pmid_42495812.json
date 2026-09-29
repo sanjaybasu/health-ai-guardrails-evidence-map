@@ -1,0 +1,433 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 50,
+   "sample_unit": "generated patient protocols (25 MTB cases x 2 prompting approaches) expert-annotated",
+   "models_evaluated": [
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "Llama-3.3-70B-Instruct",
+    "Llama-3.1-8B-Instruct",
+    "Mistral-Large-Instruct-2411",
+    "Magistral-Small-2509",
+    "Qwen3-Next-80B-A3B-Instruct",
+    "Qwen3-4B-Thinking-2507"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R097",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether automatic metric gains predict expert-assessed clinical safety of deployed LLM configuration",
+     "effect": "One-shot prompting improved automatic metrics across all 8 models, yet protocols with at least one critical error doubled (10/25, 40% vs 5/25, 20%); metrics were insufficient proxies for clinical safety.",
+     "quote": "Surface-level metric gains were, therefore, insufficient proxies for clinical safety."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Interannotator agreement among independent expert annotators using a defined taxonomy and training",
+     "effect": "Gwet AC1 was 0.72 (95% CI 0.67-0.76) for all errors and 0.94 (95% CI 0.92-0.96) for critical errors.",
+     "quote": "Almost perfect agreement [ 44 ] was reached on critical errors (Gwet AC1=0.94, 95% CI 0.92 to 0.96), which supports the validity of the critical error rate as the safety-relevant outcome of this study."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Overreliance and automation bias in clinician review of AI drafts",
+     "effect": "Reviewer vigilance was not tested. Authors caution automation bias may compromise error detection, and low perceived editing effort may reflect it. No with/without-AI comparison was done.",
+     "quote": "This study did not test reviewer vigilance under realistic workflow conditions, and future work should assess error detection rates under ecologically valid review conditions before clinical deployment."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Effect of one-shot exemplar prompting on critical and factual errors in generated protocols",
+     "effect": "Critical-error protocols rose from 5/25 (20%) under zero-shot to 10/25 (40%) under one-shot; factual errors became dominant (69/145, 48%); 18 annotations across 6 protocols showed exemplar contamination.",
+     "quote": "The increase in critical errors under A2 was driven by exemplar contamination (18 annotations across 6 protocols)."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Readability and complexity of LLM-generated patient protocols versus expert-written gold standard",
+     "effect": "WSTF4 remained in the medium difficulty range (10-12), about grade 10 or higher. DistilBERT complexity was 4.10-4.78 versus 2.79 for the gold standard.",
+     "quote": "DistilBERT-based complexity assessments showed that all generated texts remained far from the gold standard (2.79) within a similar complexity range (4.10\u20104.78), with no systematic differences between the approaches."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Frequency of errors in AI-generated drafts requiring clinician verification",
+     "effect": "Experts found 253 errors in 16% (230/1420) of paragraphs; 20% (A1) to 40% (A2) of protocols had at least one critical error, so clinician verification remains required.",
+     "quote": "A critical error rate of 20%\u201040% precludes clinical applicability of the selected model under the conditions tested."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Critical errors in AI-drafted patient protocols that could reach patients unreviewed",
+     "effect": "Critical errors bearing risk of patient harm appeared in 5/25 (20%) zero-shot and 10/25 (40%) one-shot protocols.",
+     "quote": "However, these outputs require mandatory review by experts with domain expertise sufficient to verify clinical claims against the source protocol (internal) and general medical knowledge (external)."
+    }
+   ],
+   "unlisted_practices": [
+    "Constrained decoding with JSON schema to enforce section-structure compliance in generated text",
+    "One-shot style-conditioned prompting versus zero-shot prompting",
+    "Deploying open-weight on-premises LLMs for data protection",
+    "Two-stage extract-and-verify generation architecture (proposed)"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 50,
+   "sample_unit": "AI-generated protocols rated by clinicians",
+   "models_evaluated": [
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "Llama-3.3-70B-Instruct",
+    "Llama-3.1-8B-Instruct",
+    "Mistral-Large-Instruct-2411",
+    "Magistral-Small-2509",
+    "Qwen3-Next-80B-A3B-Instruct",
+    "Qwen3-4B-Thinking-2507"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Automatic metrics versus expert safety errors",
+     "effect": "A2 improved automatic metrics, but \u22651 critical error doubled for Llama-3.3-70B-Instruct: 10/25, 40% vs 5/25, 20%.",
+     "quote": "However, expert usability evaluation of Llama-3.3-70B-Instruct showed the opposite picture: the proportion of protocols containing at least 1 critical error doubled under A2 (10/25, 40% vs 5/25, 20%) compared with A1, and the dominant error type shifted from language (40/108, 37%) errors to factual errors (69/145, 48%)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Critical errors in patient-facing AI protocols",
+     "effect": "\u22651 critical error occurred in 20% (n=5) of A1 and 40% (n=10) of A2 protocols.",
+     "quote": "The proportion of protocols with \u22651 critical error was 20% (n=5) for A1 and 40% (n=10) for A2."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsupported treatment and evidence carryover",
+     "effect": "Exemplar contamination drove increased A2 critical errors: 18 annotations across 6 protocols.",
+     "quote": "The increase in critical errors under A2 was driven by exemplar contamination (18 annotations across 6 protocols)."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Readability and semantic complexity",
+     "effect": "WSTF4 stayed medium difficulty, requiring at least grade 10 comprehension; complexity was 4.10-4.78 versus gold standard 2.79.",
+     "quote": "Despite significant WSTF4 improvements under A2, scores across both approaches remained in the medium difficulty range (10-12), which corresponds to an approximate comprehension requirement of at least grade 10."
+    }
+   ],
+   "unlisted_practices": [
+    "Constrained decoding with JSON schemas to enforce patient-protocol section structure",
+    "One-shot style-conditioned prompting versus zero-shot structured generation for lay-language oncology protocols"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "DEU",
+   "sample_size": 50,
+   "sample_unit": "protocols",
+   "models_evaluated": [
+    "gpt-oss-120b",
+    "gpt-oss-20b",
+    "Llama-3.3-70B-Instruct",
+    "Llama-3.1-8B-Instruct",
+    "Mistral-Large-Instruct-2411",
+    "Magistral-Small-2509",
+    "Qwen3-Next-80B-A3B-Instruct",
+    "Qwen3-4B-Thinking-2507"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "deu"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "critical errors in generated patient protocols",
+     "effect": "20% (5/25) of zero-shot protocols and 40% (10/25) of one-shot protocols contained at least 1 critical error with direct patient safety implications, and 16% (230/1420) of paragraphs contained errors.",
+     "quote": "The proportion of protocols with \u22651 critical error was 20% (n=5) for A1 and 40% (n=10) for A2."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "reading level and text complexity of patient protocols",
+     "effect": "WSTF4 scores across both approaches remained in the medium difficulty range (10-12, grade 10 level), and DistilBERT complexity remained between 4.10 and 4.78 compared to 2.79 for gold standard.",
+     "quote": "Despite significant WSTF4 improvements under A2, scores across both approaches remained in the medium difficulty range (10-12), which corresponds to an approximate comprehension requirement of at least grade 10."
+    }
+   ],
+   "unlisted_practices": [
+    "constrained decoding for schema compliance",
+    "style-conditioned few-shot prompting"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "generated patient protocols (25 MTB cases x 2 prompting approaches) expert-annotated",
+ "sample_size": 50,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German",
+  "deu"
+ ],
+ "models_evaluated": [
+  "Llama-3.1-8B-Instruct",
+  "Llama-3.3-70B-Instruct",
+  "Magistral-Small-2509",
+  "Mistral-Large-Instruct-2411",
+  "Qwen3-4B-Thinking-2507",
+  "Qwen3-Next-80B-A3B-Instruct",
+  "gpt-oss-120b",
+  "gpt-oss-20b"
+ ],
+ "links": [
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Readability and complexity of LLM-generated patient protocols versus expert-written gold standard",
+   "effect": "WSTF4 remained in the medium difficulty range (10-12), about grade 10 or higher. DistilBERT complexity was 4.10-4.78 versus 2.79 for the gold standard.",
+   "quote": "DistilBERT-based complexity assessments showed that all generated texts remained far from the gold standard (2.79) within a similar complexity range (4.10\u20104.78), with no systematic differences between the approaches.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Critical errors in AI-drafted patient protocols that could reach patients unreviewed",
+   "effect": "Critical errors bearing risk of patient harm appeared in 5/25 (20%) zero-shot and 10/25 (40%) one-shot protocols.",
+   "quote": "However, these outputs require mandatory review by experts with domain expertise sufficient to verify clinical claims against the source protocol (internal) and general medical knowledge (external).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Frequency of errors in AI-generated drafts requiring clinician verification",
+   "effect": "Experts found 253 errors in 16% (230/1420) of paragraphs; 20% (A1) to 40% (A2) of protocols had at least one critical error, so clinician verification remains required.",
+   "quote": "A critical error rate of 20%\u201040% precludes clinical applicability of the selected model under the conditions tested.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Automatic metrics versus expert safety errors",
+   "effect": "A2 improved automatic metrics, but \u22651 critical error doubled for Llama-3.3-70B-Instruct: 10/25, 40% vs 5/25, 20%.",
+   "quote": "However, expert usability evaluation of Llama-3.3-70B-Instruct showed the opposite picture: the proportion of protocols containing at least 1 critical error doubled under A2 (10/25, 40% vs 5/25, 20%) compared with A1, and the dominant error type shifted from language (40/108, 37%) errors to factual errors (69/145, 48%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Unsupported treatment and evidence carryover",
+   "effect": "Exemplar contamination drove increased A2 critical errors: 18 annotations across 6 protocols.",
+   "quote": "The increase in critical errors under A2 was driven by exemplar contamination (18 annotations across 6 protocols).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "reading level and text complexity of patient protocols",
+   "effect": "WSTF4 scores across both approaches remained in the medium difficulty range (10-12, grade 10 level), and DistilBERT complexity remained between 4.10 and 4.78 compared to 2.79 for gold standard.",
+   "quote": "Despite significant WSTF4 improvements under A2, scores across both approaches remained in the medium difficulty range (10-12), which corresponds to an approximate comprehension requirement of at least grade 10.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R097",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Constrained decoding with JSON schema to enforce section-structure compliance in generated text",
+  "Constrained decoding with JSON schemas to enforce patient-protocol section structure",
+  "Deploying open-weight on-premises LLMs for data protection",
+  "One-shot style-conditioned prompting versus zero-shot prompting",
+  "One-shot style-conditioned prompting versus zero-shot structured generation for lay-language oncology protocols",
+  "Two-stage extract-and-verify generation architecture (proposed)",
+  "constrained decoding for schema compliance",
+  "style-conditioned few-shot prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42495812",
+ "screen": {
+  "id": "pmid:42495812",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "zero-shot vs one-shot prompting with expert clinician review",
+  "user": "clinician_or_staff",
+  "reason": "Evaluated open-weight LLMs with zero-shot vs one-shot prompting and constrained decoding to draft lay-language molecular tumor board summaries, with expert oncologist review for safety and clinical usability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompting strategy with constrained decoding and clinician postediting review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42495812",
+   "empirical": 0.97,
+   "tests_practice": 0.37,
+   "real_deployment": 0.18
+  }
+ }
+}

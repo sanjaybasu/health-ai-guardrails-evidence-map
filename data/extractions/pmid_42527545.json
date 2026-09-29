@@ -1,0 +1,448 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 5781,
+   "sample_unit": "Virginia Medicaid members in hold-out test set",
+   "models_evaluated": [
+    "source-only logistic regression",
+    "target-only logistic regression",
+    "prototypical networks",
+    "domain-adversarial neural network",
+    "causal transfer learning",
+    "TabTransformer",
+    "Enhanced MAML",
+    "meta-ensemble",
+    "simple average ensemble"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration of source-only vs locally adapted/recalibrated models in target state",
+     "effect": "Source-only ECE 0.744 pre-calibration; isotonic recalibration on Virginia data substantially improved all models; target-only (n=2,023) AUC 0.628 vs source-only 0.725; meta-ensemble ECE 0.011.",
+     "quote": "Pre- vs post-calibration comparisons appear in Supplementary Information Table S4 , confirming isotonic regression substantially improved all models."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration improvement from recalibration under prevalence shift (9.4% vs 25.6%)",
+     "effect": "Source-only model Brier 0.204, ECE 0.744, Hosmer-Lemeshow p<0.001 before adjustment; isotonic regression substantially improved calibration across all models.",
+     "quote": "This finding suggests that post-hoc calibration should be considered required infrastructure for any cross-state model transfer, not an optional refinement."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development (Washington) and target (Virginia) populations and effect on calibration",
+     "effect": "Outcome prevalence 9.4% vs 25.6%; Virginia higher comorbidity (Charlson 0.53 vs 0.10); source-only ECE 0.744 due to prevalence shift.",
+     "quote": "Source-only\u2019s ECE = 0.744 quantifies the miscalibration caused by the 16 percentage-point prevalence shift between states, which isotonic regression corrects (see Supplementary Information Table S4 )."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when transferred to a new state population",
+     "effect": "Source-only model poorly calibrated in target (ECE 0.744, HL p<0.001); AUC 0.725 in Virginia; Enhanced MAML AUC 0.677.",
+     "quote": "Source-only transfer showed poor calibration (Brier 0.204, ECE 0.744, Hosmer-Lemeshow p < 0.001), indicating substantial miscalibration without post-hoc adjustment."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Equalized odds differences by race/ethnicity, gender, age across models",
+     "effect": "Race/ethnicity EOD 0.897 for source-only vs 0.132-0.157 for target-adapted models; meta-ensemble EOD 0.541; gender EOD up to 0.306.",
+     "quote": "Source-only logistic regression showed the largest race/ethnicity EOD (0.897), driven primarily by very low true positive rates for the Other group (TPR 0.048) relative to Asian and Black members."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance disparities of risk model in target population",
+     "effect": "Native American subgroup (n=53) TPR 0.200 for meta-ensemble and target-only, missing most true cases; source-only TPR 0.867 with FPR 0.921.",
+     "quote": "The Native American subgroup ( n = 53 in test set) showed highly variable performance across models: source-only achieved high TPR (0.867) but also very high FPR (0.921), indicating near-indiscriminate positive predictions for this group; meta-ensemble (TPR = 0.200) and target-only (TPR = 0.200) showed very low TPR, effectively missing most true cases."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of complex transfer methods against simpler baselines on same data",
+     "effect": "Meta-ensemble AUC 0.728 vs source-only 0.725 (p=0.454); Enhanced MAML 0.677 significantly below source-only (p<0.001).",
+     "quote": "The AUC difference of 0.003 was not statistically significant (DeLong p = 0.454; bootstrap 95% CI for difference: \u22120.005 to 0.010)."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup disparity in model performance requiring deployment monitoring",
+     "effect": "Race/ethnicity EOD ranged 0.132-0.541 for most models and 0.897 for source-only; disparities persisted, with authors recommending monitoring.",
+     "quote": "Monitoring equalized odds by race/ethnicity in deployment and considering bias mitigation strategies (e.g., reweighting training data, subgroup-specific calibration) are warranted, particularly for source-only and ensemble approaches."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing transfer learning strategies (domain adaptation, meta-learning, ensembles) for cross-site model portability"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 49645,
+   "sample_unit": "Medicaid members",
+   "models_evaluated": [
+    "Source-only logistic regression",
+    "Target-only logistic regression",
+    "Prototypical networks",
+    "Domain-adversarial neural networks",
+    "Causal transfer learning",
+    "TabTransformer",
+    "Enhanced MAML",
+    "Meta-ensemble",
+    "Simple average ensemble"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model discrimination",
+     "effect": "Meta-ensemble AUC 0.728 and source-only AUC 0.725; difference was not significant (p = 0.454).",
+     "quote": "Meta-ensemble (0.728) and source-only transfer (0.725) achieved the highest discrimination; the difference was not significant ( p = 0.454)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local calibration of transferred model",
+     "effect": "Source-only transfer: Brier 0.204, ECE 0.744, Hosmer-Lemeshow p < 0.001 without post-hoc adjustment.",
+     "quote": "Source-only transfer showed poor calibration (Brier 0.204, ECE 0.744, Hosmer-Lemeshow p < 0.001), indicating substantial miscalibration without post-hoc adjustment."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "source-target prevalence shift",
+     "effect": "Acute care outcome prevalence was 9.4% in Washington and 25.6% in Virginia, a 16.2 percentage-point difference.",
+     "quote": "The 12-month acute care outcome occurred in 9.4% of Washington and 25.6% of Virginia members, a 16.2 percentage-point prevalence difference constituting the primary domain shift challenge."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "race/ethnicity subgroup fairness",
+     "effect": "Source-only race/ethnicity EOD 0.897, with Other-group TPR 0.048.",
+     "quote": "Source-only logistic regression showed the largest race/ethnicity EOD (0.897), driven primarily by very low true positive rates for the Other group (TPR 0.048) relative to Asian and Black members."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prevalence-shift recalibration",
+     "effect": "Source-only ECE = 0.744 from a 16 percentage-point prevalence shift; isotonic regression corrected it.",
+     "quote": "Source-only\u2019s ECE = 0.744 quantifies the miscalibration caused by the 16 percentage-point prevalence shift between states, which isotonic regression corrects (see Supplementary Information Table S4 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 49645,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Source-only logistic regression",
+    "Target-only logistic regression",
+    "Prototypical networks",
+    "Domain-adversarial neural networks (DANN)",
+    "Causal transfer learning",
+    "TabTransformer",
+    "Enhanced Model-Agnostic Meta-Learning (Enhanced MAML)",
+    "Meta-ensemble",
+    "Simple average ensemble"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model calibration following cross-state prevalence shift",
+     "effect": "Post-hoc isotonic regression substantially improved calibration across models, correcting severe miscalibration (raw source-only ECE 0.744, Hosmer-Lemeshow p < 0.001) caused by the 16.2 percentage-point prevalence shift between Washington (9.4%) and Virginia (25.6%).",
+     "quote": "Post-hoc isotonic regression substantially improved calibration across models, underscoring the importance of prevalence adjustment."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Racial and ethnic subgroup performance disparities",
+     "effect": "Source-only transfer had a race/ethnicity EOD of 0.897, with a true positive rate of 0.048 for the Other group, despite an overall AUC of 0.725.",
+     "quote": "Source-only logistic regression showed the largest race/ethnicity EOD (0.897), driven primarily by very low true positive rates for the Other group (TPR 0.048) relative to Asian and Black members."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Model discrimination and fairness with target domain adaptation",
+     "effect": "Enhanced MAML (AUC 0.677) underperformed source-only transfer (AUC 0.725, p < 0.001), meta-ensemble showed no significant gain (AUC 0.728, p = 0.454), and target-only was lower (AUC 0.628), though adaptation reduced race/ethnicity EOD (0.132-0.157 vs 0.897).",
+     "quote": "Enhanced MAML (AUC 0.677) did not improve over naive transfer."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "Virginia Medicaid members in hold-out test set",
+ "sample_size": 49645,
+ "population": {
+  "medicaid": true,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": true,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Causal transfer learning",
+  "Domain-adversarial neural networks",
+  "Domain-adversarial neural networks (DANN)",
+  "Enhanced MAML",
+  "Enhanced Model-Agnostic Meta-Learning (Enhanced MAML)",
+  "Meta-ensemble",
+  "Prototypical networks",
+  "Simple average ensemble",
+  "Source-only logistic regression",
+  "TabTransformer",
+  "Target-only logistic regression",
+  "causal transfer learning",
+  "domain-adversarial neural network",
+  "meta-ensemble",
+  "prototypical networks",
+  "simple average ensemble",
+  "source-only logistic regression",
+  "target-only logistic regression"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Discrimination and calibration of source-only vs locally adapted/recalibrated models in target state",
+   "effect": "Source-only ECE 0.744 pre-calibration; isotonic recalibration on Virginia data substantially improved all models; target-only (n=2,023) AUC 0.628 vs source-only 0.725; meta-ensemble ECE 0.011.",
+   "quote": "Pre- vs post-calibration comparisons appear in Supplementary Information Table S4 , confirming isotonic regression substantially improved all models.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration improvement from recalibration under prevalence shift (9.4% vs 25.6%)",
+   "effect": "Source-only model Brier 0.204, ECE 0.744, Hosmer-Lemeshow p<0.001 before adjustment; isotonic regression substantially improved calibration across all models.",
+   "quote": "This finding suggests that post-hoc calibration should be considered required infrastructure for any cross-state model transfer, not an optional refinement.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences between development (Washington) and target (Virginia) populations and effect on calibration",
+   "effect": "Outcome prevalence 9.4% vs 25.6%; Virginia higher comorbidity (Charlson 0.53 vs 0.10); source-only ECE 0.744 due to prevalence shift.",
+   "quote": "Source-only\u2019s ECE = 0.744 quantifies the miscalibration caused by the 16 percentage-point prevalence shift between states, which isotonic regression corrects (see Supplementary Information Table S4 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Equalized odds differences by race/ethnicity, gender, age across models",
+   "effect": "Race/ethnicity EOD 0.897 for source-only vs 0.132-0.157 for target-adapted models; meta-ensemble EOD 0.541; gender EOD up to 0.306.",
+   "quote": "Source-only logistic regression showed the largest race/ethnicity EOD (0.897), driven primarily by very low true positive rates for the Other group (TPR 0.048) relative to Asian and Black members.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of complex transfer methods against simpler baselines on same data",
+   "effect": "Meta-ensemble AUC 0.728 vs source-only 0.725 (p=0.454); Enhanced MAML 0.677 significantly below source-only (p<0.001).",
+   "quote": "The AUC difference of 0.003 was not statistically significant (DeLong p = 0.454; bootstrap 95% CI for difference: \u22120.005 to 0.010).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when transferred to a new state population",
+   "effect": "Source-only model poorly calibrated in target (ECE 0.744, HL p<0.001); AUC 0.725 in Virginia; Enhanced MAML AUC 0.677.",
+   "quote": "Source-only transfer showed poor calibration (Brier 0.204, ECE 0.744, Hosmer-Lemeshow p < 0.001), indicating substantial miscalibration without post-hoc adjustment.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup performance disparities of risk model in target population",
+   "effect": "Native American subgroup (n=53) TPR 0.200 for meta-ensemble and target-only, missing most true cases; source-only TPR 0.867 with FPR 0.921.",
+   "quote": "The Native American subgroup ( n = 53 in test set) showed highly variable performance across models: source-only achieved high TPR (0.867) but also very high FPR (0.921), indicating near-indiscriminate positive predictions for this group; meta-ensemble (TPR = 0.200) and target-only (TPR = 0.200) showed very low TPR, effectively missing most true cases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "local calibration of transferred model",
+   "effect": "Source-only transfer: Brier 0.204, ECE 0.744, Hosmer-Lemeshow p < 0.001 without post-hoc adjustment.",
+   "quote": "Source-only transfer showed poor calibration (Brier 0.204, ECE 0.744, Hosmer-Lemeshow p < 0.001), indicating substantial miscalibration without post-hoc adjustment.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Comparing transfer learning strategies (domain adaptation, meta-learning, ensembles) for cross-site model portability"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42527545",
+ "screen": {
+  "id": "pmid:42527545",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration and transfer learning adaptation",
+  "user": "none",
+  "reason": "Empirically tests cross-state model transfer strategies, including post-hoc recalibration (isotonic regression) and target adaptation for domain shift and fairness.",
+  "jev": {
+   "id": "pmid:42527545",
+   "empirical": 0.96,
+   "tests_practice": 0.83,
+   "real_deployment": 0.05
+  }
+ }
+}

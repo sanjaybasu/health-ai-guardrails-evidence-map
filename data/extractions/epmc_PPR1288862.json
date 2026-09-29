@@ -1,0 +1,286 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Iraq",
+   "sample_size": 1017,
+   "sample_unit": "whole-slide images (339 slides from 185 patients, three scanners)",
+   "models_evaluated": [
+    "Fixed detect-then-grade Gleason grading pipeline (developed on North American and European material)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance across three scanners: detection AUC and grading agreement by device",
+     "effect": "Detection AUC 0.987 to 0.991 across scanners; grading of confirmed cancers scanner dependent (Grundium 0.63, Leica 0.67, Hamamatsu 0.44).",
+     "quote": "Grading of confirmed cancers was scanner dependent: the compact Grundium (0.63) did not differ from the clinical Leica (0.67; paired difference 0.04, 95% CI -0.03 to 0.11), while both exceeded Hamamatsu (0.44)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of fixed model on local external cohort versus reference pathologist grades",
+     "effect": "Detection transferred to the Iraqi cohort without tuning; grading of confirmed cancers was lower and scanner dependent, supporting confirmation on the local population.",
+     "quote": "Prostate grading models should be deployed as a detect-then-grade pipeline, with grading validated per device and confirmed on the local population."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance shift from Western development data to a Middle Eastern cohort",
+     "effect": "Detection transferred with AUC 0.987 to 0.991 without per-population tuning, but grading on confirmed cancers dropped on some scanners (Hamamatsu 0.44).",
+     "quote": "Detection was statistically equivalent across scanners (AUC 0.987 to 0.991; paired differences at most 0.003) and transferred to this non-Western cohort with no per-population tuning."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Deployed detect-then-grade pipeline agreement compared with ungated model and inter-pathologist ceiling",
+     "effect": "Cross-validated all-slide QWK 0.86, 0.81, 0.86 across scanners, matching inter-pathologist ceiling of 0.81, versus 0.23 to 0.62 for the ungated model.",
+     "quote": "At a 95% sensitivity operating point the deployed pipeline reached cross-validated all-slide QWK of 0.86, 0.81, and 0.86 (Grundium, Hamamatsu, Leica), matching the inter-pathologist ceiling of 0.81, against 0.23 to 0.62 for the ungated model."
+    }
+   ],
+   "unlisted_practices": [
+    "Gating grading by predicted cancer-tissue fraction (detect-then-grade triage pipeline)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Iraq",
+   "sample_size": 1017,
+   "sample_unit": "whole-slide images",
+   "models_evaluated": [
+    "fixed detect-then-grade pipeline developed on North American and European material",
+    "ungated model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "QWK versus ungated model",
+     "effect": "Detect-then-grade QWK 0.86, 0.81, 0.86; inter-pathologist ceiling 0.81; ungated model 0.23 to 0.62.",
+     "quote": "At a 95% sensitivity operating point the deployed pipeline reached cross-validated all-slide QWK of 0.86, 0.81, and 0.86 (Grundium, Hamamatsu, Leica), matching the inter-pathologist ceiling of 0.81, against 0.23 to 0.62 for the ungated model."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "grading agreement by scanner",
+     "effect": "QWK Grundium 0.63 vs Leica 0.67; paired difference 0.04, 95% CI -0.03 to 0.11; both exceeded Hamamatsu 0.44.",
+     "quote": "Grading of confirmed cancers was scanner dependent: the compact Grundium (0.63) did not differ from the clinical Leica (0.67; paired difference 0.04, 95% CI -0.03 to 0.11), while both exceeded Hamamatsu (0.44)."
+    }
+   ],
+   "unlisted_practices": [
+    "Deploy prostate grading models as a detect-then-grade pipeline using cancer-tissue fraction triage."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Iraq",
+   "sample_size": 1017,
+   "sample_unit": "whole-slide images",
+   "models_evaluated": [
+    "detect-then-grade pipeline"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Gleason grading agreement across slide scanners",
+     "effect": "QWK was 0.63 for Grundium and 0.67 for Leica (difference 0.04, 95% CI -0.03 to 0.11), while both exceeded Hamamatsu at 0.44",
+     "quote": "Grading of confirmed cancers was scanner dependent: the compact Grundium (0.63) did not differ from the clinical Leica (0.67; paired difference 0.04, 95% CI -0.03 to 0.11), while both exceeded Hamamatsu (0.44)."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-stage detect-then-grade pipeline gating on cancer-tissue fraction"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Iraq",
+ "sample_unit": "whole-slide images",
+ "sample_size": 1017,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Fixed detect-then-grade Gleason grading pipeline (developed on North American and European material)",
+  "detect-then-grade pipeline",
+  "fixed detect-then-grade pipeline developed on North American and European material",
+  "ungated model"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Deployed detect-then-grade pipeline agreement compared with ungated model and inter-pathologist ceiling",
+   "effect": "Cross-validated all-slide QWK 0.86, 0.81, 0.86 across scanners, matching inter-pathologist ceiling of 0.81, versus 0.23 to 0.62 for the ungated model.",
+   "quote": "At a 95% sensitivity operating point the deployed pipeline reached cross-validated all-slide QWK of 0.86, 0.81, and 0.86 (Grundium, Hamamatsu, Leica), matching the inter-pathologist ceiling of 0.81, against 0.23 to 0.62 for the ungated model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "grading agreement by scanner",
+   "effect": "QWK Grundium 0.63 vs Leica 0.67; paired difference 0.04, 95% CI -0.03 to 0.11; both exceeded Hamamatsu 0.44.",
+   "quote": "Grading of confirmed cancers was scanner dependent: the compact Grundium (0.63) did not differ from the clinical Leica (0.67; paired difference 0.04, 95% CI -0.03 to 0.11), while both exceeded Hamamatsu (0.44).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Performance across three scanners: detection AUC and grading agreement by device",
+   "effect": "Detection AUC 0.987 to 0.991 across scanners; grading of confirmed cancers scanner dependent (Grundium 0.63, Leica 0.67, Hamamatsu 0.44).",
+   "quote": "Grading of confirmed cancers was scanner dependent: the compact Grundium (0.63) did not differ from the clinical Leica (0.67; paired difference 0.04, 95% CI -0.03 to 0.11), while both exceeded Hamamatsu (0.44).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Deploy prostate grading models as a detect-then-grade pipeline using cancer-tissue fraction triage.",
+  "Gating grading by predicted cancer-tissue fraction (detect-then-grade triage pipeline)",
+  "Two-stage detect-then-grade pipeline gating on cancer-tissue fraction"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1288862",
+ "screen": {
+  "id": "epmc:PPR1288862",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local external validation per scanner and population with detect-then-grade gating",
+  "user": "none",
+  "reason": "Evaluates external validation across distribution shifts (scanner and population) and explicitly compares an ungated diagnostic model against a gated detect-then-grade triage safeguard pipeline.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "gated detect-then-grade pipeline vs ungated model"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1288862",
+   "empirical": 0.97,
+   "tests_practice": 0.76,
+   "real_deployment": 0.06
+  }
+ }
+}

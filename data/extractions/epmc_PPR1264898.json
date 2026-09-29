@@ -1,0 +1,107 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "United States; multi-institutional international (four centers)",
+ "sample_size": 555,
+ "sample_unit": "patients (test cohort)",
+ "models_evaluated": [
+  "SIGNAL",
+  "DeepGlioma"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Model performance validated across multiple international sites and uncurated clinical datasets versus prior model",
+   "effect": "On a 555-patient multi-institutional, international test cohort, SIGNAL achieved 90.10% overall accuracy vs 72.59% for DeepGlioma, which had been validated on curated images.",
+   "quote": "SIGNAL outperformed DeepGlioma, achieving greater overall accuracy (90.10% vs. 72.59%) while running faster (16.0 vs. 6.7 patches/s).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Comparison of candidate AI against prior model on the same data",
+   "effect": "SIGNAL outperformed DeepGlioma on IDH mutation (93.51% vs. 79.22%), 1p19q codeletion (93.51% vs. 88.31%), and ATRX loss (89.61% vs. 83.98%).",
+   "quote": "SIGNAL also outperformed DeepGlioma on all three molecular classification tasks, including IDH mutation (accuracy: 93.51% vs. 79.22%), 1p19q codeletion (93.51% vs. 88.31%), and ATRX loss (89.61% vs. 83.98%).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Attention-based rejection of uninformative images (blood, acellular regions) before classification, versus model without rejection",
+   "effect": "DeepGlioma without image rejection underperformed on uncurated data (72.59% accuracy); SIGNAL with attention filtering reached 90.10%. Attention correlated with cellularity (r=0.96) and negatively with blood coverage (r=-0.99).",
+   "quote": "SIGNAL\u2019s attention mechanism had a strong positive linear correlation with mean patch cellularity (r=0.96, p<0.001) and a strong negative correlation with patch blood coverage (r=-0.99,p<0.001).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Built-in attention-based image quality rejection filter for intraoperative imaging AI",
+  "Lightweight model design for faster intraoperative inference on existing hardware"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1264898",
+ "screen": {
+  "id": "epmc:PPR1264898",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates the diagnostic performance and speed of a new lightweight model (SIGNAL) with a built-in attention-based quality filter/image rejection mechanism on real-world uncurated clinical data across multiple international centers, specifically testing the safeguard of filtering diagnostically uninformative tissue.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "attention-based image rejection mechanism"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1264898",
+   "empirical": 0.97,
+   "tests_practice": 0.23,
+   "real_deployment": 0.24
+  }
+ }
+}

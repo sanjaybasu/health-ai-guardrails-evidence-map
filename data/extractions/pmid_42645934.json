@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "CT scans (AMOS training/evaluation; TotalSegmentator external set)",
+ "models_evaluated": [
+  "ten segmentation architectures (convolutional, attention-based, transformer, and state-space/Mamba families) in an nnU-Net-style pipeline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether per-organ Dice, HD95 and surface Dice reveal model differences hidden by aggregate Dice",
+   "effect": "Rankings reshuffle by 10-13% on small, complex organs; boundary fidelity separates models into tiers that the Dice ranking hides; aggregate Dice alone judged unsafe for selection.",
+   "quote": "Selecting a model on aggregate Dice alone is therefore unsafe for organ-specific clinical tasks: per-organ overlap and boundary metrics should be the primary acceptance criteria for selecting a model before clinical deployment.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Whether model performance ordering generalizes to an independent external dataset",
+   "effect": "Model ordering largely held on the external TotalSegmentator set (Spearman \u03c1=0.84), with reshuffling on small organs.",
+   "quote": "This ordering largely holds on the external set (Spearman \u03c1=0.84).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Selecting segmentation models organ by organ using pairwise statistical significance testing on an external dataset"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42645934",
+ "screen": {
+  "id": "pmid:42645934",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study benchmarks organ segmentation models and explicitly evaluates the safety of model selection criteria (deployment practice), demonstrating that choosing models based on aggregate Dice alone is unsafe compared to per-organ boundary-sensitive acceptance testing.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "pre-deployment multi-metric evaluation criteria (per-organ boundary metrics vs aggregate Dice)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42645934",
+   "empirical": 0.95,
+   "tests_practice": 0.04,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,395 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 98,
+   "sample_unit": "expert-curated clinical questions",
+   "models_evaluated": [
+    "GPT-4-turbo",
+    "GPT-3.5-turbo",
+    "Qwen2.5-14B",
+    "LLaMA3-8B",
+    "OpenBioLLM-8B",
+    "Meerkat-8B",
+    "DeepSeek-V3 (judge)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Rubric score and pairwise win rates of LLMs with versus without guideline RAG grounding",
+     "effect": "RAG raised mean rubric scores for Qwen2.5-14B (3.72 to 3.77), GPT-3.5 (+0.05), LLaMA3-8B (+0.02); decreased GPT-4-turbo (-0.04) and OpenBioLLM-8B (-0.22). Win rates improved 16%-46% for most models.",
+     "quote": "Direct comparisons conducted by the LLM-as-a-judge show that RAG improved win rates for most models."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of small open-source RAG models against GPT-4-turbo and GPT-3.5 on same queries",
+     "effect": "RAG-enhanced Qwen2.5-14B scored 3.77 vs 3.96 for GPT-4-turbo (pairwise 0.72 vs 0.81), and outperformed GPT-3.5-turbo across all metrics.",
+     "quote": "Qwen2.5-14B outperformed GPT-3.5-turbo across all metrics, achieving a normalized pairwise score of 0.72 versus 0.81 for GPT-4-turbo."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Rubric score of Qwen2.5-14B across varying numbers of retrieved contexts (k=1 to 50)",
+     "effect": "Optimal at k=5 (3.77); stable at k=1 and 3, sharp decline at k=10, reaching 1.37 at k=50 (64% decline).",
+     "quote": "Performance remained relatively stable at k = 1 and k = 3 but experienced a sharp decline at k = 10, reaching a minimum score of 1.37 at k = 50."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Agreement of LLM judge with alternate LLM judge and human oncologists",
+     "effect": "DeepSeek-V3 cross-validation Pearson r=0.876, Kendall tau=0.956; human experts scored lower than LLM judge (mean 3.81 vs 4.12) on 10 queries.",
+     "quote": "Human experts assigned lower scores than the LLM judge across all metrics (mean 3.81 v 4.12)."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Qualitative expert review of factual errors in RAG responses",
+     "effect": "Nonsystematic review found errors in Qwen2.5-14B (abbreviation misinterpretation n=3, cross-indication PARP extrapolation n=1, incomplete HER2 SISH n=1) and GPT-4-turbo (incorrect denosumab citation n=1, incomplete n=1, off-topic n=1); hallucination rate not quantified.",
+     "quote": "In GPT-4-turbo: incomplete HER2 SISH description (n = 1), incorrect denosumab citation for hypercalcemia (n = 1), and an off-topic response (n = 1)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Factual inaccuracies in fluent RAG-generated guideline answers requiring verification",
+     "effect": "Expert inspection found failure modes in both models (abbreviation drift, cross-indication extrapolation, algorithmic incompleteness) despite fluent output; authors state clinician oversight is required.",
+     "quote": "These failure modes\u2014abbreviation drift, cross-indication extrapolation, and algorithmic incompleteness\u2014carry patient-safety risks and underscore that RAG responses require clinician oversight even when they appear fluent and well organized."
+    }
+   ],
+   "unlisted_practices": [
+    "HTML-structure-preserving chunking for RAG",
+    "Domain-specific medical fine-tuning versus general-purpose models with RAG",
+    "Optimizing number of retrieved contexts (top-k)",
+    "On-premise small open-source model deployment for privacy"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Korea",
+   "sample_size": 98,
+   "sample_unit": "expert-curated clinical queries",
+   "models_evaluated": [
+    "GPT-4-turbo",
+    "GPT-3.5-turbo",
+    "Qwen2.5-14B",
+    "LLaMA3-8B",
+    "OpenBioLLM-8B",
+    "Meerkat-8B",
+    "DeepSeek-V3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Rubric and pairwise response quality with RAG",
+     "effect": "Average scores improved GPT-3.5 +0.05, Qwen +0.05, LLaMA +0.02; decreased GPT-4 -0.04 and OpenBio -0.22; win-rate gains 16%-46%.",
+     "quote": "Direct head-to-head comparisons demonstrate that RAG consistently improves performance for most models, with the notable exception of OpenBioLLM, confirming the general effectiveness of the RAG implementation."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate model performance on same queries",
+     "effect": "OpenBioLLM scored lower than Llama3: 2.69 v 3.36 with RAG; 2.92 v 3.34 without.",
+     "quote": "OpenBioLLM-8B scored lower than its base Llama3-8B in both conditions (average 2.69 v 3.36 with RAG; 2.92 v 3.34 without) and produced markedly shorter responses (mean 401 v 1,447 characters), frequently adopting terse, single-sentence formats absent in general-purpose models."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Guideline clinical knowledge failures",
+     "effect": "Qwen RAG: abbreviation errors n=3, PARP extrapolation n=1, incomplete HER2 SISH n=1.",
+     "quote": "In Qwen2.5-14B: abbreviation misinterpretation (n = 3, eg, \u201cPABC\u201d incorrectly expanded as \u201cpositive axillary breast cancer\u201d), cross-indication PARP inhibitor extrapolation (n = 1), and incomplete 2023 ASCO/CAP HER2 SISH algorithm description (n = 1)."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Citation accuracy in generated responses",
+     "effect": "GPT-4-turbo RAG had incorrect denosumab citation for hypercalcemia (n = 1).",
+     "quote": "In GPT-4-turbo: incomplete HER2 SISH description (n = 1), incorrect denosumab citation for hypercalcemia (n = 1), and an off-topic response (n = 1)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Factual inaccuracies needing clinician oversight",
+     "effect": "Specialist review found Qwen failures n=5 and GPT-4 failures n=3 in RAG responses; authors state patient-safety risks.",
+     "quote": "These failure modes\u2014abbreviation drift, cross-indication extrapolation, and algorithmic incompleteness\u2014carry patient-safety risks and underscore that RAG responses require clinician oversight even when they appear fluent and well organized."
+    }
+   ],
+   "unlisted_practices": [
+    "Optimize and test the number of retrieved RAG context chunks, because excessive retrieved context degraded answer quality."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 98,
+   "sample_unit": "queries",
+   "models_evaluated": [
+    "GPT-4-turbo",
+    "GPT-3.5-turbo",
+    "Qwen2.5-14B",
+    "LLaMA3-8B",
+    "OpenBioLLM-8B",
+    "Meerkat-8B",
+    "DeepSeek-V3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Clinical question answering performance with and without RAG",
+     "effect": "Rubric gains ranged from 0.02 to 0.05 on a 5-point scale (with decreases for GPT-4-turbo by 0.04 and OpenBioLLM-8B by 0.22), while relative improvements in head-to-head win rates ranged from 16% to 46%.",
+     "quote": "Although absolute rubric gains were modest (0.02-0.05 on a five-point scale), relative improvements in head-to-head win rates ranged from 16% to 46%."
+    }
+   ],
+   "unlisted_practices": [
+    "HTML-structure-preserving chunking for clinical guideline retrieval-augmented generation",
+    "Optimizing the number of retrieved context chunks (top-k) to prevent performance degradation in clinical RAG"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "expert-curated clinical questions",
+ "sample_size": 98,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepSeek-V3",
+  "DeepSeek-V3 (judge)",
+  "GPT-3.5-turbo",
+  "GPT-4-turbo",
+  "LLaMA3-8B",
+  "Meerkat-8B",
+  "OpenBioLLM-8B",
+  "Qwen2.5-14B"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Rubric and pairwise response quality with RAG",
+   "effect": "Average scores improved GPT-3.5 +0.05, Qwen +0.05, LLaMA +0.02; decreased GPT-4 -0.04 and OpenBio -0.22; win-rate gains 16%-46%.",
+   "quote": "Direct head-to-head comparisons demonstrate that RAG consistently improves performance for most models, with the notable exception of OpenBioLLM, confirming the general effectiveness of the RAG implementation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of small open-source RAG models against GPT-4-turbo and GPT-3.5 on same queries",
+   "effect": "RAG-enhanced Qwen2.5-14B scored 3.77 vs 3.96 for GPT-4-turbo (pairwise 0.72 vs 0.81), and outperformed GPT-3.5-turbo across all metrics.",
+   "quote": "Qwen2.5-14B outperformed GPT-3.5-turbo across all metrics, achieving a normalized pairwise score of 0.72 versus 0.81 for GPT-4-turbo.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Qualitative expert review of factual errors in RAG responses",
+   "effect": "Nonsystematic review found errors in Qwen2.5-14B (abbreviation misinterpretation n=3, cross-indication PARP extrapolation n=1, incomplete HER2 SISH n=1) and GPT-4-turbo (incorrect denosumab citation n=1, incomplete n=1, off-topic n=1); hallucination rate not quantified.",
+   "quote": "In GPT-4-turbo: incomplete HER2 SISH description (n = 1), incorrect denosumab citation for hypercalcemia (n = 1), and an off-topic response (n = 1).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Factual inaccuracies in fluent RAG-generated guideline answers requiring verification",
+   "effect": "Expert inspection found failure modes in both models (abbreviation drift, cross-indication extrapolation, algorithmic incompleteness) despite fluent output; authors state clinician oversight is required.",
+   "quote": "These failure modes\u2014abbreviation drift, cross-indication extrapolation, and algorithmic incompleteness\u2014carry patient-safety risks and underscore that RAG responses require clinician oversight even when they appear fluent and well organized.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Rubric score of Qwen2.5-14B across varying numbers of retrieved contexts (k=1 to 50)",
+   "effect": "Optimal at k=5 (3.77); stable at k=1 and 3, sharp decline at k=10, reaching 1.37 at k=50 (64% decline).",
+   "quote": "Performance remained relatively stable at k = 1 and k = 3 but experienced a sharp decline at k = 10, reaching a minimum score of 1.37 at k = 50.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Guideline clinical knowledge failures",
+   "effect": "Qwen RAG: abbreviation errors n=3, PARP extrapolation n=1, incomplete HER2 SISH n=1.",
+   "quote": "In Qwen2.5-14B: abbreviation misinterpretation (n = 3, eg, \u201cPABC\u201d incorrectly expanded as \u201cpositive axillary breast cancer\u201d), cross-indication PARP inhibitor extrapolation (n = 1), and incomplete 2023 ASCO/CAP HER2 SISH algorithm description (n = 1).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Domain-specific medical fine-tuning versus general-purpose models with RAG",
+  "HTML-structure-preserving chunking for RAG",
+  "HTML-structure-preserving chunking for clinical guideline retrieval-augmented generation",
+  "On-premise small open-source model deployment for privacy",
+  "Optimize and test the number of retrieved RAG context chunks, because excessive retrieved context degraded answer quality.",
+  "Optimizing number of retrieved contexts (top-k)",
+  "Optimizing the number of retrieved context chunks (top-k) to prevent performance degradation in clinical RAG"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42361285",
+ "screen": {
+  "id": "pmid:42361285",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG) added to existing LLMs",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study comparing multiple LLMs with and without retrieval-augmented generation (RAG) using clinical guideline queries, validated by oncologists.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42361285",
+   "empirical": 0.96,
+   "tests_practice": 0.77,
+   "real_deployment": 0.05
+  }
+ }
+}

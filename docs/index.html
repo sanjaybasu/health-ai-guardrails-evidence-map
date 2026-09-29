@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardrail Evidence Map</title>
+<meta name="description" content="A weekly-updated map linking each recommended guardrail for deploying artificial intelligence in health care (large language models, predictive models, imaging software, multimodal models, and agents) to the sources that endorse it and the studies that tested it, with attention to Medicaid, safety-net, limited English proficiency, and low-literacy populations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="index.html">Guardrail Evidence Map</a>
+    <nav>
+      <a href="index.html">Map</a>
+      <a href="methods.html">Methods</a>
+      <a href="changelog.html">Updates</a>
+      <a href="https://github.com/sanjaybasu/health-ai-guardrails-evidence-map">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="intro">
+  <h1>Which guardrails for health care AI have evidence behind them?</h1>
+  <p class="lede">Frameworks, statutes, and commentaries recommend many practices for deploying AI with patients and staff, from large language models and ambient scribes to predictive risk models, imaging software, and agents. This map places each recommended practice by how many sources endorse it and by the strongest study that has tested it, and it flags whether any test included Medicaid, safety-net, limited English proficiency, or low-literacy populations.</p>
+  <div class="kpis">
+    <div><b>556</b><span>recommendations</span></div>
+    <div><b>19</b><span>governance sources</span></div>
+    <div><b>37,706</b><span>studies and commentaries screened</span></div>
+    <div><b>4684</b><span>tests of a practice</span></div>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="controls" id="controls">
+    <input id="q" type="search" placeholder="Search recommendations" aria-label="Search recommendations">
+    <select id="domain" aria-label="Domain"><option value="">All domains</option></select>
+    <select id="target" aria-label="User">
+      <option value="">Patients, staff, and organizations</option>
+      <option value="patient_facing">Patient-facing</option>
+      <option value="clinician_or_staff_facing">Clinician- or staff-facing</option>
+      <option value="organizational">Organizational</option>
+    </select>
+    <select id="status" aria-label="Evidence status"><option value="">Any evidence status</option></select>
+    <select id="tech" aria-label="Technology"><option value="">All AI technologies</option></select>
+    <label class="chk"><input type="checkbox" id="us"> Tested in underserved populations</label>
+  </div>
+  <figure class="mapfig">
+    <div id="map" role="img" aria-label="Recommendations plotted by endorsement count and strongest evidence"></div>
+    <figcaption>Each point is one recommendation. Horizontal position is the number of distinct sources that endorse it; vertical position is the strongest study design that has tested it. Points with a dark ring were tested in at least one underserved population. Select a point for detail.</figcaption>
+    <div class="legend" id="legend"></div>
+  </figure>
+</section>
+
+<section class="panel">
+  <div class="tablehead"><h2>Recommendations</h2><span id="count"></span></div>
+  <div class="tablewrap">
+    <table id="tbl">
+      <thead><tr>
+        <th data-k="statement">Recommendation</th>
+        <th data-k="domain">Domain</th>
+        <th data-k="n_endorse" class="num">Sources</th>
+        <th data-k="best_level" class="num">Best evidence</th>
+        <th data-k="n_tests" class="num">Tests</th>
+        <th data-k="n_hazard" class="num">Hazard studies</th>
+        <th data-k="status">Status</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <button id="more" class="more" hidden>Show all</button>
+</section>
+
+<dialog id="detail"><div id="detail-body"></div></dialog>
+
+</main>
+<footer class="wrap foot">
+  <p>Updated 2026-09-29. Maintained by Sanjay Basu (Waymark; University of California San Francisco). Conflict of interest: the maintainers are employees of Waymark, a public benefit organization that provides free social and medical services for patients receiving Medicaid; studies by Waymark authors are included under the same rules as all others.</p>
+  <p>Links between recommendations and studies are produced by a three-vendor model panel with verbatim-quote verification and are marked machine-extracted until a person verifies them. Report an error through <a href="https://github.com/sanjaybasu/health-ai-guardrails-evidence-map/issues">GitHub issues</a>. Code MIT; data CC BY 4.0.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

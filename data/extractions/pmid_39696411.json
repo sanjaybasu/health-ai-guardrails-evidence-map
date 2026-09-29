@@ -1,0 +1,346 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 22635,
+   "sample_unit": "patients (EHR development cohort); 2,348 NHANES participants for external validation",
+   "models_evaluated": [
+    "LASSO logistic regression",
+    "stepdown approximation logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration of prediction model before vs after logistic recalibration in external NHANES data",
+     "effect": "Before recalibration: intercept 0.102, slope 1.097, ICI 0.020; after recalibration: intercept -0.000, slope 1, ICI 0.004; C-statistic unchanged at 0.787.",
+     "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration of EHR-derived model in external nationally representative NHANES data",
+     "effect": "External validation gave C-statistic 0.787 (vs optimism-corrected 0.763 in development) but miscalibration with overestimation (intercept 0.102), correctable by recalibration.",
+     "quote": "The approximation model discriminated well in the NHANES dataset, achieving a C-statistic of 0.787."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing LASSO with stepdown approximation variable selection",
+    "Bootstrap internal validation with optimism correction and model stability assessment",
+    "Minimum sample size calculations for model development and external validation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 24983,
+   "sample_unit": "individuals",
+   "models_evaluated": [
+    "LASSO logistic regression prediabetes risk model",
+    "stepdown approximation logistic regression prediabetes risk model",
+    "logistically recalibrated approximation model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external validation discrimination and calibration",
+     "effect": "External NHANES validation achieved C-statistic 0.787 but showed miscalibration and overestimation.",
+     "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external calibration",
+     "effect": "Miscalibration/overestimation occurred: intercept 0.102; slope 1.097; ICI 0.020.",
+     "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LASSO versus approximation discrimination",
+     "effect": "Optimism-corrected C-statistics were 0.760 for LASSO and 0.763 for approximation.",
+     "quote": "Both the LASSO and approximation models demonstrated similar discrimination in the EHR cohort, with optimism-corrected C-statistics of 0.760 and 0.763, respectively."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "predictor availability for external validation",
+     "effect": "LASSO external validation was impossible because some predictor variables were unavailable.",
+     "quote": "External validation of the LASSO model was not possible due to the unavailability of some predictor variables."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration after recalibration",
+     "effect": "Recalibration improved ICI from 0.020 to 0.004, with intercept -0.000 and slope 1.",
+     "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 24983,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LASSO logistic regression",
+    "stepdown approximation logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prediabetes discrimination of 23-variable LASSO versus 8-variable approximation model",
+     "effect": "optimism-corrected C-statistic was 0.760 for 23-variable LASSO versus 0.763 for 8-variable approximation model",
+     "quote": "Both the LASSO and approximation models demonstrated similar discrimination in the EHR cohort, with optimism-corrected C-statistics of 0.760 and 0.763, respectively."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration before and after logistic recalibration in external dataset",
+     "effect": "calibration intercept improved from 0.102 to -0.000, slope from 1.097 to 1.000, and integrated calibration index from 0.020 to 0.004",
+     "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients (EHR development cohort); 2,348 NHANES participants for external validation",
+ "sample_size": 24983,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "LASSO logistic regression",
+  "LASSO logistic regression prediabetes risk model",
+  "logistically recalibrated approximation model",
+  "stepdown approximation logistic regression",
+  "stepdown approximation logistic regression prediabetes risk model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of prediction model before vs after logistic recalibration in external NHANES data",
+   "effect": "Before recalibration: intercept 0.102, slope 1.097, ICI 0.020; after recalibration: intercept -0.000, slope 1, ICI 0.004; C-statistic unchanged at 0.787.",
+   "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration of EHR-derived model in external nationally representative NHANES data",
+   "effect": "External validation gave C-statistic 0.787 (vs optimism-corrected 0.763 in development) but miscalibration with overestimation (intercept 0.102), correctable by recalibration.",
+   "quote": "The approximation model discriminated well in the NHANES dataset, achieving a C-statistic of 0.787.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LASSO versus approximation discrimination",
+   "effect": "Optimism-corrected C-statistics were 0.760 for LASSO and 0.763 for approximation.",
+   "quote": "Both the LASSO and approximation models demonstrated similar discrimination in the EHR cohort, with optimism-corrected C-statistics of 0.760 and 0.763, respectively.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "predictor availability for external validation",
+   "effect": "LASSO external validation was impossible because some predictor variables were unavailable.",
+   "quote": "External validation of the LASSO model was not possible due to the unavailability of some predictor variables.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "prediabetes discrimination of 23-variable LASSO versus 8-variable approximation model",
+   "effect": "optimism-corrected C-statistic was 0.760 for 23-variable LASSO versus 0.763 for 8-variable approximation model",
+   "quote": "Both the LASSO and approximation models demonstrated similar discrimination in the EHR cohort, with optimism-corrected C-statistics of 0.760 and 0.763, respectively.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "calibration before and after logistic recalibration in external dataset",
+   "effect": "calibration intercept improved from 0.102 to -0.000, slope from 1.097 to 1.000, and integrated calibration index from 0.020 to 0.004",
+   "quote": "The approximation model had a C-statistic of 0.787 when applied to NHANES and showed miscalibration and overestimation (Table 2 and Fig. 4 ; Intercept 0.102; Slope 1.097; ICI 0.020), but the calibration improved after recalibration (Table 2 and Fig. 5 ; Intercept -0.000; Slope 1; ICI 0.004).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Bootstrap internal validation with optimism correction and model stability assessment",
+  "Comparing LASSO with stepdown approximation variable selection",
+  "Minimum sample size calculations for model development and external validation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39696411",
+ "screen": {
+  "id": "pmid:39696411",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "external validation and recalibration before deployment",
+  "user": "none",
+  "reason": "Evaluates external validation and model recalibration using NHANES data to assess performance and generalizability of an EHR-derived prediabetes risk prediction model.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "external validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39696411",
+   "empirical": 0.85,
+   "tests_practice": 0.53,
+   "real_deployment": 0.06
+  }
+ }
+}

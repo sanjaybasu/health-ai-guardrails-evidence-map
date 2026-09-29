@@ -1,0 +1,436 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Russia",
+   "sample_size": 593365,
+   "sample_unit": "mammography studies",
+   "models_evaluated": [
+    "Celsus Mammography (Faster R-CNN with ResNet-50 backbone; versions 0.14.0\u20130.17.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R095",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration testing against predefined AUC and accuracy-deviation thresholds before clinical integration",
+     "effect": "Initial model fell below the AUC threshold (0.81). After developer updates, version 0.15.0 reached AUC 0.81 and no metric deviated >10%, enabling PACS integration.",
+     "quote": "Initial calibration testing of the AI model yielded promising results; however, the AUC and relative accuracy deviation fell below the established thresholds ( Figure 5 a, Table 6 )."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Monthly technical monitoring of missing or incomplete AI outputs",
+     "effect": "Defects (no output or incomplete image analysis) exceeded the 10% threshold several times. The average defect proportion declined from 9.0% to 1.0% after feedback-driven fixes.",
+     "quote": "The average proportion of technical defects declined from 9.0% to 1.0%, while the clinical assessment score improved from 63.4 to 72.0."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Monthly expert radiologist review of sampled AI outputs (clinical assessment score)",
+     "effect": "Across 1160 sampled studies, the clinical assessment score improved from 63.4 to 72.0. A dip in months 15\u201316 followed a change of reviewer.",
+     "quote": "The clinical evaluation plot shows a steady upward trend ( Figure 7 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Functional testing against publicly available baseline functional and diagnostic requirements (e.g., labeling, monochrome-compatible masks) before calibration testing",
+    "Systematic relay of tester and radiologist feedback to the developer to drive iterative model updates"
+   ]
+  },
+  "openai": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Russia",
+   "sample_size": 593365,
+   "sample_unit": "mammography studies",
+   "models_evaluated": [
+    "Celsus Mammography (versions 0.14.0, 0.15.0, 0.16.0, and 0.17.0)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection and correction of functional defects before clinical integration",
+     "effect": "Functional testing of version 0.14.0 identified two discrepancies: missing research-use labeling and color masks unsuitable for monochrome monitors. Both were resolved following developer changes and re-testing.",
+     "quote": "After implementing the requested changes, re-testing we undertaken to make sure that both discrepancies had been resolved."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local diagnostic performance against acceptance thresholds and claimed accuracy",
+     "effect": "Initial AUC was 0.73, below the 0.81 acceptance threshold; relative accuracy deviation also failed acceptance criteria.",
+     "quote": "Initial calibration testing of the AI model yielded promising results; however, the AUC and relative accuracy deviation fell below the established thresholds ( Figure 5 a, Table 6 )."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Technical failures associated with local configuration and examination parameters",
+     "effect": "Technical defects exceeded the 10% threshold, predominantly involving incomplete image analysis; identified contributors included mammography unit configuration problems and incorrect examination parameters.",
+     "quote": "Key contributing factors included mammography unit configuration problems, incorrect examination parameters set by technicians, PACS technical issues, and AI developer errors."
+    },
+    {
+     "rec_id": "R382",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Technical defects and clinical assessment following monitoring-driven corrective updates",
+     "effect": "Following iterative testing, monitoring, feedback, and updates, average technical defects declined from 9.0% to 1.0%; clinical assessment score improved from 63.4 to 72.0 in an uncontrolled before\u2013after comparison.",
+     "quote": "The average proportion of technical defects declined from 9.0% to 1.0%, while the clinical assessment score improved from 63.4 to 72.0."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Russia",
+   "sample_size": 593365,
+   "sample_unit": "studies",
+   "models_evaluated": [
+    "Celsus Mammography"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Functional testing findings",
+     "effect": "Initial expert radiologist review of AI outputs identified missing labels and inappropriate use of color graphic masks.",
+     "quote": "Initial functional testing of the AI model (version 0.14.0) revealed two inconsistencies with the Baseline Functional Requirements: (1) absence of a \u201cFor research purposes only\u201d label in both DICOM SR and additional image series, and (2) using color graphic masks to highlight pathological findings ( Figure 4 )."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Initial calibration testing performance",
+     "effect": "Validation on local historical data found that the model's initial AUC and relative accuracy deviation failed to meet established thresholds.",
+     "quote": "Initial calibration testing of the AI model yielded promising results; however, the AUC and relative accuracy deviation fell below the established thresholds ( Figure 5 a, Table 6 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance after model adjustments",
+     "effect": "Following model adjustments based on local testing, the AUC improved by 24.7% (from 0.73 to 0.91) and accuracy by 15.6%.",
+     "quote": "Specifically, the AUC rose by 24.7% (from 0.73 to 0.91), the accuracy improved by 15.6% (from 0.77 to 0.89), sensitivity grew by 37.1% (from 0.62 to 0.85), and specificity increased by 10.7% (from 0.84 to 0.93)."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of updated model version",
+     "effect": "Repeat local calibration testing of the updated model version verified that the AUC increased to 0.81, meeting acceptance criteria.",
+     "quote": "The second calibration testing of model version 0.15.0 demonstrated an improvement in diagnostic accuracy. The AUC increased to 0.81, meeting the threshold criteria, and no metric deviated downward by more than 10% compared to the claimed values ( Figure 5 b, Table 6 )."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Technical defects over time",
+     "effect": "Technical monitoring detected instances where technical defects, such as incomplete image analysis or missing outputs, exceeded the 10% threshold.",
+     "quote": "The technical defect monitoring plot highlights several instances where the technical defects exceeded the established threshold ( Figure 6 a)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "pre_post_no_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Russia",
+ "sample_unit": "mammography studies",
+ "sample_size": 593365,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Celsus Mammography",
+  "Celsus Mammography (Faster R-CNN with ResNet-50 backbone; versions 0.14.0\u20130.17.0)",
+  "Celsus Mammography (versions 0.14.0, 0.15.0, 0.16.0, and 0.17.0)"
+ ],
+ "links": [
+  {
+   "rec_id": "R095",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration testing against predefined AUC and accuracy-deviation thresholds before clinical integration",
+   "effect": "Initial model fell below the AUC threshold (0.81). After developer updates, version 0.15.0 reached AUC 0.81 and no metric deviated >10%, enabling PACS integration.",
+   "quote": "Initial calibration testing of the AI model yielded promising results; however, the AUC and relative accuracy deviation fell below the established thresholds ( Figure 5 a, Table 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Monthly technical monitoring of missing or incomplete AI outputs",
+   "effect": "Defects (no output or incomplete image analysis) exceeded the 10% threshold several times. The average defect proportion declined from 9.0% to 1.0% after feedback-driven fixes.",
+   "quote": "The average proportion of technical defects declined from 9.0% to 1.0%, while the clinical assessment score improved from 63.4 to 72.0.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Monthly expert radiologist review of sampled AI outputs (clinical assessment score)",
+   "effect": "Across 1160 sampled studies, the clinical assessment score improved from 63.4 to 72.0. A dip in months 15\u201316 followed a change of reviewer.",
+   "quote": "The clinical evaluation plot shows a steady upward trend ( Figure 7 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local diagnostic performance against acceptance thresholds and claimed accuracy",
+   "effect": "Initial AUC was 0.73, below the 0.81 acceptance threshold; relative accuracy deviation also failed acceptance criteria.",
+   "quote": "Initial calibration testing of the AI model yielded promising results; however, the AUC and relative accuracy deviation fell below the established thresholds ( Figure 5 a, Table 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Technical failures associated with local configuration and examination parameters",
+   "effect": "Technical defects exceeded the 10% threshold, predominantly involving incomplete image analysis; identified contributors included mammography unit configuration problems and incorrect examination parameters.",
+   "quote": "Key contributing factors included mammography unit configuration problems, incorrect examination parameters set by technicians, PACS technical issues, and AI developer errors.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R382",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Technical defects and clinical assessment following monitoring-driven corrective updates",
+   "effect": "Following iterative testing, monitoring, feedback, and updates, average technical defects declined from 9.0% to 1.0%; clinical assessment score improved from 63.4 to 72.0 in an uncontrolled before\u2013after comparison.",
+   "quote": "The average proportion of technical defects declined from 9.0% to 1.0%, while the clinical assessment score improved from 63.4 to 72.0.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Functional testing findings",
+   "effect": "Initial expert radiologist review of AI outputs identified missing labels and inappropriate use of color graphic masks.",
+   "quote": "Initial functional testing of the AI model (version 0.14.0) revealed two inconsistencies with the Baseline Functional Requirements: (1) absence of a \u201cFor research purposes only\u201d label in both DICOM SR and additional image series, and (2) using color graphic masks to highlight pathological findings ( Figure 4 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Initial calibration testing performance",
+   "effect": "Validation on local historical data found that the model's initial AUC and relative accuracy deviation failed to meet established thresholds.",
+   "quote": "Initial calibration testing of the AI model yielded promising results; however, the AUC and relative accuracy deviation fell below the established thresholds ( Figure 5 a, Table 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance after model adjustments",
+   "effect": "Following model adjustments based on local testing, the AUC improved by 24.7% (from 0.73 to 0.91) and accuracy by 15.6%.",
+   "quote": "Specifically, the AUC rose by 24.7% (from 0.73 to 0.91), the accuracy improved by 15.6% (from 0.77 to 0.89), sensitivity grew by 37.1% (from 0.62 to 0.85), and specificity increased by 10.7% (from 0.84 to 0.93).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R545",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of updated model version",
+   "effect": "Repeat local calibration testing of the updated model version verified that the AUC increased to 0.81, meeting acceptance criteria.",
+   "quote": "The second calibration testing of model version 0.15.0 demonstrated an improvement in diagnostic accuracy. The AUC increased to 0.81, meeting the threshold criteria, and no metric deviated downward by more than 10% compared to the claimed values ( Figure 5 b, Table 6 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R363",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Technical defects over time",
+   "effect": "Technical monitoring detected instances where technical defects, such as incomplete image analysis or missing outputs, exceeded the 10% threshold.",
+   "quote": "The technical defect monitoring plot highlights several instances where the technical defects exceeded the established threshold ( Figure 6 a).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R119",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Functional testing against publicly available baseline functional and diagnostic requirements (e.g., labeling, monochrome-compatible masks) before calibration testing",
+  "Systematic relay of tester and radiologist feedback to the developer to drive iterative model updates"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:40218172",
+ "screen": {
+  "id": "pmid:40218172",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "lifecycle testing with continuous monitoring and feedback-driven updates",
+  "user": "clinician_or_staff",
+  "reason": "Empirically evaluates a multi-stage lifecycle testing, prospective clinical monitoring, and radiologist feedback loop for deployment of a mammographic AI across 112 medical centers.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "lifecycle-based testing, continuous clinical monitoring, and feedback-driven model updates"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40218172",
+   "empirical": 0.97,
+   "tests_practice": 0.14,
+   "real_deployment": 0.88
+  }
+ }
+}

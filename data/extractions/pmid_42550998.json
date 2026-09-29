@@ -1,0 +1,427 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 250,
+   "sample_unit": "synthetic dialogues per model (50 per model human-rated)",
+   "models_evaluated": [
+    "GPT-4.1",
+    "o3",
+    "GPT-5.1",
+    "Llama 3.3 70B Instruct",
+    "Mistral Large-2411",
+    "DeepSeek-R1 (evaluator)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Error and harmfulness rates before vs after LLM-judge filter replacing incorrect responses with provider deferral",
+     "effect": "Filter reduced error rates (Mistral 31.9% to 10.8%; o3 6.5% to 5.2%) but harmful errors persisted (o3 4.3% to 3.9%; Llama 12.7% to 7.6%); little benefit for stronger models.",
+     "quote": "Most importantly, the filter failed to eliminate a sufficient number of harmful errors, making it impractical as a safety mechanism."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Deferral of incorrect responses to provider via automated filter, and cost of excessive deferral",
+     "effect": "Filter cut error rates but did not penalize false deferrals; would likely be counterproductive if patients were redirected on answerable questions; harmful errors remained.",
+     "quote": "If such a filter were deployed in patient interactions, it would likely be counterproductive: if patients are redirected to contact a provider for questions that could have been answered from the prep instructions, the usefulness of the AI Coach as an assistant for colonoscopy prep is undermined."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI Coach response correctness and harmful errors vs prep instructions reference standard",
+     "effect": "Human-rated turn-level accuracy: o3 93.5%, GPT-4.1 90.8%, Llama 78.1%, Mistral 68.1%; all models produced harmful errors (o3 11/17 errors harmful).",
+     "quote": "All models produced harmful errors, primarily due to omissions or misinterpretations of prep instructions."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Harmful errors from LLM patient-facing coaching, accuracy versus safety",
+     "effect": "o3 had fewest errors but highest harmful proportion (11/17, 64.7%), showing that accuracy does not equal safety.",
+     "quote": "Additionally, o3 produced a large proportion of harmful errors despite high overall accuracy, showing that accuracy and safety are not equivalent."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diversity of simulated patient questions under multiprompt vs single-prompt generation",
+     "effect": "Multiprompt 10-question strategy increased Distinct-1/2 and entropy for all models (e.g., GPT-5.1 Distinct-2 0.25 to 0.47).",
+     "quote": "Automatic diversity metrics, such as entropy and Distinct-1 or Distinct-2 ( Table 4 ), indicated that the multiprompt, multiquestion generation strategy produced more diverse patient questions than the single-prompt, single-question baseline for all models."
+    },
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether LLM coach defers unanswerable questions and avoids unsupported advice",
+     "effect": "Errors included extraneous incorrect information (1.2-3.7%) and failures to direct patients to providers after eating prohibited food or for medication changes.",
+     "quote": "In several cases, models failed to instruct patients to contact their provider after mistakenly consuming a prohibited food item."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Models' handling of ambiguous patient inputs such as weekday-phrased questions",
+     "effect": "Even stronger models failed to detect ambiguity in questions phrased with weekdays rather than days before procedure.",
+     "quote": "Such questions create ambiguity that a robust system should detect, but even stronger models were not able to do so."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM-as-a-judge automated evaluator compared against expert human raters",
+    "Multiprompt generation to increase diversity of simulated patient questions"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 1250,
+   "sample_unit": "synthetic patient-AI Coach dialogues in the main multiprompt evaluation",
+   "models_evaluated": [
+    "OpenAI GPT-4.1",
+    "OpenAI o3",
+    "OpenAI GPT-5.1",
+    "Meta Llama 3.3 70B Instruct",
+    "Mistral Large-2411",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human rater agreement",
+     "effect": "Expert/experienced raters AC1=0.74 (95% CI 0.68-0.80; agreement=0.82); all raters AC1=0.68 (95% CI 0.62-0.75; agreement=0.79).",
+     "quote": "Interrater agreement for correctness judgments among the human raters was substantial (expert and experienced raters: AC1=0.74, 95% CI 0.68-0.80, percent agreement=0.82; all raters: AC1=0.68, 95% CI 0.62-0.75, percent agreement=0.79), consistent with our expectation that evaluating factual correctness in this task is easier than clinical diagnosis."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparative model accuracy",
+     "effect": "GPT-5.1: 182/250 dialogues (72.8%) and 1135/1219 turns (93.1%); significantly exceeded o3 (P=.04), GPT-4.1, Llama, and Mistral (all P<.001 except o3).",
+     "quote": "At both the dialogue level (182/250, 72.8%) and turn level (1135/1219, 93.1%), GPT-5.1 was the best-performing model, significantly exceeding o3 (158/250, 63.2% and 1145/1262, 90.7%, respectively; P =.04), GPT-4.1 (147/250, 58.8% and 1148/1292, 88.9%, respectively; P <.001), Llama 3.3 70B (104/250, 41.6% and 990/1220, 81.1%, respectively; P <.001), and Mistral Large (150/250, 60% and 773/1250, 61.8%, respectively; P <.001) at the turn level."
+    },
+    {
+     "rec_id": "R152",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Harmful patient-facing responses",
+     "effect": "Human harmfulness rates before filtering: Mistral 33/251 (13.1%), Llama 30/237 (12.7%), GPT-4.1 9/250 (3.6%), o3 10/231 (4.3%).",
+     "quote": "All models produced harmful errors, primarily due to omissions or misinterpretations of prep instructions."
+    },
+    {
+     "rec_id": "R486",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Safety filter effect on harm",
+     "effect": "Harmfulness before\u2192after: Mistral 33/251 (13.1%)\u219211/251 (4.4%); Llama 30/237 (12.7%)\u219218/237 (7.6%); GPT-4.1 9/250\u21928/250; o3 10/231\u21929/231.",
+     "quote": "Applying an automated safety filter reduced overall error rates but failed to eliminate harmful responses."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Instruction-adherence accuracy",
+     "effect": "Human turn-level accuracy: o3 216/231 (93.5%), Llama 185/237 (78.1%; P<.001 vs o3), Mistral 171/251 (68.1%; P<.001 vs o3).",
+     "quote": "A similar pattern was observed at the turn level, with o3 (216/231, 93.5%) significantly outperforming Llama 3.3 70B (185/237, 78.1%; P <.001) and Mistral Large (171/251, 68.1%; P <.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Multiprompt, multiquestion synthetic-dialogue generation to increase diversity of patient questions",
+    "Validation and selection of an LLM-as-a-judge evaluator against human correctness ratings"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 1250,
+   "sample_unit": "dialogues",
+   "models_evaluated": [
+    "GPT-4.1",
+    "o3",
+    "GPT-5.1",
+    "Llama 3.3 70B",
+    "Mistral Large-2411",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R486",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "response error and harmfulness rates after automated safety filtering",
+     "effect": "Filtering reduced error rates (Mistral: 31.9% to 10.8%; Llama: 21.9% to 12.2%; GPT-4.1: 9.2% to 6.0%; o3: 6.5% to 5.2%) and harmfulness (Mistral: 13.1% to 4.4%; o3: 4.3% to 3.9%), but failed to eliminate harmful errors.",
+     "quote": "Applying an automated safety filter reduced overall error rates but failed to eliminate harmful responses."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "synthetic dialogues per model (50 per model human-rated)",
+ "sample_size": 1250,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1",
+  "DeepSeek-R1 (evaluator)",
+  "GPT-4.1",
+  "GPT-5.1",
+  "Llama 3.3 70B",
+  "Llama 3.3 70B Instruct",
+  "Meta Llama 3.3 70B Instruct",
+  "Mistral Large-2411",
+  "OpenAI GPT-4.1",
+  "OpenAI GPT-5.1",
+  "OpenAI o3",
+  "o3"
+ ],
+ "links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI Coach response correctness and harmful errors vs prep instructions reference standard",
+   "effect": "Human-rated turn-level accuracy: o3 93.5%, GPT-4.1 90.8%, Llama 78.1%, Mistral 68.1%; all models produced harmful errors (o3 11/17 errors harmful).",
+   "quote": "All models produced harmful errors, primarily due to omissions or misinterpretations of prep instructions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R486",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Safety filter effect on harm",
+   "effect": "Harmfulness before\u2192after: Mistral 33/251 (13.1%)\u219211/251 (4.4%); Llama 30/237 (12.7%)\u219218/237 (7.6%); GPT-4.1 9/250\u21928/250; o3 10/231\u21929/231.",
+   "quote": "Applying an automated safety filter reduced overall error rates but failed to eliminate harmful responses.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Error and harmfulness rates before vs after LLM-judge filter replacing incorrect responses with provider deferral",
+   "effect": "Filter reduced error rates (Mistral 31.9% to 10.8%; o3 6.5% to 5.2%) but harmful errors persisted (o3 4.3% to 3.9%; Llama 12.7% to 7.6%); little benefit for stronger models.",
+   "quote": "Most importantly, the filter failed to eliminate a sufficient number of harmful errors, making it impractical as a safety mechanism.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Deferral of incorrect responses to provider via automated filter, and cost of excessive deferral",
+   "effect": "Filter cut error rates but did not penalize false deferrals; would likely be counterproductive if patients were redirected on answerable questions; harmful errors remained.",
+   "quote": "If such a filter were deployed in patient interactions, it would likely be counterproductive: if patients are redirected to contact a provider for questions that could have been answered from the prep instructions, the usefulness of the AI Coach as an assistant for colonoscopy prep is undermined.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diversity of simulated patient questions under multiprompt vs single-prompt generation",
+   "effect": "Multiprompt 10-question strategy increased Distinct-1/2 and entropy for all models (e.g., GPT-5.1 Distinct-2 0.25 to 0.47).",
+   "quote": "Automatic diversity metrics, such as entropy and Distinct-1 or Distinct-2 ( Table 4 ), indicated that the multiprompt, multiquestion generation strategy produced more diverse patient questions than the single-prompt, single-question baseline for all models.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Models' handling of ambiguous patient inputs such as weekday-phrased questions",
+   "effect": "Even stronger models failed to detect ambiguity in questions phrased with weekdays rather than days before procedure.",
+   "quote": "Such questions create ambiguity that a robust system should detect, but even stronger models were not able to do so.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R152",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Harmful patient-facing responses",
+   "effect": "Human harmfulness rates before filtering: Mistral 33/251 (13.1%), Llama 30/237 (12.7%), GPT-4.1 9/250 (3.6%), o3 10/231 (4.3%).",
+   "quote": "All models produced harmful errors, primarily due to omissions or misinterpretations of prep instructions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R063",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "LLM-as-a-judge automated evaluator compared against expert human raters",
+  "Multiprompt generation to increase diversity of simulated patient questions",
+  "Multiprompt, multiquestion synthetic-dialogue generation to increase diversity of patient questions",
+  "Validation and selection of an LLM-as-a-judge evaluator against human correctness ratings"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42550998",
+ "screen": {
+  "id": "pmid:42550998",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "automated safety filter with deferral message",
+  "user": "patient",
+  "reason": "Evaluates LLMs acting as colonoscopy prep coaches using simulated dialogues and explicitly tests an automated safety filtering mechanism that replaces incorrect answers with a clinician referral.",
+  "jev": {
+   "id": "pmid:42550998",
+   "empirical": 0.96,
+   "tests_practice": 0.9,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,384 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 108,
+   "sample_unit": "synthetic patient profiles (432 scored recommendation records in full DeepSeek audit)",
+   "models_evaluated": [
+    "DeepSeek",
+    "openai/gpt-5.4-mini",
+    "google/gemini-3.1-flash-lite-preview",
+    "z-ai/glm-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R322",
+     "relation": "tests_guardrail",
+     "finding": "hazard_present",
+     "outcome": "High-minus-low SES access-cost proxy gap in LLM advice with health need held constant (raw prompt)",
+     "effect": "Raw prompt high-minus-low SES access-cost proxy gap was 0.306; guideline-constrained prompt gap remained 0.291; insurance-shift gap largest (0.417).",
+     "quote": "Under the raw prompt, the mean access-cost proxy is highest for high-SES county contexts and lowest for low-SES county contexts, yielding a high-minus-low proxy gap of 0.306."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Access-cost proxy gap and alignment/personalization after mitigation via accessibility-aware prompting and reranking",
+     "effect": "Accessibility-aware prompting reduced gap from 0.306 to 0.139; reranking kept 0.139 and raised alignment from 0.046 to 0.250; personalization stayed above 5.1. GLM-5 gap stayed 0.750.",
+     "quote": "Accessibility-constrained reranking preserves the reduced high-minus-low SES proxy gap of 0.139 while increasing this coarse alignment rate to 0.250."
+    },
+    {
+     "rec_id": "R321",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Population-specific bias in generated content: resource assumptions across county SES contexts",
+     "effect": "Models assigned more resource-intensive recommendations to advantaged contexts and lower-cost plans to less advantaged contexts despite fixed health need.",
+     "quote": "The gradient shows that the model assigns more resource-intensive recommendations to socially advantaged contexts and lower-cost plans to less advantaged contexts."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Stability of proxy gap ordering across alternative scoring weights",
+     "effect": "Across six weighting schemes, raw gap ranged 0.180 to 0.375, P2 0.118 to 0.160, rerank 0.111 to 0.153; ordering stable.",
+     "quote": "Thus, the relative ordering of the main DeepSeek mitigation conditions remains stable even when the contribution of transport, equipment, or gym dependence is perturbed."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model output differences across subgroups (county SES) and across models",
+     "effect": "Raw high-minus-low gaps were non-trivial for all three models (Gemini 0.875, GPT-5.4-mini 0.417, GLM-5 0.750); mitigation narrowed gap for two of three models.",
+     "quote": "As shown in Table 3 and Figure 6 , the raw high-minus-low SES access-cost proxy gap is non-trivial for all three models, and accessibility-aware prompting reduces that proxy gap for two of them."
+    }
+   ],
+   "unlisted_practices": [
+    "Accessibility-aware prompting instructing low-cost alternatives and discouraging socioeconomic stereotyping",
+    "Output-layer reranking of candidate recommendations by access-cost proxy with guideline-alignment rule"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 432,
+   "sample_unit": "full-audit recommendation rows; cross-model extension included 324 recommendation rows",
+   "models_evaluated": [
+    "DeepSeek (unspecified endpoint)",
+    "google/gemini-3.1-flash-lite-preview",
+    "openai/gpt-5.4-mini",
+    "z-ai/glm-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "SES subgroup access-cost gaps",
+     "effect": "Raw high-minus-low access-cost proxy gap was 0.306; guideline-constrained gap remained 0.291.",
+     "quote": "Under the raw prompt, the mean access-cost proxy is highest for high-SES county contexts and lowest for low-SES county contexts, yielding a high-minus-low proxy gap of 0.306."
+    },
+    {
+     "rec_id": "R322",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "counterfactual SES audit detection",
+     "effect": "Matched counterfactual audit found raw high-minus-low access-cost proxy gap of 0.306.",
+     "quote": "For RQ1, the matched comparisons reveal systematic variation in coded resource assumptions across county-SES contexts: under the raw condition, the high-minus-low access-cost proxy gap is 0.306 even though represented health need is held constant."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "bias mitigation of SES gap",
+     "effect": "DeepSeek gap reduced from 0.306 to 0.139 with accessibility-aware prompting.",
+     "quote": "In the full DeepSeek model panel, accessibility-aware prompting reduced the access-cost proxy gap between high- and low-socioeconomic status (SES) counties from 0.306 to 0.139."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "cross-model fairness heterogeneity",
+     "effect": "Gemini gap 0.875\u21920.208; GPT-5.4-mini 0.417\u21920.292; GLM-5 remained 0.750.",
+     "quote": "Across this bounded panel, the prompt intervention changes the proxy gap for some models but not all, supporting model-specific evaluation rather than a universal claim."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "physical-activity guideline alignment",
+     "effect": "P2 alignment remained low at 0.046; Table 2 reports raw 0.019 and rerank 0.250.",
+     "quote": "The P2 accessibility-aware condition produces the lowest average access-cost proxy score, but its volume-and-intensity alignment rate remains low at 0.046."
+    }
+   ],
+   "unlisted_practices": [
+    "Accessibility-aware prompting for low-cost, low-resource physical-activity alternatives",
+    "Output-layer reranking by guideline alignment, access-cost proxy, and personalization"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 432,
+   "sample_unit": "recommendations",
+   "models_evaluated": [
+    "DeepSeek",
+    "google/gemini-3.1-flash-lite-preview",
+    "openai/gpt-5.4-mini",
+    "z-ai/glm-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R322",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "socioeconomic access-cost proxy gap",
+     "effect": "high-minus-low SES access-cost proxy gap of 0.306 under raw prompt",
+     "quote": "Under the raw prompt, the mean access-cost proxy is highest for high-SES county contexts and lowest for low-SES county contexts, yielding a high-minus-low proxy gap of 0.306."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "access-cost proxy gap and guideline alignment rate",
+     "effect": "accessibility-aware prompting reduced access-cost proxy gap from 0.306 to 0.139; reranking maintained 0.139 gap while increasing alignment rate to 0.250",
+     "quote": "Accessibility-constrained reranking preserves the reduced high-minus-low SES proxy gap of 0.139 while increasing this coarse alignment rate to 0.250."
+    }
+   ],
+   "unlisted_practices": [
+    "accessibility-aware prompting",
+    "output-layer reranking"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "synthetic patient profiles (432 scored recommendation records in full DeepSeek audit)",
+ "sample_size": 432,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": true,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepSeek",
+  "DeepSeek (unspecified endpoint)",
+  "google/gemini-3.1-flash-lite-preview",
+  "openai/gpt-5.4-mini",
+  "z-ai/glm-5"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Access-cost proxy gap and alignment/personalization after mitigation via accessibility-aware prompting and reranking",
+   "effect": "Accessibility-aware prompting reduced gap from 0.306 to 0.139; reranking kept 0.139 and raised alignment from 0.046 to 0.250; personalization stayed above 5.1. GLM-5 gap stayed 0.750.",
+   "quote": "Accessibility-constrained reranking preserves the reduced high-minus-low SES proxy gap of 0.139 while increasing this coarse alignment rate to 0.250.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model output differences across subgroups (county SES) and across models",
+   "effect": "Raw high-minus-low gaps were non-trivial for all three models (Gemini 0.875, GPT-5.4-mini 0.417, GLM-5 0.750); mitigation narrowed gap for two of three models.",
+   "quote": "As shown in Table 3 and Figure 6 , the raw high-minus-low SES access-cost proxy gap is non-trivial for all three models, and accessibility-aware prompting reduces that proxy gap for two of them.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R321",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Population-specific bias in generated content: resource assumptions across county SES contexts",
+   "effect": "Models assigned more resource-intensive recommendations to advantaged contexts and lower-cost plans to less advantaged contexts despite fixed health need.",
+   "quote": "The gradient shows that the model assigns more resource-intensive recommendations to socially advantaged contexts and lower-cost plans to less advantaged contexts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R322",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "counterfactual SES audit detection",
+   "effect": "Matched counterfactual audit found raw high-minus-low access-cost proxy gap of 0.306.",
+   "quote": "For RQ1, the matched comparisons reveal systematic variation in coded resource assumptions across county-SES contexts: under the raw condition, the high-minus-low access-cost proxy gap is 0.306 even though represented health need is held constant.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R322",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "socioeconomic access-cost proxy gap",
+   "effect": "high-minus-low SES access-cost proxy gap of 0.306 under raw prompt",
+   "quote": "Under the raw prompt, the mean access-cost proxy is highest for high-SES county contexts and lowest for low-SES county contexts, yielding a high-minus-low proxy gap of 0.306.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Accessibility-aware prompting for low-cost, low-resource physical-activity alternatives",
+  "Accessibility-aware prompting instructing low-cost alternatives and discouraging socioeconomic stereotyping",
+  "Output-layer reranking by guideline alignment, access-cost proxy, and personalization",
+  "Output-layer reranking of candidate recommendations by access-cost proxy with guideline-alignment rule",
+  "accessibility-aware prompting",
+  "output-layer reranking"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42719088",
+ "screen": {
+  "id": "pmid:42719088",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "accessibility-aware prompting and output reranking to mitigate bias",
+  "user": "patient",
+  "reason": "The study tests deployment safeguards (accessibility-aware prompting and output reranking) to mitigate socioeconomic bias in LLM-generated physical activity advice across synthetic patient profiles.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "accessibility-aware prompting and output reranking"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42719088",
+   "empirical": 0.92,
+   "tests_practice": 0.8,
+   "real_deployment": 0.04
+  }
+ }
+}

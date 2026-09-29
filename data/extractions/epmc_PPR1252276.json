@@ -1,0 +1,108 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "Not reported",
+ "sample_size": 44550,
+ "sample_unit": "scored evaluations (110 pharmacogenomic cases, nine LLMs)",
+ "models_evaluated": [
+  "nine frontier large language models (not named in abstract)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "outcome": "Lethal-class pharmacogenomic errors with and without retrieval grounding in guidelines",
+   "effect": "Retrieval raised phenotype accuracy but paradoxically increased lethal-class errors; versioned skills executed as code did not increase them. No numbers given in the abstract.",
+   "quote": "Letting the model reason was stochastic and unsafe, and grounding it in the correct guidelines by retrieval paradoxically increased lethal-class errors.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM interpretation of real star-allele diplotypes across ancestry groups",
+   "effect": "Unguarded model interpretation degraded along an ancestry gradient across European, Latin American and East African populations (>7,000 individuals); executed mapping was population-invariant.",
+   "quote": "On individual genomes, unguarded model interpretation degraded along an ancestry gradient; execution removes this gradient from the clinical mapping, relocating it to the auditable completeness of the input caller.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Stochasticity and safety of unconstrained model reasoning on pharmacogenomic cases",
+   "effect": "Letting the model reason was stochastic and unsafe; executing the skill made the mapping deterministic and identical across models.",
+   "quote": "Letting the model reason was stochastic and unsafe, and grounding it in the correct guidelines by retrieval paradoxically increased lethal-class errors.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Encoding validated decision logic as a versioned skill executed as deterministic code, with the LLM confined to input interpretation",
+  "Using a deterministic input caller and abstaining on the irreducible residual"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1252276",
+ "screen": {
+  "id": "epmc:PPR1252276",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval grounding vs executing validated decision logic as versioned code skill",
+  "user": "none",
+  "reason": "Empirically tests and compares safety/error rates across different pipeline architectures and guardrails (pure reasoning vs. retrieval grounding vs. code-executed versioned skills) for agentic LLMs in pharmacogenomics.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "versioned skill library execution and retrieval-augmented grounding guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1252276",
+   "empirical": 0.94,
+   "tests_practice": 0.67,
+   "real_deployment": 0.06
+  }
+ }
+}

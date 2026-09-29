@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "chest X-ray images (three public datasets: PadChest, NIH ChestX-ray14, MIMIC-CXR)",
+ "models_evaluated": [
+  "DenseNet-121 with entropy-based rejection",
+  "DenseNet-121 with confidence interval-based rejection"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy-coverage trade-off when model abstains on uncertain chest X-ray predictions and defers to experts",
+   "effect": "Selective rejection improved the trade-off between diagnostic accuracy and coverage; entropy-based rejection gave the highest average AuC across all pathologies. No numeric values reported in the abstract.",
+   "quote": "Experiments conducted on three large public datasets (PadChest, NIH ChestX-ray14, and MIMIC-CXR) demonstrate that selective rejection improves the trade-off between diagnostic accuracy and coverage, with entropy-based rejection yielding the highest average AuC across all pathologies.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Entropy-based and confidence-interval-based selective prediction (rejection) with quantile-based threshold calibration, global or class-specific"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1032607",
+ "screen": {
+  "id": "epmc:PPR1032607",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates selective prediction / rejection mechanisms (entropy- and confidence interval-based abstention) as a safeguard to defer uncertain predictions to clinical experts in chest X-ray diagnosis.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "selective prediction rejection mechanism"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1032607",
+   "empirical": 0.95,
+   "tests_practice": 0.69,
+   "real_deployment": 0.04
+  }
+ }
+}

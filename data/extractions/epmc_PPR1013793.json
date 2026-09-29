@@ -1,0 +1,358 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 3650,
+   "sample_unit": "medical records",
+   "models_evaluated": [
+    "Microsoft Azure DeID service",
+    "AnonCAT",
+    "OBI RoBERTa",
+    "BERT i2b2 DeID",
+    "Gemma-7b-IT",
+    "Llama-3-8B-Instruct",
+    "Phi-3-mini-128k-instruct",
+    "GPT-3.5-turbo-0125",
+    "GPT-4-0125"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R330",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "De-identification performance (F1, precision, recall) of automated models for PII redaction in medical records",
+     "effect": "Best tool Azure DeID F1 0.939 (precision 0.928, recall 0.950); fine-tuned AnonCAT F1 0.910 with recall 0.850; names/dates consistently redacted but variable performance for other PII categories.",
+     "quote": "Names/dates were consistently redacted by all comparators; there was variable performance for other categories."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Change in AnonCAT performance after local fine-tuning with site-specific data",
+     "effect": "AnonCAT F1 rose from 0.851 (0.843-0.859) to 0.910 (0.905-0.914) after fine-tuning; fine-tuned model showed least performance shift across datasets.",
+     "quote": "AnonCAT showed significant improvement in performance on fine-tuning (F1 increase from 0.851; 0.843-0.859 to 0.910; 0.905-0.914)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinated or extra text output (Levenshtein distance) by generalist LLMs",
+     "effect": "Hallucinatory output in Phi-3-mini and Llama-3-8B at zero-, one-, and five-shots, and universally for Gemma-7b-IT.",
+     "quote": "There was hallucinatory output in Phi-3-mini-128k-instruct and Llama-3-8B-Instruct at zero-, one-, and five-shots, and universally for Gemma-7b-IT."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot in-context learning with site-specific data to improve generalist LLM performance",
+    "Comparing task-specific de-identification models with generalist LLMs"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 3650,
+   "sample_unit": "medical records",
+   "models_evaluated": [
+    "Microsoft Azure DeID service",
+    "AnonCAT",
+    "fine-tuned AnonCAT",
+    "OBI RoBERTa",
+    "BERT i2b2 DeID",
+    "Gemma-7b-IT",
+    "Llama-3-8B-Instruct",
+    "Phi-3-mini-128k-instruct",
+    "GPT-3.5-turbo-0125",
+    "GPT-4-0125"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference standard agreement",
+     "effect": "Inter-annotator F1 for word-level PII was 0.977 (95%CI 0.957-0.991).",
+     "quote": "Inter-annotator F1 for word-level PII was 0.977 (95%CI 0.957-0.991)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PII redaction model selection",
+     "effect": "Azure was best: F1 0.939 (0.934-0.944), precision 0.928 (0.922-0.934), recall 0.950 (0.943-0.958).",
+     "quote": "The best performing redaction tool was the Microsoft Azure de-identification service: F1 0.939 (0.934-0.944), precision 0.928 (0.922-0.934), recall 0.950 (0.943-0.958)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fine-tuning effect on DeID",
+     "effect": "AnonCAT F1 increased from 0.851; 0.843-0.859 to 0.910; 0.905-0.914 after fine-tuning.",
+     "quote": "AnonCAT showed significant improvement in performance on fine-tuning (F1 increase from 0.851; 0.843-0.859 to 0.910; 0.905-0.914)."
+    },
+    {
+     "rec_id": "R330",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Residual PII after de-identification",
+     "effect": "Best redaction tool recall was 0.950 (0.943-0.958), indicating residual missed PII risk.",
+     "quote": "The best performing redaction tool was the Microsoft Azure de-identification service: F1 0.939 (0.934-0.944), precision 0.928 (0.922-0.934), recall 0.950 (0.943-0.958)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinated de-identification output",
+     "effect": "Hallucinations occurred in Phi-3-mini and Llama-3 at zero-, one-, and five-shots, and universally for Gemma-7b-IT.",
+     "quote": "There was hallucinatory output in Phi-3-mini-128k-instruct and Llama-3-8B-Instruct at zero-, one-, and five-shots, and universally for Gemma-7b-IT."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot in-context learning for LLM-based medical record de-identification"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 3650,
+   "sample_unit": "medical records",
+   "models_evaluated": [
+    "Microsoft Azure DeID service",
+    "AnonCAT",
+    "OBI RoBERTa",
+    "BERT i2b2 DeID",
+    "Gemma-7b-IT",
+    "Llama-3-8B-Instruct",
+    "Phi-3-mini-128k-instruct",
+    "GPT-3.5-turbo-0125",
+    "GPT-4-0125"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PII redaction F1 score",
+     "effect": "F1 increased from 0.851 (95% CI 0.843-0.859) to 0.910 (95% CI 0.905-0.914) with fine-tuning.",
+     "quote": "AnonCAT showed significant improvement in performance on fine-tuning (F1 increase from 0.851; 0.843-0.859 to 0.910; 0.905-0.914)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "medical records",
+ "sample_size": 3650,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "AnonCAT",
+  "BERT i2b2 DeID",
+  "GPT-3.5-turbo-0125",
+  "GPT-4-0125",
+  "Gemma-7b-IT",
+  "Llama-3-8B-Instruct",
+  "Microsoft Azure DeID service",
+  "OBI RoBERTa",
+  "Phi-3-mini-128k-instruct",
+  "fine-tuned AnonCAT"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Change in AnonCAT performance after local fine-tuning with site-specific data",
+   "effect": "AnonCAT F1 rose from 0.851 (0.843-0.859) to 0.910 (0.905-0.914) after fine-tuning; fine-tuned model showed least performance shift across datasets.",
+   "quote": "AnonCAT showed significant improvement in performance on fine-tuning (F1 increase from 0.851; 0.843-0.859 to 0.910; 0.905-0.914).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R330",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "De-identification performance (F1, precision, recall) of automated models for PII redaction in medical records",
+   "effect": "Best tool Azure DeID F1 0.939 (precision 0.928, recall 0.950); fine-tuned AnonCAT F1 0.910 with recall 0.850; names/dates consistently redacted but variable performance for other PII categories.",
+   "quote": "Names/dates were consistently redacted by all comparators; there was variable performance for other categories.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "PII redaction model selection",
+   "effect": "Azure was best: F1 0.939 (0.934-0.944), precision 0.928 (0.922-0.934), recall 0.950 (0.943-0.958).",
+   "quote": "The best performing redaction tool was the Microsoft Azure de-identification service: F1 0.939 (0.934-0.944), precision 0.928 (0.922-0.934), recall 0.950 (0.943-0.958).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R330",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing task-specific de-identification models with generalist LLMs",
+  "Few-shot in-context learning for LLM-based medical record de-identification",
+  "Few-shot in-context learning with site-specific data to improve generalist LLM performance"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1013793",
+ "screen": {
+  "id": "epmc:PPR1013793",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "any_ai"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning and few-shot adaptation with site-specific data",
+  "user": "none",
+  "reason": "The study benchmarks the performance of various transformer models and LLMs for clinical text de-identification on annotated EHR datasets, evaluating model accuracy and prompting strategies rather than testing an organizational deployment safeguard.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1013793",
+   "empirical": 0.98,
+   "tests_practice": 0.48,
+   "real_deployment": 0.06
+  }
+ }
+}

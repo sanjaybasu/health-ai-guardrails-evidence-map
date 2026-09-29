@@ -1,0 +1,112 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 250,
+ "sample_unit": "medication lists (each with 1 interacting drug pair; 9 runs per prompt condition)",
+ "models_evaluated": [
+  "GPT-5-Chat",
+  "GPT-4o-mini",
+  "Gemma-27B",
+  "LLaMA3-70B",
+  "Qwen3-32B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Whether LLM refusal/deferral aligns with error likelihood, with and without prompt mitigation",
+   "effect": "Refusal Index 0.104-0.574 (weak to moderate); mitigation prompts had inconsistent effects; Qwen3-32B and GPT-4o-mini increased refusals but not where responses were more likely incorrect.",
+   "quote": "Prompt-based mitigation strategies produced inconsistent effects on RI and did not reliably recalibrate uncertainty behavior.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Calibrated uncertainty expression (refusal alignment with error) under uncertainty-encouraging prompts",
+   "effect": "Alignment weak to moderate (RI 0.104-0.574); prompt design alone did not consistently improve knowledge-aware uncertainty expression.",
+   "quote": "Prompt design alone was insufficient to consistently improve knowledge-aware uncertainty expression.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Self-consistency and output variability across 9 repeated runs per prompt",
+   "effect": "Overall accuracy ranged 54.1% to 83.7%; models varied in self-consistency, and stability did not track uncertainty expression.",
+   "quote": "Notably, higher overall accuracy and response stability did not consistently correspond to stronger knowledge-aware uncertainty expression.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Refusal Index as a metric for evaluating alignment between refusal and error likelihood",
+  "Patient safety-focused prompt engineering to induce cautious responses"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42640124",
+ "screen": {
+  "id": "pmid:42640124",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompt-based uncertainty/safety guardrails",
+  "user": "none",
+  "reason": "Evaluates prompt-based mitigation/guardrail strategies designed to encourage appropriate uncertainty acknowledgment and refusal behavior in LLMs identifying drug-drug interactions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt-based mitigation strategies for uncertainty expression and refusal"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42640124",
+   "empirical": 0.97,
+   "tests_practice": 0.6,
+   "real_deployment": 0.03
+  }
+ }
+}

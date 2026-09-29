@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "unspecified",
+ "sample_size": 15900,
+ "sample_unit": "model-response runs",
+ "models_evaluated": [
+  "4-billion-parameter LLM with gated Inference Time Intervention steering",
+  "unsteered 4B baseline",
+  "models with more than 100 billion parameters"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Unsupported claims (hallucination) in clinical QA grounded in EHR context",
+   "effect": "Hallucination described as introducing information unsupported by context; the gated steering component was designed to mitigate it. No hallucination rates given in the abstract.",
+   "quote": "Hallucination can introduce information that is unsupported by the context, while sycophancy can cause a model to abandon a previously correct answer when challenged by the user.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Gated inference-time activation steering (ITI) to reduce sycophancy under user pressure and hallucination",
+  "Behavior-specific gating so intervention applies only when needed"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2608.23666",
+ "screen": {
+  "id": "arxiv:2608.23666",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a technical safeguard (inference-time intervention via gated activation steering applied to frozen LLMs) to mitigate hallucination and sycophancy in medical QA using EHR-grounded benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "gated activation steering / inference-time intervention"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2608.23666",
+   "empirical": 0.93,
+   "tests_practice": 0.33,
+   "real_deployment": 0.04
+  }
+ }
+}

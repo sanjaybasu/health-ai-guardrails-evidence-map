@@ -1,0 +1,298 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 65851,
+   "sample_unit": "fundus images",
+   "models_evaluated": [
+    "DeepFundus (InceptionResNetV2)",
+    "certified AI retinal diagnostic system (CARE)",
+    "InceptionV3",
+    "DenseNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic AI sensitivity/accuracy for drusen in good vs poor quality images after DeepFundus filtering",
+     "effect": "Overall quality filter: drusen sensitivity 0.853 (GQ) vs 0.494 (PQ), difference 0.360, p<0.001; accuracy 0.938 vs 0.914, p=0.002. Similar results in other 6 filters.",
+     "quote": "the GQ group demonstrated significantly higher sensitivity and accuracy values."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Quality classifier performance across sites, regions, and camera types",
+     "effect": "AUCs of 0.911\u20130.985 for poor overall quality across 7 Chinese regions; 0.949 nationally; 0.764\u20130.987 on Kaggle dataset.",
+     "quote": "In both the internal test and national validation datasets, DeepFundus achieved AUCs >0.9 for all quality aspects."
+    }
+   ],
+   "unlisted_practices": [
+    "automated image quality classification to filter ungradable inputs before AI diagnosis",
+    "including adequate/low-quality images in training data to improve model robustness",
+    "real-time image acquisition feedback to operators"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "China; United States (Kaggle/EyePACS)",
+   "sample_size": 65851,
+   "sample_unit": "fundus images",
+   "models_evaluated": [
+    "DeepFundus",
+    "certified AI retinal diagnostic system",
+    "InceptionResNetV2",
+    "InceptionV3",
+    "DenseNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detecting poor-quality fundus inputs",
+     "effect": "Overall quality: sensitivity 0.946 (0.944, 0.948), specificity 0.842 (0.838, 0.845), AUC 0.949 (0.947, 0.951).",
+     "quote": "In the national validation dataset consisting of 44,712 fundus images, DeepFundus achieved an AUC of 0.949 (95% CI: 0.947\u20130.951) for detecting images of poor overall quality ( Table 1 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Diagnostic performance under poor image quality",
+     "effect": "Drusen sensitivity/accuracy: GQ 0.853/0.938 vs PQ 0.494/0.914; differences 0.360 and 0.024, p<0.001 and p=0.002.",
+     "quote": "In a community-based cohort for AMD screening, AI achieved sensitivities of 0.853 (95% CI: 0.830\u20130.874) and 0.494 (0.430\u20130.557); specificities of 0.975 (0.968\u20130.981) and 0.981 (0.972\u20130.987); and accuracies of 0.938 (0.929\u20130.946) and 0.914 (0.900\u20130.926) in detecting drusen in the overall GQ and PQ groups, respectively; the GQ group demonstrated significantly higher sensitivity and accuracy values."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Image-quality AUC by Chinese region",
+     "effect": "Across 7 regions, AUC ranges were 0.911\u20130.985 overall, 0.965\u20130.997 position, 0.924\u20130.991 illumination, 0.922\u20130.971 clarity.",
+     "quote": "(B) On the national validation dataset, DeepFundus achieved AUCs of 0.911\u20130.985 for detecting images of poor overall quality; AUCs of 0.965\u20130.997 for detecting images of poor position concerning the overall image; AUCs of 0.924\u20130.991 for detecting images of poor illumination concerning the overall image; and AUCs of 0.922\u20130.971 for detecting images of poor clarity concerning the overall image in 7 different Chinese regions."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "External non-Chinese validation performance",
+     "effect": "Kaggle external validation AUCs ranged 0.764\u20130.987 across different retinal image quality defects.",
+     "quote": "When tested using the Kaggle dataset, DeepFundus obtained AUCs of 0.764\u20130.987 to identify retinal images with different quality defects ( Table S3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Including an appropriate proportion of adequate-quality images with noticeable defects in training datasets to improve model robustness."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 65851,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "DeepFundus",
+    "InceptionResNetV2",
+    "InceptionV3",
+    "DenseNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI diagnostic sensitivity and accuracy by image quality group",
+     "effect": "sensitivity was 0.853 vs 0.494 (p < 0.001) and accuracy was 0.938 vs 0.914 (p = 0.002) in good-quality versus poor-quality groups",
+     "quote": "In a community-based cohort for AMD screening, AI achieved sensitivities of 0.853 (95% CI: 0.830\u20130.874) and 0.494 (0.430\u20130.557); specificities of 0.975 (0.968\u20130.981) and 0.981 (0.972\u20130.987); and accuracies of 0.938 (0.929\u20130.946) and 0.914 (0.900\u20130.926) in detecting drusen in the overall GQ and PQ groups, respectively; the GQ group demonstrated significantly higher sensitivity and accuracy values."
+    }
+   ],
+   "unlisted_practices": [
+    "Including an appropriate proportion of adequate-quality or low-quality images in AI training datasets to improve model robustness to real-world image degradation"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "fundus images",
+ "sample_size": 65851,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "DeepFundus",
+  "DeepFundus (InceptionResNetV2)",
+  "DenseNet",
+  "InceptionResNetV2",
+  "InceptionV3",
+  "certified AI retinal diagnostic system",
+  "certified AI retinal diagnostic system (CARE)"
+ ],
+ "links": [
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic AI sensitivity/accuracy for drusen in good vs poor quality images after DeepFundus filtering",
+   "effect": "Overall quality filter: drusen sensitivity 0.853 (GQ) vs 0.494 (PQ), difference 0.360, p<0.001; accuracy 0.938 vs 0.914, p=0.002. Similar results in other 6 filters.",
+   "quote": "the GQ group demonstrated significantly higher sensitivity and accuracy values.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic performance under poor image quality",
+   "effect": "Drusen sensitivity/accuracy: GQ 0.853/0.938 vs PQ 0.494/0.914; differences 0.360 and 0.024, p<0.001 and p=0.002.",
+   "quote": "In a community-based cohort for AMD screening, AI achieved sensitivities of 0.853 (95% CI: 0.830\u20130.874) and 0.494 (0.430\u20130.557); specificities of 0.975 (0.968\u20130.981) and 0.981 (0.972\u20130.987); and accuracies of 0.938 (0.929\u20130.946) and 0.914 (0.900\u20130.926) in detecting drusen in the overall GQ and PQ groups, respectively; the GQ group demonstrated significantly higher sensitivity and accuracy values.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Including an appropriate proportion of adequate-quality images with noticeable defects in training datasets to improve model robustness.",
+  "Including an appropriate proportion of adequate-quality or low-quality images in AI training datasets to improve model robustness to real-world image degradation",
+  "automated image quality classification to filter ungradable inputs before AI diagnosis",
+  "including adequate/low-quality images in training data to improve model robustness",
+  "real-time image acquisition feedback to operators"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36669488",
+ "screen": {
+  "id": "pmid:36669488",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "image quality filtering before AI diagnosis",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and tests an automated image quality classifier (DeepFundus) as an input guardrail/filter to safeguard downstream diagnostic AI performance across the deployment lifecycle.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "automated input image quality filtering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36669488",
+   "empirical": 0.89,
+   "tests_practice": 0.12,
+   "real_deployment": 0.15
+  }
+ }
+}

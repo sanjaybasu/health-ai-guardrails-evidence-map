@@ -1,0 +1,326 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 136,
+   "sample_unit": "questions (100 adversarial attack questions plus 36 legitimate questions)",
+   "models_evaluated": [
+    "RESPECT (GPT-4o-mini RAG with out-of-domain classifier)",
+    "GPT-4o-mini direct prompting with raw IC document",
+    "Random RAG",
+    "RAG without OOD classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R061",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Appropriate refusal of adversarial/out-of-scope questions and utility on legitimate questions, with vs without OOD classifier",
+     "effect": "OOD classifier raised appropriate refusal from 0.94 to 0.97 but cut utility from 0.86 to 0.69; RESPECT 0.97 refusal vs direct prompting 0.90 (p<0.05); direct prompting utility 1.00.",
+     "quote": "Adding the OOD classifier improved appropriate refusal from 0.94 to 0.97, though at the cost of reduced utility (0.86 to 0.69)."
+    },
+    {
+     "rec_id": "R098",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether the conversational AI declines out-of-scope/inappropriate questions in adversarial simulation",
+     "effect": "RESPECT appropriate refusal 0.97 vs Direct Prompting 0.90 (p<0.05); utility 0.69 vs 1.00. Single-turn questions only, not multi-turn.",
+     "quote": "RESPECT achieved an appropriate refusal rate of 0.97 and utility of 0.69, significantly outperforming Direct Prompting in appropriate refusal (0.90, p < 0.05) while Direct Prompting achieved perfect utility (1.00, p < 0.05)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retrieval and generation accuracy of RAG grounded in curated Q/A knowledge base vs random retrieval and direct prompting",
+     "effect": "RESPECT outperformed Random RAG on all metrics (e.g., LLM-judge 0.49 vs 0.15 in leave-one-out), but direct prompting with raw document scored higher on generation (0.94 vs 0.49).",
+     "quote": "RESPECT outperforms Random RAG across both retrieval and generation, demonstrating that the system can identify relevant information from its knowledge base even when queries are outside of the sample."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Accuracy under paraphrased queries with misspellings and colloquialisms",
+     "effect": "On rephrased queries RESPECT scored above Random RAG on all metrics (faithfulness 0.70, LLM-judge 0.71), higher than in leave-one-out; direct prompting still higher on generation (0.90).",
+     "quote": "Here, we note that the generation scores are higher than in the cross-validation analysis, since the system is more likely to answer a query."
+    }
+   ],
+   "unlisted_practices": [
+    "Refusal-Utility Curve for evaluating safety-utility tradeoff of out-of-domain classifier thresholds",
+    "Stakeholder (research staff) rating of accuracy, comprehensiveness, and satisfaction of consent assistant responses"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 136,
+   "sample_unit": "questions (100 adversarial attack questions and 36 legitimate questions)",
+   "models_evaluated": [
+    "RESPECT",
+    "Random RAG",
+    "RAG without OOD classifier",
+    "Direct prompting (GPT-4o-mini)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R061",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "appropriate refusal and utility",
+     "effect": "OOD classifier improved appropriate refusal 0.94 to 0.97 but reduced utility 0.86 to 0.69; RESPECT RUC-AUC 0.81.",
+     "quote": "Adding the OOD classifier improved appropriate refusal from 0.94 to 0.97, though at the cost of reduced utility (0.86 to 0.69)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "rephrased-query robustness",
+     "effect": "Rephrasing: RESPECT vs Random RAG faithfulness 0.70 vs 0.24, factual correctness 0.59 vs 0.16, LLM-judge 0.71 vs 0.32; Direct prompting LLM-judge 0.90.",
+     "quote": "Again, RESPECT outperforms Random RAG across all retrieval and generation metrics."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "grounded retrieval and generation accuracy",
+     "effect": "LOOCV: RESPECT vs Random RAG faithfulness 0.58 vs 0.14, factual correctness 0.28 vs 0.07, LLM-judge generation 0.49 vs 0.15; Direct prompting LLM-judge 0.94.",
+     "quote": "RESPECT outperforms Random RAG across both retrieval and generation, demonstrating that the system can identify relevant information from its knowledge base even when queries are outside of the sample."
+    }
+   ],
+   "unlisted_practices": [
+    "Refusal-Utility Curve (RUC) for calibrating safety-utility tradeoffs in consent chatbots",
+    "Research staff rating of consent-assistant responses for accuracy, comprehensiveness, and satisfaction"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 136,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "GPT-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R061",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "appropriate refusal and utility under adversarial attack",
+     "effect": "RESPECT achieved appropriate refusal of 0.97 and utility of 0.69 versus 0.90 and 1.00 for Direct Prompting; adding an OOD classifier reduced utility from 0.86 to 0.69.",
+     "quote": "RESPECT achieved an appropriate refusal rate of 0.97 and utility of 0.69, significantly outperforming Direct Prompting in appropriate refusal (0.90, p < 0.05) while Direct Prompting achieved perfect utility (1.00, p < 0.05)."
+    }
+   ],
+   "unlisted_practices": [
+    "Out-of-domain classifier to detect and refuse out-of-scope or inappropriate queries before retrieval and generation"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "questions (100 adversarial attack questions plus 36 legitimate questions)",
+ "sample_size": 136,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Direct prompting (GPT-4o-mini)",
+  "GPT-4o-mini",
+  "GPT-4o-mini direct prompting with raw IC document",
+  "RAG without OOD classifier",
+  "RESPECT",
+  "RESPECT (GPT-4o-mini RAG with out-of-domain classifier)",
+  "Random RAG"
+ ],
+ "links": [
+  {
+   "rec_id": "R061",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Appropriate refusal of adversarial/out-of-scope questions and utility on legitimate questions, with vs without OOD classifier",
+   "effect": "OOD classifier raised appropriate refusal from 0.94 to 0.97 but cut utility from 0.86 to 0.69; RESPECT 0.97 refusal vs direct prompting 0.90 (p<0.05); direct prompting utility 1.00.",
+   "quote": "Adding the OOD classifier improved appropriate refusal from 0.94 to 0.97, though at the cost of reduced utility (0.86 to 0.69).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Retrieval and generation accuracy of RAG grounded in curated Q/A knowledge base vs random retrieval and direct prompting",
+   "effect": "RESPECT outperformed Random RAG on all metrics (e.g., LLM-judge 0.49 vs 0.15 in leave-one-out), but direct prompting with raw document scored higher on generation (0.94 vs 0.49).",
+   "quote": "RESPECT outperforms Random RAG across both retrieval and generation, demonstrating that the system can identify relevant information from its knowledge base even when queries are outside of the sample.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R098",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether the conversational AI declines out-of-scope/inappropriate questions in adversarial simulation",
+   "effect": "RESPECT appropriate refusal 0.97 vs Direct Prompting 0.90 (p<0.05); utility 0.69 vs 1.00. Single-turn questions only, not multi-turn.",
+   "quote": "RESPECT achieved an appropriate refusal rate of 0.97 and utility of 0.69, significantly outperforming Direct Prompting in appropriate refusal (0.90, p < 0.05) while Direct Prompting achieved perfect utility (1.00, p < 0.05).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R061",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "appropriate refusal and utility under adversarial attack",
+   "effect": "RESPECT achieved appropriate refusal of 0.97 and utility of 0.69 versus 0.90 and 1.00 for Direct Prompting; adding an OOD classifier reduced utility from 0.86 to 0.69.",
+   "quote": "RESPECT achieved an appropriate refusal rate of 0.97 and utility of 0.69, significantly outperforming Direct Prompting in appropriate refusal (0.90, p < 0.05) while Direct Prompting achieved perfect utility (1.00, p < 0.05).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Out-of-domain classifier to detect and refuse out-of-scope or inappropriate queries before retrieval and generation",
+  "Refusal-Utility Curve (RUC) for calibrating safety-utility tradeoffs in consent chatbots",
+  "Refusal-Utility Curve for evaluating safety-utility tradeoff of out-of-domain classifier thresholds",
+  "Research staff rating of consent-assistant responses for accuracy, comprehensiveness, and satisfaction",
+  "Stakeholder (research staff) rating of accuracy, comprehensiveness, and satisfaction of consent assistant responses"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42106536",
+ "screen": {
+  "id": "pmid:42106536",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding with refusal guardrails",
+  "user": "both",
+  "reason": "Empirical study developing and testing an LLM-based informed consent assistant using retrieval-augmented generation (RAG) and evaluating its safety-utility tradeoffs (refusal guardrails) and stakeholder perceptions with research staff.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding and refusal safety evaluation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42106536",
+   "empirical": 0.95,
+   "tests_practice": 0.33,
+   "real_deployment": 0.15
+  }
+ }
+}

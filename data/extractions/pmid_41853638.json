@@ -1,0 +1,563 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Canada",
+   "sample_size": 319012,
+   "sample_unit": "elective outpatients undergoing invasive coronary angiography",
+   "models_evaluated": [
+    "LightGBM local model (42 predictors)",
+    "LightGBM provincial model (updated)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local model AUROC on geographical validation vs local test set, then after refitting on provincial data",
+     "effect": "Local model AUROC fell from 0.807 to 0.714 on rest of province; after updating on provincial data AUROC recovered to 0.794.",
+     "quote": "As expected, performance of the local model was lower on the geographical validation cohort than on the local test set (AUROC = 0.714 [95% CI: 0.714, 0.714] vs. 0.807 [95% CI: 0.806, 0.808])."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model AUROC and impact reported separately by site across 20 hospital corporations",
+     "effect": "Local model AUROC across sites ranged from 0.851 to 0.608; after updating, sites ranged from 0.872 to 0.720.",
+     "quote": "AUROC across individual sites ranged from a high of 0.851 (95% CI: 0.850, 0.852) to a low of 0.608 (95% CI: 0.607, 0.609)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination before and after refitting model on representative provincial data with site-level calibration and thresholds",
+     "effect": "Provincial refit AUROC 0.794 vs 0.714 for local model on other sites; ICAs avoided 27 of 39 vs 21 of 36; performance recovered across all sites.",
+     "quote": "Following updating, model AUROC recovered almost entirely at 0.794 (95% CI: 0.794, 0.795) compared with 0.807 (95% CI: 0.806, 0.808) for the original local test set."
+    },
+    {
+     "rec_id": "R137",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Temporal drift in AUROC using sliding-window annual updating simulation",
+     "effect": "AUROC dropped to 0.724 and 0.737 in 2020-21 and 0.670 and 0.677 in 2022-23 versus 0.807 on local test set; updating on the full data recovered performance.",
+     "quote": "As expected, performance of the local model was lower on the temporal validation cohort than on the local test set, with a moderate drop in AUROC in 2020 (0.724 [95% CI: 0.722, 0.727]) and 2021 (0.737 [95% CI: 0.735, 0.739]), followed by a larger drop for 2022 (0.670 [95% CI: 0.668, 0.673]) and 2023 (0.677 [95% CI: 0.672, 0.681])."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance and impact across sex, age, ethnicity and marginalization subgroups",
+     "effect": "Local model AUROC lowest for Black patients (0.612); after provincial updating ethnic differences narrowed (0.749-0.790). Benefit skewed to females (42/50 ICAs avoided vs 18/32 for males).",
+     "quote": "The local model performed best for Asian patients (AUROC = 0.704 [95% CI: 0.702, 0.705]) and worst for Black patients (AUROC = 0.612 [95% CI: 0.609, 0.614])."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fairness metrics across demographic subgroups and sites beyond aggregate results",
+     "effect": "Aggregate AUROC hid subgroup and site gaps: local model AUROC 0.608-0.851 across sites; ICA avoided 13/29 for men vs 34/47 for women; updating narrowed ethnic gaps.",
+     "quote": "There is some variation in the performance of the local model for patients of different ethnicities in the external validation cohort."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of model when applied to new regions and time periods",
+     "effect": "Performance predictably decreased in new regions and periods (AUROC 0.714 geographic; 0.670-0.737 temporal) versus 0.807 locally.",
+     "quote": "Our study showed that while model performance predictably decreases when applied to new regions (rural vs. urban, academic vs. community hospital) or time periods (pre-pandemic, COVID 19 pandemic, and post-pandemic), performance recovers following model updating."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development and validation cohort populations and their effect on performance",
+     "effect": "Cohorts differed significantly on most predictors (e.g. racialized/newcomer ON-Marg -0.384 vs 0.196, translator required 1.05% vs 9.2%); performance dropped on geographical validation.",
+     "quote": "Notably, while the distribution of patients by sex was stable both geographically and temporally, patients in the temporal validation cohort were nearly 2 years older on average than those in the model derivation cohort."
+    },
+    {
+     "rec_id": "R325",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Distribution of benefit (unnecessary ICAs avoided) across sex, age and ethnic groups",
+     "effect": "Provincial model benefits skewed toward females (42/50 avoided vs 18/32 males) and under-65 (33/43 vs 20/34), though these groups had higher baseline unnecessary ICA rates.",
+     "quote": "Benefits, however, were skewed heavily towards females, with 42 out of every 50 unnecessary ICAs avoided (specificity: 83.3%) compared with only 18 out of every 32 (specificity: 56.5%) for males (see Supplementary material online , Figure S4 )."
+    },
+    {
+     "rec_id": "R133",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Whether historical label bias affected equity; prospective equity assessment",
+     "effect": "Model trained on objective angiographic labels; groups with higher baseline unnecessary ICA (women, Black, under 65) saw larger reductions, though ethnicity was missing for 57%.",
+     "quote": "However, since our model was trained using an objective measure of disease for labelling rather than a proxy measure, our model appears to have overcome the historical bias built into the training set."
+    }
+   ],
+   "unlisted_practices": [
+    "Site-specific decision threshold optimization using Youden's index to account for regional event-rate variation",
+    "Sliding-window annual model refitting to simulate scheduled updating"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "Canada",
+   "sample_size": 319012,
+   "sample_unit": "elective outpatients receiving ICA",
+   "models_evaluated": [
+    "2021 local LightGBM obstructive CAD prediction model",
+    "updated provincial LightGBM obstructive CAD prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "geographic external validation performance",
+     "effect": "AUROC 0.714 [95% CI: 0.714, 0.714] geographically vs. 0.807 [95% CI: 0.806, 0.808] local.",
+     "quote": "As expected, performance of the local model was lower on the geographical validation cohort than on the local test set (AUROC = 0.714 [95% CI: 0.714, 0.714] vs. 0.807 [95% CI: 0.806, 0.808])."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance variation across sites",
+     "effect": "Site AUROC ranged from 0.851 (95% CI: 0.850, 0.852) to 0.608 (95% CI: 0.607, 0.609).",
+     "quote": "AUROC across individual sites ranged from a high of 0.851 (95% CI: 0.850, 0.852) to a low of 0.608 (95% CI: 0.607, 0.609)."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "temporal validation performance",
+     "effect": "AUROC was 0.724 in 2020, 0.737 in 2021, 0.670 in 2022, and 0.677 in 2023.",
+     "quote": "As expected, performance of the local model was lower on the temporal validation cohort than on the local test set, with a moderate drop in AUROC in 2020 (0.724 [95% CI: 0.722, 0.727]) and 2021 (0.737 [95% CI: 0.735, 0.739]), followed by a larger drop for 2022 (0.670 [95% CI: 0.668, 0.673]) and 2023 (0.677 [95% CI: 0.672, 0.681])."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ethnicity subgroup AUROC",
+     "effect": "Local model AUROC was 0.704 [95% CI: 0.702, 0.705] for Asian patients and 0.612 [95% CI: 0.609, 0.614] for Black patients.",
+     "quote": "The local model performed best for Asian patients (AUROC = 0.704 [95% CI: 0.702, 0.705]) and worst for Black patients (AUROC = 0.612 [95% CI: 0.609, 0.614])."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "provincial model updating performance",
+     "effect": "After updating, AUROC recovered to 0.794 (95% CI: 0.794, 0.795) vs 0.807 (95% CI: 0.806, 0.808).",
+     "quote": "Following updating, model AUROC recovered almost entirely at 0.794 (95% CI: 0.794, 0.795) compared with 0.807 (95% CI: 0.806, 0.808) for the original local test set."
+    },
+    {
+     "rec_id": "R303",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ethnicity missingness for fairness",
+     "effect": "Ethnicity was unknown for 57% of patients, limiting fairness analysis.",
+     "quote": "Finally, fairness analysis for ethnicity is limited by a high rate of missingness\u2014many Canadian healthcare organizations have historically not collected data on patients\u2019 ethnicity; thus, ethnicity is unknown for 57% of patients in our cohort\u2014so these results should be interpreted with caution."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "estimated reduction in unnecessary ICAs",
+     "effect": "27 of every 39 unnecessary ICAs could be avoided through model use.",
+     "quote": "Analysis of health system impact indicates that 27 of every 39 unnecessary ICAs could be avoided through use of the model."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Canada",
+   "sample_size": 319012,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination performance on external geographical cohort versus local test set",
+     "effect": "AUROC was significantly lower in the geographical validation cohort at 0.714 (95% CI: 0.714, 0.714) compared with 0.807 (95% CI: 0.806, 0.808) in the local test set.",
+     "quote": "As expected, performance of the local model was lower on the geographical validation cohort than on the local test set (AUROC = 0.714 [95% CI: 0.714, 0.714] vs. 0.807 [95% CI: 0.806, 0.808])."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination performance across individual cardiac catheterization sites",
+     "effect": "AUROC across individual sites ranged from 0.608 (95% CI: 0.607, 0.609) to 0.851 (95% CI: 0.850, 0.852).",
+     "quote": "AUROC across individual sites ranged from a high of 0.851 (95% CI: 0.850, 0.852) to a low of 0.608 (95% CI: 0.607, 0.609)."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination performance of local model across consecutive temporal validation years",
+     "effect": "AUROC dropped from 0.807 on the local test set to 0.724 in 2020, 0.737 in 2021, 0.670 in 2022, and 0.677 in 2023.",
+     "quote": "As expected, performance of the local model was lower on the temporal validation cohort than on the local test set, with a moderate drop in AUROC in 2020 (0.724 [95% CI: 0.722, 0.727]) and 2021 (0.737 [95% CI: 0.735, 0.739]), followed by a larger drop for 2022 (0.670 [95% CI: 0.668, 0.673]) and 2023 (0.677 [95% CI: 0.672, 0.681])."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination performance variation across patient ethnic subgroups",
+     "effect": "AUROC varied across ethnicities, from 0.704 (95% CI: 0.702, 0.705) for Asian patients to 0.612 (95% CI: 0.609, 0.614) for Black patients.",
+     "quote": "The local model performed best for Asian patients (AUROC = 0.704 [95% CI: 0.702, 0.705]) and worst for Black patients (AUROC = 0.612 [95% CI: 0.609, 0.614])."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Canada",
+ "sample_unit": "elective outpatients undergoing invasive coronary angiography",
+ "sample_size": 319012,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "2021 local LightGBM obstructive CAD prediction model",
+  "LightGBM",
+  "LightGBM local model (42 predictors)",
+  "LightGBM provincial model (updated)",
+  "updated provincial LightGBM obstructive CAD prediction model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination before and after refitting model on representative provincial data with site-level calibration and thresholds",
+   "effect": "Provincial refit AUROC 0.794 vs 0.714 for local model on other sites; ICAs avoided 27 of 39 vs 21 of 36; performance recovered across all sites.",
+   "quote": "Following updating, model AUROC recovered almost entirely at 0.794 (95% CI: 0.794, 0.795) compared with 0.807 (95% CI: 0.806, 0.808) for the original local test set.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "performance variation across sites",
+   "effect": "Site AUROC ranged from 0.851 (95% CI: 0.850, 0.852) to 0.608 (95% CI: 0.607, 0.609).",
+   "quote": "AUROC across individual sites ranged from a high of 0.851 (95% CI: 0.850, 0.852) to a low of 0.608 (95% CI: 0.607, 0.609).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R150",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "temporal validation performance",
+   "effect": "AUROC was 0.724 in 2020, 0.737 in 2021, 0.670 in 2022, and 0.677 in 2023.",
+   "quote": "As expected, performance of the local model was lower on the temporal validation cohort than on the local test set, with a moderate drop in AUROC in 2020 (0.724 [95% CI: 0.722, 0.727]) and 2021 (0.737 [95% CI: 0.735, 0.739]), followed by a larger drop for 2022 (0.670 [95% CI: 0.668, 0.673]) and 2023 (0.677 [95% CI: 0.672, 0.681]).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "ethnicity subgroup AUROC",
+   "effect": "Local model AUROC was 0.704 [95% CI: 0.702, 0.705] for Asian patients and 0.612 [95% CI: 0.609, 0.614] for Black patients.",
+   "quote": "The local model performed best for Asian patients (AUROC = 0.704 [95% CI: 0.702, 0.705]) and worst for Black patients (AUROC = 0.612 [95% CI: 0.609, 0.614]).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Local model AUROC on geographical validation vs local test set, then after refitting on provincial data",
+   "effect": "Local model AUROC fell from 0.807 to 0.714 on rest of province; after updating on provincial data AUROC recovered to 0.794.",
+   "quote": "As expected, performance of the local model was lower on the geographical validation cohort than on the local test set (AUROC = 0.714 [95% CI: 0.714, 0.714] vs. 0.807 [95% CI: 0.806, 0.808]).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Model AUROC and impact reported separately by site across 20 hospital corporations",
+   "effect": "Local model AUROC across sites ranged from 0.851 to 0.608; after updating, sites ranged from 0.872 to 0.720.",
+   "quote": "AUROC across individual sites ranged from a high of 0.851 (95% CI: 0.850, 0.852) to a low of 0.608 (95% CI: 0.607, 0.609).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R137",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Temporal drift in AUROC using sliding-window annual updating simulation",
+   "effect": "AUROC dropped to 0.724 and 0.737 in 2020-21 and 0.670 and 0.677 in 2022-23 versus 0.807 on local test set; updating on the full data recovered performance.",
+   "quote": "As expected, performance of the local model was lower on the temporal validation cohort than on the local test set, with a moderate drop in AUROC in 2020 (0.724 [95% CI: 0.722, 0.727]) and 2021 (0.737 [95% CI: 0.735, 0.739]), followed by a larger drop for 2022 (0.670 [95% CI: 0.668, 0.673]) and 2023 (0.677 [95% CI: 0.672, 0.681]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R132",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Model performance and impact across sex, age, ethnicity and marginalization subgroups",
+   "effect": "Local model AUROC lowest for Black patients (0.612); after provincial updating ethnic differences narrowed (0.749-0.790). Benefit skewed to females (42/50 ICAs avoided vs 18/32 for males).",
+   "quote": "The local model performed best for Asian patients (AUROC = 0.704 [95% CI: 0.702, 0.705]) and worst for Black patients (AUROC = 0.612 [95% CI: 0.609, 0.614]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness metrics across demographic subgroups and sites beyond aggregate results",
+   "effect": "Aggregate AUROC hid subgroup and site gaps: local model AUROC 0.608-0.851 across sites; ICA avoided 13/29 for men vs 34/47 for women; updating narrowed ethnic gaps.",
+   "quote": "There is some variation in the performance of the local model for patients of different ethnicities in the external validation cohort.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of model when applied to new regions and time periods",
+   "effect": "Performance predictably decreased in new regions and periods (AUROC 0.714 geographic; 0.670-0.737 temporal) versus 0.807 locally.",
+   "quote": "Our study showed that while model performance predictably decreases when applied to new regions (rural vs. urban, academic vs. community hospital) or time periods (pre-pandemic, COVID 19 pandemic, and post-pandemic), performance recovers following model updating.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R325",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Distribution of benefit (unnecessary ICAs avoided) across sex, age and ethnic groups",
+   "effect": "Provincial model benefits skewed toward females (42/50 avoided vs 18/32 males) and under-65 (33/43 vs 20/34), though these groups had higher baseline unnecessary ICA rates.",
+   "quote": "Benefits, however, were skewed heavily towards females, with 42 out of every 50 unnecessary ICAs avoided (specificity: 83.3%) compared with only 18 out of every 32 (specificity: 56.5%) for males (see Supplementary material online , Figure S4 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "geographic external validation performance",
+   "effect": "AUROC 0.714 [95% CI: 0.714, 0.714] geographically vs. 0.807 [95% CI: 0.806, 0.808] local.",
+   "quote": "As expected, performance of the local model was lower on the geographical validation cohort than on the local test set (AUROC = 0.714 [95% CI: 0.714, 0.714] vs. 0.807 [95% CI: 0.806, 0.808]).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R303",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "ethnicity missingness for fairness",
+   "effect": "Ethnicity was unknown for 57% of patients, limiting fairness analysis.",
+   "quote": "Finally, fairness analysis for ethnicity is limited by a high rate of missingness\u2014many Canadian healthcare organizations have historically not collected data on patients\u2019 ethnicity; thus, ethnicity is unknown for 57% of patients in our cohort\u2014so these results should be interpreted with caution.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "discrimination performance on external geographical cohort versus local test set",
+   "effect": "AUROC was significantly lower in the geographical validation cohort at 0.714 (95% CI: 0.714, 0.714) compared with 0.807 (95% CI: 0.806, 0.808) in the local test set.",
+   "quote": "As expected, performance of the local model was lower on the geographical validation cohort than on the local test set (AUROC = 0.714 [95% CI: 0.714, 0.714] vs. 0.807 [95% CI: 0.806, 0.808]).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R133",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Site-specific decision threshold optimization using Youden's index to account for regional event-rate variation",
+  "Sliding-window annual model refitting to simulate scheduled updating"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41853638",
+ "screen": {
+  "id": "pmid:41853638",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and model updating (recalibration) before deployment",
+  "user": "none",
+  "reason": "The study conducts external geographical and temporal validation and demonstrates the impact of model updating/recalibration across regional centers on discrimination, alongside fairness subgroup analysis and health-system reclassification impact analysis.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "model updating and recalibration across geographic centers"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41853638",
+   "empirical": 0.96,
+   "tests_practice": 0.49,
+   "real_deployment": 0.09
+  }
+ }
+}

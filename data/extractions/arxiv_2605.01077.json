@@ -1,0 +1,78 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Brazil",
+ "sample_size": 1780,
+ "sample_unit": "true/false clinical assertions (HealthBench-BR); plus 890 open-ended questions (PCDT-QA)",
+ "models_evaluated": [
+  "Qwen2.5-14B-Instruct (adapted)",
+  "GPT-5.2",
+  "Claude Sonnet 4.6",
+  "Gemini 3.1 Pro",
+  "Google AI Overview"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Portuguese"
+ ],
+ "links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM knowledge of official Brazilian clinical guideline content on true/false and open-ended questions",
+   "effect": "Current LLMs perform poorly on guideline-specific knowledge; the adapted 14B model reached 83.9% on HealthBench-BR and 85.4% on PCDT-QA, outperforming GPT-5.2, Claude Sonnet 4.6, Gemini 3.1 Pro, and Google AI Overview.",
+   "quote": "Yet current LLMs perform poorly on this guideline-specific knowledge, and no benchmark evaluates clinical recall grounded in Brazilian Portuguese protocols.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Continual pre-training on synthetic data derived from official clinical guidelines followed by GRPO reinforcement learning to inject national guideline knowledge into a small open LLM",
+  "Using multiple diverse generator LLMs for synthetic training data"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2605.01077",
+ "screen": {
+  "id": "arxiv:2605.01077",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates LLMs (specifically a domain-adapted Qwen model and baselines) on newly introduced Brazilian clinical guideline benchmarks (HealthBench-BR and PCDT-QA).",
+  "jev": {
+   "id": "arxiv:2605.01077",
+   "empirical": 0.91,
+   "tests_practice": 0.05,
+   "real_deployment": 0.04
+  }
+ }
+}

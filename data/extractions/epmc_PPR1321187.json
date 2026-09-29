@@ -1,0 +1,367 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "cohorts",
+   "models_evaluated": [
+    "three foundation-model encoders"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of subgroup underdiagnosis via subgroup false-negative rate audit versus aggregate AUROC",
+     "effect": "Overall AUROC moved 0.004 despite the backdoor; auditing subgroup false-negative rate at the deployed threshold flagged 96% of installed failures compared to 73% for a rank-based audit.",
+     "quote": "What works is auditing subgroup false-negative rate at the deployed threshold, which flagged 96% of installed failures compared to 73% for a rank-based audit."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of threshold-based subgroup metrics versus rank-based metrics to detect subgroup underperformance",
+     "effect": "Subgroup false-negative rate audit at deployed threshold flagged 96% of installed failures vs 73% for rank-based audit; overall AUROC moved only 0.004.",
+     "quote": "What works is auditing subgroup false-negative rate at the deployed threshold, which flagged 96% of installed failures compared to 73% for a rank-based audit."
+    },
+    {
+     "rec_id": "R346",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Vulnerability of imaging models to label-flipping demographic backdoor and detector performance",
+     "effect": "Backdoor installed once two thirds of a group's positive labels for one finding were flipped (2.6% of training set); five backdoor detectors failed.",
+     "quote": "Five backdoor detectors failed."
+    },
+    {
+     "rec_id": "R304",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Audit blindness to patients with unrecorded race",
+     "effect": "Harm reached patients whose race was never recorded; an audit on recorded demographics is blind to 30% of studies.",
+     "quote": "Harm reached patients whose race was never recorded, through the pixel shortcut rather than the chart entry, so an audit on recorded demographics is blind to 30% of studies."
+    },
+    {
+     "rec_id": "R305",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Bias from demographic shortcuts and label corruption in imaging models",
+     "effect": "Flipping positive labels within one group silently suppressed detection, costing 30.6 missed pleural effusions per 1,000 imaged patients of the targeted group.",
+     "quote": "It cost 30.6 missed pleural effusions per 1,000 imaged patients of the targeted group and transferred to another health system."
+    }
+   ],
+   "unlisted_practices": [
+    "Auditing subgroup false-negative rate at the deployed operating threshold to detect marker-free backdoors",
+    "Auditing using pixel-inferred demographics rather than only recorded demographics"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "not reported",
+   "sample_size": 7,
+   "sample_unit": "cohorts",
+   "models_evaluated": [
+    "three foundation-model encoders"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "operating-point audit detection",
+     "effect": "Subgroup false-negative rate at the deployed threshold flagged 96% of installed failures versus 73% for a rank-based audit.",
+     "quote": "What works is auditing subgroup false-negative rate at the deployed threshold, which flagged 96% of installed failures compared to 73% for a rank-based audit."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hidden subgroup underdiagnosis",
+     "effect": "30.6 missed pleural effusions per 1,000 imaged patients of the targeted group; transferred to another health system.",
+     "quote": "It cost 30.6 missed pleural effusions per 1,000 imaged patients of the targeted group and transferred to another health system."
+    },
+    {
+     "rec_id": "R303",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missing demographics in bias audit",
+     "effect": "Audit on recorded demographics was blind to 30% of studies because race was never recorded.",
+     "quote": "Harm reached patients whose race was never recorded, through the pixel shortcut rather than the chart entry, so an audit on recorded demographics is blind to 30% of studies."
+    },
+    {
+     "rec_id": "R346",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "label-flip poisoning backdoor",
+     "effect": "Backdoor installed once two thirds of positive labels for one finding were flipped, 2.6% of the training set.",
+     "quote": "Across seven cohorts, three foundation-model encoders and four modalities, the backdoor installed once two thirds of that group's positive labels for one finding were flipped, 2.6% of the training set."
+    }
+   ],
+   "unlisted_practices": [
+    "Backdoor detectors for marker-free demographic label-flip attacks"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "studies",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "installed failure detection rate",
+     "effect": "Auditing subgroup false-negative rate at the deployed threshold flagged 96% of installed failures compared to 73% for a rank-based audit.",
+     "quote": "What works is auditing subgroup false-negative rate at the deployed threshold, which flagged 96% of installed failures compared to 73% for a rank-based audit."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "change in aggregate AUROC under subgroup suppression",
+     "effect": "Overall AUROC moved 0.004 and the comparison group stayed untouched, masking silent suppression that caused 30.6 missed pleural effusions per 1,000 patients.",
+     "quote": "Overall AUROC moved 0.004 and the comparison group stayed untouched."
+    },
+    {
+     "rec_id": "R303",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup audit blindness due to unrecorded race",
+     "effect": "Harm reached patients whose race was unrecorded via pixel shortcuts, rendering demographic audits blind to 30% of studies.",
+     "quote": "Harm reached patients whose race was never recorded, through the pixel shortcut rather than the chart entry, so an audit on recorded demographics is blind to 30% of studies."
+    }
+   ],
+   "unlisted_practices": [
+    "Backdoor detectors"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "cohorts",
+ "sample_size": 7,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "three foundation-model encoders"
+ ],
+ "links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of threshold-based subgroup metrics versus rank-based metrics to detect subgroup underperformance",
+   "effect": "Subgroup false-negative rate audit at deployed threshold flagged 96% of installed failures vs 73% for rank-based audit; overall AUROC moved only 0.004.",
+   "quote": "What works is auditing subgroup false-negative rate at the deployed threshold, which flagged 96% of installed failures compared to 73% for a rank-based audit.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R346",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Vulnerability of imaging models to label-flipping demographic backdoor and detector performance",
+   "effect": "Backdoor installed once two thirds of a group's positive labels for one finding were flipped (2.6% of training set); five backdoor detectors failed.",
+   "quote": "Five backdoor detectors failed.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hidden subgroup underdiagnosis",
+   "effect": "30.6 missed pleural effusions per 1,000 imaged patients of the targeted group; transferred to another health system.",
+   "quote": "It cost 30.6 missed pleural effusions per 1,000 imaged patients of the targeted group and transferred to another health system.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R303",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "missing demographics in bias audit",
+   "effect": "Audit on recorded demographics was blind to 30% of studies because race was never recorded.",
+   "quote": "Harm reached patients whose race was never recorded, through the pixel shortcut rather than the chart entry, so an audit on recorded demographics is blind to 30% of studies.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of subgroup underdiagnosis via subgroup false-negative rate audit versus aggregate AUROC",
+   "effect": "Overall AUROC moved 0.004 despite the backdoor; auditing subgroup false-negative rate at the deployed threshold flagged 96% of installed failures compared to 73% for a rank-based audit.",
+   "quote": "What works is auditing subgroup false-negative rate at the deployed threshold, which flagged 96% of installed failures compared to 73% for a rank-based audit.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R304",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Audit blindness to patients with unrecorded race",
+   "effect": "Harm reached patients whose race was never recorded; an audit on recorded demographics is blind to 30% of studies.",
+   "quote": "Harm reached patients whose race was never recorded, through the pixel shortcut rather than the chart entry, so an audit on recorded demographics is blind to 30% of studies.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R305",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Bias from demographic shortcuts and label corruption in imaging models",
+   "effect": "Flipping positive labels within one group silently suppressed detection, costing 30.6 missed pleural effusions per 1,000 imaged patients of the targeted group.",
+   "quote": "It cost 30.6 missed pleural effusions per 1,000 imaged patients of the targeted group and transferred to another health system.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.33,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Auditing subgroup false-negative rate at the deployed operating threshold to detect marker-free backdoors",
+  "Auditing using pixel-inferred demographics rather than only recorded demographics",
+  "Backdoor detectors",
+  "Backdoor detectors for marker-free demographic label-flip attacks"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1321187",
+ "screen": {
+  "id": "epmc:PPR1321187",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "subgroup false-negative rate audit at deployed operating threshold",
+  "user": "none",
+  "reason": "The study demonstrates a novel backdoor risk using demographic shortcuts in medical imaging models and empirically evaluates audit practices (comparing subgroup false-negative rate audits at the deployed threshold vs standard backdoor detectors and rank-based audits) to detect silent underdiagnosis.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "operating-point subgroup auditing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1321187",
+   "empirical": 0.89,
+   "tests_practice": 0.76,
+   "real_deployment": 0.19
+  }
+ }
+}

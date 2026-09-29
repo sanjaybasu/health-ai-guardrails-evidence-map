@@ -1,0 +1,363 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Multi-country (Germany, Ireland, UK, US)",
+   "sample_size": 226,
+   "sample_unit": "summaries (19,646 extracted facts)",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini",
+    "Gemini-1.5-Flash-002",
+    "Gemini-1.5-Pro-002",
+    "Claude-3-Haiku",
+    "Claude-3.5-Sonnet",
+    "Llama-3-2-1B",
+    "Llama-3-70B",
+    "Mistral-8x7B",
+    "Mistral-Large",
+    "DeBERTa-v3-base"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement of multi-LLM panel fact-checking with human experts in detecting unfaithful summary facts",
+     "effect": "LLM panel vs human panel kappa 0.67 (95% CI 0.61-0.73) at 4/5 LLM agreement; verification scores fell as fact modifications became more severe, showing sensitive error detection.",
+     "quote": "The maximum score for agreement between LLM panel and human experts panel (Cohen\u2019s kappa 0.67 [95% CI, 0.61\u20130.73]) was observed when a panel of 4 LLMs agreed that the fact was faithful to the original title/abstract, suggesting that acceptance of facts by 4/5 LLMs maximizes agreement with the human panel ( Figure S1A )."
+    },
+    {
+     "rec_id": "R368",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination rate in LLM-generated scientific summaries of oncology literature",
+     "effect": "Hallucination rate 9.6% (95% CI 6.5-12.7) for INSIDE LLM summaries versus 40.6% (37.8-43.4) for human-written PLS; faithfulness 88.9% vs 61.6%.",
+     "quote": "A higher hallucination rate was identified for human-written PLS than INSIDE summaries (40.6% [95% CI, 37.8\u201343.4] vs 9.6% [95% CI, 6.5\u201312.7] for data excluding DeBERTa-v3-base; Table S5 )."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Readability (Flesch Reading Ease) of LLM scientific summaries and plain language summaries",
+     "effect": "INSIDE PLS median FRE 42.3 vs 28.8 for human-written PLS; LLM scientific summaries 24.1, comparable to source abstracts (25.5), i.e., very difficult to read.",
+     "quote": "Importantly, the readability scores for INSIDE PLS were higher compared to the human-written PLS from BioLaySumm (median 42.3 [IQR 35.27\u201349.41] vs 28.8 [IQR 21.02\u201336.18]; Figure 4B )."
+    }
+   ],
+   "unlisted_practices": [
+    "Multi-LLM panel voting as automated faithfulness/hallucination checker for summaries",
+    "Annotating summaries with faithfulness, relevance and readability scores and flagging contested facts"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 226,
+   "sample_unit": "summaries",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini",
+    "Gemini-1.5-Flash-002",
+    "Gemini-1.5-Pro-002",
+    "Claude-3-Haiku",
+    "Claude-3.5-Sonnet",
+    "Llama-3-2-1B",
+    "Llama-3-70B",
+    "Mistral-8x7B",
+    "Mistral-Large",
+    "DeBERTa-v3-base"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fact-checking agreement with experts",
+     "effect": "Cohen\u2019s kappa with human experts was 0.67 [95% CI, 0.61\u20130.73] when 4/5 LLMs agreed a fact was faithful.",
+     "quote": "The maximum score for agreement between LLM panel and human experts panel (Cohen\u2019s kappa 0.67 [95% CI, 0.61\u20130.73]) was observed when a panel of 4 LLMs agreed that the fact was faithful to the original title/abstract, suggesting that acceptance of facts by 4/5 LLMs maximizes agreement with the human panel ( Figure S1A )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "perturbed fact detection",
+     "effect": "Modified facts n = 3228 showed decreasing verification scores with severity; contradictory facts were predominantly labeled hallucination.",
+     "quote": "The verification scores decreased according to the severity of the perturbations for modified facts ( n = 3228), with contradictory facts predominantly labeled as hallucination, suggesting accurate fact verification workflow."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "summary hallucinations",
+     "effect": "Hallucinations were 9.6% [95% CI, 6.5\u201312.7] for INSIDE summaries vs 40.6% [37.8\u201343.4] for human-written PLS.",
+     "quote": "A higher hallucination rate was identified for human-written PLS than INSIDE summaries (40.6% [95% CI, 37.8\u201343.4] vs 9.6% [95% CI, 6.5\u201312.7] for data excluding DeBERTa-v3-base; Table S5 )."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "relevance rater reliability",
+     "effect": "Human expert relevance kappa was 0.11 [95% CI, 0.08\u20130.14], lower than LLM kappa 0.36 [0.34\u20130.38].",
+     "quote": "The linear weighted kappa scores were as follows: 0.36 [95% CI, 0.34\u20130.38] among LLMs, 0.11 [95% CI, 0.08\u20130.14] among the human experts, and 0.16 [95% CI, 0.13\u20130.19] between the LLM panel and human experts."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "plain-language summary readability",
+     "effect": "INSIDE LLM PLS median FRE 42.3 [IQR 35.27\u201349.41] vs human-written PLS 28.8 [IQR 21.02\u201336.18].",
+     "quote": "Importantly, the readability scores for INSIDE PLS were higher compared to the human-written PLS from BioLaySumm (median 42.3 [IQR 35.27\u201349.41] vs 28.8 [IQR 21.02\u201336.18]; Figure 4B )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 226,
+   "sample_unit": "summaries",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini",
+    "Gemini-1.5-Flash-002",
+    "Gemini-1.5-Pro-002",
+    "Claude-3-Haiku",
+    "Claude-3.5-Sonnet",
+    "Llama-3-2-1B",
+    "Llama-3-70B",
+    "Mistral-8x7B",
+    "Mistral-Large",
+    "DeBERTa-v3-base"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hallucination detection accuracy of multi-LLM fact verification panel",
+     "effect": "Agreement between LLM and human panels was substantial (kappa 0.67), outperforming interhuman (0.43 [95% CI, 0.34-0.52]) and inter-LLM (0.40 [95% CI, 0.38-0.42]) panels, with sensitive detection of perturbed facts.",
+     "quote": "LLM panel vs human panel agreement was substantial (kappa 0.67), outperforming agreement among the interhuman (0.43 [95% CI, 0.34-0.52]) and inter-LLM (0.40 [0.38-0.42]) panels."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "both",
+ "country": "Multi-country (Germany, Ireland, UK, US)",
+ "sample_unit": "summaries",
+ "sample_size": 226,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude-3-Haiku",
+  "Claude-3.5-Sonnet",
+  "DeBERTa-v3-base",
+  "GPT-4o",
+  "GPT-4o-mini",
+  "Gemini-1.5-Flash-002",
+  "Gemini-1.5-Pro-002",
+  "Llama-3-2-1B",
+  "Llama-3-70B",
+  "Mistral-8x7B",
+  "Mistral-Large"
+ ],
+ "links": [
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement of multi-LLM panel fact-checking with human experts in detecting unfaithful summary facts",
+   "effect": "LLM panel vs human panel kappa 0.67 (95% CI 0.61-0.73) at 4/5 LLM agreement; verification scores fell as fact modifications became more severe, showing sensitive error detection.",
+   "quote": "The maximum score for agreement between LLM panel and human experts panel (Cohen\u2019s kappa 0.67 [95% CI, 0.61\u20130.73]) was observed when a panel of 4 LLMs agreed that the fact was faithful to the original title/abstract, suggesting that acceptance of facts by 4/5 LLMs maximizes agreement with the human panel ( Figure S1A ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R368",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucination rate in LLM-generated scientific summaries of oncology literature",
+   "effect": "Hallucination rate 9.6% (95% CI 6.5-12.7) for INSIDE LLM summaries versus 40.6% (37.8-43.4) for human-written PLS; faithfulness 88.9% vs 61.6%.",
+   "quote": "A higher hallucination rate was identified for human-written PLS than INSIDE summaries (40.6% [95% CI, 37.8\u201343.4] vs 9.6% [95% CI, 6.5\u201312.7] for data excluding DeBERTa-v3-base; Table S5 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "relevance rater reliability",
+   "effect": "Human expert relevance kappa was 0.11 [95% CI, 0.08\u20130.14], lower than LLM kappa 0.36 [0.34\u20130.38].",
+   "quote": "The linear weighted kappa scores were as follows: 0.36 [95% CI, 0.34\u20130.38] among LLMs, 0.11 [95% CI, 0.08\u20130.14] among the human experts, and 0.16 [95% CI, 0.13\u20130.19] between the LLM panel and human experts.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "plain-language summary readability",
+   "effect": "INSIDE LLM PLS median FRE 42.3 [IQR 35.27\u201349.41] vs human-written PLS 28.8 [IQR 21.02\u201336.18].",
+   "quote": "Importantly, the readability scores for INSIDE PLS were higher compared to the human-written PLS from BioLaySumm (median 42.3 [IQR 35.27\u201349.41] vs 28.8 [IQR 21.02\u201336.18]; Figure 4B ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 0.67,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Annotating summaries with faithfulness, relevance and readability scores and flagging contested facts",
+  "Multi-LLM panel voting as automated faithfulness/hallucination checker for summaries"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42318048",
+ "screen": {
+  "id": "pmid:42318048",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM panel faithfulness verification of generated summaries",
+  "user": "none",
+  "reason": "Evaluates an automated LLM panel verification safeguard to detect hallucinations and assess faithfulness of clinical summaries.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "LLM panel verification of summary faithfulness"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42318048",
+   "empirical": 0.94,
+   "tests_practice": 0.07,
+   "real_deployment": 0.05
+  }
+ }
+}

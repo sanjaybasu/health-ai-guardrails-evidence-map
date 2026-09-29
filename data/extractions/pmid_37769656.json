@@ -1,0 +1,321 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "Vietnam",
+   "sample_size": 9775,
+   "sample_unit": "patients (chest X-rays)",
+   "models_evaluated": [
+    "DrAid"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Simulated clinician burden of disagreement-guided presentation pipeline versus baseline all-findings display",
+     "effect": "With disagreement model TPR 0.8, FPR 0.03 and 5% second-read probability, burden reduced by 4.8% \u00b1 0.2%; burden rose 12.04% at FPR 0.10. Automation-bias protection itself not measured.",
+     "quote": "Combining all of these, if the disagreement model TPRs and FPRs are 0.8 and 0.03, respectively, and the conditional probability of a second read is 0.05, burden is reduced by 4.8% \u00b1 0.2%."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Burden impact of deferring/second-read requests on predicted disagreement findings",
+     "effect": "Even if all clinically significant disagreements receive a second read, burden increases only 6.67% \u00b1 0.07%; restricting to under 5% reduces burden by 4.8% \u00b1 0.1%.",
+     "quote": "Even if all cases of disagreement on clinically significant findings receive a second read, burden is only increased by 6.67% \u00b1 0.07%."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Sensitivity of clinician burden to disagreement-model false positive rate (operating point)",
+     "effect": "An FPR of 0.01 gives 9.55% \u00b1 0.06% burden reduction, whereas an FPR of 0.10 gives a 12.04% \u00b1 0.09% increase.",
+     "quote": "Although an FPR of 0.01 can result in an expected 9.55% \u00b1 0.06% reduction in burden, an FPR of 0.10 actually results in a 12.04% \u00b1 0.09% increase."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Rate of radiologist-AI disagreement in deployed chest X-ray tool",
+     "effect": "Average disagreement rate 6.5% (median 2.6%); prevalence-weighted TPR 76.4% and FPR 4.1% versus final report. Automation bias not directly measured.",
+     "quote": "The average and median rates of disagreement between the final radiologist label and the diagnostic model label for the Nam Dinh Hospital sample (independent of the predicted ROIs) were 6.5% and 2.6%, respectively (IQR, 1.3\u20139.6)."
+    }
+   ],
+   "unlisted_practices": [
+    "Disagreement-prediction model to triage AI findings into review-required, quick-access, auto-include and searchable categories",
+    "Automatic blinded second-opinion request when clinician disagrees with high-quality, clinically significant AI prediction"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Vietnam",
+   "sample_size": 9775,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DrAid",
+    "DrAid diagnostic model",
+    "simulated Disagreement Model",
+    "simulated Prediction Quality Model",
+    "proposed disagreement-prediction decision pipeline"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI-clinician diagnostic disagreement",
+     "effect": "Average disagreement 6.5%; median 2.6% (IQR, 1.3\u20139.6) between model and final radiologist labels.",
+     "quote": "The average and median rates of disagreement between the final radiologist label and the diagnostic model label for the Nam Dinh Hospital sample (independent of the predicted ROIs) were 6.5% and 2.6%, respectively (IQR, 1.3\u20139.6)."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "simulated clinician burden",
+     "effect": "Simulated pipeline burden fell 4.8% \u00b1 0.2% at disagreement-model TPR 0.8, FPR 0.03, and second-read probability 0.05.",
+     "quote": "Combining all of these, if the disagreement model TPRs and FPRs are 0.8 and 0.03, respectively, and the conditional probability of a second read is 0.05, burden is reduced by 4.8% \u00b1 0.2%."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "post-deployment accuracy against radiologist reports",
+     "effect": "Prevalence-weighted average TPR was 76.4% and FPR 4.1% against final radiologist reports.",
+     "quote": "The prevalence-weighted average true positive rate (TPR) and false positive rate (FPR) of DrAid over all pathologies using the final report as ground truth were 76.4% and 4.1%, respectively."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "burden from high disagreement false positives",
+     "effect": "FPR 0.01 reduced burden 9.55% \u00b1 0.06%; FPR 0.10 increased burden 12.04% \u00b1 0.09%.",
+     "quote": "Although an FPR of 0.01 can result in an expected 9.55% \u00b1 0.06% reduction in burden, an FPR of 0.10 actually results in a 12.04% \u00b1 0.09% increase."
+    }
+   ],
+   "unlisted_practices": [
+    "Predicting AI-clinician disagreement to route imaging findings into Review Required, Quick Access, Automatic Inclusion, and Searchable categories.",
+    "Automatically requesting a second opinion for clinically significant AI-clinician disagreements based on simulated prediction quality.",
+    "Auto-including diagnostic-model findings when clinician agreement is predicted."
+   ]
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Vietnam",
+   "sample_size": 9775,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DrAid"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician interaction burden compared to baseline workflow",
+     "effect": "Burden reduced by 4.8% \u00b1 0.2% with default parameters (disagreement TPR 0.8, FPR 0.03, second read probability 0.05)",
+     "quote": "Combining all of these, if the disagreement model TPRs and FPRs are 0.8 and 0.03, respectively, and the conditional probability of a second read is 0.05, burden is reduced by 4.8% \u00b1 0.2%."
+    }
+   ],
+   "unlisted_practices": [
+    "Using machine-learning disagreement prediction to dynamically structure diagnostic AI output presentation",
+    "Automating second-opinion requests for high-confidence AI-clinician disagreements on clinically significant findings"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Vietnam",
+ "sample_unit": "patients",
+ "sample_size": 9775,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "DrAid",
+  "DrAid diagnostic model",
+  "proposed disagreement-prediction decision pipeline",
+  "simulated Disagreement Model",
+  "simulated Prediction Quality Model"
+ ],
+ "links": [
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Simulated clinician burden of disagreement-guided presentation pipeline versus baseline all-findings display",
+   "effect": "With disagreement model TPR 0.8, FPR 0.03 and 5% second-read probability, burden reduced by 4.8% \u00b1 0.2%; burden rose 12.04% at FPR 0.10. Automation-bias protection itself not measured.",
+   "quote": "Combining all of these, if the disagreement model TPRs and FPRs are 0.8 and 0.03, respectively, and the conditional probability of a second read is 0.05, burden is reduced by 4.8% \u00b1 0.2%.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity of clinician burden to disagreement-model false positive rate (operating point)",
+   "effect": "An FPR of 0.01 gives 9.55% \u00b1 0.06% burden reduction, whereas an FPR of 0.10 gives a 12.04% \u00b1 0.09% increase.",
+   "quote": "Although an FPR of 0.01 can result in an expected 9.55% \u00b1 0.06% reduction in burden, an FPR of 0.10 actually results in a 12.04% \u00b1 0.09% increase.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Burden impact of deferring/second-read requests on predicted disagreement findings",
+   "effect": "Even if all clinically significant disagreements receive a second read, burden increases only 6.67% \u00b1 0.07%; restricting to under 5% reduces burden by 4.8% \u00b1 0.1%.",
+   "quote": "Even if all cases of disagreement on clinically significant findings receive a second read, burden is only increased by 6.67% \u00b1 0.07%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Auto-including diagnostic-model findings when clinician agreement is predicted.",
+  "Automatic blinded second-opinion request when clinician disagrees with high-quality, clinically significant AI prediction",
+  "Automatically requesting a second opinion for clinically significant AI-clinician disagreements based on simulated prediction quality.",
+  "Automating second-opinion requests for high-confidence AI-clinician disagreements on clinically significant findings",
+  "Disagreement-prediction model to triage AI findings into review-required, quick-access, auto-include and searchable categories",
+  "Predicting AI-clinician disagreement to route imaging findings into Review Required, Quick Access, Automatic Inclusion, and Searchable categories.",
+  "Using machine-learning disagreement prediction to dynamically structure diagnostic AI output presentation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37769656",
+ "screen": {
+  "id": "pmid:37769656",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "disagreement-guided prediction presentation and selective second review",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a decision pipeline/safeguard (disagreement prediction, clinical significance filtering, and selective presentation/second read) compared to standard diagnostic model presentation using real-world deployment data from chest X-ray interpretation.",
+  "jev": {
+   "id": "pmid:37769656",
+   "empirical": 0.94,
+   "tests_practice": 0.89,
+   "real_deployment": 0.84
+  }
+ }
+}

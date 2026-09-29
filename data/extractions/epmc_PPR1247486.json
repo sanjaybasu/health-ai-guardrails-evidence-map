@@ -1,0 +1,87 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "US",
+ "sample_size": 11016,
+ "sample_unit": "next-visit transitions (MEPS 2023)",
+ "models_evaluated": [
+  "DentaCoPilot",
+  "Claude Sonnet",
+  "Claude Opus",
+  "bigram baseline",
+  "history-aware classical model",
+  "most-frequent baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Top-1 accuracy of LLM variants versus classical baselines on same synthetic data",
+   "effect": "Classical baselines reached 0.567 top-1; pure LLM variants reached 0.267 to 0.467; Sonnet to Opus backbone did not help.",
+   "quote": "On an apples-to-apples synthetic evaluation, classical baselines reach 0.567 top-1 while pure LLM variants trail at 0.267 to 0.467, and moving the backbone from Sonnet to Opus does not help.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Split-conformal selective prediction with abstain flag for next-procedure recommendation",
+  "Prompt-conditioning an LLM on a classical baseline's candidate list"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1247486",
+ "screen": {
+  "id": "epmc:PPR1247486",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a clinical next-procedure recommender combining classical models and LLMs, specifically testing and incorporating selective prediction/abstention flags and conformal calibration as safeguards.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "conformal prediction and abstention guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1247486",
+   "empirical": 0.93,
+   "tests_practice": 0.25,
+   "real_deployment": 0.04
+  }
+ }
+}

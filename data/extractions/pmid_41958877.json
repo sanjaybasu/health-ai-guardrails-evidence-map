@@ -1,0 +1,431 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 11329,
+   "sample_unit": "adult diabetes patients (discharge summaries)",
+   "models_evaluated": [
+    "Qwen2-2B",
+    "Qwen2.5-7B",
+    "Qwen2.5-14B",
+    "Qwen2.5-72B",
+    "DeepSeek-V3",
+    "DeepSeek-R1",
+    "DeepSeek-32B (R1-Distill-Qwen)",
+    "Llama-3.2-11B",
+    "Gemma2-9B",
+    "HuatuoGPT-o1-7B",
+    "HuatuoGPT2",
+    "MMedLM2-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across prompt strategies and prompt language on Chinese clinical text",
+     "effect": "English prompts gave mean F1 61.38% vs Chinese prompts 56.65% on balanced subset; CoT prompting helped MetS but was largely detrimental for DKD.",
+     "quote": "Furthermore, the analysis revealed a clear language bias, with English prompts yielding a superior mean F1-score (61.38%) compared to Chinese prompts (56.65%) across all models ( Supplementary Figure 6 and Supplementary Figure 7 in the Supplementary Figures )."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "LLM diagnostic performance on real-world clinical narratives versus rule-based tasks",
+     "effect": "Peak F1 0.951 for diabetes subtyping but only 0.570 for DKD and 0.650 for MetS diagnosis from real-world discharge summaries.",
+     "quote": "In the diabetes classification task (Task 1), the DeepSeek-V3 model with Chinese Prompt 1 achieved the best F1 score of 0.951."
+    },
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance on non-English (Chinese) clinical text by prompt language",
+     "effect": "English prompts outperformed Chinese prompts on native Chinese clinical text (mean F1 61.38% vs 56.65%); MMedLM2-7B had poor English generalization (F1 0.697).",
+     "quote": "A consistent and critical finding was the superior performance of English prompts on Chinese clinical text, highlighting the Anglocentric bias of many foundational models."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance on minority diabetes subtype classes",
+     "effect": "Top model misclassified 61% of GDM and 42% of SD cases as T2DM; balanced-subset F1 peaked at 77.39% vs 0.951 on imbalanced data.",
+     "quote": "A confusion matrix analysis revealed the top-performing model (DeepSeek-V3, Chinese Prompt 1) suffered from significant class imbalance, misclassifying high proportions of minority classes like GDM (61%) and SD (42%) as T2DM."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM hallucination and reasoning errors in rule-based diagnosis",
+     "effect": "In 0.83% of cases with absent indicators the model still generated a positive DKD diagnosis; 49.77% of MetS cases self-identified as meeting \u22653 criteria were misclassified.",
+     "quote": "Furthermore, even when at least one indicator was successfully extracted, the diagnostic error rate remained at 27.02%."
+    }
+   ],
+   "unlisted_practices": [
+    "Chain-of-thought and criteria-driven prompt engineering to improve diagnostic accuracy",
+    "INT4 quantization and model size selection for resource-constrained deployment",
+    "Comparing general-purpose versus medically fine-tuned open-source LLMs"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 11329,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "DeepSeek-R1",
+    "DeepSeek-32B",
+    "Qwen2-2B",
+    "Qwen2.5-7B",
+    "Qwen2.5-14B",
+    "Qwen2.5-14B-int4",
+    "Qwen2.5-72B",
+    "DS-R1-Distill-Qwen",
+    "Llama-3.2-11B",
+    "Gemma2-9B",
+    "HuatuoGPT-o1-7B",
+    "HuatuoGPT2",
+    "MMedLM2-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone diabetes diagnosis accuracy",
+     "effect": "Peak subtyping F1 0.951, but best DKD F1 0.570 and best MetS F1 0.650.",
+     "quote": "LLMs demonstrated high performance in complex subtyping (peak F1 0.951) but showed limitations in rule-based DKD (F1 0.570) and MetS (F1 0.650) diagnosis."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "minority diabetes subtype errors",
+     "effect": "DeepSeek-V3 Chinese Prompt 1 had weighted F1 0.951; GDM 61% and SD 42% were misclassified as T2DM.",
+     "quote": "A confusion matrix analysis revealed the top-performing model (DeepSeek-V3, Chinese Prompt 1) suffered from significant class imbalance, misclassifying high proportions of minority classes like GDM (61%) and SD (42%) as T2DM."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missing diagnostic indicators in DKD failures",
+     "effect": "Overall UACR/AER missingness was 64.19%/59.36%; among incorrect DKD predictions, UACR/AER missingness was 52.01%/46.09%, both absent in 24.13%.",
+     "quote": "Specifically, within incorrectly predicted cases, UACR and AER were missing in 52.01% and 46.09% of instances, with both completely absent in 24.13% of failures ( Supplementary Figure 18A )."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucinated and inconsistent diagnostic outputs",
+     "effect": "0.83% of cases with entirely absent indicators still received positive DKD diagnoses; MetS logic errors included 49.77% and 21.94% inconsistency rates.",
+     "quote": "While this widespread missingness frequently forced the model into a default \u201cconservative\u201d negative prediction, the explicit extraction exposed a critical \u201challucination\u201d vulnerability: in 0.83% of cases where diagnostic indicators were entirely absent, the model still baselessly generated a positive diagnosis."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "rule-based comorbidity diagnosis",
+     "effect": "Best DKD F1 was 0.570 (95%CI [0.556, 0.583]); best MetS F1 was 0.650 (95% CI, 0.638\u20130.660).",
+     "quote": "Conversely, the models exhibited brittle performance on DKD and MetS tasks, revealing a core limitation in executing procedural rules that demand strict quantitative and logical adherence."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing zero-shot, reference-guided, criteria-driven, and chain-of-thought prompting strategies",
+    "Comparing English versus Chinese prompts on Chinese clinical narratives",
+    "Assessing INT4 quantization and knowledge distillation effects on diagnostic performance"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 11329,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "DeepSeek-R1",
+    "DeepSeek-32B",
+    "DS-R1-Distill-Qwen",
+    "Qwen2-2B",
+    "Qwen2.5-7B",
+    "Qwen2.5-14B",
+    "Qwen2.5-72B",
+    "Llama-3.2-11B",
+    "Gemma2-9B",
+    "HuatuoGPT-o1-7B",
+    "HuatuoGPT2",
+    "MMedLM2-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic failure and hallucination under missing clinical indicators in unstructured text",
+     "effect": "Indicators missing in 52.01% (UACR) and 46.09% (AER) of failures; in 0.83% of cases with indicators entirely absent, model baselessly generated positive diagnosis",
+     "quote": "While this widespread missingness frequently forced the model into a default \u201cconservative\u201d negative prediction, the explicit extraction exposed a critical \u201challucination\u201d vulnerability: in 0.83% of cases where diagnostic indicators were entirely absent, the model still baselessly generated a positive diagnosis."
+    }
+   ],
+   "unlisted_practices": [
+    "Chain-of-thought prompting",
+    "Criteria-driven prompting",
+    "Reference-guided prompting",
+    "Model quantization (INT4)",
+    "Knowledge distillation",
+    "Cross-lingual prompt translation (English prompts for Chinese clinical text)"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 11329,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "English"
+ ],
+ "models_evaluated": [
+  "DS-R1-Distill-Qwen",
+  "DeepSeek-32B",
+  "DeepSeek-32B (R1-Distill-Qwen)",
+  "DeepSeek-R1",
+  "DeepSeek-V3",
+  "Gemma2-9B",
+  "HuatuoGPT-o1-7B",
+  "HuatuoGPT2",
+  "Llama-3.2-11B",
+  "MMedLM2-7B",
+  "Qwen2-2B",
+  "Qwen2.5-14B",
+  "Qwen2.5-14B-int4",
+  "Qwen2.5-72B",
+  "Qwen2.5-7B"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across prompt strategies and prompt language on Chinese clinical text",
+   "effect": "English prompts gave mean F1 61.38% vs Chinese prompts 56.65% on balanced subset; CoT prompting helped MetS but was largely detrimental for DKD.",
+   "quote": "Furthermore, the analysis revealed a clear language bias, with English prompts yielding a superior mean F1-score (61.38%) compared to Chinese prompts (56.65%) across all models ( Supplementary Figure 6 and Supplementary Figure 7 in the Supplementary Figures ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM hallucination and reasoning errors in rule-based diagnosis",
+   "effect": "In 0.83% of cases with absent indicators the model still generated a positive DKD diagnosis; 49.77% of MetS cases self-identified as meeting \u22653 criteria were misclassified.",
+   "quote": "Furthermore, even when at least one indicator was successfully extracted, the diagnostic error rate remained at 27.02%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance on minority diabetes subtype classes",
+   "effect": "Top model misclassified 61% of GDM and 42% of SD cases as T2DM; balanced-subset F1 peaked at 77.39% vs 0.951 on imbalanced data.",
+   "quote": "A confusion matrix analysis revealed the top-performing model (DeepSeek-V3, Chinese Prompt 1) suffered from significant class imbalance, misclassifying high proportions of minority classes like GDM (61%) and SD (42%) as T2DM.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "minority diabetes subtype errors",
+   "effect": "DeepSeek-V3 Chinese Prompt 1 had weighted F1 0.951; GDM 61% and SD 42% were misclassified as T2DM.",
+   "quote": "A confusion matrix analysis revealed the top-performing model (DeepSeek-V3, Chinese Prompt 1) suffered from significant class imbalance, misclassifying high proportions of minority classes like GDM (61%) and SD (42%) as T2DM.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hallucinated and inconsistent diagnostic outputs",
+   "effect": "0.83% of cases with entirely absent indicators still received positive DKD diagnoses; MetS logic errors included 49.77% and 21.94% inconsistency rates.",
+   "quote": "While this widespread missingness frequently forced the model into a default \u201cconservative\u201d negative prediction, the explicit extraction exposed a critical \u201challucination\u201d vulnerability: in 0.83% of cases where diagnostic indicators were entirely absent, the model still baselessly generated a positive diagnosis.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R272",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Assessing INT4 quantization and knowledge distillation effects on diagnostic performance",
+  "Chain-of-thought and criteria-driven prompt engineering to improve diagnostic accuracy",
+  "Chain-of-thought prompting",
+  "Comparing English versus Chinese prompts on Chinese clinical narratives",
+  "Comparing general-purpose versus medically fine-tuned open-source LLMs",
+  "Comparing zero-shot, reference-guided, criteria-driven, and chain-of-thought prompting strategies",
+  "Criteria-driven prompting",
+  "Cross-lingual prompt translation (English prompts for Chinese clinical text)",
+  "INT4 quantization and model size selection for resource-constrained deployment",
+  "Knowledge distillation",
+  "Model quantization (INT4)",
+  "Reference-guided prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41958877",
+ "screen": {
+  "id": "pmid:41958877",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt strategy and prompt language selection",
+  "user": "none",
+  "reason": "Evaluates open-source LLMs retrospectively on clinical text from 11,329 patients and tests the impact of implementation choices (prompting strategies like Chain-of-Thought and prompt language) on diagnostic performance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompting strategies and prompt language selection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41958877",
+   "empirical": 0.96,
+   "tests_practice": 0.09,
+   "real_deployment": 0.04
+  }
+ }
+}

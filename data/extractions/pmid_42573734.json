@@ -1,0 +1,396 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "multimodal_foundation",
+    "generative_llm",
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 658,
+   "sample_unit": "hip-level observations (318 radiograph, 340 MRI)",
+   "models_evaluated": [
+    "GPT-4o",
+    "Claude 3.7 Sonnet",
+    "Qwen2.5-VL 72B",
+    "Gemma 3 27B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Run-to-run repeatability (ICC) of ARCO grading across two runs by input configuration",
+     "effect": "Mean ICC 0.51 (SD 0.18) for single image, 0.97 (SD 0.02) with description, 0.52 and 0.43 for multi-image setups; repeatability varied substantially across models and modalities in SI.",
+     "quote": "In the SI configuration, MLLM repeatability varied substantially across models and modalities, with a mean ICC of 0.51 (SD 0.18)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Standalone MLLM performance versus surgeon performance under image-only input (zero-shot)",
+     "effect": "SI input gave mean detection AUC 0.55 (SD 0.03); authors state MLLMs remain insufficient for independent diagnostic use; no with/without-AI clinician comparison.",
+     "quote": "By contrast, the SI configuration represented zero-shot image-only interpretation and showed substantially lower performance, underscoring the current limitations of autonomous MLLM-based diagnosis."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Stand-alone diagnostic performance of MLLMs for ONFH detection and grading",
+     "effect": "Single-image detection AUC 0.50-0.58 (mean 0.55); detailed ARCO grading accuracy 0.22 with SI; authors conclude none should be used independently for clinical decision-making.",
+     "quote": "Nevertheless, none of the evaluated models should currently be used independently for clinical decision-making."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "MLLM performance compared with surgeons and commercial versus open-source models on same data",
+     "effect": "Surgeons mean detailed grading accuracy 0.71 (SD 0.19) versus MLLM ID ARCO 0.56; no significant commercial versus open-source difference (P=.83).",
+     "quote": "Consistent with the bootstrap analysis, no significant overall difference was found between commercial and open-source models, though some model-specific variations existed ( Figure 5 C,D)."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of MLLMs on intended-use imaging tasks with and without radiology description",
+     "effect": "Mean detection AUC rose from 0.55 (SD 0.03) with SI to 0.91 (SD 0.01) with ID; MI AUC mean 0.53 (SD 0.08); authors say external validation needed.",
+     "quote": "With SI input, MLLMs showed limited diagnostic discrimination, with AUCs ranging from 0.50 to 0.58 and a mean AUC of 0.55 (SD 0.03)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability limits of single-center retrospective validation",
+     "effect": "Single-center dataset only; external multicenter validation not done; authors note imaging protocol and population differences may affect performance.",
+     "quote": "First, the single-center dataset limits generalizability."
+    }
+   ],
+   "unlisted_practices": [
+    "Supplying radiologist-written image descriptions alongside images in the prompt to improve MLLM diagnostic accuracy and stability",
+    "Providing multiple images per case as MLLM input versus single image"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 658,
+   "sample_unit": "modality-specific hip observations",
+   "models_evaluated": [
+    "GPT-4o (gpt-4o-2024-11-20)",
+    "Claude 3.7 Sonnet (claude-3\u20107-sonnet-20250219)",
+    "Qwen2.5-VL-72B-Instruct (qwen2.5-vl-72b-instruct)",
+    "Gemma 3 27B instruction-tuned (google/gemma-3-27b-it)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "image-only ONFH diagnosis",
+     "effect": "SI AUCs ranged from 0.50 to 0.58; mean AUC was 0.55 (SD 0.03).",
+     "quote": "With SI input, MLLMs showed limited diagnostic discrimination, with AUCs ranging from 0.50 to 0.58 and a mean AUC of 0.55 (SD 0.03)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "run-to-run grading stability",
+     "effect": "SI exact agreement 0.44\u20100.81, mean 0.65; mean absolute differences 0.22\u20101.09 stages, mean 0.60.",
+     "quote": "In contrast, SI input showed lower stability, with exact agreement of 0.44\u20100.81 (mean 0.65, SD 0.16) and mean absolute differences of 0.22\u20101.09 stages (mean 0.60, SD 0.27)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "commercial versus open-source performance",
+     "effect": "No significant overall difference between commercial and open-source model groups (P=.83).",
+     "quote": "In the commercial versus open-source model comparison, no significant overall difference was observed between model groups (P=.83)."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ONFH detection by prompt input",
+     "effect": "Mean detection AUC increased from 0.55 (SD 0.03) with SI to 0.91 (SD 0.01) with ID.",
+     "quote": "Across all models and imaging modalities, the mean detection AUC increased from 0.55 (SD 0.03) with SI input to 0.91 (SD 0.01) with ID input, corresponding to an average AUC gain of 0.37 (SD 0.03)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "detailed staging accuracy",
+     "effect": "Mean detailed grading accuracy was 0.34 to 0.59 for Ficat, 0.22 to 0.56 for ARCO, and 0.19 to 0.49 for Steinberg.",
+     "quote": "The mean detailed grading accuracy increased from 0.34 (SD 0.08) to 0.59 (SD 0.04) for Ficat, from 0.22 (SD 0.05) to 0.56 (SD 0.11) for ARCO, and from 0.19 (SD 0.05) to 0.49 (SD 0.05) for Steinberg."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 658,
+   "sample_unit": "hip-level observations",
+   "models_evaluated": [
+    "GPT-4o",
+    "Claude 3.7 Sonnet",
+    "Qwen2.5-VL 72B",
+    "Gemma 3 27B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "en"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ONFH detection discrimination of standalone single-image MLLMs",
+     "effect": "mean detection AUC was 0.55 (SD 0.03), with AUCs ranging from 0.50 to 0.58",
+     "quote": "With SI input, MLLMs showed limited diagnostic discrimination, with AUCs ranging from 0.50 to 0.58 and a mean AUC of 0.55 (SD 0.03)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "run-to-run repeatability of ARCO grading",
+     "effect": "mean MLLM ICC across two runs was 0.51 (SD 0.18) for SI",
+     "quote": "In the SI configuration, MLLM repeatability varied substantially across models and modalities, with a mean ICC of 0.51 (SD 0.18)."
+    }
+   ],
+   "unlisted_practices": [
+    "Multimodal prompt engineering combining medical images with deidentified textual radiology descriptions",
+    "Multi-image prompt configuration presenting multiple radiographic and MRI slices simultaneously"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "hip-level observations (318 radiograph, 340 MRI)",
+ "sample_size": 658,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "en"
+ ],
+ "models_evaluated": [
+  "Claude 3.7 Sonnet",
+  "Claude 3.7 Sonnet (claude-3\u20107-sonnet-20250219)",
+  "GPT-4o",
+  "GPT-4o (gpt-4o-2024-11-20)",
+  "Gemma 3 27B",
+  "Gemma 3 27B instruction-tuned (google/gemma-3-27b-it)",
+  "Qwen2.5-VL 72B",
+  "Qwen2.5-VL-72B-Instruct (qwen2.5-vl-72b-instruct)"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "run-to-run grading stability",
+   "effect": "SI exact agreement 0.44\u20100.81, mean 0.65; mean absolute differences 0.22\u20101.09 stages, mean 0.60.",
+   "quote": "In contrast, SI input showed lower stability, with exact agreement of 0.44\u20100.81 (mean 0.65, SD 0.16) and mean absolute differences of 0.22\u20101.09 stages (mean 0.60, SD 0.27).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Stand-alone diagnostic performance of MLLMs for ONFH detection and grading",
+   "effect": "Single-image detection AUC 0.50-0.58 (mean 0.55); detailed ARCO grading accuracy 0.22 with SI; authors conclude none should be used independently for clinical decision-making.",
+   "quote": "Nevertheless, none of the evaluated models should currently be used independently for clinical decision-making.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "MLLM performance compared with surgeons and commercial versus open-source models on same data",
+   "effect": "Surgeons mean detailed grading accuracy 0.71 (SD 0.19) versus MLLM ID ARCO 0.56; no significant commercial versus open-source difference (P=.83).",
+   "quote": "Consistent with the bootstrap analysis, no significant overall difference was found between commercial and open-source models, though some model-specific variations existed ( Figure 5 C,D).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "detailed staging accuracy",
+   "effect": "Mean detailed grading accuracy was 0.34 to 0.59 for Ficat, 0.22 to 0.56 for ARCO, and 0.19 to 0.49 for Steinberg.",
+   "quote": "The mean detailed grading accuracy increased from 0.34 (SD 0.08) to 0.59 (SD 0.04) for Ficat, from 0.22 (SD 0.05) to 0.56 (SD 0.11) for ARCO, and from 0.19 (SD 0.05) to 0.49 (SD 0.05) for Steinberg.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Multi-image prompt configuration presenting multiple radiographic and MRI slices simultaneously",
+  "Multimodal prompt engineering combining medical images with deidentified textual radiology descriptions",
+  "Providing multiple images per case as MLLM input versus single image",
+  "Supplying radiologist-written image descriptions alongside images in the prompt to improve MLLM diagnostic accuracy and stability"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42573734",
+ "screen": {
+  "id": "pmid:42573734",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "generative_llm",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt configuration (adding radiology description to image input)",
+  "user": "none",
+  "reason": "Evaluates how different prompt configurations (such as supplying deidentified radiology report text alongside images versus image-only inputs) affect diagnostic accuracy and staging reliability across multiple commercial and open-source multimodal foundation models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt configuration and clinical context grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42573734",
+   "empirical": 0.98,
+   "tests_practice": 0.11,
+   "real_deployment": 0.03
+  }
+ }
+}

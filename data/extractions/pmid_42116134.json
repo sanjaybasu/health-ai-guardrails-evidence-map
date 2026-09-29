@@ -1,0 +1,360 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic",
+    "any_ai"
+   ],
+   "country": "Chile",
+   "sample_size": null,
+   "sample_unit": "referral records (Chilean Waiting List Corpus); count not reported",
+   "models_evaluated": [
+    "PlanTL-GOB-ES/bsc-bio-ehr-es (RoBERTa-base)",
+    "GPT-4.1",
+    "GPT-5",
+    "DeepSeek-V3-0324",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R545",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance drop after label-set/task-definition shift, with and without retraining on new-period data",
+     "effect": "Supervised models dropped up to 82% F1 in LSI and 43% in TDE; continual retraining gradually restored performance and surpassed ICL/hybrid after at least 30% of new data.",
+     "quote": "Continual adaptation with incremental retraining gradually restored performance, but only surpassed in-context and hybrid approaches after incorporating at least 30% of data from the second period."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation of static clinical NLP models under distributional and task-definition drift",
+     "effect": "Conventional supervised models showed severe degradation, up to 82% F1 drop in LSI and 43% in TDE.",
+     "quote": "Conventional supervised models showed severe degradation under these shifts (up to a drop of 82% F1 in LSI and 43% in TDE)."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Recovery of performance and error rates after retraining on new-period data",
+     "effect": "After retraining on period B, FNR and FPR decreased markedly toward baseline; the confusion-matrix diagonal was largely restored in LSI.",
+     "quote": "After retraining on period B data, both FNR and FPR decreased markedly, approaching baseline levels."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when applied to a new label set or task definition (new context)",
+     "effect": "Legacy models trained on period A had severe F1 drops on period B; both FNR and FPR increased substantially in TDE.",
+     "quote": "When the model trained on period A was directly evaluated on period B without retraining, both error rates increased substantially relative to the baseline evaluation on period A."
+    }
+   ],
+   "unlisted_practices": [
+    "Hybrid approach pairing legacy discriminative model with LLM agent that overrides outdated predictions after task definition change",
+    "Prompt-based in-context adaptation (optimized instructions) to new label sets/task definitions without retraining",
+    "Simulation framework parameterizing label-set and task-definition shift severity for benchmarking model robustness"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "Chile",
+   "sample_size": null,
+   "sample_unit": "referral records",
+   "models_evaluated": [
+    "PlanTL-GOB-ES/bsc-bio-ehr-es",
+    "RoBERTa-base",
+    "GPT-4.1",
+    "GPT-5",
+    "DeepSeek-V3-0324",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "F1 drop on shifted period B data",
+     "effect": "Conventional supervised models dropped up to 82% F1 in LSI and 43% in TDE.",
+     "quote": "Conventional supervised models showed severe degradation under these shifts (up to a drop of 82% F1 in LSI and 43% in TDE)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance drops by adaptation strategy",
+     "effect": "In-context learning drops were 35% LSI and 10% TDE; hybrid limited drops to approximately 8%.",
+     "quote": "In contrast, in-context learning reduced the drop to 35% in LSI and 10% in TDE, while a hybrid method further improved robustness, limiting the drop to approximately 8% in both settings."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model degradation under temporal drift",
+     "effect": "Severe performance drops occurred: up to 82% in F1 for LSI and 43% for TDE.",
+     "quote": "In line with previous evidence from conventional machine learning studies on data set shift and temporal drift [ 4 , 11 , 14 ], we also observe severe performance drops, up to 82% in F1 for LSI and 43% for TDE, which underscores the risks of deploying fixed models in evolving clinical environments."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance recovery after retraining",
+     "effect": "Retraining with as little as 20% of period B data reduced TDE drops to minimal levels.",
+     "quote": "In the TDE scenario (Fig. 3 b), a similar trend was observed: all simulation strengths began with high performance drop, but retraining with as little as 20% of period B data reduced the drop to minimal levels."
+    }
+   ],
+   "unlisted_practices": [
+    "Use in-context learning prompts with current label space or task definitions to adapt clinical NLP models without new labeled data.",
+    "Use a hybrid LLM agent that considers a legacy model suggestion and overrides it when inconsistent with updated rules.",
+    "Parameterized simulation of label-set incompatibility and task definition evolution for clinical NLP robustness benchmarking."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk",
+    "agentic"
+   ],
+   "country": "Chile",
+   "sample_size": null,
+   "sample_unit": "referral records",
+   "models_evaluated": [
+    "PlanTL-GOB-ES/bsc-bio-ehr-es",
+    "GPT-4.1",
+    "GPT-5",
+    "DeepSeek-V3-0324",
+    "DeepSeek-R1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model performance drop under clinical concept and label drift",
+     "effect": "Conventional supervised models showed up to an 82% F1 drop under label-set incompatibility and 43% under task definition evolution.",
+     "quote": "Conventional supervised models showed severe degradation under these shifts (up to a drop of 82% F1 in LSI and 43% in TDE)."
+    }
+   ],
+   "unlisted_practices": [
+    "In-context learning with prompt optimization to adapt clinical NLP models to label-set incompatibility and task definition evolution without retraining",
+    "Hybrid adaptation combining a legacy discriminative model with an LLM agent to evaluate and override predictions under clinical task and label evolution",
+    "Continual training with incremental retraining data to adapt models to dynamic clinical shifts"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Chile",
+ "sample_unit": "referral records",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Spanish"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1",
+  "DeepSeek-V3-0324",
+  "GPT-4.1",
+  "GPT-5",
+  "PlanTL-GOB-ES/bsc-bio-ehr-es",
+  "PlanTL-GOB-ES/bsc-bio-ehr-es (RoBERTa-base)",
+  "RoBERTa-base"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation of static clinical NLP models under distributional and task-definition drift",
+   "effect": "Conventional supervised models showed severe degradation, up to 82% F1 drop in LSI and 43% in TDE.",
+   "quote": "Conventional supervised models showed severe degradation under these shifts (up to a drop of 82% F1 in LSI and 43% in TDE).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Recovery of performance and error rates after retraining on new-period data",
+   "effect": "After retraining on period B, FNR and FPR decreased markedly toward baseline; the confusion-matrix diagonal was largely restored in LSI.",
+   "quote": "After retraining on period B data, both FNR and FPR decreased markedly, approaching baseline levels.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when applied to a new label set or task definition (new context)",
+   "effect": "Legacy models trained on period A had severe F1 drops on period B; both FNR and FPR increased substantially in TDE.",
+   "quote": "When the model trained on period A was directly evaluated on period B without retraining, both error rates increased substantially relative to the baseline evaluation on period A.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "F1 drop on shifted period B data",
+   "effect": "Conventional supervised models dropped up to 82% F1 in LSI and 43% in TDE.",
+   "quote": "Conventional supervised models showed severe degradation under these shifts (up to a drop of 82% F1 in LSI and 43% in TDE).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R545",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Continual training with incremental retraining data to adapt models to dynamic clinical shifts",
+  "Hybrid adaptation combining a legacy discriminative model with an LLM agent to evaluate and override predictions under clinical task and label evolution",
+  "Hybrid approach pairing legacy discriminative model with LLM agent that overrides outdated predictions after task definition change",
+  "In-context learning with prompt optimization to adapt clinical NLP models to label-set incompatibility and task definition evolution without retraining",
+  "Parameterized simulation of label-set incompatibility and task definition evolution for clinical NLP robustness benchmarking.",
+  "Prompt-based in-context adaptation (optimized instructions) to new label sets/task definitions without retraining",
+  "Simulation framework parameterizing label-set and task-definition shift severity for benchmarking model robustness",
+  "Use a hybrid LLM agent that considers a legacy model suggestion and overrides it when inconsistent with updated rules.",
+  "Use in-context learning prompts with current label space or task definitions to adapt clinical NLP models without new labeled data."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42116134",
+ "screen": {
+  "id": "pmid:42116134",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "model adaptation to dataset shift (continual retraining vs in-context learning)",
+  "user": "none",
+  "reason": "The study develops a framework and tests deployment practices/strategies (continual retraining, in-context learning, and hybrid approaches) to mitigate model degradation under real-world clinical distribution shifts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "model adaptation strategies for clinical distribution shifts"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42116134",
+   "empirical": 0.95,
+   "tests_practice": 0.24,
+   "real_deployment": 0.06
+  }
+ }
+}

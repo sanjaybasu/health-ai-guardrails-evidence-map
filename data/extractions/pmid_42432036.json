@@ -1,0 +1,257 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 589310,
+   "sample_unit": "emergency presentations (133,814 training/validation; 455,496 rolling temporal testing)",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R366",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and daily bed error with periodic retraining versus base model over 2018-2023",
+     "effect": "Base model mean AUROC 0.875, bed error 7.42/day; retrained quarterly and half-yearly AUROC 0.892 and 0.893, bed error 4.02 and 4.48 beds per day.",
+     "quote": "Retrained models demonstrated improved discrimination (mean AUROC 0.892 and 0.893) and reduced bed error (4.02 and 4.48 beds per day) for quarterly and half-yearly retraining, respectively, with similar calibration and classification performance."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Covariate and concept drift and calibration degradation over the six-year testing period",
+     "effect": "Substantial drift between training and testing data and across the testing period; covariate drift degraded calibration but not discrimination.",
+     "quote": "Substantial drift was observed both between training and testing datasets and across the six-year testing period."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance with periodic retraining versus static base model over time",
+     "effect": "Retraining improved mean AUROC (0.875 to 0.892/0.893), reduced bed error, and reduced calibration concept drift.",
+     "quote": "Simple retraining improved discrimination and reduced calibration concept drift, underscoring the importance of retraining to address drift for temporal model deployment."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 589310,
+   "sample_unit": "presentations",
+   "models_evaluated": [
+    "XGBoost base model",
+    "quarterly retrained XGBoost",
+    "half-yearly retrained XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Calibration and discrimination under covariate drift",
+     "effect": "Calibration degraded while discrimination did not over the six-year testing period.",
+     "quote": "Covariate drift meaningfully degraded calibration but not discrimination metrics over time."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC and daily bed error after retraining",
+     "effect": "Quarterly and half-yearly retraining improved mean AUROC to 0.892 and 0.893 and reduced bed error to 4.02 and 4.48 beds per day.",
+     "quote": "Retrained models demonstrated improved discrimination (mean AUROC 0.892 and 0.893) and reduced bed error (4.02 and 4.48 beds per day) for quarterly and half-yearly retraining, respectively, with similar calibration and classification performance."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 455496,
+   "sample_unit": "presentations",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "calibration and discrimination performance degradation under covariate drift over time",
+     "effect": "Covariate drift degraded calibration over time but not discrimination; base model had mean AUROC 0.875 (range 0.844-0.887) and mean daily bed error 7.42 beds (range 0.47-13.1).",
+     "quote": "Covariate drift meaningfully degraded calibration but not discrimination metrics over time."
+    }
+   ],
+   "unlisted_practices": [
+    "Periodic model retraining to mitigate covariate and concept drift"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Australia",
+ "sample_unit": "presentations",
+ "sample_size": 589310,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "XGBoost",
+  "XGBoost base model",
+  "half-yearly retrained XGBoost",
+  "quarterly retrained XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Calibration and discrimination under covariate drift",
+   "effect": "Calibration degraded while discrimination did not over the six-year testing period.",
+   "quote": "Covariate drift meaningfully degraded calibration but not discrimination metrics over time.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC and daily bed error after retraining",
+   "effect": "Quarterly and half-yearly retraining improved mean AUROC to 0.892 and 0.893 and reduced bed error to 4.02 and 4.48 beds per day.",
+   "quote": "Retrained models demonstrated improved discrimination (mean AUROC 0.892 and 0.893) and reduced bed error (4.02 and 4.48 beds per day) for quarterly and half-yearly retraining, respectively, with similar calibration and classification performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R366",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R150",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Periodic model retraining to mitigate covariate and concept drift"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42432036",
+ "screen": {
+  "id": "pmid:42432036",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "scheduled model retraining and drift monitoring",
+  "user": "none",
+  "reason": "The study simulates covariate/concept drift over a multi-year period and evaluates the effect of scheduled retraining (quarterly vs. half-yearly) to mitigate drift and maintain predictive performance.",
+  "jev": {
+   "id": "pmid:42432036",
+   "empirical": 0.96,
+   "tests_practice": 0.91,
+   "real_deployment": 0.07
+  }
+ }
+}

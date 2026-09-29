@@ -1,0 +1,394 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States; Australia",
+   "sample_size": 35774,
+   "sample_unit": "patients (MIMIC-III; plus 6336 AACH residents)",
+   "models_evaluated": [
+    "Mixtral 8x7B",
+    "GPT-4",
+    "Llama 3.3",
+    "Gemma 3-4B-IT",
+    "DeepSeek-R1-Distill-Qwen-1.5B",
+    "ClinicalBERT",
+    "BioClinical ModernBERT",
+    "word2vec",
+    "TF-IDF",
+    "logistic regression",
+    "SVC",
+    "random forest",
+    "XGBoost",
+    "MLP"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Prediction ROC-AUC under synthetically perturbed (misspelled, missing whitespace) clinical text at 5-20% error rates",
+     "effect": "Models tolerant to error rates <10% but performance declined significantly at \u226510%; embedding features with XGBoost were more sensitive at <10%; AACH ROC-AUC difference after correction 0.002-0.004.",
+     "quote": "Although the performance in terms of ROC-AUC is tolerant to small error rates (<10%), it starts to be significant with a high error rate (\u226510%)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of Mixtral error detection in progress notes against manual ground truth",
+     "effect": "Mixtral overestimated errors, misclassified medical terms as misspellings and hallucinated misspellings; correctly identified errors in 45% of notes (63% in abstract/discussion); 2.95% mean deviation from ground truth.",
+     "quote": "Qualitative analysis of the results revealed that Mixtral erroneously identified medical terminologies (eg, ATOR, ADL, Perianal, situ, mane, obs, RN, etc) as misspelled tokens."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLMs to correct spelling and whitespace errors in clinical free-text before training machine learning models",
+    "Quantifying textual data quality via token-level error rate before model development"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States and Australia",
+   "sample_size": 42110,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Mixtral 8x7B",
+    "Llama 3.3",
+    "Gemma 3-4B-IT",
+    "DeepSeek-R1-Distill-Qwen-1.5B",
+    "word2vec-google-news-300",
+    "ClinicalBERT",
+    "BioClinical ModernBERT",
+    "logistic regression",
+    "Support Vector Machine Classifier",
+    "random forests",
+    "XGBoost",
+    "Multilayer Perceptron Classifier",
+    "TF-IDF"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Input-perturbation stress test ROC-AUC",
+     "effect": "Errors at <10% were tolerated; ROC-AUC performance significantly deteriorated at \u226510%.",
+     "quote": "By comparing the performance of models on datasets with varying error rates (evaluated in terms of ROC-AUC), we observed that models were relatively tolerant to smaller error rates (<10%) but their performance significantly deteriorated at higher error rates (\u226510%)."
+    },
+    {
+     "rec_id": "R336",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Predictive performance by dataset error rate",
+     "effect": "Errors at <10% were tolerated; ROC-AUC performance significantly deteriorated at \u226510%.",
+     "quote": "By comparing the performance of models on datasets with varying error rates (evaluated in terms of ROC-AUC), we observed that models were relatively tolerant to smaller error rates (<10%) but their performance significantly deteriorated at higher error rates (\u226510%)."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Predictive reliability with poor-quality text inputs",
+     "effect": "Errors at <10% were tolerated; ROC-AUC performance significantly deteriorated at \u226510%.",
+     "quote": "By comparing the performance of models on datasets with varying error rates (evaluated in terms of ROC-AUC), we observed that models were relatively tolerant to smaller error rates (<10%) but their performance significantly deteriorated at higher error rates (\u226510%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of feature and model choices",
+     "effect": "TF-IDF outperformed embedding features across both datasets; model effectiveness varied by task.",
+     "quote": "Across both datasets, term frequency-inverted document frequency outperformed embedding features, and machine learning models varied in effectiveness, highlighting that optimal feature representation and model choice depend on the specific task."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM error quantification versus ground truth",
+     "effect": "Mixtral deviation was 2.95% (SD 5.67%); mismatched tokens 1.04 (SD 1.61).",
+     "quote": "A performance deviation of 2.95% (SD 5.67%; actual number of mismatched tokens, 1.04, SD 1.61) was observed for Mixtral from the ground truth."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLMs to correct spelling and missing-white-space errors in clinical progress notes before machine-learning model training."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 42110,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Mixtral 8x7B",
+    "Llama 3.3",
+    "Gemma 3-4B-IT",
+    "DeepSeek-R1-Distill-Qwen-1.5B",
+    "ClinicalBERT",
+    "BioClinical ModernBERT",
+    "word2vec"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Predictive model performance under varying token-level error rates",
+     "effect": "Models were tolerant to lower error rates (<10%), but predictive performance declined significantly as error rates increased to 10% or higher.",
+     "quote": "This study revealed that models performed relatively well on datasets with lower error rates (<10%), but their performance declined significantly as error rates increased (\u226510%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Predictive performance of complex embedding models versus simpler models",
+     "effect": "TF-IDF models outperformed neural network-based embedding models including word2vec, ClinicalBERT, and BioClinical ModernBERT across datasets, with logistic regression having comparatively higher ROC-AUC for most representations.",
+     "quote": "In terms of the feature representation models, TF-IDF models outperformed neural network\u2013based embedding models (word2vec, ClinicalBERT, and BioClinical ModernBERT)."
+    }
+   ],
+   "unlisted_practices": [
+    "Large language model-based automated correction of spelling and typographical errors in clinical progress notes before downstream machine learning tasks"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States; Australia",
+ "sample_unit": "patients",
+ "sample_size": 42110,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BioClinical ModernBERT",
+  "ClinicalBERT",
+  "DeepSeek-R1-Distill-Qwen-1.5B",
+  "GPT-4",
+  "Gemma 3-4B-IT",
+  "Llama 3.3",
+  "MLP",
+  "Mixtral 8x7B",
+  "Multilayer Perceptron Classifier",
+  "SVC",
+  "Support Vector Machine Classifier",
+  "TF-IDF",
+  "XGBoost",
+  "logistic regression",
+  "random forest",
+  "random forests",
+  "word2vec",
+  "word2vec-google-news-300"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Prediction ROC-AUC under synthetically perturbed (misspelled, missing whitespace) clinical text at 5-20% error rates",
+   "effect": "Models tolerant to error rates <10% but performance declined significantly at \u226510%; embedding features with XGBoost were more sensitive at <10%; AACH ROC-AUC difference after correction 0.002-0.004.",
+   "quote": "Although the performance in terms of ROC-AUC is tolerant to small error rates (<10%), it starts to be significant with a high error rate (\u226510%).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of Mixtral error detection in progress notes against manual ground truth",
+   "effect": "Mixtral overestimated errors, misclassified medical terms as misspellings and hallucinated misspellings; correctly identified errors in 45% of notes (63% in abstract/discussion); 2.95% mean deviation from ground truth.",
+   "quote": "Qualitative analysis of the results revealed that Mixtral erroneously identified medical terminologies (eg, ATOR, ADL, Perianal, situ, mane, obs, RN, etc) as misspelled tokens.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Input-perturbation stress test ROC-AUC",
+   "effect": "Errors at <10% were tolerated; ROC-AUC performance significantly deteriorated at \u226510%.",
+   "quote": "By comparing the performance of models on datasets with varying error rates (evaluated in terms of ROC-AUC), we observed that models were relatively tolerant to smaller error rates (<10%) but their performance significantly deteriorated at higher error rates (\u226510%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R336",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive performance by dataset error rate",
+   "effect": "Errors at <10% were tolerated; ROC-AUC performance significantly deteriorated at \u226510%.",
+   "quote": "By comparing the performance of models on datasets with varying error rates (evaluated in terms of ROC-AUC), we observed that models were relatively tolerant to smaller error rates (<10%) but their performance significantly deteriorated at higher error rates (\u226510%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive reliability with poor-quality text inputs",
+   "effect": "Errors at <10% were tolerated; ROC-AUC performance significantly deteriorated at \u226510%.",
+   "quote": "By comparing the performance of models on datasets with varying error rates (evaluated in terms of ROC-AUC), we observed that models were relatively tolerant to smaller error rates (<10%) but their performance significantly deteriorated at higher error rates (\u226510%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive performance of complex embedding models versus simpler models",
+   "effect": "TF-IDF models outperformed neural network-based embedding models including word2vec, ClinicalBERT, and BioClinical ModernBERT across datasets, with logistic regression having comparatively higher ROC-AUC for most representations.",
+   "quote": "In terms of the feature representation models, TF-IDF models outperformed neural network\u2013based embedding models (word2vec, ClinicalBERT, and BioClinical ModernBERT).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Large language model-based automated correction of spelling and typographical errors in clinical progress notes before downstream machine learning tasks",
+  "Quantifying textual data quality via token-level error rate before model development",
+  "Using LLMs to correct spelling and missing-white-space errors in clinical progress notes before machine-learning model training.",
+  "Using LLMs to correct spelling and whitespace errors in clinical free-text before training machine learning models"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41468574",
+ "screen": {
+  "id": "pmid:41468574",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM-based data quality correction of progress notes before model training",
+  "user": "none",
+  "reason": "The study empirically tests how dataset quality affects clinical predictive models and evaluates using an LLM (Mixtral) to clean and correct errors in clinical text data to safeguard predictive performance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "LLM-based text data cleaning and error correction before model training"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41468574",
+   "empirical": 0.9,
+   "tests_practice": 0.1,
+   "real_deployment": 0.05
+  }
+ }
+}

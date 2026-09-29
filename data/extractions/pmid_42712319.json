@@ -1,0 +1,353 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 6822,
+   "sample_unit": "patient admissions",
+   "models_evaluated": [
+    "XGBoost",
+    "random forest",
+    "logistic regression",
+    "DESIRE"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether drift monitoring detects input distribution shifts and data quality problems in a deployed-style predictive model",
+     "effect": "Univariate monitoring found respiratory rate shift from January 2022; multivariate PCA flagged three months, with data entry errors traced. Drift alerts did not coincide with the AUC dips in March 2020 and March 2021.",
+     "quote": "In particular, multivariate monitoring surfaced data entry errors that were not detected by univariate methods and were absent from the training dataset, demonstrating how a comprehensive drift detection approach can uncover subtle or single-instance outliers."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether input data monitoring detects anomalous values and data pipeline integrity issues",
+     "effect": "PCA reconstruction error flagged data entry errors (saturation '955' instead of '95', incorrect heart rate) and an outlier length of stay; after pipeline modification, alerts for those months were removed.",
+     "quote": "After modifying the data pipeline to guard against these types of data entry errors, the multivariate alerts for these months were removed."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether predefined drift and performance thresholds flag degradation",
+     "effect": "AUC fell below the \u00b13 SD limit in March 2020 and March 2021, but drift detection did not detect those months; univariate drift alerts did not coincide with performance dips.",
+     "quote": "First, while data drift detection was able to identify clinical shifts and data quality anomalies, it did not detect the months when the model performance was lower than expected."
+    },
+    {
+     "rec_id": "R366",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Monthly AUC monitoring against limits from cross-validation performance",
+     "effect": "Temporal validation AUC 0.82 and Brier 0.158; monthly AUC dipped below the 3 SD limit twice (March 2020, March 2021), otherwise within limits.",
+     "quote": "The AUC dipped slightly below our performance limit on two occasions: in March 2020 and March 2021."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Temporal validation of model performance on later historical data",
+     "effect": "XGBoost achieved AUC 0.82 and Brier score 0.158 in temporal validation (Jan 2020 to Oct 2022) after training on data through January 2020.",
+     "quote": "The XGBoost model achieved an AUC of 0.82 and a Brier score of 0.158 during temporal validation from January 2020 to October 2022."
+    }
+   ],
+   "unlisted_practices": [
+    "Combined univariate and multivariate (PCA reconstruction error) data drift monitoring integrated with performance monitoring"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 6822,
+   "sample_unit": "patient admissions",
+   "models_evaluated": [
+    "DESIRE",
+    "random forest",
+    "logistic regression",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "temporal validation discrimination and calibration",
+     "effect": "Unseen temporal validation: AUC 0.82 and Brier score 0.158.",
+     "quote": "The XGBoost model achieved an AUC of 0.82 and a Brier score of 0.158 during temporal validation from January 2020 to October 2022."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "combined performance and drift monitoring",
+     "effect": "AUC 0.82/Brier 0.158; respiratory-rate drift from January 2022; PCA flagged 3 months and data-quality issues.",
+     "quote": "By tracking both model performance and data drift, this study identified shifts in data distributions and data quality issues in a clinical AI model."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "input anomaly detection",
+     "effect": "PCA alert in March 2021 traced to saturation value \u2018955\u2019 instead of \u201895\u2019; January 2022 alert to incorrect heart rate.",
+     "quote": "Subsequent analysis of the data revealed that this highest reconstruction error was due to a data entry error in the saturation values (eg, inputting \u2018955\u2019 instead of \u201895\u2019), which was not flagged by the univariate K-S test ( figure 4 )."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "monthly performance versus outcomes",
+     "effect": "Monthly AUC monitoring found two below-limit months, March 2020 and March 2021; otherwise within \u00b13 SD.",
+     "quote": "The AUC dipped slightly below our performance limit on two occasions: in March 2020 and March 2021."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Netherlands",
+   "sample_size": 6822,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "XGBoost",
+    "Random Forest",
+    "Logistic Regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Dutch"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of data distribution shifts and performance dips",
+     "effect": "Monthly tracking detected AUC dips in March 2020 and March 2021 (overall AUC 0.82), while univariate drift monitoring detected a respiratory rate shift starting January 2022.",
+     "quote": "By tracking both model performance and data drift, this study identified shifts in data distributions and data quality issues in a clinical AI model."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of input data entry errors and anomalies",
+     "effect": "PCA reconstruction error flagged anomalies in 3 months caused by data entry errors in saturation (955 instead of 95) and heart rate, which univariate tests missed.",
+     "quote": "In particular, multivariate monitoring surfaced data entry errors that were not detected by univariate methods and were absent from the training dataset, demonstrating how a comprehensive drift detection approach can uncover subtle or single-instance outliers."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Netherlands",
+ "sample_unit": "patient admissions",
+ "sample_size": 6822,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Dutch"
+ ],
+ "models_evaluated": [
+  "DESIRE",
+  "Logistic Regression",
+  "Random Forest",
+  "XGBoost",
+  "logistic regression",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether drift monitoring detects input distribution shifts and data quality problems in a deployed-style predictive model",
+   "effect": "Univariate monitoring found respiratory rate shift from January 2022; multivariate PCA flagged three months, with data entry errors traced. Drift alerts did not coincide with the AUC dips in March 2020 and March 2021.",
+   "quote": "In particular, multivariate monitoring surfaced data entry errors that were not detected by univariate methods and were absent from the training dataset, demonstrating how a comprehensive drift detection approach can uncover subtle or single-instance outliers.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R363",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether input data monitoring detects anomalous values and data pipeline integrity issues",
+   "effect": "PCA reconstruction error flagged data entry errors (saturation '955' instead of '95', incorrect heart rate) and an outlier length of stay; after pipeline modification, alerts for those months were removed.",
+   "quote": "After modifying the data pipeline to guard against these types of data entry errors, the multivariate alerts for these months were removed.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Temporal validation of model performance on later historical data",
+   "effect": "XGBoost achieved AUC 0.82 and Brier score 0.158 in temporal validation (Jan 2020 to Oct 2022) after training on data through January 2020.",
+   "quote": "The XGBoost model achieved an AUC of 0.82 and a Brier score of 0.158 during temporal validation from January 2020 to October 2022.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Whether predefined drift and performance thresholds flag degradation",
+   "effect": "AUC fell below the \u00b13 SD limit in March 2020 and March 2021, but drift detection did not detect those months; univariate drift alerts did not coincide with performance dips.",
+   "quote": "First, while data drift detection was able to identify clinical shifts and data quality anomalies, it did not detect the months when the model performance was lower than expected.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R366",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Monthly AUC monitoring against limits from cross-validation performance",
+   "effect": "Temporal validation AUC 0.82 and Brier 0.158; monthly AUC dipped below the 3 SD limit twice (March 2020, March 2021), otherwise within limits.",
+   "quote": "The AUC dipped slightly below our performance limit on two occasions: in March 2020 and March 2021.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "monthly performance versus outcomes",
+   "effect": "Monthly AUC monitoring found two below-limit months, March 2020 and March 2021; otherwise within \u00b13 SD.",
+   "quote": "The AUC dipped slightly below our performance limit on two occasions: in March 2020 and March 2021.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Combined univariate and multivariate (PCA reconstruction error) data drift monitoring integrated with performance monitoring"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42712319",
+ "screen": {
+  "id": "pmid:42712319",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "data drift monitoring",
+  "user": "none",
+  "reason": "Evaluates data drift monitoring techniques (univariate and multivariate) as a model governance safeguard on retrospective clinical data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "data drift detection and monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42712319",
+   "empirical": 0.96,
+   "tests_practice": 0.48,
+   "real_deployment": 0.06
+  }
+ }
+}

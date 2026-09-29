@@ -1,0 +1,300 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 2176039,
+   "sample_unit": "survey respondents (BRFSS 2016-2024; plus 10,775 NHANES participants)",
+   "models_evaluated": [
+    "Explainable Boosting Machine (main-effects, frozen 2016)",
+    "interaction-enabled EBM",
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal drift in discrimination and calibration of frozen model across BRFSS cycles",
+     "effect": "AUC fell from 0.8638 (2016) to 0.8495 (2024); observed/expected ratio 1.0061 to 0.7893; CITL 0.0097 to -0.3645; ECE 0.0069 to 0.0352.",
+     "quote": "Expanded calibration metrics showed that calibration instability was more apparent than discrimination change alone: the observed/expected ratio declined from 1.0061 in BRFSS 2016 to 0.7893 in BRFSS 2024, CITL shifted from 0.0097 to \u22120.3645, and ECE increased from 0.0069 to 0.0352."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and calibration of frozen model applied to different population/survey (NHANES)",
+     "effect": "Frozen model on pooled NHANES: AUC 0.8681, Brier 0.1131, O/E 1.3510, CITL 0.4740, ECE 0.0550; cross-survey interaction beta 0.0412 (HC1 p=0.014; bootstrap p=0.093).",
+     "quote": "For the primary like-for-like external assessment, the frozen unrecalibrated 2016 EBM was applied to pooled NHANES and yielded AUC = 0.8681, Brier Score = 0.1131, observed/expected ratio = 1.3510, CITL = 0.4740, calibration slope = 1.1949, and ECE = 0.0550 ( Supplementary Table S7 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing shape functions of interpretable models across time cohorts to detect predictor-level structural drift",
+    "Using methodologically independent external reference survey as cross-system monitoring signal"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 2186814,
+   "sample_unit": "BRFSS respondents and NHANES participants",
+   "models_evaluated": [
+    "survey-weighted main-effects Explainable Boosting Machine (EBM)",
+    "interaction-enabled Explainable Boosting Machine (EBM)",
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External survey calibration transport",
+     "effect": "Pooled NHANES: AUC = 0.8681, Brier Score = 0.1131, observed/expected ratio = 1.3510, CITL = 0.4740, calibration slope = 1.1949, ECE = 0.0550.",
+     "quote": "For the primary like-for-like external assessment, the frozen unrecalibrated 2016 EBM was applied to pooled NHANES and yielded AUC = 0.8681, Brier Score = 0.1131, observed/expected ratio = 1.3510, CITL = 0.4740, calibration slope = 1.1949, and ECE = 0.0550 ( Supplementary Table S7 )."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration instability missed by discrimination alone",
+     "effect": "Observed/expected ratio declined 1.0061 to 0.7893; CITL shifted 0.0097 to \u22120.3645; ECE increased 0.0069 to 0.0352.",
+     "quote": "Expanded calibration metrics showed that calibration instability was more apparent than discrimination change alone: the observed/expected ratio declined from 1.0061 in BRFSS 2016 to 0.7893 in BRFSS 2024, CITL shifted from 0.0097 to \u22120.3645, and ECE increased from 0.0069 to 0.0352."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal performance drift",
+     "effect": "Within-BRFSS AUC decreased from 0.8638 in 2016 to 0.8495 in 2024.",
+     "quote": "Within-BRFSS discrimination declined modestly over time, with the AUC decreasing from 0.8638 in 2016 to 0.8495 in 2024."
+    }
+   ],
+   "unlisted_practices": [
+    "Predictor-level EBM shape-function stability auditing using age-stratified permutation tests"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 2176039,
+   "sample_unit": "respondents",
+   "models_evaluated": [
+    "Explainable Boosting Machine (EBM)",
+    "XGBoost",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "inadequacy of discrimination alone to capture calibration instability",
+     "effect": "Calibration instability was more apparent than discrimination change alone; observed/expected ratio declined from 1.0061 to 0.7893, CITL shifted from 0.0097 to \u22120.3645, and ECE increased from 0.0069 to 0.0352.",
+     "quote": "Expanded calibration metrics showed that calibration instability was more apparent than discrimination change alone: the observed/expected ratio declined from 1.0061 in BRFSS 2016 to 0.7893 in BRFSS 2024, CITL shifted from 0.0097 to \u22120.3645, and ECE increased from 0.0069 to 0.0352."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "longitudinal discrimination drift over time",
+     "effect": "Within-BRFSS discrimination declined modestly over time, with AUC decreasing from 0.8638 in 2016 to 0.8495 in 2024.",
+     "quote": "Within-BRFSS discrimination declined modestly over time, with the AUC decreasing from 0.8638 in 2016 to 0.8495 in 2024."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "survey respondents (BRFSS 2016-2024; plus 10,775 NHANES participants)",
+ "sample_size": 2176039,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Explainable Boosting Machine (EBM)",
+  "Explainable Boosting Machine (main-effects, frozen 2016)",
+  "LightGBM",
+  "XGBoost",
+  "interaction-enabled EBM",
+  "interaction-enabled Explainable Boosting Machine (EBM)",
+  "survey-weighted main-effects Explainable Boosting Machine (EBM)"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Temporal drift in discrimination and calibration of frozen model across BRFSS cycles",
+   "effect": "AUC fell from 0.8638 (2016) to 0.8495 (2024); observed/expected ratio 1.0061 to 0.7893; CITL 0.0097 to -0.3645; ECE 0.0069 to 0.0352.",
+   "quote": "Expanded calibration metrics showed that calibration instability was more apparent than discrimination change alone: the observed/expected ratio declined from 1.0061 in BRFSS 2016 to 0.7893 in BRFSS 2024, CITL shifted from 0.0097 to \u22120.3645, and ECE increased from 0.0069 to 0.0352.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration instability missed by discrimination alone",
+   "effect": "Observed/expected ratio declined 1.0061 to 0.7893; CITL shifted 0.0097 to \u22120.3645; ECE increased 0.0069 to 0.0352.",
+   "quote": "Expanded calibration metrics showed that calibration instability was more apparent than discrimination change alone: the observed/expected ratio declined from 1.0061 in BRFSS 2016 to 0.7893 in BRFSS 2024, CITL shifted from 0.0097 to \u22120.3645, and ECE increased from 0.0069 to 0.0352.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance and calibration of frozen model applied to different population/survey (NHANES)",
+   "effect": "Frozen model on pooled NHANES: AUC 0.8681, Brier 0.1131, O/E 1.3510, CITL 0.4740, ECE 0.0550; cross-survey interaction beta 0.0412 (HC1 p=0.014; bootstrap p=0.093).",
+   "quote": "For the primary like-for-like external assessment, the frozen unrecalibrated 2016 EBM was applied to pooled NHANES and yielded AUC = 0.8681, Brier Score = 0.1131, observed/expected ratio = 1.3510, CITL = 0.4740, calibration slope = 1.1949, and ECE = 0.0550 ( Supplementary Table S7 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External survey calibration transport",
+   "effect": "Pooled NHANES: AUC = 0.8681, Brier Score = 0.1131, observed/expected ratio = 1.3510, CITL = 0.4740, calibration slope = 1.1949, ECE = 0.0550.",
+   "quote": "For the primary like-for-like external assessment, the frozen unrecalibrated 2016 EBM was applied to pooled NHANES and yielded AUC = 0.8681, Brier Score = 0.1131, observed/expected ratio = 1.3510, CITL = 0.4740, calibration slope = 1.1949, and ECE = 0.0550 ( Supplementary Table S7 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing shape functions of interpretable models across time cohorts to detect predictor-level structural drift",
+  "Predictor-level EBM shape-function stability auditing using age-stratified permutation tests",
+  "Using methodologically independent external reference survey as cross-system monitoring signal"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42650972",
+ "screen": {
+  "id": "pmid:42650972",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "algorithmovigilance drift monitoring",
+  "user": "none",
+  "reason": "Evaluates an algorithmovigilance framework to monitor temporal drift, cross-survey calibration differences, and predictor stability over multi-year national surveillance datasets.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "drift monitoring and algorithmovigilance framework"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42650972",
+   "empirical": 0.94,
+   "tests_practice": 0.34,
+   "real_deployment": 0.04
+  }
+ }
+}

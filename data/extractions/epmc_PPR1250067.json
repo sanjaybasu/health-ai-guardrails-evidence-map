@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": 6223,
+ "sample_unit": "LDCT scans (2,199 patients) from NLST test cohort",
+ "models_evaluated": [
+  "three end-to-end deep learning models predicting 6-year lung cancer risk from single LDCT",
+  "Lung-RADS",
+  "PLCOm2012"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether aggregate AUC vs subgroup calibration and operating-point metrics reveal model performance differences",
+   "effect": "Models had similar AUCs (year-1 0.91\u20130.95) but calibration varied by Lung-RADS category; under-predicted at highest-risk tier (11% predicted vs 22% observed), which aggregate metrics concealed.",
+   "quote": "Calibration was good in aggregate but varied by category: the models over-predicted in the low-risk Lung-RADS tiers, were well calibrated at intermediate risk, and under-predicted in the high-risk tiers where workup is decided (11% predicted against 22% observed at the highest-risk tier).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Cancer capture and net benefit of end-to-end models versus Lung-RADS and PLCOm2012 on same data",
+   "effect": "Stronger end-to-end models had at least on-par or higher cancer capture and greater net benefit than Lung-RADS; on baseline scans capture exceeded Lung-RADS by more than 25 percentage points.",
+   "quote": "On cumulative-gains curves and decision-curve analysis, the stronger end-to-end models achieved at least on-par or higher cancer capture and greater net benefit than Lung-RADS, and the advantage was largest on baseline scans, where Lung-RADS has no prior CT for comparison, exceeding it by more than 25 percentage points in capture.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Evaluating end-to-end imaging risk models with operating-point metrics (Lorenz curves, decision-curve analysis) anchored to Lung-RADS",
+  "Combining deep learning risk scores with Lung-RADS categories to re-rank patients in benign tiers"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1250067",
+ "screen": {
+  "id": "epmc:PPR1250067",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study proposes and evaluates a deployment-aligned validation framework (decision-curve analysis, calibration across Lung-RADS risk categories, and operating point selection) versus standard discrimination metrics (AUC) using NLST data for end-to-end lung cancer risk prediction models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "deployment-aligned evaluation and decision-curve analysis anchored to clinical risk categories"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1250067",
+   "empirical": 0.96,
+   "tests_practice": 0.12,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": null,
+ "sample_unit": "ED encounters",
+ "models_evaluated": [
+  "Gemini",
+  "GPT-5 mini",
+  "CatBoost",
+  "logistic regression"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "LLM pipeline discrimination (AUC) versus traditional ML baselines for ED return visit admission at two sites",
+   "effect": "At WCM Gemini ICL AUC 0.746 vs CatBoost 0.723 (DeLong p=0.044); at VUMC logistic regression AUC 0.799 matched GPT-5 mini 0.789 (n.s.).",
+   "quote": "The LLM-based pipeline outperformed the strongest traditional ML baseline at WCM (Gemini ICL = 3 AUC 0.746 vs. CatBoost AUC 0.723; DeLong p = 0.044), but not at VUMC, where logistic regression on structured data alone (AUC 0.799) matched the best LLM configuration (GPT-5 mini AUC 0.789, n.s.).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Cross-site variation in AI model performance across two academic medical centers",
+   "effect": "Absolute discrimination at VUMC was higher than at WCM for both approaches; LLM advantage over baseline present at WCM but not VUMC.",
+   "quote": "Absolute discrimination at VUMC was higher than at WCM for both approaches, indicating that the cross-site difference reflects local documentation and structured-data informativeness rather than LLM failure.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Evaluating per-encounter token consumption and data requirements as deployment feasibility axes for LLM pipelines"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1243952",
+ "screen": {
+  "id": "epmc:PPR1243952",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Retrospective multi-site evaluation of an LLM-based clinical prediction pipeline assessing feasibility constraints (accuracy, token cost, hallucination risk across sites), but does not test a specific operational guardrail or deployment practice.",
+  "jev": {
+   "id": "epmc:PPR1243952",
+   "empirical": 0.97,
+   "tests_practice": 0.08,
+   "real_deployment": 0.1
+  }
+ }
+}

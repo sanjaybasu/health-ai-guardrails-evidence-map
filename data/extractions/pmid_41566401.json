@@ -1,0 +1,86 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "China",
+ "sample_size": 60,
+ "sample_unit": "multi-turn consultation cases",
+ "models_evaluated": [
+  "GastroTCM (fine-tuned Llama3-8B with RAG and agent)",
+  "ChatGLM-6B",
+  "Qwen-2"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Unsupported or hallucinated statements with RAG grounding, per TCM gastroenterologist review",
+   "effect": "Expert review reported the RAG module markedly reduced unsupported or hallucinated statements, alongside higher diagnostic accuracy and safety. No numeric hallucination rates are given in the abstract.",
+   "quote": "Expert review by TCM gastroenterologists further confirmed higher diagnostic accuracy and safety, with the RAG module markedly reducing unsupported or hallucinated statements.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Multi-turn dialogue optimisation (ShareGPT-style) to preserve clinical context across rounds",
+  "Fine-tuning a general LLM on domain-specific TCM gastroenterology data"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41566401",
+ "screen": {
+  "id": "pmid:41566401",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The paper evaluates an LLM agent for TCM gastroenterology with expert review and benchmarks, explicitly testing whether adding a RAG module reduces unsupported statements/hallucinations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41566401",
+   "empirical": 0.93,
+   "tests_practice": 0.31,
+   "real_deployment": 0.1
+  }
+ }
+}

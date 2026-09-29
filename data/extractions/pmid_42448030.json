@@ -1,0 +1,91 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "unknown",
+ "sample_size": 49,
+ "sample_unit": "patients",
+ "models_evaluated": [
+  "GPT-5.5",
+  "DeepSeek-V4"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Output reproducibility across repeated runs and stability across prompt formats (naive vs structured)",
+   "effect": "Internal reproducibility (ICC >0.500) and distributional stability across prompts were high, but this consistency was based on nondiscriminatory safety biases, masking failure to identify high-risk patients.",
+   "quote": "While internal reproducibility (intraclass correlation coefficient [ICCs] >0.500) and distributional stability across prompts were surprisingly high, this consistency proved deceptive, based entirely on nondiscriminatory safety biases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Calibration (Brier score) versus discrimination (sensitivity) of LLM outcome predictions",
+   "effect": "DS naive Brier score 0.068 at 6 months suggested high probabilistic accuracy, but all models had sensitivity 0.00 at 6-month and 1-year horizons; calibration masked discriminatory failure.",
+   "quote": "However, this mathematical precision masked a failure in clinical utility: all models exhibited a sensitivity of 0.00 at 6-month and 1-year horizons.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42448030",
+ "screen": {
+  "id": "pmid:42448030",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study retrospectively evaluates LLM prognostic performance and explicitly compares structured (tabular) versus naive zero-shot prompting strategies, highlighting risks around calibration and discrimination for clinical prognostication.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "structured vs naive prompt framing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42448030",
+   "empirical": 0.91,
+   "tests_practice": 0.05,
+   "real_deployment": 0.04
+  }
+ }
+}

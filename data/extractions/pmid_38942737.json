@@ -1,0 +1,278 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 2002,
+   "sample_unit": "synthetic 3D brain MR images (simulated subjects)",
+   "models_evaluated": [
+    "5-block 3D CNN classifier",
+    "reweighing",
+    "bias unlearning",
+    "group models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Subgroup TPR/FPR disparities and accuracy after bias mitigation strategies versus naive model",
+     "effect": "Reweighing nearly eliminated disparities (near-bias relative \u0394TPR 0.44%, \u0394FPR -0.69%); unlearning reduced them less (\u0394TPR 12.22%, \u0394FPR 15.51%); overall accuracy comparable to naive; unlearning hurt the no-bias dataset.",
+     "quote": "The reweighing strategy almost perfectly mitigated any measured performance disparity between the bias groups, to respective values of relative \u0394TPR and relative \u0394FPR of 0.44 \u00b1 1.80% and \u22120.69 \u00b1 1.45% for the Near Bias scenario, and \u22120.80 \u00b1 0.64% and \u22120.32 \u00b1 2.13% for the Far Bias scenario."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hidden subgroup performance gaps despite high aggregate accuracy",
+     "effect": "Aggregate accuracy 84.81-87.68% across scenarios, yet relative \u0394TPR 22.12% and \u0394FPR 20.32% (Near Bias), 17.35% and 11.88% (Far Bias) between bias groups.",
+     "quote": "The presence of the bias effect resulted in significant performance disparities compared to the No Bias scenario, with a relative \u0394TPR of 22.12 \u00b1 2.72% ( P <.0001) and \u0394FPR of 20.32 \u00b1 2.81% ( P <.0001) in the Near Bias scenario, and a relative \u0394TPR of 17.35 \u00b1 2.78% ( P =.0002) and relative \u0394FPR of 11.88 \u00b1 6.22% ( P =.0008) in the Far Bias scenario."
+    },
+    {
+     "rec_id": "R305",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model reliance on bias features (shortcut learning) from unequal group representation across classes",
+     "effect": "With 70% vs 30% bias-group representation across classes, models used the bias effect as a shortcut, producing subgroup disparities.",
+     "quote": "These results indicate that the models likely used the bias effect as a shortcut for predicting the (positive) disease class, since the disease class contains a higher proportion of the bias group compared to the non-disease class."
+    }
+   ],
+   "unlisted_practices": [
+    "Synthetic counterfactual dataset framework (SimBA) for controlled in silico evaluation of bias and mitigation",
+    "Saliency maps (SmoothGrad) to investigate bias manifestation in imaging models"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 2002,
+   "sample_unit": "synthetic 3D brain MR images per dataset",
+   "models_evaluated": [
+    "CNN classifier",
+    "CNN classifier with reweighing",
+    "CNN classifier with bias unlearning",
+    "bias-group-specific CNN models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup TPR/FPR disparities",
+     "effect": "Near Bias: relative \u0394TPR 22.12 \u00b1 2.72%, \u0394FPR 20.32 \u00b1 2.81%; Far Bias: relative \u0394TPR 17.35 \u00b1 2.78%, \u0394FPR 11.88 \u00b1 6.22%.",
+     "quote": "The presence of the bias effect resulted in significant performance disparities compared to the No Bias scenario, with a relative \u0394TPR of 22.12 \u00b1 2.72% ( P <.0001) and \u0394FPR of 20.32 \u00b1 2.81% ( P <.0001) in the Near Bias scenario, and a relative \u0394TPR of 17.35 \u00b1 2.78% ( P =.0002) and relative \u0394FPR of 11.88 \u00b1 6.22% ( P =.0008) in the Far Bias scenario."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "relative TPR/FPR disparities after mitigation",
+     "effect": "Reweighing reduced disparities to 0.44 \u00b1 1.80%/\u22120.69 \u00b1 1.45% (Near) and \u22120.80 \u00b1 0.64%/\u22120.32 \u00b1 2.13% (Far).",
+     "quote": "The reweighing strategy almost perfectly mitigated any measured performance disparity between the bias groups, to respective values of relative \u0394TPR and relative \u0394FPR of 0.44 \u00b1 1.80% and \u22120.69 \u00b1 1.45% for the Near Bias scenario, and \u22120.80 \u00b1 0.64% and \u22120.32 \u00b1 2.13% for the Far Bias scenario."
+    }
+   ],
+   "unlisted_practices": [
+    "Use counterfactual synthetic medical-image datasets with known bias effects to systematically evaluate bias manifestation.",
+    "Use saliency-map explainability to investigate whether models rely on simulated bias regions."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Canada",
+   "sample_size": 2002,
+   "sample_unit": "images",
+   "models_evaluated": [
+    "3D CNN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "subgroup true positive and false positive rate disparities",
+     "effect": "Reweighing reduced relative \u0394TPR to 0.44 \u00b1 1.80% and \u0394FPR to \u22120.69 \u00b1 1.45% in near bias, and \u22120.80 \u00b1 0.64% and \u22120.32 \u00b1 2.13% in far bias, mitigating subgroup performance disparities.",
+     "quote": "The reweighing strategy almost perfectly mitigated any measured performance disparity between the bias groups, to respective values of relative \u0394TPR and relative \u0394FPR of 0.44 \u00b1 1.80% and \u22120.69 \u00b1 1.45% for the Near Bias scenario, and \u22120.80 \u00b1 0.64% and \u22120.32 \u00b1 2.13% for the Far Bias scenario."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Canada",
+ "sample_unit": "synthetic 3D brain MR images (simulated subjects)",
+ "sample_size": 2002,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "3D CNN",
+  "5-block 3D CNN classifier",
+  "CNN classifier",
+  "CNN classifier with bias unlearning",
+  "CNN classifier with reweighing",
+  "bias unlearning",
+  "bias-group-specific CNN models",
+  "group models",
+  "reweighing"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup TPR/FPR disparities and accuracy after bias mitigation strategies versus naive model",
+   "effect": "Reweighing nearly eliminated disparities (near-bias relative \u0394TPR 0.44%, \u0394FPR -0.69%); unlearning reduced them less (\u0394TPR 12.22%, \u0394FPR 15.51%); overall accuracy comparable to naive; unlearning hurt the no-bias dataset.",
+   "quote": "The reweighing strategy almost perfectly mitigated any measured performance disparity between the bias groups, to respective values of relative \u0394TPR and relative \u0394FPR of 0.44 \u00b1 1.80% and \u22120.69 \u00b1 1.45% for the Near Bias scenario, and \u22120.80 \u00b1 0.64% and \u22120.32 \u00b1 2.13% for the Far Bias scenario.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hidden subgroup performance gaps despite high aggregate accuracy",
+   "effect": "Aggregate accuracy 84.81-87.68% across scenarios, yet relative \u0394TPR 22.12% and \u0394FPR 20.32% (Near Bias), 17.35% and 11.88% (Far Bias) between bias groups.",
+   "quote": "The presence of the bias effect resulted in significant performance disparities compared to the No Bias scenario, with a relative \u0394TPR of 22.12 \u00b1 2.72% ( P <.0001) and \u0394FPR of 20.32 \u00b1 2.81% ( P <.0001) in the Near Bias scenario, and a relative \u0394TPR of 17.35 \u00b1 2.78% ( P =.0002) and relative \u0394FPR of 11.88 \u00b1 6.22% ( P =.0008) in the Far Bias scenario.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R305",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model reliance on bias features (shortcut learning) from unequal group representation across classes",
+   "effect": "With 70% vs 30% bias-group representation across classes, models used the bias effect as a shortcut, producing subgroup disparities.",
+   "quote": "These results indicate that the models likely used the bias effect as a shortcut for predicting the (positive) disease class, since the disease class contains a higher proportion of the bias group compared to the non-disease class.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Saliency maps (SmoothGrad) to investigate bias manifestation in imaging models",
+  "Synthetic counterfactual dataset framework (SimBA) for controlled in silico evaluation of bias and mitigation",
+  "Use counterfactual synthetic medical-image datasets with known bias effects to systematically evaluate bias manifestation.",
+  "Use saliency-map explainability to investigate whether models rely on simulated bias regions."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38942737",
+ "screen": {
+  "id": "pmid:38942737",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "bias mitigation strategies (reweighing) evaluated on synthetic neuroimaging data",
+  "user": "none",
+  "reason": "Evaluates bias mitigation strategies (such as reweighing) on synthetic imaging data scenarios to mitigate subgroup performance disparities in clinical imaging AI.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "bias mitigation strategies (reweighing)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38942737",
+   "empirical": 0.83,
+   "tests_practice": 0.28,
+   "real_deployment": 0.03
+  }
+ }
+}

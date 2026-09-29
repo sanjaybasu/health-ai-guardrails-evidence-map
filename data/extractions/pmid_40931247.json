@@ -1,0 +1,393 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Switzerland",
+   "sample_size": 61,
+   "sample_unit": "mammography reports (1533 CDE values)",
+   "models_evaluated": [
+    "Rombos-LLM-V2.6-Qwen-14b",
+    "SOLAR Pro Preview Instruct",
+    "Phi-4",
+    "Li-14B-v0.4",
+    "Lamarck 14B v0.7"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-rater agreement between two independent annotators establishing ground truth",
+     "effect": "Cohen's kappa 0.83 overall between two independent physicians; lowest for Findings (0.71); disagreements resolved by study coordinators.",
+     "quote": "A high level of IRA with a Cohen\u2019s Kappa of 0.83 was observed between the two researchers performing the manual value assignment."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Overall accuracy, micro/macro metrics with bootstrap confidence intervals and pairwise significance testing",
+     "effect": "Accuracy reported with 95% bootstrap CIs, e.g., 72.9% [69.5\u201376.4%] for Rombos; Bonferroni-corrected pairwise comparisons; certainty thresholds tested.",
+     "quote": "To assess statistically significant differences, we compared the performance of all five LLMs in a pairwise manner."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Accuracy under different prompt formulations (default, few-shot, CoT, adapted)",
+     "effect": "Default 59.2\u201372.9%; CoT mixed (Rombos +3.4%, Phi-4 \u22129.5%); few-shot decreased accuracy for all models; adapted prompts 64.7\u201385.3%.",
+     "quote": "Few-shot prompting (both 1- and 3-shot prompts) decreased the overall accuracy for all models, with a range of 30.9\u201367.5% for the 1-shot prompt and 32.3\u201358.5% for the 3-shot prompt (see Table 2 for detailed results)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of five candidate open-source LLMs on same data",
+     "effect": "Rombos significantly outperformed other LLMs with default prompt (72.9% vs 59.2\u201368.5%, p<0.0001) and with adapted prompts (85.3%).",
+     "quote": "The overall accuracy of Rombos was significantly higher compared to each of the other LLMs ( p < 0.0001; see also Supplementary Table 4)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local performance of LLM extraction against reference standard on local reports",
+     "effect": "Default prompt accuracies 59.2\u201372.9% on local reports; system failed to consistently give correct answers; no external validation dataset.",
+     "quote": "However, the system failed to consistently give the correct answers."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and coverage when restricting to high model certainty classifications",
+     "effect": "Thresholds raised accuracy above 90% for adapted prompts (e.g., Rombos 94.5% at >99.9%) but coverage fell to under 50% (44.0% for Rombos).",
+     "quote": "In the sub-analysis using a threshold for the relative probability (= \u201ccertainty\u201d ), an increase in accuracy compared to the baseline was seen across all models and thresholds."
+    }
+   ],
+   "unlisted_practices": [
+    "Deploying open-source LLMs on local hardware to keep patient data in-house",
+    "Using common data elements for standardized extraction structure",
+    "Task-specific adapted prompts versus default prompts",
+    "Certainty-threshold flagging of low-confidence outputs for human verification"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Switzerland",
+   "sample_size": 1533,
+   "sample_unit": "CDE values from 61 mammography reports",
+   "models_evaluated": [
+    "Rombos-LLM-V2.6-Qwen-14b",
+    "SOLAR Pro Preview Instruct",
+    "Phi-4",
+    "Li-14B-v0.4",
+    "Lamarck 14B v0.7"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "inter-rater agreement for reference standard",
+     "effect": "Overall Cohen\u2019s Kappa was 0.83 across 1533 CDE values; subgroup kappas ranged 0.71 to 0.95.",
+     "quote": "A high level of IRA with a Cohen\u2019s Kappa of 0.83 was observed between the two researchers performing the manual value assignment."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy comparison across candidate LLMs",
+     "effect": "Default prompt accuracies were 72.9%, 61.6%, 59.2%, 64.7%, and 68.5%; Rombos was significantly higher, p < 0.0001.",
+     "quote": "The overall accuracy of Rombos was significantly higher compared to each of the other LLMs ( p < 0.0001; see also Supplementary Table 4)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local historical validation accuracy",
+     "effect": "On local reports, adapted-prompt overall accuracies were Rombos 85.3%, solar preview 64.7%, Phi-4 65.0%, Li 77.4%, Lamarck 81.6%.",
+     "quote": "Using the adapted prompts, the system reached overall accuracies of 85.3% [95% CI 82.5\u201388.0%] for Rombos, of 64.7% [95% CI 62.1\u201367.7%] for solar preview, of 65.0% [95% CI 62.1\u201368.0%] for Phi-4, 77.4% [95% CI 74.2\u201381.1%] for Li, and 81.6% [95% CI 78.9\u201384.6%] for Lamarck."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "certainty-threshold accuracy and coverage",
+     "effect": "Certainty thresholds improved accuracy to > 90% but reduced coverage to < 50%.",
+     "quote": "Setting certainty thresholds further improved accuracies to\u2009>\u200990% but reduced the coverage rate to\u2009<\u200950%."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "incorrect CDE extraction outputs",
+     "effect": "Default-prompt LLM accuracies were 59.2-72.9%, implying substantial incorrect classifications.",
+     "quote": "Using default prompts, the LLMs achieved accuracies of 59.2-72.9%."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prompt-dependent extraction accuracy",
+     "effect": "Few-shot prompting decreased all models: 1-shot accuracy 30.9\u201367.5%; 3-shot accuracy 32.3\u201358.5%.",
+     "quote": "Few-shot prompting (both 1- and 3-shot prompts) decreased the overall accuracy for all models, with a range of 30.9\u201367.5% for the 1-shot prompt and 32.3\u201358.5% for the 3-shot prompt (see Table 2 for detailed results)."
+    }
+   ],
+   "unlisted_practices": [
+    "Manually adapting prompts to precisely define each classification task improved CDE extraction accuracy.",
+    "Using relative probability thresholds to flag low-certainty classifications for human verification."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "CHE",
+   "sample_size": 61,
+   "sample_unit": "mammography reports",
+   "models_evaluated": [
+    "Rombos-LLM-V2.6-Qwen-14b",
+    "SOLAR Pro Preview Instruct",
+    "Phi-4",
+    "Li-14B-v0.4",
+    "Lamarck 14B v0.7"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "de"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Task-specific structured prompt adaptation defining explicit classification questions and instructions compared to default, few-shot, and chain-of-thought prompting",
+    "Certainty thresholding using model relative token probability to filter or abstain from low-confidence classifications",
+    "Local on-premise deployment of open-source LLMs on a single GPU to preserve data privacy and minimize hardware costs",
+    "Hierarchical Common Data Element (CDE) framework structuring for automated synoptic clinical data extraction"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Switzerland",
+ "sample_unit": "mammography reports (1533 CDE values)",
+ "sample_size": 61,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German",
+  "de"
+ ],
+ "models_evaluated": [
+  "Lamarck 14B v0.7",
+  "Li-14B-v0.4",
+  "Phi-4",
+  "Rombos-LLM-V2.6-Qwen-14b",
+  "SOLAR Pro Preview Instruct"
+ ],
+ "links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-rater agreement between two independent annotators establishing ground truth",
+   "effect": "Cohen's kappa 0.83 overall between two independent physicians; lowest for Findings (0.71); disagreements resolved by study coordinators.",
+   "quote": "A high level of IRA with a Cohen\u2019s Kappa of 0.83 was observed between the two researchers performing the manual value assignment.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of five candidate open-source LLMs on same data",
+   "effect": "Rombos significantly outperformed other LLMs with default prompt (72.9% vs 59.2\u201368.5%, p<0.0001) and with adapted prompts (85.3%).",
+   "quote": "The overall accuracy of Rombos was significantly higher compared to each of the other LLMs ( p < 0.0001; see also Supplementary Table 4).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Accuracy and coverage when restricting to high model certainty classifications",
+   "effect": "Thresholds raised accuracy above 90% for adapted prompts (e.g., Rombos 94.5% at >99.9%) but coverage fell to under 50% (44.0% for Rombos).",
+   "quote": "In the sub-analysis using a threshold for the relative probability (= \u201ccertainty\u201d ), an increase in accuracy compared to the baseline was seen across all models and thresholds.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "prompt-dependent extraction accuracy",
+   "effect": "Few-shot prompting decreased all models: 1-shot accuracy 30.9\u201367.5%; 3-shot accuracy 32.3\u201358.5%.",
+   "quote": "Few-shot prompting (both 1- and 3-shot prompts) decreased the overall accuracy for all models, with a range of 30.9\u201367.5% for the 1-shot prompt and 32.3\u201358.5% for the 3-shot prompt (see Table 2 for detailed results).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Certainty thresholding using model relative token probability to filter or abstain from low-confidence classifications",
+  "Certainty-threshold flagging of low-confidence outputs for human verification",
+  "Deploying open-source LLMs on local hardware to keep patient data in-house",
+  "Hierarchical Common Data Element (CDE) framework structuring for automated synoptic clinical data extraction",
+  "Local on-premise deployment of open-source LLMs on a single GPU to preserve data privacy and minimize hardware costs",
+  "Manually adapting prompts to precisely define each classification task improved CDE extraction accuracy.",
+  "Task-specific adapted prompts versus default prompts",
+  "Task-specific structured prompt adaptation defining explicit classification questions and instructions compared to default, few-shot, and chain-of-thought prompting",
+  "Using common data elements for standardized extraction structure",
+  "Using relative probability thresholds to flag low-certainty classifications for human verification."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40931247",
+ "screen": {
+  "id": "pmid:40931247",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt refinement and certainty thresholds",
+  "user": "clinician_or_staff",
+  "reason": "The study tests different operational deployment choices including prompting strategies (chain-of-thought, few-shot, task adaptation) and certainty/confidence thresholding for local LLM extraction from mammography reports.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering and certainty thresholds"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40931247",
+   "empirical": 0.97,
+   "tests_practice": 0.63,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,296 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 100,
+   "sample_unit": "simulated episodes per condition (5 synthetic cases x 20 repeats)",
+   "models_evaluated": [
+    "gpt-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R345",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Case fidelity and hit rate under direct injection with vs without string-level sanitizer",
+     "effect": "Direct contamination fidelity 0.098 and hit rate 0.077; with sanitizer 0.945 and 0.942. Indirect contamination had near-clean fidelity (0.946) so defense added minimal benefit; leakage persisted ~0.60/episode.",
+     "quote": "The defense preprocessing step restored direct-contamination performance to near-clean levels (slot-level F1 score, 0.945; 95% CI, 0.938-0.952; hit rate, 0.942; 95% CI, 0.930-0.955)."
+    },
+    {
+     "rec_id": "R346",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Robustness to adversarial contaminated inputs with input sanitization defense",
+     "effect": "Direct contamination collapsed fidelity to 0.098 (hit rate 0.077); input sanitizer restored fidelity to 0.945 and hit rate to 0.942 without refusals.",
+     "quote": "Under direct contamination, case fidelity improved from 0.098 to 0.945, and turn-target hit rate improved from 0.077 to 0.942 after defense."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance under noisy (typo-corrupted) inputs and contamination vs clean inputs",
+     "effect": "Noise preserved fidelity (0.941 vs 0.947) but reduced turn-target hit rate to 0.823 from 0.946; direct contamination dropped fidelity to 0.098.",
+     "quote": "Noise preserved case fidelity (0.941; 95% CI, 0.934-0.949) but reduced turn-target hit rate (0.823; 95% CI, 0.806-0.841)."
+    },
+    {
+     "rec_id": "R098",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Forbidden information leakage and role drift of virtual patient LLM within intended role boundaries",
+     "effect": "Forbidden leakage ~0.60 events per episode in clean condition (95% CI 0.502-0.698); role drift not observed; refusal/clarification 0.",
+     "quote": "However, forbidden information leakage occurred at approximately 0.60 events per episode under the clean condition (0.600; 95% CI, 0.502-0.698), indicating incomplete constraint adherence despite high case fidelity."
+    }
+   ],
+   "unlisted_practices": [
+    "string-level input sanitization as prompt-hygiene defense for LLM virtual patients",
+    "separating examiner-only case information from patient-visible information"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 900,
+   "sample_unit": "episodes",
+   "models_evaluated": [
+    "gpt-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "case fidelity under direct contamination",
+     "effect": "Direct contamination reduced fidelity to 0.098 (95% CI, 0.052-0.144) and hit rate to 0.077 (95% CI, 0.034-0.119).",
+     "quote": "Direct contamination caused severe degradation in both fidelity (0.098; 95% CI, 0.052-0.144) and turn-target hit rate (0.077; 95% CI, 0.034-0.119)."
+    },
+    {
+     "rec_id": "R345",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "direct prompt-contamination mitigation",
+     "effect": "Fidelity improved 0.098 to 0.945; turn-target hit rate improved 0.077 to 0.942 after defense.",
+     "quote": "Under direct contamination, case fidelity improved from 0.098 to 0.945, and turn-target hit rate improved from 0.077 to 0.942 after defense."
+    },
+    {
+     "rec_id": "R098",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "forbidden-information leakage",
+     "effect": "Clean-condition forbidden leakage was 0.600 events/episode (95% CI, 0.502-0.698).",
+     "quote": "However, forbidden information leakage occurred at approximately 0.60 events per episode under the clean condition (0.600; 95% CI, 0.502-0.698), indicating incomplete constraint adherence despite high case fidelity."
+    }
+   ],
+   "unlisted_practices": [
+    "Assessing OSCE virtual-patient case fidelity and turn-target hit rate under fixed learner-question trajectories"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 600,
+   "sample_unit": "episodes",
+   "models_evaluated": [
+    "gpt-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R345",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "case fidelity and turn-target hit rate under direct contamination",
+     "effect": "case fidelity improved from 0.098 to 0.945 and turn-target hit rate improved from 0.077 to 0.942 with defense preprocessing",
+     "quote": "Under direct contamination, case fidelity improved from 0.098 to 0.945, and turn-target hit rate improved from 0.077 to 0.942 after defense."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "episodes",
+ "sample_size": 600,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese"
+ ],
+ "models_evaluated": [
+  "gpt-4o-mini"
+ ],
+ "links": [
+  {
+   "rec_id": "R345",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Case fidelity and hit rate under direct injection with vs without string-level sanitizer",
+   "effect": "Direct contamination fidelity 0.098 and hit rate 0.077; with sanitizer 0.945 and 0.942. Indirect contamination had near-clean fidelity (0.946) so defense added minimal benefit; leakage persisted ~0.60/episode.",
+   "quote": "The defense preprocessing step restored direct-contamination performance to near-clean levels (slot-level F1 score, 0.945; 95% CI, 0.938-0.952; hit rate, 0.942; 95% CI, 0.930-0.955).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance under noisy (typo-corrupted) inputs and contamination vs clean inputs",
+   "effect": "Noise preserved fidelity (0.941 vs 0.947) but reduced turn-target hit rate to 0.823 from 0.946; direct contamination dropped fidelity to 0.098.",
+   "quote": "Noise preserved case fidelity (0.941; 95% CI, 0.934-0.949) but reduced turn-target hit rate (0.823; 95% CI, 0.806-0.841).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R098",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Forbidden information leakage and role drift of virtual patient LLM within intended role boundaries",
+   "effect": "Forbidden leakage ~0.60 events per episode in clean condition (95% CI 0.502-0.698); role drift not observed; refusal/clarification 0.",
+   "quote": "However, forbidden information leakage occurred at approximately 0.60 events per episode under the clean condition (0.600; 95% CI, 0.502-0.698), indicating incomplete constraint adherence despite high case fidelity.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R346",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Robustness to adversarial contaminated inputs with input sanitization defense",
+   "effect": "Direct contamination collapsed fidelity to 0.098 (hit rate 0.077); input sanitizer restored fidelity to 0.945 and hit rate to 0.942 without refusals.",
+   "quote": "Under direct contamination, case fidelity improved from 0.098 to 0.945, and turn-target hit rate improved from 0.077 to 0.942 after defense.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Assessing OSCE virtual-patient case fidelity and turn-target hit rate under fixed learner-question trajectories",
+  "separating examiner-only case information from patient-visible information",
+  "string-level input sanitization as prompt-hygiene defense for LLM virtual patients"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42326139",
+ "screen": {
+  "id": "pmid:42326139",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "preprocessing defense against prompt injection",
+  "user": "none",
+  "reason": "The study empirically tests the robustness of an LLM-based virtual patient under adversarial/noisy conditions and specifically evaluates an input preprocessing defense safeguard to mitigate direct instructional contamination.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "input preprocessing defense against prompt contamination"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42326139",
+   "empirical": 0.95,
+   "tests_practice": 0.64,
+   "real_deployment": 0.03
+  }
+ }
+}

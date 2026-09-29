@@ -1,0 +1,253 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 40656,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "ORchestra (gradient-boosted tree)",
+    "Epic case duration estimation tool (user-adjusted and vendor-recommended configurations)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ML case duration accuracy vs existing scheduling, historical averages, and Epic tool",
+     "effect": "Baseline MAE 35.3 min (bias -31 min); standardized workflow plus vendor-recommended Epic MAE 20.1 min; ORchestra MAE 19.8 min, bias +1.2 min. Standardization alone approached ML-level accuracy for many procedures.",
+     "quote": "Notably, workflow standardization alone approached ML-level accuracy for many procedures, highlighting human-factor variability as a dominant source of error."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of inconsistent software configuration and duration definitions on prediction error",
+     "effect": "User-adjusted settings and inconsistent prep/wrap inclusion gave MAE 35.3 min, f30min 0.52, f10% 0.09; vendor-recommended Epic settings with standardized definitions gave MAE 20.1 min, f30min 0.81, f10% 0.37.",
+     "quote": "Standardizing workflow elements-specifically, consistent inclusion of prep/wrap time and use of vendor-recommended Epic settings-substantially improved performance (MAE = 20.1 min, f<sub>30min</sub> = 0.81, and f<sub>10%</sub> = 0.37)."
+    }
+   ],
+   "unlisted_practices": [
+    "Standardizing operational definitions (e.g., inclusion of prep/wrap time) across users before deploying predictive scheduling tools"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 40656,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "ORchestra (gradient-boosted tree model)",
+    "Epic CDE tool (user-adjusted and vendor-recommended configurations)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Surgical duration prediction accuracy compared with standardized existing scheduling practices",
+     "effect": "Standardized workflow MAE = 20.1 min versus ORchestra MAE = 19.8 min; standardization approached ML-level accuracy for many procedures, while ORchestra decreased overscheduling outliers.",
+     "quote": "Notably, workflow standardization alone approached ML-level accuracy for many procedures, highlighting human-factor variability as a dominant source of error."
+    }
+   ],
+   "unlisted_practices": [
+    "Standardize surgical case-duration definitions to consistently include prep/wrap time and use vendor-recommended scheduling-software settings."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 40656,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "ORchestra",
+    "Epic CDE tool"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prediction error (MAE) vs baseline and software",
+     "effect": "The ML model had an MAE of 19.8 min, compared to 35.3 min for baseline practices and 20.1 min for standardized Epic settings.",
+     "quote": "The ORchestra ML model further reduced error (MAE = 19.8 min), eliminated systematic bias (+1.2 min), and decreased overscheduling outliers, with the largest gains observed in high-variability services."
+    }
+   ],
+   "unlisted_practices": [
+    "Standardizing software configuration and workflow definitions alongside AI deployment"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "surgical cases",
+ "sample_size": 40656,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Epic CDE tool",
+  "Epic CDE tool (user-adjusted and vendor-recommended configurations)",
+  "Epic case duration estimation tool (user-adjusted and vendor-recommended configurations)",
+  "ORchestra",
+  "ORchestra (gradient-boosted tree model)",
+  "ORchestra (gradient-boosted tree)"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "ML case duration accuracy vs existing scheduling, historical averages, and Epic tool",
+   "effect": "Baseline MAE 35.3 min (bias -31 min); standardized workflow plus vendor-recommended Epic MAE 20.1 min; ORchestra MAE 19.8 min, bias +1.2 min. Standardization alone approached ML-level accuracy for many procedures.",
+   "quote": "Notably, workflow standardization alone approached ML-level accuracy for many procedures, highlighting human-factor variability as a dominant source of error.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of inconsistent software configuration and duration definitions on prediction error",
+   "effect": "User-adjusted settings and inconsistent prep/wrap inclusion gave MAE 35.3 min, f30min 0.52, f10% 0.09; vendor-recommended Epic settings with standardized definitions gave MAE 20.1 min, f30min 0.81, f10% 0.37.",
+   "quote": "Standardizing workflow elements-specifically, consistent inclusion of prep/wrap time and use of vendor-recommended Epic settings-substantially improved performance (MAE = 20.1 min, f<sub>30min</sub> = 0.81, and f<sub>10%</sub> = 0.37).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Surgical duration prediction accuracy compared with standardized existing scheduling practices",
+   "effect": "Standardized workflow MAE = 20.1 min versus ORchestra MAE = 19.8 min; standardization approached ML-level accuracy for many procedures, while ORchestra decreased overscheduling outliers.",
+   "quote": "Notably, workflow standardization alone approached ML-level accuracy for many procedures, highlighting human-factor variability as a dominant source of error.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Standardize surgical case-duration definitions to consistently include prep/wrap time and use vendor-recommended scheduling-software settings.",
+  "Standardizing operational definitions (e.g., inclusion of prep/wrap time) across users before deploying predictive scheduling tools",
+  "Standardizing software configuration and workflow definitions alongside AI deployment"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42362434",
+ "screen": {
+  "id": "pmid:42362434",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "workflow standardization and vendor-recommended software configuration before ML tool use",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates an ML surgical duration prediction model alongside workflow standardization elements and vendor-recommended configuration changes, evaluated in part via a silent-trial deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "workflow standardization and silent-mode testing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42362434",
+   "empirical": 0.97,
+   "tests_practice": 0.51,
+   "real_deployment": 0.87
+  }
+ }
+}

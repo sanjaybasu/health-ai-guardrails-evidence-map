@@ -1,0 +1,336 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "International (multinational SAHIT repository; four continents)",
+   "sample_size": 11931,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "SAHIT neuroimaging model (logistic regression for functional outcome after aneurysmal SAH)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Between-site variation in c-statistic and calibration across 14 single-study external validations",
+     "effect": "c-statistic ranged 0.52-0.84 (mean 0.74, I2=0.92); calibration intercept range -1.40 to 0.75 (I2=0.97); slope range 0.53-1.31 (I2=0.90).",
+     "quote": "We observed a large variability in discriminative performance when evaluating the c -statistics at single-study external validation."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Case-mix and between-study heterogeneity as explanation of performance drop in validation cohorts",
+     "effect": "Performance decline in 6 clusters attributable to case-mix variation, miscalibration, or both; e.g., IMASH Harrell's c 0.52 vs model-based 0.78; Leeds showed poor generalizability.",
+     "quote": "We observed a substantial decrease in discriminative performance in 6 clusters compared to the optimism-corrected c -statistic (benchmark) and the pooled mean c-statistic (reference for overall external performance)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether single external validation cohort choice misrepresents model performance",
+     "effect": "Validation in IMASH (0.52), Leeds (0.66), or ISAT (0.68) would suggest poor to moderate discrimination, while SHOP (0.84) was likely optimistic versus mean 0.74.",
+     "quote": "For example, validating the model in the IMASH (0.52), Leeds (0.66), or the ISAT cluster (0.68) would indicate poor to moderate discrimination."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Need for local and continuous validation and updating given performance variability",
+     "effect": "Authors state a single external validation cannot be decisive and local, continuous validation and updating are usually required; no temporal drift measured directly.",
+     "quote": "We stress that a single single-study external validation cannot be interpreted as decisive proof of a well or poor model performance and that local and continuous validation is usually required."
+    }
+   ],
+   "unlisted_practices": [
+    "Leave-one-cluster-out internal-external cross-validation on multi-cluster data instead of a single-study external validation",
+    "Membership model to quantify relatedness of derivation and validation cohorts (transportability)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "International (four continents)",
+   "sample_size": 11931,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "SAHIT (neuroimaging) model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance across external validation cohorts",
+     "effect": "Mean c-statistic 0.74 (95%CI 0.70-0.78; range 0.52-0.84; I2=0.92); intercept and slope also had I2=0.97 and 0.90.",
+     "quote": "The mean c-statistic was 0.74 (95%CI 0.70-0.78, range 0.52-0.84, I<sup>2</sup>\u2009=\u20090.92), the mean intercept was -0.06 (95%CI -0.37-0.24, range -1.40-0.75, I<sup>2</sup>\u2009=\u20090.97), and the mean slope was 0.96 (95%CI 0.78-1.13, range 0.53-1.31, I<sup>2</sup>\u2009=\u20090.90)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External-cluster performance drop",
+     "effect": "Six clusters had substantial discrimination decreases versus optimism-corrected c-statistic 0.77 and pooled mean 0.75.",
+     "quote": "We observed a substantial decrease in discriminative performance in 6 clusters compared to the optimism-corrected c -statistic (benchmark) and the pooled mean c-statistic (reference for overall external performance)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Case-mix effects on discrimination",
+     "effect": "Leeds, IMASH, Chicago declines attributed to case-mix: Harrell\u2019s 0.66, 0.52, 0.76 versus model-based 0.76, 0.78, 0.73.",
+     "quote": "Specifically, in the Leeds, IMASH, and Chicago clusters, this decline can be attributed to case-mix variation (Harrell\u2019s 0.66, 0.52, and 0.76 versus model-based 0.76, 0.78, and 0.73, respectively)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Between-study performance heterogeneity",
+     "effect": "c-statistic variability largely due to between-study heterogeneity; I2=0.92.",
+     "quote": "The I 2 -statistic was 0.92, indicating that the proportion of the total variability in the c -statistic was to a large extent explained by between-study heterogeneity."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability to new cohorts",
+     "effect": "Leeds membership model c-statistic 0.69, but discrimination was unsatisfactory, indicating poor generalizability.",
+     "quote": "In the Leeds cluster the derivation and validation samples were similar (membership model c -statistic 0.69), but the discriminative performance was unsatisfactory indicating poor generalizability of the model (Supplementary Material 7)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "International",
+   "sample_size": 11931,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "SAHIT model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "between-study heterogeneity in model discrimination across sites",
+     "effect": "c-statistic varied from 0.52 to 0.84 across 14 external validation cohorts, with I2=0.92 showing variability was largely explained by between-study heterogeneity",
+     "quote": "The I 2 -statistic was 0.92, indicating that the proportion of the total variability in the c -statistic was to a large extent explained by between-study heterogeneity."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance drop in local cohorts versus development benchmark",
+     "effect": "discriminative performance dropped substantially in 6 of 14 clusters compared to the optimism-corrected c-statistic benchmark of 0.77, reaching as low as 0.52",
+     "quote": "We observed a substantial decrease in discriminative performance in 6 clusters compared to the optimism-corrected c -statistic (benchmark) and the pooled mean c-statistic (reference for overall external performance)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "International (multinational SAHIT repository; four continents)",
+ "sample_unit": "patients",
+ "sample_size": 11931,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "SAHIT (neuroimaging) model",
+  "SAHIT model",
+  "SAHIT neuroimaging model (logistic regression for functional outcome after aneurysmal SAH)"
+ ],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Between-site variation in c-statistic and calibration across 14 single-study external validations",
+   "effect": "c-statistic ranged 0.52-0.84 (mean 0.74, I2=0.92); calibration intercept range -1.40 to 0.75 (I2=0.97); slope range 0.53-1.31 (I2=0.90).",
+   "quote": "We observed a large variability in discriminative performance when evaluating the c -statistics at single-study external validation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Case-mix and between-study heterogeneity as explanation of performance drop in validation cohorts",
+   "effect": "Performance decline in 6 clusters attributable to case-mix variation, miscalibration, or both; e.g., IMASH Harrell's c 0.52 vs model-based 0.78; Leeds showed poor generalizability.",
+   "quote": "We observed a substantial decrease in discriminative performance in 6 clusters compared to the optimism-corrected c -statistic (benchmark) and the pooled mean c-statistic (reference for overall external performance).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether single external validation cohort choice misrepresents model performance",
+   "effect": "Validation in IMASH (0.52), Leeds (0.66), or ISAT (0.68) would suggest poor to moderate discrimination, while SHOP (0.84) was likely optimistic versus mean 0.74.",
+   "quote": "For example, validating the model in the IMASH (0.52), Leeds (0.66), or the ISAT cluster (0.68) would indicate poor to moderate discrimination.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External-cluster performance drop",
+   "effect": "Six clusters had substantial discrimination decreases versus optimism-corrected c-statistic 0.77 and pooled mean 0.75.",
+   "quote": "We observed a substantial decrease in discriminative performance in 6 clusters compared to the optimism-corrected c -statistic (benchmark) and the pooled mean c-statistic (reference for overall external performance).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalizability to new cohorts",
+   "effect": "Leeds membership model c-statistic 0.69, but discrimination was unsatisfactory, indicating poor generalizability.",
+   "quote": "In the Leeds cluster the derivation and validation samples were similar (membership model c -statistic 0.69), but the discriminative performance was unsatisfactory indicating poor generalizability of the model (Supplementary Material 7).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R150",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Leave-one-cluster-out internal-external cross-validation on multi-cluster data instead of a single-study external validation",
+  "Membership model to quantify relatedness of derivation and validation cohorts (transportability)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39118007",
+ "screen": {
+  "id": "pmid:39118007",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "multi-cohort external validation before local implementation",
+  "user": "none",
+  "reason": "The study empirically evaluates external validation methodology (single-study vs. cross-study meta-validation) for a clinical prediction model, demonstrating how single-study external validation can mislead implementation decisions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "multi-study validation versus single-study external validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39118007",
+   "empirical": 0.77,
+   "tests_practice": 0.1,
+   "real_deployment": 0.03
+  }
+ }
+}

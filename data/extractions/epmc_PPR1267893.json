@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": 160,
+ "sample_unit": "adversarial prompts (evaluated against Claude Sonnet 4.5)",
+ "models_evaluated": [
+  "Claude Sonnet 4.5",
+  "GPT-5.2",
+  "Gemini 2.5 Pro",
+  "Gemini 3 Flash"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R101",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Harm-eliciting success rate of adversarial red-team prompts against a medical LLM assistant",
+   "effect": "11 of 160 adversarial prompts (6.9%) elicited clinically significant harm; full refusal in 86.2%; authority impersonation succeeded 45.0%, Educational Authority sub-strategy 83.3%; six of eight categories had no successful attacks.",
+   "quote": "Of 160 adversarial prompts evaluated against Claude Sonnet 4.5, 11 (6.9%) elicited responses meeting our threshold for clinically significant harm (harm level \u2265 3 on a 0\u20135 scale).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R098",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Multi-turn escalation attack success rate against the medical assistant",
+   "effect": "Multi-turn escalation attacks achieved 0% success (0/20), while authority impersonation prompts elicited harmful responses in 45.0% of cases.",
+   "quote": "Multi-turn escalation attacks achieved 0% success (0/20).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Physician review of automated evaluator-flagged high-harm responses",
+  "Context-conditioned guardrail design targeting authority impersonation (claims of educational or professional context)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1267893",
+ "screen": {
+  "id": "epmc:PPR1267893",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirical study systematically evaluating and red-teaming safety guardrails (including standard medical assistant system prompts) of LLMs under clinical adversarial attacks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "adversarial red-teaming / safety guardrail stress-testing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1267893",
+   "empirical": 0.95,
+   "tests_practice": 0.11,
+   "real_deployment": 0.04
+  }
+ }
+}

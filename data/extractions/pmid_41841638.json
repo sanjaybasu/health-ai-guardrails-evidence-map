@@ -1,0 +1,106 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "Germany",
+ "sample_size": 84,
+ "sample_unit": "whole-slide images (internal test set)",
+ "models_evaluated": [
+  "CLAM multiple-instance learning with Phikon features",
+  "HistoGPT (zero-shot and fine-tuned)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance on external cohorts versus internal test set",
+   "effect": "Internal AUC 1.0 (100% accuracy); on heterogeneous COBRA cohort AUC 0.923 (95% CI 0.885-0.961), needing threshold adjustment for marked calibration shift (balanced accuracy 86.5% at Youden's J).",
+   "quote": "In the more heterogeneous COBRA cohort, discrimination remained high (AUC = 0.923, 95% CI 0.885-0.961), requiring threshold adjustment to correct for marked calibration shift (balanced accuracy 86.5% at Youden's J).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Effect of fine-tuning/threshold adjustment on performance of foundation model and CLAM",
+   "effect": "Zero-shot HistoGPT cSCC sensitivity 33% (95% CI 19-52); after fine-tuning a task-specific classifier, near-perfect discrimination and 98% balanced accuracy. Threshold adjustment corrected COBRA calibration shift.",
+   "quote": "Fine-tuning a task-specific classifier on the HistoGPT backbone substantially improved performance, achieving near-perfect discrimination and 98% balanced accuracy.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance variation across external sites/cohorts",
+   "effect": "Perfect internal performance (AUC 1.0) but AUC 0.923 in COBRA cohort with calibration shift, requiring threshold adjustment.",
+   "quote": "However, reliable deployment across institutions necessitates careful calibration and domain adaptation, and even powerful foundation models such as HistoGPT benefit from targeted fine-tuning to ensure robust performance in dermatopathology.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41841638",
+ "screen": {
+  "id": "pmid:41841638",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Pure model development and retrospective validation of a deep learning model for histopathology classification across internal and external cohorts without evaluation of deployment, clinical workflow, or organizational safeguards.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41841638",
+   "empirical": 0.97,
+   "tests_practice": 0.61,
+   "real_deployment": 0.05
+  }
+ }
+}

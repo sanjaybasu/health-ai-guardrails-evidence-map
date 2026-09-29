@@ -1,0 +1,426 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Taiwan",
+   "sample_size": 10688,
+   "sample_unit": "discharge summaries coded in RCT (10 certified coding specialists)",
+   "models_evaluated": [
+    "BioMistral-7B",
+    "PubMedGPT-2",
+    "HAN",
+    "MedLlama2",
+    "Llama2-7B",
+    "Mistral-7B instruct",
+    "BERT",
+    "BiGRU",
+    "PLM-ICD",
+    "Atla Selene Mini (judge)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ICD-10-CM coding performance at external hospital versus development site",
+     "effect": "All models declined at TMMH; BioMistral full-code F-score 0.754 at KMUH vs 0.620 at TMMH; BERT precision dropped from 0.875 to 0.137.",
+     "quote": "Performance declined for all models on the TMMH dataset, reflecting the expected impact of institution-specific documentation variability, including differences in documentation conventions and section availability."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Coder satisfaction with AI-assisted workflow by model and coder subgroup",
+     "effect": "1947 satisfaction responses; BioMistral rated most favorably; lower satisfaction among coders with <10 years experience, clinical backgrounds, Gen Y (\u03c7\u00b2, p < 0.001); one late-career coder withdrew.",
+     "quote": "Satisfaction also varied by CCS background: higher satisfaction was reported among CCSs with healthcare administration training, advanced certification, 10\u201324 years of experience, and members of Gen X, whereas lower satisfaction was more common among CCS with medical-related academic backgrounds, those with <10 years of experience, and members of the Gen Y cohort ( \u03c7 \u00b2, p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Principled base-model selection via LLM-as-judge pairwise comparison with Plackett-Luce ranking",
+    "Redundancy-aware deduplication of training data",
+    "Universal section-aware prompting robust to missing documentation sections"
+   ]
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Taiwan",
+   "sample_size": 10688,
+   "sample_unit": "discharge summaries coded during the randomized trial by 10 certified coding specialists",
+   "models_evaluated": [
+    "BioMistral-7B",
+    "MedLlama2",
+    "Mistral-7B instruct",
+    "Llama2-7B",
+    "PubMedGPT-2",
+    "BiGRU",
+    "HAN",
+    "BERT",
+    "PLM-ICD"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between candidate-model screening ranks and downstream coding performance",
+     "effect": "Intrinsic screening ranked BioMistral highest (44.1% selection probability). Downstream fine-tuning preserved model ordering, with BioMistral achieving F 1 -score = 0.78 and win rate = 69.2%.",
+     "quote": "As shown in Fig. 4 , the relative ordering of models was preserved after fine-tuning: BioMistral achieved the highest downstream performance (F 1 -score = 0.78; win rate = 69.2%), followed by MedLlama2 and Mistral."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cross-institutional coding performance under documentation and population distribution differences",
+     "effect": "From KMUH RCT to TMMH, BioMistral full-code F-score declined from 0.754 to 0.620; BERT precision declined from 0.875 to 0.137. External evaluation used no additional retraining.",
+     "quote": "Performance declined for all models on the TMMH dataset, reflecting the expected impact of institution-specific documentation variability, including differences in documentation conventions and section availability."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Coding robustness to heterogeneous or missing clinical sections",
+     "effect": "Section-specific models performed optimally only when input structure matched training; the universal model was more robust to missing or inconsistently populated sections.",
+     "quote": "On the full test, the universal model exhibited consistent, monotonic improvements in both precision and recall as more sections were included in the input, whereas section-specific models tended to perform optimally only when the input structure exactly matched their training configuration."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Coding time with AI-assisted versus manual workflows",
+     "effect": "Across 10,688 coded summaries, all three AI-assisted workflows were faster than manual coding (Games-Howell, all p < 0.001). PubMedGPT-2 produced the largest average time reduction, followed by BioMistral and HAN.",
+     "quote": "All three AI-assisted workflows yielded faster completion times than manual coding (Games-Howell, all p < 0.001)."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "User satisfaction across coding-specialist backgrounds",
+     "effect": "Among 1947 valid satisfaction responses from 10 CCSs, satisfaction varied by background (p < 0.001). Lower satisfaction occurred among clinically trained coders, those with <10 years of experience, and Gen Y; subgroup analyses were exploratory.",
+     "quote": "Satisfaction also varied by CCS background: higher satisfaction was reported among CCSs with healthcare administration training, advanced certification, 10\u201324 years of experience, and members of Gen X, whereas lower satisfaction was more common among CCS with medical-related academic backgrounds, those with <10 years of experience, and members of the Gen Y cohort ( \u03c7 \u00b2, p < 0.001)."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Coding F-score with more complete clinical-section inputs",
+     "effect": "Full-section inclusion increased F-score from 0.786 after deduplication to 0.798. External full-code F-scores increased from 0.764 to 0.779 at KMUH RCT and from 0.626 to 0.636 at TMMH.",
+     "quote": "Finally, comparing these results from redundancy-aware sampling revealed complementary effects on downstream performance: the F-score increased from 0.780 (baseline) to 0.786 ( + deduplication) and 0.798 ( + full section inclusion)."
+    }
+   ],
+   "unlisted_practices": [
+    "Apply redundancy-aware semantic deduplication to training summaries sharing identical code sets to improve coding performance and reduce training cost.",
+    "Train universal section-aware models across heterogeneous documentation patterns, explicitly representing missing sections, rather than training separate section-combination-specific models."
+   ]
+  },
+  "gemini": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Taiwan",
+   "sample_size": 10,
+   "sample_unit": "certified coding specialists",
+   "models_evaluated": [
+    "BioMistral",
+    "MedLlama2",
+    "Mistral",
+    "Llama2",
+    "PubMedGPT-2",
+    "HAN",
+    "BiGRU",
+    "BERT",
+    "PLM-ICD"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-institutional performance drop",
+     "effect": "Precision dropped substantially when models were evaluated on an external hospital's dataset with different documentation conventions.",
+     "quote": "The drop was most pronounced among non-decoder architectures (e.g., BERT precision dropped from 0.875 at the source hospital to 0.137 at TMMH)."
+    },
+    {
+     "rec_id": "R142",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-assisted coding time",
+     "effect": "In a prospective RCT pilot, AI assistance significantly accelerated the coding workflow for real users compared to manual coding.",
+     "quote": "All three AI-assisted workflows yielded faster completion times than manual coding (Games-Howell, all p < 0.001)."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "user satisfaction variation",
+     "effect": "During the live pilot, user satisfaction varied heavily across demographics, highlighting the need to evaluate usability with diverse subgroups.",
+     "quote": "Satisfaction also varied by CCS background: higher satisfaction was reported among CCSs with healthcare administration training, advanced certification, 10\u201324 years of experience, and members of Gen X, whereas lower satisfaction was more common among CCS with medical-related academic backgrounds, those with <10 years of experience, and members of the Gen Y cohort (\u03c7\u00b2, p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "semantic deduplication of training data (redundancy-aware sampling)",
+    "model selection via pairwise LLM-as-judge evaluation",
+    "structuring fine-tuning prompts with explicit EHR document sections"
+   ]
+  }
+ },
+ "design": "rct",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Taiwan",
+ "sample_unit": "discharge summaries coded in RCT (10 certified coding specialists)",
+ "sample_size": 10688,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Atla Selene Mini (judge)",
+  "BERT",
+  "BiGRU",
+  "BioMistral",
+  "BioMistral-7B",
+  "HAN",
+  "Llama2",
+  "Llama2-7B",
+  "MedLlama2",
+  "Mistral",
+  "Mistral-7B instruct",
+  "PLM-ICD",
+  "PubMedGPT-2"
+ ],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "ICD-10-CM coding performance at external hospital versus development site",
+   "effect": "All models declined at TMMH; BioMistral full-code F-score 0.754 at KMUH vs 0.620 at TMMH; BERT precision dropped from 0.875 to 0.137.",
+   "quote": "Performance declined for all models on the TMMH dataset, reflecting the expected impact of institution-specific documentation variability, including differences in documentation conventions and section availability.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R145",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Coder satisfaction with AI-assisted workflow by model and coder subgroup",
+   "effect": "1947 satisfaction responses; BioMistral rated most favorably; lower satisfaction among coders with <10 years experience, clinical backgrounds, Gen Y (\u03c7\u00b2, p < 0.001); one late-career coder withdrew.",
+   "quote": "Satisfaction also varied by CCS background: higher satisfaction was reported among CCSs with healthcare administration training, advanced certification, 10\u201324 years of experience, and members of Gen X, whereas lower satisfaction was more common among CCS with medical-related academic backgrounds, those with <10 years of experience, and members of the Gen Y cohort ( \u03c7 \u00b2, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement between candidate-model screening ranks and downstream coding performance",
+   "effect": "Intrinsic screening ranked BioMistral highest (44.1% selection probability). Downstream fine-tuning preserved model ordering, with BioMistral achieving F 1 -score = 0.78 and win rate = 69.2%.",
+   "quote": "As shown in Fig. 4 , the relative ordering of models was preserved after fine-tuning: BioMistral achieved the highest downstream performance (F 1 -score = 0.78; win rate = 69.2%), followed by MedLlama2 and Mistral.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Cross-institutional coding performance under documentation and population distribution differences",
+   "effect": "From KMUH RCT to TMMH, BioMistral full-code F-score declined from 0.754 to 0.620; BERT precision declined from 0.875 to 0.137. External evaluation used no additional retraining.",
+   "quote": "Performance declined for all models on the TMMH dataset, reflecting the expected impact of institution-specific documentation variability, including differences in documentation conventions and section availability.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Coding robustness to heterogeneous or missing clinical sections",
+   "effect": "Section-specific models performed optimally only when input structure matched training; the universal model was more robust to missing or inconsistently populated sections.",
+   "quote": "On the full test, the universal model exhibited consistent, monotonic improvements in both precision and recall as more sections were included in the input, whereas section-specific models tended to perform optimally only when the input structure exactly matched their training configuration.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Coding time with AI-assisted versus manual workflows",
+   "effect": "Across 10,688 coded summaries, all three AI-assisted workflows were faster than manual coding (Games-Howell, all p < 0.001). PubMedGPT-2 produced the largest average time reduction, followed by BioMistral and HAN.",
+   "quote": "All three AI-assisted workflows yielded faster completion times than manual coding (Games-Howell, all p < 0.001).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Coding F-score with more complete clinical-section inputs",
+   "effect": "Full-section inclusion increased F-score from 0.786 after deduplication to 0.798. External full-code F-scores increased from 0.764 to 0.779 at KMUH RCT and from 0.626 to 0.636 at TMMH.",
+   "quote": "Finally, comparing these results from redundancy-aware sampling revealed complementary effects on downstream performance: the F-score increased from 0.780 (baseline) to 0.786 ( + deduplication) and 0.798 ( + full section inclusion).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R142",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI-assisted coding time",
+   "effect": "In a prospective RCT pilot, AI assistance significantly accelerated the coding workflow for real users compared to manual coding.",
+   "quote": "All three AI-assisted workflows yielded faster completion times than manual coding (Games-Howell, all p < 0.001).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R145",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Apply redundancy-aware semantic deduplication to training summaries sharing identical code sets to improve coding performance and reduce training cost.",
+  "Principled base-model selection via LLM-as-judge pairwise comparison with Plackett-Luce ranking",
+  "Redundancy-aware deduplication of training data",
+  "Train universal section-aware models across heterogeneous documentation patterns, explicitly representing missing sections, rather than training separate section-combination-specific models.",
+  "Universal section-aware prompting robust to missing documentation sections",
+  "model selection via pairwise LLM-as-judge evaluation",
+  "semantic deduplication of training data (redundancy-aware sampling)",
+  "structuring fine-tuning prompts with explicit EHR document sections"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41981090",
+ "screen": {
+  "id": "pmid:41981090",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "human-in-the-loop AI-assisted coding with coder review",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study testing a generative LLM system deployed in a 13-week randomized controlled trial with professional coders to evaluate workflow efficiency, accuracy, and user factors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "AI-assisted workflow vs. manual coding in a randomized controlled trial"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41981090",
+   "empirical": 0.97,
+   "tests_practice": 0.51,
+   "real_deployment": 0.88
+  }
+ }
+}

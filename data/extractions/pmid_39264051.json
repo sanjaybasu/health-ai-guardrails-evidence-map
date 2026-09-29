@@ -1,0 +1,330 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 3970,
+   "sample_unit": "emergency department patients with acute heart failure (EHR application); plus simulated cohorts",
+   "models_evaluated": [
+    "STRATIFY risk prediction model",
+    "preconditioning-based submodel",
+    "one-step-sweep (OSS) submodel",
+    "fixed chained equations imputation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R304",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Proportion of patients with missing risk factors preventing AI risk calculation, and submodel coverage",
+     "effect": "1434 (36.1%) had at least one missing STRATIFY risk factor; submodels allowed 864 (60.3%) of these patients to have risk calculated at ED admission.",
+     "quote": "There are 1434 (36.1%) patients having at least one missing STRATIFY risk factor."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Need for local recalibration of prediction model on local EHR data",
+     "effect": "Both intercept and slope of original STRATIFY model were recalibrated on local EHR data because event rate was much higher than the 12% in the original cohort.",
+     "quote": "Based on the validation using the training dataset, both intercept and slope from the original STRATIFY model were recalibrated."
+    }
+   ],
+   "unlisted_practices": [
+    "Submodel approximation approach for handling missing risk factors in EHR-implemented prediction models"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 3970,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "STRATIFY prediction model",
+    "preconditioning-based submodel approach",
+    "one-step-sweep (OSS) submodel approach",
+    "imputation by fixed chained equations approach"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Robustness to missing inputs and heterogeneity",
+     "effect": "Across 1000 simulations per scenario, preconditioning and imputation were stable; OSS rMSPE increased under heterogeneous means.",
+     "quote": "Under the heterogeneous mean scenarios ( Figure 3A ), rMSPEs from preconditioning-based submodels and the imputation approach are quite stable, whereas rMSPEs from OSS-based submodels increase with the heterogeneity in mean."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local historical validation of submodels",
+     "effect": "Of 129 submodels, 80 met eligibility; C-index 0.60-0.63, NPV 0.82-0.92, Brier 0.19-0.19.",
+     "quote": "Among 129 submodels, 80 are selected with eligible performance, where C-index ranges from 0.60 to 0.63, NPV ranges from 0.82 to 0.92 and Brier score ranges from 0.19 to 0.19."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Development-to-local population shift",
+     "effect": "Local EHR adverse-event rate was 25.9% and much higher than original 12%; intercept and slope were recalibrated.",
+     "quote": "This is expected because the event rate from the retrospectively collected EHR data is much higher than the 12% event rate from the original STRATIFY cohort which requires patients\u2019 consent."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local EHR input availability",
+     "effect": "1434 (36.1%) patients had at least one missing STRATIFY risk factor.",
+     "quote": "There are 1434 (36.1%) patients having at least one missing STRATIFY risk factor."
+    }
+   ],
+   "unlisted_practices": [
+    "Use preconditioning-based submodels to calculate risk when EHR risk factors are missing"
+   ]
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 3970,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "STRATIFY"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R500",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "inability to calculate risk prediction due to missing risk factors",
+     "effect": "more than 30% of acute heart failure patients had at least one missing risk factor, preventing risk calculation in its original form",
+     "quote": "Preliminary EHR data extraction of STRATIFY risk factors revealed more than 30% of AHF patients had at least one missing STRATIFY risk factor at the time of disposition decision making, and thus cannot have STRATIFY risk calculated in its original form."
+    }
+   ],
+   "unlisted_practices": [
+    "Preconditioning-based submodel approximation to estimate risk predictions when individual risk factors are missing in real-time EHR workflows"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 3970,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "STRATIFY",
+  "STRATIFY prediction model",
+  "STRATIFY risk prediction model",
+  "fixed chained equations imputation",
+  "imputation by fixed chained equations approach",
+  "one-step-sweep (OSS) submodel",
+  "one-step-sweep (OSS) submodel approach",
+  "preconditioning-based submodel",
+  "preconditioning-based submodel approach"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Robustness to missing inputs and heterogeneity",
+   "effect": "Across 1000 simulations per scenario, preconditioning and imputation were stable; OSS rMSPE increased under heterogeneous means.",
+   "quote": "Under the heterogeneous mean scenarios ( Figure 3A ), rMSPEs from preconditioning-based submodels and the imputation approach are quite stable, whereas rMSPEs from OSS-based submodels increase with the heterogeneity in mean.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local historical validation of submodels",
+   "effect": "Of 129 submodels, 80 met eligibility; C-index 0.60-0.63, NPV 0.82-0.92, Brier 0.19-0.19.",
+   "quote": "Among 129 submodels, 80 are selected with eligible performance, where C-index ranges from 0.60 to 0.63, NPV ranges from 0.82 to 0.92 and Brier score ranges from 0.19 to 0.19.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Development-to-local population shift",
+   "effect": "Local EHR adverse-event rate was 25.9% and much higher than original 12%; intercept and slope were recalibrated.",
+   "quote": "This is expected because the event rate from the retrospectively collected EHR data is much higher than the 12% event rate from the original STRATIFY cohort which requires patients\u2019 consent.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local EHR input availability",
+   "effect": "1434 (36.1%) patients had at least one missing STRATIFY risk factor.",
+   "quote": "There are 1434 (36.1%) patients having at least one missing STRATIFY risk factor.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "inability to calculate risk prediction due to missing risk factors",
+   "effect": "more than 30% of acute heart failure patients had at least one missing risk factor, preventing risk calculation in its original form",
+   "quote": "Preliminary EHR data extraction of STRATIFY risk factors revealed more than 30% of AHF patients had at least one missing STRATIFY risk factor at the time of disposition decision making, and thus cannot have STRATIFY risk calculated in its original form.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R304",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Preconditioning-based submodel approximation to estimate risk predictions when individual risk factors are missing in real-time EHR workflows",
+  "Submodel approximation approach for handling missing risk factors in EHR-implemented prediction models",
+  "Use preconditioning-based submodels to calculate risk when EHR risk factors are missing"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39264051",
+ "screen": {
+  "id": "pmid:39264051",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "handling missing risk factors at real-time EHR risk calculation via submodel approximation",
+  "user": "none",
+  "reason": "Evaluates a submodel approximation implementation approach to handle missing risk factors during real-time EHR deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "missing data handling for EHR implementation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39264051",
+   "empirical": 0.71,
+   "tests_practice": 0.08,
+   "real_deployment": 0.22
+  }
+ }
+}

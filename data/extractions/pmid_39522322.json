@@ -1,0 +1,326 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": null,
+   "sample_unit": "clinicians and radiotherapy contouring cases",
+   "models_evaluated": [
+    "OSAIRIS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R129",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Proportion of deliberately inserted AI contour errors corrected by clinician editing",
+     "effect": "72% of head and neck errors and 81% of prostate errors were removed in the editing step; most errors corrected by clinicians.",
+     "quote": "Most errors, however, were corrected by clinicians, with 72% of the head and neck errors 81% of the prostate errors removed in the editing step."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Anchoring bias and detection/correction of incorrect AI outputs by clinicians",
+     "effect": "Anchoring bias present when clinicians edit AI contours, more pronounced for some structures; most errors nonetheless corrected (72% head and neck, 81% prostate).",
+     "quote": "Our safety and risk-mitigation exercise showed that anchoring bias is present when clinicians edit AI-generated contours, with the effect seemingly more pronounced for some structures over others."
+    }
+   ],
+   "unlisted_practices": [
+    "Correlating editing-time with accuracy metrics (Hausdorff vs Dice) to select evaluation metrics",
+    "Blinded clinician rating of AI contours versus clinician gold standard and commercial devices"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "radiotherapy contouring cases",
+   "models_evaluated": [
+    "OSAIRIS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-assisted contouring time",
+     "effect": "Time-saving was 36% (5.4 \u00b1 2.1 minutes) for prostate and 67% (30.3 \u00b1 8.7 minutes) for head and neck contouring.",
+     "quote": "We found that OSAIRIS affords a significant time-saving of 36% (5.4 \u00b1 2.1 minutes) when used for prostate contouring and 67% (30.3 \u00b1 8.7 minutes) for head and neck contouring."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "metric correlation with editing time",
+     "effect": "Hausdorff distance best correlated with editing-time, outperforming dice, with Spearman 0.70 and Kendall 0.52.",
+     "quote": "Combining editing time data with accuracy metrics, we found the Hausdorff distance best correlated with editing-time, outperforming dice, the industry-standard, with a Spearman correlation coefficient of 0.70, and a Kendall coefficient of 0.52."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "blinded contour ratings",
+     "effect": "Gold standard clinician contours were not rated more highly than AI-generated contours.",
+     "quote": "Notably, our blinded clinician contour rating exercise showed that gold standard clinician contours are not rated more highly than the AI-generated contours."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "clinician correction of AI errors",
+     "effect": "Clinicians removed 72% of head and neck errors and 81% of prostate errors in editing.",
+     "quote": "Most errors, however, were corrected by clinicians, with 72% of the head and neck errors 81% of the prostate errors removed in the editing step."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "anchoring bias in editing",
+     "effect": "Anchoring bias was present when clinicians edited AI-generated contours, more pronounced for some structures.",
+     "quote": "Our safety and risk-mitigation exercise showed that anchoring bias is present when clinicians edit AI-generated contours, with the effect seemingly more pronounced for some structures over others."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": null,
+   "sample_unit": "contours",
+   "models_evaluated": [
+    "OSAIRIS"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician error correction in AI contours",
+     "effect": "72% of head and neck errors and 81% of prostate errors removed in the editing step",
+     "quote": "Most errors, however, were corrected by clinicians, with 72% of the head and neck errors 81% of the prostate errors removed in the editing step."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "anchoring bias in clinician editing of AI contours",
+     "effect": "anchoring bias was present when clinicians edited AI-generated contours, with effect more pronounced for some structures",
+     "quote": "Our safety and risk-mitigation exercise showed that anchoring bias is present when clinicians edit AI-generated contours, with the effect seemingly more pronounced for some structures over others."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "clinicians and radiotherapy contouring cases",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "OSAIRIS"
+ ],
+ "links": [
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "clinician correction of AI errors",
+   "effect": "Clinicians removed 72% of head and neck errors and 81% of prostate errors in editing.",
+   "quote": "Most errors, however, were corrected by clinicians, with 72% of the head and neck errors 81% of the prostate errors removed in the editing step.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "anchoring bias in editing",
+   "effect": "Anchoring bias was present when clinicians edited AI-generated contours, more pronounced for some structures.",
+   "quote": "Our safety and risk-mitigation exercise showed that anchoring bias is present when clinicians edit AI-generated contours, with the effect seemingly more pronounced for some structures over others.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI-assisted contouring time",
+   "effect": "Time-saving was 36% (5.4 \u00b1 2.1 minutes) for prostate and 67% (30.3 \u00b1 8.7 minutes) for head and neck contouring.",
+   "quote": "We found that OSAIRIS affords a significant time-saving of 36% (5.4 \u00b1 2.1 minutes) when used for prostate contouring and 67% (30.3 \u00b1 8.7 minutes) for head and neck contouring.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "metric correlation with editing time",
+   "effect": "Hausdorff distance best correlated with editing-time, outperforming dice, with Spearman 0.70 and Kendall 0.52.",
+   "quote": "Combining editing time data with accuracy metrics, we found the Hausdorff distance best correlated with editing-time, outperforming dice, the industry-standard, with a Spearman correlation coefficient of 0.70, and a Kendall coefficient of 0.52.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "blinded contour ratings",
+   "effect": "Gold standard clinician contours were not rated more highly than AI-generated contours.",
+   "quote": "Notably, our blinded clinician contour rating exercise showed that gold standard clinician contours are not rated more highly than the AI-generated contours.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R129",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Blinded clinician rating of AI contours versus clinician gold standard and commercial devices",
+  "Correlating editing-time with accuracy metrics (Hausdorff vs Dice) to select evaluation metrics"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39522322",
+ "screen": {
+  "id": "pmid:39522322",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "clinician review and editing of AI contours (error detection)",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests the efficacy of clinician editing/review (measuring anchoring bias and error detection rates) and workflow time savings in an autosegmentation tool for radiotherapy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "clinician review and error-correction under human-in-the-loop workflow"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39522322",
+   "empirical": 0.97,
+   "tests_practice": 0.77,
+   "real_deployment": 0.76
+  }
+ }
+}

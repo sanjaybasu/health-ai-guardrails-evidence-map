@@ -1,0 +1,392 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United States",
+   "sample_size": 5,
+   "sample_unit": "simulated ICU rounds cases",
+   "models_evaluated": [
+    "Claude 3.5 Sonnet (M1)",
+    "Claude 3.7 Sonnet (M6)",
+    "Llama family and other Claude models (M2-M5)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "tests_guardrail",
+     "finding": "hazard_present",
+     "outcome": "Ambient scribe ICU note omissions, commissions (hallucinations), partial errors against transcript-derived elements",
+     "effect": "Omission errors mean 15.5%, partial 7.2%, commission 2.6% combined; M1 accuracy 69% vs M6 80% (P=.04); omission 21.6% vs 9.32%.",
+     "quote": "Overall, errors of omission were most common (mean 15.5%, SEM 2.7%), followed by partial errors (mean 7.2%, SEM 0.92%) and then errors of commission (mean 2.6%, SEM 0.7%)."
+    },
+    {
+     "rec_id": "R146",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local assessment of scribe documentation accuracy, quality (PDQI-9), and error severity",
+     "effect": "Accuracy 69% vs 80%; PDQI-9 35.8 vs 38.3 (P=.06); most errors no to low harm potential; time savings and well-being not measured.",
+     "quote": "Finally, in terms of overall readability and usefulness, M6 was better than M1 based on PDQI-9 scores, but the difference was not statistically significant (M1=35.8, SEM 0.78 vs M6=38.3, SEM 0.53; P =.06)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Note accuracy after model upgrade and prompt updates",
+     "effect": "Prompt iterations improved M1 accuracy from 57.25% (V1) to 69.15% (V4); upgraded M6 reached 80.3% vs 69.12% (P=.04), with more commission errors (3.92% vs 1.30%).",
+     "quote": "In comparison, model M6, a direct upgrade of model 1 ( Multimedia Appendix 1 for model description), performed better across all 5 cases, achieving an overall accuracy of 80.3% (95% CI 75.2%\u201085.5%; P =.04)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Variability in output quality across LLMs using the same prompt",
+     "effect": "Same prompt gave widely varying accuracy across models in phase 1 (e.g., M2 33.5% vs M1 57-74%); M4 declined after prompt updates.",
+     "quote": "M4 initially performed well but showed inconsistent results and a decline in performance after updates."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Omitted or unsupported content in AI notes that clinicians would need to catch",
+     "effect": "Errors of omission, commission and partial errors were present in AI notes; authors note manual review is the current safeguard and may cause automation complacency.",
+     "quote": "This is especially important, given that the current safeguard against errors in AI scribe notes is manual review by clinicians, which adds an additional burden on clinicians and could lead to automation complacency and/or bias [ 37-42 ]."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Potential for automation complacency with manual review of scribe notes",
+     "effect": "Authors state manual review adds burden and could lead to automation complacency; not measured directly.",
+     "quote": "This is especially important, given that the current safeguard against errors in AI scribe notes is manual review by clinicians, which adds an additional burden on clinicians and could lead to automation complacency and/or bias [ 37-42 ]."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt engineering and model-specific prompt tailoring to improve ambient scribe note accuracy for ICU rounds",
+    "Using a gold-standard note template in the prompt to reduce omissions (with trade-off of more commission errors)"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United States",
+   "sample_size": 5,
+   "sample_unit": "simulated ICU rounds cases",
+   "models_evaluated": [
+    "M1 (Claude 3.5 Sonnet)",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6 (Claude 3.7 Sonnet)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R083",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ICU prompt tailoring accuracy",
+     "effect": "For M1, correct rose from 57.25% (V1) to 73.80% (V3) and 69.15% (V4); omission fell from 31.60% to 16.85% (V3).",
+     "quote": "Iterative improvements to the prompt increased accuracy and reduced errors during phase 1."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model accuracy",
+     "effect": "Phase 1 correct ranged 33.50% (M2 V1) to 73.80% (M1 V3); phase 2 M6 accuracy was 80.3% versus M1 69.12% (P=.04).",
+     "quote": "In comparison, model M6, a direct upgrade of model 1 ( Multimedia Appendix 1 for model description), performed better across all 5 cases, achieving an overall accuracy of 80.3% (95% CI 75.2%\u201085.5%; P =.04)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model upgrade validation",
+     "effect": "M6 improved accuracy (80.3% vs M1 69.12%, P=.04) and omissions (9.32% vs 21.60%, adjusted P=.03), but commissions were higher (3.92% vs 1.30%).",
+     "quote": "Comparison of error subtypes between the 2 models showed that only omission errors (21.60% vs 9.32%; adjusted P value =.03) were statistically significantly different between M1 and M6."
+    },
+    {
+     "rec_id": "R146",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ambient scribe documentation errors",
+     "effect": "Errors occurred despite M1/M6 accuracies of 69.12%/80.32%; omissions averaged 15.5%, partial errors 7.2%, and commissions 2.6%.",
+     "quote": "Overall, errors of omission were most common (mean 15.5%, SEM 2.7%), followed by partial errors (mean 7.2%, SEM 0.92%) and then errors of commission (mean 2.6%, SEM 0.7%)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missing and unsupported scribe content",
+     "effect": "Combined phase-2 errors: omissions 15.5%, partial 7.2%, commissions 2.6%; examples included plan omissions and unsupported transfusion/code-status content.",
+     "quote": "Overall, errors of omission were most common ( Figure 5 ) with an average of 15.5 (SEM 2.7%, 95% CI 9.4%\u201021.6%), followed by partial errors at 7.2 (SEM 0.92%, 95% CI 5.1%\u20109.3%), with errors of commission being the least common at 2.6 (SEM 0.7%, 95% CI 1.1%\u20104.1%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "USA",
+   "sample_size": 5,
+   "sample_unit": "simulated cases",
+   "models_evaluated": [
+    "Claude 3.5 Sonnet",
+    "Claude 3.7 Sonnet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "scribe note omission and commission error rates",
+     "effect": "errors of omission averaged 15.5% (SEM 2.7%), partial errors 7.2% (SEM 0.92%), and errors of commission 2.6% (SEM 0.7%)",
+     "quote": "Overall, errors of omission were most common (mean 15.5%, SEM 2.7%), followed by partial errors (mean 7.2%, SEM 0.92%) and then errors of commission (mean 2.6%, SEM 0.7%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt engineering and template refinement for ambient clinical documentation"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "simulated ICU rounds cases",
+ "sample_size": 5,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude 3.5 Sonnet",
+  "Claude 3.5 Sonnet (M1)",
+  "Claude 3.7 Sonnet",
+  "Claude 3.7 Sonnet (M6)",
+  "Llama family and other Claude models (M2-M5)",
+  "M1 (Claude 3.5 Sonnet)",
+  "M2",
+  "M3",
+  "M4",
+  "M5",
+  "M6 (Claude 3.7 Sonnet)"
+ ],
+ "links": [
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Note accuracy after model upgrade and prompt updates",
+   "effect": "Prompt iterations improved M1 accuracy from 57.25% (V1) to 69.15% (V4); upgraded M6 reached 80.3% vs 69.12% (P=.04), with more commission errors (3.92% vs 1.30%).",
+   "quote": "In comparison, model M6, a direct upgrade of model 1 ( Multimedia Appendix 1 for model description), performed better across all 5 cases, achieving an overall accuracy of 80.3% (95% CI 75.2%\u201085.5%; P =.04).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "scribe note omission and commission error rates",
+   "effect": "errors of omission averaged 15.5% (SEM 2.7%), partial errors 7.2% (SEM 0.92%), and errors of commission 2.6% (SEM 0.7%)",
+   "quote": "Overall, errors of omission were most common (mean 15.5%, SEM 2.7%), followed by partial errors (mean 7.2%, SEM 0.92%) and then errors of commission (mean 2.6%, SEM 0.7%).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R146",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local assessment of scribe documentation accuracy, quality (PDQI-9), and error severity",
+   "effect": "Accuracy 69% vs 80%; PDQI-9 35.8 vs 38.3 (P=.06); most errors no to low harm potential; time savings and well-being not measured.",
+   "quote": "Finally, in terms of overall readability and usefulness, M6 was better than M1 based on PDQI-9 scores, but the difference was not statistically significant (M1=35.8, SEM 0.78 vs M6=38.3, SEM 0.53; P =.06).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R083",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "ICU prompt tailoring accuracy",
+   "effect": "For M1, correct rose from 57.25% (V1) to 73.80% (V3) and 69.15% (V4); omission fell from 31.60% to 16.85% (V3).",
+   "quote": "Iterative improvements to the prompt increased accuracy and reduced errors during phase 1.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R146",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "ambient scribe documentation errors",
+   "effect": "Errors occurred despite M1/M6 accuracies of 69.12%/80.32%; omissions averaged 15.5%, partial errors 7.2%, and commissions 2.6%.",
+   "quote": "Overall, errors of omission were most common (mean 15.5%, SEM 2.7%), followed by partial errors (mean 7.2%, SEM 0.92%) and then errors of commission (mean 2.6%, SEM 0.7%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Iterative prompt engineering and model-specific prompt tailoring to improve ambient scribe note accuracy for ICU rounds",
+  "Iterative prompt engineering and template refinement for ambient clinical documentation",
+  "Using a gold-standard note template in the prompt to reduce omissions (with trade-off of more commission errors)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42412948",
+ "screen": {
+  "id": "pmid:42412948",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "speech_ambient"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "iterative prompt refinement as a guardrail",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates tailoring and iteratively improving LLM prompts for ambient scribes on simulated ICU round transcripts, explicitly measuring changes in accuracy and error rates across prompt iterations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering and refinement"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42412948",
+   "empirical": 0.96,
+   "tests_practice": 0.08,
+   "real_deployment": 0.04
+  }
+ }
+}

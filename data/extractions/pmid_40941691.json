@@ -1,0 +1,215 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 6689,
+   "sample_unit": "cardiovascular cases (MIMIC-III admissions)",
+   "models_evaluated": [
+    "Qwen 2.5",
+    "Universal Sentence Encoder"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Composite trust score combining LLM self-reported confidence, semantic similarity and diagnosis length to decide accept versus override of AI diagnoses",
+    "Transparency-conditioned acceptance thresholds that are stricter when the LLM's self-rated explainability is low"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 6689,
+   "sample_unit": "cardiovascular cases",
+   "models_evaluated": [
+    "Qwen 2.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "override rates by transparency",
+     "effect": "Minimal transparency 73.9% override vs moderate transparency 49.3%.",
+     "quote": "Minimal transparency diagnoses had a 73.9% override rate compared to 49.3% for moderate transparency."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "override rates by confidence",
+     "effect": "High-confidence 90-99% predictions overridden 1.7%; low-confidence 70-79% overridden 99.3%.",
+     "quote": "The implementation of this framework reduced the override rate to 33.29%, with high-confidence predictions (90-99%) overridden at a rate of only 1.7%, and low-confidence predictions (70-79%) at a rate of 99.3%."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI diagnostic outputs needing override",
+     "effect": "Overall override rate was 33.29%: 2227 of 6689 cases; 4462 non-overrides.",
+     "quote": "The Overall Override rate across all AI-generated CVDs was 33.29% (2227 out of 6689 cases, non-override cases: 4462), indicating that approximately one-third of the diagnoses were overridden upon clinical review."
+    }
+   ],
+   "unlisted_practices": [
+    "Dynamic composite trust score combining model-reported confidence, semantic diagnosis similarity, response length, and transparency-conditioned override thresholds for accepting AI diagnoses."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 6689,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "Qwen 2.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Dynamic scoring framework integrating AI confidence scores, semantic similarity measures, and transparency weighting to calibrate override thresholds"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "cardiovascular cases (MIMIC-III admissions)",
+ "sample_size": 6689,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Qwen 2.5",
+  "Universal Sentence Encoder"
+ ],
+ "links": [],
+ "contested_links": [
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Composite trust score combining LLM self-reported confidence, semantic similarity and diagnosis length to decide accept versus override of AI diagnoses",
+  "Dynamic composite trust score combining model-reported confidence, semantic diagnosis similarity, response length, and transparency-conditioned override thresholds for accepting AI diagnoses.",
+  "Dynamic scoring framework integrating AI confidence scores, semantic similarity measures, and transparency weighting to calibrate override thresholds",
+  "Transparency-conditioned acceptance thresholds that are stricter when the LLM's self-rated explainability is low"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40941691",
+ "screen": {
+  "id": "pmid:40941691",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "dynamic confidence calibration and transparency weighting for override thresholds",
+  "user": "clinician_or_staff",
+  "reason": "Evaluated a dynamic framework integrating confidence calibration and transparency levels to modulate clinician override thresholds using MIMIC-III retrospective data.",
+  "jev": {
+   "id": "pmid:40941691",
+   "empirical": 0.91,
+   "tests_practice": 0.85,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "chest X-ray images",
+ "models_evaluated": [
+  "VGG16",
+  "VGG19",
+  "Stack Model (MobileNetV2 + DenseNet169 hybrid)",
+  "convolutional autoencoder defense"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R346",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Pneumonia classifier accuracy under FGSM/PGD adversarial attacks with and without autoencoder denoising defense",
+   "effect": "PGD attack cut overall accuracy by up to 67% on VGG16; the autoencoder improved accuracy by up to 16% against PGD attacks in VGG16 and VGG19.",
+   "quote": "The autoencoder improves accuracy by up to 16% against PGD attacks in both the VGG16 and VGG19 models.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Convolutional autoencoder denoising of adversarially perturbed medical images as an input-level defense"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:39432550",
+ "screen": {
+  "id": "pmid:39432550",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "autoencoder-based adversarial image denoising defense",
+  "user": "none",
+  "reason": "Evaluates an autoencoder defense safeguard added to diagnostic CNN models to mitigate adversarial image attacks on chest X-rays.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "autoencoder-based adversarial input denoising/defense"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39432550",
+   "empirical": 0.87,
+   "tests_practice": 0.13,
+   "real_deployment": 0.06
+  }
+ }
+}

@@ -1,0 +1,387 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2069,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "GPT-4.0 mini (PreA, co-designed)",
+    "GPT-4.0 mini fine-tuned on local primary care dialogues"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Expert-rated referral quality: co-designed model vs same model fine-tuned on local dialogues",
+     "effect": "Fine-tuning on local dialogues lowered quality: history-taking 4.56 vs 3.86, diagnosis 4.67 vs 2.47, test ordering 4.23 vs 2.21 (all P < 0.001); data-tuned model failed to provide diagnoses in 30.0% and tests in 39.3%.",
+     "quote": "The co-designed model achieved significantly higher-quality rating scores than the data-tuned counterpart (the co-designed model further fine-tuned on the primary care dialogues) group across all domains: history-taking (without data-tuned 4.56 \u00b1 0.65 versus data-tuned 3.86 \u00b1 0.81; P < 0.001; Fig. 4b ), diagnosis (without data-tuned 4.67 \u00b1 0.55 versus data-tuned 2.47 \u00b1 1.44; P < 0.001) and testing order (without data-tuned 4.23 \u00b1 1.09 versus data-tuned 2.21 \u00b1 1.12; P < 0.001)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Direct adoption of LLM content in physician clinical notes (automation bias)",
+     "effect": "Classifier distinguishing PreA-assisted vs No-PreA notes near random (F1 0.57; P = 0.81; \u0394F1 < 0.02); no domain differences (P = 0.10\u20130.90).",
+     "quote": "Classification analysis yielded near-random discriminability (F1 score 0.57; P = 0.81; \u0394F1 < 0.02)."
+    }
+   ],
+   "unlisted_practices": [
+    "Staff-supported versus independent patient use of a patient-facing LLM chatbot (equivalent outcomes)",
+    "Participatory stakeholder co-design with adversarial testing versus passive local-data fine-tuning for LLM development"
+   ]
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2069,
+   "sample_unit": "patients and care partners",
+   "models_evaluated": [
+    "PreA (OpenAI GPT-4.0 mini)",
+    "PreA further fine-tuned on local primary care dialogues (ChatGPT-4.0 mini)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": true,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R088",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Specialist consultation duration",
+     "effect": "Consultation duration: PreA-only 3.14 \u00b1 2.25 versus No-PreA 4.41 \u00b1 2.77 min; P < 0.001; 28.7% (95% CI 22.7\u201334.8) relative reduction.",
+     "quote": "The PreA-only group had a significantly shorter consultation duration compared to the No-PreA group (PreA-only 3.14 \u00b1 2.25 versus No-PreA 4.41 \u00b1 2.77 min; P < 0.001; Fig. 2a ), corresponding to a 28.7% (95% CI 22.7\u201334.8) relative reduction."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Referral quality after adding local-dialogue fine-tuning",
+     "effect": "Additional local-dialogue fine-tuning reduced diagnosis quality from 4.67 \u00b1 0.55 to 2.47 \u00b1 1.44 and test-ordering quality from 4.23 \u00b1 1.09 to 2.21 \u00b1 1.12; both P < 0.001.",
+     "quote": "The co-designed model achieved significantly higher-quality rating scores than the data-tuned counterpart (the co-designed model further fine-tuned on the primary care dialogues) group across all domains: history-taking (without data-tuned 4.56 \u00b1 0.65 versus data-tuned 3.86 \u00b1 0.81; P < 0.001; Fig. 4b ), diagnosis (without data-tuned 4.67 \u00b1 0.55 versus data-tuned 2.47 \u00b1 1.44; P < 0.001) and testing order (without data-tuned 4.23 \u00b1 1.09 versus data-tuned 2.21 \u00b1 1.12; P < 0.001)."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Diagnostic-guideline adherence in simulated consultations",
+     "effect": "Locally fine-tuned PreA omitted needed diagnoses in 30.0% (90 of 300) and testing suggestions in 39.3% (118 of 300) simulated cases.",
+     "quote": "Mirroring real-world clinician patterns, the data-tuned model exhibited suboptimal adherence to diagnostic guidelines, failing to provide diagnoses (30.0%, 90 of 300) or suggest testing (39.3%, 118 of 300) when needed."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Friendliness of chatbot communication",
+     "effect": "The local data-tuned model reproduced an unfriendly clinician-like tone; frequency was not reported.",
+     "quote": "Additionally, the data-tuned model mimicked an unfriendly tone similar to that of human clinicians."
+    },
+    {
+     "rec_id": "R455",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Patient-reported consultation satisfaction",
+     "effect": "Patient satisfaction was 3.99 \u00b1 0.69 versus 3.41 \u00b1 0.98 with usual care; P < 0.001; relative increase 17.0%, 95% CI 14.3\u201319.6.",
+     "quote": "Patients and care partners in the PreA-only group reported significantly improved consultation experiences compared to the No-PreA group across the primary outcome, ease of communication: 3.99 \u00b1 0.62 versus 3.44 \u00b1 0.97; P < 0.001; relative increase 16.0%, 95% CI 13.5\u201318.5) and the four secondary outcomes: perceived physician attentiveness: 3.87 \u00b1 0.85 versus 3.36 \u00b1 1.04; P < 0.001; relative increase 15.1%, 95% CI 12.1\u201318.1), interpersonal regard (4.02 \u00b1 0.73 versus 3.43 \u00b1 1.05; P < 0.001; relative increase 17.2%, 95% CI 14.4\u201320.0), patient satisfaction (3.99 \u00b1 0.69 versus 3.41 \u00b1 0.98; P < 0.001; relative increase 17.0%, 95% CI 14.3\u201319.6) and future acceptability (3.79 \u00b1 1.06 versus 2.81 \u00b1 1.26; P < 0.001; relative increase 34.7%, 95% CI 30.4\u201339.1; Fig. 3a )."
+    }
+   ],
+   "unlisted_practices": [
+    "Providing medical-assistant technical support during patient chatbot use versus independent use."
+   ]
+  },
+  "gemini": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2069,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "GPT-4.0 mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": true,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R457",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "quality rating scores",
+     "effect": "The co-designed model achieved significantly higher-quality rating scores in diagnosis (4.67 vs 2.47) than the data-tuned counterpart.",
+     "quote": "The co-designed model achieved significantly higher-quality rating scores than the data-tuned counterpart (the co-designed model further fine-tuned on the primary care dialogues) group across all domains: history-taking (without data-tuned 4.56 \u00b1 0.65 versus data-tuned 3.86 \u00b1 0.81; P < 0.001; Fig. 4b ), diagnosis (without data-tuned 4.67 \u00b1 0.55 versus data-tuned 2.47 \u00b1 1.44; P < 0.001) and testing order (without data-tuned 4.23 \u00b1 1.09 versus data-tuned 2.21 \u00b1 1.12; P < 0.001)."
+    },
+    {
+     "rec_id": "R171",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "adherence to diagnostic guidelines",
+     "effect": "The data-tuned model failed to provide diagnoses in 30.0% of cases and suggest necessary testing in 39.3%.",
+     "quote": "Mirroring real-world clinician patterns, the data-tuned model exhibited suboptimal adherence to diagnostic guidelines, failing to provide diagnoses (30.0%, 90 of 300) or suggest testing (39.3%, 118 of 300) when needed."
+    },
+    {
+     "rec_id": "R175",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "direct adoption of LLM-generated content",
+     "effect": "Classification analysis showed near-random discriminability of clinical notes between groups (F1 score 0.57), indicating no direct copying.",
+     "quote": "This absence of systematic separability in the feature space of clinical notes provides compelling evidence against the direct adoption of LLM-generated content in this real-world clinical context."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing a co-designed AI model vs an AI model fine-tuned on real-world clinical dialogues",
+    "Comparing AI chatbot use by patients independently vs with human staff support",
+    "Using a pre-assessment chatbot to generate structured referral reports for specialists to reduce consultation duration"
+   ]
+  }
+ },
+ "design": "rct",
+ "setting": "real_deployment",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 2069,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": true,
+  "low_income": true,
+  "racial_ethnic_minority_focus": false,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "GPT-4.0 mini",
+  "GPT-4.0 mini (PreA, co-designed)",
+  "GPT-4.0 mini fine-tuned on local primary care dialogues",
+  "PreA (OpenAI GPT-4.0 mini)",
+  "PreA further fine-tuned on local primary care dialogues (ChatGPT-4.0 mini)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Expert-rated referral quality: co-designed model vs same model fine-tuned on local dialogues",
+   "effect": "Fine-tuning on local dialogues lowered quality: history-taking 4.56 vs 3.86, diagnosis 4.67 vs 2.47, test ordering 4.23 vs 2.21 (all P < 0.001); data-tuned model failed to provide diagnoses in 30.0% and tests in 39.3%.",
+   "quote": "The co-designed model achieved significantly higher-quality rating scores than the data-tuned counterpart (the co-designed model further fine-tuned on the primary care dialogues) group across all domains: history-taking (without data-tuned 4.56 \u00b1 0.65 versus data-tuned 3.86 \u00b1 0.81; P < 0.001; Fig. 4b ), diagnosis (without data-tuned 4.67 \u00b1 0.55 versus data-tuned 2.47 \u00b1 1.44; P < 0.001) and testing order (without data-tuned 4.23 \u00b1 1.09 versus data-tuned 2.21 \u00b1 1.12; P < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Direct adoption of LLM content in physician clinical notes (automation bias)",
+   "effect": "Classifier distinguishing PreA-assisted vs No-PreA notes near random (F1 0.57; P = 0.81; \u0394F1 < 0.02); no domain differences (P = 0.10\u20130.90).",
+   "quote": "Classification analysis yielded near-random discriminability (F1 score 0.57; P = 0.81; \u0394F1 < 0.02).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R088",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Specialist consultation duration",
+   "effect": "Consultation duration: PreA-only 3.14 \u00b1 2.25 versus No-PreA 4.41 \u00b1 2.77 min; P < 0.001; 28.7% (95% CI 22.7\u201334.8) relative reduction.",
+   "quote": "The PreA-only group had a significantly shorter consultation duration compared to the No-PreA group (PreA-only 3.14 \u00b1 2.25 versus No-PreA 4.41 \u00b1 2.77 min; P < 0.001; Fig. 2a ), corresponding to a 28.7% (95% CI 22.7\u201334.8) relative reduction.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R141",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic-guideline adherence in simulated consultations",
+   "effect": "Locally fine-tuned PreA omitted needed diagnoses in 30.0% (90 of 300) and testing suggestions in 39.3% (118 of 300) simulated cases.",
+   "quote": "Mirroring real-world clinician patterns, the data-tuned model exhibited suboptimal adherence to diagnostic guidelines, failing to provide diagnoses (30.0%, 90 of 300) or suggest testing (39.3%, 118 of 300) when needed.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Friendliness of chatbot communication",
+   "effect": "The local data-tuned model reproduced an unfriendly clinician-like tone; frequency was not reported.",
+   "quote": "Additionally, the data-tuned model mimicked an unfriendly tone similar to that of human clinicians.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R455",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Patient-reported consultation satisfaction",
+   "effect": "Patient satisfaction was 3.99 \u00b1 0.69 versus 3.41 \u00b1 0.98 with usual care; P < 0.001; relative increase 17.0%, 95% CI 14.3\u201319.6.",
+   "quote": "Patients and care partners in the PreA-only group reported significantly improved consultation experiences compared to the No-PreA group across the primary outcome, ease of communication: 3.99 \u00b1 0.62 versus 3.44 \u00b1 0.97; P < 0.001; relative increase 16.0%, 95% CI 13.5\u201318.5) and the four secondary outcomes: perceived physician attentiveness: 3.87 \u00b1 0.85 versus 3.36 \u00b1 1.04; P < 0.001; relative increase 15.1%, 95% CI 12.1\u201318.1), interpersonal regard (4.02 \u00b1 0.73 versus 3.43 \u00b1 1.05; P < 0.001; relative increase 17.2%, 95% CI 14.4\u201320.0), patient satisfaction (3.99 \u00b1 0.69 versus 3.41 \u00b1 0.98; P < 0.001; relative increase 17.0%, 95% CI 14.3\u201319.6) and future acceptability (3.79 \u00b1 1.06 versus 2.81 \u00b1 1.26; P < 0.001; relative increase 34.7%, 95% CI 30.4\u201339.1; Fig. 3a ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R171",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "adherence to diagnostic guidelines",
+   "effect": "The data-tuned model failed to provide diagnoses in 30.0% of cases and suggest necessary testing in 39.3%.",
+   "quote": "Mirroring real-world clinician patterns, the data-tuned model exhibited suboptimal adherence to diagnostic guidelines, failing to provide diagnoses (30.0%, 90 of 300) or suggest testing (39.3%, 118 of 300) when needed.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R175",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "direct adoption of LLM-generated content",
+   "effect": "Classification analysis showed near-random discriminability of clinical notes between groups (F1 score 0.57), indicating no direct copying.",
+   "quote": "This absence of systematic separability in the feature space of clinical notes provides compelling evidence against the direct adoption of LLM-generated content in this real-world clinical context.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R457",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.85
+ },
+ "unlisted_practices": [
+  "Comparing AI chatbot use by patients independently vs with human staff support",
+  "Comparing a co-designed AI model vs an AI model fine-tuned on real-world clinical dialogues",
+  "Participatory stakeholder co-design with adversarial testing versus passive local-data fine-tuning for LLM development",
+  "Providing medical-assistant technical support during patient chatbot use versus independent use.",
+  "Staff-supported versus independent patient use of a patient-facing LLM chatbot (equivalent outcomes)",
+  "Using a pre-assessment chatbot to generate structured referral reports for specialists to reduce consultation duration"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41555035",
+ "screen": {
+  "id": "pmid:41555035",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "staff-assisted vs autonomous patient use",
+  "user": "both",
+  "reason": "The randomized controlled trial compares real-world deployment of a patient-facing LLM chatbot operating autonomously versus with staff support (and versus standard care), evaluating impact on consultation duration and care coordination.",
+  "jev": {
+   "id": "pmid:41555035",
+   "empirical": 0.98,
+   "tests_practice": 0.88,
+   "real_deployment": 0.97
+  }
+ }
+}

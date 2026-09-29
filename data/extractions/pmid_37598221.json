@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "South Korea",
+ "sample_size": 1000,
+ "sample_unit": "ED patient cases sampled for physician pre-AI vs post-AI prediction",
+ "models_evaluated": [
+  "Bayesian neural network-based AI bacteremia prediction model (AI-BPM)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Physician AUC for bacteremia prediction before vs after seeing AI output",
+   "effect": "Post-AI physician AUC 0.703 (95% CI 0.654-0.753) vs pre-AI 0.639 (0.585-0.693); p<0.001, in sampled dataset N=1,000. Largest gains when physician uncertainty high and AI uncertainty low.",
+   "quote": "The AUC of the post-AI physicians predictions (0.703, 95% CI 0.654-0.753) was significantly improved compared with that of the pre-AI predictions (0.639, 95% CI 0.585-0.693; p-value < 0.001) in the sampled dataset (N = 1,000).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Model discrimination on temporal and external validation datasets",
+   "effect": "Temporal validation (N=8,188) AUC 0.754; external validation (N=7,029) AUC 0.738, sensitivity 0.927, specificity 0.319; modest drop at external site.",
+   "quote": "In the external validation dataset (N = 7,029), the AI-BPM's AUC was 0.738 (95% CI 0.722-0.755), sensitivity was 0.927 (95% CI 0.909-0.942), and specificity was 0.319 (95% CI 0.307-0.330).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Displaying model prediction uncertainty (Bayesian 95% CI relative to risk threshold) to physicians and assessing its interaction with physician confidence"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:37598221",
+ "screen": {
+  "id": "pmid:37598221",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluated the impact of providing AI bacteremia predictions with uncertainty intervals on physician predictions across different levels of AI and clinician uncertainty.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI uncertainty quantification presentation to clinicians"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37598221",
+   "empirical": 0.97,
+   "tests_practice": 0.51,
+   "real_deployment": 0.08
+  }
+ }
+}

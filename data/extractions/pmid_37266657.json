@@ -1,0 +1,357 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 5,
+   "sample_unit": "radiologists (each reading 90 chest radiographs across 4 conditions)",
+   "models_evaluated": [
+    "sham AI (simulated chest radiograph AI, ROC-AUC 0.87)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Radiologist false negative and false positive rates when AI results were incorrect versus no AI",
+     "effect": "FN rose from 2.7% (No AI) to 33.0% (Keep, No Box), 26.7% (Delete), 20.7% (Box); FP rose from 51.4% to 86.0%, 80.5%, 80.5%.",
+     "quote": "In total, incorrect AI results can cause radiologists to make incorrect decisions when they would have otherwise been correct."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of AI box outlining suspicious region on radiologist errors from incorrect AI",
+     "effect": "FNs lower with box than without (20.7% vs 33.0%, p=0.04); FPs 80.5% vs 86.0%, not significant (p=0.19).",
+     "quote": "As anticipated in hypothesis 5, FNs were higher in AI Keep (No Box) than in AI Keep (Box) (33.0% vs. 20.7%, p = 0.04)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reader performance with versus without AI, assessing overreliance on incorrect AI",
+     "effect": "Compared with No AI, incorrect AI increased FN (2.7% to 20.7-33.0%) and FP (51.4% to 80.5-86.0%); correct AI improved accuracy.",
+     "quote": "As anticipated, when AI provided correct positive and correct negative results, radiologists were more accurate in all AI conditions compared to the no AI condition."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician performance with AI in workflow, including interface configuration effects",
+     "effect": "Human-AI performance depended on AI presentation: box reduced FNs (33.0% to 20.7%); keep vs delete affected FPs (86.0% vs 80.5%, p=0.03).",
+     "quote": "There was evidence that the way AI was implemented impacted radiologist performance."
+    },
+    {
+     "rec_id": "R419",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Radiologist susceptibility to incorrect AI (automation bias) with no training",
+     "effect": "Incorrect AI increased false negatives to 20.7-33.0% and false positives to 80.5-86.0% among radiologists.",
+     "quote": "But when AI provided false feedback that there was no abnormality, false negatives increased to 20.7\u201333.0%, depending on the AI results condition."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missed cancers when AI labeled abnormal cases normal",
+     "effect": "False negatives on the 4 AI-false-negative cases rose from 2.7% without AI to 33.0% (p=0.006) with kept AI results.",
+     "quote": "Among these cases in the No AI condition, the false negative percent was 2.7% (95% CI (0.4, 16.0)); false negatives increased to 33.0% (95% CI (21.5, 46.9)) in the AI Keep (No Box) condition ( p = 0.006)"
+    }
+   ],
+   "unlisted_practices": [
+    "Telling radiologists AI results will be deleted from the patient record rather than kept, to reduce deference to incorrect AI"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 90,
+   "sample_unit": "chest radiographs from 90 patients read by 5 radiologists",
+   "models_evaluated": [
+    "sham AI results (simulated ROC-AUC 0.87)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Radiologist overreliance on incorrect AI",
+     "effect": "FNs rose from 2.7% to 20.7\u201333.0%; FPs from 51.4% to 80.5\u201386.0%.",
+     "quote": "Relative to the No AI condition (FN\u2009=\u20092.7%, FP\u2009=\u200951.4%), FN and FPs were higher in the Keep AI (No Box) (FN\u2009=\u200933.0%, FP\u2009=\u200986.0%), Delete AI (No Box) (FN\u2009=\u200926.7%, FP\u2009=\u200980.5%), and Keep AI (Box) (FN\u2009=\u2009to 20.7%, FP\u2009=\u200980.5%) conditions (all ps\u2009<\u20090.05)."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "False negatives with region-of-interest box",
+     "effect": "FNs were 33.0% without box vs. 20.7% with box, p = 0.04.",
+     "quote": "As anticipated in hypothesis 5, FNs were higher in AI Keep (No Box) than in AI Keep (Box) (33.0% vs. 20.7%, p = 0.04)."
+    },
+    {
+     "rec_id": "R235",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "False negatives with visual AI output",
+     "effect": "FNs were 33.0% without box vs. 20.7% with box, p = 0.04.",
+     "quote": "As anticipated in hypothesis 5, FNs were higher in AI Keep (No Box) than in AI Keep (Box) (33.0% vs. 20.7%, p = 0.04)."
+    }
+   ],
+   "unlisted_practices": [
+    "Deleting AI results from the patient's file rather than keeping them"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 5,
+   "sample_unit": "radiologists",
+   "models_evaluated": [
+    "Simulated AI"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "radiologist false negative rate when AI is incorrect",
+     "effect": "False negatives increased from 2.7% without AI to 33.0% in Keep AI (No Box) (p=0.006), 26.7% in Delete AI (No Box) (p=0.009), and 20.7% in Keep AI (Box) (p=0.02).",
+     "quote": "Among these cases in the No AI condition, the false negative percent was 2.7% (95% CI (0.4, 16.0)); false negatives increased to 33.0% (95% CI (21.5, 46.9)) in the AI Keep (No Box) condition ( p = 0.006), increased to 26.7% (95%CI (17.7, 38.1)) in the AI Delete (No Box) condition ( p = 0.009), and increased to 20.7% (95% CI (9.4, 39.6)) in the AI Keep (Box) condition ( p = 0.02)."
+    },
+    {
+     "rec_id": "R235",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "radiologist false negative rate with visual bounding box",
+     "effect": "False negatives were lower with a bounding box outlining suspicion than without a box (20.7% vs. 33.0%, p = 0.04).",
+     "quote": "As anticipated in hypothesis 5, FNs were higher in AI Keep (No Box) than in AI Keep (Box) (33.0% vs. 20.7%, p = 0.04)."
+    }
+   ],
+   "unlisted_practices": [
+    "Not saving AI results to the patient record to reduce clinician liability concerns and conformity bias"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "radiologists (each reading 90 chest radiographs across 4 conditions)",
+ "sample_size": 5,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Simulated AI",
+  "sham AI (simulated chest radiograph AI, ROC-AUC 0.87)",
+  "sham AI results (simulated ROC-AUC 0.87)"
+ ],
+ "links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist overreliance on incorrect AI",
+   "effect": "FNs rose from 2.7% to 20.7\u201333.0%; FPs from 51.4% to 80.5\u201386.0%.",
+   "quote": "Relative to the No AI condition (FN\u2009=\u20092.7%, FP\u2009=\u200951.4%), FN and FPs were higher in the Keep AI (No Box) (FN\u2009=\u200933.0%, FP\u2009=\u200986.0%), Delete AI (No Box) (FN\u2009=\u200926.7%, FP\u2009=\u200980.5%), and Keep AI (Box) (FN\u2009=\u2009to 20.7%, FP\u2009=\u200980.5%) conditions (all ps\u2009<\u20090.05).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of AI box outlining suspicious region on radiologist errors from incorrect AI",
+   "effect": "FNs lower with box than without (20.7% vs 33.0%, p=0.04); FPs 80.5% vs 86.0%, not significant (p=0.19).",
+   "quote": "As anticipated in hypothesis 5, FNs were higher in AI Keep (No Box) than in AI Keep (Box) (33.0% vs. 20.7%, p = 0.04).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R235",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "False negatives with visual AI output",
+   "effect": "FNs were 33.0% without box vs. 20.7% with box, p = 0.04.",
+   "quote": "As anticipated in hypothesis 5, FNs were higher in AI Keep (No Box) than in AI Keep (Box) (33.0% vs. 20.7%, p = 0.04).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reader performance with versus without AI, assessing overreliance on incorrect AI",
+   "effect": "Compared with No AI, incorrect AI increased FN (2.7% to 20.7-33.0%) and FP (51.4% to 80.5-86.0%); correct AI improved accuracy.",
+   "quote": "As anticipated, when AI provided correct positive and correct negative results, radiologists were more accurate in all AI conditions compared to the no AI condition.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician performance with AI in workflow, including interface configuration effects",
+   "effect": "Human-AI performance depended on AI presentation: box reduced FNs (33.0% to 20.7%); keep vs delete affected FPs (86.0% vs 80.5%, p=0.03).",
+   "quote": "There was evidence that the way AI was implemented impacted radiologist performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R419",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist susceptibility to incorrect AI (automation bias) with no training",
+   "effect": "Incorrect AI increased false negatives to 20.7-33.0% and false positives to 80.5-86.0% among radiologists.",
+   "quote": "But when AI provided false feedback that there was no abnormality, false negatives increased to 20.7\u201333.0%, depending on the AI results condition.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Missed cancers when AI labeled abnormal cases normal",
+   "effect": "False negatives on the 4 AI-false-negative cases rose from 2.7% without AI to 33.0% (p=0.006) with kept AI results.",
+   "quote": "Among these cases in the No AI condition, the false negative percent was 2.7% (95% CI (0.4, 16.0)); false negatives increased to 33.0% (95% CI (21.5, 46.9)) in the AI Keep (No Box) condition ( p = 0.006)",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Deleting AI results from the patient's file rather than keeping them",
+  "Not saving AI results to the patient record to reduce clinician liability concerns and conformity bias",
+  "Telling radiologists AI results will be deleted from the patient record rather than kept, to reduce deference to incorrect AI"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37266657",
+ "screen": {
+  "id": "pmid:37266657",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI UI design (bounding box display) and data retention policy framing",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates how specific AI presentation/deployment factors (providing visual bounding boxes around lesions vs not, and whether AI findings are retained in the patient record) affect clinician decision-making and automation bias.",
+  "jev": {
+   "id": "pmid:37266657",
+   "empirical": 0.96,
+   "tests_practice": 0.93,
+   "real_deployment": 0.06
+  }
+ }
+}

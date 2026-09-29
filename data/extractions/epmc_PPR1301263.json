@@ -1,0 +1,365 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 4730,
+   "sample_unit": "patients (primary cohort 3,525 plus cross-cohort test set 1,205)",
+   "models_evaluated": [
+    "SVM",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM",
+    "CatBoost",
+    "CORAL domain adaptation",
+    "SMOTE",
+    "Contrastive deep learning (SupCon, NT-Xent, Batch-Hard Triplet with VICReg)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Internal versus independent cross-cohort AUPRC of GDM prediction models",
+     "effect": "All 60 classical-model combinations achieved internal AUPRC 0.959-0.998 and collapsed cross-cohort to 0.180-0.266; contrastive models 0.167-0.216.",
+     "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation from distribution shift and concept drift between cohorts",
+     "effect": "Cross-cohort AUPRC collapsed to 0.180-0.266; OGTT concept drift d = 1.91 internally versus d = 0.36 cross-cohort; findings consistent with drift in P(Y|X).",
+     "quote": "Overall, the findings are most consistent with concept drift in the conditional relationship $P(Y \\mid X)$, for which source-only adaptation is insufficient in this setting."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Cross-cohort AUPRC after training with data from both cohorts (oracle mixed-domain)",
+     "effect": "AUPRC recovered to 0.944-0.978 when training included data from both cohorts, indicating model capacity is not the bottleneck.",
+     "quote": "In an oracle mixed-domain experiment (non-deployment setting), when training includes data from both cohorts, AUPRC recovers to 0.944-0.978, confirming that model capacity is not the bottleneck."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model generalization to a new cohort/population",
+     "effect": "Cross-cohort AUPRC collapsed to 0.180-0.266 (classical) and 0.167-0.216 (contrastive) versus internal 0.959-0.998.",
+     "quote": "Contrastive learning mirrors the classical result: all cross-cohort configurations collapse to 0.167-0.216 AUPRC regardless of loss function or preprocessing."
+    }
+   ],
+   "unlisted_practices": [
+    "CORAL domain adaptation for cross-cohort transfer (estimator-dependent effects, improved SVM by up to +0.079 but degraded gradient-boosted models)",
+    "Excluding OGTT (pre-screening mode) with MICE imputation and robust scaling",
+    "Contrastive representation learning for cross-cohort robustness",
+    "SMOTE training augmentation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 4730,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "support vector machine (SVM)",
+    "Random Forest",
+    "Extreme Gradient Boosting (XGBoost)",
+    "Light Gradient Boosting Machine (LightGBM)",
+    "CatBoost",
+    "contrastive deep learning framework"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "internal versus cross-cohort GDM prediction AUPRC",
+     "effect": "Internal AUPRC was 0.959--0.998; cross-cohort AUPRC collapsed to 0.180-0.266 across 60 classical combinations.",
+     "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-cohort validation performance",
+     "effect": "Internal AUPRC was 0.959--0.998; cross-cohort AUPRC collapsed to 0.180-0.266 across 60 classical combinations.",
+     "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "OGTT feature concept drift across cohorts",
+     "effect": "Mean cross-cohort AUPRC was 0.228; best SVM 0.266; OGTT drift d = 1.91 internally and d = 0.36 cross-cohort.",
+     "quote": "Within this collapsed range, excluding oral glucose tolerance test (OGTT) (pre-screening mode) with Multivariate Imputation by Chained Equations (MICE) imputation and robust scaling emerges as the most consistent strategy (mean cross-cohort AUPRC 0.228; best single result SVM 0.266), a finding we trace mechanistically to OGTT's catastrophic concept drift (d = 1.91 internally, d = 0.36 cross-cohort)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate adaptation and estimator comparison",
+     "effect": "CORAL improved SVM full-feature AUPRC by up to +0.079 but degraded all gradient-boosted ensembles and every pre-screening estimator.",
+     "quote": "CORAL domain adaptation produces a striking estimator-dependent interaction: it improves SVM cross-cohort AUPRC in full-feature configurations by up to +0.079 while degrading all gradient-boosted ensembles across all configurations and degrading every estimator in pre-screening configurations."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance in a new clinical cohort",
+     "effect": "Internal AUPRC was 0.959--0.998; cross-cohort AUPRC collapsed to 0.180-0.266 across 60 classical combinations.",
+     "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266."
+    }
+   ],
+   "unlisted_practices": [
+    "Use preprocessing configuration changes, SMOTE training augmentation, CORAL domain adaptation, or contrastive representation learning to mitigate cross-cohort distributional shift in GDM prediction."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 4730,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "SVM",
+    "Random Forest",
+    "XGBoost",
+    "LightGBM",
+    "CatBoost",
+    "contrastive deep learning"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-cohort AUPRC",
+     "effect": "internal AUPRC was 0.959-0.998 but collapsed cross-cohort to 0.180-0.266 across all 60 classical-model combinations",
+     "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266."
+    }
+   ],
+   "unlisted_practices": [
+    "CORAL domain adaptation",
+    "contrastive representation learning with VICReg regularization to address cross-cohort distributional shift"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "patients",
+ "sample_size": 4730,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CORAL domain adaptation",
+  "CatBoost",
+  "Contrastive deep learning (SupCon, NT-Xent, Batch-Hard Triplet with VICReg)",
+  "Extreme Gradient Boosting (XGBoost)",
+  "Light Gradient Boosting Machine (LightGBM)",
+  "LightGBM",
+  "Random Forest",
+  "SMOTE",
+  "SVM",
+  "XGBoost",
+  "contrastive deep learning",
+  "contrastive deep learning framework",
+  "support vector machine (SVM)"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Internal versus independent cross-cohort AUPRC of GDM prediction models",
+   "effect": "All 60 classical-model combinations achieved internal AUPRC 0.959-0.998 and collapsed cross-cohort to 0.180-0.266; contrastive models 0.167-0.216.",
+   "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation from distribution shift and concept drift between cohorts",
+   "effect": "Cross-cohort AUPRC collapsed to 0.180-0.266; OGTT concept drift d = 1.91 internally versus d = 0.36 cross-cohort; findings consistent with drift in P(Y|X).",
+   "quote": "Overall, the findings are most consistent with concept drift in the conditional relationship $P(Y \\mid X)$, for which source-only adaptation is insufficient in this setting.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model generalization to a new cohort/population",
+   "effect": "Cross-cohort AUPRC collapsed to 0.180-0.266 (classical) and 0.167-0.216 (contrastive) versus internal 0.959-0.998.",
+   "quote": "Contrastive learning mirrors the classical result: all cross-cohort configurations collapse to 0.167-0.216 AUPRC regardless of loss function or preprocessing.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Cross-cohort AUPRC after training with data from both cohorts (oracle mixed-domain)",
+   "effect": "AUPRC recovered to 0.944-0.978 when training included data from both cohorts, indicating model capacity is not the bottleneck.",
+   "quote": "In an oracle mixed-domain experiment (non-deployment setting), when training includes data from both cohorts, AUPRC recovers to 0.944-0.978, confirming that model capacity is not the bottleneck.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "cross-cohort validation performance",
+   "effect": "Internal AUPRC was 0.959--0.998; cross-cohort AUPRC collapsed to 0.180-0.266 across 60 classical combinations.",
+   "quote": "All 60 classical-model combinations achieve near-perfect internal area under the precision-recall curve (AUPRC) (0.959--0.998) and universally collapse cross-cohort to 0.180-0.266.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "CORAL domain adaptation",
+  "CORAL domain adaptation for cross-cohort transfer (estimator-dependent effects, improved SVM by up to +0.079 but degraded gradient-boosted models)",
+  "Contrastive representation learning for cross-cohort robustness",
+  "Excluding OGTT (pre-screening mode) with MICE imputation and robust scaling",
+  "SMOTE training augmentation",
+  "Use preprocessing configuration changes, SMOTE training augmentation, CORAL domain adaptation, or contrastive representation learning to mitigate cross-cohort distributional shift in GDM prediction.",
+  "contrastive representation learning with VICReg regularization to address cross-cohort distributional shift"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1301263",
+ "screen": {
+  "id": "epmc:PPR1301263",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "domain adaptation and preprocessing choices for cross-cohort transfer",
+  "user": "none",
+  "reason": "Empirical study evaluating cross-cohort validation, concept drift, and domain adaptation practices to address distributional shift in clinical risk prediction models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "cross-cohort validation and domain adaptation for drift mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1301263",
+   "empirical": 0.96,
+   "tests_practice": 0.06,
+   "real_deployment": 0.03
+  }
+ }
+}

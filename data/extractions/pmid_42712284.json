@@ -1,0 +1,289 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 160,
+   "sample_unit": "AI-generated clinical summaries",
+   "models_evaluated": [
+    "Heidi Free (Heidi Health)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "hazard_present",
+     "outcome": "Ambient scribe summary errors under perturbed audio (distance, background noise, informational noise)",
+     "effect": "Errors increased for all noise types and levels, mainly omissions; at 4.5 m all facts omitted; toddler and heavy rain most deleterious; informational noise largely rejected.",
+     "quote": "Errors increased for all noise levels and noise types, principally being omissions."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "tests_guardrail",
+     "finding": "hazard_present",
+     "outcome": "Scribe note hallucinations, omissions, and inclusions relative to ground-truth summary",
+     "effect": "Baseline about 0.5 hallucinations and one omission per consultation under ideal audio; omissions were most prevalent error; hallucinations infrequent but occurred with acoustic noise.",
+     "quote": "We have observed that the commercial CAIS produces on average around 0.5 hallucinations and one omission per consultation under ideal audio conditions."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "hazard_present",
+     "outcome": "Scribe accuracy under simulated primary care conditions with varied microphones and noise",
+     "effect": "Accuracy degraded with microphone distance and background noise; laptop microphone worst; complete information loss at 4.5 m.",
+     "quote": "At 4.5 m from the consultation, for all microphones tested, all facts were omitted."
+    }
+   ],
+   "unlisted_practices": [
+    "Optimise microphone type and placement (dedicated microphone within 1 m, avoid integrated laptop microphones) for ambient scribes",
+    "Minimise background noise such as toddler speech and heavy rain during scribe-recorded consultations"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 160,
+   "sample_unit": "clinical summaries",
+   "models_evaluated": [
+    "Heidi Free (Heidi Health)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "scribe robustness under realistic audio perturbations",
+     "effect": "At 4.5 m from the consultation, all microphones omitted all facts.",
+     "quote": "At 4.5 m from the consultation, for all microphones tested, all facts were omitted."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "unreliable summaries from poor audio input",
+     "effect": "+5 dB background noise led to degraded accuracy and incomplete clinical summaries.",
+     "quote": "At this highest level of noise, the AI system struggled to isolate the clinician\u2019s and patient\u2019s speech, leading to degraded accuracy and incomplete clinical summaries."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI scribe omissions and hallucinations",
+     "effect": "Under ideal audio, the CAIS produced around 0.5 hallucinations and one omission per consultation.",
+     "quote": "We have observed that the commercial CAIS produces on average around 0.5 hallucinations and one omission per consultation under ideal audio conditions."
+    }
+   ],
+   "unlisted_practices": [
+    "Optimising microphone placement for clinical AI scribes, including dedicated microphones within 1 m and avoiding integrated laptop microphones.",
+    "Minimising specific acoustic background noises, such as toddler chatter and heavy rain, during AI-scribed consultations."
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "GBR",
+   "sample_size": 160,
+   "sample_unit": "clinical summaries",
+   "models_evaluated": [
+    "Heidi Free"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinical summary accuracy under acoustic and informational noise",
+     "effect": "Summary error rate, especially omissions, increased notably with acoustic noise; all facts were omitted at 4.5 m distance, and noise at +5 dB significantly degraded accuracy (p=0.0055).",
+     "quote": "The CAIS generally excelled at capturing a doctor-patient consultation and producing accurate clinical summaries; however, error rate (especially omissions) increased notably when acoustic noise was introduced."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ambient scribe omission and hallucination errors",
+     "effect": "CAIS produced ~0.5 hallucinations and 1 omission per consultation under ideal conditions; errors increased across noise levels and types, principally omissions, with all facts omitted at 4.5 m.",
+     "quote": "Errors increased for all noise levels and noise types, principally being omissions."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "clinical summaries",
+ "sample_size": 160,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Heidi Free",
+  "Heidi Free (Heidi Health)"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "scribe robustness under realistic audio perturbations",
+   "effect": "At 4.5 m from the consultation, all microphones omitted all facts.",
+   "quote": "At 4.5 m from the consultation, for all microphones tested, all facts were omitted.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI scribe omissions and hallucinations",
+   "effect": "Under ideal audio, the CAIS produced around 0.5 hallucinations and one omission per consultation.",
+   "quote": "We have observed that the commercial CAIS produces on average around 0.5 hallucinations and one omission per consultation under ideal audio conditions.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "unreliable summaries from poor audio input",
+   "effect": "+5 dB background noise led to degraded accuracy and incomplete clinical summaries.",
+   "quote": "At this highest level of noise, the AI system struggled to isolate the clinician\u2019s and patient\u2019s speech, leading to degraded accuracy and incomplete clinical summaries.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Minimise background noise such as toddler speech and heavy rain during scribe-recorded consultations",
+  "Minimising specific acoustic background noises, such as toddler chatter and heavy rain, during AI-scribed consultations.",
+  "Optimise microphone type and placement (dedicated microphone within 1 m, avoid integrated laptop microphones) for ambient scribes",
+  "Optimising microphone placement for clinical AI scribes, including dedicated microphones within 1 m and avoiding integrated laptop microphones."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42712284",
+ "screen": {
+  "id": "pmid:42712284",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "microphone type and placement and noise control for ambient AI scribe",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates how acoustic and informational environmental conditions (microphone distance/type and background noise), which are operational deployment considerations, affect the accuracy of ambient clinical AI documentation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "microphone positioning and acoustic environment management"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42712284",
+   "empirical": 0.97,
+   "tests_practice": 0.06,
+   "real_deployment": 0.06
+  }
+ }
+}

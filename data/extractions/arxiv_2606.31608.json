@@ -1,0 +1,94 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "unspecified",
+ "sample_size": 40,
+ "sample_unit": "rare diagnostic cases (200 reasoning traces; 5,600 expert-physician annotations)",
+ "models_evaluated": [
+  "GPT-4o-mini",
+  "HuatuoGPT-o1"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Diagnostic accuracy under progressive information masking and reasoning-to-output mismatch versus expert annotations",
+   "effect": "GPT-4o-mini accuracy dropped from 95.0% to 32.5% under information scarcity; 68.6% reasoning-to-output mismatch; standalone automated evaluations can substantially overestimate clinical reliability.",
+   "quote": "These results suggest that standalone automated clinical evaluations can substantially overestimate clinical reliability without expert-grounded validation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether LLM-as-a-Judge approvals agree with human-verified clinically incorrect outputs",
+   "effect": "On a human-verified failure set (n=142), GPT-4o-mini approved 47.9% of clinically incorrect outputs; HuatuoGPT-o1 approved all validly scored failures and showed positive self-preference bias.",
+   "quote": "GPT-4o-mini approved 47.9% of clinically incorrect outputs, while HuatuoGPT-o1 approved all validly scored failures and showed a positive self-preference bias.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Progressive information masking to stress-test LLM diagnostic reasoning",
+  "Evaluating reasoning traces separately from final answers to detect reasoning-to-output mismatch"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2606.31608",
+ "screen": {
+  "id": "arxiv:2606.31608",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically assesses LLM clinical reasoning and evaluates the reliability of deployment validation methods (specifically comparing automated LLM-as-a-judge evaluation against human-expert clinical review).",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "expert-grounded human-in-the-loop validation vs automated LLM-as-a-judge evaluation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2606.31608",
+   "empirical": 0.95,
+   "tests_practice": 0.47,
+   "real_deployment": 0.05
+  }
+ }
+}

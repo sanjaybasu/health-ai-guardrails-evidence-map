@@ -1,0 +1,83 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "benchmark scenarios (3 XAI methods x 2 models x 2 datasets)",
+ "models_evaluated": [
+  "VGG-19",
+  "ResNet-50",
+  "Saliency Map",
+  "Grad-CAM",
+  "Integrated Gradients"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R104",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Overlap (IoU, DSC) between XAI explanations and radiologist-delineated pneumothorax lesions, baseline versus template-guided",
+   "effect": "Template guidance improved baseline XAI in all 12 scenarios; average incremental improvement was 97.8% in IoU and 94.1% in DSC, indicating baseline explanations often diverged from true lesion areas.",
+   "quote": "The proposed approach consistently improved baseline XAI methods across twelve benchmark scenarios built on three XAI methods, two DL models, and two datasets.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Template-guided filtering of post hoc XAI saliency maps using radiologist lesion-derived clinical knowledge"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:38862083",
+ "screen": {
+  "id": "pmid:38862083",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study tests a post-processing safeguard/practice (superimposing a clinical domain template onto XAI heatmaps to filter out extraneous explanations) across existing DL models and XAI methods on benchmark datasets.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "post-hoc explanation filtering using clinical templates"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38862083",
+   "empirical": 0.91,
+   "tests_practice": 0.42,
+   "real_deployment": 0.05
+  }
+ }
+}

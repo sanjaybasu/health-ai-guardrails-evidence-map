@@ -1,0 +1,347 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 25,
+   "sample_unit": "trials per model (5 vignettes x 5 trials each)",
+   "models_evaluated": [
+    "ChatGPT-3.5",
+    "ChatGPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Reproducibility of scores and reasoning across repeated ChatGPT runs on the same vignette",
+     "effect": "Total scores varied less across ChatGPT trials than between human experts for most vignettes; ChatGPT-3.5 ranged 10-15 on vignette 4. Cited sentences sometimes varied despite identical totals.",
+     "quote": "Interestingly, while the ChatGPT models may assign the same total score across multiple trials of the same vignette, the sentences from the vignette used to justify its decisions sometimes varied (see Multimedia Appendix 3 for more details)."
+    },
+    {
+     "rec_id": "R063",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether prompt constraints keep LLM to published scoring actions and prevent unvetted medical advice",
+     "effect": "With the modified prompt restricting output to the 2 published actions, both models returned tabular responses and followed the published scoring interpretations. Before this, ChatGPT-4 omitted recommended next steps.",
+     "quote": "With the modified prompts, both ChatGPT-3.5 and ChatGPT-4 models successfully returned responses in the required tabular format, and each accurately followed the scoring interpretations consistent with the instruction in the published Sour Seven Questionnaire form."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and consistency of outputs before vs after iterative prompt optimization",
+     "effect": "After prompt optimization, ChatGPT-3.5 corrected cutoff misapplication; both models kept consistent scoring, with ChatGPT-4 less variable. One total miscalculation (17 vs 15) and one score of 7 vs 13 remained in ChatGPT-3.5.",
+     "quote": "A substantial change was observed in ChatGPT-3.5, which rectified its earlier issue of misapplying scoring cutoff points and began to correctly implement them in its evaluations."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Arithmetic and cutoff errors in ChatGPT scoring of the Sour Seven",
+     "effect": "ChatGPT-3.5 used an out-of-range cutoff of 12 for a total of 15, sometimes used the wrong cutoff, and omitted explicit totals. After optimization it totaled 17 instead of 15.",
+     "quote": "However, an instance of total score miscalculation was noted, where ChatGPT-3.5 incorrectly totaled item scores to 17 instead of the correct 15."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model handling of absent information for scored items",
+     "effect": "For items not positive, ChatGPT-3.5 did not always give an explicit 'No', sometimes answering 'Not specified in the scenario. Score of 0'; ChatGPT-4 assigned intermediate scores of 1 for uncertain items where only 0 or 2 were allowed.",
+     "quote": "However, when ChatGPT-3.5 determined a Sour Seven item was \u201cnot positive,\u201d it did not always include an explicit \u201cNo\u201d in the response (eg, \u201cNot specified in the scenario. Score of 0\u201d)."
+    }
+   ],
+   "unlisted_practices": [
+    "Content-specific training of ChatGPT on the source validation article as a primer to teach a standardized assessment tool",
+    "Mandating structured tabular output format via prompt to standardize reporting"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 5,
+   "sample_unit": "clinical case vignettes",
+   "models_evaluated": [
+    "ChatGPT-3.5",
+    "ChatGPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "learning a validated assessment tool",
+     "effect": "Baseline lacked Sour Seven knowledge; after content-specific training, ChatGPT described the questionnaire and scoring criteria.",
+     "quote": "After training, ChatGPT was able to describe the Sour Seven Questionnaire ( Textbox 1 ) and its scoring criteria ( Textbox 2 ) in response to the validation prompts."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "contextual reasoning errors in scoring",
+     "effect": "In 2/5 cases, ChatGPT used extra sentences not used by human experts for positive Sour Seven scores.",
+     "quote": "However, in 2 out of the 5 cases (vignettes 2 and 4), ChatGPT models used one extra sentence in each case to inform positive Sour Seven scores that were not used by any human experts."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "reproducibility across repeated runs",
+     "effect": "After prompt optimization, ChatGPT-3.5 scored case 4 as 7 once and 13 in the other 4 instances.",
+     "quote": "ChatGPT-3.5 showed one instance of case 4 where it generated a score of 7 where the other 4 instances generated a score of 13."
+    },
+    {
+     "rec_id": "R526",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "delirium escalation recommendation",
+     "effect": "Modified prompts made both models follow Sour Seven scoring interpretations, including specified follow-up actions for delirium.",
+     "quote": "With the modified prompts, both ChatGPT-3.5 and ChatGPT-4 models successfully returned responses in the required tabular format, and each accurately followed the scoring interpretations consistent with the instruction in the published Sour Seven Questionnaire form."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt optimization to force binary Yes/No scoring for a standardized assessment form.",
+    "Numbering vignette sentences and requiring sentence-number citations for each scored item.",
+    "Mandating a tabular output format matching the human expert evaluation form."
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 5,
+   "sample_unit": "vignettes",
+   "models_evaluated": [
+    "ChatGPT-3.5",
+    "ChatGPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output reproducibility across repeated runs",
+     "effect": "Across repeated trials for case 4, ChatGPT-3.5 generated a score of 7 in one trial and 13 in the other 4 trials.",
+     "quote": "ChatGPT-3.5 showed one instance of case 4 where it generated a score of 7 where the other 4 instances generated a score of 13."
+    }
+   ],
+   "unlisted_practices": [
+    "Iterative prompt engineering to standardize scoring criteria and output format",
+    "In-context feeding of clinical assessment instrument documentation to prime model knowledge"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "United States",
+ "sample_unit": "trials per model (5 vignettes x 5 trials each)",
+ "sample_size": 5,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ChatGPT-3.5",
+  "ChatGPT-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "reproducibility across repeated runs",
+   "effect": "After prompt optimization, ChatGPT-3.5 scored case 4 as 7 once and 13 in the other 4 instances.",
+   "quote": "ChatGPT-3.5 showed one instance of case 4 where it generated a score of 7 where the other 4 instances generated a score of 13.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of scores and reasoning across repeated ChatGPT runs on the same vignette",
+   "effect": "Total scores varied less across ChatGPT trials than between human experts for most vignettes; ChatGPT-3.5 ranged 10-15 on vignette 4. Cited sentences sometimes varied despite identical totals.",
+   "quote": "Interestingly, while the ChatGPT models may assign the same total score across multiple trials of the same vignette, the sentences from the vignette used to justify its decisions sometimes varied (see Multimedia Appendix 3 for more details).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R063",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R526",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Content-specific training of ChatGPT on the source validation article as a primer to teach a standardized assessment tool",
+  "In-context feeding of clinical assessment instrument documentation to prime model knowledge",
+  "Iterative prompt engineering to standardize scoring criteria and output format",
+  "Iterative prompt optimization to force binary Yes/No scoring for a standardized assessment form.",
+  "Mandating a tabular output format matching the human expert evaluation form.",
+  "Mandating structured tabular output format via prompt to standardize reporting",
+  "Numbering vignette sentences and requiring sentence-number citations for each scored item."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39353189",
+ "screen": {
+  "id": "pmid:39353189",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "iterative prompt engineering guardrails (structured scoring and output format constraints)",
+  "user": "none",
+  "reason": "The study tests whether iterative prompt engineering and structured prompt constraints (e.g. strict Yes/No scoring, tabular output formatting) optimize an LLM's diagnostic assessment and scoring of delirium vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39353189",
+   "empirical": 0.91,
+   "tests_practice": 0.09,
+   "real_deployment": 0.03
+  }
+ }
+}

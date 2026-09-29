@@ -1,0 +1,116 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "speech_ambient"
+ ],
+ "country": "Not reported",
+ "sample_size": 2302,
+ "sample_unit": "scripted consultation sessions (end-to-end arm; 385 in intrinsic arm)",
+ "models_evaluated": [
+  "ambient AI scribe (ASR plus LLM note generation)",
+  "LLM raters (three)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "77 languages including high-, medium-, and low-resource languages"
+ ],
+ "links": [
+  {
+   "rec_id": "R270",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "End-to-end serious note error incidence by language resource tier",
+   "effect": "End-to-end serious errors rose with language scarcity (high 7%, medium 10%, low 15%; OR 1.54 per tier, 95% CI 1.15-2.07; p=0.004), whereas intrinsic note generation showed no detectable language gradient.",
+   "quote": "End-to-end serious errors rose steeply with complexity (L1 1% to L4/L5 24%) and language scarcity (high 7%, medium 10%, low 15%; OR 1.54 per tier, 95% CI 1.15-2.07; p=0.004, GEE clustered on language).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Serious errors, including ASR-derived and note-originated, in ambient scribe notes",
+   "effect": "Intrinsic serious-error rate 3.4%; of serious in-note errors in end-to-end, 87% ASR-derived and 7% note-originated; amplification exceeded correction threefold.",
+   "quote": "Of serious in-note errors, 87% were ASR-derived and 7% note-originated; amplification exceeded correction threefold (fate entropy 1.19 bits).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether component-level performance predicts end-to-end note risk",
+   "effect": "Low serious-error rates in individual layers (3.4% intrinsic) did not preclude higher end-to-end note risk (up to 24% at L4/L5); component-level metrics could not fully capture risk.",
+   "quote": "Low serious-error rates in individual layers did not preclude higher end-to-end note risk.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Reproducibility of note generation across repeated runs",
+   "effect": "Repeated generation showed moderate reproducibility (Fleiss kappa 0.42).",
+   "quote": "Repeated generation showed moderate reproducibility (Fleiss kappa 0.42); word error rate explained 24% of cross-language variance versus \u223c1% for transcription risk density.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Evaluating end-to-end clinician-facing note rather than component-level metrics alone",
+  "Root-cause taxonomy attributing note errors to ASR versus note-generation origin"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1326196",
+ "screen": {
+  "id": "epmc:PPR1326196",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Empirical benchmarking study evaluating clinical safety risk across components (ASR vs. LLM note generation) and end-to-end performance of a multilingual ambient scribe, but does not test an organizational deployment practice or safeguard.",
+  "jev": {
+   "id": "epmc:PPR1326196",
+   "empirical": 0.97,
+   "tests_practice": 0.05,
+   "real_deployment": 0.05
+  }
+ }
+}

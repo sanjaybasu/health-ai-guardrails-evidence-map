@@ -1,0 +1,288 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Switzerland",
+   "sample_size": 516,
+   "sample_unit": "M-scans (258 real OoD and 258 in-distribution) in the real-OoD test; 2,000 M-scans in the simulated-corruption test",
+   "models_evaluated": [
+    "MahaAD (EfficientNet-B0)",
+    "Supervised OoD classifier",
+    "Glow",
+    "Uncertainty (entropy)",
+    "Raw-MahaAD",
+    "SNR",
+    "No-rejection baseline",
+    "1D U-Net retinal detection model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether OoD detector before the distance-estimation model maintains downstream MAE under input corruption",
+     "effect": "MahaAD outperformed all baselines, with MAE staying almost constant across perturbation ratios up to 0.9; it also outperformed the other baselines on real OoD samples.",
+     "quote": "MahaAD outperformed all baselines, with its MAE staying almost constant for all the perturbation ratios (Fig. 5 )."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Downstream model performance on corrupted or out-of-distribution input data without detection",
+     "effect": "Without rejection, corrupted A-scans are processed by the retinal network, and the Raw-MahaAD, Glow, Uncertainty, and SNR detectors underperformed the No-rejection baseline.",
+     "quote": "Raw-MahaAD , Glow , Uncertainty , and SNR underperformed compared to No-rejection , suggesting that they flag a large proportion of correct samples as OoD while allowing corrupted A-scans to be processed by the subsequent retinal network."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Retinal model robustness to perturbed inputs not seen in training",
+     "effect": "The model was robust only to variability in its training set. Eight synthetic corruption types were used to stress the pipeline, and the OoD detector was needed to maintain MAE.",
+     "quote": "At inference time, the retinal detection model r is robust to the types of A-scan variability learned from the training set"
+    }
+   ],
+   "unlisted_practices": [
+    "Unsupervised Mahalanobis-distance out-of-distribution detection to reject corrupted sensor inputs in robotic surgery"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "not reported",
+   "sample_size": 2516,
+   "sample_unit": "test M-scans",
+   "models_evaluated": [
+    "MahaAD",
+    "Supervised EfficientNet-B0 OoD detector",
+    "Glow",
+    "Uncertainty",
+    "Raw-MahaAD",
+    "SNR",
+    "No-rejection baseline",
+    "1D U-Net-like retinal detection model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "OoD detection and distance-estimation MAE",
+     "effect": "On 2,000 annotated M-scans with p=0\u20130.9 corruptions, MahaAD kept MAE almost constant and outperformed all baselines; on 258 real OoD plus 258 in-distribution M-scans, it outperformed baselines.",
+     "quote": "MahaAD outperformed all baselines, with its MAE staying almost constant for all the perturbation ratios (Fig. 5 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance versus no-rejection baseline",
+     "effect": "Raw-MahaAD, Glow, Uncertainty, and SNR underperformed No-rejection; Uncertainty and SNR showed poor behavior at perturbation ratios as low as 0.2.",
+     "quote": "Raw-MahaAD , Glow , Uncertainty , and SNR underperformed compared to No-rejection , suggesting that they flag a large proportion of correct samples as OoD while allowing corrupted A-scans to be processed by the subsequent retinal network."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 2000,
+   "sample_unit": "M-scans",
+   "models_evaluated": [
+    "MahaAD",
+    "Supervised",
+    "Glow",
+    "Uncertainty",
+    "Raw-MahaAD",
+    "SNR",
+    "1D U-Net"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Downstream retinal distance estimation error under corruptions",
+     "effect": "MahaAD maintained distance estimation MAE nearly constant across corruption ratios from 0 to 0.9, outperforming no-rejection, while baselines like Uncertainty and SNR degraded at perturbation ratios as low as 0.2.",
+     "quote": "MahaAD outperformed all baselines, with its MAE staying almost constant for all the perturbation ratios (Fig. 5 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Switzerland",
+ "sample_unit": "M-scans (258 real OoD and 258 in-distribution) in the real-OoD test; 2,000 M-scans in the simulated-corruption test",
+ "sample_size": 2000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "1D U-Net",
+  "1D U-Net retinal detection model",
+  "1D U-Net-like retinal detection model",
+  "Glow",
+  "MahaAD",
+  "MahaAD (EfficientNet-B0)",
+  "No-rejection baseline",
+  "Raw-MahaAD",
+  "SNR",
+  "Supervised",
+  "Supervised EfficientNet-B0 OoD detector",
+  "Supervised OoD classifier",
+  "Uncertainty",
+  "Uncertainty (entropy)"
+ ],
+ "links": [
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether OoD detector before the distance-estimation model maintains downstream MAE under input corruption",
+   "effect": "MahaAD outperformed all baselines, with MAE staying almost constant across perturbation ratios up to 0.9; it also outperformed the other baselines on real OoD samples.",
+   "quote": "MahaAD outperformed all baselines, with its MAE staying almost constant for all the perturbation ratios (Fig. 5 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R363",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Downstream model performance on corrupted or out-of-distribution input data without detection",
+   "effect": "Without rejection, corrupted A-scans are processed by the retinal network, and the Raw-MahaAD, Glow, Uncertainty, and SNR detectors underperformed the No-rejection baseline.",
+   "quote": "Raw-MahaAD , Glow , Uncertainty , and SNR underperformed compared to No-rejection , suggesting that they flag a large proportion of correct samples as OoD while allowing corrupted A-scans to be processed by the subsequent retinal network.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Unsupervised Mahalanobis-distance out-of-distribution detection to reject corrupted sensor inputs in robotic surgery"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37133678",
+ "screen": {
+  "id": "pmid:37133678",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "out-of-distribution input detection as a safeguard",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests an unsupervised out-of-distribution (OoD) detection guardrail to filter invalid/corrupted inputs before they reach a machine-learning distance estimation model in robotically guided surgery.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "out-of-distribution input detection guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37133678",
+   "empirical": 0.93,
+   "tests_practice": 0.41,
+   "real_deployment": 0.05
+  }
+ }
+}

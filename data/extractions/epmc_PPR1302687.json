@@ -1,0 +1,251 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Brazil",
+   "sample_size": 500,
+   "sample_unit": "clinical queries",
+   "models_evaluated": [
+    "BM25",
+    "dense retrieval",
+    "hybrid retrieval with Reciprocal Rank Fusion"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Portuguese"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correct citations with deterministic citation verification versus prompt-based citation",
+     "effect": "Deterministic citation verification eliminated hallucinated references: 461/500 correct vs. 1/500 for prompt-based (Fisher's exact p < 0.001).",
+     "quote": "Deterministic citation verification eliminates hallucinated references entirely (461/500 correct vs. 1/500 for prompt-based, Fisher's exact p < 0.001)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-annotator agreement between two independent LLM judges on clinical relevance",
+     "effect": "Kappa = 0.954 between two independent LLM judges, validating automated evaluation methodology for Portuguese medical text.",
+     "quote": "(4) inter-annotator agreement for clinical relevance judgments between two independent LLM judges reaches kappa = 0.954, validating automated evaluation methodology for Portuguese medical text."
+    }
+   ],
+   "unlisted_practices": [
+    "Hybrid BM25 plus dense retrieval with Reciprocal Rank Fusion for clinical RAG in Portuguese",
+    "Authority-weighted scoring of retrieved documents by evidence hierarchy"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 500,
+   "sample_unit": "clinical queries",
+   "models_evaluated": [
+    "BM25",
+    "dense retrieval",
+    "hybrid retrieval with Reciprocal Rank Fusion (RRF)",
+    "deterministic citation verification",
+    "prompt-based citation verification"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Portuguese"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "citation verification correctness",
+     "effect": "461/500 correct for deterministic citation verification vs. 1/500 for prompt-based; Fisher's exact p < 0.001.",
+     "quote": "Deterministic citation verification eliminates hallucinated references entirely (461/500 correct vs. 1/500 for prompt-based, Fisher's exact p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Use hybrid BM25 plus dense retrieval with Reciprocal Rank Fusion for Portuguese clinical RAG.",
+    "Evaluate authority-weighted scoring by ranking quality rather than coverage metrics.",
+    "Use independent LLM judges for automated clinical relevance judgments in Portuguese medical text."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Latin America",
+   "sample_size": 500,
+   "sample_unit": "clinical queries",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Portuguese"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "hallucinated references in citations",
+     "effect": "461/500 correct with deterministic citation verification vs. 1/500 for prompt-based (Fisher's exact p < 0.001)",
+     "quote": "Deterministic citation verification eliminates hallucinated references entirely (461/500 correct vs. 1/500 for prompt-based, Fisher's exact p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Hybrid retrieval combining sparse (BM25) and dense retrieval with Reciprocal Rank Fusion",
+    "Authority-weighted scoring in clinical document retrieval",
+    "Automated evaluation of clinical relevance using independent LLM judges"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Brazil",
+ "sample_unit": "clinical queries",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Portuguese"
+ ],
+ "models_evaluated": [
+  "BM25",
+  "dense retrieval",
+  "deterministic citation verification",
+  "hybrid retrieval with Reciprocal Rank Fusion",
+  "hybrid retrieval with Reciprocal Rank Fusion (RRF)",
+  "prompt-based citation verification"
+ ],
+ "links": [
+  {
+   "rec_id": "R487",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Correct citations with deterministic citation verification versus prompt-based citation",
+   "effect": "Deterministic citation verification eliminated hallucinated references: 461/500 correct vs. 1/500 for prompt-based (Fisher's exact p < 0.001).",
+   "quote": "Deterministic citation verification eliminates hallucinated references entirely (461/500 correct vs. 1/500 for prompt-based, Fisher's exact p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Authority-weighted scoring in clinical document retrieval",
+  "Authority-weighted scoring of retrieved documents by evidence hierarchy",
+  "Automated evaluation of clinical relevance using independent LLM judges",
+  "Evaluate authority-weighted scoring by ranking quality rather than coverage metrics.",
+  "Hybrid BM25 plus dense retrieval with Reciprocal Rank Fusion for clinical RAG in Portuguese",
+  "Hybrid retrieval combining sparse (BM25) and dense retrieval with Reciprocal Rank Fusion",
+  "Use hybrid BM25 plus dense retrieval with Reciprocal Rank Fusion for Portuguese clinical RAG.",
+  "Use independent LLM judges for automated clinical relevance judgments in Portuguese medical text."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1302687",
+ "screen": {
+  "id": "epmc:PPR1302687",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "deterministic citation verification and hybrid retrieval grounding",
+  "user": "none",
+  "reason": "Evaluates RAG retrieval architectures and specifically tests deterministic citation verification to prevent hallucinated references compared to prompt-based retrieval grounding.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "deterministic citation verification and hybrid retrieval grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1302687",
+   "empirical": 0.9,
+   "tests_practice": 0.62,
+   "real_deployment": 0.07
+  }
+ }
+}

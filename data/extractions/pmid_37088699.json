@@ -1,0 +1,90 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Hong Kong",
+ "sample_size": 1372,
+ "sample_unit": "non-contrast head CT scans",
+ "models_evaluated": [
+  "Custom AI model for intracranial haemorrhage detection trained on open-access RSNA-type CT slice dataset"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Diagnostic accuracy of ICH detection AI on local institutional historical CT scans vs reference standard",
+   "effect": "AUC 0.842 (95% CI 0.791-0.894); at \u226550% threshold 73% sensitivity, 79% specificity, 18.6% PPV, 97.8% NPV, 78.6% accuracy on 1372 local scans (6.1% ICH).",
+   "quote": "The model achieved an area under the curve of 0.842 (95% confidence interval=0.791-0.894; P<0.001) for scan-based detection of ICH.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "False-negative scans before vs after manual review of model-nominated CT slices",
+   "effect": "22 false-negative scans reduced to six false-negative scans by manual review of the five model-nominated slices.",
+   "quote": "There were 62 true-positive scans and 22 false-negative scans, which could be reduced to six false-negative scans by manual review of model-nominated CT slices.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:37088699",
+ "screen": {
+  "id": "pmid:37088699",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study validates an ICH detection algorithm on retrospective institutional data and specifically evaluates the effect of manual clinician review of model-nominated candidate slices on reducing false negatives.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "clinician manual review of top model-nominated slices"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37088699",
+   "empirical": 0.97,
+   "tests_practice": 0.78,
+   "real_deployment": 0.06
+  }
+ }
+}

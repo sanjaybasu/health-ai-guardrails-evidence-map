@@ -1,0 +1,76 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 301,
+ "sample_unit": "EHR questions",
+ "models_evaluated": [
+  "claude-sonnet-4-6",
+  "gpt-4o",
+  "gpt-5.4-2026-03-05"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM accuracy on clinician-generated EHR questions by reasoning hop count",
+   "effect": "Accuracy declined monotonically with hop count across all three models: Claude Sonnet 30.6% to 17.6%, GPT-4o 37.8% to 14.7%, GPT-5.4 37.8% to 23.5%.",
+   "quote": "All three models, spanning two providers and two OpenAI generations (GPT-4 and GPT-5), show monotone accuracy decline with hop count: Claude Sonnet zero-shot falls from 30.6% (hop=1) to 17.6% (hop=4) (Cochran-Armitage z=-2.30, p=0.011; OR per hop 0.72, 95% CI [0.56,0.92], p=0.008); GPT-4o replicates this (37.8% to 14.7%; OR 0.58 [0.45,0.75], p<0.001); and gpt-5.4-2026-03-05 confirms it (37.8% to 23.5%; OR 0.80 [0.66,0.98], p=0.027).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Stratifying deployment risk of clinical LLMs by compositional reasoning depth (hop count) of the task",
+  "Extended thinking/reasoning mode to mitigate multi-step reasoning errors (did not significantly flatten accuracy-depth curve)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2606.16890",
+ "screen": {
+  "id": "arxiv:2606.16890",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates LLM performance across reasoning depth/hop count on an EHR question answering benchmark dataset (MedAlign) without testing an organizational deployment practice or guardrail.",
+  "jev": {
+   "id": "arxiv:2606.16890",
+   "empirical": 0.95,
+   "tests_practice": 0.12,
+   "real_deployment": 0.04
+  }
+ }
+}

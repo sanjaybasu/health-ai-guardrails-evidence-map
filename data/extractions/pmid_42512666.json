@@ -1,0 +1,359 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Taiwan",
+   "sample_size": 70,
+   "sample_unit": "de-identified admission notes (each run 3 times per model and condition; 1260 inferences)",
+   "models_evaluated": [
+    "Llama3-Med42-8B",
+    "Meta-Llama-3-8B-Instruct",
+    "Mistral-7B-Instruct-v0.3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Run-to-run stability and parse validity across repeated runs and message-format variation",
+     "effect": "Mistral free-text JSON: 17/70 notes had at least one final failure and 10 had variable status across runs; embedded-user format raised first-attempt invalid outputs 7.9% vs 1.7% (55/700 vs 12/700).",
+     "quote": "The variable outcomes observed for Mistral-7B-Instruct-v0.3 under the free-text JSON prompt show that single-run evaluation may underestimate operational instability."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Parse/schema failures with free-text JSON prompt versus schema-enforced structured output",
+     "effect": "Schema enforcement produced 70/70 first-pass valid outputs for all three models in all runs; Mistral final failures fell significantly (p < 0.001) versus 18.6-21.4% persistent failures under free-text.",
+     "quote": "In contrast, under the schema-enforced structured-output condition, all three models produced 70 of 70 first-pass valid and schema-compliant outputs in all three runs."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Omission signals in LLM-edited notes: length ratio, numeric-token loss",
+     "effect": "Numeric-token preservation medians 42.9%, 33.3%, 70.0% under schema enforcement; Llama3-Med42-8B median length ratio 0.81, suggesting omitted content. No clinician adjudication.",
+     "quote": "Llama3-Med42-8B showed a consistent compression tendency, raising the possibility that revised notes may omit content from the original despite instructions not to alter clinical facts."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model behavior under local deployment conditions and chat-template constraints versus expectations",
+     "effect": "Same-size models differed substantially in structured-output stability under the identical local environment; embedded system instructions increased failures (persistent failure 5.0% vs 0.3%).",
+     "quote": "In this study, all three models were similar in size and were evaluated under the same local environment, yet their structured-output stability and documentation behavior differed substantially."
+    }
+   ],
+   "unlisted_practices": [
+    "Schema-enforced structured-output (constrained decoding) to guarantee parseable outputs",
+    "Placing system instructions in a separate system role rather than embedded in user message",
+    "Retry and fallback logic for failed structured outputs",
+    "Automated proxy-metric screening before clinician review (staged evaluation)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Taiwan",
+   "sample_size": 70,
+   "sample_unit": "admission notes",
+   "models_evaluated": [
+    "Llama3-Med42-8B",
+    "Meta-Llama-3-8B-Instruct",
+    "Mistral-7B-Instruct-v0.3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "repeated-run structured-output stability",
+     "effect": "Repeated runs found Mistral free-text variability: 10/70 notes (14.3%) had variable final status and 17/70 (24.3%) had at least one final parse/schema failure.",
+     "quote": "Under the free-text JSON prompt, Mistral-7B-Instruct-v0.3 had variable final status across runs for 10 of 70 notes (14.3%), at least one final parse/schema failure for 17 notes (24.3%), and consistent first-pass validity for 50 notes (71.4%)."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prompt message-format reliability",
+     "effect": "Embedded-user format had 55/700 first-attempt invalid outputs (7.9%) versus 12/700 (1.7%) with separate roles; persistent failures were 35/700 (5.0%) versus 2/700 (0.3%).",
+     "quote": "In the message-format sensitivity analysis, the embedded-user format produced 55 of 700 first-attempt invalid outputs (7.9%), compared with 12 of 700 outputs (1.7%) under the separate-role format."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model structured-output comparison",
+     "effect": "Free-text first-pass validity differed: Mistral 52\u201355/70 (74.3\u201378.6%), Llama3-Med42 67\u201368/70 (95.7\u201397.1%), Meta-Llama 68\u201369/70 (97.1\u201398.6%).",
+     "quote": "Under the free-text JSON prompt, the tested Mistral-7B-Instruct-v0.3/embedded-prompt configuration showed the weakest structured-output stability, producing first-pass valid and schema-compliant JSON for 52 to 55 of 70 notes per run (74.3\u201378.6%)."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "pre-deployment local workflow screening",
+     "effect": "Screening identified Mistral free-text failures for 17/70 notes; schema enforcement produced 70/70 first-pass valid outputs in all runs for all three models.",
+     "quote": "Proxy-based screening can identify structurally unstable model-prompt or model-format configurations before clinician review."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "numeric content preservation in generated notes",
+     "effect": "Schema-enforced median numeric-token deltas were \u22125, \u22128, and \u22122.5; median numeric-token preservation was 42.9%, 33.3%, and 70.0% by model.",
+     "quote": "In the schema-enforced condition, median numeric-token deltas were \u22125 for Llama3-Med42-8B, \u22128 for Meta-Llama-3-8B-Instruct, and \u22122.5 for Mistral-7B-Instruct-v0.3."
+    }
+   ],
+   "unlisted_practices": [
+    "Strict schema-enforced structured-output generation for JSON/schema compliance in clinical LLM pipelines",
+    "Automated retry after initial parse/schema failure for structured LLM outputs"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Taiwan",
+   "sample_size": 70,
+   "sample_unit": "admission notes",
+   "models_evaluated": [
+    "Llama3-Med42-8B",
+    "Meta-Llama-3-8B-Instruct",
+    "Mistral-7B-Instruct-v0.3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "run-to-run structured-output stability across repeated runs",
+     "effect": "Under free-text JSON, Mistral had variable status across runs for 10/70 notes (14.3%) and at least one final failure for 17/70 (24.3%); Llama3-Med42 had variable status for 7/70 (10.0%); Meta-Llama-3 had variable status for 4/70 (5.7%).",
+     "quote": "Under the free-text JSON prompt, Mistral-7B-Instruct-v0.3 had variable final status across runs for 10 of 70 notes (14.3%), at least one final parse/schema failure for 17 notes (24.3%), and consistent first-pass validity for 50 notes (71.4%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Schema enforcement (strict JSON schema / constrained decoding) for structured output generation",
+    "Prompt message formatting (separating system and user roles vs embedding system instructions in user message)"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Taiwan",
+ "sample_unit": "admission notes",
+ "sample_size": 70,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Llama3-Med42-8B",
+  "Meta-Llama-3-8B-Instruct",
+  "Mistral-7B-Instruct-v0.3"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Run-to-run stability and parse validity across repeated runs and message-format variation",
+   "effect": "Mistral free-text JSON: 17/70 notes had at least one final failure and 10 had variable status across runs; embedded-user format raised first-attempt invalid outputs 7.9% vs 1.7% (55/700 vs 12/700).",
+   "quote": "The variable outcomes observed for Mistral-7B-Instruct-v0.3 under the free-text JSON prompt show that single-run evaluation may underestimate operational instability.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model behavior under local deployment conditions and chat-template constraints versus expectations",
+   "effect": "Same-size models differed substantially in structured-output stability under the identical local environment; embedded system instructions increased failures (persistent failure 5.0% vs 0.3%).",
+   "quote": "In this study, all three models were similar in size and were evaluated under the same local environment, yet their structured-output stability and documentation behavior differed substantially.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "prompt message-format reliability",
+   "effect": "Embedded-user format had 55/700 first-attempt invalid outputs (7.9%) versus 12/700 (1.7%) with separate roles; persistent failures were 35/700 (5.0%) versus 2/700 (0.3%).",
+   "quote": "In the message-format sensitivity analysis, the embedded-user format produced 55 of 700 first-attempt invalid outputs (7.9%), compared with 12 of 700 outputs (1.7%) under the separate-role format.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "numeric content preservation in generated notes",
+   "effect": "Schema-enforced median numeric-token deltas were \u22125, \u22128, and \u22122.5; median numeric-token preservation was 42.9%, 33.3%, and 70.0% by model.",
+   "quote": "In the schema-enforced condition, median numeric-token deltas were \u22125 for Llama3-Med42-8B, \u22128 for Meta-Llama-3-8B-Instruct, and \u22122.5 for Mistral-7B-Instruct-v0.3.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "run-to-run structured-output stability across repeated runs",
+   "effect": "Under free-text JSON, Mistral had variable status across runs for 10/70 notes (14.3%) and at least one final failure for 17/70 (24.3%); Llama3-Med42 had variable status for 7/70 (10.0%); Meta-Llama-3 had variable status for 4/70 (5.7%).",
+   "quote": "Under the free-text JSON prompt, Mistral-7B-Instruct-v0.3 had variable final status across runs for 10 of 70 notes (14.3%), at least one final parse/schema failure for 17 notes (24.3%), and consistent first-pass validity for 50 notes (71.4%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated proxy-metric screening before clinician review (staged evaluation)",
+  "Automated retry after initial parse/schema failure for structured LLM outputs",
+  "Placing system instructions in a separate system role rather than embedded in user message",
+  "Prompt message formatting (separating system and user roles vs embedding system instructions in user message)",
+  "Retry and fallback logic for failed structured outputs",
+  "Schema enforcement (strict JSON schema / constrained decoding) for structured output generation",
+  "Schema-enforced structured-output (constrained decoding) to guarantee parseable outputs",
+  "Strict schema-enforced structured-output generation for JSON/schema compliance in clinical LLM pipelines"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42512666",
+ "screen": {
+  "id": "pmid:42512666",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "schema enforcement and prompt structuring",
+  "user": "none",
+  "reason": "Empirically tests a specific deployment safeguard/practice (schema enforcement vs free-text JSON prompting) on structured clinical note outputs using local LLMs.",
+  "jev": {
+   "id": "pmid:42512666",
+   "empirical": 0.96,
+   "tests_practice": 0.88,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,406 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 13,
+   "sample_unit": "NEJM headache case records",
+   "models_evaluated": [
+    "ChatGPT-5",
+    "ChatGPT-4o",
+    "DeepSeek-R1",
+    "Gemini 2.5 Pro",
+    "Grok-3",
+    "Hunyuan-T1",
+    "Qwen"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM recognition of red-flag/psychiatric comorbidity headache cases (C8, C11)",
+     "effect": "Cases C8 and C11 consistently received the lowest scores across models; authors describe a potentially dangerous 'red flag blindness' with reversion to common primary headache patterns.",
+     "quote": "LLMs performance was markedly lower for Cases C8 and C11, which consistently received the lowest scores among all cases."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of prompting strategy (sequential vs at-once) on LLM output quality",
+     "effect": "Sequential prompting raised supplementary value for 5 of 7 models (p=0.0004\u20130.0102); diagnostic accuracy differed by strategy only for Grok-3 (AO higher, p=0.0273).",
+     "quote": "In terms of diagnostic accuracy, only the Grok-3 model showed a significant difference between strategies, with the AO group scoring higher than the AS group ( p = 0.0273)."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Readability (FRE, FKGL) of LLM outputs across models and prompting strategies",
+     "effect": "Gemini 2.5 Pro had the highest FRE (p<0.0001 vs ChatGPT-4o and Hunyuan-T1 in AS); ChatGPT-4o had the highest FKGL (worst readability) in AS, significantly above four other models.",
+     "quote": "In the AS group, ChatGPT-4o produced significantly higher FKGL score compared with Deepseek-R1 ( p = 0.0004), Gemini 2.5 pro ( p < 0.0001), Hunyuan-T1 ( p = 0.0369), and Qwen ( p = 0.0032)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Comprehensiveness of LLM differential diagnoses and diagnostic accuracy on headache cases",
+     "effect": "All models performed poorly on comprehensiveness of differential diagnosis, with no significant differences across models; ChatGPT-4o exceeded Grok-3 on accuracy in AS (p=0.0488). Overall accuracy below expert level.",
+     "quote": "However, a major and consistent limitation across all models was their unsatisfactory performance in the comprehensiveness of differential diagnoses."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether LLM diagnostic performance suffices for standalone use versus adjunct decision support",
+     "effect": "Overall clinical accuracy remained below expert performance and insufficient for unsupervised clinical use; LLMs should serve as decision support rather than stand-alone diagnostic tools.",
+     "quote": "These findings emphasize that LLMs should be used as decision support tools rather than stand-alone diagnostic tools, especially in high-risk situations."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt strategy comparison (sequential vs single-prompt) for clinical case analysis"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 13,
+   "sample_unit": "NEJM headache cases",
+   "models_evaluated": [
+    "ChatGPT-5",
+    "ChatGPT-4o",
+    "Deepseek-R1",
+    "Gemini-2.5 pro",
+    "Grok-3",
+    "Hunyuan-T1",
+    "Qwen"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "inter-rater reliability of blinded specialist scoring",
+     "effect": "Three independent experts: ICC single 0.893 (95% CI, 0.882\u20130.903); averaged ratings 0.962 (95% CI, 0.957\u20130.965).",
+     "quote": "The ICC for single measurements was 0.893 (95% CI, 0.882\u20130.903), and the ICC for the average of the three raters was 0.962 (95% CI, 0.957\u20130.965), indicating good reliability for individual ratings and excellent reliability for the averaged ratings."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "sensitivity to prompting strategy",
+     "effect": "Grok-3 diagnostic accuracy higher with AO than AS (p = 0.0273); AS supplementary value higher for five models (p = 0.0004 to 0.0102).",
+     "quote": "In terms of diagnostic accuracy, only the Grok-3 model showed a significant difference between strategies, with the AO group scoring higher than the AS group ( p = 0.0273)."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "stand-alone LLM diagnosis in headache cases",
+     "effect": "Seven LLMs on 13 NEJM cases were insufficient for standalone clinical use, especially complex or atypical secondary headaches; diagnostic accuracy differed in AS (ChatGPT-4o > Grok-3, p = 0.0488).",
+     "quote": "In summary, although several LLMs show promise in selected aspects of headache case analysis, they remain insufficient for standalone clinical use, particularly in detecting complex or atypical secondary headaches where diagnostic precision is critical."
+    },
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "recognition of red-flag headache cases",
+     "effect": "Across 13 cases, C8 and C11 with psychiatric comorbidities or red flags consistently received the lowest scores, indicating \u201cred flag blindness.\u201d",
+     "quote": "The models\u2019 constantly poor results when there are psychiatric comorbidities or \u201cred flag\u201d symptoms (C8, C11) are very concerning, as they show a potentially dangerous \u201cred flag blindness\u201d."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "readability of generated clinical outputs",
+     "effect": "In AS, Gemini 2.5 pro FRE exceeded ChatGPT-4o (p < 0.0001), Deepseek-R1 (p = 0.0014), Grok-3 (p = 0.0218), and Hunyuan-T1 (p < 0.0001).",
+     "quote": "In the AS group, the Gemini 2.5 pro achieved significantly higher FRE scores than the ChatGPT-4o ( p < 0.0001), Deepseek-R1 ( p = 0.0014), Grok-3 ( p = 0.0218), and Hunyuan-T1 ( p < 0.0001)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "differential diagnosis completeness",
+     "effect": "All models performed poorly for comprehensiveness of differential diagnosis; no significant model differences were found (AS p = 0.3930, AO p = 0.7104).",
+     "quote": "Comparison of the comprehensiveness of differential diagnosis scores among the models shows that all models performed poorly."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM clinical accuracy and safety",
+     "effect": "Seven LLMs on 13 cases had overall clinical accuracy below expert performance and were not sufficient for unsupervised clinical use.",
+     "quote": "While some models improved supplementary value, diagnostic accuracy, or readability, overall clinical accuracy remains below expert performance and is not sufficient for unsupervised clinical use."
+    }
+   ],
+   "unlisted_practices": [
+    "Ask-in-sequence prompting versus ask-at-once prompting for headache case analysis"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 13,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "ChatGPT-5",
+    "ChatGPT-4o",
+    "DeepSeek-R1",
+    "Gemini-2.5 Pro",
+    "Grok-3",
+    "Hunyuan-T1",
+    "Qwen"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "differential diagnosis comprehensiveness and identification of secondary headaches",
+     "effect": "LLMs struggled to differentiate benign primary from secondary headaches, performing poorly on differential diagnosis comprehensiveness and red-flag cases",
+     "quote": "Our results highlight a significant problem in the current LLMs\u2014they cannot differentiate between benign primary headaches and more complicated or rare secondary headaches, which is a concerning shortfall when it comes to incorrectly identifying a secondary headache that can harm patient safety."
+    }
+   ],
+   "unlisted_practices": [
+    "sequential step-by-step prompting versus single-turn prompting"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "NEJM headache case records",
+ "sample_size": 13,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ChatGPT-4o",
+  "ChatGPT-5",
+  "DeepSeek-R1",
+  "Deepseek-R1",
+  "Gemini 2.5 Pro",
+  "Gemini-2.5 Pro",
+  "Gemini-2.5 pro",
+  "Grok-3",
+  "Hunyuan-T1",
+  "Qwen"
+ ],
+ "links": [
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM recognition of red-flag/psychiatric comorbidity headache cases (C8, C11)",
+   "effect": "Cases C8 and C11 consistently received the lowest scores across models; authors describe a potentially dangerous 'red flag blindness' with reversion to common primary headache patterns.",
+   "quote": "LLMs performance was markedly lower for Cases C8 and C11, which consistently received the lowest scores among all cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Readability (FRE, FKGL) of LLM outputs across models and prompting strategies",
+   "effect": "Gemini 2.5 Pro had the highest FRE (p<0.0001 vs ChatGPT-4o and Hunyuan-T1 in AS); ChatGPT-4o had the highest FKGL (worst readability) in AS, significantly above four other models.",
+   "quote": "In the AS group, ChatGPT-4o produced significantly higher FKGL score compared with Deepseek-R1 ( p = 0.0004), Gemini 2.5 pro ( p < 0.0001), Hunyuan-T1 ( p = 0.0369), and Qwen ( p = 0.0032).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Comprehensiveness of LLM differential diagnoses and diagnostic accuracy on headache cases",
+   "effect": "All models performed poorly on comprehensiveness of differential diagnosis, with no significant differences across models; ChatGPT-4o exceeded Grok-3 on accuracy in AS (p=0.0488). Overall accuracy below expert level.",
+   "quote": "However, a major and consistent limitation across all models was their unsatisfactory performance in the comprehensiveness of differential diagnoses.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether LLM diagnostic performance suffices for standalone use versus adjunct decision support",
+   "effect": "Overall clinical accuracy remained below expert performance and insufficient for unsupervised clinical use; LLMs should serve as decision support rather than stand-alone diagnostic tools.",
+   "quote": "These findings emphasize that LLMs should be used as decision support tools rather than stand-alone diagnostic tools, especially in high-risk situations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of prompting strategy (sequential vs at-once) on LLM output quality",
+   "effect": "Sequential prompting raised supplementary value for 5 of 7 models (p=0.0004\u20130.0102); diagnostic accuracy differed by strategy only for Grok-3 (AO higher, p=0.0273).",
+   "quote": "In terms of diagnostic accuracy, only the Grok-3 model showed a significant difference between strategies, with the AO group scoring higher than the AS group ( p = 0.0273).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "sensitivity to prompting strategy",
+   "effect": "Grok-3 diagnostic accuracy higher with AO than AS (p = 0.0273); AS supplementary value higher for five models (p = 0.0004 to 0.0102).",
+   "quote": "In terms of diagnostic accuracy, only the Grok-3 model showed a significant difference between strategies, with the AO group scoring higher than the AS group ( p = 0.0273).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Ask-in-sequence prompting versus ask-at-once prompting for headache case analysis",
+  "Prompt strategy comparison (sequential vs single-prompt) for clinical case analysis",
+  "sequential step-by-step prompting versus single-turn prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41914067",
+ "screen": {
+  "id": "pmid:41914067",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompting strategy (ask-in-sequence vs ask-at-once)",
+  "user": "none",
+  "reason": "The study empirically evaluates multiple LLMs on NEJM clinical headache cases and compares the impact of two deployment/prompting strategies (ask-in-sequence vs ask-at-once) on clinical reasoning and readability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompting strategy (ask-in-sequence vs ask-at-once)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41914067",
+   "empirical": 0.96,
+   "tests_practice": 0.07,
+   "real_deployment": 0.02
+  }
+ }
+}

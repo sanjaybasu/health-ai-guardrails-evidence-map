@@ -1,0 +1,90 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Nepal",
+ "sample_size": 824,
+ "sample_unit": "chest radiographs",
+ "models_evaluated": [
+  "DenseNet-121 (TorchXRayVision densenet121-res224-all)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Calibration of AI scores on local population (Brier score, ECE, score range)",
+   "effect": "Brier 0.3621 (null 0.0472), ECE 0.564; scores compressed to 0.52\u20130.72; discrimination preserved (AUROC 0.9583); threshold 0.6258 derived post hoc.",
+   "quote": "Brier score was 0.3621 (null Brier 0.0472) and ECE was 0.564, confirming calibration failure due to score compression (range 0.52\u20130.72) despite preserved discrimination.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Local diagnostic accuracy versus radiologist reference standard in prospective shadow-mode",
+   "effect": "Sensitivity 95.12%, specificity 77.2%, AUROC 0.9583, NPV 99.67%, PPV 17.89%; calibration failed despite preserved discrimination.",
+   "quote": "The DenseNet-121 algorithm demonstrated high sensitivity and excellent discrimination for chest radiograph triage in a Nepali health-assessment population, supporting its potential as a rule-out tool (NPV 99.67%).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1271672",
+ "screen": {
+  "id": "epmc:PPR1271672",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "This prospective shadow-mode study evaluated an off-the-shelf chest X-ray deep learning tool on live clinical data in Nepal, specifically measuring calibration drift/score compression and the role of shadow-mode pre-deployment validation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "shadow-mode testing and local calibration assessment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1271672",
+   "empirical": 0.98,
+   "tests_practice": 0.22,
+   "real_deployment": 0.91
+  }
+ }
+}

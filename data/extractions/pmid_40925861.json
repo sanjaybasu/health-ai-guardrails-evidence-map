@@ -1,0 +1,426 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "India",
+   "sample_size": 593,
+   "sample_unit": "patients (250 validation, 343 implementation)",
+   "models_evaluated": [
+    "AI 1",
+    "AI 2",
+    "AI 3 (masked; vendors Leben Care Health Services, Retinal AI Diagnostic Software, SigTuple Technologies)",
+    "FDA-approved algorithm (excluded at interim)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Head-to-head comparison of vendor DR algorithms on same local images before selection",
+     "effect": "Sensitivity 60%-80% and specificity 14%-96% across algorithms; FDA-approved algorithm excluded for low specificity; AI-3 selected (specificity 96.01%, sensitivity 68.42%, accuracy 88.43%).",
+     "quote": "One Indian AI algorithm declined participation, and an Food and Drug Administration (FDA)-approved algorithm was excluded due to low specificity in interim analysis."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local diagnostic performance of commercial DR algorithms versus human reference standard",
+     "effect": "Wide variability; AI-3 sensitivity 68.3% below FDA 85% benchmark; one algorithm detected DR in 89.2% of eyes vs 27.48% by reference standard.",
+     "quote": "The three AI algorithms demonstrated variable diagnostic performance, with sensitivity (60%-80%) and specificity (14%-96%)."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Change in AI-3 performance from validation to real-world implementation site",
+     "effect": "Sensitivity rose from 68.4% to 99.6% while specificity fell from 96% to 64.7%; DME sensitivity only 26.5%.",
+     "quote": "The AI-3 algorithm\u2019s sensitivity increased significantly from 68.4% to 99.6%, while specificity decreased from 96% to 64.7% between the validation and implementation phases."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI flagging of ungradable/cataract-affected images",
+     "effect": "Gradability specificity 8%; 21 (42%) cataract eyes deemed ungradable by humans were categorized gradable by AI.",
+     "quote": "Notably, the AI-3 algorithm failed to detect 21 (42%) eyes with cataracts, categorized as gradable."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Two-week pre-implementation integration testing of hardware, connectivity, workflow",
+     "effect": "Testing identified technical issues and bottlenecks, leading to improved connectivity, mandatory clinical variables, faster turnaround, and local data storage.",
+     "quote": "The two-week testing at PGIMER and DH Mohali validated the full AI workflow, identified technical issues, assessed reliability in clinical settings, and highlighted data and reporting bottlenecks."
+    }
+   ],
+   "unlisted_practices": [
+    "Darkroom setup to achieve physiological mydriasis and reduce ungradable nonmydriatic images",
+    "Monthly kappa monitoring of operator image acquisition learning curve",
+    "Telephonic follow-up of AI-referred patients to assess referral adherence"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "India",
+   "sample_size": 1186,
+   "sample_unit": "eyes across validation (500) and implementation (686)",
+   "models_evaluated": [
+    "AI-1",
+    "AI-2",
+    "AI-3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Commercial algorithms' diagnostic performance against human grading",
+     "effect": "Across three algorithms, sensitivity ranged from 60%-80% and specificity from 14%-96%, demonstrating substantial differences between candidate products.",
+     "quote": "The three AI algorithms demonstrated variable diagnostic performance, with sensitivity (60%-80%) and specificity (14%-96%)."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Preimplementation identification of technical and data-flow problems",
+     "effect": "Two-week testing identified technical issues and data/reporting bottlenecks, prompting refinements to connectivity, mandatory clinical variables, result turnaround, and local data storage.",
+     "quote": "The two-week testing at PGIMER and DH Mohali validated the full AI workflow, identified technical issues, assessed reliability in clinical settings, and highlighted data and reporting bottlenecks."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missed diabetic macular edema and referable diabetic retinopathy",
+     "effect": "DME sensitivity was 26.5%; referable DR sensitivity was 78.9% and specificity was 98.1%.",
+     "quote": "However, sensitivity is relatively low (26.5%); for detecting RDR, sensitivity and specificity were 78.9% and 98.1%."
+    },
+    {
+     "rec_id": "R137",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Diagnostic performance changes between validation and implementation",
+     "effect": "Between validation and implementation, sensitivity increased from 68.4% to 99.6%, while specificity decreased from 96% to 64.7%.",
+     "quote": "The AI-3 algorithm\u2019s sensitivity increased significantly from 68.4% to 99.6%, while specificity decreased from 96% to 64.7% between the validation and implementation phases."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Failure to identify ungradable fundus images",
+     "effect": "Image-gradability sensitivity was 100%, but specificity was 8%, indicating poor recognition of ungradable images.",
+     "quote": "For image gradability, the AI\u2019s sensitivity was excellent at 100%, but specificity was low (8%) ( Table 2 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Train and supervise optometrists in fundus-image acquisition, with longitudinal monitoring of image quality.",
+    "Improve fundus-image gradability through controlled lighting, darkroom acclimatization, ergonomic adjustments, and equipment reinforcements."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "India",
+   "sample_size": 593,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Leben Care Health Services",
+    "Retinal AI Diagnostic Software",
+    "SigTuple Technologies"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": true,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic performance across competing vendors",
+     "effect": "Testing candidate models on the same data identified the best-performing tool (accuracy 88.43%) for implementation.",
+     "quote": "AI 3 showed the best performance with specificity of detecting DR, 96.01% (93\u00b724\u201097\u00b772); sensitivity, 68.42% (59\u00b771\u201076.05); PPV, 86.67% (78.31\u201092.26); accuracy, 88.43%; and agreement with the RS (\u03ba=0\u00b765) and was selected for implementation (Table S2 in Multimedia Appendix 1 )."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Identification of technical and workflow issues",
+     "effect": "A two-week acceptance testing phase effectively identified technical issues, connectivity problems, and data and reporting bottlenecks before live rollout.",
+     "quote": "The two-week testing at PGIMER and DH Mohali validated the full AI workflow, identified technical issues, assessed reliability in clinical settings, and highlighted data and reporting bottlenecks."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model specificity on local population",
+     "effect": "Local validation prevented the deployment of an FDA-approved algorithm that exhibited unacceptably low specificity on the local patient population.",
+     "quote": "One Indian AI algorithm declined participation, and an Food and Drug Administration (FDA)-approved algorithm was excluded due to low specificity in interim analysis."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning candidate models on evaluation feedback prior to full clinical implementation",
+    "Training allied health professionals (optometrists) to capture and interpret AI-supported screening images"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "India",
+ "sample_unit": "patients (250 validation, 343 implementation)",
+ "sample_size": 593,
+ "population": {
+  "medicaid": false,
+  "safety_net": true,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AI 1",
+  "AI 2",
+  "AI 3 (masked; vendors Leben Care Health Services, Retinal AI Diagnostic Software, SigTuple Technologies)",
+  "AI-1",
+  "AI-2",
+  "AI-3",
+  "FDA-approved algorithm (excluded at interim)",
+  "Leben Care Health Services",
+  "Retinal AI Diagnostic Software",
+  "SigTuple Technologies"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Head-to-head comparison of vendor DR algorithms on same local images before selection",
+   "effect": "Sensitivity 60%-80% and specificity 14%-96% across algorithms; FDA-approved algorithm excluded for low specificity; AI-3 selected (specificity 96.01%, sensitivity 68.42%, accuracy 88.43%).",
+   "quote": "One Indian AI algorithm declined participation, and an Food and Drug Administration (FDA)-approved algorithm was excluded due to low specificity in interim analysis.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R509",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI flagging of ungradable/cataract-affected images",
+   "effect": "Gradability specificity 8%; 21 (42%) cataract eyes deemed ungradable by humans were categorized gradable by AI.",
+   "quote": "Notably, the AI-3 algorithm failed to detect 21 (42%) eyes with cataracts, categorized as gradable.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R119",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Two-week pre-implementation integration testing of hardware, connectivity, workflow",
+   "effect": "Testing identified technical issues and bottlenecks, leading to improved connectivity, mandatory clinical variables, faster turnaround, and local data storage.",
+   "quote": "The two-week testing at PGIMER and DH Mohali validated the full AI workflow, identified technical issues, assessed reliability in clinical settings, and highlighted data and reporting bottlenecks.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local diagnostic performance of commercial DR algorithms versus human reference standard",
+   "effect": "Wide variability; AI-3 sensitivity 68.3% below FDA 85% benchmark; one algorithm detected DR in 89.2% of eyes vs 27.48% by reference standard.",
+   "quote": "The three AI algorithms demonstrated variable diagnostic performance, with sensitivity (60%-80%) and specificity (14%-96%).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R135",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Change in AI-3 performance from validation to real-world implementation site",
+   "effect": "Sensitivity rose from 68.4% to 99.6% while specificity fell from 96% to 64.7%; DME sensitivity only 26.5%.",
+   "quote": "The AI-3 algorithm\u2019s sensitivity increased significantly from 68.4% to 99.6%, while specificity decreased from 96% to 64.7% between the validation and implementation phases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Commercial algorithms' diagnostic performance against human grading",
+   "effect": "Across three algorithms, sensitivity ranged from 60%-80% and specificity from 14%-96%, demonstrating substantial differences between candidate products.",
+   "quote": "The three AI algorithms demonstrated variable diagnostic performance, with sensitivity (60%-80%) and specificity (14%-96%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R134",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Missed diabetic macular edema and referable diabetic retinopathy",
+   "effect": "DME sensitivity was 26.5%; referable DR sensitivity was 78.9% and specificity was 98.1%.",
+   "quote": "However, sensitivity is relatively low (26.5%); for detecting RDR, sensitivity and specificity were 78.9% and 98.1%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R137",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic performance changes between validation and implementation",
+   "effect": "Between validation and implementation, sensitivity increased from 68.4% to 99.6%, while specificity decreased from 96% to 64.7%.",
+   "quote": "The AI-3 algorithm\u2019s sensitivity increased significantly from 68.4% to 99.6%, while specificity decreased from 96% to 64.7% between the validation and implementation phases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model specificity on local population",
+   "effect": "Local validation prevented the deployment of an FDA-approved algorithm that exhibited unacceptably low specificity on the local patient population.",
+   "quote": "One Indian AI algorithm declined participation, and an Food and Drug Administration (FDA)-approved algorithm was excluded due to low specificity in interim analysis.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.85
+ },
+ "unlisted_practices": [
+  "Darkroom setup to achieve physiological mydriasis and reduce ungradable nonmydriatic images",
+  "Fine-tuning candidate models on evaluation feedback prior to full clinical implementation",
+  "Improve fundus-image gradability through controlled lighting, darkroom acclimatization, ergonomic adjustments, and equipment reinforcements.",
+  "Monthly kappa monitoring of operator image acquisition learning curve",
+  "Telephonic follow-up of AI-referred patients to assess referral adherence",
+  "Train and supervise optometrists in fundus-image acquisition, with longitudinal monitoring of image quality.",
+  "Training allied health professionals (optometrists) to capture and interpret AI-supported screening images"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:40925861",
+ "screen": {
+  "id": "pmid:40925861",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "local prospective validation before go-live",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a multi-step pre-deployment validation process across multiple vendor AI models in public health settings to select and safely integrate a high-performing model into real-world screening workflows.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "prospective multi-vendor pre-deployment validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40925861",
+   "empirical": 0.97,
+   "tests_practice": 0.17,
+   "real_deployment": 0.95
+  }
+ }
+}

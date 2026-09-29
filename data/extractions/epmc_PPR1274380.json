@@ -1,0 +1,100 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "Unspecified",
+ "sample_size": 126,
+ "sample_unit": "adaptation configurations (10 techniques x budgets x 3 backbones)",
+ "models_evaluated": [
+  "dental radiograph foundation models (three backbones, unnamed)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Cross-center performance of dental diagnosis models on target center (ADCD) after training on DENTEX",
+   "effect": "Caries AUC stays near chance after adaptation (0.60 cross-center vs 0.79 from target's own labels); impacted teeth AUC 0.71 to 0.92 after adaptation.",
+   "quote": "Foundation models for dental radiograph diagnosis degrade at clinical centers other than the one they were trained on.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Recovery of target-center performance through local adaptation/fine-tuning across ten techniques",
+   "effect": "Adaptation recovered structural pathology (impacted teeth AUC 0.71 to 0.92) but not texture pathology (caries near chance), independent of technique, budget, or backbone.",
+   "quote": "Adaptation recovers structural pathology strongly (impacted teeth, AUC 0.71 to 0.92) but not texture pathology (caries stays near chance), independently of technique, budget, or backbone.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R070",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether an out-of-distribution gate refuses inputs from an unseen center instead of predicting unreliably",
+   "effect": "Mahalanobis OOD gate over frozen embeddings acts as a directional shift detector; a gate re-fit on the target defers about five percent there regardless of technique; guarantee never breaks across 126 configurations.",
+   "quote": "The refusal gate is a directional distribution-shift detector\u2014a gate re-fit on the target defers about five percent there regardless of technique\u2014so refusal reflects calibration, not adaptation strength.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Mahalanobis out-of-distribution refusal gate with calibration and bounded-deviation guarantee",
+  "Parameter-efficient adaptation with few labeled samples for cross-center transfer"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1274380",
+ "screen": {
+  "id": "epmc:PPR1274380",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "safety envelope with OOD refusal gate and local adaptation",
+  "user": "none",
+  "reason": "The study tests deployment safeguards (an out-of-distribution refusal gate/safety envelope and various local adaptation/recalibration strategies) to prevent silent failure when deploying dental AI to a new center.",
+  "jev": {
+   "id": "epmc:PPR1274380",
+   "empirical": 0.96,
+   "tests_practice": 0.82,
+   "real_deployment": 0.06
+  }
+ }
+}

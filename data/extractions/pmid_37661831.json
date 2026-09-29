@@ -1,0 +1,235 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 884,
+   "sample_unit": "patients with abnormal FIT (eligible for recalibration cohort in single large FQHC)",
+   "models_evaluated": [
+    "logistic regression risk model for colonoscopy completion after abnormal FIT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination (c-statistic) of original model locally versus redeveloped local model",
+     "effect": "Original model c-statistic dropped from 0.66 to 0.61 in the single large FQHC; redeveloped model in the same FQHC reached c-statistic 0.65 (n=1401).",
+     "quote": "The model was redeveloped in the same FQHC in a cohort of 1401 patients with a c-statistic of 0.65."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of externally developed model on local data",
+     "effect": "When applied to a single large FQHC (884 patients), the model did not recalibrate successfully; c-statistic dropped more than 0.05, from 0.66 to 0.61.",
+     "quote": "When we applied the model to a single large FQHC (34 clinics, 884 eligible patients), the model did not recalibrate successfully (c-statistic dropped more than 0.05, from 0.66 to 0.61)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1401,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "initial colonoscopy completion risk prediction model",
+    "redeveloped colonoscopy completion risk prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local model discrimination/recalibration",
+     "effect": "At single FQHC, c-statistic dropped more than 0.05, from 0.66 to 0.61.",
+     "quote": "When we applied the model to a single large FQHC (34 clinics, 884 eligible patients), the model did not recalibrate successfully (c-statistic dropped more than 0.05, from 0.66 to 0.61)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local redevelopment performance",
+     "effect": "Redeveloped in same FQHC cohort of 1401 patients with c-statistic of 0.65.",
+     "quote": "The model was redeveloped in the same FQHC in a cohort of 1401 patients with a c-statistic of 0.65."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 884,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "risk prediction model (logistic and Cox regression)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model discrimination upon local validation",
+     "effect": "c-statistic dropped from 0.66 in development to 0.61 in single large FQHC",
+     "quote": "When we applied the model to a single large FQHC (34 clinics, 884 eligible patients), the model did not recalibrate successfully (c-statistic dropped more than 0.05, from 0.66 to 0.61)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 884,
+ "population": {
+  "medicaid": false,
+  "safety_net": true,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "initial colonoscopy completion risk prediction model",
+  "logistic regression risk model for colonoscopy completion after abnormal FIT",
+  "redeveloped colonoscopy completion risk prediction model",
+  "risk prediction model (logistic and Cox regression)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination (c-statistic) of original model locally versus redeveloped local model",
+   "effect": "Original model c-statistic dropped from 0.66 to 0.61 in the single large FQHC; redeveloped model in the same FQHC reached c-statistic 0.65 (n=1401).",
+   "quote": "The model was redeveloped in the same FQHC in a cohort of 1401 patients with a c-statistic of 0.65.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of externally developed model on local data",
+   "effect": "When applied to a single large FQHC (884 patients), the model did not recalibrate successfully; c-statistic dropped more than 0.05, from 0.66 to 0.61.",
+   "quote": "When we applied the model to a single large FQHC (34 clinics, 884 eligible patients), the model did not recalibrate successfully (c-statistic dropped more than 0.05, from 0.66 to 0.61).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37661831",
+ "screen": {
+  "id": "pmid:37661831",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration before deployment",
+  "user": "none",
+  "reason": "The study tests the deployment practice of local model recalibration across different health center environments before implementation, demonstrating failure to recalibrate requiring model redevelopment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37661831",
+   "empirical": 0.76,
+   "tests_practice": 0.48,
+   "real_deployment": 0.07
+  }
+ }
+}

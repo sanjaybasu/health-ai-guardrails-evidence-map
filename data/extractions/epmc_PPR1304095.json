@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "Not reported",
+ "sample_size": 40,
+ "sample_unit": "trial criteria",
+ "models_evaluated": [
+  "Claude",
+  "GPT-5.5",
+  "Qwen",
+  "MedGemma"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Exact-code F1 of code-set generation with vs without hybrid biomedical retrieval grounding",
+   "effect": "Hybrid RAG improved aggregate F1 only for Qwen; increased GPT-5.5 RxNorm F1 from 0.320 to 0.909; did not consistently improve exact-code performance.",
+   "quote": "Hybrid biomedical RAG improved aggregate F1 only for Qwen but increased GPT-5.5 RxNorm F1 from 0.320 to 0.909.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Micro-F1 of generated code sets before vs after deterministic terminology verification",
+   "effect": "Micro-F1 rose from 0.254 before verification to 0.505 after final verification and expansion; existence check removed 2,594 false-positive codes, acceptance filtering 952 more.",
+   "quote": "In staged verifier ablation, micro-F1 increased from 0.254 before verification to 0.505 after final verification and expansion.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Terminology-guided code family expansion to increase recall (increased recall but generally reduced precision)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1304095",
+ "screen": {
+  "id": "epmc:PPR1304095",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "deterministic terminology verification and retrieval grounding of LLM outputs",
+  "user": "none",
+  "reason": "The study benchmarks LLM agent pipelines for clinical code-set generation and tests deployment safeguards/practices including biomedical RAG and deterministic terminology verification/filtering.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and deterministic terminology verification filtering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1304095",
+   "empirical": 0.96,
+   "tests_practice": 0.72,
+   "real_deployment": 0.04
+  }
+ }
+}

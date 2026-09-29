@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 1409,
+ "sample_unit": "CT scans (459 pediatric, 950 adult)",
+ "models_evaluated": [
+  "nnU-Net"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R309",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Segmentation Dice score in pediatric age groups with vs without pediatric training data",
+   "effect": "Adult-only models underperformed on pediatric data (mean DSC below 0.5 for bladder and spleen in the 0-2 group). Adding pediatric data gave mean DSC above 0.85 for all organs in every age group.",
+   "quote": "The addition of pediatric training data demonstrated significant improvement for all age groups, achieving a mean DSC of above 0.85 for all organs in every age group.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance of adult-trained segmentation models when applied to pediatric CT data",
+   "effect": "Models trained only on adult data underperformed on pediatric data, especially ages 0 to 2, with mean DSC below 0.5 for bladder and spleen.",
+   "quote": "AI models trained exclusively on adult data underperformed on pediatric data, especially for the 0 to 2 age group: mean DSC was below 0.5 for the bladder and spleen.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Segmentation performance differences across CT scanners",
+   "effect": "No significant difference in cross-scanner performance was found, suggesting robust cross-scanner generalization.",
+   "quote": "No significant difference emerged in the cross-scanner performance evaluation, suggesting robust cross-scanner generalization.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:38246249",
+ "screen": {
+  "id": "pmid:38246249",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study empirically tests whether an adult-trained CT organ auto-segmentation model generalizes to pediatric populations (measuring performance degradation and improvement when pediatric training data is incorporated). It tests model training data composition rather than an organizational deployment practice or guardrail.",
+  "jev": {
+   "id": "pmid:38246249",
+   "empirical": 0.96,
+   "tests_practice": 0.05,
+   "real_deployment": 0.05
+  }
+ }
+}

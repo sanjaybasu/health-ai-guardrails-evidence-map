@@ -1,0 +1,480 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 776,
+   "sample_unit": "participants (623 lay people, 153 PCPs; plus 320 medical students)",
+   "models_evaluated": [
+    "ViT-B/32 (CDANN fairness-constrained)",
+    "DenseNet-121 (CDANN fairness-constrained)",
+    "GPT-4V",
+    "GradCAM",
+    "CBIR"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human accuracy with vs without AI assistance, including when AI was wrong",
+     "effect": "Lay accuracy rose from 69.7% to 75.8% with AI; incorrect AI predictions reduced lay accuracy (\u03b2=-0.233), while PCPs' top-1 accuracy rose +21.5% and was little affected by wrong AI.",
+     "quote": "We found that AI improved average accuracy of the nevus versus melanoma detection task from 69.7 \u00b1 0.8% to 75.8% \u00b1 0.7% (effect of AI assistance: \u03b2 = 0.061, 95% confidence interval (CI): 0.049\u22120.074, P < 0.001, linear mixed model on accuracy, with AI assistance, XAI methods and their interaction as the main factor, controlling gender, age, race, skin disease experience and the covariate of self-reported human\u2212AI collaboration experience; see Supplementary Table 7 for details)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Automation bias and detection of incorrect AI outputs in lay people vs PCPs",
+     "effect": "Lay users' accuracy fell when AI was wrong (LLM -21.1%, basic -14.6%); PCPs were minimally affected (\u03b2=0-0.021, P=0.328-1.000). Medical students deferred more than PCPs.",
+     "quote": "In contrast to the general public, incorrect AI predictions had minimal impact on the final decisions of PCPs across all XAI methods (Fig. 3f and Extended Data Fig. 2d\u2212f ; \u03b2 = 0\u22120.021, P = 0.328\u22121.000)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of users with vs without AI and overreliance assessment",
+     "effect": "AI assistance improved lay accuracy 69.7% to 75.8% and PCP top-1 accuracy +21.5%; overreliance appeared in lay users when AI erred (\u221223.3 points, \u03b2=-0.233).",
+     "quote": "However, the general public\u02bcs diagnostic accuracy improved when AI provided correct predictions, whereas incorrect predictions reduced the performance significantly ( \u03b2 = \u22120.233, 95% CI: \u22120.307 to \u22120.158, P < 0.001; Fig. 2d and Supplementary Table 12 )."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether LLM explanations and AI-first presentation promote scrutiny or deference",
+     "effect": "LLM explanations amplified lay deference (incorrect LLM advice -21.1% vs basic -14.6%); AI-First increased deferential participants (lay avg +8.4%; PCP LLM +19.0%).",
+     "quote": "These findings indicate that LLM explanations amplify the general public\u02bcs tendency to follow AI guidance, regardless of AI accuracy."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Skin-tone performance disparity of fairness-constrained AI and human-AI teams",
+     "effect": "Fairness-constrained model narrowed ERM skin tone gap (balanced accuracy \u0394 0.091 to 0.021, 76.9%); humans' disparity reduced 46.9% (lay) and 2.9% vs 4.6% (PCPs).",
+     "quote": "With the help of AI, model humans achieved a more balanced diagnosis performance across patient skin tones (round 1: \u03b2 = 0.033, 95% CI: 0.009\u22120.057, P = 0.007; round 2: \u03b2 = 0.017, 95% CI: \u22120.007 to 0.041, P = 0.166; \u0394 rel = 46.9%; Fig. 2c and Supplementary Table 11 )."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of fairness-constrained training on subgroup disparity and overall accuracy",
+     "effect": "CDANN model achieved AUROC 0.930 with balanced accuracy skin-tone gap \u0394=0.021 versus ERM 0.091, narrowing gap by 76.9% while maintaining strong overall performance.",
+     "quote": "Our fairness-constrained models (final architectures and hyperparameters reported in Methods ) achieved strong overall performance with substantially reduced disparities across skin tones."
+    },
+    {
+     "rec_id": "R235",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of different explanation formats (basic, GradCAM, CBIR, LLM) on user accuracy and deference",
+     "effect": "LLM explanations gave largest lay gain (+7.7%) but largest loss when wrong; for PCPs LLM was least helpful (+17.7%) though improving confidence calibration (r=0.494).",
+     "quote": "Interestingly, for PCPs, LLM explanations were the least helpful method (+17.7%) and were 8.1% lower than the best improvement from the basic explanations ( \u03b2 = \u22120.081, 95% CI: \u22120.207 to 0.044, P = 0.268; Fig. 3b and Supplementary Table 16 )."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether LLM natural-language explanations help users evaluate AI recommendations",
+     "effect": "LLM explanations did not improve PCP accuracy and led lay users to trust incorrect AI; LLM explanation reduced lay accuracy more than basic when AI wrong (\u03b2=-0.048, P=0.035).",
+     "quote": "These results further suggest that people struggle to assess LLM explanation reliability and can be easily misled by LLMs."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Users' confidence-accuracy alignment with AI outputs",
+     "effect": "With incorrect AI predictions, LLM explanations negatively impacted lay confidence-accuracy alignment (z=-3.788, P<0.001); non-LLM explanations impaired PCP alignment.",
+     "quote": "When AI predictions were incorrect, LLM explanations negatively impacted the alignment between participants\u02bc confidence and accuracy ( z = \u22123.788, P < 0.001, two-sided Fisher\u02bcs r -to- z test to compare correlation difference; Extended Data Fig. 3c )."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-First versus AI-First decision order to reduce anchoring bias",
+    "Tailoring explanation type to user expertise (lay vs clinician)",
+    "Fairness-constrained model training (CDANN) to reduce skin-tone disparity"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "any_ai",
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 1096,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "CDANN ViT-B/32 binary dermatology model",
+    "CDANN DenseNet-121 primary five-class dermatology model",
+    "CDANN ViT-B/32 secondary 30-class dermatology model",
+    "GPT-4V",
+    "ERM baseline",
+    "GradCAM",
+    "CBIR"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI diagnostic performance versus unaided",
+     "effect": "Lay accuracy rose from 69.7 \u00b1 0.8% to 75.8% \u00b1 0.7%; \u03b2 = 0.061, 95% CI 0.049\u22120.074, P < 0.001.",
+     "quote": "We found that AI improved average accuracy of the nevus versus melanoma detection task from 69.7 \u00b1 0.8% to 75.8% \u00b1 0.7% (effect of AI assistance: \u03b2 = 0.061, 95% confidence interval (CI): 0.049\u22120.074, P < 0.001, linear mixed model on accuracy, with AI assistance, XAI methods and their interaction as the main factor, controlling gender, age, race, skin disease experience and the covariate of self-reported human\u2212AI collaboration experience; see Supplementary Table 7 for details)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PCP diagnostic accuracy with AI suggestions",
+     "effect": "PCP top-1 accuracy improved +21.5%; \u03b2 = 0.258, 95% CI 0.170\u22120.260, P < 0.001; top-3 +43.5%.",
+     "quote": "The performance was significantly improved with AI suggestions, with a +21.5% in top-1 accuracy ( \u03b2 = 0.258, 95% CI: 0.170\u22120.260, P < 0.001; Fig. 3a ; linear mixed model on accuracy with AI assistance, XAI methods and their interaction as the main factor, controlling gender, age, race and medical expertise in skin, year of experience and personality traits; see Supplementary Table 16 for details)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Lay automation bias under incorrect LLM advice",
+     "effect": "LLM advice changed lay performance +13.4% when correct and \u221221.1% when incorrect, larger than other explanation methods.",
+     "quote": "Correct LLM advice (+13.4%) enhanced performance more than other AI explanations (basic method +8.6%, GradCAM +9.5%, CBIR +10.9%; Fig. 2e ), and incorrect LLM advice decreased performance most (\u221221.1%, basic \u221214.6%, GradCAM \u221215.3% and CBIR \u221217.0%; Fig. 2f )."
+    },
+    {
+     "rec_id": "R235",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "XAI explanation method effects for PCPs",
+     "effect": "PCP LLM explanations +17.7%, 8.1% lower than basic; \u03b2 = \u22120.081, 95% CI \u22120.207 to 0.044, P = 0.268.",
+     "quote": "Interestingly, for PCPs, LLM explanations were the least helpful method (+17.7%) and were 8.1% lower than the best improvement from the basic explanations ( \u03b2 = \u22120.081, 95% CI: \u22120.207 to 0.044, P = 0.268; Fig. 3b and Supplementary Table 16 )."
+    },
+    {
+     "rec_id": "R170",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI deference by medical expertise",
+     "effect": "Medical students were more deferential than PCPs: role \u03b2 = 0.067, P = 0.037; skin expertise \u03b2 = 0.073, P = 0.005.",
+     "quote": "We observed that the proportion of deferential participants was higher among medical students than PCPs (linear mixed model on the proportion of deferential participants, with medical role and medical expertise in skin as the main factor, controlling other confounders: main effect of medical role: \u03b2 = 0.067, 95% CI: 0.004\u22120.130, P = 0.037; main effect of skin expertise: \u03b2 = 0.073, 95% CI: 0.022\u22120.124, P = 0.005; Supplementary Table 25 )."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI diagnostic performance by skin tone",
+     "effect": "Primary model subgroup gaps: AUROC \u0394 = 0.091, weighted AUROC \u0394 = 0.192, balanced accuracy \u0394 = 0.056.",
+     "quote": "For study 2, the primary five-class model achieved AUROC of 0.772 (0.782/0.691, \u0394 = 0.091), weighted AUROC of 0.753 (0.725/0.693, \u0394 = 0.192) and balanced accuracy of 0.478 on the four main diseases (0.487/0.431, \u0394 = 0.056), outperforming ERM (0.457, \u0394 = 0.144)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fairness-constrained training effect on skin-tone gap",
+     "effect": "Study 1 balanced accuracy gap was \u0394 = 0.021 versus ERM \u0394 = 0.091, a 76.9% reduction.",
+     "quote": "For study 1, the binary classification model achieved a weighted area under the receiver operating characteristic (AUROC) of 0.930 (0.933/0.898 light/dark skin, \u0394 = 0.035) and weighted balanced accuracy of 0.850 (0.852/0.831, \u0394 = 0.021), narrowing the empirical risk minimization (ERM) baseline\u02bcs skin tone gap (balanced accuracy 0.845, \u0394 = 0.091) by 76.9%."
+    }
+   ],
+   "unlisted_practices": [
+    "Present AI suggestions after an independent human decision rather than before it (Human-First versus AI-First workflow)."
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 1096,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "ViT-B/32",
+    "DenseNet-121",
+    "GPT-4V"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "diagnostic accuracy and deference when AI predictions were incorrect",
+     "effect": "Lay users exhibited automation bias with LLM accuracy dropping -21.1% when AI erred, while PCPs were resilient to incorrect AI predictions across explanation methods (\u03b2 = 0 to 0.021, P = 0.328 to 1.000).",
+     "quote": "In this setting, LLM explanations yielded divergent effects: lay users showed higher automation bias-accuracy was boosted when the diagnoses provided by the AI model were correct but was reduced when the model erred-whereas experienced PCPs remained resilient, benefiting irrespective of the AI model's accuracy."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic disparity across skin tones and overall diagnostic accuracy",
+     "effect": "Fairness training narrowed baseline skin tone gap by 76.9% while maintaining AUROC (0.930), and reduced skin tone diagnostic disparities by 46.9% in lay people and 35.6% in PCPs.",
+     "quote": "With fairness-constrained model training, assistance from an AI model that achieved balanced performance across skin tones improved final diagnostic accuracy and reduced skin-tone-related performance disparities among both lay people and PCPs."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-First decision workflow requiring human diagnosis prior to reviewing AI suggestions to reduce anchoring bias"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "United States",
+ "sample_unit": "participants",
+ "sample_size": 1096,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "CBIR",
+  "CDANN DenseNet-121 primary five-class dermatology model",
+  "CDANN ViT-B/32 binary dermatology model",
+  "CDANN ViT-B/32 secondary 30-class dermatology model",
+  "DenseNet-121",
+  "DenseNet-121 (CDANN fairness-constrained)",
+  "ERM baseline",
+  "GPT-4V",
+  "GradCAM",
+  "ViT-B/32",
+  "ViT-B/32 (CDANN fairness-constrained)"
+ ],
+ "links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human accuracy with vs without AI assistance, including when AI was wrong",
+   "effect": "Lay accuracy rose from 69.7% to 75.8% with AI; incorrect AI predictions reduced lay accuracy (\u03b2=-0.233), while PCPs' top-1 accuracy rose +21.5% and was little affected by wrong AI.",
+   "quote": "We found that AI improved average accuracy of the nevus versus melanoma detection task from 69.7 \u00b1 0.8% to 75.8% \u00b1 0.7% (effect of AI assistance: \u03b2 = 0.061, 95% confidence interval (CI): 0.049\u22120.074, P < 0.001, linear mixed model on accuracy, with AI assistance, XAI methods and their interaction as the main factor, controlling gender, age, race, skin disease experience and the covariate of self-reported human\u2212AI collaboration experience; see Supplementary Table 7 for details).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Automation bias and detection of incorrect AI outputs in lay people vs PCPs",
+   "effect": "Lay users' accuracy fell when AI was wrong (LLM -21.1%, basic -14.6%); PCPs were minimally affected (\u03b2=0-0.021, P=0.328-1.000). Medical students deferred more than PCPs.",
+   "quote": "In contrast to the general public, incorrect AI predictions had minimal impact on the final decisions of PCPs across all XAI methods (Fig. 3f and Extended Data Fig. 2d\u2212f ; \u03b2 = 0\u22120.021, P = 0.328\u22121.000).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of users with vs without AI and overreliance assessment",
+   "effect": "AI assistance improved lay accuracy 69.7% to 75.8% and PCP top-1 accuracy +21.5%; overreliance appeared in lay users when AI erred (\u221223.3 points, \u03b2=-0.233).",
+   "quote": "However, the general public\u02bcs diagnostic accuracy improved when AI provided correct predictions, whereas incorrect predictions reduced the performance significantly ( \u03b2 = \u22120.233, 95% CI: \u22120.307 to \u22120.158, P < 0.001; Fig. 2d and Supplementary Table 12 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of fairness-constrained training on subgroup disparity and overall accuracy",
+   "effect": "CDANN model achieved AUROC 0.930 with balanced accuracy skin-tone gap \u0394=0.021 versus ERM 0.091, narrowing gap by 76.9% while maintaining strong overall performance.",
+   "quote": "Our fairness-constrained models (final architectures and hyperparameters reported in Methods ) achieved strong overall performance with substantially reduced disparities across skin tones.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R235",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of different explanation formats (basic, GradCAM, CBIR, LLM) on user accuracy and deference",
+   "effect": "LLM explanations gave largest lay gain (+7.7%) but largest loss when wrong; for PCPs LLM was least helpful (+17.7%) though improving confidence calibration (r=0.494).",
+   "quote": "Interestingly, for PCPs, LLM explanations were the least helpful method (+17.7%) and were 8.1% lower than the best improvement from the basic explanations ( \u03b2 = \u22120.081, 95% CI: \u22120.207 to 0.044, P = 0.268; Fig. 3b and Supplementary Table 16 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R170",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI deference by medical expertise",
+   "effect": "Medical students were more deferential than PCPs: role \u03b2 = 0.067, P = 0.037; skin expertise \u03b2 = 0.073, P = 0.005.",
+   "quote": "We observed that the proportion of deferential participants was higher among medical students than PCPs (linear mixed model on the proportion of deferential participants, with medical role and medical expertise in skin as the main factor, controlling other confounders: main effect of medical role: \u03b2 = 0.067, 95% CI: 0.004\u22120.130, P = 0.037; main effect of skin expertise: \u03b2 = 0.073, 95% CI: 0.022\u22120.124, P = 0.005; Supplementary Table 25 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI diagnostic performance by skin tone",
+   "effect": "Primary model subgroup gaps: AUROC \u0394 = 0.091, weighted AUROC \u0394 = 0.192, balanced accuracy \u0394 = 0.056.",
+   "quote": "For study 2, the primary five-class model achieved AUROC of 0.772 (0.782/0.691, \u0394 = 0.091), weighted AUROC of 0.753 (0.725/0.693, \u0394 = 0.192) and balanced accuracy of 0.478 on the four main diseases (0.487/0.431, \u0394 = 0.056), outperforming ERM (0.457, \u0394 = 0.144).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R214",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Fairness-constrained model training (CDANN) to reduce skin-tone disparity",
+  "Human-First decision workflow requiring human diagnosis prior to reviewing AI suggestions to reduce anchoring bias",
+  "Human-First versus AI-First decision order to reduce anchoring bias",
+  "Present AI suggestions after an independent human decision rather than before it (Human-First versus AI-First workflow).",
+  "Tailoring explanation type to user expertise (lay vs clinician)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42552380",
+ "screen": {
+  "id": "pmid:42552380",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "timing of AI advice and LLM explanations shown to users",
+  "user": "both",
+  "reason": "The study directly evaluates deployment and interaction practices (comparing different explainable AI / multimodal LLM explanations and timing of AI assistance presentation) and their effects on automation and anchoring bias in clinicians and lay users.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI explanation presentation and timing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42552380",
+   "empirical": 0.96,
+   "tests_practice": 0.56,
+   "real_deployment": 0.06
+  }
+ }
+}

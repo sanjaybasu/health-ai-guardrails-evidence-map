@@ -1,0 +1,375 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Singapore",
+   "sample_size": 816,
+   "sample_unit": "chest radiographs",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR3 V.3.1.5.3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity, NPV, specificity across operating thresholds 0.15, 0.125, 0.10 for triage",
+     "effect": "Lowering threshold from 0.15 to 0.10 raised sensitivity 87.3% to 93.2% and NPV 87.0% to 91.3%, with specificity falling to 71.7%; trade-off deemed acceptable.",
+     "quote": "By lowering the operating threshold, we increased sensitivity and NPV, at the cost of reduced specificity, a trade-off that was considered acceptable for a co-triage use case in primary care."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Threshold selection with clinician input balancing operational value and false negatives",
+     "effect": "Threshold 0.1 chosen collaboratively with physicians and radiologists; sensitivity 93.19%, operational improvement 35.85% retained.",
+     "quote": "Hence, the 0.1 threshold was deemed to have an acceptable sensitivity for safety and still retain acceptable potential operational improvement to yield value in implementation."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local threshold tuning versus vendor default on representative polyclinic data",
+     "effect": "Default 0.15 gave sensitivity 87.3%, NPV 87.0%; tuned 0.10 gave sensitivity 93.2%, NPV 91.3%, specificity 71.7%.",
+     "quote": "We found that the threshold required for optimal performance of Lunit CXR as a co-triage tool was different from the default threshold of 0.15 set by Lunit."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance on representative local data against radiologist reference standard",
+     "effect": "At 0.15, AI sensitivity 87.3% vs radiologist report 80.7%; specificity 85.0% vs 85.9%.",
+     "quote": "At the default recommended threshold, Lunit INSIGHT CXR3 achieved greater sensitivity than the radiologist (87.3% vs 80.7%) with comparable specificity (85.0% vs 85.9%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI sensitivity and NPV compared with working radiologist reports on same data",
+     "effect": "At 0.125, sensitivity 90.10% vs 80.7% and NPV 89.01% vs 81.66% for radiologist, with non-overlapping CIs.",
+     "quote": "At threshold 0.125, Lunit-enabled workflow demonstrates superior performance compared with the radiologist report, with significantly higher sensitivity (90.10% (95% CI 87.19% to 92.86%) vs 80.7% (95% CI 76.83% to 84.42%)) and NPV (89.01% (95% CI 85.71% to 92.05%) vs 81.66% (95% CI 77.95% to 85.24%)), with non-overlapping CIs in both metrics confirming the statistical significance of these differences."
+    },
+    {
+     "rec_id": "R213",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reporting performance metrics with CIs at multiple operating points to decision-makers",
+     "effect": "CIs across thresholds informed stakeholder threshold decision; non-overlapping CIs gave stronger justification than point values.",
+     "quote": "CIs, as shown in figure 3 , were useful for the decision-making process, with non-overlapping CIs providing stronger justification, as compared with point values."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Planned silent deployment on live CXRs after retrospective threshold selection",
+     "effect": "Team prepared for silent deployment to further evaluate performance; results not yet reported.",
+     "quote": "After the decision was finalised, the team prepared for a \u2018silent deployment\u2019 of the AI model on live CXRs to further evaluate the performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Prevalence-adjusted (iterative proportional fitting) reweighting of curated dataset to approximate real-world prevalence for performance estimation"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Singapore",
+   "sample_size": 816,
+   "sample_unit": "adult frontal chest radiographs",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR3 V.3.1.5.3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic trade-off across thresholds",
+     "effect": "At 0.10, sensitivity increased to 93.2% and NPV to 91.3%; specificity fell to 71.7%.",
+     "quote": "Lowering the threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%)."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician-prioritized cutoff performance",
+     "effect": "Chosen safety-focused cutoff 0.10 achieved sensitivity 93.2%, NPV 91.3%, specificity 71.7%.",
+     "quote": "Lowering the threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local threshold adjustment performance",
+     "effect": "Local threshold lowering to 0.10 yielded sensitivity 93.2%, NPV 91.3%, specificity 71.7%.",
+     "quote": "Lowering the threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus radiologist diagnostic performance",
+     "effect": "At 0.125, sensitivity 90.10% vs 80.7%; NPV 89.01% vs 81.66%, with non-overlapping CIs.",
+     "quote": "At threshold 0.125, Lunit-enabled workflow demonstrates superior performance compared with the radiologist report, with significantly higher sensitivity (90.10% (95% CI 87.19% to 92.86%) vs 80.7% (95% CI 76.83% to 84.42%)) and NPV (89.01% (95% CI 85.71% to 92.05%) vs 81.66% (95% CI 77.95% to 85.24%)), with non-overlapping CIs in both metrics confirming the statistical significance of these differences."
+    },
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "true-negative CXR deprioritisation estimate",
+     "effect": "At chosen 0.1 threshold, potential operational improvement was 35.85% (95% CI 32.06% to 39.09%).",
+     "quote": "Potential operational improvement is calculated by dividing the number of true negatives by the total number of CXRs, which was 35.85% (95% CI 32.06% to 39.09%) for the chosen threshold of 0.1."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI-normal missed-abnormality risk",
+     "effect": "At 0.10, reported sensitivity was 93.2% and NPV was 91.3%.",
+     "quote": "Lowering the threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Singapore",
+   "sample_size": 816,
+   "sample_unit": "chest radiographs",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR3 V.3.1.5.3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "sensitivity and NPV across operating thresholds",
+     "effect": "Lowering threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%).",
+     "quote": "Lowering the threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Singapore",
+ "sample_unit": "chest radiographs",
+ "sample_size": 816,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Lunit INSIGHT CXR3 V.3.1.5.3"
+ ],
+ "links": [
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity, NPV, specificity across operating thresholds 0.15, 0.125, 0.10 for triage",
+   "effect": "Lowering threshold from 0.15 to 0.10 raised sensitivity 87.3% to 93.2% and NPV 87.0% to 91.3%, with specificity falling to 71.7%; trade-off deemed acceptable.",
+   "quote": "By lowering the operating threshold, we increased sensitivity and NPV, at the cost of reduced specificity, a trade-off that was considered acceptable for a co-triage use case in primary care.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Threshold selection with clinician input balancing operational value and false negatives",
+   "effect": "Threshold 0.1 chosen collaboratively with physicians and radiologists; sensitivity 93.19%, operational improvement 35.85% retained.",
+   "quote": "Hence, the 0.1 threshold was deemed to have an acceptable sensitivity for safety and still retain acceptable potential operational improvement to yield value in implementation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local threshold tuning versus vendor default on representative polyclinic data",
+   "effect": "Default 0.15 gave sensitivity 87.3%, NPV 87.0%; tuned 0.10 gave sensitivity 93.2%, NPV 91.3%, specificity 71.7%.",
+   "quote": "We found that the threshold required for optimal performance of Lunit CXR as a co-triage tool was different from the default threshold of 0.15 set by Lunit.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI sensitivity and NPV compared with working radiologist reports on same data",
+   "effect": "At 0.125, sensitivity 90.10% vs 80.7% and NPV 89.01% vs 81.66% for radiologist, with non-overlapping CIs.",
+   "quote": "At threshold 0.125, Lunit-enabled workflow demonstrates superior performance compared with the radiologist report, with significantly higher sensitivity (90.10% (95% CI 87.19% to 92.86%) vs 80.7% (95% CI 76.83% to 84.42%)) and NPV (89.01% (95% CI 85.71% to 92.05%) vs 81.66% (95% CI 77.95% to 85.24%)), with non-overlapping CIs in both metrics confirming the statistical significance of these differences.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance on representative local data against radiologist reference standard",
+   "effect": "At 0.15, AI sensitivity 87.3% vs radiologist report 80.7%; specificity 85.0% vs 85.9%.",
+   "quote": "At the default recommended threshold, Lunit INSIGHT CXR3 achieved greater sensitivity than the radiologist (87.3% vs 80.7%) with comparable specificity (85.0% vs 85.9%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI-normal missed-abnormality risk",
+   "effect": "At 0.10, reported sensitivity was 93.2% and NPV was 91.3%.",
+   "quote": "Lowering the threshold to 0.10 increased sensitivity to 93.2% (95% CI 90.7% to 95.5%) and NPV to 91.3% (95% CI 88.2% to 94.3%), with specificity of 71.7% (95% CI 67.3% to 76.1%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R213",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R518",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Prevalence-adjusted (iterative proportional fitting) reweighting of curated dataset to approximate real-world prevalence for performance estimation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41689225",
+ "screen": {
+  "id": "pmid:41689225",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "operating threshold selection / customisation",
+  "user": "clinician_or_staff",
+  "reason": "Empirically investigates the deployment practice of local threshold optimisation/customisation on a commercial chest X-ray AI model to evaluate its trade-offs for a safety-focused triage workflow.",
+  "jev": {
+   "id": "pmid:41689225",
+   "empirical": 0.96,
+   "tests_practice": 0.86,
+   "real_deployment": 0.04
+  }
+ }
+}

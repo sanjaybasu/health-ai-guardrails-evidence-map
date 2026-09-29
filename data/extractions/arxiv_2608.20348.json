@@ -1,0 +1,83 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 2196,
+ "sample_unit": "instruction-response pairs",
+ "models_evaluated": [
+  "Qwen2.5-7B-Instruct",
+  "six language models (others not named in text)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM accuracy on EHR instructions by position of relevant information within long context",
+   "effect": "21.9 percentage-point gap between peak accuracy (59.5%) and trough accuracy (37.6%); 67.8% of reference answers fall inside the trough (10th-90th percentile of the EHR timeline).",
+   "quote": "Across 2,196 instruction-response pairs and six language models, we observe a 21.9 percentage-point gap between peak accuracy (59.5%, 95% CI [46.3, 71.0], 20-30% decile) and trough accuracy (37.6% [23.2, 52.5] at 70-80%); 67.8% of reference answers fall between the 10th and 90th percentiles of the EHR timeline, inside the CLitM trough.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Query-conditioned context selection (QCCS gate) to mitigate lost-in-the-middle effects in long EHR contexts",
+  "Retrieval and reranking strategies (BM25, dense retrieval, cross-encoder) for clinical long-context input selection"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2608.20348",
+ "screen": {
+  "id": "arxiv:2608.20348",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates strategies (e.g., query-conditioned clinical suppression vs standard retrieval methods) to safeguard against lost-in-the-middle context failures in long-context clinical EHR processing.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "context selection and retrieval filtering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2608.20348",
+   "empirical": 0.95,
+   "tests_practice": 0.36,
+   "real_deployment": 0.04
+  }
+ }
+}

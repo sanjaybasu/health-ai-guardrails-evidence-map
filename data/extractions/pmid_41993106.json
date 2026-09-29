@@ -1,0 +1,290 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Spain",
+   "sample_size": 290,
+   "sample_unit": "neurologists (responses to 21 clinical vignettes; ChatGPT-4o run 10 times per case)",
+   "models_evaluated": [
+    "gpt-4o-2024-08-06",
+    "gpt-4o-2024-08-06 with RAG (text-embedding-3-large, ChromaDB)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Guideline-adherent responses with vs without RAG grounding on curated clinical documents",
+     "effect": "ChatGPT-4o with RAG 80.5% correct vs 72.9% without context; vs neurologists 66.5% (p=0.001 with RAG; p=0.038 without). GEE OR 3.17 with RAG vs 1.55 without.",
+     "quote": "Without context (mean: 72.9% vs. 66.5%; p = 0.038) and with context (mean: 80.5% vs. 66.5%; p = 0.001)"
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Guideline-adherent decisions of ChatGPT-4o compared with practicing neurologists on the same vignettes",
+     "effect": "ChatGPT-4o with RAG 80.5% vs neurologists 66.5% (p=0.001); OR 3.17 (95% CI 2.05-4.88); no difference in NewFeeLs-MS sNfL scenarios.",
+     "quote": "ChatGPT-4o with RAG achieved significantly higher guideline adherence in decision-making than neurologists (80.5% vs. 66.5%; p = 0.001)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Reproducibility of ChatGPT responses across 10 repeated runs per case",
+     "effect": "Responses highly consistent across 10 repetitions, identical in most scenarios or showing minimal variability, typically two response patterns; some cases at 60-90% correct.",
+     "quote": "In general, ChatGPT's responses were highly consistent across the 10 repetitions per case, with the model producing identical answers in most scenarios or showing minimal variability, typically limited to two different response patterns."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Correctness of LLM treatment recommendations in emerging-biomarker (sNfL) scenarios",
+     "effect": "In NewFeeLs-MS, ChatGPT was 0% correct in 4-5 of 7 cases; mean 28.6% without context and 41.4% with context vs neurologists 54.2%, no significant difference.",
+     "quote": "Conversely, for the NewFeeLs-MS study, no significant differences were observed in the percentage of correct responses between ChatGPT-4o and neurologists, either without context (mean: 28.6% vs. 54.2%; p = 0.191) or with context (mean: 41.4% vs. 54.2%; p = 0.518)"
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Spain",
+   "sample_size": 290,
+   "sample_unit": "neurologists",
+   "models_evaluated": [
+    "ChatGPT-4o (gpt-4o-2024-08-06) without context",
+    "ChatGPT-4o (gpt-4o-2024-08-06) with RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus neurologist correct responses",
+     "effect": "ChatGPT higher overall: without context 72.9% vs. 66.5% (p = 0.038); with context 80.5% vs. 66.5% (p = 0.001).",
+     "quote": "When analyzing results across all studies combined, ChatGPT-4o demonstrated a significantly higher percentage of correct responses than neurologists in both conditions: Without context (mean: 72.9% vs. 66.5%; p = 0.038) and with context (mean: 80.5% vs. 66.5%; p = 0.001) ( Figure 1A )."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "guideline-adherent responses with contextual retrieval",
+     "effect": "With RAG: PREFERENCES-NMOSD and DIScUTIR MS 100%; NewFeeLs-MS cases 1/5 100%, case 2 90%, remaining cases 0%.",
+     "quote": "When ChatGPT was provided with context, a slight improvement in performance was observed, resulting in a 100% correct response rate across all evaluated cases for the PREFERENCES-NMOSD and DIScUTIR MS studies, while in NewFeeLs-MS, correct responses were observed in 100% of the iterations for cases 1 and 5, in 90% for case 2, and 0% in the remaining cases ( Table 3 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "response reproducibility across repeated runs",
+     "effect": "10 repetitions per case; identical answers in most scenarios; minimal variability, typically two response patterns.",
+     "quote": "In general, ChatGPT's responses were highly consistent across the 10 repetitions per case, with the model producing identical answers in most scenarios or showing minimal variability, typically limited to two different response patterns."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "correct responses in emerging biomarker scenarios",
+     "effect": "NewFeeLs-MS: ChatGPT 28.6% without context and 41.4% with context vs. neurologists 54.2%; p = 0.191 and 0.518.",
+     "quote": "Conversely, for the NewFeeLs-MS study, no significant differences were observed in the percentage of correct responses between ChatGPT-4o and neurologists, either without context (mean: 28.6% vs. 54.2%; p = 0.191) or with context (mean: 41.4% vs. 54.2%; p = 0.518) ( Figure 1D )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Spain",
+   "sample_size": 290,
+   "sample_unit": "clinicians",
+   "models_evaluated": [
+    "ChatGPT-4o",
+    "gpt-4o-2024-08-06"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Guideline-adherent treatment decisions with retrieval-augmented generation versus unaugmented prompt",
+     "effect": "ChatGPT-4o adherence increased from 72.9% without context to 80.5% with context (versus 66.5% for neurologists, p=0.001), with multivariable odds ratio of 3.17 (p<0.0001) versus clinicians.",
+     "quote": "When analyzing results across all studies combined, ChatGPT-4o demonstrated a significantly higher percentage of correct responses than neurologists in both conditions: Without context (mean: 72.9% vs. 66.5%; p = 0.038) and with context (mean: 80.5% vs. 66.5%; p = 0.001) ( Figure 1A )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Spain",
+ "sample_unit": "neurologists (responses to 21 clinical vignettes; ChatGPT-4o run 10 times per case)",
+ "sample_size": 290,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ChatGPT-4o",
+  "ChatGPT-4o (gpt-4o-2024-08-06) with RAG",
+  "ChatGPT-4o (gpt-4o-2024-08-06) without context",
+  "gpt-4o-2024-08-06",
+  "gpt-4o-2024-08-06 with RAG (text-embedding-3-large, ChromaDB)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Guideline-adherent responses with vs without RAG grounding on curated clinical documents",
+   "effect": "ChatGPT-4o with RAG 80.5% correct vs 72.9% without context; vs neurologists 66.5% (p=0.001 with RAG; p=0.038 without). GEE OR 3.17 with RAG vs 1.55 without.",
+   "quote": "Without context (mean: 72.9% vs. 66.5%; p = 0.038) and with context (mean: 80.5% vs. 66.5%; p = 0.001)",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI versus neurologist correct responses",
+   "effect": "ChatGPT higher overall: without context 72.9% vs. 66.5% (p = 0.038); with context 80.5% vs. 66.5% (p = 0.001).",
+   "quote": "When analyzing results across all studies combined, ChatGPT-4o demonstrated a significantly higher percentage of correct responses than neurologists in both conditions: Without context (mean: 72.9% vs. 66.5%; p = 0.038) and with context (mean: 80.5% vs. 66.5%; p = 0.001) ( Figure 1A ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of ChatGPT responses across 10 repeated runs per case",
+   "effect": "Responses highly consistent across 10 repetitions, identical in most scenarios or showing minimal variability, typically two response patterns; some cases at 60-90% correct.",
+   "quote": "In general, ChatGPT's responses were highly consistent across the 10 repetitions per case, with the model producing identical answers in most scenarios or showing minimal variability, typically limited to two different response patterns.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41993106",
+ "screen": {
+  "id": "pmid:41993106",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates ChatGPT-4o with and without retrieval-augmented generation (RAG) on clinical decision vignettes compared to practicing neurologists.",
+  "jev": {
+   "id": "pmid:41993106",
+   "empirical": 0.94,
+   "tests_practice": 0.83,
+   "real_deployment": 0.03
+  }
+ }
+}

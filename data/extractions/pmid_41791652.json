@@ -1,0 +1,304 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "France, India, South Korea (with five European centers in retrospective set)",
+   "sample_size": 161,
+   "sample_unit": "patients (prospective validation cohort)",
+   "models_evaluated": [
+    "CTranspath/HistoBistro",
+    "UNI/CLAM",
+    "CONCH/TITAN",
+    "AI2CCA (CONCH/TITAN with G-ODIN confidence estimation)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance on prospective external multicenter validation cohorts",
+     "effect": "AI2CCA achieved AUROCs of 1.00 and 0.965 in the French and Asian cohorts, respectively (with only one misclassified case in the Asian series).",
+     "quote": "In prospective validation, AI<sup>2</sup>CCA achieved AUROCs of 1.00 and 0.965 in the French and Asian cohorts, respectively (with only one misclassified case in the Asian series)."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether predictive entropy confidence estimates identify misclassified cases and improve performance when thresholded",
+     "effect": "Predictive entropy was significantly higher in misclassified cases; confidence thresholding improved AUROC to 0.958 with FPR of 0, retaining 46% of samples for high-confidence prediction.",
+     "quote": "Implementation of confidence thresholding improved the AUROC to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "France; India; Korea; unspecified European centers",
+   "sample_size": 705,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CTranspath/HistoBistro",
+    "UNI/CLAM",
+    "CONCH/TITAN",
+    "AI\u00b2CCA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "prospective external diagnostic performance",
+     "effect": "Prospective validation AUROCs were 1.00 in French cohorts and 0.965 in Asian cohorts, with one misclassified Asian case.",
+     "quote": "In prospective validation, AI<sup>2</sup>CCA achieved AUROCs of 1.00 and 0.965 in the French and Asian cohorts, respectively (with only one misclassified case in the Asian series)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate architecture diagnostic performance",
+     "effect": "CONCH/TITAN yielded best retrospective performance, AUROC 0.840; other architectures were investigated but not numerically reported in abstract.",
+     "quote": "In the retrospective test set, the CONCH/TITAN architecture yielded the best performance (AUROC 0.840)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "confidence-thresholded diagnostic performance",
+     "effect": "Confidence thresholding improved AUROC to 0.958 with FPR 0, retaining 46% for high-confidence prediction.",
+     "quote": "Implementation of confidence thresholding improved the AUROC to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "France, India, South Korea",
+   "sample_size": 705,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AI2CCA",
+    "CONCH/TITAN",
+    "CTranspath/HistoBistro",
+    "UNI/CLAM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC and false-positive rate with confidence thresholding",
+     "effect": "AUROC improved to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction",
+     "quote": "Implementation of confidence thresholding improved the AUROC to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predictive entropy in misclassified cases",
+     "effect": "predictive entropy derived via G-ODIN was significantly higher in misclassified cases, validating its utility as a confidence metric",
+     "quote": "Predictive entropy derived via G-ODIN was significantly higher in misclassified cases, validating its utility as a confidence metric."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "France, India, South Korea (with five European centers in retrospective set)",
+ "sample_unit": "patients",
+ "sample_size": 705,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AI2CCA",
+  "AI2CCA (CONCH/TITAN with G-ODIN confidence estimation)",
+  "AI\u00b2CCA",
+  "CONCH/TITAN",
+  "CTranspath/HistoBistro",
+  "UNI/CLAM"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "confidence-thresholded diagnostic performance",
+   "effect": "Confidence thresholding improved AUROC to 0.958 with FPR 0, retaining 46% for high-confidence prediction.",
+   "quote": "Implementation of confidence thresholding improved the AUROC to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance on prospective external multicenter validation cohorts",
+   "effect": "AI2CCA achieved AUROCs of 1.00 and 0.965 in the French and Asian cohorts, respectively (with only one misclassified case in the Asian series).",
+   "quote": "In prospective validation, AI<sup>2</sup>CCA achieved AUROCs of 1.00 and 0.965 in the French and Asian cohorts, respectively (with only one misclassified case in the Asian series).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether predictive entropy confidence estimates identify misclassified cases and improve performance when thresholded",
+   "effect": "Predictive entropy was significantly higher in misclassified cases; confidence thresholding improved AUROC to 0.958 with FPR of 0, retaining 46% of samples for high-confidence prediction.",
+   "quote": "Implementation of confidence thresholding improved the AUROC to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC and false-positive rate with confidence thresholding",
+   "effect": "AUROC improved to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction",
+   "quote": "Implementation of confidence thresholding improved the AUROC to 0.958 with an FPR of 0, while retaining 46% of samples for high-confidence prediction.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41791652",
+ "screen": {
+  "id": "pmid:41791652",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "confidence thresholding with uncertainty estimation (G-ODIN)",
+  "user": "none",
+  "reason": "The study develops and validates a pathology foundation model for ICCA diagnosis and explicitly tests a confidence estimation safeguard (confidence thresholding via generalized-ODIN predictive entropy) to filter low-confidence predictions, demonstrating improved AUROC and zero FPR on retained cases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "confidence thresholding / selective prediction"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41791652",
+   "empirical": 0.97,
+   "tests_practice": 0.77,
+   "real_deployment": 0.32
+  }
+ }
+}

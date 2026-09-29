@@ -1,0 +1,398 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 92,
+   "sample_unit": "patients (626 medications)",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration of LLM confidence estimates for deprescribing recommendations",
+     "effect": "Confidence poorly calibrated; severely left-skewed with minimum confidence 58.5% (eligibility) and 54.5% (deprescribing); selective prediction only marginally improved performance.",
+     "quote": "However, despite some minor improvements, we find that the LLM is poorly calibrated, as shown in Figure 6 B."
+    },
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM making deprescribing recommendations, including potentially harmful ones, on clinical cases",
+     "effect": "Deprescribing step PPV 0.47; LLM recommended deprescribing far more often (11.6%) than students (1.91%); harmful cases observed, e.g., suggesting deprescribing anticoagulation after recent thromboembolism.",
+     "quote": "Cases with the potential for human harm were observed, such as suggesting deprescribing anticoagulation in a patient with recent thromboembolism."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Selective prediction (abstention/deferral to humans) effect on LLM F1 performance",
+     "effect": "Consistency-based deferral raised F1 to 0.85-0.88 (step 1) and 0.62-0.73 (step 2); verbalized confidence gave narrower ranges (0.58-0.69 step 2); gains marginal due to poor calibration.",
+     "quote": "Selective prediction marginally improved the LLM\u2019s filtering accuracy by enabling it to defer uncertain cases to human reviewers."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM application of deprescribing criteria to patient cases, error types",
+     "effect": "Errors due to complex inclusion/exclusion criteria (54.5%) and ambiguous clinical contexts such as missing information (39.3%); step 2 PPV 0.47, F1 0.58.",
+     "quote": "Adjudication revealed that while the model excelled at identifying when there was a deprescribing criterion related to one of the patient's medications, it often struggled with determining whether that criterion applied to the specific case due to complex inclusion and exclusion criteria (54.5% of errors) and ambiguous clinical contexts (eg, missing information; 39.3% of errors)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "LLM versus medical students on criteria filtering and deprescribing recommendation, adjudicated",
+     "effect": "LLM better at criteria filtering (80.1% vs 59.5% correct, P=.02) but worse, not significantly, at applying criteria (P=.178).",
+     "quote": "However, in applying relevant criteria, GPT-4o performed worse than the medical students, though the difference was not statistically significant (McNemar test: \u03c7 2 1 =1.818; P =.178)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Interrater reliability of junior annotators motivating senior adjudication as gold standard",
+     "effect": "Medical student IRR was low (Cohen k step 1=0.68, step 2=0.33), so physician adjudication was used; senior IRR 0.795 and 0.745.",
+     "quote": "Adjudication was chosen as the gold standard for resolving discrepancies because preliminary research showed low IRR among medical students for both steps of the process (Cohen k : step 1=0.68, step 2=0.33) across 75 medications."
+    },
+    {
+     "rec_id": "R524",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Potential alert burden from inaccurate LLM deprescribing recommendations",
+     "effect": "LLM over-recommended deprescribing (11.6% vs 1.91% for students); authors note inaccuracies could increase alert fatigue and interpretation time.",
+     "quote": "If implemented in clinical decision support, these inaccuracies might contribute to increased alert fatigue and extend the time required to interpret LLM-generated recommendations, potentially offsetting the intended efficiency gains in identifying deprescribing opportunities."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-step pipeline that filters criteria before applying them to reduce context-size errors",
+    "Expert consensus filtering of guideline criteria for clinical risk and EHR computability before LLM use",
+    "Consistency-based (self-sampling) confidence elicitation for selective prediction"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 626,
+   "sample_unit": "medications",
+   "models_evaluated": [
+    "GPT-4o (Azure OpenAI; model version 2024-08-06)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "case-specific deprescribing recommendations",
+     "effect": "Criteria identification PPV 0.83, NPV 0.93; recommendations PPV 0.47, NPV 0.93.",
+     "quote": "The LLM was significantly more effective in identifying deprescribing criteria (positive predictive value: 0.83; negative predictive value: 0.93; McNemar test for paired proportions: \u03c7<sup>2</sup><sub>1</sub>=5.985; P=.02) relative to medical students, but showed limitations in making specific deprescribing recommendations (positive predictive value=0.47; negative predictive value=0.93)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "confidence-based deferral performance",
+     "effect": "Verbalized F1 step 2: 0.58\u20130.69; consistency-based F1 step 2: 0.62\u20130.73; improvement was marginal.",
+     "quote": "Selective prediction only marginally improved LLM performance due to poorly calibrated confidence estimates."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "confidence calibration",
+     "effect": "Minimum confidence was 58.5% for eligibility filtering and 54.5% for deprescribing recommendations.",
+     "quote": "Despite consistency-based weighting, the confidence distribution is severely left-skewed with the minimum confidence being 58.5% in eligibility filtering and 54.5% in deprescribing recommendations."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "deprescribing recommendation accuracy",
+     "effect": "Recommendation task F1-score 0.58, precision=0.47, recall=0.76.",
+     "quote": "In this second step, which involved applying relevant criteria to make a recommendation, the LLM performed less effectively, with an F 1 -score of 0.58 (precision=0.47, recall=0.76)."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "errors from missing or ambiguous data",
+     "effect": "Complex inclusion/exclusion caused 54.5% of errors; ambiguous contexts including missing information caused 39.3%.",
+     "quote": "Adjudication revealed that while the model excelled at identifying when there was a deprescribing criterion related to one of the patient's medications, it often struggled with determining whether that criterion applied to the specific case due to complex inclusion and exclusion criteria (54.5% of errors) and ambiguous clinical contexts (eg, missing information; 39.3% of errors)."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-stage LLM deprescribing pipeline: medication-list criteria filtering followed by case-specific application with EHR context",
+    "Expert consensus filtering of deprescribing criteria by clinical risk and EHR computability"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 626,
+   "sample_unit": "medications",
+   "models_evaluated": [
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "deprescribing accuracy across deferral fractions using selective prediction",
+     "effect": "Consistency-based selective prediction marginally increased F1-scores from 0.85 to 0.88 for criteria filtering and from 0.62 to 0.73 for deprescribing recommendations as deferral increased, limited by poor confidence calibration.",
+     "quote": "Selective prediction only marginally improved LLM performance due to poorly calibrated confidence estimates."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM confidence calibration and overconfidence",
+     "effect": "GPT-4o showed poor confidence calibration with a minimum confidence of 54% even when deprescribing recommendations were incorrect, indicating overconfidence.",
+     "quote": "Specifically, the LLM displayed a minimum confidence level of 54%, even in cases where its recommendations were incorrect."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "medications",
+ "sample_size": 626,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o (Azure OpenAI; model version 2024-08-06)"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of LLM confidence estimates for deprescribing recommendations",
+   "effect": "Confidence poorly calibrated; severely left-skewed with minimum confidence 58.5% (eligibility) and 54.5% (deprescribing); selective prediction only marginally improved performance.",
+   "quote": "However, despite some minor improvements, we find that the LLM is poorly calibrated, as shown in Figure 6 B.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R063",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM making deprescribing recommendations, including potentially harmful ones, on clinical cases",
+   "effect": "Deprescribing step PPV 0.47; LLM recommended deprescribing far more often (11.6%) than students (1.91%); harmful cases observed, e.g., suggesting deprescribing anticoagulation after recent thromboembolism.",
+   "quote": "Cases with the potential for human harm were observed, such as suggesting deprescribing anticoagulation in a patient with recent thromboembolism.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Selective prediction (abstention/deferral to humans) effect on LLM F1 performance",
+   "effect": "Consistency-based deferral raised F1 to 0.85-0.88 (step 1) and 0.62-0.73 (step 2); verbalized confidence gave narrower ranges (0.58-0.69 step 2); gains marginal due to poor calibration.",
+   "quote": "Selective prediction marginally improved the LLM\u2019s filtering accuracy by enabling it to defer uncertain cases to human reviewers.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM application of deprescribing criteria to patient cases, error types",
+   "effect": "Errors due to complex inclusion/exclusion criteria (54.5%) and ambiguous clinical contexts such as missing information (39.3%); step 2 PPV 0.47, F1 0.58.",
+   "quote": "Adjudication revealed that while the model excelled at identifying when there was a deprescribing criterion related to one of the patient's medications, it often struggled with determining whether that criterion applied to the specific case due to complex inclusion and exclusion criteria (54.5% of errors) and ambiguous clinical contexts (eg, missing information; 39.3% of errors).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "LLM versus medical students on criteria filtering and deprescribing recommendation, adjudicated",
+   "effect": "LLM better at criteria filtering (80.1% vs 59.5% correct, P=.02) but worse, not significantly, at applying criteria (P=.178).",
+   "quote": "However, in applying relevant criteria, GPT-4o performed worse than the medical students, though the difference was not statistically significant (McNemar test: \u03c7 2 1 =1.818; P =.178).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "errors from missing or ambiguous data",
+   "effect": "Complex inclusion/exclusion caused 54.5% of errors; ambiguous contexts including missing information caused 39.3%.",
+   "quote": "Adjudication revealed that while the model excelled at identifying when there was a deprescribing criterion related to one of the patient's medications, it often struggled with determining whether that criterion applied to the specific case due to complex inclusion and exclusion criteria (54.5% of errors) and ambiguous clinical contexts (eg, missing information; 39.3% of errors).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R524",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Consistency-based (self-sampling) confidence elicitation for selective prediction",
+  "Expert consensus filtering of deprescribing criteria by clinical risk and EHR computability",
+  "Expert consensus filtering of guideline criteria for clinical risk and EHR computability before LLM use",
+  "Two-stage LLM deprescribing pipeline: medication-list criteria filtering followed by case-specific application with EHR context",
+  "Two-step pipeline that filters criteria before applying them to reduce context-size errors"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40215480",
+ "screen": {
+  "id": "pmid:40215480",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "selective prediction (confidence-based abstention)",
+  "user": "none",
+  "reason": "The study tests an LLM pipeline on retrospective patient data to identify deprescribing opportunities and specifically evaluates selective prediction (confidence-based abstention thresholding) as a safeguard to improve performance/reliability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "selective prediction / confidence-based abstention"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40215480",
+   "empirical": 0.97,
+   "tests_practice": 0.58,
+   "real_deployment": 0.04
+  }
+ }
+}

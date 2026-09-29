@@ -1,0 +1,240 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 600,
+   "sample_unit": "retrieved chunks (594 baseline A-line, 6 optimized B-line)",
+   "models_evaluated": [
+    "Google Cloud Vertex AI Search"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R476",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retrieved chunk quality for baseline versus optimized (restructured) knowledge documents",
+     "effect": "Baseline A-line chunk median scores were 2.0 or below on all five metrics with fewer than 20% reaching practical utility; optimized B-line achieved perfect scores across all metrics (6 chunks, proof of concept).",
+     "quote": "The B-line optimization achieved perfect scores across all metrics, demonstrating potential for improvement."
+    }
+   ],
+   "unlisted_practices": [
+    "Restructuring and curating source knowledge documents (structure, granularity, noise) before RAG deployment",
+    "LLM-as-a-Judge evaluation of retrieved chunk quality"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 600,
+   "sample_unit": "retrieved chunks",
+   "models_evaluated": [
+    "Google Cloud Vertex AI Search"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "expert review agreement",
+     "effect": "Fleiss kappa value was 0.269, described as fair.",
+     "quote": "The inter-rater agreement in the Level 1 evaluation was fair (Fleiss kappa value of 0.269), indicating the need for framework refinement."
+    },
+    {
+     "rec_id": "R476",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "baseline retrieved chunk quality",
+     "effect": "Median scores were 2.0 or below across all five metrics; fewer than 20% reached score \u22654.",
+     "quote": "The results revealed substantial quality limitations in the A-line chunks: the median scores were 2.0 or below across all five metrics, with fewer than 20% of the chunks reaching practical utility thresholds (score of 4 or higher)."
+    }
+   ],
+   "unlisted_practices": [
+    "Prepare and restructure RAG knowledge documents for clearer organization, formatting, granularity, and reduced noise before ingestion."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 600,
+   "sample_unit": "chunks",
+   "models_evaluated": [
+    "Google Cloud Vertex AI Search"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R476",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "retrieved chunk structural quality and utility",
+     "effect": "Median scores were 2.0 or below across five metrics, with fewer than 20% reaching utility thresholds (score >= 4), and chunk lengths exceeding settings (median 3,861 characters vs 500 tokens).",
+     "quote": "The results revealed substantial quality limitations in the A-line chunks: the median scores were 2.0 or below across all five metrics, with fewer than 20% of the chunks reaching practical utility thresholds (score of 4 or higher)."
+    }
+   ],
+   "unlisted_practices": [
+    "Optimizing upstream knowledge document structure, granularity, and formatting prior to RAG indexing"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "retrieved chunks (594 baseline A-line, 6 optimized B-line)",
+ "sample_size": 600,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese"
+ ],
+ "models_evaluated": [
+  "Google Cloud Vertex AI Search"
+ ],
+ "links": [
+  {
+   "rec_id": "R476",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "baseline retrieved chunk quality",
+   "effect": "Median scores were 2.0 or below across all five metrics; fewer than 20% reached score \u22654.",
+   "quote": "The results revealed substantial quality limitations in the A-line chunks: the median scores were 2.0 or below across all five metrics, with fewer than 20% of the chunks reaching practical utility thresholds (score of 4 or higher).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R476",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "LLM-as-a-Judge evaluation of retrieved chunk quality",
+  "Optimizing upstream knowledge document structure, granularity, and formatting prior to RAG indexing",
+  "Prepare and restructure RAG knowledge documents for clearer organization, formatting, granularity, and reduced noise before ingestion.",
+  "Restructuring and curating source knowledge documents (structure, granularity, noise) before RAG deployment"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1270216",
+ "screen": {
+  "id": "epmc:PPR1270216",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "knowledge document restructuring for RAG retrieval",
+  "user": "none",
+  "reason": "Empirically evaluates the effect of upstream knowledge document curation/structuring versus as-is document ingestion on retrieval-augmented generation quality for clinical research IRB pre-screening support.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "upstream knowledge document restructuring/curation for RAG"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1270216",
+   "empirical": 0.93,
+   "tests_practice": 0.34,
+   "real_deployment": 0.07
+  }
+ }
+}

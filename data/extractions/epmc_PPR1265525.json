@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 200,
+ "sample_unit": "LLM-generated code runs",
+ "models_evaluated": [
+  "ChatGPT",
+  "Claude",
+  "DeepSeek",
+  "Gemini",
+  "Grok"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Numerical accuracy of LLM-generated propofol PK code versus reference, including unit and time-scale errors",
+   "effect": "195/200 runs (97.5%) were Class A (MDAPE <1%). 5 runs (2.5%) were defective: 3 Class C from time-scale/unit errors, 1 empty-CSV failure, 1 duplicated-bolus error. Unit/structural bugs persisted despite prompt method specification.",
+   "quote": "LLMs generate numerically accurate Marsh-model code in most runs but silently diverge in a clinically non-negligible minority.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Reference-based numerical validation of LLM-generated pharmacokinetic simulation code before safety-relevant use",
+  "Prompt-level specification of numerical method (mandating RK4 integrator and step size) to reduce algorithm-selection errors"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1265525",
+ "screen": {
+  "id": "epmc:PPR1265525",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompt-level method specification (mandated integrator) and reference-based validation of LLM-generated code",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates the safety and accuracy of LLMs generating pharmacokinetic simulation code and explicitly compares unconstrained prompts vs. prompt-level method specification (mandating numerical integrator and step size) to test if it mitigates simulation bugs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt-level method specification / algorithm constraints"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1265525",
+   "empirical": 0.94,
+   "tests_practice": 0.22,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 7566,
+ "sample_unit": "utterance segments (21 encounters, 19 patients)",
+ "models_evaluated": [
+  "Qwen 2.5 32B (zero-shot)",
+  "supervised classifier over frozen sentence embeddings",
+  "logistic stack of LLM and supervised classifier"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Macro kappa of zero-shot LLM versus simpler supervised classifier on the same data",
+   "effect": "Zero-shot LLM macro kappa 0.139 (95% CI 0.111-0.164) vs supervised classifier 0.227 (0.186-0.262); paired improvement 0.088 (0.051-0.119); stack 0.242.",
+   "quote": "The supervised classifier reached kappa = 0.227 (0.186-0.262), a paired improvement of 0.088 (0.051-0.119).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Sensitivity of reported performance to data splitting unit and leakage of labeled exemplars",
+   "effect": "Multiple leakage paths identified (sibling recordings split separately, held-out patient labels entering few-shot exemplars); performance sensitive to splitting unit and exemplar placement. No leakage effect numbers reported in abstract.",
+   "quote": "Reported performance is sensitive to the unit of data splitting and to where labeled exemplars enter the pipeline.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Patient-grouped nested cross-validation with inner cross-fitted thresholds",
+  "Grouping sibling recordings together to prevent leakage",
+  "Computing few-shot exemplars inside the outer evaluation loop"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2608.14792",
+ "screen": {
+  "id": "arxiv:2608.14792",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "speech_ambient"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates LLM and supervised classification on real clinical encounter transcripts to detect shared decision-making behaviors, specifically testing the methodological safeguard of data leakage control and patient-level grouping during validation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "evaluation leakage control and patient-level grouping"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2608.14792",
+   "empirical": 0.97,
+   "tests_practice": 0.33,
+   "real_deployment": 0.08
+  }
+ }
+}

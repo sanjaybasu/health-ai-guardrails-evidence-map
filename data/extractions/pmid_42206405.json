@@ -1,0 +1,83 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 593,
+ "sample_unit": "clinical notes (MTSamples)",
+ "models_evaluated": [
+  "Llama 3.3-70B",
+  "gpt-oss-120B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Precision/recall of symptom extraction across four prompt strategies (constraints, overinference)",
+   "effect": "Instruction-only prompting gave high recall but poor precision; adding structure and constraints improved performance. On test set, Llama 3.3-70B precision 0.63 vs gpt-oss-120B 0.89 for S&S extraction.",
+   "quote": "Instruction-only prompting demonstrated high recall but poor precision.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Prompt engineering strategies (ICD-10-CM definition-based, assumption-free prompts, multimodule framework with postprocessing) to improve LLM extraction accuracy",
+  "Locally deployed open-weight LLMs for on-premises processing to enhance data safety"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42206405",
+ "screen": {
+  "id": "pmid:42206405",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompt guardrails and postprocessing",
+  "user": "none",
+  "reason": "The study empirically compares four prompting strategies and postprocessing guardrails (e.g., assumption-free prompts, ICD definitions, multimodule postprocessing) to mitigate hallucinations/overinference when extracting symptoms from clinical notes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt engineering constraints and multimodule postprocessing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42206405",
+   "empirical": 0.97,
+   "tests_practice": 0.23,
+   "real_deployment": 0.03
+  }
+ }
+}

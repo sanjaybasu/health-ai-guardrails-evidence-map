@@ -1,0 +1,329 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 254,
+   "sample_unit": "prenatal ultrasound reports",
+   "models_evaluated": [
+    "DeepSeek-V3.2-B",
+    "DeepSeek-V3.2-R",
+    "Qwen3-Reranker-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Severity classification accuracy before vs after RAG grounding on retrieval and unseen test sets",
+     "effect": "RAG improved accuracy on retrieval set (V3.2-B 56% to 70%, P=.002; V3.2-R 83% to 99%, P<.001) but not on unseen test set (V3.2-B 57% vs 59%, P=.61; V3.2-R 86% vs 81%, P=.33).",
+     "quote": "Crucially, the performance gains observed in the retrieval set did not translate to the external test set, revealing a critical limitation in the generalizability of RAG for this specific task."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Comparing fast base LLM with reasoning LLM for subjective severity grading",
+     "effect": "Base model 56.6% accuracy versus reasoning model 84.6%; base model recall 0 for minor anomalies.",
+     "quote": "V3.2-B\u2019s accuracy was only 56.7% (144/254), while V3.2-R significantly improved to 84.6% (215/254), with a macro- F 1 -score of 0.75."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM severity grading errors, missing serious/lethal anomalies",
+     "effect": "Lethal malformation recall 0.40 with V3.2-R; base model missed all minor anomalies; overall severity accuracy 84.6%.",
+     "quote": "it achieved perfect precision for \u201clethal malformation\u201d but with low recall (0.40), while for \u201cmajor malformation,\u201d it achieved perfect recall at the cost of lower precision (0.53)."
+    }
+   ],
+   "unlisted_practices": [
+    "Routing tasks between fast base LLM and slow reasoning LLM by task complexity",
+    "Local deployment of open-source LLM for privacy preservation",
+    "Chain-of-thought reasoning models for subjective clinical classification"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 254,
+   "sample_unit": "prenatal ultrasound reports",
+   "models_evaluated": [
+    "DeepSeek-V3.2-B",
+    "DeepSeek-V3.2-R"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model comparison for severity",
+     "effect": "On test set, V3.2-R 86% vs V3.2-B 57%; minor anomalies V3.2-B F1=0 vs V3.2-R F1=0.83.",
+     "quote": "On the test set, V3.2-R achieved an accuracy of 86%, significantly outperforming V3.2-B, which achieved only 57%."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "seen versus unseen validation performance",
+     "effect": "RAG retrieval-set gains did not generalize: V3.2-R retrieval 83%\u219299%, but unseen test 86%\u219281% after RAG.",
+     "quote": "These data indicate that while RAG can effectively guide LLMs to memorize or retrieve specific patterns within the knowledge base, it fails to significantly enhance\u2014and may potentially hinder\u2014performance on unseen, heterogeneous clinical data."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "RAG effect on severity classification",
+     "effect": "RAG improved retrieval accuracy: B 56%\u219270% (P=.002), R 83%\u219299% (P<.001); test: B 57%\u219259% (P=.61), R 86%\u219281% (P=.33).",
+     "quote": "Crucially, the performance gains observed in the retrieval set did not translate to the external test set, revealing a critical limitation in the generalizability of RAG for this specific task."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "classification accuracy versus expert standard",
+     "effect": "Factual tasks >90% accuracy/F1>0.9; severity V3.2-B 56.7% (144/254) vs V3.2-R 84.6% (215/254), macro-F1 0.75.",
+     "quote": "V3.2-B\u2019s accuracy was only 56.7% (144/254), while V3.2-R significantly improved to 84.6% (215/254), with a macro- F 1 -score of 0.75."
+    }
+   ],
+   "unlisted_practices": [
+    "Use chain-of-thought reasoning models for subjective clinical severity grading."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 254,
+   "sample_unit": "ultrasound reports",
+   "models_evaluated": [
+    "DeepSeek-V3.2-B",
+    "DeepSeek-V3.2-R",
+    "Qwen3-Reranker-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "zh",
+    "en"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "severity classification accuracy before and after RAG on unseen test set",
+     "effect": "On unseen test data, RAG changed accuracy from 57% to 59% (P=.61) for V3.2-B and decreased accuracy from 86% to 81% (P=.33) for V3.2-R",
+     "quote": "The implementation of RAG on V3.2-R resulted in a slight, though not statistically significant, decline in accuracy on the external test set (86% vs 81%, P =.33)."
+    }
+   ],
+   "unlisted_practices": [
+    "Chain-of-thought reasoning models for subjective clinical severity classification",
+    "Adaptive fast-slow LLM framework routing factual extraction to base models and subjective reasoning to reasoning models"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "prenatal ultrasound reports",
+ "sample_size": 254,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "en",
+  "zh"
+ ],
+ "models_evaluated": [
+  "DeepSeek-V3.2-B",
+  "DeepSeek-V3.2-R",
+  "Qwen3-Reranker-8B"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Severity classification accuracy before vs after RAG grounding on retrieval and unseen test sets",
+   "effect": "RAG improved accuracy on retrieval set (V3.2-B 56% to 70%, P=.002; V3.2-R 83% to 99%, P<.001) but not on unseen test set (V3.2-B 57% vs 59%, P=.61; V3.2-R 86% vs 81%, P=.33).",
+   "quote": "Crucially, the performance gains observed in the retrieval set did not translate to the external test set, revealing a critical limitation in the generalizability of RAG for this specific task.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM severity grading errors, missing serious/lethal anomalies",
+   "effect": "Lethal malformation recall 0.40 with V3.2-R; base model missed all minor anomalies; overall severity accuracy 84.6%.",
+   "quote": "it achieved perfect precision for \u201clethal malformation\u201d but with low recall (0.40), while for \u201cmajor malformation,\u201d it achieved perfect recall at the cost of lower precision (0.53).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "candidate model comparison for severity",
+   "effect": "On test set, V3.2-R 86% vs V3.2-B 57%; minor anomalies V3.2-B F1=0 vs V3.2-R F1=0.83.",
+   "quote": "On the test set, V3.2-R achieved an accuracy of 86%, significantly outperforming V3.2-B, which achieved only 57%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "seen versus unseen validation performance",
+   "effect": "RAG retrieval-set gains did not generalize: V3.2-R retrieval 83%\u219299%, but unseen test 86%\u219281% after RAG.",
+   "quote": "These data indicate that while RAG can effectively guide LLMs to memorize or retrieve specific patterns within the knowledge base, it fails to significantly enhance\u2014and may potentially hinder\u2014performance on unseen, heterogeneous clinical data.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adaptive fast-slow LLM framework routing factual extraction to base models and subjective reasoning to reasoning models",
+  "Chain-of-thought reasoning models for subjective clinical classification",
+  "Chain-of-thought reasoning models for subjective clinical severity classification",
+  "Local deployment of open-source LLM for privacy preservation",
+  "Routing tasks between fast base LLM and slow reasoning LLM by task complexity",
+  "Use chain-of-thought reasoning models for subjective clinical severity grading."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42207158",
+ "screen": {
+  "id": "pmid:42207158",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG) added to existing LLM",
+  "user": "none",
+  "reason": "Evaluates LLM performance on clinical prenatal ultrasound classification and explicitly tests the impact of adding retrieval-augmented generation (RAG) and chain-of-thought prompting on performance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42207158",
+   "empirical": 0.96,
+   "tests_practice": 0.73,
+   "real_deployment": 0.08
+  }
+ }
+}

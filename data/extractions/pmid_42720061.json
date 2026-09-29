@@ -1,0 +1,395 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 8253,
+   "sample_unit": "interhospital transfer encounters",
+   "models_evaluated": [
+    "SafeNET",
+    "CatBoost",
+    "LightGBM",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration of published model on local historical data versus reference standard",
+     "effect": "SafeNET applied unmodified locally gave AUC-ROC 0.87, F1 0.73, Brier 0.055, close to published performance despite extensive missingness.",
+     "quote": "These findings indicate that SafeNET maintained predictive performance for in-hospital mortality comparable to its originally reported results, despite substantial dataset shift and extensive missingness in our real-world EHR data."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of locally retrained models versus the unmodified external model (AUC, F1, Brier)",
+     "effect": "Local CatBoost outperformed SafeNET: in-hospital AUC-ROC 0.92 vs 0.87, Brier 0.04 vs 0.055; better calibration across 30-day and 90-day too.",
+     "quote": "Locally trained gradient-boosting models outperformed SafeNET in predicting the primary outcome across all major evaluation domains, demonstrating higher discrimination, stronger F1 scores, and superior calibration."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Availability of model input variables in local production EHR data",
+     "effect": "Functional status measures were missing in 91.3% and comorbidity indicators in 96-99% of encounters; vitals and labs 42-43% missing, limiting the original feature set.",
+     "quote": "Substantial missingness was observed across several SafeNET predictors: Vital signs and laboratory values showed 42\u201343% missingness, while functional status measures (91.3%) and comorbidity indicators (96\u201399%) were missing in the majority of cases."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Dataset shift between development and local setting and its effect on performance",
+     "effect": "Despite substantial differences in patient mix, data pipelines and documentation, SafeNET performed comparably (AUC 0.87), but local models did better, showing site-specific patterns matter.",
+     "quote": "Despite substantial differences in patient mix, data pipelines, and documentation practices, and high rates of missingness, SafeNET performed comparably to its development-site results, suggesting that its core predictor set generalizes well across health systems."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Precision-recall trade-off implying false-alarm burden at operating threshold",
+     "effect": "Recall was at least 0.70 in most configurations but precision remained below 0.70 in several settings, indicating many false positives even in top models.",
+     "quote": "However, precision remained less than 0.70 in several settings, reflecting a notable rate of false positives."
+    }
+   ],
+   "unlisted_practices": [
+    "Using a constrained core feature set of consistently available variables to reduce missing data and harmonization burden"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 8253,
+   "sample_unit": "unique interhospital-transfer encounters",
+   "models_evaluated": [
+    "SafeNET",
+    "CatBoost",
+    "LightGBM",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "external performance degradation",
+     "effect": "SafeNET AUC-ROC 0.87; F1 0.73 (95% CI, 0.69\u20130.77), close to published performance.",
+     "quote": "When applied to our local test cohort without modification, SafeNET demonstrated discrimination closely approximating its originally published performance (AUC-ROC 0.87), with an F1 score of 0.73 (95% CI, 0.69\u20130.77)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate-model performance comparison",
+     "effect": "Local CatBoost AUC-ROC 0.92; F1 0.74; Brier 0.04 vs SafeNET Brier 0.055.",
+     "quote": "Locally trained CatBoost models outperformed SafeNET (AUC-ROC, 0.92; F1, 0.74; 95% CI, 0.72-0.78) and demonstrated improved calibration (Brier 0.04 vs. 0.055)."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local input availability",
+     "effect": "Vital/lab variables 42\u201343% missing; functional status 91.3% missing; comorbidity indicators 96\u201399% missing.",
+     "quote": "Substantial missingness was observed across several SafeNET predictors: Vital signs and laboratory values showed 42\u201343% missingness, while functional status measures (91.3%) and comorbidity indicators (96\u201399%) were missing in the majority of cases."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local model adaptation performance",
+     "effect": "Local CatBoost AUC-ROC 0.92, F1 0.74, Brier 0.04 vs SafeNET AUC-ROC 0.87, F1 0.73, Brier 0.055.",
+     "quote": "Our locally trained gradient-boosting models consistently outperformed SafeNET across discrimination, classification, and calibration metrics, underscoring the influence of site-specific EHR patterns, coding practices, and data distributions on model accuracy."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "false-positive alert burden proxy",
+     "effect": "Precision remained <0.70 in several settings, despite recall generally \u22650.70.",
+     "quote": "However, precision remained less than 0.70 in several settings, reflecting a notable rate of false positives."
+    }
+   ],
+   "unlisted_practices": [
+    "Use class weighting and random under-sampling to address rare-outcome class imbalance.",
+    "Use a reduced core-variable feature set to mitigate cross-system missingness."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 7773,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "SafeNET",
+    "CatBoost",
+    "LightGBM",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "external discrimination and calibration of SafeNET",
+     "effect": "AUC-ROC was 0.87 (95% CI, 0.83-0.90), F1 was 0.73 (95% CI, 0.69-0.77), and Brier score was 0.055, closely approximating development-site results.",
+     "quote": "These findings indicate that SafeNET maintained predictive performance for in-hospital mortality comparable to its originally reported results, despite substantial dataset shift and extensive missingness in our real-world EHR data."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination and calibration of local models versus external SafeNET",
+     "effect": "Locally trained CatBoost achieved AUC-ROC 0.92, F1 0.74 (95% CI, 0.72-0.78), and Brier score 0.04, outperforming SafeNET (AUC-ROC 0.87, F1 0.73, Brier 0.055).",
+     "quote": "Locally trained gradient-boosting models outperformed SafeNET in predicting the primary outcome across all major evaluation domains, demonstrating higher discrimination, stronger F1 scores, and superior calibration."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "interhospital transfer encounters",
+ "sample_size": 8253,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CatBoost",
+  "LightGBM",
+  "SafeNET",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of locally retrained models versus the unmodified external model (AUC, F1, Brier)",
+   "effect": "Local CatBoost outperformed SafeNET: in-hospital AUC-ROC 0.92 vs 0.87, Brier 0.04 vs 0.055; better calibration across 30-day and 90-day too.",
+   "quote": "Locally trained gradient-boosting models outperformed SafeNET in predicting the primary outcome across all major evaluation domains, demonstrating higher discrimination, stronger F1 scores, and superior calibration.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Availability of model input variables in local production EHR data",
+   "effect": "Functional status measures were missing in 91.3% and comorbidity indicators in 96-99% of encounters; vitals and labs 42-43% missing, limiting the original feature set.",
+   "quote": "Substantial missingness was observed across several SafeNET predictors: Vital signs and laboratory values showed 42\u201343% missingness, while functional status measures (91.3%) and comorbidity indicators (96\u201399%) were missing in the majority of cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Precision-recall trade-off implying false-alarm burden at operating threshold",
+   "effect": "Recall was at least 0.70 in most configurations but precision remained below 0.70 in several settings, indicating many false positives even in top models.",
+   "quote": "However, precision remained less than 0.70 in several settings, reflecting a notable rate of false positives.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration of published model on local historical data versus reference standard",
+   "effect": "SafeNET applied unmodified locally gave AUC-ROC 0.87, F1 0.73, Brier 0.055, close to published performance despite extensive missingness.",
+   "quote": "These findings indicate that SafeNET maintained predictive performance for in-hospital mortality comparable to its originally reported results, despite substantial dataset shift and extensive missingness in our real-world EHR data.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 0.67,
+   "outcome": "Dataset shift between development and local setting and its effect on performance",
+   "effect": "Despite substantial differences in patient mix, data pipelines and documentation, SafeNET performed comparably (AUC 0.87), but local models did better, showing site-specific patterns matter.",
+   "quote": "Despite substantial differences in patient mix, data pipelines, and documentation practices, and high rates of missingness, SafeNET performed comparably to its development-site results, suggesting that its core predictor set generalizes well across health systems.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "external performance degradation",
+   "effect": "SafeNET AUC-ROC 0.87; F1 0.73 (95% CI, 0.69\u20130.77), close to published performance.",
+   "quote": "When applied to our local test cohort without modification, SafeNET demonstrated discrimination closely approximating its originally published performance (AUC-ROC 0.87), with an F1 score of 0.73 (95% CI, 0.69\u20130.77).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "candidate-model performance comparison",
+   "effect": "Local CatBoost AUC-ROC 0.92; F1 0.74; Brier 0.04 vs SafeNET Brier 0.055.",
+   "quote": "Locally trained CatBoost models outperformed SafeNET (AUC-ROC, 0.92; F1, 0.74; 95% CI, 0.72-0.78) and demonstrated improved calibration (Brier 0.04 vs. 0.055).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 0.67,
+   "outcome": "external discrimination and calibration of SafeNET",
+   "effect": "AUC-ROC was 0.87 (95% CI, 0.83-0.90), F1 was 0.73 (95% CI, 0.69-0.77), and Brier score was 0.055, closely approximating development-site results.",
+   "quote": "These findings indicate that SafeNET maintained predictive performance for in-hospital mortality comparable to its originally reported results, despite substantial dataset shift and extensive missingness in our real-world EHR data.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Use a reduced core-variable feature set to mitigate cross-system missingness.",
+  "Use class weighting and random under-sampling to address rare-outcome class imbalance.",
+  "Using a constrained core feature set of consistently available variables to reduce missing data and harmonization burden"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42720061",
+ "screen": {
+  "id": "pmid:42720061",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and retraining before deployment",
+  "user": "none",
+  "reason": "The study conducts an external validation of an existing risk model (SafeNET) in a new health system to test transferability and directly evaluates the impact of local model retraining to compensate for local data fragmentation and missingness.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and retraining vs off-the-shelf model deployment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42720061",
+   "empirical": 0.95,
+   "tests_practice": 0.45,
+   "real_deployment": 0.07
+  }
+ }
+}

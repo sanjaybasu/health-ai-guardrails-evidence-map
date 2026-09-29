@@ -1,0 +1,317 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 8625,
+   "sample_unit": "admissions (held-out test set)",
+   "models_evaluated": [
+    "Qwen3-Embedding-0.6B",
+    "Qwen2.5-3B",
+    "Qwen2.5-7B 4-bit quantized",
+    "logistic regression",
+    "multilayer perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Override rates and calibration with patient-level trust score components (ablation)",
+     "effect": "Removing embedding-space similarity raised override rates from 3.57% to 77\u201381%; removing confidence calibration improved ECE (0.007 vs 0.024) without meaningfully changing overrides (3.57% vs 3.49%).",
+     "quote": "Systematic ablation identified embedding-space similarity as the architecturally critical trust component: its removal increased override rates from 3.57% to 77\u201381% across all model sizes, while confidence calibration improved ECE (0.007 vs. 0.024) without meaningfully altering override behavior (3.57% vs. 3.49%)."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Override rates when thresholds calibrated for one model are applied to larger models",
+     "effect": "0% override rates for larger models under thresholds calibrated for the 0.6B model; 3.57% at moderate richness for 0.6B.",
+     "quote": "The 0% override rates observed for larger models under thresholds calibrated for the 0.6B model establish that model-specific threshold recalibration is a structural deployment requirement, not an optional adjustment."
+    }
+   ],
+   "unlisted_practices": [
+    "Composite trust score combining classifier confidence, embedding similarity, and data-richness transparency to govern clinician override",
+    "Model-specific threshold recalibration for trust scores"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 43125,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "Qwen3-Embedding-0.6B",
+    "Qwen2.5-3B",
+    "Qwen2.5-7B 4-bit quantized",
+    "logistic regression",
+    "multilayer perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration quality and override behavior",
+     "effect": "Confidence calibration improved ECE (0.007 vs. 0.024) with override 3.57% vs. 3.49%.",
+     "quote": "Systematic ablation identified embedding-space similarity as the architecturally critical trust component: its removal increased override rates from 3.57% to 77\u201381% across all model sizes, while confidence calibration improved ECE (0.007 vs. 0.024) without meaningfully altering override behavior (3.57% vs. 3.49%)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Clinician override rates",
+     "effect": "3.57% at moderate richness for 0.6B; 0% for larger models under default thresholds.",
+     "quote": "The trust framework produced selective override rates contingent on both model capability and data richness (3.57% at moderate richness for the 0.6B model; 0% for larger models under default thresholds)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Override threshold transfer across models",
+     "effect": "Larger models had 0% override rates under thresholds calibrated for 0.6B.",
+     "quote": "The 0% override rates observed for larger models under thresholds calibrated for the 0.6B model establish that model-specific threshold recalibration is a structural deployment requirement, not an optional adjustment."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Candidate model discrimination",
+     "effect": "Qwen2.5-3B AUROC 0.857 (95% CI 0.849\u20130.865); 4-bit 7B AUROC 0.854.",
+     "quote": "The full-precision Qwen2.5-3B model achieved the highest discrimination (AUROC 0.857, 95% CI 0.849\u20130.865; net benefit 0.120), outperforming the 4-bit quantized 7B model (AUROC 0.854) despite greater parameter count \u2014 revealing a quantization-performance tradeoff with direct implications for model selection under GPU memory constraints."
+    }
+   ],
+   "unlisted_practices": [
+    "Composite trust scoring integrating classifier confidence, embedding-space similarity, and data-richness transparency",
+    "Objective data-richness transparency replacing subjective LLM self-assessed transparency"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 8625,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "Qwen3-Embedding-0.6B",
+    "Qwen2.5-3B",
+    "Qwen2.5-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration quality measured by expected calibration error (ECE)",
+     "effect": "Confidence calibration improved ECE (0.007 vs. 0.024) without meaningfully altering override behavior (3.57% vs. 3.49%).",
+     "quote": "Systematic ablation identified embedding-space similarity as the architecturally critical trust component: its removal increased override rates from 3.57% to 77\u201381% across all model sizes, while confidence calibration improved ECE (0.007 vs. 0.024) without meaningfully altering override behavior (3.57% vs. 3.49%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Composite trust scoring framework integrating classifier confidence, embedding-space similarity, and data richness to govern clinician overrides",
+    "Embedding-space similarity to known positive cases as a reliability and override criterion",
+    "Model-specific threshold recalibration across foundation model parameter sizes and quantization states",
+    "Objective EHR data-richness transparency metrics replacing generative self-assessed confidence"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "admissions",
+ "sample_size": 8625,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Qwen2.5-3B",
+  "Qwen2.5-7B",
+  "Qwen2.5-7B 4-bit quantized",
+  "Qwen3-Embedding-0.6B",
+  "logistic regression",
+  "multilayer perceptron"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration quality and override behavior",
+   "effect": "Confidence calibration improved ECE (0.007 vs. 0.024) with override 3.57% vs. 3.49%.",
+   "quote": "Systematic ablation identified embedding-space similarity as the architecturally critical trust component: its removal increased override rates from 3.57% to 77\u201381% across all model sizes, while confidence calibration improved ECE (0.007 vs. 0.024) without meaningfully altering override behavior (3.57% vs. 3.49%).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician override rates",
+   "effect": "3.57% at moderate richness for 0.6B; 0% for larger models under default thresholds.",
+   "quote": "The trust framework produced selective override rates contingent on both model capability and data richness (3.57% at moderate richness for the 0.6B model; 0% for larger models under default thresholds).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Override threshold transfer across models",
+   "effect": "Larger models had 0% override rates under thresholds calibrated for 0.6B.",
+   "quote": "The 0% override rates observed for larger models under thresholds calibrated for the 0.6B model establish that model-specific threshold recalibration is a structural deployment requirement, not an optional adjustment.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Composite trust score combining classifier confidence, embedding similarity, and data-richness transparency to govern clinician override",
+  "Composite trust scoring framework integrating classifier confidence, embedding-space similarity, and data richness to govern clinician overrides",
+  "Composite trust scoring integrating classifier confidence, embedding-space similarity, and data-richness transparency",
+  "Embedding-space similarity to known positive cases as a reliability and override criterion",
+  "Model-specific threshold recalibration across foundation model parameter sizes and quantization states",
+  "Model-specific threshold recalibration for trust scores",
+  "Objective EHR data-richness transparency metrics replacing generative self-assessed confidence",
+  "Objective data-richness transparency replacing subjective LLM self-assessed transparency"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1234899",
+ "screen": {
+  "id": "epmc:PPR1234899",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "calibrated composite trust scoring and override thresholding",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a calibrated composite trust scoring framework (incorporating confidence calibration, similarity, and data richness) designed to govern clinician override rules/thresholds in clinical risk prediction using EHR data.",
+  "jev": {
+   "id": "epmc:PPR1234899",
+   "empirical": 0.97,
+   "tests_practice": 0.91,
+   "real_deployment": 0.03
+  }
+ }
+}

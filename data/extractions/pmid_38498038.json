@@ -1,0 +1,402 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 31295,
+   "sample_unit": "ICU patients with sepsis (20,933 MIMIC-IV; 10,362 eICU-CRD)",
+   "models_evaluated": [
+    "CPMORS (gradient boosting machine with Mondrian conformal prediction)",
+    "neural decision forest",
+    "random forest",
+    "logistic regression",
+    "APS III",
+    "SOFA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Error rate with patient-level conformal uncertainty flagging versus point predictions, internal and external validation",
+     "effect": "At 90% confidence, errors were 10.5% (n=438) vs 34.6% (n=1449) for point predictions internally; externally 11.8% (n=1221) vs 43.8% (n=4540), with 29.4% and 38.6% flagged for review.",
+     "quote": "In this case, the conformal predictor still produced significantly lower error rates compared to the point predictions by AI (n=1221, 11.8% vs n=4540, 43.8%)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model discrimination drop on external multicenter database versus internal validation",
+     "effect": "CPMORS AUC fell from 0.858 (95% CI 0.845-0.871) internally to 0.800 (95% CI 0.789-0.811) externally; all models deteriorated.",
+     "quote": "When externally validated on the multicenter database eICU-CRD, the performance of all models deteriorated due to interdatabase heterogeneity."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset shift between development (MIMIC-IV) and external (eICU-CRD) populations and effect on performance",
+     "effect": "93 of 103 features differed significantly between databases; AUC dropped from 0.858 to 0.800, and flagged uncertain predictions rose from 29.4% to 38.6%.",
+     "quote": "Multimedia Appendix 1 shows that 93 out of 103 features were statistically different ( P \u2264.05) between MIMIC-IV and eICU-CRD."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Whether uncertainty flags identify incorrect AI outputs to mitigate automation bias (no user testing)",
+     "effect": "Conformal flags reduced single-prediction error to 10.5% vs 34.6% for point predictions, but no clinicians were tested for detecting incorrect outputs.",
+     "quote": "In the case of physicians supported by AI systems, such feedback of prediction uncertainty was invaluable in enabling them to exercise caution and not rely solely on the output of the AI system."
+    }
+   ],
+   "unlisted_practices": [
+    "Conformal prediction to flag uncertain predictions for clinician review with user-adjustable confidence level",
+    "SHAP-based feature explanations of individual risk predictions"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 31295,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CPMORS (gradient boosting machines with Mondrian conformal prediction)",
+    "gradient boosting machines point prediction",
+    "neural decision forest",
+    "random forest",
+    "logistic regression",
+    "Acute Physiology Score III (APS III)",
+    "Sequential Organ Failure Assessment (SOFA)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External validation discrimination",
+     "effect": "All models deteriorated externally; CPMORS AUC decreased from 0.858 internally to 0.800 externally.",
+     "quote": "Consistent with these studies, the prediction results in this study reported that all AI models deteriorated when externally validated on eICU-CRD, with the AUC of CPMORS decreasing from 0.858 to 0.800."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Development-validation dataset shift",
+     "effect": "93 out of 103 features differed between MIMIC-IV and eICU-CRD (P\u2264.05), with external performance deterioration.",
+     "quote": "Multimedia Appendix 1 shows that 93 out of 103 features were statistically different ( P \u2264.05) between MIMIC-IV and eICU-CRD."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC versus comparator models",
+     "effect": "External AUC was 0.800 (95% CI 0.789-0.811) for CPMORS versus 0.693 to 0.786 for comparators.",
+     "quote": "Nevertheless, CPMORS still showed the best performance with AUC 0.800 (95% CI 0.789-0.811) versus other models ranging from 0.693 (95% CI 0.680-0.706) to 0.786 (95% CI 0.775-0.798)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Complex cases flagged for clinician review",
+     "effect": "Flagged survivors had more AKI (22.4% vs 20.2%; 24% vs 20.4%) and longer ICU stays (89 vs 55; 78 vs 55 hours).",
+     "quote": "In addition, for those patients who survived, the analysis showed that patients identified for clinician review (those with uncertain predictions) were more likely to develop new acute kidney injury after the first day of ICU admission (n=227, 22.4% vs n=428, 20.2% for MIMIC-IV; n=799, 24% vs n=875, 20.4% for eICU-CRD) and had longer ICU stays with a median of 89 (IQR 54-173) hours versus 55 (IQR 37-99) hours for MIMIC-IV, and 78 (IQR 48-141) hours versus 55 (IQR 40-91) hours for eICU-CRD, compared to the patients who were not flagged for review."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Error rate with conformal uncertainty",
+     "effect": "At 90% confidence, errors were 438/4187 (10.5%) internal and 1221/10,362 (11.8%) external versus 1449 (34.6%) and 4540 (43.8%) point-prediction errors.",
+     "quote": "In this case, the conformal predictor still produced significantly lower error rates compared to the point predictions by AI (n=1221, 11.8% vs n=4540, 43.8%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 31295,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CPMORS",
+    "Gradient boosting machines",
+    "Neural decision forest",
+    "Random forest",
+    "Logistic regression",
+    "APS III",
+    "SOFA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination drop upon external multisite validation",
+     "effect": "AUC decreased from 0.858 (95% CI 0.845-0.871) on internal validation to 0.800 (95% CI 0.789-0.811) on external validation across 208 hospitals.",
+     "quote": "When tested on the internal validation population of 4187 (20%) patients, the model achieved an area under the receiver operating characteristic curve of 0.858 (95% CI 0.845-0.871), which was reduced to 0.800 (95% CI 0.789-0.811) when externally validated on 10,362 patients from the Philips eICU database."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prediction error rate and clinician review burden",
+     "effect": "At 90% confidence, deferring uncertain predictions reduced error rate to 10.5% (29.4% flagged for review) versus 34.6% errors without conformal prediction.",
+     "quote": "At a specified confidence level of 90% for the internal validation cohort the percentage of error predictions (n=438) out of all predictions (n=4187) was 10.5%, with 1229 (29.4%) predictions requiring clinician review."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration of observed prediction error across significance levels",
+     "effect": "Observed prediction error was well calibrated across significance levels from 0% to 100% for internal validation, and remained good below 20% significance for external validation.",
+     "quote": "Calibration curves of the observed prediction error at a significance (1-confidence) level between 0% and 100% showed that CPMORS was well calibrated for the internal MIMIC-IV validation when the populations were from the same hospital system ( Figure 4 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 31295,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "APS III",
+  "Acute Physiology Score III (APS III)",
+  "CPMORS",
+  "CPMORS (gradient boosting machine with Mondrian conformal prediction)",
+  "CPMORS (gradient boosting machines with Mondrian conformal prediction)",
+  "Gradient boosting machines",
+  "Logistic regression",
+  "Neural decision forest",
+  "Random forest",
+  "SOFA",
+  "Sequential Organ Failure Assessment (SOFA)",
+  "gradient boosting machines point prediction",
+  "logistic regression",
+  "neural decision forest",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dataset shift between development (MIMIC-IV) and external (eICU-CRD) populations and effect on performance",
+   "effect": "93 of 103 features differed significantly between databases; AUC dropped from 0.858 to 0.800, and flagged uncertain predictions rose from 29.4% to 38.6%.",
+   "quote": "Multimedia Appendix 1 shows that 93 out of 103 features were statistically different ( P \u2264.05) between MIMIC-IV and eICU-CRD.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External validation discrimination",
+   "effect": "All models deteriorated externally; CPMORS AUC decreased from 0.858 internally to 0.800 externally.",
+   "quote": "Consistent with these studies, the prediction results in this study reported that all AI models deteriorated when externally validated on eICU-CRD, with the AUC of CPMORS decreasing from 0.858 to 0.800.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Complex cases flagged for clinician review",
+   "effect": "Flagged survivors had more AKI (22.4% vs 20.2%; 24% vs 20.4%) and longer ICU stays (89 vs 55; 78 vs 55 hours).",
+   "quote": "In addition, for those patients who survived, the analysis showed that patients identified for clinician review (those with uncertain predictions) were more likely to develop new acute kidney injury after the first day of ICU admission (n=227, 22.4% vs n=428, 20.2% for MIMIC-IV; n=799, 24% vs n=875, 20.4% for eICU-CRD) and had longer ICU stays with a median of 89 (IQR 54-173) hours versus 55 (IQR 37-99) hours for MIMIC-IV, and 78 (IQR 48-141) hours versus 55 (IQR 40-91) hours for eICU-CRD, compared to the patients who were not flagged for review.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Error rate with conformal uncertainty",
+   "effect": "At 90% confidence, errors were 438/4187 (10.5%) internal and 1221/10,362 (11.8%) external versus 1449 (34.6%) and 4540 (43.8%) point-prediction errors.",
+   "quote": "In this case, the conformal predictor still produced significantly lower error rates compared to the point predictions by AI (n=1221, 11.8% vs n=4540, 43.8%).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Error rate with patient-level conformal uncertainty flagging versus point predictions, internal and external validation",
+   "effect": "At 90% confidence, errors were 10.5% (n=438) vs 34.6% (n=1449) for point predictions internally; externally 11.8% (n=1221) vs 43.8% (n=4540), with 29.4% and 38.6% flagged for review.",
+   "quote": "In this case, the conformal predictor still produced significantly lower error rates compared to the point predictions by AI (n=1221, 11.8% vs n=4540, 43.8%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model discrimination drop on external multicenter database versus internal validation",
+   "effect": "CPMORS AUC fell from 0.858 (95% CI 0.845-0.871) internally to 0.800 (95% CI 0.789-0.811) externally; all models deteriorated.",
+   "quote": "When externally validated on the multicenter database eICU-CRD, the performance of all models deteriorated due to interdatabase heterogeneity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUC versus comparator models",
+   "effect": "External AUC was 0.800 (95% CI 0.789-0.811) for CPMORS versus 0.693 to 0.786 for comparators.",
+   "quote": "Nevertheless, CPMORS still showed the best performance with AUC 0.800 (95% CI 0.789-0.811) versus other models ranging from 0.693 (95% CI 0.680-0.706) to 0.786 (95% CI 0.775-0.798).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Conformal prediction to flag uncertain predictions for clinician review with user-adjustable confidence level",
+  "SHAP-based feature explanations of individual risk predictions"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38498038",
+ "screen": {
+  "id": "pmid:38498038",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "conformal prediction with clinician review of low-confidence predictions",
+  "user": "none",
+  "reason": "The study develops and validates a sepsis mortality risk model and explicitly evaluates the safeguard of conformal prediction (deferral/flagging uncertain predictions for clinician review) compared to standard point predictions without conformal uncertainty quantification.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "conformal prediction uncertainty quantification for deferral/clinician review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38498038",
+   "empirical": 0.97,
+   "tests_practice": 0.74,
+   "real_deployment": 0.04
+  }
+ }
+}

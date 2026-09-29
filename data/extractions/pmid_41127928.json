@@ -1,0 +1,313 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "USA (multi-country datasets: ISIC from MSKCC and international centers; malaria from multiple countries incl. Myanmar; mPower)",
+   "sample_size": null,
+   "sample_unit": "patients/samples across three datasets (1081 dermoscopy images; 1034 transcriptomic samples; 2804 participants)",
+   "models_evaluated": [
+    "EfficientNet-B3 classifier",
+    "LightGBM",
+    "CNN",
+    "OOD detectors: isolation forest, KNN, class Mahalanobis, maximum softmax probability"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model AUROC on ID versus OOD subsets flagged by OOD detectors before model processing",
+     "effect": "KNN OOD detector had mean ID-OOD AUROC differences of 0.256 on ISIC and 0.249 on malaria (p<0.05); several detectors, but not all, identified low-reliability subsets. Not consistent across detectors or age subgroups.",
+     "quote": "These results indicate that this method can identify test observations associated with low classifier reliability on these datasets."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance on test data differing from training distribution (new site, age, subgroup)",
+     "effect": "OOD AUROC often fell below 0.5 for some detectors, showing subpopulations where the classifier was worse than random despite acceptable global performance.",
+     "quote": "This highlights the importance of outlier detection in clinical classification applications where, even though the global performance of a classifier can be acceptable, there still can exist subpopulations for whom the classifier fails."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance differences across demographic/clinical subgroups hidden by aggregate results",
+     "effect": "Model performed worse in patients >75 on ISIC, in 10-16 hpi malaria samples, and in DBS Parkinson's patients; OOD detector benefit absent in patients >55 on ISIC.",
+     "quote": "On these patients who had DBS, the model performed notably worse than on patients who did not have DBS (Figure 5c )."
+    }
+   ],
+   "unlisted_practices": [
+    "Out-of-distribution detection ensembles of multiple detectors to reduce OOD flagging",
+    "Using OOD detection to identify underrepresented subgroups in training data"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Multiple; USA, Australia, Spain, Austria, Myanmar, and other countries not specified",
+   "sample_size": 3,
+   "sample_unit": "medical datasets/tasks",
+   "models_evaluated": [
+    "EfficientNet-B3 melanoma classifier",
+    "LightGBM artemisinin resistance classifier",
+    "CNN Parkinson's disease classifier",
+    "Isolation forest OOD detector",
+    "KNN OOD detector",
+    "Class Mahalanobis distance OOD detector",
+    "Maximum softmax probability OOD detector"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "OOD detectors identifying low-reliability inputs",
+     "effect": "CE+KNN detected 6.8%-31.5% as OOD; ID-OOD AUROC differences were 0.256 (ISIC) and 0.249 (malaria), p < 0.05; not necessarily Parkinson's.",
+     "quote": "We find that several, but not all, OOD detectors are able to identify patient subpopulations on which the model performs poorly or has higher variance (Figures 2 and 3 ), though these results were not always consistent across demographic groups (Table S3 )."
+    },
+    {
+     "rec_id": "R075",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Classifier reliability on OOD subpopulations",
+     "effect": "OOD AUROC often fell below 0.5, indicating some test subpopulations were worse than random despite acceptable global performance.",
+     "quote": "Indeed, for a few of the OOD detectors, the OOD AUROC often fell below 0.5, indicating that these algorithms found test observation sub\u2010populations where the clinical classifier was on average worse than random."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance in age and clinical subgroups",
+     "effect": "Patients >75 performed worse than under 75; 10 to 16 HPI samples were slightly lower; DBS patients were notably worse; AUROCs not numerically reported in text.",
+     "quote": "When we subset the test data to patients over 75, we found that the model had worse average performance on these patients compared to those under 75, in agreement with the OOD detector's predictions."
+    }
+   ],
+   "unlisted_practices": [
+    "Ensembling OOD detectors by labeling observations OOD only when all detectors agree."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "samples",
+   "models_evaluated": [
+    "EfficientNet-B3",
+    "LightGBM",
+    "CNN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC difference between in-distribution and out-of-distribution test subsets",
+     "effect": "Mean AUROC difference between ID and OOD subsets was 0.256 on ISIC (p < 0.05) and 0.249 on malaria (p < 0.05); 6.8% to 31.5% of test data were detected as OOD.",
+     "quote": "This method detected between 6.8% and 31.5% of the test dataset as being OOD, depending on the dataset, and had mean differences in AUROC between ID and OOD subsets of 0.256 on ISIC ( p < 0.05, two\u2010sided test for difference in means using the bootstrap distribution with Benjamini\u2013Hochberg correction for multiple testing) and 0.249 on malaria ( p < 0.05; Figure 2a , Tables S1 and S2 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "USA (multi-country datasets: ISIC from MSKCC and international centers; malaria from multiple countries incl. Myanmar; mPower)",
+ "sample_unit": "patients/samples across three datasets (1081 dermoscopy images; 1034 transcriptomic samples; 2804 participants)",
+ "sample_size": 3,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "eng"
+ ],
+ "models_evaluated": [
+  "CNN",
+  "CNN Parkinson's disease classifier",
+  "Class Mahalanobis distance OOD detector",
+  "EfficientNet-B3",
+  "EfficientNet-B3 classifier",
+  "EfficientNet-B3 melanoma classifier",
+  "Isolation forest OOD detector",
+  "KNN OOD detector",
+  "LightGBM",
+  "LightGBM artemisinin resistance classifier",
+  "Maximum softmax probability OOD detector",
+  "OOD detectors: isolation forest, KNN, class Mahalanobis, maximum softmax probability"
+ ],
+ "links": [
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Model AUROC on ID versus OOD subsets flagged by OOD detectors before model processing",
+   "effect": "KNN OOD detector had mean ID-OOD AUROC differences of 0.256 on ISIC and 0.249 on malaria (p<0.05); several detectors, but not all, identified low-reliability subsets. Not consistent across detectors or age subgroups.",
+   "quote": "These results indicate that this method can identify test observations associated with low classifier reliability on these datasets.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance differences across demographic/clinical subgroups hidden by aggregate results",
+   "effect": "Model performed worse in patients >75 on ISIC, in 10-16 hpi malaria samples, and in DBS Parkinson's patients; OOD detector benefit absent in patients >55 on ISIC.",
+   "quote": "On these patients who had DBS, the model performed notably worse than on patients who did not have DBS (Figure 5c ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance on test data differing from training distribution (new site, age, subgroup)",
+   "effect": "OOD AUROC often fell below 0.5 for some detectors, showing subpopulations where the classifier was worse than random despite acceptable global performance.",
+   "quote": "This highlights the importance of outlier detection in clinical classification applications where, even though the global performance of a classifier can be acceptable, there still can exist subpopulations for whom the classifier fails.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R075",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Classifier reliability on OOD subpopulations",
+   "effect": "OOD AUROC often fell below 0.5, indicating some test subpopulations were worse than random despite acceptable global performance.",
+   "quote": "Indeed, for a few of the OOD detectors, the OOD AUROC often fell below 0.5, indicating that these algorithms found test observation sub\u2010populations where the clinical classifier was on average worse than random.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Ensembling OOD detectors by labeling observations OOD only when all detectors agree.",
+  "Out-of-distribution detection ensembles of multiple detectors to reduce OOD flagging",
+  "Using OOD detection to identify underrepresented subgroups in training data"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41127928",
+ "screen": {
+  "id": "pmid:41127928",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "any_ai",
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "out-of-distribution detection to filter unreliable predictions",
+  "user": "none",
+  "reason": "Empirically tests out-of-distribution (OOD) detection algorithms as a deployment safeguard/guardrail to filter out unreliable patient cases across three medical data modalities.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "out-of-distribution detection guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41127928",
+   "empirical": 0.9,
+   "tests_practice": 0.77,
+   "real_deployment": 0.05
+  }
+ }
+}

@@ -1,0 +1,321 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Switzerland",
+   "sample_size": 38141,
+   "sample_unit": "appointments",
+   "models_evaluated": [
+    "XGBoost",
+    "Random Forest",
+    "Logistic Regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prospective performance during 13-month silent live test versus retrospective validation",
+     "effect": "Silent live test on 5882 appointments revealed AUROC 0.61 and AUPRC 0.24, down from held-out validation AUROC 0.65 and AUPRC 0.29.",
+     "quote": "On this dataset, the model achieved an AUROC of 0.61 and an AUPRC of 0.24, a reduction in performance when compared to the validation data performance (AUROC: 0.65, AUPRC: 0.29)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Data drift in appointment types and reasons after deployment",
+     "effect": "Prostate appointments rose from 2%-3% to nearly 10%; 'None Given' reason (most predictive feature) fell from 13%-15% to 5%-6%, contributing to performance drop.",
+     "quote": "This drop in performance can be explained in part by data drift\u2014that is, changes in a feature\u2019s distribution over time."
+    },
+    {
+     "rec_id": "R108",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "No-show rate with model-targeted phone reminders versus control",
+     "effect": "No significant reduction: 21.9% intervention vs 22.0% control (P = .48) despite model identifying high-risk patients.",
+     "quote": "Overall, the phone call trial showed no significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups ( P- value: .48), as shown in Table 2 ."
+    }
+   ],
+   "unlisted_practices": [
+    "Validating data transformation pipeline against manually collected ground truth before model training",
+    "Top-N precision metric aligned to weekly staff intervention capacity"
+   ]
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Switzerland",
+   "sample_size": 734,
+   "sample_unit": "appointments in the reminder-call intervention study",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Prospective predictive performance compared with retrospective validation",
+     "effect": "Across 5882 appointments over 13 months, prospective AUROC was 0.61 and AUPRC 0.24, compared with validation AUROC 0.65 and AUPRC 0.29.",
+     "quote": "On this dataset, the model achieved an AUROC of 0.61 and an AUPRC of 0.24, a reduction in performance when compared to the validation data performance (AUROC: 0.65, AUPRC: 0.29)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal input-distribution drift and predictive performance degradation",
+     "effect": "AUROC decreased from 0.65 to 0.61 and AUPRC from 0.29 to 0.24; prostate appointments increased from 2%-3% during training to 5% during silent testing and nearly 10% by intervention end.",
+     "quote": "However, our \u201csilent live test\u201d highlighted a key challenge: data drift, where shifts in data distribution over time resulted in a degradation of model performance."
+    },
+    {
+     "rec_id": "R515",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Appointment no-show rates following risk-targeted reminder calls versus no reminders",
+     "effect": "No-show rates were 21.9% for 274 intervention appointments versus 22.0% for 460 controls (P = .48). Only 158 (57.7%) answered; 116 (42.3%) were not reached.",
+     "quote": "Overall, the phone call trial showed no significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups ( P- value: .48), as shown in Table 2 ."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Switzerland",
+   "sample_size": 734,
+   "sample_unit": "appointments",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R108",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "no-show rate reduction",
+     "effect": "No significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups.",
+     "quote": "Overall, the phone call trial showed no significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups ( P- value: .48), as shown in Table 2 ."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "prospective vs retrospective performance",
+     "effect": "Model AUROC decreased from 0.65 in retrospective validation to 0.61 in a prospective silent live test.",
+     "quote": "On this dataset, the model achieved an AUROC of 0.61 and an AUPRC of 0.24, a reduction in performance when compared to the validation data performance (AUROC: 0.65, AUPRC: 0.29)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model performance degradation",
+     "effect": "Performance decreased in prospective evaluation (AUROC 0.61; AUPRC 0.24) due in part to observed data drift.",
+     "quote": "In a prospective evaluation round (5882 appointments), performance decreased (AUROC 0.61; AUPRC 0.24), due in part to observed data drift in appointment types and reasons."
+    }
+   ],
+   "unlisted_practices": [
+    "targeting phone call reminders based on predicted risk",
+    "calculating top-N precision metric for intervention planning"
+   ]
+  }
+ },
+ "design": "rct",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Switzerland",
+ "sample_unit": "appointments",
+ "sample_size": 734,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Logistic Regression",
+  "Random Forest",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Data drift in appointment types and reasons after deployment",
+   "effect": "Prostate appointments rose from 2%-3% to nearly 10%; 'None Given' reason (most predictive feature) fell from 13%-15% to 5%-6%, contributing to performance drop.",
+   "quote": "This drop in performance can be explained in part by data drift\u2014that is, changes in a feature\u2019s distribution over time.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R108",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "No-show rate with model-targeted phone reminders versus control",
+   "effect": "No significant reduction: 21.9% intervention vs 22.0% control (P = .48) despite model identifying high-risk patients.",
+   "quote": "Overall, the phone call trial showed no significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups ( P- value: .48), as shown in Table 2 .",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective predictive performance compared with retrospective validation",
+   "effect": "Across 5882 appointments over 13 months, prospective AUROC was 0.61 and AUPRC 0.24, compared with validation AUROC 0.65 and AUPRC 0.29.",
+   "quote": "On this dataset, the model achieved an AUROC of 0.61 and an AUPRC of 0.24, a reduction in performance when compared to the validation data performance (AUROC: 0.65, AUPRC: 0.29).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Prospective performance during 13-month silent live test versus retrospective validation",
+   "effect": "Silent live test on 5882 appointments revealed AUROC 0.61 and AUPRC 0.24, down from held-out validation AUROC 0.65 and AUPRC 0.29.",
+   "quote": "On this dataset, the model achieved an AUROC of 0.61 and an AUPRC of 0.24, a reduction in performance when compared to the validation data performance (AUROC: 0.65, AUPRC: 0.29).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R515",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Appointment no-show rates following risk-targeted reminder calls versus no reminders",
+   "effect": "No-show rates were 21.9% for 274 intervention appointments versus 22.0% for 460 controls (P = .48). Only 158 (57.7%) answered; 116 (42.3%) were not reached.",
+   "quote": "Overall, the phone call trial showed no significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups ( P- value: .48), as shown in Table 2 .",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Top-N precision metric aligned to weekly staff intervention capacity",
+  "Validating data transformation pipeline against manually collected ground truth before model training",
+  "calculating top-N precision metric for intervention planning",
+  "targeting phone call reminders based on predicted risk"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42553932",
+ "screen": {
+  "id": "pmid:42553932",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "targeted phone call reminder for high-risk patients; prospective evaluation and drift monitoring",
+  "user": "clinician_or_staff",
+  "reason": "The study prospective evaluates an ML risk prediction model in practice and conducts a randomized real-world intervention trial testing whether targeted outreach based on model risk scores reduces appointment no-shows.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "targeted phone reminder intervention based on risk score"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42553932",
+   "empirical": 0.97,
+   "tests_practice": 0.51,
+   "real_deployment": 0.79
+  }
+ }
+}

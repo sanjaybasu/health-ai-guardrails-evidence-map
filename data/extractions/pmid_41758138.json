@@ -1,0 +1,390 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 17488,
+   "sample_unit": "ED visits (test set)",
+   "models_evaluated": [
+    "Claude 3.7 (standard)",
+    "Claude 3.7 (reasoning)",
+    "OpenAI o3-mini",
+    "Deepseek R1",
+    "GPT-4o",
+    "LLM2Vec-Meta-Llama-3-8B",
+    "Voyage-3-Large",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "F1 of LLM approaches vs traditional LightGBM structured-data model on 30-day ED revisit prediction",
+     "effect": "All LLM approaches (F1=0.3022-0.4505) failed to exceed LightGBM on structured data (F1=0.4614, 95% CI [0.4496, 0.4789]); benchmarking against simpler model showed no LLM advantage.",
+     "quote": "Despite having access to comprehensive structured and unstructured clinical data, all LLM approaches (F1=0.3022-0.4505) failed to exceed a traditional LightGBM model using only structured data (F1=0.4614 (95% CI [0.4496, 0.4789])))."
+    },
+    {
+     "rec_id": "R085",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether complex LLM approaches outperform simpler non-LLM model for the task",
+     "effect": "Simple LightGBM on structured EHR features (F1=0.4614) exceeded all LLM-based methods (F1=0.3022-0.4505).",
+     "quote": "However, we also found that a structured EHR baseline achieved performance (F1=0.4614 (95% CI [0.4496, 0.4789])) that exceeded LLM-based methods (F1=0.3022\u20130.4505)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of retrieval augmentation with 10 similar cases on LLM direct prediction F1",
+     "effect": "RAG improved all direct-prediction models, e.g., Claude 3.7 F1 from 0.3755 to 0.4160; GPT-4o from 0.3403 to 0.3867.",
+     "quote": "The most significant gains were observed in GPT-4o (from F1=0.3403 to 0.3867) and Claude 3.7 (standard), with the latter achieving the highest overall F1 score of 0.4160 (95% CI [0.4024, 0.4294]) among direct prediction methods."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Precision-recall tradeoff of LLM predictions, over-prediction of high risk",
+     "effect": "Deepseek R1 and Claude 3.7 (reasoning) favored high recall (>85%) at expense of precision (<20%), producing excessive false positives.",
+     "quote": "The precision-recall breakdown reveals that models exhibited different operational characteristics, with Deepseek R1 and Claude 3.7 (reasoning) favoring high recall ( > 85%) at the expense of precision ( < 20%), while GPT-4o and Claude 3.7 (standard) achieved a more balanced precision-recall profile."
+    },
+    {
+     "rec_id": "R106",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Absence of prospective evaluation of LLM predictions' clinical impact",
+     "effect": "Study was retrospective and did not prospectively evaluate impact on clinical decision-making or patient outcomes; no external validation.",
+     "quote": "We did not prospectively evaluate the impact of these predictions on clinical decision-making or patient outcomes."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "External validation of models on data from other sites",
+     "effect": "Chronological split with no patient overlap used, but external validation was precluded as no comparable public ED dataset exists.",
+     "quote": "Our dataset includes EHR components unavailable in MIMIC-IV-ED, the only publicly available ED dataset, precluding external validation."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing explicit reasoning mode versus standard mode of LLM on prediction performance (reasoning degraded F1 from 0.3755 to 0.3217)",
+    "Using LLM-derived embeddings with downstream models versus direct LLM text prediction"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 138010,
+   "sample_unit": "ED visits",
+   "models_evaluated": [
+    "Claude 3.7 (claude-3\u20137-sonnet-20250219-v1)",
+    "OpenAI o3-mini (2024\u201312-01-preview)",
+    "Deepseek R1 (v1)",
+    "GPT-4o (2024\u201310-21)",
+    "LLM2Vec-Meta-Llama-3\u20138B-Instruct-mntp-unsup-simcse",
+    "Voyage-3-Large",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "30-day ED revisit F1 versus baseline",
+     "effect": "Structured EHR LightGBM F1=0.4614 exceeded LLM-based methods F1=0.3022\u20130.4505.",
+     "quote": "However, we also found that a structured EHR baseline achieved performance (F1=0.4614 (95% CI [0.4496, 0.4789])) that exceeded LLM-based methods (F1=0.3022\u20130.4505)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "direct prediction F1 with retrieval augmentation",
+     "effect": "Claude 3.7 F1 improved from 0.3755 to 0.4160 with retrieval augmentation.",
+     "quote": "Retrieval augmentation improved direct prediction performance (e.g., Claude 3.7 F1 from 0.3755 (95% CI [0.3647, 0.3864]) to 0.4160 (95% CI [0.4024, 0.4294])), and embedding-based methods consistently outperformed direct approaches, with LLM2Vec achieving F1=0.4505 (95% CI [0.4345, 0.4666])."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "zero-shot LLM ED revisit accuracy",
+     "effect": "Zero-shot LLM F1 scores were 0.3022\u20130.3889, with high recall at the expense of precision.",
+     "quote": "Direct zero-shot prediction using LLMs yielded modest performance (F1 scores 0.3022\u20130.3889), with these models demonstrating a tendency toward high recall at the expense of precision."
+    }
+   ],
+   "unlisted_practices": [
+    "Using explicit LLM reasoning mode instead of standard mode for clinical risk prediction",
+    "Using LLM-derived embeddings rather than direct LLM generation for prediction",
+    "Using k-nearest-neighbor retrieval over patient-document embeddings for risk prediction"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 138010,
+   "sample_unit": "visits",
+   "models_evaluated": [
+    "Claude 3.7",
+    "OpenAI o3-mini",
+    "Deepseek R1",
+    "GPT-4o",
+    "LLM2Vec",
+    "Voyage-3-Large",
+    "LightGBM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "30-day ED revisit prediction F1 score compared to traditional LightGBM baseline",
+     "effect": "All LLM approaches (F1=0.3022-0.4505) failed to exceed a traditional LightGBM model using only structured data (F1=0.4614, 95% CI [0.4496, 0.4789])",
+     "quote": "Despite having access to comprehensive structured and unstructured clinical data, all LLM approaches (F1=0.3022-0.4505) failed to exceed a traditional LightGBM model using only structured data (F1=0.4614 (95% CI [0.4496, 0.4789]))."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ED visits (test set)",
+ "sample_size": 138010,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude 3.7",
+  "Claude 3.7 (claude-3\u20137-sonnet-20250219-v1)",
+  "Claude 3.7 (reasoning)",
+  "Claude 3.7 (standard)",
+  "Deepseek R1",
+  "Deepseek R1 (v1)",
+  "GPT-4o",
+  "GPT-4o (2024\u201310-21)",
+  "LLM2Vec",
+  "LLM2Vec-Meta-Llama-3-8B",
+  "LLM2Vec-Meta-Llama-3\u20138B-Instruct-mntp-unsup-simcse",
+  "LightGBM",
+  "OpenAI o3-mini",
+  "OpenAI o3-mini (2024\u201312-01-preview)",
+  "Voyage-3-Large"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 0.5,
+   "outcome": "F1 of LLM approaches vs traditional LightGBM structured-data model on 30-day ED revisit prediction",
+   "effect": "All LLM approaches (F1=0.3022-0.4505) failed to exceed LightGBM on structured data (F1=0.4614, 95% CI [0.4496, 0.4789]); benchmarking against simpler model showed no LLM advantage.",
+   "quote": "Despite having access to comprehensive structured and unstructured clinical data, all LLM approaches (F1=0.3022-0.4505) failed to exceed a traditional LightGBM model using only structured data (F1=0.4614 (95% CI [0.4496, 0.4789]))).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of retrieval augmentation with 10 similar cases on LLM direct prediction F1",
+   "effect": "RAG improved all direct-prediction models, e.g., Claude 3.7 F1 from 0.3755 to 0.4160; GPT-4o from 0.3403 to 0.3867.",
+   "quote": "The most significant gains were observed in GPT-4o (from F1=0.3403 to 0.3867) and Claude 3.7 (standard), with the latter achieving the highest overall F1 score of 0.4160 (95% CI [0.4024, 0.4294]) among direct prediction methods.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R085",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether complex LLM approaches outperform simpler non-LLM model for the task",
+   "effect": "Simple LightGBM on structured EHR features (F1=0.4614) exceeded all LLM-based methods (F1=0.3022-0.4505).",
+   "quote": "However, we also found that a structured EHR baseline achieved performance (F1=0.4614 (95% CI [0.4496, 0.4789])) that exceeded LLM-based methods (F1=0.3022\u20130.4505).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R090",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Precision-recall tradeoff of LLM predictions, over-prediction of high risk",
+   "effect": "Deepseek R1 and Claude 3.7 (reasoning) favored high recall (>85%) at expense of precision (<20%), producing excessive false positives.",
+   "quote": "The precision-recall breakdown reveals that models exhibited different operational characteristics, with Deepseek R1 and Claude 3.7 (reasoning) favoring high recall ( > 85%) at the expense of precision ( < 20%), while GPT-4o and Claude 3.7 (standard) achieved a more balanced precision-recall profile.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "30-day ED revisit prediction F1 score compared to traditional LightGBM baseline",
+   "effect": "All LLM approaches (F1=0.3022-0.4505) failed to exceed a traditional LightGBM model using only structured data (F1=0.4614, 95% CI [0.4496, 0.4789])",
+   "quote": "Despite having access to comprehensive structured and unstructured clinical data, all LLM approaches (F1=0.3022-0.4505) failed to exceed a traditional LightGBM model using only structured data (F1=0.4614 (95% CI [0.4496, 0.4789])).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R106",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing explicit reasoning mode versus standard mode of LLM on prediction performance (reasoning degraded F1 from 0.3755 to 0.3217)",
+  "Using LLM-derived embeddings rather than direct LLM generation for prediction",
+  "Using LLM-derived embeddings with downstream models versus direct LLM text prediction",
+  "Using explicit LLM reasoning mode instead of standard mode for clinical risk prediction",
+  "Using k-nearest-neighbor retrieval over patient-document embeddings for risk prediction"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41758138",
+ "screen": {
+  "id": "pmid:41758138",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval augmentation added to LLM prediction",
+  "user": "none",
+  "reason": "The study evaluates LLMs for 30-day ED revisit prediction and tests the effect of retrieval augmentation on direct prediction performance, alongside error/failure analysis.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval augmentation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41758138",
+   "empirical": 0.98,
+   "tests_practice": 0.64,
+   "real_deployment": 0.05
+  }
+ }
+}

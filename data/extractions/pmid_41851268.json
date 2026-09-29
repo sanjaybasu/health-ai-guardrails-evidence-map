@@ -1,0 +1,405 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 70,
+   "sample_unit": "clinicians",
+   "models_evaluated": [
+    "GPT-4 (custom GPT)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician diagnostic score with AI first, AI second, versus conventional resources; AI alone",
+     "effect": "Conventional 75% vs AI first 85% (mean diff 9.9%, p=0.00039) and AI second 82% (6.8%, p=3.3e-6); clinicians with AI not significantly different from AI alone.",
+     "quote": "Clinicians using conventional resources only had a significantly lower overall score (75%) than either AI arm, with the clinicians\u2019 using AI as a first opinion (85%, p = 0.00039, mean difference=9.9%, 95% CI = 4.7\u201315%), or AI as a second opinion (82%, p = 3.3e\u22126, mean difference=6.8%, 95% CI = 4.0\u20139.6%)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI team performance in intended workflow versus conventional resources and AI alone",
+     "effect": "Both collaborative workflows improved clinician scores over conventional resources (85% and 82% vs 75%); the two workflows did not differ overall (p=0.22), and actionable-decision scores were 8.9% higher with AI first (p=0.026).",
+     "quote": "Clinicians in the AI-as-first-opinion arm scored 8.9% better than the AI-as-second-opinion arm ( p = 0.026, 95% CI 1.1\u201316%)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Anchoring and automation bias in AI-assisted diagnosis; score decreases after AI",
+     "effect": "Actionable scores decreased after AI engagement in 8% of cases; AI second-opinion outputs overlapped fully with clinician input in 48% of cases vs 3% for AI first, suggesting anchoring.",
+     "quote": "Scores on clinically actionable decisions decreased after engagement with the AI in 8% of cases, highlighting the possibility that AI recommendations can interfere with performance."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of workflow sequencing and synthesis view highlighting disagreements on clinician diagnostic performance",
+     "effect": "Structured workflow with independent assessments and AI synthesis of agreements and disagreements improved performance over conventional resources (85%/82% vs 75%); reduced lower-score tail; no comparison to a workflow without the synthesis feature.",
+     "quote": "The system prompt shapes the GPT into a collaborative actor with a workflow aimed at promoting human-AI grounding and provoking critical thinking via explicit comparison and consideration of the clinician\u2019s and the AI model\u2019s inferences."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Nondeterminism of LLM output across participants for the same vignette",
+     "effect": "AI generated different recommended diagnostic assessments across participants for the same vignette input; also omitted the joint analysis in 10% of second-opinion cases.",
+     "quote": "We also observed non-determinism, whereby the AI system could generate different recommended diagnostic assessments across participants for the same vignette input, raising concerns about reliability and replicability in clinical decision support."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Incorrect LLM output that clinicians would need to verify (hallucinated facts)",
+     "effect": "The AI claimed a patient had a fever at 99.6 F; a participant caught the error; AI omitted the synthesis view in 10% of second-opinion cases.",
+     "quote": "For example, one participant in the AI-as-first-opinion group noticed that the AI system claimed the patient in Case 1 (Supplementary Fig. 3 ) had a fever when they had a temperature of 99.6 F (a fever is defined by the CDC as \u2265100.4 \u00b0F)."
+    }
+   ],
+   "unlisted_practices": [
+    "Sequencing workflow so clinician forms independent assessment before AI (AI first vs AI second opinion)",
+    "Custom system prompting to make a general LLM into a collaborative decision-support tool with synthesis of clinician and AI views"
+   ]
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 70,
+   "sample_unit": "clinicians",
+   "models_evaluated": [
+    "custom GPT-4 system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "inter-rater reliability",
+     "effect": "ICC between graders\u2019 scores was 0.91.",
+     "quote": "The intraclass correlation coefficient (ICC) computed between graders\u2019 scores was 0.91, indicating very high agreement."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "output reproducibility",
+     "effect": "AI could generate different recommended diagnostic assessments across participants for the same vignette input.",
+     "quote": "We also observed non-determinism, whereby the AI system could generate different recommended diagnostic assessments across participants for the same vignette input, raising concerns about reliability and replicability in clinical decision support."
+    },
+    {
+     "rec_id": "R103",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "procedural use errors",
+     "effect": "6 of 70 participants (8.6%), all AI-second-opinion, did not adhere strictly to procedural instructions.",
+     "quote": "6 of 70 participants (8.6%), all from the AI-as-second-opinion arm, did not adhere strictly to the procedural instructions for every case attempted (e.g., copying and pasting only the vignette rather than their responses into the AI, or failing to initiate a new transcript for each case)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic performance with AI",
+     "effect": "Conventional resources 75%; AI-first 85% (mean difference 9.9%, p=0.00039, 95% CI 4.7\u201315%); AI-second 82% (mean difference 6.8%, p=3.3e\u22126, 95% CI 4.0\u20139.6%).",
+     "quote": "Clinicians using conventional resources only had a significantly lower overall score (75%) than either AI arm, with the clinicians\u2019 using AI as a first opinion (85%, p = 0.00039, mean difference=9.9%, 95% CI = 4.7\u201315%), or AI as a second opinion (82%, p = 3.3e\u22126, mean difference=6.8%, 95% CI = 4.0\u20139.6%)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "incorrect vignette assertion",
+     "effect": "1 AI-first participant noticed AI claimed fever at 99.6 F; CDC fever threshold is \u2265100.4 \u00b0F.",
+     "quote": "For example, one participant in the AI-as-first-opinion group noticed that the AI system claimed the patient in Case 1 (Supplementary Fig. 3 ) had a fever when they had a temperature of 99.6 F (a fever is defined by the CDC as \u2265100.4 \u00b0F)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone versus human-AI performance",
+     "effect": "AI alone scored 87% and was numerically highest; AI-first scored 85% and AI-second 82%, so assisted clinicians did not outperform AI alone.",
+     "quote": "We found that clinicians assisted by AI did not perform better than AI alone."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "worsened actionable decisions after AI",
+     "effect": "Actionable scores decreased after AI in 8% of cases; 12 cases decreased, 11 by 1 point and 1 by 2 points.",
+     "quote": "Scores on clinically actionable decisions decreased after engagement with the AI in 8% of cases, highlighting the possibility that AI recommendations can interfere with performance."
+    },
+    {
+     "rec_id": "R508",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "incomplete collaborative output",
+     "effect": "AI omitted displaying the joint analysis in 10% of AI-as-second-opinion cases.",
+     "quote": "Our transcript review revealed that in 10% of AI-as-second-opinion cases, AI omitted displaying the joint analysis (see example of the synthesis view, shown in Fig. 6 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Sequencing diagnostic AI as a first opinion versus a second opinion in clinician-AI workflows"
+   ]
+  },
+  "gemini": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 70,
+   "sample_unit": "clinicians",
+   "models_evaluated": [
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinically actionable decision score decrease after AI engagement",
+     "effect": "actionable decision scores decreased in 8% of cases (12 cases)",
+     "quote": "Scores on clinically actionable decisions decreased after engagement with the AI in 8% of cases, highlighting the possibility that AI recommendations can interfere with performance."
+    }
+   ],
+   "unlisted_practices": [
+    "AI-as-first-opinion versus AI-as-second-opinion workflow sequencing in collaborative diagnostic reasoning",
+    "Structured collaborative diagnostic reasoning system integrating independent clinician and AI assessments with synthesis and critique"
+   ]
+  }
+ },
+ "design": "rct",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "clinicians",
+ "sample_size": 70,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4",
+  "GPT-4 (custom GPT)",
+  "custom GPT-4 system"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician diagnostic score with AI first, AI second, versus conventional resources; AI alone",
+   "effect": "Conventional 75% vs AI first 85% (mean diff 9.9%, p=0.00039) and AI second 82% (6.8%, p=3.3e-6); clinicians with AI not significantly different from AI alone.",
+   "quote": "Clinicians using conventional resources only had a significantly lower overall score (75%) than either AI arm, with the clinicians\u2019 using AI as a first opinion (85%, p = 0.00039, mean difference=9.9%, 95% CI = 4.7\u201315%), or AI as a second opinion (82%, p = 3.3e\u22126, mean difference=6.8%, 95% CI = 4.0\u20139.6%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Anchoring and automation bias in AI-assisted diagnosis; score decreases after AI",
+   "effect": "Actionable scores decreased after AI engagement in 8% of cases; AI second-opinion outputs overlapped fully with clinician input in 48% of cases vs 3% for AI first, suggesting anchoring.",
+   "quote": "Scores on clinically actionable decisions decreased after engagement with the AI in 8% of cases, highlighting the possibility that AI recommendations can interfere with performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Nondeterminism of LLM output across participants for the same vignette",
+   "effect": "AI generated different recommended diagnostic assessments across participants for the same vignette input; also omitted the joint analysis in 10% of second-opinion cases.",
+   "quote": "We also observed non-determinism, whereby the AI system could generate different recommended diagnostic assessments across participants for the same vignette input, raising concerns about reliability and replicability in clinical decision support.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Incorrect LLM output that clinicians would need to verify (hallucinated facts)",
+   "effect": "The AI claimed a patient had a fever at 99.6 F; a participant caught the error; AI omitted the synthesis view in 10% of second-opinion cases.",
+   "quote": "For example, one participant in the AI-as-first-opinion group noticed that the AI system claimed the patient in Case 1 (Supplementary Fig. 3 ) had a fever when they had a temperature of 99.6 F (a fever is defined by the CDC as \u2265100.4 \u00b0F).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human-AI team performance in intended workflow versus conventional resources and AI alone",
+   "effect": "Both collaborative workflows improved clinician scores over conventional resources (85% and 82% vs 75%); the two workflows did not differ overall (p=0.22), and actionable-decision scores were 8.9% higher with AI first (p=0.026).",
+   "quote": "Clinicians in the AI-as-first-opinion arm scored 8.9% better than the AI-as-second-opinion arm ( p = 0.026, 95% CI 1.1\u201316%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R103",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R508",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "AI-as-first-opinion versus AI-as-second-opinion workflow sequencing in collaborative diagnostic reasoning",
+  "Custom system prompting to make a general LLM into a collaborative decision-support tool with synthesis of clinician and AI views",
+  "Sequencing diagnostic AI as a first opinion versus a second opinion in clinician-AI workflows",
+  "Sequencing workflow so clinician forms independent assessment before AI (AI first vs AI second opinion)",
+  "Structured collaborative diagnostic reasoning system integrating independent clinician and AI assessments with synthesis and critique"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41851268",
+ "screen": {
+  "id": "pmid:41851268",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI first-opinion vs second-opinion workflow sequencing with clinician review",
+  "user": "clinician_or_staff",
+  "reason": "The study is a randomized controlled trial testing clinician-AI collaborative diagnostic workflows, comparing AI as a first opinion versus AI as a second opinion alongside conventional practice.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "workflow integration order (AI first vs second opinion)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41851268",
+   "empirical": 0.97,
+   "tests_practice": 0.41,
+   "real_deployment": 0.28
+  }
+ }
+}

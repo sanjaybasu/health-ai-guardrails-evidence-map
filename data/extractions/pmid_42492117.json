@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "United States",
+ "sample_size": 144,
+ "sample_unit": "CT studies (RSNA held-out test set)",
+ "models_evaluated": [
+  "Google CT Foundation model embeddings + MLP",
+  "Google CT Foundation model embeddings + Random Forest",
+  "Google CT Foundation model embeddings + stacking ensemble"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop on external institution cohort versus development test set",
+   "effect": "On external INSPECT cohort, AUC dropped by 0.17 and specificity at the transferred operating point collapsed; simple global threshold recalibration did not restore deployability.",
+   "quote": "On the external INSPECT cohort, AUC dropped by 0.17 and specificity at the transferred operating point collapsed, so simple global threshold recalibration does not restore deployability-frozen generalist embeddings alone do not guarantee cross-institutional reliability.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "outcome": "Whether simple global threshold recalibration restores external-site performance",
+   "effect": "Simple global threshold recalibration did not restore deployability after AUC dropped by 0.17 and specificity collapsed on the external INSPECT cohort.",
+   "quote": "On the external INSPECT cohort, AUC dropped by 0.17 and specificity at the transferred operating point collapsed, so simple global threshold recalibration does not restore deployability-frozen generalist embeddings alone do not guarantee cross-institutional reliability.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using frozen foundation-model embeddings with lightweight classifier heads without fine-tuning",
+  "Adding hard vascular segmentation to improve performance in low-data regime"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42492117",
+ "screen": {
+  "id": "pmid:42492117",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates external validation performance of a medical foundation model for PE detection across institutions and explicitly tests whether simple global threshold recalibration restores deployability.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and threshold recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42492117",
+   "empirical": 0.96,
+   "tests_practice": 0.63,
+   "real_deployment": 0.03
+  }
+ }
+}

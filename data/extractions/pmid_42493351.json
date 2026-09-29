@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Unknown",
+ "sample_size": 154,
+ "sample_unit": "CT cases (LIDC-IDRI)",
+ "models_evaluated": [
+  "MONAI RetinaNet (pretrained on LUNA16, fold 0)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Detection sensitivity under simulated CT acquisition variation (dose, slice thickness, kernel)",
+   "effect": "Baseline sensitivity 84.8%; soft kernel 74.3% (-10.5 pp), 5 mm slice 71.6% (-13.2 pp), 25% dose 76.0% (-8.8 pp), 50% dose 80.0% (-4.8 pp), 3 mm slice -2.4 pp (p=0.009).",
+   "quote": "Soft kernel and 5 mm slice thickness produced the largest decreases: 74.3% (-10.5 pp, p < 0.05) and 71.6% (-13.2 pp, p < 0.05), respectively.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Sensitivity variation across acquisition parameters mimicking site/scanner differences",
+   "effect": "Sensitivity fell from 84.8% baseline to 71.6-80.0% across simulated acquisition conditions, with slice thickness and soft kernel causing the largest drops.",
+   "quote": "Slice thickness and soft reconstruction kernel represent stronger constraints on AI detection performance than image noise under these conditions.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Physics-guided simulation of acquisition parameter variation for post-deployment acquisition QA"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42493351",
+ "screen": {
+  "id": "pmid:42493351",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates AI nodule detection model robustness across simulated clinical acquisition variations (dose reduction, slice thickness, kernel) to provide a practical framework for post-deployment imaging acquisition quality assurance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "acquisition parameter stress testing / post-deployment acquisition QA"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42493351",
+   "empirical": 0.96,
+   "tests_practice": 0.12,
+   "real_deployment": 0.02
+  }
+ }
+}

@@ -1,0 +1,389 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Russia",
+   "sample_size": 404502,
+   "sample_unit": "mammograms",
+   "models_evaluated": [
+    "Third Opinion Mammograms (U-Net++ / Mask2Former, versions 1.0.0 and six updates)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R095",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration tests against predefined AUC/accuracy thresholds before CMI implementation",
+     "effect": "First two calibration tests failed thresholds (CalT1 accuracy 0.77; CalT2 AUC 0.78, accuracy 0.74), triggering developer updates; third test passed (AUC 0.84, accuracy 0.81) before implementation.",
+     "quote": "The first two calibration tests failed to meet the predefined performance thresholds (0.80)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Repeat calibration testing after architectural model updates",
+     "effect": "Repeat testing after updates detected regression: CalT6 accuracy 0.81 vs declared 0.92 (\u221211.96%), sensitivity \u221210.99%; subsequent CalT7 reached AUC 0.92, accuracy 0.90.",
+     "quote": "Architectural updates (1st, 2nd, 5th, 6th) underwent repeat calibration testing ( Figure 4 , Tables 3,4 )."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local performance vs developer-declared metrics",
+     "effect": "CalT1 specificity 0.70 vs declared 0.88 (\u221220.45%); accuracy 0.77 vs 0.85 (\u22129.41%); CalT2 accuracy \u221212.94%.",
+     "quote": "Subsequent calibration tests revealed initially subthreshold performance (AUC 0.83, accuracy 0.77, sensitivity 0.84, specificity 0.70), consistent with similar studies where early AI assessments uncover refinement needs ( 52 , 53 )."
+    },
+    {
+     "rec_id": "R363",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Automatically logged technical defect (analysis failure) rates during prospective monitoring",
+     "effect": "Technical defects exceeded 10% in 1 of 25 months (11.10%); average defect rate decreased from 3.0% to 0.8%.",
+     "quote": "Technical defect rates exceeded 10% in only 1 of 25 months (group B defects: 11.10%; Figure 3A )."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured reporting of identified AI errors to developers prompting corrective updates within an iterative lifecycle testing framework"
+   ]
+  },
+  "openai": {
+   "design": "pre_post_no_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Russia",
+   "sample_size": 429027,
+   "sample_unit": "mammograms in the prospective technical monitoring cohort",
+   "models_evaluated": [
+    "Third Opinion Mammograms\u00ae (initial version 1.0.0 and subsequent updates; U-Net++ and Mask2Former architectures)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection of incomplete mammogram processing during predeployment functional testing",
+     "effect": "Functional testing identified incomplete processing in one out of four mammography studies, prompting developer refinement.",
+     "quote": "Functional testing identified one critical noncompliance: one out of four mammography studies was processed incompletely."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local diagnostic performance relative to developer claims and acceptance thresholds",
+     "effect": "Initial accuracy was 0.77 (0.69\u20130.85) versus declared 0.85; specificity was 0.70 (0.57\u20130.83) versus declared 0.88. The first two calibration tests failed the predefined 0.80 threshold.",
+     "quote": "Subsequent calibration tests revealed initially subthreshold performance (AUC 0.83, accuracy 0.77, sensitivity 0.84, specificity 0.70), consistent with similar studies where early AI assessments uncover refinement needs ( 52 , 53 )."
+    },
+    {
+     "rec_id": "R382",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic performance following iterative error feedback, corrective updates, and repeat validation",
+     "effect": "Across iterative testing, monitoring, and updates, AUC increased by 10.8% (from 0.83 to 0.92) and accuracy by 16.9% (from 0.77 to 0.90). Individual update effects could not be isolated.",
+     "quote": "Over this time, AUC increased by 10.8% (from 0.83 to 0.92), accuracy by 16.9% (from 0.77 to 0.90), sensitivity by 4.8% (from 0.84 to 0.88), and specificity by 30.0% (from 0.70 to 0.91)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Russia",
+   "sample_size": 404502,
+   "sample_unit": "mammograms",
+   "models_evaluated": [
+    "Third Opinion Mammograms"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "meeting predefined local performance thresholds",
+     "effect": "Evaluation on historical data against a 0.80 performance threshold prevented the clinical deployment of the algorithm during the first two tests until updates allowed the third test to successfully satisfy the criteria.",
+     "quote": "The first two calibration tests failed to meet the predefined performance thresholds (0.80)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance validation after model updates",
+     "effect": "The implementation protocol correctly required all architectural updates to undergo repeat calibration testing, ensuring that modifications were validated for diagnostic performance before monitoring continued.",
+     "quote": "Architectural updates required repeat calibration testing for validation; non-architectural updates proceeded with routine testing or monitoring."
+    },
+    {
+     "rec_id": "R144",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "approval for clinical implementation",
+     "effect": "Clinical deployment in the regional insurance program was strictly gated by a formal decision requiring the AI system to first meet predefined acceptance criteria for diagnostic accuracy and technical robustness.",
+     "quote": "Implementation into routine clinical healthcare within the CMI program was permitted only after the system met predefined acceptance criteria for safe and effective deployment."
+    },
+    {
+     "rec_id": "R119",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "detection of functional integration errors",
+     "effect": "Initial functional testing of the system successfully detected a critical data processing noncompliance where images were incompletely processed, which was subsequently resolved by the developers.",
+     "quote": "Functional testing identified one critical noncompliance: one out of four mammography studies was processed incompletely."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "technical error rates during monitoring",
+     "effect": "Continuous technical and clinical monitoring over a 24-month period effectively tracked the system's operational stability, confirming that technical error rates exceeded the 10% threshold in only one observation period.",
+     "quote": "The 24-month technical and clinical monitoring demonstrated stable AI system performance, with technical error rates remaining below threshold (<10%) in nearly all observation periods."
+    }
+   ],
+   "unlisted_practices": [
+    "incorporating radiologist feedback during development",
+    "iterative developer updates during monitoring"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Russia",
+ "sample_unit": "mammograms",
+ "sample_size": 404502,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Third Opinion Mammograms",
+  "Third Opinion Mammograms (U-Net++ / Mask2Former, versions 1.0.0 and six updates)",
+  "Third Opinion Mammograms\u00ae (initial version 1.0.0 and subsequent updates; U-Net++ and Mask2Former architectures)"
+ ],
+ "links": [
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Repeat calibration testing after architectural model updates",
+   "effect": "Repeat testing after updates detected regression: CalT6 accuracy 0.81 vs declared 0.92 (\u221211.96%), sensitivity \u221210.99%; subsequent CalT7 reached AUC 0.92, accuracy 0.90.",
+   "quote": "Architectural updates (1st, 2nd, 5th, 6th) underwent repeat calibration testing ( Figure 4 , Tables 3,4 ).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local performance vs developer-declared metrics",
+   "effect": "CalT1 specificity 0.70 vs declared 0.88 (\u221220.45%); accuracy 0.77 vs 0.85 (\u22129.41%); CalT2 accuracy \u221212.94%.",
+   "quote": "Subsequent calibration tests revealed initially subthreshold performance (AUC 0.83, accuracy 0.77, sensitivity 0.84, specificity 0.70), consistent with similar studies where early AI assessments uncover refinement needs ( 52 , 53 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R119",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection of incomplete mammogram processing during predeployment functional testing",
+   "effect": "Functional testing identified incomplete processing in one out of four mammography studies, prompting developer refinement.",
+   "quote": "Functional testing identified one critical noncompliance: one out of four mammography studies was processed incompletely.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R095",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration tests against predefined AUC/accuracy thresholds before CMI implementation",
+   "effect": "First two calibration tests failed thresholds (CalT1 accuracy 0.77; CalT2 AUC 0.78, accuracy 0.74), triggering developer updates; third test passed (AUC 0.84, accuracy 0.81) before implementation.",
+   "quote": "The first two calibration tests failed to meet the predefined performance thresholds (0.80).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R363",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "Automatically logged technical defect (analysis failure) rates during prospective monitoring",
+   "effect": "Technical defects exceeded 10% in 1 of 25 months (11.10%); average defect rate decreased from 3.0% to 0.8%.",
+   "quote": "Technical defect rates exceeded 10% in only 1 of 25 months (group B defects: 11.10%; Figure 3A ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R382",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic performance following iterative error feedback, corrective updates, and repeat validation",
+   "effect": "Across iterative testing, monitoring, and updates, AUC increased by 10.8% (from 0.83 to 0.92) and accuracy by 16.9% (from 0.77 to 0.90). Individual update effects could not be isolated.",
+   "quote": "Over this time, AUC increased by 10.8% (from 0.83 to 0.92), accuracy by 16.9% (from 0.77 to 0.90), sensitivity by 4.8% (from 0.84 to 0.88), and specificity by 30.0% (from 0.70 to 0.91).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "meeting predefined local performance thresholds",
+   "effect": "Evaluation on historical data against a 0.80 performance threshold prevented the clinical deployment of the algorithm during the first two tests until updates allowed the third test to successfully satisfy the criteria.",
+   "quote": "The first two calibration tests failed to meet the predefined performance thresholds (0.80).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "technical error rates during monitoring",
+   "effect": "Continuous technical and clinical monitoring over a 24-month period effectively tracked the system's operational stability, confirming that technical error rates exceeded the 10% threshold in only one observation period.",
+   "quote": "The 24-month technical and clinical monitoring demonstrated stable AI system performance, with technical error rates remaining below threshold (<10%) in nearly all observation periods.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R144",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Structured reporting of identified AI errors to developers prompting corrective updates within an iterative lifecycle testing framework",
+  "incorporating radiologist feedback during development",
+  "iterative developer updates during monitoring"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42701602",
+ "screen": {
+  "id": "pmid:42701602",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "lifecycle testing with prospective monitoring and calibration across updates",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates a lifecycle-based monitoring and continuous quality-control framework during the real-world deployment of a mammography AI tool across 206 medical centers, measuring its effect on technical defects, clinical scores, and performance over time.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "lifecycle-based testing, prospective monitoring, and continuous quality control"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42701602",
+   "empirical": 0.97,
+   "tests_practice": 0.26,
+   "real_deployment": 0.93
+  }
+ }
+}

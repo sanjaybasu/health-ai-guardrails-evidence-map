@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 6,
+ "sample_unit": "clinical scenario prompts (169 expected patient care actions)",
+ "models_evaluated": [
+  "Google NotebookLM (RAG, Gemini 2.5 Flash)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy of RAG-grounded LLM prehospital recommendations versus protocol-derived expected actions; hallucinations",
+   "effect": "LLM recommended 127 (75%) of 169 actions; 9 major misses (5%); 12 hallucinations, none judged to endanger patient safety.",
+   "quote": "The LLM recommended 127 (75%) of 169 patient care actions across all cases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Omission of key clinical actions such as secondary treatable causes in pediatric cardiac arrest",
+   "effect": "Five of nine major misses occurred in the pediatric OHCA case, mostly failure to prompt evaluation of secondary treatable causes.",
+   "quote": "Five of nine major misses occurred during the pediatric OHCA case; the majority of these resulted from failure to prompt evaluation of secondary treatable causes.",
+   "quote_score": 97.53086419753086,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42096610",
+ "screen": {
+  "id": "pmid:42096610",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluated a RAG-grounded LLM (NotebookLM/Gemini) on simulated prehospital clinical scenario prompts against EMS protocols without comparing with/without a safeguard or deployment practice.",
+  "jev": {
+   "id": "pmid:42096610",
+   "empirical": 0.94,
+   "tests_practice": 0.05,
+   "real_deployment": 0.02
+  }
+ }
+}

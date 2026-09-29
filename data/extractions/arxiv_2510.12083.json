@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "not reported",
+ "sample_size": 2594,
+ "sample_unit": "messages (1,800 simulated plus 794 Aegis mental health-related)",
+ "models_evaluated": [
+  "Verily behavioral health safety filter (VBHSF)",
+  "OpenAI Omni Moderation Latest",
+  "NVIDIA NeMo Guardrails"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Sensitivity and specificity of safety filter detecting mental health crises in messages (missed vs unnecessary flags)",
+   "effect": "On the Verily dataset, sensitivity was 0.990 and specificity 0.992 for any crisis; on Aegis, sensitivity was 0.982 and specificity 0.859.",
+   "quote": "The VBHSF demonstrated, well-balanced performance on the Verily Mental Health Crisis Dataset v1.0, achieving high sensitivity (0.990) and specificity (0.992) in detecting any mental health crises.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Sensitivity of general content moderation guardrails for specific mental health crisis types",
+   "effect": "NeMo and OpenAI Omni Moderation showed inconsistent performance across crisis types, with sensitivity below 0.10 for some categories, meaning missed crises.",
+   "quote": "NVIDIA NeMo and OpenAI Omni Moderation Latest exhibited inconsistent performance across specific crisis types, with sensitivity for some categories falling below 0.10.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Deploying a dedicated behavioral health safety filter in front of LLM conversations to detect mental health crises"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2510.12083",
+ "screen": {
+  "id": "arxiv:2510.12083",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "crisis-detection safety filter for LLM conversations",
+  "user": "none",
+  "reason": "The study empirically benchmarks and compares specific AI safety filters/guardrails (Verily behavioral health safety filter vs OpenAI Omni Moderation and NVIDIA NeMo Guardrails) designed to catch mental health crises in text conversations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "safety filters and content moderation guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2510.12083",
+   "empirical": 0.94,
+   "tests_practice": 0.17,
+   "real_deployment": 0.05
+  }
+ }
+}

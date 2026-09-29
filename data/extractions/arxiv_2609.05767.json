@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "",
+ "sample_size": 100,
+ "sample_unit": "assistant conversations",
+ "models_evaluated": [],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Retention of a passing-mentioned allergy under KV-cache compression, with question hidden versus known",
+   "effect": "When the question is hidden until after compression, a passing allergy mention survives 0-1% of the time versus 97% with full memory; prior benchmarks report retention at a 20% budget.",
+   "quote": "Hide the question until after compression and the advantage vanishes: on PA-Bench, 100 assistant conversations we construct, an allergy mentioned in passing survives to the question that needs it 0--1% of the time, against 97% with full memory.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R498",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Loss of safety-critical facts when conversation memory is compressed or truncated",
+   "effect": "Training-free eviction policies fail to rank the allergy fact highly enough; allergy survives 0-1% of the time versus 97% with full memory, and the budget needed to keep it is too large to be worth compressing.",
+   "quote": "Hide the question until after compression and the advantage vanishes: on PA-Bench, 100 assistant conversations we construct, an allergy mentioned in passing survives to the question that needs it 0--1% of the time, against 97% with full memory.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Pair compressed KV-cache memory with an auditable episodic store for safety-critical facts",
+  "Design assistant interfaces that ask the user rather than invent missing facts",
+  "Evaluate memory-compression policies without giving the compressor foresight of the future question"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2609.05767",
+ "screen": {
+  "id": "arxiv:2609.05767",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "patient",
+  "reason": "Evaluates LLM conversation memory compression/eviction policies on safety-critical personal health facts (allergies, medications) across benchmarked assistant conversations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "memory compression and eviction policies / auditable episodic store"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2609.05767",
+   "empirical": 0.68,
+   "tests_practice": 0.35,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,257 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "",
+   "sample_size": 120,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "commercial DLAS software (vendor-provided pretrained model)",
+    "localized fine-tuned DLAS model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CTV and OAR segmentation accuracy (DSC, 95HD, sensitivity, specificity) of locally fine-tuned vs vendor pretrained model",
+     "effect": "LFT outperformed VPM for CTV in target volume, DSC, 95HD and specificity (p < 0.05); LFT significantly improved small intestine segmentation; both adequate for bladder and femoral heads.",
+     "quote": "Localized fine-tuning significantly improved CTV delineation accuracy (p < 0.05) with LFT outperforming VPM in target volume, DSC, 95HD and specificity."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Performance degradation when models applied to data from a different CT simulator",
+     "effect": "No performance degradation identified when LFT and VPM were applied to the GenEva dataset acquired on a different CT simulator.",
+     "quote": "We did not identify performance degradation when LFT and VPM models were applied in the GenEva dataset."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 120,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "localized fine-tuned model (LFT)",
+    "vendor-provided pretrained model (VPM)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "auto-segmentation accuracy after fine-tuning",
+     "effect": "CTV improved significantly (p\u2009<\u20090.05); LFT outperformed VPM in target volume, DSC, 95HD and specificity.",
+     "quote": "Localized fine-tuning significantly improved CTV delineation accuracy (p\u2009<\u20090.05) with LFT outperforming VPM in target volume, DSC, 95HD and specificity."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LFT versus pretrained model accuracy",
+     "effect": "LFT outperformed VPM for CTV target volume, DSC, 95HD and specificity; bladder and femoral heads were adequate for both.",
+     "quote": "Both models exhibited adequate accuracy for bladder and femoral heads, and LFT demonstrated significant enhancement in segmenting the more complex small intestine."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "performance degradation on different CT simulator",
+     "effect": "No performance degradation identified when LFT and VPM were applied to GenEva dataset from a different CT simulator.",
+     "quote": "We did not identify performance degradation when LFT and VPM models were applied in the GenEva dataset."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 120,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "commercial DLAS software (vendor-provided pretrained model)",
+    "localized fine-tuned DLAS model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CTV delineation accuracy",
+     "effect": "LFT significantly outperformed VPM in target volume, DSC, 95HD and specificity (p < 0.05)",
+     "quote": "Localized fine-tuning significantly improved CTV delineation accuracy (p\u2009<\u20090.05) with LFT outperforming VPM in target volume, DSC, 95HD and specificity."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "performance degradation across CT simulators",
+     "effect": "no performance degradation identified across different CT simulator dataset",
+     "quote": "We did not identify performance degradation when LFT and VPM models were applied in the GenEva dataset."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "",
+ "sample_unit": "patients",
+ "sample_size": 120,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "commercial DLAS software (vendor-provided pretrained model)",
+  "localized fine-tuned DLAS model",
+  "localized fine-tuned model (LFT)",
+  "vendor-provided pretrained model (VPM)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "CTV and OAR segmentation accuracy (DSC, 95HD, sensitivity, specificity) of locally fine-tuned vs vendor pretrained model",
+   "effect": "LFT outperformed VPM for CTV in target volume, DSC, 95HD and specificity (p < 0.05); LFT significantly improved small intestine segmentation; both adequate for bladder and femoral heads.",
+   "quote": "Localized fine-tuning significantly improved CTV delineation accuracy (p < 0.05) with LFT outperforming VPM in target volume, DSC, 95HD and specificity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation when models applied to data from a different CT simulator",
+   "effect": "No performance degradation identified when LFT and VPM were applied to the GenEva dataset acquired on a different CT simulator.",
+   "quote": "We did not identify performance degradation when LFT and VPM models were applied in the GenEva dataset.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LFT versus pretrained model accuracy",
+   "effect": "LFT outperformed VPM for CTV target volume, DSC, 95HD and specificity; bladder and femoral heads were adequate for both.",
+   "quote": "Both models exhibited adequate accuracy for bladder and femoral heads, and LFT demonstrated significant enhancement in segmenting the more complex small intestine.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR803197",
+ "screen": {
+  "id": "epmc:PPR803197",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "localized fine-tuning",
+  "user": "none",
+  "reason": "Evaluates localized fine-tuning of an off-the-shelf commercial deep learning auto-segmentation tool to improve clinical accuracy and overcome domain shift across scanners.",
+  "jev": {
+   "id": "epmc:PPR803197",
+   "empirical": 0.96,
+   "tests_practice": 0.9,
+   "real_deployment": 0.09
+  }
+ }
+}

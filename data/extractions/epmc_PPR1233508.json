@@ -1,0 +1,266 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "unspecified",
+   "sample_size": null,
+   "sample_unit": "records (Kaggle PCOS dataset)",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest Classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Data leakage from oversampling before train-test split in prior pipeline",
+     "effect": "Prior work reported 96% accuracy with leakage; corrected pipeline with oversampling only on training data achieved 86.76% test accuracy and weighted F1 of 0.8684.",
+     "quote": "Our prior work achieved 96% accuracy using a Random Forest Classifier on 19 features from the Kaggle PCOS dataset; however, that pipeline contained a data leakage issue RandomOverSampler was applied before the train-test split and relied on ultrasound-derived features unavailable outside a clinical setting."
+    }
+   ],
+   "unlisted_practices": [
+    "Restricting model inputs to home-accessible features for consumer deployment",
+    "Stateless inference with no user data storage"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "Kaggle PCOS dataset records",
+   "models_evaluated": [
+    "Logistic Regression",
+    "Random Forest Classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "data leakage in validation",
+     "effect": "Prior Random Forest reported 96% accuracy, but RandomOverSampler was applied before the train-test split.",
+     "quote": "Our prior work achieved 96% accuracy using a Random Forest Classifier on 19 features from the Kaggle PCOS dataset; however, that pipeline contained a data leakage issue RandomOverSampler was applied before the train-test split and relied on ultrasound-derived features unavailable outside a clinical setting."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PCOS-positive recall",
+     "effect": "Decision threshold tuning at 0.40 raises PCOS-positive recall to 0.89.",
+     "quote": "Decision threshold tuning at 0.40 raises recall for the PCOS-positive class to 0.89, appropriate for a screening tool where false negatives carry greater clinical cost."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "candidate classifier performance",
+     "effect": "Logistic Regression test accuracy was 86.76% and weighted F1-score 0.8684, but differences were within sampling variability.",
+     "quote": "Evaluated on a 75/25 stratified split with 5-fold cross-validation, Logistic Regression achieves the highest test accuracy of 86.76% and weighted F1-score of 0.8684 achieves the highest test F1 among the five classifiers evaluated, though differences are within sampling variability at this test set size."
+    }
+   ],
+   "unlisted_practices": [
+    "Feature ablation to reduce questionnaire length and user input burden while preserving performance",
+    "Removing clinical laboratory and ultrasound features unavailable outside clinical settings for consumer screening"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Random Forest Classifier",
+    "Logistic Regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "recall for the PCOS-positive class",
+     "effect": "decision threshold tuning at 0.40 raised recall for the PCOS-positive class to 0.89",
+     "quote": "Decision threshold tuning at 0.40 raises recall for the PCOS-positive class to 0.89, appropriate for a screening tool where false negatives carry greater clinical cost."
+    }
+   ],
+   "unlisted_practices": [
+    "Feature ablation to minimize user input burden while maintaining predictive performance"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "unspecified",
+ "sample_unit": "records (Kaggle PCOS dataset)",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Logistic Regression",
+  "Random Forest Classifier"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Data leakage from oversampling before train-test split in prior pipeline",
+   "effect": "Prior work reported 96% accuracy with leakage; corrected pipeline with oversampling only on training data achieved 86.76% test accuracy and weighted F1 of 0.8684.",
+   "quote": "Our prior work achieved 96% accuracy using a Random Forest Classifier on 19 features from the Kaggle PCOS dataset; however, that pipeline contained a data leakage issue RandomOverSampler was applied before the train-test split and relied on ultrasound-derived features unavailable outside a clinical setting.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "PCOS-positive recall",
+   "effect": "Decision threshold tuning at 0.40 raises PCOS-positive recall to 0.89.",
+   "quote": "Decision threshold tuning at 0.40 raises recall for the PCOS-positive class to 0.89, appropriate for a screening tool where false negatives carry greater clinical cost.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "candidate classifier performance",
+   "effect": "Logistic Regression test accuracy was 86.76% and weighted F1-score 0.8684, but differences were within sampling variability.",
+   "quote": "Evaluated on a 75/25 stratified split with 5-fold cross-validation, Logistic Regression achieves the highest test accuracy of 86.76% and weighted F1-score of 0.8684 achieves the highest test F1 among the five classifiers evaluated, though differences are within sampling variability at this test set size.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Feature ablation to minimize user input burden while maintaining predictive performance",
+  "Feature ablation to reduce questionnaire length and user input burden while preserving performance",
+  "Removing clinical laboratory and ultrasound features unavailable outside clinical settings for consumer screening",
+  "Restricting model inputs to home-accessible features for consumer deployment",
+  "Stateless inference with no user data storage"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1233508",
+ "screen": {
+  "id": "epmc:PPR1233508",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "decision threshold tuning for screening recall",
+  "user": "patient",
+  "reason": "The study develops and deploys a live consumer-facing web app for PCOS risk screening, explicitly evaluating decision threshold calibration/tuning (setting threshold to 0.40) to trade off precision for clinical sensitivity/recall.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "decision threshold tuning"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1233508",
+   "empirical": 0.89,
+   "tests_practice": 0.21,
+   "real_deployment": 0.16
+  }
+ }
+}

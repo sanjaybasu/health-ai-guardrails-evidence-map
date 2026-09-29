@@ -1,0 +1,264 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "patients (hospital admissions)",
+   "models_evaluated": [
+    "30-day unplanned readmission prediction model",
+    "synthetic data generation (deep learning-based SDG)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration after local recalibration using real and synthetic-data-augmented local samples",
+     "effect": "Urban center met sample guideline (Required 14,224, Available 42,303) and was best calibrated (\u03b1=0.1, \u03b2=1.05). Neither smaller site had enough samples (Site 1: 3187 of 16461; Site 2: 905 of 15299). Deep learning SDG most improved calibration.",
+     "quote": "In the simulation study, deep learning-based SDG was most effective at improving calibration performance."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local calibration of readmission model at three hospitals and sample sufficiency for recalibration",
+     "effect": "Urban center had enough samples for recalibration (42,303 vs 14,224 required). Smaller rural sites did not (3187 vs 16461; 905 vs 15299), so they could not localize the model.",
+     "quote": "For the smaller sites, neither site had the samples required for recalibration (Site 1: Required: 16461, Available: 3187; Site 2: Required: 15299, Available: 905)."
+    }
+   ],
+   "unlisted_practices": [
+    "Synthetic data generation to augment local data volumes for recalibration at small sites"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 46395,
+   "sample_unit": "samples for recalibration in real-world hospital network",
+   "models_evaluated": [
+    "ML model for 30-day unplanned hospital readmission",
+    "deep learning-based synthetic data generation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration after synthetic data augmentation",
+     "effect": "Deep learning-based SDG was most effective at improving calibration performance.",
+     "quote": "In the simulation study, deep learning-based SDG was most effective at improving calibration performance."
+    },
+    {
+     "rec_id": "R127",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Recalibration sample availability at smaller sites",
+     "effect": "Site 1 required 16461, available 3187; Site 2 required 15299, available 905.",
+     "quote": "For the smaller sites, neither site had the samples required for recalibration (Site 1: Required: 16461, Available: 3187; Site 2: Required: 15299, Available: 905)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Site-stratified local calibration performance",
+     "effect": "Urban center met recalibration samples (14,224 required; 42,303 available) and had best local calibration \u03b1=0.1,\u03b2=1.05.",
+     "quote": "In the real-world evaluation, the urban medical center met the guidelines for the number of samples for recalibration (Required: 14,224, Available: 42,303) and had the best calibrated model using local data (\u03b1=0.1,\u03b2=1.05; best: \u03b1=0,\u03b2=1)."
+    }
+   ],
+   "unlisted_practices": [
+    "Synthetic data generation to augment local data volumes for recalibration at smaller facilities"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "machine learning models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration after local recalibration",
+     "effect": "urban medical center met sample guidelines (14,224 required, 42,303 available) and had best calibrated model using local data (\u03b1=0.1, \u03b2=1.05; best: \u03b1=0, \u03b2=1)",
+     "quote": "In the real-world evaluation, the urban medical center met the guidelines for the number of samples for recalibration (Required: 14,224, Available: 42,303) and had the best calibrated model using local data (\u03b1=0.1,\u03b2=1.05; best: \u03b1=0,\u03b2=1)."
+    }
+   ],
+   "unlisted_practices": [
+    "Synthetic data generation to augment local data for model recalibration"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "patients (hospital admissions)",
+ "sample_size": 46395,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "30-day unplanned readmission prediction model",
+  "ML model for 30-day unplanned hospital readmission",
+  "deep learning-based synthetic data generation",
+  "machine learning models",
+  "synthetic data generation (deep learning-based SDG)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration after local recalibration using real and synthetic-data-augmented local samples",
+   "effect": "Urban center met sample guideline (Required 14,224, Available 42,303) and was best calibrated (\u03b1=0.1, \u03b2=1.05). Neither smaller site had enough samples (Site 1: 3187 of 16461; Site 2: 905 of 15299). Deep learning SDG most improved calibration.",
+   "quote": "In the simulation study, deep learning-based SDG was most effective at improving calibration performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R127",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Recalibration sample availability at smaller sites",
+   "effect": "Site 1 required 16461, available 3187; Site 2 required 15299, available 905.",
+   "quote": "For the smaller sites, neither site had the samples required for recalibration (Site 1: Required: 16461, Available: 3187; Site 2: Required: 15299, Available: 905).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Synthetic data generation to augment local data for model recalibration",
+  "Synthetic data generation to augment local data volumes for recalibration at small sites",
+  "Synthetic data generation to augment local data volumes for recalibration at smaller facilities"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41825516",
+ "screen": {
+  "id": "pmid:41825516",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local model recalibration with synthetic data augmentation",
+  "user": "none",
+  "reason": "Empirically tests a deployment practice (local recalibration and synthetic data augmentation to address small sample sizes in community hospitals) using multi-site hospital datasets.",
+  "jev": {
+   "id": "pmid:41825516",
+   "empirical": 0.89,
+   "tests_practice": 0.86,
+   "real_deployment": 0.07
+  }
+ }
+}

@@ -1,0 +1,332 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 61855,
+   "sample_unit": "ICU encounters (26,045 development, 276 prospective silent-mode, 35,534 MIMIC-IV)",
+   "models_evaluated": [
+    "Vent.io (3-layer feedforward neural network)",
+    "VentNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R122",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Prospective silent-mode performance on live EHR data versus retrospective performance",
+     "effect": "Over a 1-month silent-mode deployment (276 encounters), AUC 0.908, sensitivity 0.632, specificity 0.849, PPV 0.235, above the 0.85 PCCP threshold, so no fine-tuning was needed.",
+     "quote": "The final model achieved a sensitivity of 0.632, specificity of 0.849, and PPV of 0.235."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model discrimination when applied to an external site dataset (MIMIC-IV)",
+     "effect": "The UCSD-trained model's AUC dropped to 0.73 on MIMIC-IV, compared with 0.897 cross-validated and 0.908 prospective at UCSD.",
+     "quote": "The final Vent.io model trained using UCSD data obtained an AUC of 0.73, lower than the minimum of 0.85 set by the PCCP, prompting a fine-tuning process."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-site AUC before and after fine-tuning on local data",
+     "effect": "Fine-tuning on MIMIC-IV data raised AUC from 0.73 to 0.873. Acceptable performance was reached using 25% or more of the local training data.",
+     "quote": "The fine-tuned Vent.io model achieved an AUC of 0.873."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether a predefined AUC threshold in the PCCP triggers corrective retraining",
+     "effect": "An AUC of 0.73, below the 0.85 PCCP threshold, triggered fine-tuning, which restored AUC to 0.873. UCSD prospective AUC stayed above the threshold, so no action was taken there.",
+     "quote": "Vent.io had an AUC of 0.73 on the MIMIC-IV dataset, triggering model fine-tuning per the PCCP as the AUC was below the minimum of 0.85."
+    }
+   ],
+   "unlisted_practices": [
+    "Conformal prediction module to flag out-of-distribution inputs and define conditions for use",
+    "Real-time gold-standard labeling via bulk FHIR to support rolling-window performance monitoring",
+    "Gradient-based per-prediction feature relevance scores for interpretability"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 61855,
+   "sample_unit": "ICU encounters: 26 045 development, 276 prospective validation, and 35 534 external validation",
+   "models_evaluated": [
+    "Vent.io",
+    "VentNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R110",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Prospective versus retrospective predictive performance during silent deployment",
+     "effect": "During 1-month silent deployment, AUC was 0.908 versus cross-validation median 0.897 (IQR: 0.892-0.904); prospective sensitivity was 0.632, specificity 0.849, and PPV 0.235.",
+     "quote": "The Vent.io model had a median AUC of 0.897 (IQR: 0.892-0.904) with specificity of 0.81 (IQR: 0.812-0.841) and positive predictive value (PPV) of 0.174 (IQR: 0.148-0.176) at a fixed sensitivity of 0.6 during 10-fold cross validation and an AUC of 0.908, sensitivity of 0.632, specificity of 0.849, and PPV of 0.235 during prospective deployment."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External-site performance relative to development performance and the predefined acceptance threshold",
+     "effect": "On MIMIC-IV, UCSD-trained Vent.io achieved AUC 0.73, below the PCCP minimum of 0.85 and UCSD cross-validation median AUC 0.897.",
+     "quote": "The final Vent.io model trained using UCSD data obtained an AUC of 0.73, lower than the minimum of 0.85 set by the PCCP, prompting a fine-tuning process."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-site discrimination after local model fine-tuning",
+     "effect": "MIMIC-IV AUC improved from 0.73 to 0.873 after local fine-tuning; acceptable performance was achieved using 25% or more of the training data, exceeding the minimum AUC of 0.85.",
+     "quote": "The fine-tuned Vent.io model achieved an AUC of 0.873."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 61855,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "Vent.io"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External dataset performance",
+     "effect": "Model trained on UCSD data dropped to an AUC of 0.73 when validated on the MIMIC-IV dataset.",
+     "quote": "The final Vent.io model trained using UCSD data obtained an AUC of 0.73, lower than the minimum of 0.85 set by the PCCP, prompting a fine-tuning process."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance after fine-tuning",
+     "effect": "Fine-tuning the model locally on MIMIC-IV data improved its AUC to 0.873.",
+     "quote": "The fine-tuned Vent.io model achieved an AUC of 0.873."
+    },
+    {
+     "rec_id": "R364",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retraining trigger",
+     "effect": "A predefined performance threshold of 0.85 successfully triggered model fine-tuning when the AUC dropped to 0.73.",
+     "quote": "Vent.io had an AUC of 0.73 on the MIMIC-IV dataset, triggering model fine-tuning per the PCCP as the AUC was below the minimum of 0.85."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ICU encounters (26,045 development, 276 prospective silent-mode, 35,534 MIMIC-IV)",
+ "sample_size": 61855,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Vent.io",
+  "Vent.io (3-layer feedforward neural network)",
+  "VentNet"
+ ],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model discrimination when applied to an external site dataset (MIMIC-IV)",
+   "effect": "The UCSD-trained model's AUC dropped to 0.73 on MIMIC-IV, compared with 0.897 cross-validated and 0.908 prospective at UCSD.",
+   "quote": "The final Vent.io model trained using UCSD data obtained an AUC of 0.73, lower than the minimum of 0.85 set by the PCCP, prompting a fine-tuning process.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External-site AUC before and after fine-tuning on local data",
+   "effect": "Fine-tuning on MIMIC-IV data raised AUC from 0.73 to 0.873. Acceptable performance was reached using 25% or more of the local training data.",
+   "quote": "The fine-tuned Vent.io model achieved an AUC of 0.873.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R364",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether a predefined AUC threshold in the PCCP triggers corrective retraining",
+   "effect": "An AUC of 0.73, below the 0.85 PCCP threshold, triggered fine-tuning, which restored AUC to 0.873. UCSD prospective AUC stayed above the threshold, so no action was taken there.",
+   "quote": "Vent.io had an AUC of 0.73 on the MIMIC-IV dataset, triggering model fine-tuning per the PCCP as the AUC was below the minimum of 0.85.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R122",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective silent-mode performance on live EHR data versus retrospective performance",
+   "effect": "Over a 1-month silent-mode deployment (276 encounters), AUC 0.908, sensitivity 0.632, specificity 0.849, PPV 0.235, above the 0.85 PCCP threshold, so no fine-tuning was needed.",
+   "quote": "The final model achieved a sensitivity of 0.632, specificity of 0.849, and PPV of 0.235.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R110",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective versus retrospective predictive performance during silent deployment",
+   "effect": "During 1-month silent deployment, AUC was 0.908 versus cross-validation median 0.897 (IQR: 0.892-0.904); prospective sensitivity was 0.632, specificity 0.849, and PPV 0.235.",
+   "quote": "The Vent.io model had a median AUC of 0.897 (IQR: 0.892-0.904) with specificity of 0.81 (IQR: 0.812-0.841) and positive predictive value (PPV) of 0.174 (IQR: 0.148-0.176) at a fixed sensitivity of 0.6 during 10-fold cross validation and an AUC of 0.908, sensitivity of 0.632, specificity of 0.849, and PPV of 0.235 during prospective deployment.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External-site performance relative to development performance and the predefined acceptance threshold",
+   "effect": "On MIMIC-IV, UCSD-trained Vent.io achieved AUC 0.73, below the PCCP minimum of 0.85 and UCSD cross-validation median AUC 0.897.",
+   "quote": "The final Vent.io model trained using UCSD data obtained an AUC of 0.73, lower than the minimum of 0.85 set by the PCCP, prompting a fine-tuning process.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Conformal prediction module to flag out-of-distribution inputs and define conditions for use",
+  "Gradient-based per-prediction feature relevance scores for interpretability",
+  "Real-time gold-standard labeling via bulk FHIR to support rolling-window performance monitoring"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:39664647",
+ "screen": {
+  "id": "pmid:39664647",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "continuous monitoring and predetermined change control plan (PCCP) with triggered recalibration",
+  "user": "none",
+  "reason": "The study deploys a clinical risk prediction model in silent mode on live EHR data and directly tests/evaluates a Predetermined Change Control Plan (PCCP) for continuous monitoring and triggered fine-tuning/recalibration when performance drops below a threshold.",
+  "jev": {
+   "id": "pmid:39664647",
+   "empirical": 0.97,
+   "tests_practice": 0.81,
+   "real_deployment": 0.92
+  }
+ }
+}

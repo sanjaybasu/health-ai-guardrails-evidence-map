@@ -1,0 +1,324 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Iran",
+   "sample_size": 169,
+   "sample_unit": "patient records",
+   "models_evaluated": [
+    "Llama-3.1-8B-Instruct",
+    "DeepSeek-R1",
+    "GPT-4o-Mini",
+    "Gemini-1.5-Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Persian",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "IEI class classification AUC with vs without retrieval-augmented grounding (R1+R2)",
+     "effect": "AUC rose with RAG (R1+R2) across all models, e.g., Deepseek minimal 0.64 to 0.74, Gemini full 0.62 to 0.70; F1 also improved on average.",
+     "quote": "The results also showed that retrieval strategies improved the average classification performance, increasing the F1 score from [Formula: see text] to [Formula: see text] across all models."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM expression of uncertainty via 'I don't know' responses",
+     "effect": "Only DeepSeek expressed uncertainty (once in Prompt 1, twice in Prompt 4, same patient record); other models never abstained despite modest accuracy.",
+     "quote": "However, only Deepseek demonstrated even limited capability in expressing uncertainty."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Reproducibility of class assignments across repeated runs (Fleiss' kappa)",
+     "effect": "Average kappa 0.86 (minimal input) and 0.91 (full input); DeepSeek lowest (0.62-0.79), Gemini best (0.98 full).",
+     "quote": "The models exhibited consistently high agreement across prompts, with the average Fleiss\u2019s kappa values of 0.86 under minimal and 0.91 under full-form input."
+    }
+   ],
+   "unlisted_practices": [
+    "Entity-based retrieval with informativeness ranking and refinement of retrieved chunks",
+    "Comparison of LLM classification performance against medical interns and residents"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Iran",
+   "sample_size": 169,
+   "sample_unit": "patient records",
+   "models_evaluated": [
+    "Llama-3.1-8B-Instruct",
+    "DeepSeek-R1",
+    "GPT-4o-Mini",
+    "Gemini-1.5-Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Persian",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "RAG versus baseline classification",
+     "effect": "Across model/input pairs, R1+R2 AUCs were 0.60-0.74 vs baseline 0.51-0.64; Deepseek minimal rose 0.64 to 0.74.",
+     "quote": "The results also showed that retrieval strategies improved the average classification performance, increasing the F1 score from [Formula: see text] to [Formula: see text] across all models."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Baseline diagnostic accuracy",
+     "effect": "Baseline Prompt 4 AUCs were 0.64, 0.56, 0.51, 0.62, 0.54, 0.54, 0.51, and 0.56; misclassifications persisted by class.",
+     "quote": "The comparison of baseline models shows that existing language models lack diagnostic knowledge in classifications of IEIs."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Repeated-run consistency",
+     "effect": "Average Fleiss \u03ba 0.86 minimal and 0.91 full; Deepseek minimal kappa 0.62-0.67, while Gemini full 0.97-0.98.",
+     "quote": "The models exhibited consistently high agreement across prompts, with the average Fleiss\u2019s kappa values of 0.86 under minimal and 0.91 under full-form input."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Diagnostic uncertainty expression",
+     "effect": "Only Deepseek produced uncertainty: once in Prompt 1 and twice in Prompt 4; all other models never used \u201cI don\u2019t know\u201d.",
+     "quote": "It is also worth mentioning that, in Prompts 1 and 4, the model could respond with \u201cI don\u2019t know\u201d however, only Deepseek produced responses indicating uncertainty: once in Prompt 1 and twice in Prompt 4, each occurring during a specific iteration for the same patient record."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Completeness of patient input",
+     "effect": "Average Fleiss \u03ba rose 0.86 to 0.91; Gemini and LLama full significantly increased weighted F1, but Deepseek and GPT-4o-Mini had no significant input-scenario difference.",
+     "quote": "A notable observation is how model consistency increased with the full-form input compared to the minimal one."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing prompt strategies for direct versus step-by-step IEI classification, including prompts allowing \u201cI don\u2019t know\u201d responses"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Iran",
+   "sample_size": 169,
+   "sample_unit": "patient records",
+   "models_evaluated": [
+    "Llama-3.1-8B-Instruct",
+    "DeepSeek-R1",
+    "GPT-4o-Mini",
+    "Gemini-1.5-Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic classification AUC across models",
+     "effect": "AUC improved with RAG (R1+R2) vs baseline across models: DeepSeek minimal (0.74 vs 0.64), Gemini full (0.70 vs 0.62), Llama full (0.66 vs 0.56), and GPT-4o-Mini (0.60 vs 0.54).",
+     "quote": "Using the hybrid method, which integrates semantic precision and content quality refinement strategies, led to significant improvements in the models."
+    }
+   ],
+   "unlisted_practices": [
+    "Hybrid entity-based structured retrieval combined with informativeness-ranked filtering in RAG pipelines",
+    "Prompt engineering with explicit permission to express diagnostic uncertainty ('I don't know')"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Iran",
+ "sample_unit": "patient records",
+ "sample_size": 169,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Persian"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1",
+  "GPT-4o-Mini",
+  "Gemini-1.5-Pro",
+  "Llama-3.1-8B-Instruct"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "IEI class classification AUC with vs without retrieval-augmented grounding (R1+R2)",
+   "effect": "AUC rose with RAG (R1+R2) across all models, e.g., Deepseek minimal 0.64 to 0.74, Gemini full 0.62 to 0.70; F1 also improved on average.",
+   "quote": "The results also showed that retrieval strategies improved the average classification performance, increasing the F1 score from [Formula: see text] to [Formula: see text] across all models.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM expression of uncertainty via 'I don't know' responses",
+   "effect": "Only DeepSeek expressed uncertainty (once in Prompt 1, twice in Prompt 4, same patient record); other models never abstained despite modest accuracy.",
+   "quote": "However, only Deepseek demonstrated even limited capability in expressing uncertainty.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of class assignments across repeated runs (Fleiss' kappa)",
+   "effect": "Average kappa 0.86 (minimal input) and 0.91 (full input); DeepSeek lowest (0.62-0.79), Gemini best (0.98 full).",
+   "quote": "The models exhibited consistently high agreement across prompts, with the average Fleiss\u2019s kappa values of 0.86 under minimal and 0.91 under full-form input.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R500",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing prompt strategies for direct versus step-by-step IEI classification, including prompts allowing \u201cI don\u2019t know\u201d responses",
+  "Comparison of LLM classification performance against medical interns and residents",
+  "Entity-based retrieval with informativeness ranking and refinement of retrieved chunks",
+  "Hybrid entity-based structured retrieval combined with informativeness-ranked filtering in RAG pipelines",
+  "Prompt engineering with explicit permission to express diagnostic uncertainty ('I don't know')"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42246974",
+ "screen": {
+  "id": "pmid:42246974",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding added to existing LLMs",
+  "user": "none",
+  "reason": "Evaluates LLMs on retrospective clinical records comparing performance with and without retrieval-augmented grounding (RAG) and prompt variations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42246974",
+   "empirical": 0.96,
+   "tests_practice": 0.72,
+   "real_deployment": 0.06
+  }
+ }
+}

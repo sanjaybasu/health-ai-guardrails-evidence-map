@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": 1310,
+ "sample_unit": "meningioma MRI cases (1000 training/cross-validation, 310 external)",
+ "models_evaluated": [
+  "custom 3D nnU-Net residual encoder"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Segmentation Dice in cross-validation versus independent external single-institution validation",
+   "effect": "Tumor core Dice 0.937 in cross-validation vs 0.872 externally with heterogeneous protocols and incomplete sequences; volume correlation r 0.995 vs 0.971.",
+   "quote": "In external validation (310 cases, single institution), mean tumor core Dice was 0.872 despite heterogeneous MRI protocols and incomplete sequences; tumor core volume correlation remained strong (r = 0.971).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Segmentation performance across demographic subgroups",
+   "effect": "Performance reported as equitable across demographic subgroups; most common failures were skull base and intraosseous tumors.",
+   "quote": "Most common failure modes were skull base and intraosseous tumors with performance equitable across demographic subgroups.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Blinded radiologist Likert ratings of model segmentations versus reference annotations",
+   "effect": "Model segmentations scored higher than reference annotations (+0.32 BraTS; +1.38 external validation), suggesting imperfect reference standards.",
+   "quote": "In blinded evaluation (1120 ratings), model segmentations received higher scores than reference annotations (+0.32 BraTS; +1.38 external validation).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1238475",
+ "screen": {
+  "id": "epmc:PPR1238475",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a deep learning model for automated meningioma segmentation with external validation and a blinded reader study involving 10 radiologists assessing segmentation quality, failure modes, and equity, but does not test a specific deployment practice/guardrail.",
+  "jev": {
+   "id": "epmc:PPR1238475",
+   "empirical": 0.96,
+   "tests_practice": 0.05,
+   "real_deployment": 0.06
+  }
+ }
+}

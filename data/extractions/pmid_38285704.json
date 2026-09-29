@@ -1,0 +1,307 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 29037,
+   "sample_unit": "pediatric hospital admissions",
+   "models_evaluated": [
+    "Dynamic Criticality Index (CI-D) multi-institutional neural network models",
+    "single-site CI-D neural network models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Multi-institutional model discrimination on local historical data versus reference outcome",
+     "effect": "Multi-institutional CI-D models applied to single-site data had AUROC 0.493-0.545 and AUPRC 0.262-0.299, versus AUROC 0.946-0.948 in the multi-institutional dataset; local testing revealed failure.",
+     "quote": "Models developed from multi-institutional datasets and intended for application to individual institutions should be assessed locally and may benefit from re-development with site-specific data prior to deployment."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of multi-institutional versus locally re-developed models on single-site test data",
+     "effect": "Single-site re-developed models achieved AUROC 0.906-0.944 and AUPRC 0.754-0.824, versus AUROC 0.493-0.545 for the multi-institutional models; calibration slopes 1.04-1.06 versus 0.344-0.406.",
+     "quote": "The performance metrics of the single-site CI-D models applied to the single-site test sample ( Fig 2 , Table 2B ) were substantially better than the performance of the multi-institutional model."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences in model covariate importance and practice patterns between development and local setting",
+     "effect": "20%-30% of the top 30 covariates in multi-institutional models were not among single-site model top covariates; local practices (ICU admission policies, medications, coma score) differed, contributing to degraded performance.",
+     "quote": "Among the full list of covariates, 20%-30% of the 30 most frequent covariates used for ICU predictions made in the multi-institutional models were not among the 30 most frequent variables in the single-site models."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of multi-institutional model to a new site not in development data",
+     "effect": "Despite excellent performance in the multi-institutional dataset, AUROC fell to 0.493-0.545 and sensitivity to 0.007-0.008 at the new site.",
+     "quote": "Despite excellent performance in an independent multi-institutional dataset [ 10 ], the multi-institutional models had substantially reduced performance in the single-site dataset."
+    }
+   ],
+   "unlisted_practices": [
+    "Re-development of models using site-specific data with identical variables and methods",
+    "LIME-based variable importance comparison to identify local practice differences"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 29037,
+   "sample_unit": "pediatric hospital admissions",
+   "models_evaluated": [
+    "Multi-institutional Dynamic Criticality Index (CI-D) models",
+    "Single-site Dynamic Criticality Index (CI-D) models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local historical validation discrimination",
+     "effect": "Multi-institutional CI-D on single-site data: AUROC = 0.493\u20130.545; AUPRC = 0.259\u20130.299; sensitivity 0.007\u20130.008 at threshold 0.5.",
+     "quote": "For the four future prediction time periods, the AUROC = 0.493\u20130.545 ( Fig 1A ), and the AUPRC = 0.259\u20130.299 ( Fig 1B )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "site-specific redevelopment performance",
+     "effect": "Single-site redevelopment: AUROC 0.906-0.944 and AUPRC 0.754-0.824, versus multi-institutional local AUROC 0.493\u20130.545.",
+     "quote": "The single-site CI-D models applied to an independent single-site test dataset had an AUROC 0.906-0.944 and AUPRC range from 0.754-0.824."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local practice/covariate shift",
+     "effect": "20%-30% of top multi-institution covariates absent from single-site top 30; 17%-25% vice versa.",
+     "quote": "Among the full list of covariates, 20%-30% of the 30 most frequent covariates used for ICU predictions made in the multi-institutional models were not among the 30 most frequent variables in the single-site models."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalization to new institution",
+     "effect": "Multi-institutional CI-D local AUROC = 0.493\u20130.545, AUPRC = 0.259\u20130.299 despite prior multi-institution AUROC = 0.946\u20130.948.",
+     "quote": "Despite excellent performance in an independent multi-institutional dataset [ 10 ], the multi-institutional models had substantially reduced performance in the single-site dataset."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 29037,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "Dynamic Criticality Index (CI-D)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination of multi-institutional model at local single site",
+     "effect": "AUROC was 0.493-0.545 and AUPRC was 0.262-0.299 on single-site data, compared to AUROC 0.946-0.948 and AUPRC 0.726-0.742 in multi-institutional data",
+     "quote": "The area under the receiver operating characteristic curve (AUROC) for the multi-institutional CI-D models applied to a single-site test dataset was 0.493-0.545 and area under the precision-recall curve (AUPRC) was 0.262-0.299."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "pediatric hospital admissions",
+ "sample_size": 29037,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Dynamic Criticality Index (CI-D)",
+  "Dynamic Criticality Index (CI-D) multi-institutional neural network models",
+  "Multi-institutional Dynamic Criticality Index (CI-D) models",
+  "Single-site Dynamic Criticality Index (CI-D) models",
+  "single-site CI-D neural network models"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Multi-institutional model discrimination on local historical data versus reference outcome",
+   "effect": "Multi-institutional CI-D models applied to single-site data had AUROC 0.493-0.545 and AUPRC 0.262-0.299, versus AUROC 0.946-0.948 in the multi-institutional dataset; local testing revealed failure.",
+   "quote": "Models developed from multi-institutional datasets and intended for application to individual institutions should be assessed locally and may benefit from re-development with site-specific data prior to deployment.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of multi-institutional versus locally re-developed models on single-site test data",
+   "effect": "Single-site re-developed models achieved AUROC 0.906-0.944 and AUPRC 0.754-0.824, versus AUROC 0.493-0.545 for the multi-institutional models; calibration slopes 1.04-1.06 versus 0.344-0.406.",
+   "quote": "The performance metrics of the single-site CI-D models applied to the single-site test sample ( Fig 2 , Table 2B ) were substantially better than the performance of the multi-institutional model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences in model covariate importance and practice patterns between development and local setting",
+   "effect": "20%-30% of the top 30 covariates in multi-institutional models were not among single-site model top covariates; local practices (ICU admission policies, medications, coma score) differed, contributing to degraded performance.",
+   "quote": "Among the full list of covariates, 20%-30% of the 30 most frequent covariates used for ICU predictions made in the multi-institutional models were not among the 30 most frequent variables in the single-site models.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of multi-institutional model to a new site not in development data",
+   "effect": "Despite excellent performance in the multi-institutional dataset, AUROC fell to 0.493-0.545 and sensitivity to 0.007-0.008 at the new site.",
+   "quote": "Despite excellent performance in an independent multi-institutional dataset [ 10 ], the multi-institutional models had substantially reduced performance in the single-site dataset.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "discrimination of multi-institutional model at local single site",
+   "effect": "AUROC was 0.493-0.545 and AUPRC was 0.262-0.299 on single-site data, compared to AUROC 0.946-0.948 and AUPRC 0.726-0.742 in multi-institutional data",
+   "quote": "The area under the receiver operating characteristic curve (AUROC) for the multi-institutional CI-D models applied to a single-site test dataset was 0.493-0.545 and area under the precision-recall curve (AUPRC) was 0.262-0.299.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "LIME-based variable importance comparison to identify local practice differences",
+  "Re-development of models using site-specific data with identical variables and methods"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38285704",
+ "screen": {
+  "id": "pmid:38285704",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and retraining",
+  "user": "none",
+  "reason": "Evaluates external validation performance of a multi-institutional pediatric ICU prediction model at a single site versus re-training on local data, demonstrating the necessity of local validation and site-specific adaptation before deployment.",
+  "jev": {
+   "id": "pmid:38285704",
+   "empirical": 0.97,
+   "tests_practice": 0.85,
+   "real_deployment": 0.08
+  }
+ }
+}

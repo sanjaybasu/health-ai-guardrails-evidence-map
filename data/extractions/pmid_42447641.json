@@ -1,0 +1,339 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China; United States",
+   "sample_size": 10194,
+   "sample_unit": "pediatric ICU patients (Experiment A); 63,203 adult ICU patients in Experiment B",
+   "models_evaluated": [
+    "Random Forest",
+    "gradient boosting",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration recovery after target-domain retraining on local data",
+     "effect": "RF ROC-AUC fell from 0.940 to 0.725 in younger children; retraining recovered 0.867; ECE rose from \u22640.010 to 0.142 and was restored below 0.01. Retraining on 5% (~180 patients) recovered most of the gap.",
+     "quote": "Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and target-domain retraining recovered 0.867 (0.842-0.890); ECE rose from \u22640.010 to 0.142 and was restored below 0.01."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when transferred from adult/older-child cohorts to a new younger population",
+     "effect": "Discrimination fell from 0.940 to 0.725 in younger children; adult-ICU models became severely miscalibrated (ECE up to 0.285); neonates AUC 0.587 (ECE 0.249).",
+     "quote": "Vital-sign-based mortality models trained on older children or directly observed adult-ICU data lose discrimination and become severely miscalibrated when applied to younger children, with neonates worst affected."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset shift between development and deployment populations degrading performance",
+     "effect": "Adult vs pediatric vitals showed large shifts (heart-rate d=+2.75, respiratory-rate d=+3.06) with ECE rising to 0.285 and discrimination loss in younger children.",
+     "quote": "In the directly observed adult-ICU Experiment B the domain shift was confirmed with directly observed vitals (heart-rate Cohen's d=+2.75, respiratory-rate d=+3.06) and manifested mainly as severe miscalibration (ECE rising to 0.285) with a smaller, model-dependent discrimination change, again removed by target-domain retraining."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance across age-band subgroups hidden by aggregate metrics",
+     "effect": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249).",
+     "quote": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249)."
+    },
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when applied outside validated population",
+     "effect": "Models trained on adults or older children lost discrimination and were miscalibrated in younger children, worst in neonates.",
+     "quote": "Vital-sign-based mortality models trained on older children or directly observed adult-ICU data lose discrimination and become severely miscalibrated when applied to younger children, with neonates worst affected."
+    }
+   ],
+   "unlisted_practices": [
+    "calibration-only updating versus full retraining comparison",
+    "learning curves for amount of target data needed for retraining"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 73397,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Random Forest",
+    "gradient boosting",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Transfer to younger pediatric ICU patients",
+     "effect": "Random Forest ROC-AUC fell 0.940 (95% CI 0.912-0.968) to 0.725 (0.703-0.746); ECE rose from \u22640.010 to 0.142.",
+     "quote": "The strongest discrimination evidence comes from the fully observed Experiment A: Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and target-domain retraining recovered 0.867 (0.842-0.890); ECE rose from \u22640.010 to 0.142 and was restored below 0.01."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Target-domain retraining after poor transfer",
+     "effect": "Retraining recovered ROC-AUC 0.867 (0.842-0.890) and restored ECE below 0.01 after transfer ROC-AUC 0.725 and ECE 0.142.",
+     "quote": "The strongest discrimination evidence comes from the fully observed Experiment A: Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and target-domain retraining recovered 0.867 (0.842-0.890); ECE rose from \u22640.010 to 0.142 and was restored below 0.01."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Age-band subgroup performance",
+     "effect": "Performance fell from 0.992 in preschool children to 0.587 in neonates; neonate ECE 0.249.",
+     "quote": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249)."
+    }
+   ],
+   "unlisted_practices": [
+    "calibration-only updating",
+    "pooled training",
+    "class-weighted training",
+    "age-excluded and age-normalized features"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 73397,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Random Forest",
+    "gradient boosting",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model recovery after target-domain retraining",
+     "effect": "Retraining on only 5% of the target pool (~180 patients) recovered most of the gap, whereas calibration-only updating corrected ECE but could not restore discrimination.",
+     "quote": "Retraining on only 5% of the available target pool (\u2248180 patients) recovered most of the gap; calibration-only updating corrected ECE but could not restore discrimination."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination and calibration loss when transferring models to younger children",
+     "effect": "Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and ECE rose from <=0.010 to 0.142.",
+     "quote": "The strongest discrimination evidence comes from the fully observed Experiment A: Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and target-domain retraining recovered 0.867 (0.842-0.890); ECE rose from \u22640.010 to 0.142 and was restored below 0.01."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model performance variation across pediatric age subgroups",
+     "effect": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249).",
+     "quote": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China; United States",
+ "sample_unit": "patients",
+ "sample_size": 73397,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Random Forest",
+  "gradient boosting",
+  "logistic regression"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration recovery after target-domain retraining on local data",
+   "effect": "RF ROC-AUC fell from 0.940 to 0.725 in younger children; retraining recovered 0.867; ECE rose from \u22640.010 to 0.142 and was restored below 0.01. Retraining on 5% (~180 patients) recovered most of the gap.",
+   "quote": "Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and target-domain retraining recovered 0.867 (0.842-0.890); ECE rose from \u22640.010 to 0.142 and was restored below 0.01.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when transferred from adult/older-child cohorts to a new younger population",
+   "effect": "Discrimination fell from 0.940 to 0.725 in younger children; adult-ICU models became severely miscalibrated (ECE up to 0.285); neonates AUC 0.587 (ECE 0.249).",
+   "quote": "Vital-sign-based mortality models trained on older children or directly observed adult-ICU data lose discrimination and become severely miscalibrated when applied to younger children, with neonates worst affected.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance across age-band subgroups hidden by aggregate metrics",
+   "effect": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249).",
+   "quote": "Performance fell monotonically with age, from 0.992 in preschool children to 0.587 in neonates (ECE 0.249).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Dataset shift between development and deployment populations degrading performance",
+   "effect": "Adult vs pediatric vitals showed large shifts (heart-rate d=+2.75, respiratory-rate d=+3.06) with ECE rising to 0.285 and discrimination loss in younger children.",
+   "quote": "In the directly observed adult-ICU Experiment B the domain shift was confirmed with directly observed vitals (heart-rate Cohen's d=+2.75, respiratory-rate d=+3.06) and manifested mainly as severe miscalibration (ECE rising to 0.285) with a smaller, model-dependent discrimination change, again removed by target-domain retraining.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R070",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when applied outside validated population",
+   "effect": "Models trained on adults or older children lost discrimination and were miscalibrated in younger children, worst in neonates.",
+   "quote": "Vital-sign-based mortality models trained on older children or directly observed adult-ICU data lose discrimination and become severely miscalibrated when applied to younger children, with neonates worst affected.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "age-excluded and age-normalized features",
+  "calibration-only updating",
+  "calibration-only updating versus full retraining comparison",
+  "class-weighted training",
+  "learning curves for amount of target data needed for retraining",
+  "pooled training"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42447641",
+ "screen": {
+  "id": "pmid:42447641",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "target-domain retraining and recalibration before pediatric deployment",
+  "user": "none",
+  "reason": "Evaluates transfer gap and compares deployment adaptation strategies (target-domain retraining vs recalibration-only updating) when transferring adult ICU models to pediatric cohorts.",
+  "jev": {
+   "id": "pmid:42447641",
+   "empirical": 0.96,
+   "tests_practice": 0.89,
+   "real_deployment": 0.04
+  }
+ }
+}

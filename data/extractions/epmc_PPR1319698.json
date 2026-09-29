@@ -1,0 +1,84 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": 150,
+ "sample_unit": "psychiatric multiple-choice questions (MedMCQA, Psychiatry subject)",
+ "models_evaluated": [
+  "Four open-weight small language models (1.2B, 4.3B, 7.6B, 9.2B parameters) run locally via Ollama"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "outcome": "Paired accuracy change when models were offered a prompted abstention option (deferral)",
+   "effect": "Only the 1.2B model had a paired effect distinguishable from noise, and it was negative (-6.7 points, 95% CI [-12.7,-0.7]). The 7.6B model's effect reversed from a naive +0.8 to -5.3 points (95% CI [-9.3,-1.3]); 8 of 12 abstentions forfeited correct answers.",
+   "quote": "a prompted abstention option is not a free safety improvement for any of the four models once evaluated with paired, coverage-aware statistics rather than naive answered-item accuracy.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Calibration and error-detection quality of verbalized confidence (AUROC, ECE)",
+   "effect": "Verbalized confidence AUROC 0.490-0.645 (4.3B indistinguishable from chance); ECE 0.148-0.378 versus 0.041-0.141 reported for proprietary frontier models on the same benchmark family.",
+   "quote": "Verbalized condence remains poorly informative about correctness as a ranking signal (AUROC 0.4900.645; one model, the 4.3B, is statistically indistin- guishable from chance) and severely miscalibrated in the aggregate sense (ECE 0.1480.378, well above the 0.0410.141 range Boie et al. report for proprietary frontier models on the same under- lying benchmark family).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1319698",
+ "screen": {
+  "id": "epmc:PPR1319698",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompted abstention option",
+  "user": "none",
+  "reason": "Evaluates small open-weight LLMs on psychiatric medical questions, specifically testing whether adding a prompted abstention option acts as a reliable safety mechanism / guardrail against errors.",
+  "jev": {
+   "id": "epmc:PPR1319698",
+   "empirical": 0.93,
+   "tests_practice": 0.84,
+   "real_deployment": 0.02
+  }
+ }
+}

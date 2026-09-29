@@ -1,0 +1,307 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 2058,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CTransPath encoder with attention-based multiple instance classifier (semi-automated confidence-threshold pipeline)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R067",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Lineage accuracy: fully automated vs routing low-confidence cases to IHC/pathologist review",
+     "effect": "Fully automated model had a 16.1% accuracy decrease in the prospective cohort (p<0.001). Semi-automated routing gave 95.9% accuracy, comparable to full manual review (p=0.610), with 68.9% workload reduction.",
+     "quote": "This significant decrease in manual labor was accompanied by 95.9% in overall accuracy (Fig. 3 ), which was statistically comparable ( p = 0.610) to that achieved through fully IHC staining and manual evaluation by pathologists."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy at external centers with heterogeneous staining and scanning protocols",
+     "effect": "At the 0.8 confidence cut-off, accuracy was 86.0% across 206 external patients from four centers. This compares with performance matching manual review at that cut-off in the internal data.",
+     "quote": "In the external cohort comprising 206 patients from four external centers, the implementation of the semi-automated approach with a confidence cut-off of 0.8 yielded an accuracy of 86.0% (Fig. 3 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-cohort accuracy after raising the confidence threshold",
+     "effect": "Raising the cut-off from 0.8 to 0.9 improved accuracy from 86.0% to 95.1%, comparable to manual evaluation (p=0.293). Workload reduction fell to 39.3%.",
+     "quote": "Under this scenario, although the workload reduction was only 39.3%, the accuracy significantly improved to 95.1%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 2058,
+   "sample_unit": "patients in the four model development and validation cohorts",
+   "models_evaluated": [
+    "CTransPath-based fully automated PitNET lineage classifier",
+    "CTransPath-based semi-automated PitNET lineage classifier with confidence-threshold routing to IHC and manual review"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic accuracy and workload reduction with confidence-based deferral to IHC and manual review",
+     "effect": "In the prospective cohort, confidence-based deferral achieved 68.9% workload reduction and 95.9% overall accuracy; comparison with fully manual IHC-based evaluation: p = 0.610.",
+     "quote": "In prospective validation, this approach achieved a 68.9% reduction in diagnostic workload while maintaining 95.9% overall accuracy."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Classification accuracy in external institutions with heterogeneous histopathological protocols",
+     "effect": "Prospective-cohort accuracy was 95.9%; external-cohort accuracy was 86.0% at a confidence cut-off of 0.8, among 206 patients from four external centers.",
+     "quote": "In the external cohort comprising 206 patients from four external centers, the implementation of the semi-automated approach with a confidence cut-off of 0.8 yielded an accuracy of 86.0% (Fig. 3 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External-cohort accuracy and workload reduction after confidence-threshold adjustment",
+     "effect": "Raising the external-cohort confidence cut-off from 0.8 to 0.9 increased accuracy from 86.0% to 95.1%, with 39.3% workload reduction; comparison with manual evaluation: p = 0.293.",
+     "quote": "Under this scenario, although the workload reduction was only 39.3%, the accuracy significantly improved to 95.1%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 2058,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CTransPath-based model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R067",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic accuracy",
+     "effect": "Setting a confidence threshold to route uncertain cases to manual review allowed the model's accuracy to match fully manual reviewing.",
+     "quote": "Setting the confidence threshold above 0.8 allows the model\u2019s accuracy to align closely with that achieved through fully manual reviewing ( p = 0.856)."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic accuracy",
+     "effect": "Using the fully automated model as a stand-alone diagnostic resulted in a 5.9% decrease in accuracy compared to standard-of-care manual review.",
+     "quote": "However, it demonstrated a 5.9% decrease in accuracy and a 0.011 reduction in the AUC ( p < 0.001), compared to diagnoses based on IHC and manual review (Fig. 2 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 2058,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CTransPath encoder with attention-based multiple instance classifier (semi-automated confidence-threshold pipeline)",
+  "CTransPath-based fully automated PitNET lineage classifier",
+  "CTransPath-based model",
+  "CTransPath-based semi-automated PitNET lineage classifier with confidence-threshold routing to IHC and manual review"
+ ],
+ "links": [
+  {
+   "rec_id": "R067",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Lineage accuracy: fully automated vs routing low-confidence cases to IHC/pathologist review",
+   "effect": "Fully automated model had a 16.1% accuracy decrease in the prospective cohort (p<0.001). Semi-automated routing gave 95.9% accuracy, comparable to full manual review (p=0.610), with 68.9% workload reduction.",
+   "quote": "This significant decrease in manual labor was accompanied by 95.9% in overall accuracy (Fig. 3 ), which was statistically comparable ( p = 0.610) to that achieved through fully IHC staining and manual evaluation by pathologists.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External-cohort accuracy after raising the confidence threshold",
+   "effect": "Raising the cut-off from 0.8 to 0.9 improved accuracy from 86.0% to 95.1%, comparable to manual evaluation (p=0.293). Workload reduction fell to 39.3%.",
+   "quote": "Under this scenario, although the workload reduction was only 39.3%, the accuracy significantly improved to 95.1%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic accuracy and workload reduction with confidence-based deferral to IHC and manual review",
+   "effect": "In the prospective cohort, confidence-based deferral achieved 68.9% workload reduction and 95.9% overall accuracy; comparison with fully manual IHC-based evaluation: p = 0.610.",
+   "quote": "In prospective validation, this approach achieved a 68.9% reduction in diagnostic workload while maintaining 95.9% overall accuracy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Classification accuracy in external institutions with heterogeneous histopathological protocols",
+   "effect": "Prospective-cohort accuracy was 95.9%; external-cohort accuracy was 86.0% at a confidence cut-off of 0.8, among 206 patients from four external centers.",
+   "quote": "In the external cohort comprising 206 patients from four external centers, the implementation of the semi-automated approach with a confidence cut-off of 0.8 yielded an accuracy of 86.0% (Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "diagnostic accuracy",
+   "effect": "Using the fully automated model as a stand-alone diagnostic resulted in a 5.9% decrease in accuracy compared to standard-of-care manual review.",
+   "quote": "However, it demonstrated a 5.9% decrease in accuracy and a 0.011 reduction in the AUC ( p < 0.001), compared to diagnoses based on IHC and manual review (Fig. 2 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41063205",
+ "screen": {
+  "id": "pmid:41063205",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "confidence threshold triage with confirmatory IHC and manual pathology review",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a semi-automated triage deployment strategy using dynamic confidence thresholds to route low-confidence samples to manual pathologist review/confirmatory staining, measuring workload reduction and diagnostic accuracy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "dynamic confidence threshold triage with confirmatory review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41063205",
+   "empirical": 0.96,
+   "tests_practice": 0.72,
+   "real_deployment": 0.45
+  }
+ }
+}

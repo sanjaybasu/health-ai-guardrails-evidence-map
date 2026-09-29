@@ -1,0 +1,79 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "any_ai"
+ ],
+ "country": "not reported",
+ "sample_size": 2727,
+ "sample_unit": "FHR segments (from 552 cases)",
+ "models_evaluated": [
+  "Transformer-based imputation model",
+  "linear interpolation",
+  "spline interpolation"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Imputation accuracy (RMSE, correlation) as artificially removed FHR gap length increased",
+   "effect": "Performance systematically degraded for all methods as gap lengths increased; reliability declined beyond 30 s; spline had significantly worse RMSE than the other methods.",
+   "quote": "However, performance systematically degraded for all methods as gap lengths increased.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42276103",
+ "screen": {
+  "id": "pmid:42276103",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates preprocessing and imputation methods (Transformer vs standard interpolation) across missing data lengths to establish safe operating limits for missing-data handling before clinical AI interpretation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "data imputation and missing segment thresholding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42276103",
+   "empirical": 0.95,
+   "tests_practice": 0.03,
+   "real_deployment": 0.04
+  }
+ }
+}

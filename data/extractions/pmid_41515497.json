@@ -1,0 +1,337 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Russia",
+   "sample_size": 180,
+   "sample_unit": "LLM-generated summaries (30 EHR documents x 6 LLMs)",
+   "models_evaluated": [
+    "Gemma-2-27b-it",
+    "Llama-3.3-70B-Instruct_Q4",
+    "Llama3.1-8b",
+    "Llama-3.2-3B-Instruct",
+    "Gemma-3-12b-it",
+    "Qwen3-32B_Q4-nt",
+    "Qwen3-14b (judge)",
+    "Mistral-small-24b (judge)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R368",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ability of automatic metrics and LLM judges to detect hallucinations in LLM summaries",
+     "effect": "Both LLM judges identified only two of nine hallucinations detected by experts; metric correlations with expert hallucination scores were 0.10-0.23 (Spearman).",
+     "quote": "However, both LLMs identified only two of the nine hallucinations detected by the experts."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether automated (metric/LLM-judge) comparison with expert review reliably estimates real-world summary accuracy",
+     "effect": "Automatic metrics and LLM judges correlated only weakly to moderately with expert scores (e.g., BERTScore relevance 0.57; hallucinations 0.10-0.23); not reliable standalone evaluators.",
+     "quote": "Therefore, biased assessments, preference for redundancy at the expense of accuracy, overestimation of the decision quality, and similar issues [ 24 ] prevent LLM judges from being considered reliable, autonomous evaluation tools, especially in the highly sensitive medical field."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinations and factual errors in LLM-generated EHR summaries (including numerical errors)",
+     "effect": "Expert hallucination scores ranged 3.4-4.6 of 5 across models; examples included fabricated alcohol abuse and temperature 39.0 \u00b0C instead of 36.6 \u00b0C, the latter missed by the LLM judge.",
+     "quote": "Consequently, the LLM-as-a-judge failed to detect a significant error where the reported body temperature was inaccurately stated as 39.0 \u00b0C instead of the correct 36.6 \u00b0C."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLM-as-a-judge and automatic metrics (BERTScore, ROUGE) for automated quality evaluation of summaries",
+    "Using a judge model from a different family to avoid self-preference bias"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Russian Federation",
+   "sample_size": 180,
+   "sample_unit": "AI-generated summaries",
+   "models_evaluated": [
+    "Gemma-2-27b-it",
+    "Llama-3.3-70B-Instruct_Q4",
+    "Llama3.1-8b",
+    "Llama-3.2-3B-Instruct",
+    "Gemma-3-12b-it",
+    "Qwen3-32B_Q4-nt",
+    "Qwen3-14b",
+    "Mistral-small-24b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Hallucinations caught by expert review",
+     "effect": "Experts detected 9 hallucinations; both LLM judges identified only 2 of 9.",
+     "quote": "However, both LLMs identified only two of the nine hallucinations detected by the experts."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Automatic metric detection of hallucinations",
+     "effect": "Hallucinations Spearman coefficients were ROUGE-1 0.17, ROUGE-2 0.10, ROUGE-L 0.19, BLEU 0.11, METEOR 0.14, BERTScore 0.23.",
+     "quote": "The expectedly low correlation between the automatic evaluation metrics and the expert scores provides evidence of their infeasibility as reliable independent evaluators."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Numerical factual error in summary",
+     "effect": "LLM-as-a-judge missed body temperature stated as 39.0 \u00b0C instead of 36.6 \u00b0C.",
+     "quote": "Consequently, the LLM-as-a-judge failed to detect a significant error where the reported body temperature was inaccurately stated as 39.0 \u00b0C instead of the correct 36.6 \u00b0C."
+    }
+   ],
+   "unlisted_practices": [
+    "Using off-the-shelf low-parameter LLM-as-a-judge plus automatic text-similarity metrics as a standalone quality-control system for medical text summaries"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Russia",
+   "sample_size": 180,
+   "sample_unit": "summaries",
+   "models_evaluated": [
+    "Gemma-2-27b-it",
+    "Llama-3.3-70B-Instruct_Q4",
+    "Llama3.1-8b",
+    "Llama-3.2-3B-Instruct",
+    "Gemma-3-12b-it",
+    "Qwen3-32B_Q4-nt",
+    "Qwen3-14b",
+    "Mistral-small-24b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Russian",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "factual inaccuracies and hallucinations in LLM-generated summaries",
+     "effect": "Experts detected 9 hallucinations across 180 summaries from 6 LLMs, including fabricated history, contradictory statements, and numerical analysis errors (reporting 39.0 \u00b0C instead of 36.6 \u00b0C).",
+     "quote": "The analysis revealed several factual inaccuracies in LLM-generated summaries."
+    }
+   ],
+   "unlisted_practices": [
+    "Automated evaluation of clinical text summaries using standard automatic NLP metrics and LLM-as-a-judge approaches without expert involvement"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Russia",
+ "sample_unit": "LLM-generated summaries (30 EHR documents x 6 LLMs)",
+ "sample_size": 180,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Russian"
+ ],
+ "models_evaluated": [
+  "Gemma-2-27b-it",
+  "Gemma-3-12b-it",
+  "Llama-3.2-3B-Instruct",
+  "Llama-3.3-70B-Instruct_Q4",
+  "Llama3.1-8b",
+  "Mistral-small-24b",
+  "Mistral-small-24b (judge)",
+  "Qwen3-14b",
+  "Qwen3-14b (judge)",
+  "Qwen3-32B_Q4-nt"
+ ],
+ "links": [
+  {
+   "rec_id": "R368",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of automatic metrics and LLM judges to detect hallucinations in LLM summaries",
+   "effect": "Both LLM judges identified only two of nine hallucinations detected by experts; metric correlations with expert hallucination scores were 0.10-0.23 (Spearman).",
+   "quote": "However, both LLMs identified only two of the nine hallucinations detected by the experts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Automatic metric detection of hallucinations",
+   "effect": "Hallucinations Spearman coefficients were ROUGE-1 0.17, ROUGE-2 0.10, ROUGE-L 0.19, BLEU 0.11, METEOR 0.14, BERTScore 0.23.",
+   "quote": "The expectedly low correlation between the automatic evaluation metrics and the expert scores provides evidence of their infeasibility as reliable independent evaluators.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "factual inaccuracies and hallucinations in LLM-generated summaries",
+   "effect": "Experts detected 9 hallucinations across 180 summaries from 6 LLMs, including fabricated history, contradictory statements, and numerical analysis errors (reporting 39.0 \u00b0C instead of 36.6 \u00b0C).",
+   "quote": "The analysis revealed several factual inaccuracies in LLM-generated summaries.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated evaluation of clinical text summaries using standard automatic NLP metrics and LLM-as-a-judge approaches without expert involvement",
+  "Using LLM-as-a-judge and automatic metrics (BERTScore, ROUGE) for automated quality evaluation of summaries",
+  "Using a judge model from a different family to avoid self-preference bias",
+  "Using off-the-shelf low-parameter LLM-as-a-judge plus automatic text-similarity metrics as a standalone quality-control system for medical text summaries"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41515497",
+ "screen": {
+  "id": "pmid:41515497",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "automated quality control of LLM summaries (LLM-as-a-judge and automatic metrics) versus expert review",
+  "user": "none",
+  "reason": "The study empirically tests whether an automated safeguard practice (LLM-as-a-judge and automated metrics for quality control and hallucination detection) can reliably validate clinical summaries compared to human expert review.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "LLM-as-a-judge automated quality and hallucination filtering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41515497",
+   "empirical": 0.96,
+   "tests_practice": 0.22,
+   "real_deployment": 0.07
+  }
+ }
+}

@@ -1,0 +1,346 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 600,
+   "sample_unit": "simulated hemodialysis anemia scenarios",
+   "models_evaluated": [
+    "AnemiaCare HD (GPT-based, deterministic prompt)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R063",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Protocol adherence of LLM recommendations with loose prompt vs. constrained deterministic template with safety-message default",
+     "effect": "Loose prompt: 96/300 (32%) protocol-adherent with unsafe recommendations; constrained deterministic template: 300/300 (100%) adherent, p < 0.001.",
+     "quote": "The improvement from Phase 1 to Phase 2 was highly significant (32% vs. 100%, p < 0.001, Fisher\u2019s exact test)."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Input completeness and plausibility validation before generating recommendations",
+     "effect": "Model refused to output without six valid inputs, combined with other constraints; Phase 2 achieved 100% adherence. The input check effect was not isolated or tested separately.",
+     "quote": "The model did not generate recommendations unless all six values were provided, eliminating errors from incomplete or ambiguous data."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output reproducibility and safety of loosely prompted LLM outputs across simulated inputs",
+     "effect": "Loosely structured prompting produced variable outputs; only 96 of 300 (32%) were fully protocol-adherent, with ESA titration errors and timing violations.",
+     "quote": "In Phase 1, when evaluated with a loosely structured prompt, AnemiaCare HD produced variable outputs."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsafe dosing recommendations in baseline LLM outputs (ESA and IV iron)",
+     "effect": "Phase 1 outputs included continuing ESA despite Hb >12.5 g/dL and IV iron with ferritin >1,200 ng/mL; only 32% protocol-adherent.",
+     "quote": "In several cases, the model advised continuing ESA despite Hb levels above 12.5 g/dL, where discontinuation is required, or suggested IV iron for patients with ferritin greater than 1,200 ng/mL, raising concern for iron overload."
+    },
+    {
+     "rec_id": "R510",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fixed output template with default safety message blocking unsupported recommendations",
+     "effect": "With constrained template and safety defaults in Phase 2, unsafe recommendations were eliminated (300/300 adherent) versus frequent unsafe outputs in Phase 1. Effect is confounded with other prompt changes.",
+     "quote": "Unsafe recommendations were avoided entirely: ESA was consistently withheld when Hb exceeded the limit, and iron was stopped when ferritin was too high."
+    }
+   ],
+   "unlisted_practices": [
+    "Deterministic LLM configuration (temperature 0, fixed template, archived prompts) to enforce institutional protocol adherence"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 600,
+   "sample_unit": "simulated anemia management cases",
+   "models_evaluated": [
+    "AnemiaCare HD with loosely structured prompt",
+    "AnemiaCare HD with deterministic prompt logic"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Robustness to simulated edge cases",
+     "effect": "One-third of cases were edge/conflict scenarios; Phase 1 had 96/300 (32%) adherence with unsafe recommendations, while Phase 2 reached 300/300 (100%).",
+     "quote": "In Phase 1, loosely structured prompting produced variable outputs, with only 96 of 300 simulated cases (32%) fully protocol-adherent and frequent unsafe recommendations."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Protocol grounding and adherence",
+     "effect": "Deterministic protocol encoding improved adherence from 96/300 (32%) to 300/300 (100%) and eliminated deviations, unsafe iron dosing, and timing violations.",
+     "quote": "In contrast, deterministic prompting in Phase 2 resulted in 100% adherence across all 300 cases, eliminating protocol deviations, unsafe iron dosing, and timing violations (<i>p</i>\u202f<\u202f0.001)."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "ESA and iron dosing errors",
+     "effect": "Phase 1 had common ESA titration, iron dosing, and timing errors with 96/300 (32%) adherent; Phase 2 eliminated these errors.",
+     "quote": "In Phase 1, only 96 of 300 cases (32%) aligned with protocol recommendations, with common errors in ESA titration, iron dosing, and timing violations."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Output accuracy and safety versus protocol",
+     "effect": "Protocol adherence improved from 32% to 100% (p < 0.001); inter-rater agreement for classifications was Cohen\u2019s \u03ba = 0.92.",
+     "quote": "The improvement from Phase 1 to Phase 2 was highly significant (32% vs. 100%, p < 0.001, Fisher\u2019s exact test)."
+    }
+   ],
+   "unlisted_practices": [
+    "Zero-temperature deterministic prompt configuration with constrained rule-based output templates for protocol dosing recommendations"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 600,
+   "sample_unit": "simulated cases",
+   "models_evaluated": [
+    "GPT-based model (AnemiaCare HD)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "protocol adherence of clinical recommendations",
+     "effect": "protocol adherence increased from 32% (96/300) with loosely structured prompting to 100% (300/300) with deterministic prompt templates (p < 0.001)",
+     "quote": "The improvement from Phase 1 to Phase 2 was highly significant (32% vs. 100%, p < 0.001, Fisher\u2019s exact test)."
+    }
+   ],
+   "unlisted_practices": [
+    "deterministic prompt engineering with zero-temperature sampling and rule-based constrained output templates",
+    "rule-based input validation requiring mandatory inputs within physiologic ranges before generating recommendations"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "simulated hemodialysis anemia scenarios",
+ "sample_size": 600,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "AnemiaCare HD (GPT-based, deterministic prompt)",
+  "AnemiaCare HD with deterministic prompt logic",
+  "AnemiaCare HD with loosely structured prompt",
+  "GPT-based model (AnemiaCare HD)"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Output reproducibility and safety of loosely prompted LLM outputs across simulated inputs",
+   "effect": "Loosely structured prompting produced variable outputs; only 96 of 300 (32%) were fully protocol-adherent, with ESA titration errors and timing violations.",
+   "quote": "In Phase 1, when evaluated with a loosely structured prompt, AnemiaCare HD produced variable outputs.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Unsafe dosing recommendations in baseline LLM outputs (ESA and IV iron)",
+   "effect": "Phase 1 outputs included continuing ESA despite Hb >12.5 g/dL and IV iron with ferritin >1,200 ng/mL; only 32% protocol-adherent.",
+   "quote": "In several cases, the model advised continuing ESA despite Hb levels above 12.5 g/dL, where discontinuation is required, or suggested IV iron for patients with ferritin greater than 1,200 ng/mL, raising concern for iron overload.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Protocol grounding and adherence",
+   "effect": "Deterministic protocol encoding improved adherence from 96/300 (32%) to 300/300 (100%) and eliminated deviations, unsafe iron dosing, and timing violations.",
+   "quote": "In contrast, deterministic prompting in Phase 2 resulted in 100% adherence across all 300 cases, eliminating protocol deviations, unsafe iron dosing, and timing violations (<i>p</i>\u202f<\u202f0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "protocol adherence of clinical recommendations",
+   "effect": "protocol adherence increased from 32% (96/300) with loosely structured prompting to 100% (300/300) with deterministic prompt templates (p < 0.001)",
+   "quote": "The improvement from Phase 1 to Phase 2 was highly significant (32% vs. 100%, p < 0.001, Fisher\u2019s exact test).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R063",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R510",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Deterministic LLM configuration (temperature 0, fixed template, archived prompts) to enforce institutional protocol adherence",
+  "Zero-temperature deterministic prompt configuration with constrained rule-based output templates for protocol dosing recommendations",
+  "deterministic prompt engineering with zero-temperature sampling and rule-based constrained output templates",
+  "rule-based input validation requiring mandatory inputs within physiologic ranges before generating recommendations"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41459576",
+ "screen": {
+  "id": "pmid:41459576",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "deterministic prompt logic with embedded safety alerts and timing safeguards",
+  "user": "clinician_or_staff",
+  "reason": "The study directly compares loosely structured prompting against deterministic prompt logic incorporating mandatory timing safeguards and safety alerts to test protocol adherence and safety in simulated clinical vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "deterministic prompt guardrails and safety alerts"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41459576",
+   "empirical": 0.89,
+   "tests_practice": 0.5,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 3810,
+ "sample_unit": "annotated note sections",
+ "models_evaluated": [
+  "untuned 70B LLM",
+  "LoRA fine-tuned LLM (single-site, sequential multi-site, joint)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Micro F1 of locally fine-tuned LoRA models versus an untuned 70B model for mobility extraction",
+   "effect": "Sequential fine-tuning F1 0.861 and joint 0.894 for extraction; 0.912 and 0.900 for impairment classification; both outperformed the untuned 70B model.",
+   "quote": "Both sequential and joint fine-tuning outperformed an untuned 70B model.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Cross-site generalization of single-site fine-tuned models across 3 institutions",
+   "effect": "Single-site LoRA models showed robust cross-site generalization; no numbers reported in the abstract.",
+   "quote": "Additionally, single-site LoRA models showed robust cross-site generalization.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Sequential multi-site fine-tuning that transfers only LoRA weights between sites, avoiding pooling of patient data, compared with centralized joint fine-tuning"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42519595",
+ "screen": {
+  "id": "pmid:42519595",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates sequential multi-site fine-tuning (federated-style weight transfer) as an incremental deployment and adaptation practice across institutions to preserve data privacy compared to pooled joint training.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "sequential multi-site fine-tuning"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42519595",
+   "empirical": 0.96,
+   "tests_practice": 0.19,
+   "real_deployment": 0.06
+  }
+ }
+}

@@ -1,0 +1,309 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 100,
+   "sample_unit": "patients with chart review (of 1000 patients in EHR sample)",
+   "models_evaluated": [
+    "Gemini-2.5-Flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R134",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician adjudication of LLM-proposed search terms for clinical relevance",
+     "effect": "Of 514 LLM (context) ICD-10 codes matching sample patients, at least 1 clinician endorsed 421 (82%); exclusions included clinically irrelevant additions like pulmonary hypertension; final roadmap recovered 73 (18%) vs 83 (20%) unadjudicated.",
+     "quote": "Of the 514 ICD-10 codes matching patients in our sample based on LLMs (context), at least 1 clinician endorsed 421 of them ( 82 % )."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician validation of LLM-generated clinical knowledge (search terms) before use",
+     "effect": "Clinicians removed 18% of LLM (context) matched codes not clinically relevant; the clinician-approved roadmap recovered 73 (18%) missing values vs 83-89 (20-22%) for unreviewed LLM roadmaps.",
+     "quote": "Large language models (context + clinicians) recovered more than the experts but less than the LLMs alone (73, 18 % ), suggesting that the enhancements successfully broadened the search terms but not all were clinically relevant."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLMs with clinician adjudication to expand clinical search-term roadmaps for EHR missing data recovery",
+    "Self-consistency prompting across 20 independent LLM chats to generate exhaustive term lists"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 1000,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Gemini-2.5-Flash",
+    "ICD-10 missing data recovery algorithm with clinicians\u2019 original roadmap",
+    "ICD-10 missing data recovery algorithm with LLMs (baseline) roadmap",
+    "ICD-10 missing data recovery algorithm with LLMs (context) roadmap",
+    "ICD-10 missing data recovery algorithm with LLMs (context + clinicians) roadmap"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Repeated-run LLM output variability",
+     "effect": "Unique ICD-10 code matches from repeated LLM runs plateaued after about 10 iterations.",
+     "quote": "Across the loop, the number of unique ICD-10 codes matching the proposed search terms (taken as the superset of all those proposed thus far) seemed to plateau after about 10 iterations ( Supplemental Figure S2 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus chart-review recovery",
+     "effect": "LLM-enhanced roadmaps recommended 83-89 (20%-22%) versus expert chart reviews 49 (12%).",
+     "quote": "The expert chart reviews recovered 49 (12%), while the algorithms using LLMs-enhanced roadmaps recommended almost twice as many (83-89, 20%-22%)."
+    },
+    {
+     "rec_id": "R172",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician review of LLM additions",
+     "effect": "Clinicians endorsed 421 of 514 (82%) LLM-context ICD-10 code matches.",
+     "quote": "Of the 514 ICD-10 codes matching patients in our sample based on LLMs (context), at least 1 clinician endorsed 421 of them ( 82 % )."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missing EHR inputs for ALI",
+     "effect": "4009 ALI components were missing; 789 (20%) were recovered by the algorithm.",
+     "quote": "Of 4009 missing ALI components, 789 ( 20 % ) were recovered."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 1000,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Gemini-2.5-Flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R141",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician endorsement of LLM-generated auxiliary diagnosis codes",
+     "effect": "clinicians endorsed 421 of 514 (82%) ICD-10 codes proposed by the LLM, excluding clinically irrelevant additions",
+     "quote": "Of the 514 ICD-10 codes matching patients in our sample based on LLMs (context), at least 1 clinician endorsed 421 of them ( 82 % )."
+    }
+   ],
+   "unlisted_practices": [
+    "Using large language models to expand auxiliary diagnosis search terms for missing data recovery in electronic health records"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 1000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Gemini-2.5-Flash",
+  "ICD-10 missing data recovery algorithm with LLMs (baseline) roadmap",
+  "ICD-10 missing data recovery algorithm with LLMs (context + clinicians) roadmap",
+  "ICD-10 missing data recovery algorithm with LLMs (context) roadmap",
+  "ICD-10 missing data recovery algorithm with clinicians\u2019 original roadmap"
+ ],
+ "links": [
+  {
+   "rec_id": "R141",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician validation of LLM-generated clinical knowledge (search terms) before use",
+   "effect": "Clinicians removed 18% of LLM (context) matched codes not clinically relevant; the clinician-approved roadmap recovered 73 (18%) missing values vs 83-89 (20-22%) for unreviewed LLM roadmaps.",
+   "quote": "Large language models (context + clinicians) recovered more than the experts but less than the LLMs alone (73, 18 % ), suggesting that the enhancements successfully broadened the search terms but not all were clinically relevant.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI versus chart-review recovery",
+   "effect": "LLM-enhanced roadmaps recommended 83-89 (20%-22%) versus expert chart reviews 49 (12%).",
+   "quote": "The expert chart reviews recovered 49 (12%), while the algorithms using LLMs-enhanced roadmaps recommended almost twice as many (83-89, 20%-22%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R172",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician review of LLM additions",
+   "effect": "Clinicians endorsed 421 of 514 (82%) LLM-context ICD-10 code matches.",
+   "quote": "Of the 514 ICD-10 codes matching patients in our sample based on LLMs (context), at least 1 clinician endorsed 421 of them ( 82 % ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Missing EHR inputs for ALI",
+   "effect": "4009 ALI components were missing; 789 (20%) were recovered by the algorithm.",
+   "quote": "Of 4009 missing ALI components, 789 ( 20 % ) were recovered.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R134",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Self-consistency prompting across 20 independent LLM chats to generate exhaustive term lists",
+  "Using LLMs with clinician adjudication to expand clinical search-term roadmaps for EHR missing data recovery",
+  "Using large language models to expand auxiliary diagnosis search terms for missing data recovery in electronic health records"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42237983",
+ "screen": {
+  "id": "pmid:42237983",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "clinician review of LLM-suggested additions",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study evaluating LLMs to enhance missing data recovery in EHRs, specifically evaluating the effect of clinician review and filtering of LLM-generated roadmap additions versus raw LLM outputs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "expert clinical review and approval of LLM additions"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42237983",
+   "empirical": 0.93,
+   "tests_practice": 0.77,
+   "real_deployment": 0.13
+  }
+ }
+}

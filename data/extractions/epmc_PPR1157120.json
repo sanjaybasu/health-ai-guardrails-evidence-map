@@ -1,0 +1,302 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "",
+   "sample_size": 2000,
+   "sample_unit": "guideline-change events",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R477",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Stale citations in LLM-based retrieval with versus without evidence ledger",
+     "effect": "Stale citations reduced from 14.7% to 1.2%",
+     "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Unverifiable citations in LLM retrieval grounded in verified evidence ledger",
+     "effect": "Unverifiable citations reduced from 28.4% to 2.3%",
+     "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions."
+    },
+    {
+     "rec_id": "R549",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection and triage of actionable guideline changes versus manual surveillance",
+     "effect": "6-month hospital pilot: 5.5\u00d7 more actionable guideline changes detected with 104\u00d7 faster triage than manual surveillance",
+     "quote": "In a 6-month hospital pilot, EviLedger detects 5.5\u00d7 more actionable guideline changes with 104\u00d7 faster triage than manual surveillance."
+    }
+   ],
+   "unlisted_practices": [
+    "Immutable hash-linked evidence ledger with rollback to reconstruct evidence state supporting past AI decisions",
+    "Automated detection of cross-source contradictions among guidelines, drug labels, and EHR events"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 3200,
+   "sample_unit": "benchmark cases: 2,000 guideline-change events and 1,200 cross-source contradiction cases; hospital pilot sample size not reported",
+   "models_evaluated": [
+    "EviLedger"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Stale citations in LLM-based retrieval",
+     "effect": "Stale citations decreased from 14.7% to 1.2% with EviLedger; the abstract does not test a defined knowledge-source update schedule.",
+     "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unverifiable citations in LLM-based retrieval",
+     "effect": "Unverifiable citations decreased from 28.4% to 2.3% with EviLedger.",
+     "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions."
+    }
+   ],
+   "unlisted_practices": [
+    "Using an immutable, hash-linked evidence ledger as an auditable memory layer for LLM retrieval.",
+    "Automated guideline-change surveillance compared with manual surveillance.",
+    "Automated cross-source contradiction detection.",
+    "Evidence-state rollback at large ledger scale."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not specified",
+   "sample_size": 3200,
+   "sample_unit": "events and cases",
+   "models_evaluated": [
+    "EviLedger"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "stale and unverifiable citations",
+     "effect": "Reduced stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%.",
+     "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "stale citations",
+     "effect": "Baseline LLM retrieval produced stale citations in 14.7% of cases before using the updating evidence ledger.",
+     "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions."
+    }
+   ],
+   "unlisted_practices": [
+    "Converting clinical evidence into immutable, hashed assertions to maintain an auditable memory layer for AI retrieval"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "",
+ "sample_unit": "guideline-change events",
+ "sample_size": 3200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "EviLedger"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Unverifiable citations in LLM retrieval grounded in verified evidence ledger",
+   "effect": "Unverifiable citations reduced from 28.4% to 2.3%",
+   "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R477",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Stale citations in LLM-based retrieval",
+   "effect": "Stale citations decreased from 14.7% to 1.2% with EviLedger; the abstract does not test a defined knowledge-source update schedule.",
+   "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R477",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Stale citations in LLM-based retrieval with versus without evidence ledger",
+   "effect": "Stale citations reduced from 14.7% to 1.2%",
+   "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R549",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection and triage of actionable guideline changes versus manual surveillance",
+   "effect": "6-month hospital pilot: 5.5\u00d7 more actionable guideline changes detected with 104\u00d7 faster triage than manual surveillance",
+   "quote": "In a 6-month hospital pilot, EviLedger detects 5.5\u00d7 more actionable guideline changes with 104\u00d7 faster triage than manual surveillance.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Unverifiable citations in LLM-based retrieval",
+   "effect": "Unverifiable citations decreased from 28.4% to 2.3% with EviLedger.",
+   "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Automated cross-source contradiction detection.",
+  "Automated detection of cross-source contradictions among guidelines, drug labels, and EHR events",
+  "Automated guideline-change surveillance compared with manual surveillance.",
+  "Converting clinical evidence into immutable, hashed assertions to maintain an auditable memory layer for AI retrieval",
+  "Evidence-state rollback at large ledger scale.",
+  "Immutable hash-linked evidence ledger with rollback to reconstruct evidence state supporting past AI decisions",
+  "Using an immutable, hash-linked evidence ledger as an auditable memory layer for LLM retrieval."
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "epmc:PPR1157120",
+ "screen": {
+  "id": "epmc:PPR1157120",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "auditable evidence ledger as retrieval memory layer with drift monitoring and rollback",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates EviLedger, an auditable memory and governance ledger for LLMs and clinical AI, testing how adding it as a grounding/auditing safeguard reduces stale and unverifiable citations, and evaluates it in a 6-month hospital pilot.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "immutable evidence ledger / audit trail and retrieval grounding verification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1157120",
+   "empirical": 0.9,
+   "tests_practice": 0.71,
+   "real_deployment": 0.75
+  }
+ }
+}

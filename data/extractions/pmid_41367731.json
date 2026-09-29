@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Not reported",
+ "sample_size": 2149,
+ "sample_unit": "breast ultrasound images",
+ "models_evaluated": [
+  "ResNet50",
+  "EfficientNet-B0",
+  "ViT-B/16",
+  "ViT-B/16 with differential privacy (Opacus)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R347",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Diagnostic accuracy, F1 and AUC-ROC of ViT-B/16 with versus without differential privacy across epsilon/delta settings",
+   "effect": "Without DP: 94.9% accuracy, 93.4% F1, 99.2% AUC. With DP at \u03b5=10, \u03b4=1e-5: 89.5%, 86.0%, 96.1%. At \u03b5=0.01: 48.3%, 43.5%, 48.6%. Privacy leakage itself was not measured.",
+   "quote": "A clinically viable compromise emerged at \u03b5=1, \u03b4=0.1 (87.4% accuracy, 82.8% F1, 94.1% AUC-ROC).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41367731",
+ "screen": {
+  "id": "pmid:41367731",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "differential privacy parameter selection (epsilon/delta) for training",
+  "user": "none",
+  "reason": "The study directly evaluates the impact of implementing a technical privacy safeguard (differential privacy via Opacus at various epsilon/delta budgets) on the diagnostic utility of an imaging classification model.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "differential privacy implementation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41367731",
+   "empirical": 0.96,
+   "tests_practice": 0.32,
+   "real_deployment": 0.03
+  }
+ }
+}

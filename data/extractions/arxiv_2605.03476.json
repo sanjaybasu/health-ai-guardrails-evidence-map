@@ -1,0 +1,87 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "not reported",
+ "sample_size": 50,
+ "sample_unit": "patients (held-out test set from 250 patients in the Discharge-Me benchmark)",
+ "models_evaluated": [
+  "Qwen3-14B (fine-tuned)",
+  "Qwen3-14B (base)",
+  "RAGTruth-style baseline",
+  "QAGS-style baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Sentence-level detection of faithfulness hallucinations in LLM-generated discharge summaries (F1, recall, precision)",
+   "effect": "Fine-tuned Qwen3-14B detector: E4 F1 0.831 (90.9% recall, 76.5% precision); E3+E4 F1 0.823, a 50.0% relative improvement over base model and better than RAGTruth-style and QAGS-style baselines.",
+   "quote": "Our fine-tuned Qwen3-14B detection model achieves an F1 of 0.831 on the safety-critical E4 metric (90.9% recall, 76.5% precision) and an F1 of 0.823 on E3+E4, representing a 50.0% relative improvement over the base model and outperforming RAGTruth-style and QAGS-style baselines.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "GraphRAG patient-level knowledge graph verification of generated clinical text",
+  "Four-grade sentence-level evidence classification (E1-E4) producing evidence chains",
+  "Closed-loop generation-detection pipeline for discharge summaries",
+  "Reusing detector annotations as datasets for downstream training and distillation"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2605.03476",
+ "screen": {
+  "id": "arxiv:2605.03476",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a multi-agent GraphRAG-based hallucination detection and verification framework (guardrail) for checking clinical discharge summaries against source EHR data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "graph-retrieval verification / hallucination detection guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2605.03476",
+   "empirical": 0.93,
+   "tests_practice": 0.14,
+   "real_deployment": 0.07
+  }
+ }
+}

@@ -1,0 +1,316 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 12878,
+   "sample_unit": "patients with sepsis (9135 MIMIC-IV development; 3743 eICU-CRD external validation)",
+   "models_evaluated": [
+    "gradient boosting machine",
+    "neural decision forest",
+    "random forest",
+    "logistic regression",
+    "Mondrian conformal prediction"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prediction errors with versus without conformal prediction uncertainty estimates",
+     "effect": "CP at mixed confidence reduced overall prediction errors by 27.6% (n=62) internally and 30.7% (n=412) externally; persistent ill errors 23.5% vs 41.5% internal, 31% vs 53.7% external.",
+     "quote": "When the model was evaluated using a mixed confidence approach, with a confidence level of 85% for recovery and a confidence level of 75% for rapid death and persistent ill, the model with CP reduced overall prediction errors by 27.6% (n=62) and 30.7% (n=412) in the internal and external validation cohorts, respectively, compared with the model without CP ( Table 2 )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance drop of AUROC from internal (MIMIC-IV) to external (eICU-CRD) validation",
+     "effect": "Persistent ill AUROC fell from 0.807 to 0.696, recovery 0.843 to 0.764, rapid death 0.906 to 0.878; cohorts differed significantly in SOFA, admissions, mortality.",
+     "quote": "In the external validation cohort, the mean AUROCs (SDs) were 0.878 (0.003) for rapid death, 0.764 (0.008) for recovery, and 0.696 (0.007) for persistent ill ( Multimedia Appendix 7 )."
+    }
+   ],
+   "unlisted_practices": [
+    "conformal prediction to flag uncertain predictions for human review in trial enrollment",
+    "AI-based prognostic enrichment for clinical trial patient selection"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 12878,
+   "sample_unit": "patients with sepsis",
+   "models_evaluated": [
+    "gradient boosting machine (GBM)",
+    "neural decision forest (NDF)",
+    "random forest (RF)",
+    "logistic regression (LR)",
+    "Mondrian conformal prediction wrapper"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external validation discrimination",
+     "effect": "External AUROC (SD) was 0.878 rapid death, 0.764 recovery, and 0.696 persistent ill.",
+     "quote": "In the external validation cohort, the mean AUROCs (SDs) were 0.878 (0.003) for rapid death, 0.764 (0.008) for recovery, and 0.696 (0.007) for persistent ill ( Multimedia Appendix 7 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate model comparison",
+     "effect": "GBM had highest persistent-ill AUROC range, 0.806-0.807, versus NDF 0.779-0.802, RF 0.791-0.795, and LR 0.719-0.790.",
+     "quote": "Of the 4 machine learning architectures in 3 model setups for predicting persistent ill on internal validation, GBM had the highest consistent performance of mean AUROC (SD) ranging from 0.806 (0.010) to 0.807 (0.010) compared to NDF ranging from 0.779 (0.013) to 0.802 (0.011), RF ranging from 0.791 (0.013) to 0.795 (0.010), and LR ranging from 0.719 (0.031) to 0.790 (0.007; Multimedia Appendix 6 )."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prediction errors with uncertainty sets",
+     "effect": "Mixed-confidence CP reduced overall prediction errors by 27.6% (n=62) internal and 30.7% (n=412) external versus no CP.",
+     "quote": "Compared to the model without CP, using the model with CP at a mixed confidence approach reduced overall prediction errors by 27.6% (n=62) and 30.7% (n=412) in the internal and external validation cohorts, respectively, as well as enabled the identification of more potentially persistent ill patients."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "uncertain outputs for human review",
+     "effect": "Among uncertain {rapid death,persistent ill} outputs, persistent-ill cases were 46/62 (74.2%) internal and 351/496 (70.8%) external.",
+     "quote": "Because among these predictions, 46 of 62 (74.2%) predictions were persistent ill in the internal validation cohort, and 351 of 496 (70.8%) predictions were persistent ill in the external validation cohort ( Table 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 12878,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "gradient boosting machine",
+    "neural decision forest",
+    "random forest",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "overall prediction error reduction with conformal prediction",
+     "effect": "reduced overall prediction errors by 27.6% (n=62) in internal validation and 30.7% (n=412) in external validation compared to model without CP",
+     "quote": "Compared to the model without CP, using the model with CP at a mixed confidence approach reduced overall prediction errors by 27.6% (n=62) and 30.7% (n=412) in the internal and external validation cohorts, respectively, as well as enabled the identification of more potentially persistent ill patients."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients with sepsis (9135 MIMIC-IV development; 3743 eICU-CRD external validation)",
+ "sample_size": 12878,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Mondrian conformal prediction",
+  "Mondrian conformal prediction wrapper",
+  "gradient boosting machine",
+  "gradient boosting machine (GBM)",
+  "logistic regression",
+  "logistic regression (LR)",
+  "neural decision forest",
+  "neural decision forest (NDF)",
+  "random forest",
+  "random forest (RF)"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "prediction errors with uncertainty sets",
+   "effect": "Mixed-confidence CP reduced overall prediction errors by 27.6% (n=62) internal and 30.7% (n=412) external versus no CP.",
+   "quote": "Compared to the model without CP, using the model with CP at a mixed confidence approach reduced overall prediction errors by 27.6% (n=62) and 30.7% (n=412) in the internal and external validation cohorts, respectively, as well as enabled the identification of more potentially persistent ill patients.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Prediction errors with versus without conformal prediction uncertainty estimates",
+   "effect": "CP at mixed confidence reduced overall prediction errors by 27.6% (n=62) internally and 30.7% (n=412) externally; persistent ill errors 23.5% vs 41.5% internal, 31% vs 53.7% external.",
+   "quote": "When the model was evaluated using a mixed confidence approach, with a confidence level of 85% for recovery and a confidence level of 75% for rapid death and persistent ill, the model with CP reduced overall prediction errors by 27.6% (n=62) and 30.7% (n=412) in the internal and external validation cohorts, respectively, compared with the model without CP ( Table 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external validation discrimination",
+   "effect": "External AUROC (SD) was 0.878 rapid death, 0.764 recovery, and 0.696 persistent ill.",
+   "quote": "In the external validation cohort, the mean AUROCs (SDs) were 0.878 (0.003) for rapid death, 0.764 (0.008) for recovery, and 0.696 (0.007) for persistent ill ( Multimedia Appendix 7 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "candidate model comparison",
+   "effect": "GBM had highest persistent-ill AUROC range, 0.806-0.807, versus NDF 0.779-0.802, RF 0.791-0.795, and LR 0.719-0.790.",
+   "quote": "Of the 4 machine learning architectures in 3 model setups for predicting persistent ill on internal validation, GBM had the highest consistent performance of mean AUROC (SD) ranging from 0.806 (0.010) to 0.807 (0.010) compared to NDF ranging from 0.779 (0.013) to 0.802 (0.011), RF ranging from 0.791 (0.013) to 0.795 (0.010), and LR ranging from 0.719 (0.031) to 0.790 (0.007; Multimedia Appendix 6 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "AI-based prognostic enrichment for clinical trial patient selection",
+  "conformal prediction to flag uncertain predictions for human review in trial enrollment"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39231425",
+ "screen": {
+  "id": "pmid:39231425",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "conformal prediction uncertainty estimation",
+  "user": "clinician_or_staff",
+  "reason": "The study develops a predictive model for sepsis trial enrollment and specifically tests the impact of adding conformal prediction (CP) for uncertainty quantification versus the baseline model without CP.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "conformal prediction for uncertainty quantification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39231425",
+   "empirical": 0.96,
+   "tests_practice": 0.7,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,323 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported (national public hospitals; likely Spain)",
+   "sample_size": 20,
+   "sample_unit": "inpatient rehabilitation cases (80 discharge reports)",
+   "models_evaluated": [
+    "GPT-5.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expert-rated quality of LLM discharge reports versus human-authored reports on same cases",
+     "effect": "Friedman \u03c72(3)=23.93, p<0.001; human reports scored significantly lower than SP (p=0.003), SBP (p=0.003), SBP+W (p=0.025) after Bonferroni correction.",
+     "quote": "Post hoc pairwise comparisons using Wilcoxon signed-rank tests with Bonferroni correction showed that Strategy A yielded significantly lower scores than Strategy B ( p = 0.003), Strategy C ( p = 0.003), and Strategy D ( p = 0.025)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Inter-rater agreement between blinded physician raters on quality scores",
+     "effect": "Quadratic weighted kappa 0.354 (95% CI 0.15\u20130.53), fair agreement; strategy-level kappas lower with wide CIs.",
+     "quote": "Quadratic weighted Cohen\u2019s kappa (see Table 7 ) indicated fair overall agreement (\u03ba = 0.354; 95% CI 0.15\u2013 0.53)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Phrase-level hallucination rate in AI-generated and human discharge reports",
+     "effect": "Overall 9.0% (107/1190) hallucinated phrases; SBP 1.4%, SP 6.3%, SBP+W 11.1%, human-authored 22.6%.",
+     "quote": "Overall, 71.3% (849/1190) of phrases were classified as containing no hallucinations, 19.7% (234/1190) as deductions, and 9.0% (107/1190) as hallucinations."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Comparison of prompt architectures (single vs section-based vs refinement) on expert-rated quality",
+     "effect": "Prompting strategies differed from human reports but no significant differences among SP, SBP, SBP+W after correction; SBP had highest median and largest regression effect.",
+     "quote": "In contrast, we found no statistically significant differences among Strategies B, C, and D after correction (see Table 5 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Section-based (modular) prompt architecture for long-context discharge summary generation",
+    "Adding a writing-refinement prompt layer after extraction"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 80,
+   "sample_unit": "evaluated discharge reports from 20 inpatient rehabilitation cases",
+   "models_evaluated": [
+    "GPT-5.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus human report quality",
+     "effect": "Human-authored reports (Strategy A) scored lower than SP (p = 0.003), SBP (p = 0.003), and SBP+W (p = 0.025).",
+     "quote": "Post hoc pairwise comparisons using Wilcoxon signed-rank tests with Bonferroni correction showed that Strategy A yielded significantly lower scores than Strategy B ( p = 0.003), Strategy C ( p = 0.003), and Strategy D ( p = 0.025)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinations in AI discharge reports",
+     "effect": "SBP+W AI reports had a hallucination rate of 11.1% (17/153) at the phrase level.",
+     "quote": "The section-based prompt with writing refinement strategy showed a higher hallucination rate (11.1%; 17/153)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsupported clinical phrases",
+     "effect": "Clinically relevant phrases: 71.3% (849/1190) no hallucinations, 19.7% (234/1190) deductions, and 9.0% (107/1190) hallucinations.",
+     "quote": "Overall, 71.3% (849/1190) of phrases were classified as containing no hallucinations, 19.7% (234/1190) as deductions, and 9.0% (107/1190) as hallucinations."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Expert-rating inter-rater reliability",
+     "effect": "Blinded physician ratings had fair overall agreement: \u03ba = 0.354; 95% CI 0.15\u20130.53.",
+     "quote": "Quadratic weighted Cohen\u2019s kappa (see Table 7 ) indicated fair overall agreement (\u03ba = 0.354; 95% CI 0.15\u2013 0.53)."
+    }
+   ],
+   "unlisted_practices": [
+    "Use structured section-based modular prompt architecture for LLM-generated clinical discharge reports."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 20,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "GPT-5.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "phrase-level hallucination rate in generated clinical reports",
+     "effect": "Phrase-level hallucination rate was 11.1% (17/153) for section-based prompt with writing refinement, 6.3% (16/252) for single prompt, and 1.4% (7/488) for section-based prompt.",
+     "quote": "The section-based prompt with writing refinement strategy showed a higher hallucination rate (11.1%; 17/153)."
+    }
+   ],
+   "unlisted_practices": [
+    "Section-based modular prompt architecture for clinical documentation generation"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported (national public hospitals; likely Spain)",
+ "sample_unit": "inpatient rehabilitation cases (80 discharge reports)",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-5.2"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Expert-rated quality of LLM discharge reports versus human-authored reports on same cases",
+   "effect": "Friedman \u03c72(3)=23.93, p<0.001; human reports scored significantly lower than SP (p=0.003), SBP (p=0.003), SBP+W (p=0.025) after Bonferroni correction.",
+   "quote": "Post hoc pairwise comparisons using Wilcoxon signed-rank tests with Bonferroni correction showed that Strategy A yielded significantly lower scores than Strategy B ( p = 0.003), Strategy C ( p = 0.003), and Strategy D ( p = 0.025).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-rater agreement between blinded physician raters on quality scores",
+   "effect": "Quadratic weighted kappa 0.354 (95% CI 0.15\u20130.53), fair agreement; strategy-level kappas lower with wide CIs.",
+   "quote": "Quadratic weighted Cohen\u2019s kappa (see Table 7 ) indicated fair overall agreement (\u03ba = 0.354; 95% CI 0.15\u2013 0.53).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Hallucinations in AI discharge reports",
+   "effect": "SBP+W AI reports had a hallucination rate of 11.1% (17/153) at the phrase level.",
+   "quote": "The section-based prompt with writing refinement strategy showed a higher hallucination rate (11.1%; 17/153).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Phrase-level hallucination rate in AI-generated and human discharge reports",
+   "effect": "Overall 9.0% (107/1190) hallucinated phrases; SBP 1.4%, SP 6.3%, SBP+W 11.1%, human-authored 22.6%.",
+   "quote": "Overall, 71.3% (849/1190) of phrases were classified as containing no hallucinations, 19.7% (234/1190) as deductions, and 9.0% (107/1190) as hallucinations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Unsupported clinical phrases",
+   "effect": "Clinically relevant phrases: 71.3% (849/1190) no hallucinations, 19.7% (234/1190) deductions, and 9.0% (107/1190) hallucinations.",
+   "quote": "Overall, 71.3% (849/1190) of phrases were classified as containing no hallucinations, 19.7% (234/1190) as deductions, and 9.0% (107/1190) as hallucinations.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding a writing-refinement prompt layer after extraction",
+  "Section-based (modular) prompt architecture for long-context discharge summary generation",
+  "Section-based modular prompt architecture for clinical documentation generation",
+  "Use structured section-based modular prompt architecture for LLM-generated clinical discharge reports."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42351862",
+ "screen": {
+  "id": "pmid:42351862",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "structured section-based prompt design",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the effect of different prompt design architectures (single prompt vs section-based prompting with refinement) on clinical documentation quality rated by expert physicians.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "structured prompt engineering architecture"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42351862",
+   "empirical": 0.91,
+   "tests_practice": 0.13,
+   "real_deployment": 0.05
+  }
+ }
+}

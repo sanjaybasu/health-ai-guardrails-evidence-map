@@ -1,0 +1,121 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "unspecified",
+ "sample_size": 475,
+ "sample_unit": "conversations (425 simulated, 50 clinician-authored)",
+ "models_evaluated": [
+  "six LLMs (not named in the text)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM triage agreement (QWK) on completed records versus sequential checkpoints",
+   "effect": "All six LLMs fell from moderate-to-substantial agreement on completed records to fair-to-moderate at every sequential checkpoint. Best model QWK was 0.295 versus 0.887-0.929 for three expert clinicians.",
+   "quote": "Deploying LLMs for ED triage based on offline benchmarks alone misses this sequential failure.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Standalone LLM triage performance compared with clinician performance on the same conversations",
+   "effect": "Three expert clinicians reached a QWK of 0.887-0.929 on the same conversations, while the best model reached 0.295.",
+   "quote": "Three expert clinicians on the same conversations reach a QWK of 0.887-0.929, while the best model reaches 0.295.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM triage sensitivity to input variation via controlled perturbations and prompting interventions",
+   "effect": "Controlled perturbations showed labels at every checkpoint were anchored on the chief complaint exchanges. Prompting interventions failed to lift the plateau.",
+   "quote": "Controlled perturbations show that the label at every checkpoint is anchored on the chief complaint exchanges, and prompting interventions fail to lift this plateau.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "LLM ESI acuity prediction distribution and agreement with ground truth",
+   "effect": "Predictions concentrated at ESI-2 and ESI-3. Models agreed with each other more than with ground truth, so ensembling worsened the failure.",
+   "quote": "Predictions concentrate at ESI-2 and ESI-3, and models agree with each other more than with the ground truth, so ensembling worsens the failure.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Evaluating LLMs on sequential, turn-by-turn prefixes rather than completed retrospective records",
+  "Ensembling multiple LLMs as a mitigation (found to worsen the failure)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2609.22904",
+ "screen": {
+  "id": "arxiv:2609.22904",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirical evaluation of LLM performance on sequential emergency triage conversations versus complete records, testing prompting interventions and warning against deploying based on static benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "sequential vs static evaluation and prompting interventions"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2609.22904",
+   "empirical": 0.97,
+   "tests_practice": 0.11,
+   "real_deployment": 0.04
+  }
+ }
+}

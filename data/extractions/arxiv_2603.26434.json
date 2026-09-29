@@ -1,0 +1,102 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Finland",
+ "sample_size": 1664,
+ "sample_unit": "expert-annotated question-answer pairs (from 183 patients' records)",
+ "models_evaluated": [
+  "Llama-3.1-70B",
+  "Qwen3-30B-A3B-2507",
+  "open-source LLMs 4B-70B parameters (4-bit and 8-bit quantized variants)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Finnish"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Consistency of LLM answers across semantically equivalent question variants",
+   "effect": "Llama-3.1-70B had 97.3% consistency, but equivalent questions occasionally gave discordant responses; one correct and one clinically significant error in 0.96% of cases.",
+   "quote": "semantically equivalent questions occasionally yielded discordant responses, including instances where one formulation was correct and the other contained a clinically significant error (0.96% of cases).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Rate of clinically significant errors in LLM outputs retrieving patient information from EHRs",
+   "effect": "Clinical evaluation identified clinically significant errors in 2.9% of outputs; Llama-3.1-70B free-text accuracy was 95.3%.",
+   "quote": "Clinical evaluation identified clinically significant errors in 2.9% of outputs",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R298",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Response consistency across equivalent question paraphrases",
+   "effect": "97.3% consistency for Llama-3.1-70B across semantically equivalent variants; occasional discordant responses, including 0.96% with one correct and one clinically significantly erroneous.",
+   "quote": "semantically equivalent questions occasionally yielded discordant responses, including instances where one formulation was correct and the other contained a clinically significant error (0.96% of cases).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Locally hosted open-source LLM deployment without external data transfer",
+  "Low-precision quantization (4-bit and 8-bit) to reduce GPU memory requirements while preserving performance"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2603.26434",
+ "screen": {
+  "id": "arxiv:2603.26434",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the accuracy, consistency, and clinical error rate of locally deployable open-source LLMs on clinical QA from Finnish EHRs using retrospective records and expert annotations, but does not compare a specific deployment practice or safeguard.",
+  "jev": {
+   "id": "arxiv:2603.26434",
+   "empirical": 0.97,
+   "tests_practice": 0.11,
+   "real_deployment": 0.07
+  }
+ }
+}

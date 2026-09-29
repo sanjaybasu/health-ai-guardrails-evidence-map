@@ -1,0 +1,94 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 32000,
+ "sample_unit": "de-identified pediatric dental visit records",
+ "models_evaluated": [
+  "KG-LLM (knowledge graph + RAG + safety validation)",
+  "domain-adapted Llama-2 clinical baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Effect of knowledge graph and RAG grounding on record understanding, antibiotic recommendation accuracy, and safety",
+   "effect": "KG-LLM vs Llama-2 baseline: F1 0.914 vs 0.867, Top-1 dose-drug-duration accuracy 0.782 vs 0.716, unsafe antibiotic suggestions reduced by 50%; ablation shows KG and RAG each contribute substantially.",
+   "quote": "Ablation analyses indicate that the knowledge graph, RAG, and safety modules each contribute substantially to clinical reliability and interpretability.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Contribution of deterministic rule plus learned-classifier safety validation to catching allergy, contraindication, and dosing errors",
+   "effect": "Unsafe antibiotic suggestions reduced by 50% versus baseline; ablation indicates safety module contributes substantially to clinical reliability.",
+   "quote": "Ablation analyses indicate that the knowledge graph, RAG, and safety modules each contribute substantially to clinical reliability and interpretability.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Clinical NER/relation extraction to structure dental notes before LLM prompting",
+  "Retrieval of analogous historical cases as LLM context"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2512.09127",
+ "screen": {
+  "id": "arxiv:2512.09127",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and evaluates a multi-stage safety guardrail (rule checking and safety validation classifier) and RAG module added to an LLM, performing ablation analyses to measure reduction in unsafe antibiotic suggestions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and multi-stage safety validation pipeline"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2512.09127",
+   "empirical": 0.95,
+   "tests_practice": 0.4,
+   "real_deployment": 0.07
+  }
+ }
+}

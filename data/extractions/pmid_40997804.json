@@ -1,0 +1,386 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Singapore",
+   "sample_size": 91,
+   "sample_unit": "simulated prescribing error scenarios (40 vignettes) reviewed by 6 pharmacists",
+   "models_evaluated": [
+    "Gemini Flash",
+    "Gemini 1.5 Pro",
+    "GPT-4 Turbo",
+    "GPT-4 omni",
+    "Claude 3.5 Sonnet",
+    "OpenAI o4-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Error identification accuracy for pharmacists with vs without LLM CDSS vs LLM alone",
+     "effect": "Co-pilot accuracy 61% (SD 17.7) vs human alone 46% (SD 21.1), a 32.6% increase; overall ANOVA across modes not significant (p=0.38).",
+     "quote": "The mean accuracy in identifying DRPs increased by 32.6% in co-pilot mode when compared against human alone (61%, SD 17.7 vs. 46%, SD 21.1)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of pharmacists using LLM-CDSS in workflow versus standalone LLM or pharmacist alone",
+     "effect": "Co-pilot accuracy 61% vs human only 46%; serious errors caught 66% in co-pilot vs 52% by LLM alone.",
+     "quote": "LLMs alone were capable of catching 52% of serious errors, while that improved with co-pilot mode to 66%."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Effect of incorrect AI outputs on pharmacist performance in dosing category",
+     "effect": "Co-pilot accuracy declined for inappropriate dosage regimen errors (52% vs 43% human alone) while higher in other categories; automation bias not directly assessed.",
+     "quote": "Accuracy was seen to decline in co-pilot mode when an inappropriate dosing regimen was encountered in the clinical vignettes (52% vs. 43%)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Reproducibility of LLM responses across repeated runs",
+     "effect": "Claude 3.5 Sonnet averaged 0.84 BERTscore, 0.947 cosine similarity, and 0.570 BLEU across repeated prompts, indicating high reproducibility.",
+     "quote": "Claude 3.5 Sonnet demonstrated high degree of semantic reproducibility, scoring an average of 0.84, 0.947, and 0.570 for BERT score, cosine similarity, and BLEU score, respectively."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Accuracy of RAG-grounded vs native LLMs for detecting prescribing errors",
+     "effect": "RAG improved accuracy and recall of all models except Claude 3.5 Sonnet, where accuracy fell 51% to 49%.",
+     "quote": "Applying a RAG framework improved accuracy and recall of all models except for Claude 3.5 Sonnet."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of five LLMs, LLM-alone, and pharmacists alone on same scenarios",
+     "effect": "Claude 3.5 Sonnet best native model (accuracy 51%, F1 0.42) vs Gemini Flash 16%; co-pilot 61% vs pharmacist alone 46%.",
+     "quote": "Of the native models, Gemini Flash scored the lowest while Claude 3.5 Sonnet performed the best on measures of recall (0.16 vs. 0.51), precision (0.15 vs. 0.35), F1 (0.16 vs. 0.42), and overall accuracy (16% vs. 51%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Singapore",
+   "sample_size": 91,
+   "sample_unit": "prescribing error scenarios",
+   "models_evaluated": [
+    "Gemini Flash",
+    "Gemini 1.5 Pro",
+    "GPT-4 Turbo",
+    "GPT-4 omni",
+    "Claude 3.5 Sonnet",
+    "OpenAI o4-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Native-model DRP detection performance",
+     "effect": "Gemini Flash versus Claude: recall 0.16 vs. 0.51; precision 0.15 vs. 0.35; F1 0.16 vs. 0.42; accuracy 16% vs. 51%.",
+     "quote": "Of the native models, Gemini Flash scored the lowest while Claude 3.5 Sonnet performed the best on measures of recall (0.16 vs. 0.51), precision (0.15 vs. 0.35), F1 (0.16 vs. 0.42), and overall accuracy (16% vs. 51%)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Serious-error detection",
+     "effect": "LLM alone caught 52% of serious errors; co-pilot mode caught 66%.",
+     "quote": "LLMs alone were capable of catching 52% of serious errors, while that improved with co-pilot mode to 66%."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Accuracy by implementation mode",
+     "effect": "No significant mean accuracy difference (p = 0.38); co-pilot 61%, SD 17.7 vs human 46%, SD 21.1.",
+     "quote": "There was no statistically significant differences in mean accuracy between different modes of care: co-pilot (pharmacist with LLM-CDSS), human only (pharmacist without LLM-CDSS), and LLM only ( p = 0.38 ) ( Figure 2 A)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "RAG versus native accuracy",
+     "effect": "RAG improved accuracy/recall for all models except Claude; Claude RAG accuracy 49% vs native 51%, recall 0.49 vs 0.51.",
+     "quote": "Applying a RAG framework improved accuracy and recall of all models except for Claude 3.5 Sonnet."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Repeated-run response reproducibility",
+     "effect": "Claude 3.5 Sonnet averaged 0.84 BERT, 0.947 cosine similarity, and 0.570 BLEU.",
+     "quote": "Claude 3.5 Sonnet demonstrated high degree of semantic reproducibility, scoring an average of 0.84, 0.947, and 0.570 for BERT score, cosine similarity, and BLEU score, respectively."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Standalone LLM DRP accuracy",
+     "effect": "Native LLM accuracy ranged 16% to 51%; best recall 0.51, precision 0.35, F1 0.42.",
+     "quote": "Of the native models, Gemini Flash scored the lowest while Claude 3.5 Sonnet performed the best on measures of recall (0.16 vs. 0.51), precision (0.15 vs. 0.35), F1 (0.16 vs. 0.42), and overall accuracy (16% vs. 51%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Singapore",
+   "sample_size": 6,
+   "sample_unit": "pharmacists",
+   "models_evaluated": [
+    "Gemini Flash",
+    "Gemini 1.5 Pro",
+    "GPT-4 Turbo",
+    "GPT-4 omni",
+    "Claude 3.5 Sonnet",
+    "o4-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "prescribing error detection accuracy and recall",
+     "effect": "RAG improved accuracy and recall for 4 of 5 models, but for Claude 3.5 Sonnet, RAG showed differences of \u22122% in accuracy (51% vs. 49%), \u22120.02 in recall, and \u22120.01 in precision.",
+     "quote": "Applying a RAG framework improved accuracy and recall of all models except for Claude 3.5 Sonnet."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "serious prescribing error detection rate",
+     "effect": "LLM alone detected 52% of serious prescribing errors, while co-pilot mode with pharmacist review improved detection to 66%.",
+     "quote": "LLMs alone were capable of catching 52% of serious errors, while that improved with co-pilot mode to 66%."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Singapore",
+ "sample_unit": "simulated prescribing error scenarios (40 vignettes) reviewed by 6 pharmacists",
+ "sample_size": 91,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude 3.5 Sonnet",
+  "GPT-4 Turbo",
+  "GPT-4 omni",
+  "Gemini 1.5 Pro",
+  "Gemini Flash",
+  "OpenAI o4-mini",
+  "o4-mini"
+ ],
+ "links": [
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Performance of pharmacists using LLM-CDSS in workflow versus standalone LLM or pharmacist alone",
+   "effect": "Co-pilot accuracy 61% vs human only 46%; serious errors caught 66% in co-pilot vs 52% by LLM alone.",
+   "quote": "LLMs alone were capable of catching 52% of serious errors, while that improved with co-pilot mode to 66%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of LLM responses across repeated runs",
+   "effect": "Claude 3.5 Sonnet averaged 0.84 BERTscore, 0.947 cosine similarity, and 0.570 BLEU across repeated prompts, indicating high reproducibility.",
+   "quote": "Claude 3.5 Sonnet demonstrated high degree of semantic reproducibility, scoring an average of 0.84, 0.947, and 0.570 for BERT score, cosine similarity, and BLEU score, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of RAG-grounded vs native LLMs for detecting prescribing errors",
+   "effect": "RAG improved accuracy and recall of all models except Claude 3.5 Sonnet, where accuracy fell 51% to 49%.",
+   "quote": "Applying a RAG framework improved accuracy and recall of all models except for Claude 3.5 Sonnet.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of five LLMs, LLM-alone, and pharmacists alone on same scenarios",
+   "effect": "Claude 3.5 Sonnet best native model (accuracy 51%, F1 0.42) vs Gemini Flash 16%; co-pilot 61% vs pharmacist alone 46%.",
+   "quote": "Of the native models, Gemini Flash scored the lowest while Claude 3.5 Sonnet performed the best on measures of recall (0.16 vs. 0.51), precision (0.15 vs. 0.35), F1 (0.16 vs. 0.42), and overall accuracy (16% vs. 51%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Serious-error detection",
+   "effect": "LLM alone caught 52% of serious errors; co-pilot mode caught 66%.",
+   "quote": "LLMs alone were capable of catching 52% of serious errors, while that improved with co-pilot mode to 66%.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Error identification accuracy for pharmacists with vs without LLM CDSS vs LLM alone",
+   "effect": "Co-pilot accuracy 61% (SD 17.7) vs human alone 46% (SD 21.1), a 32.6% increase; overall ANOVA across modes not significant (p=0.38).",
+   "quote": "The mean accuracy in identifying DRPs increased by 32.6% in co-pilot mode when compared against human alone (61%, SD 17.7 vs. 46%, SD 21.1).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40997804",
+ "screen": {
+  "id": "pmid:40997804",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop co-pilot vs solo AI or clinician",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically compares three implementation strategies (LLM alone, pharmacist + LLM co-pilot, and pharmacist alone) on clinical vignettes for medication safety.",
+  "jev": {
+   "id": "pmid:40997804",
+   "empirical": 0.97,
+   "tests_practice": 0.88,
+   "real_deployment": 0.08
+  }
+ }
+}

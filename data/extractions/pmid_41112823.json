@@ -1,0 +1,386 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 318,
+   "sample_unit": "previously planned prostate radiotherapy patients",
+   "models_evaluated": [
+    "RaySearch RayStation v12a automatic planning (U-Net dose prediction plus dose mimicking), baseline and two tuned iterations"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local historical plan quality of automated plans versus clinical plans, and effect of tuning",
+     "effect": "Baseline model had inferior rectum sparing (mean rectum V40Gy 0.04 higher); after two tuning iterations, differences were small (mean difference -0.01 rectum V40Gy, -0.03 PTV48 D98%).",
+     "quote": "The Bland\u2013Altman plots, supplementary Material S4, showed little difference between the original and automated plans for the third iteration."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether tuning the model on selected local cases improved plan quality",
+     "effect": "Two further model iterations tuned on locally selected cases produced comparable rectum sparing (0.02 mean difference in rectum V50Gy) while keeping much of the improved consistency.",
+     "quote": "Further iterations of the model resulted in comparable rectum sparing, a 0.02 mean difference in rectum V50 Gy, was achieved whilst maintaining much of the improved consistency."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Feasibility of control-chart (Wald sequential test) monitoring of plan quality on validation cases",
+     "effect": "Monitoring null hypothesis rejected quickly: after 10, 13 and 12 cases for the tested metrics; more than the 18 validation cases were needed in many cases to accept or reject hypotheses.",
+     "quote": "This was reflected in the rapid rejection of H1; after 10 cases for PTV60 Gy D 98 % , 13 cases for PTV60 Gy D 98 % and 12 cases for the MCS."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of CUSUM-based monitoring to detect deviations in plan quality metrics",
+     "effect": "Wald sequential mean and variance tests reached decisions in tens of cases (delta=0.5) using 18 validation cases; validated as a post-deployment monitoring method.",
+     "quote": "Two process control metrics have been demonstrated to monitor the introduction of AI planning into routine practice to ensure that the real-world performance was consistent with that projected."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Plan quality of automated plans adjusted for anatomy and across risk groups",
+     "effect": "High-risk cases had better coverage so tuning selection was biased toward them; intermediate-risk cases fell below D99% threshold in iteration two, prompting a third iteration with intermediate-risk cases.",
+     "quote": "High risk cases generally had better coverage and so the quantile regression based selection was biased towards them."
+    }
+   ],
+   "unlisted_practices": [
+    "Quantile-regression-based selection of optimal historic cases for vendor model tuning",
+    "Anatomy-adjusted multivariate regression for plan quality comparison"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 318,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Raystation v12a automatic planning baseline model",
+    "Raystation v12a automatic planning model iteration 2",
+    "Raystation v12a automatic planning model iteration 3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Initial local rectum sparing",
+     "effect": "Initial automated plans had rectum V40Gy 0.04 (\u03c3 = 0.04) greater than original plans.",
+     "quote": "The mean rectum V 40 G y was 0.04 ( \u03c3 = 0 . 04 ) greater for the automated plans in the initial evaluation ( Fig. 1(a) )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus human plan quality",
+     "effect": "Final iteration mean difference \u22120.03 for PTV48 Gy D98% and \u22120.01 for rectum V40Gy.",
+     "quote": "PTV coverage and rectum sparing was almost identical between the two groups, with a mean difference \u22120.03 for PTV48 Gy D 98 % coverage and \u22120.01 for rectum V 40 G y ."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Rectum sparing after retuning",
+     "effect": "After further iterations, rectum V50 Gy mean difference was 0.02 while consistency was maintained.",
+     "quote": "Further iterations of the model resulted in comparable rectum sparing, a 0.02 mean difference in rectum V50 Gy, was achieved whilst maintaining much of the improved consistency."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance after model update",
+     "effect": "Iteration 2 caused some PTV48 Gy D98% results below mandatory D99% threshold; iteration 3 was produced.",
+     "quote": "In some cases the PTV 48 Gy D 98 % fell below the mandatory D99% threshold and so iteration three of the model was produced."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Complexity metric detection",
+     "effect": "MCS showed automated plans more complex; MCS intercept 0.24 vs 0.29 and \u03c3 0.04 vs 0.06.",
+     "quote": "Metrics such as the MCS revealed a difference in the range of complexities, demonstrating the importance of considering more than only dose-volume metrics."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Control-chart monitoring validation",
+     "effect": "More than 18 validation cases were required in many cases; selected metrics rejected H1 after 10, 13, and 12 cases.",
+     "quote": "More than the 18 validation cases were required in many cases to accept or reject the null hypothesis in the monitoring validation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 318,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RayStation v12a",
+    "UNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "rectum sparing and plan quality consistency",
+     "effect": "Model tuning achieved comparable rectum sparing (0.02 mean difference in rectum V50 Gy) while maintaining improved plan consistency.",
+     "quote": "Further iterations of the model resulted in comparable rectum sparing, a 0.02 mean difference in rectum V50 Gy, was achieved whilst maintaining much of the improved consistency."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "patients",
+ "sample_size": 318,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "RaySearch RayStation v12a automatic planning (U-Net dose prediction plus dose mimicking), baseline and two tuned iterations",
+  "RayStation v12a",
+  "Raystation v12a automatic planning baseline model",
+  "Raystation v12a automatic planning model iteration 2",
+  "Raystation v12a automatic planning model iteration 3",
+  "UNet"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether tuning the model on selected local cases improved plan quality",
+   "effect": "Two further model iterations tuned on locally selected cases produced comparable rectum sparing (0.02 mean difference in rectum V50Gy) while keeping much of the improved consistency.",
+   "quote": "Further iterations of the model resulted in comparable rectum sparing, a 0.02 mean difference in rectum V50 Gy, was achieved whilst maintaining much of the improved consistency.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Ability of CUSUM-based monitoring to detect deviations in plan quality metrics",
+   "effect": "Wald sequential mean and variance tests reached decisions in tens of cases (delta=0.5) using 18 validation cases; validated as a post-deployment monitoring method.",
+   "quote": "Two process control metrics have been demonstrated to monitor the introduction of AI planning into routine practice to ensure that the real-world performance was consistent with that projected.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local historical plan quality of automated plans versus clinical plans, and effect of tuning",
+   "effect": "Baseline model had inferior rectum sparing (mean rectum V40Gy 0.04 higher); after two tuning iterations, differences were small (mean difference -0.01 rectum V40Gy, -0.03 PTV48 D98%).",
+   "quote": "The Bland\u2013Altman plots, supplementary Material S4, showed little difference between the original and automated plans for the third iteration.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R150",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Feasibility of control-chart (Wald sequential test) monitoring of plan quality on validation cases",
+   "effect": "Monitoring null hypothesis rejected quickly: after 10, 13 and 12 cases for the tested metrics; more than the 18 validation cases were needed in many cases to accept or reject hypotheses.",
+   "quote": "This was reflected in the rapid rejection of H1; after 10 cases for PTV60 Gy D 98 % , 13 cases for PTV60 Gy D 98 % and 12 cases for the MCS.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Initial local rectum sparing",
+   "effect": "Initial automated plans had rectum V40Gy 0.04 (\u03c3 = 0.04) greater than original plans.",
+   "quote": "The mean rectum V 40 G y was 0.04 ( \u03c3 = 0 . 04 ) greater for the automated plans in the initial evaluation ( Fig. 1(a) ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI versus human plan quality",
+   "effect": "Final iteration mean difference \u22120.03 for PTV48 Gy D98% and \u22120.01 for rectum V40Gy.",
+   "quote": "PTV coverage and rectum sparing was almost identical between the two groups, with a mean difference \u22120.03 for PTV48 Gy D 98 % coverage and \u22120.01 for rectum V 40 G y .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R545",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance after model update",
+   "effect": "Iteration 2 caused some PTV48 Gy D98% results below mandatory D99% threshold; iteration 3 was produced.",
+   "quote": "In some cases the PTV 48 Gy D 98 % fell below the mandatory D99% threshold and so iteration three of the model was produced.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Anatomy-adjusted multivariate regression for plan quality comparison",
+  "Quantile-regression-based selection of optimal historic cases for vendor model tuning"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41112823",
+ "screen": {
+  "id": "pmid:41112823",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local commissioning, model tuning, and control-chart monitoring of plan quality",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests and reports a protocol for local evaluation, iterative tuning, and control chart monitoring for commissioning a commercial AI radiotherapy planning system.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation, model tuning, and control-chart quality monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41112823",
+   "empirical": 0.96,
+   "tests_practice": 0.59,
+   "real_deployment": 0.34
+  }
+ }
+}

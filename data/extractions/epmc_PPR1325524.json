@@ -1,0 +1,281 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 70,
+   "sample_unit": "radiology reports (balanced test set)",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AO/OTA 31A vs 31B classification accuracy with RAG grounding versus zero-shot and few-shot prompting",
+     "effect": "RAG accuracy 94.29% (F1 94.29%) equaled zero-shot 94.29% (F1 94.28%); few-shot dropped to 88.57% (F1 88.53%). RAG showed no measurable advantage in binary classification.",
+     "quote": "Zero\u2011shot prompting attained the same accuracy (94.29%, F1 = 94.28%), while few\u2011shot learning unexpectedly dropped to 88.57% (F1 = 88.53%)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of initial 31C labels on expert re-adjudication",
+     "effect": "Of 47 cases initially labeled 31C, only 6 (12.8%) met true AO/OTA 31C criteria; 41 (87.2%) were acetabular fractures or misclassified 31A/31B cases.",
+     "quote": "A key finding was that after expert re\u2011adjudication of 47 cases initially labeled as 31C, only 6 (12.8%) met the true AO/OTA 31C criteria; the remaining 41 (87.2%) were actually acetabular fractures (AO/OTA type 61) or misclassified 31A/31B cases."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing zero-shot versus few-shot prompting for LLM extraction of classification from radiology reports"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 157,
+   "sample_unit": "acute fracture cases",
+   "models_evaluated": [
+    "zero-shot prompting",
+    "few-shot learning",
+    "RAG-augmented prompting",
+    "RAG-LLM framework"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "31C label adjudication",
+     "effect": "Expert re-adjudication of 47 initial 31C cases found only 6 (12.8%) true 31C; 41 (87.2%) were acetabular or misclassified 31A/31B.",
+     "quote": "A key finding was that after expert re\u2011adjudication of 47 cases initially labeled as 31C, only 6 (12.8%) met the true AO/OTA 31C criteria; the remaining 41 (87.2%) were actually acetabular fractures (AO/OTA type 61) or misclassified 31A/31B cases."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "RAG versus prompting accuracy",
+     "effect": "RAG accuracy was 94.29% (F1=94.29%); zero-shot attained the same 94.29% accuracy (F1=94.28%); few-shot dropped to 88.57% (F1=88.53%).",
+     "quote": "Zero\u2011shot prompting attained the same accuracy (94.29%, F1\u2009=\u200994.28%), while few\u2011shot learning unexpectedly dropped to 88.57% (F1\u2009=\u200988.53%)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "31B subtype classification accuracy",
+     "effect": "31B1 vs 31B2 subtype classification accuracy was 70.59%.",
+     "quote": "The subtype classification for 31B fractures (31B1 vs. 31B2) achieved an accuracy of 70.59%, reflecting the inherent difficulty of text\u2011based subtype differentiation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "USA",
+   "sample_size": 157,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "RAG-LLM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy of unadjudicated reference labels",
+     "effect": "Only 6 of 47 cases (12.8%) met true AO/OTA 31C criteria, while 41 (87.2%) were misclassified",
+     "quote": "A key finding was that after expert re\u2011adjudication of 47 cases initially labeled as 31C, only 6 (12.8%) met the true AO/OTA 31C criteria; the remaining 41 (87.2%) were actually acetabular fractures (AO/OTA type 61) or misclassified 31A/31B cases."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AO/OTA fracture classification accuracy",
+     "effect": "RAG accuracy 94.29% (F1 = 94.29%) was identical to zero-shot accuracy 94.29% (F1 = 94.28%), while few-shot accuracy dropped to 88.57% (F1 = 88.53%)",
+     "quote": "The comparable performance between zero\u2011shot and RAG models suggests that modern LLMs already possess inherent knowledge of AO/OTA classification, though RAG may offer advantages in more nuanced tasks."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "radiology reports (balanced test set)",
+ "sample_size": 157,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "RAG-LLM",
+  "RAG-LLM framework",
+  "RAG-augmented prompting",
+  "few-shot learning",
+  "zero-shot prompting"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AO/OTA 31A vs 31B classification accuracy with RAG grounding versus zero-shot and few-shot prompting",
+   "effect": "RAG accuracy 94.29% (F1 94.29%) equaled zero-shot 94.29% (F1 94.28%); few-shot dropped to 88.57% (F1 88.53%). RAG showed no measurable advantage in binary classification.",
+   "quote": "Zero\u2011shot prompting attained the same accuracy (94.29%, F1 = 94.28%), while few\u2011shot learning unexpectedly dropped to 88.57% (F1 = 88.53%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of initial 31C labels on expert re-adjudication",
+   "effect": "Of 47 cases initially labeled 31C, only 6 (12.8%) met true AO/OTA 31C criteria; 41 (87.2%) were acetabular fractures or misclassified 31A/31B cases.",
+   "quote": "A key finding was that after expert re\u2011adjudication of 47 cases initially labeled as 31C, only 6 (12.8%) met the true AO/OTA 31C criteria; the remaining 41 (87.2%) were actually acetabular fractures (AO/OTA type 61) or misclassified 31A/31B cases.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "31C label adjudication",
+   "effect": "Expert re-adjudication of 47 initial 31C cases found only 6 (12.8%) true 31C; 41 (87.2%) were acetabular or misclassified 31A/31B.",
+   "quote": "A key finding was that after expert re\u2011adjudication of 47 cases initially labeled as 31C, only 6 (12.8%) met the true AO/OTA 31C criteria; the remaining 41 (87.2%) were actually acetabular fractures (AO/OTA type 61) or misclassified 31A/31B cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing zero-shot versus few-shot prompting for LLM extraction of classification from radiology reports"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1325524",
+ "screen": {
+  "id": "epmc:PPR1325524",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG) versus zero-shot and few-shot prompting",
+  "user": "none",
+  "reason": "The study directly compares zero-shot prompting, few-shot prompting, and retrieval-augmented generation (RAG) using an external knowledge base on the task of extracting and classifying fracture types from radiology reports.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (RAG)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1325524",
+   "empirical": 0.96,
+   "tests_practice": 0.41,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,335 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Spain",
+   "sample_size": 503,
+   "sample_unit": "Twitter users (177 anorexia nervosa, 326 controls)",
+   "models_evaluated": [
+    "logistic regression",
+    "random forest",
+    "SVM",
+    "MLP",
+    "AdaBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance and false negative rate by gender subgroup",
+     "effect": "FNR was 0.082 for female vs 0.005 for male samples; accuracy was lower for female samples across all models (worst case 0.844 vs 0.913).",
+     "quote": "Our results revealed concerning predictive performance differences, with substantially higher false negative rates (FNRs) for female samples (FNR=0.082) compared with male samples (FNR=0.005)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of bias mitigation algorithms on gender disparities in FNR and accuracy",
+     "effect": "Reweighting gave the best FNR ratio (4.636 to 2.591) but raised male FNR and reduced male accuracy; disparities mitigated but not eliminated; some methods no better than original.",
+     "quote": "The results showed that, even when disparities can be mitigated with most of the algorithms, they cannot be eliminated."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Aggregate accuracy concealing subgroup underperformance",
+     "effect": "Aggregate balanced accuracy was >87% with FNR 4-6%, but decomposing by gender showed FNR roughly twice as high for females and lower accuracy for females.",
+     "quote": "Nevertheless, we observed important performance differences when decomposing such values by gender, yielding in the worst case (MLP classifier, 1 model per gender) an accuracy of 0.913 for male samples and 0.844 for female samples (relative difference of 8% accuracy)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Human annotator performance differences by gender against ground truth",
+     "effect": "Labelers had higher accuracy and lower FNR for male samples (4 of 5 labelers); Cohen kappa 0.807 female vs 0.841 male, suggesting annotator bias in the reference standard.",
+     "quote": "As shown in Figure 6 , the obtained results show that labelers had greater performance for male samples, with higher accuracy and lower FNR."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing model-selected features with clinician-rated feature importance to characterize bias sources",
+    "Calibrating classifier probabilities (isotonic, sigmoid) and selecting thresholds by budget scenario"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 503,
+   "sample_unit": "Twitter users",
+   "models_evaluated": [
+    "logistic regression",
+    "random forest",
+    "support vector machine",
+    "multilayer perceptron",
+    "AdaBoost",
+    "logistic regression with disparate impact remover",
+    "logistic regression with reweighting",
+    "logistic regression with calibrated equalized odds",
+    "logistic regression with isotonic calibrator",
+    "logistic regression with sigmoid calibrator"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False negative rates by gender",
+     "effect": "Female samples had FNR=0.082 versus male samples FNR=0.005.",
+     "quote": "Our results revealed concerning predictive performance differences, with substantially higher false negative rates (FNRs) for female samples (FNR=0.082) compared with male samples (FNR=0.005)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Bias mitigation effects on FNR ratio",
+     "effect": "Reweighting FNR ratio 2.591 vs original 4.636; male FNR rose 0.012 to 0.040 and accuracy fell 0.948 to 0.932.",
+     "quote": "The results showed that, even when disparities can be mitigated with most of the algorithms, they cannot be eliminated."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Annotator performance by gender",
+     "effect": "Average Cohen \u03ba was 0.807 for female versus 0.841 for male samples; most labelers had higher accuracy and lower FNR for male samples.",
+     "quote": "As shown in Figure 6 , the obtained results show that labelers had greater performance for male samples, with higher accuracy and lower FNR."
+    }
+   ],
+   "unlisted_practices": [
+    "Training individual models separately for each gender",
+    "Calibrating classifier risk scores with isotonic and sigmoid calibrators"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Spain",
+   "sample_size": 503,
+   "sample_unit": "users",
+   "models_evaluated": [
+    "logistic regression",
+    "random forest",
+    "support vector machines",
+    "multilayer perceptron",
+    "AdaBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "false negative rate disparity across genders",
+     "effect": "Substantially higher false negative rates occurred for female samples (FNR=0.082) compared with male samples (FNR=0.005), despite overall model accuracy exceeding 87%.",
+     "quote": "Our results revealed concerning predictive performance differences, with substantially higher false negative rates (FNRs) for female samples (FNR=0.082) compared with male samples (FNR=0.005)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "fairness and accuracy after bias mitigation",
+     "effect": "Reweighting improved balanced accuracy ratio (0.906 vs 0.812) and FNR ratio (2.591 vs 4.636) but reduced male accuracy (0.932 vs 0.948) and increased male FNR (0.040 vs 0.012).",
+     "quote": "The results showed that, even when disparities can be mitigated with most of the algorithms, they cannot be eliminated."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Spain",
+ "sample_unit": "Twitter users (177 anorexia nervosa, 326 controls)",
+ "sample_size": 503,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Spanish"
+ ],
+ "models_evaluated": [
+  "AdaBoost",
+  "MLP",
+  "SVM",
+  "logistic regression",
+  "logistic regression with calibrated equalized odds",
+  "logistic regression with disparate impact remover",
+  "logistic regression with isotonic calibrator",
+  "logistic regression with reweighting",
+  "logistic regression with sigmoid calibrator",
+  "multilayer perceptron",
+  "random forest",
+  "support vector machine",
+  "support vector machines"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance and false negative rate by gender subgroup",
+   "effect": "FNR was 0.082 for female vs 0.005 for male samples; accuracy was lower for female samples across all models (worst case 0.844 vs 0.913).",
+   "quote": "Our results revealed concerning predictive performance differences, with substantially higher false negative rates (FNRs) for female samples (FNR=0.082) compared with male samples (FNR=0.005).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of bias mitigation algorithms on gender disparities in FNR and accuracy",
+   "effect": "Reweighting gave the best FNR ratio (4.636 to 2.591) but raised male FNR and reduced male accuracy; disparities mitigated but not eliminated; some methods no better than original.",
+   "quote": "The results showed that, even when disparities can be mitigated with most of the algorithms, they cannot be eliminated.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Human annotator performance differences by gender against ground truth",
+   "effect": "Labelers had higher accuracy and lower FNR for male samples (4 of 5 labelers); Cohen kappa 0.807 female vs 0.841 male, suggesting annotator bias in the reference standard.",
+   "quote": "As shown in Figure 6 , the obtained results show that labelers had greater performance for male samples, with higher accuracy and lower FNR.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Aggregate accuracy concealing subgroup underperformance",
+   "effect": "Aggregate balanced accuracy was >87% with FNR 4-6%, but decomposing by gender showed FNR roughly twice as high for females and lower accuracy for females.",
+   "quote": "Nevertheless, we observed important performance differences when decomposing such values by gender, yielding in the worst case (MLP classifier, 1 model per gender) an accuracy of 0.913 for male samples and 0.844 for female samples (relative difference of 8% accuracy).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Calibrating classifier probabilities (isotonic, sigmoid) and selecting thresholds by budget scenario",
+  "Calibrating classifier risk scores with isotonic and sigmoid calibrators",
+  "Comparing model-selected features with clinician-rated feature importance to characterize bias sources",
+  "Training individual models separately for each gender"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:37289496",
+ "screen": {
+  "id": "pmid:37289496",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "bias mitigation strategies for classifiers",
+  "user": "none",
+  "reason": "Evaluates gender bias in NLP/machine learning predictors for anorexia nervosa detection from social media and empirically tests algorithmic bias mitigation strategies to reduce disparity across demographic groups.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "algorithmic bias mitigation techniques"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37289496",
+   "empirical": 0.94,
+   "tests_practice": 0.1,
+   "real_deployment": 0.05
+  }
+ }
+}

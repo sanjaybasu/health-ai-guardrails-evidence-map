@@ -1,0 +1,334 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Viet Nam",
+   "sample_size": 1466,
+   "sample_unit": "adult participants' chest X-ray images",
+   "models_evaluated": [
+    "Genki (DeepTek) v3.4.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Genki specificity versus 10 human readers at matched sensitivity for TB screening",
+     "effect": "At matched sensitivity (79.0%), Genki specificity was 95.2% (DICOM) and 92.1% (JPEG) versus 84.8% for human readers, p < 0.001.",
+     "quote": "The corresponding specificity for the Genki software is significantly higher than the human readers, whether using the DICOM (84.8% vs 95.2%, p < 0.001) or JPEG files (84.8% vs 92.1%, p < 0.001)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AUC and specificity when input format changes from DICOM to photographed film JPEG",
+     "effect": "AUC did not differ significantly (0.94 vs 0.92, p = 0.190), but specificity was significantly lower with JPEG (e.g., 95.2% vs 92.1%, p < 0.001) and abnormality scores were higher.",
+     "quote": "There is no significant difference in the AUC for the Genki CAD software when processing either DICOM or JPEG files (0.94 vs 0.92, p = 0.190)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance variation by acquisition format (DICOM vs photographed film); no site-specific analysis",
+     "effect": "AUC was similar across file types, but specificity was significantly lower with JPEG at matched thresholds (81.1% vs 89.3% at 91.4% sensitivity, p < 0.001).",
+     "quote": "Although the Genki CAD software met the TPP criteria when using photographs of printed X-ray films, its specificity was significantly lower compared to processing DICOM files."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Specificity after choosing tuned abnormality score thresholds to reach target sensitivity",
+     "effect": "Calibrating thresholds to 90% sensitivity gave specificity of 89.3% (DICOM) and 81.1% (JPEG), meeting the TPP criteria.",
+     "quote": "When the software's abnormality score thresholds were calibrated to achieve 90% sensitivity, Genki maintained high specificity with both DICOM (89.3%) and JPEG (81.1%) file types, meeting the minimum Target Product Profile (TPP) criteria for a high-sensitivity, high-specificity screening test."
+    }
+   ],
+   "unlisted_practices": [
+    "Using CAD software to replace human readers for TB CXR screening",
+    "Photographing printed X-ray films to enable CAD in settings lacking digital infrastructure"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Viet Nam",
+   "sample_size": 1466,
+   "sample_unit": "CXR images of adult participants",
+   "models_evaluated": [
+    "Genki CAD software (Version 3.4.2)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "specificity under JPEG versus DICOM inputs",
+     "effect": "At matched 87.9% sensitivity, specificity was 90.9% for DICOM vs 81.6% for JPEG, p<0.001.",
+     "quote": "Again, the software\u2019s specificity with JPEG files is significantly lower than with DICOM files (90.9% vs 81.6%, p < 0.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "specificity at matched human-reader sensitivity",
+     "effect": "At matched 79.0% human-reader sensitivity, Genki specificity was 95.2% (DICOM) and 92.1% (JPEG) vs 84.8% for humans, p<0.001.",
+     "quote": "The corresponding specificity for the Genki software is significantly higher than the human readers, whether using the DICOM (84.8% vs 95.2%, p < 0.001) or JPEG files (84.8% vs 92.1%, p < 0.001)."
+    },
+    {
+     "rec_id": "R312",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "power for subgroup performance analyses",
+     "effect": "Test library had only 58 TB cases; some key subgroups had fewer than 10 TB cases, insufficient for reliable subgroup analyses.",
+     "quote": "However, this evaluation\u2019s test library includes only 58 individuals with TB and is therefore insufficiently powered to support reliable subgroup analyses, particularly when some key subgroups comprise fewer than 10 people with TB."
+    }
+   ],
+   "unlisted_practices": [
+    "Using CAD software to interpret photographs of printed X-ray films for TB screening",
+    "Calibrating CAD abnormality-score thresholds to target human-reader or Target Product Profile sensitivity"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Viet Nam",
+   "sample_size": 1466,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "Genki"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Genki specificity compared with human readers at matched sensitivity",
+     "effect": "Genki specificity was significantly higher than human readers (84.8%) using DICOM (95.2%, p < 0.001) or JPEG (92.1%, p < 0.001) at matched sensitivity (79.0%).",
+     "quote": "The corresponding specificity for the Genki software is significantly higher than the human readers, whether using the DICOM (84.8% vs 95.2%, p < 0.001) or JPEG files (84.8% vs 92.1%, p < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Viet Nam",
+ "sample_unit": "adult participants' chest X-ray images",
+ "sample_size": 1466,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Genki",
+  "Genki (DeepTek) v3.4.2",
+  "Genki CAD software (Version 3.4.2)"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Genki specificity versus 10 human readers at matched sensitivity for TB screening",
+   "effect": "At matched sensitivity (79.0%), Genki specificity was 95.2% (DICOM) and 92.1% (JPEG) versus 84.8% for human readers, p < 0.001.",
+   "quote": "The corresponding specificity for the Genki software is significantly higher than the human readers, whether using the DICOM (84.8% vs 95.2%, p < 0.001) or JPEG files (84.8% vs 92.1%, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AUC and specificity when input format changes from DICOM to photographed film JPEG",
+   "effect": "AUC did not differ significantly (0.94 vs 0.92, p = 0.190), but specificity was significantly lower with JPEG (e.g., 95.2% vs 92.1%, p < 0.001) and abnormality scores were higher.",
+   "quote": "There is no significant difference in the AUC for the Genki CAD software when processing either DICOM or JPEG files (0.94 vs 0.92, p = 0.190).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation by acquisition format (DICOM vs photographed film); no site-specific analysis",
+   "effect": "AUC was similar across file types, but specificity was significantly lower with JPEG at matched thresholds (81.1% vs 89.3% at 91.4% sensitivity, p < 0.001).",
+   "quote": "Although the Genki CAD software met the TPP criteria when using photographs of printed X-ray films, its specificity was significantly lower compared to processing DICOM files.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Specificity after choosing tuned abnormality score thresholds to reach target sensitivity",
+   "effect": "Calibrating thresholds to 90% sensitivity gave specificity of 89.3% (DICOM) and 81.1% (JPEG), meeting the TPP criteria.",
+   "quote": "When the software's abnormality score thresholds were calibrated to achieve 90% sensitivity, Genki maintained high specificity with both DICOM (89.3%) and JPEG (81.1%) file types, meeting the minimum Target Product Profile (TPP) criteria for a high-sensitivity, high-specificity screening test.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "specificity under JPEG versus DICOM inputs",
+   "effect": "At matched 87.9% sensitivity, specificity was 90.9% for DICOM vs 81.6% for JPEG, p<0.001.",
+   "quote": "Again, the software\u2019s specificity with JPEG files is significantly lower than with DICOM files (90.9% vs 81.6%, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R312",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "power for subgroup performance analyses",
+   "effect": "Test library had only 58 TB cases; some key subgroups had fewer than 10 TB cases, insufficient for reliable subgroup analyses.",
+   "quote": "However, this evaluation\u2019s test library includes only 58 individuals with TB and is therefore insufficiently powered to support reliable subgroup analyses, particularly when some key subgroups comprise fewer than 10 people with TB.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Genki specificity compared with human readers at matched sensitivity",
+   "effect": "Genki specificity was significantly higher than human readers (84.8%) using DICOM (95.2%, p < 0.001) or JPEG (92.1%, p < 0.001) at matched sensitivity (79.0%).",
+   "quote": "The corresponding specificity for the Genki software is significantly higher than the human readers, whether using the DICOM (84.8% vs 95.2%, p < 0.001) or JPEG files (84.8% vs 92.1%, p < 0.001).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Calibrating CAD abnormality-score thresholds to target human-reader or Target Product Profile sensitivity",
+  "Photographing printed X-ray films to enable CAD in settings lacking digital infrastructure",
+  "Using CAD software to interpret photographs of printed X-ray films for TB screening",
+  "Using CAD software to replace human readers for TB CXR screening"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41530808",
+ "screen": {
+  "id": "pmid:41530808",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert threshold calibration and input file format (JPEG vs DICOM)",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates independent performance and threshold calibration of CAD software using photographs of printed films versus standard DICOM images to assess readiness for resource-limited clinical deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "using photographed printed X-ray films vs DICOM inputs and threshold calibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41530808",
+   "empirical": 0.97,
+   "tests_practice": 0.34,
+   "real_deployment": 0.08
+  }
+ }
+}

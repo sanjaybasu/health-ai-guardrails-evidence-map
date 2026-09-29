@@ -1,0 +1,331 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "United States",
+   "sample_size": 254,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Canvas Dx"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Real-world post-market accuracy versus clinical trial performance",
+     "effect": "Real-world NPV 97.6%, PPV 92.4% (vs trial 80.8%, p=0.024), determinate rate 63.0% vs 31.8% (p<0.001); no degradation, PPV and determinate rate improved",
+     "quote": "Compared to clinical trial results, real world performance was equivalent for all key metrics, with the exception of the determinate rate and the PPV which were significantly improved in real world performance."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Deployed device performance by biological sex and age group",
+     "effect": "No significant differences by sex; PPV differed by age (96.3% under 48 months vs 83.8% over 48 months, p=0.025); specificity 90.3% vs 66.7% (p=0.058)",
+     "quote": "The device had a statistically significant difference in PPV performance between age groups, with cases under 48 months of age achieving superior PPV (see Table 5 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Diagnostic abstention (indeterminate output) mechanism with threshold selection to trade determinate rate against accuracy"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 254,
+   "sample_unit": "children",
+   "models_evaluated": [
+    "Canvas Dx"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": true
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R366",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Real-world diagnostic performance compared with original clinical trial performance",
+     "effect": "Clinical trial versus real world: PPV 80.8% versus 92.4% (p=0.024); NPV 98.2% versus 97.6% (p=1.0); determinate rate 31.8% versus 63.0% (p<0.001).",
+     "quote": "Compared to clinical trial results, real world performance was equivalent for all key metrics, with the exception of the determinate rate and the PPV which were significantly improved in real world performance."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Diagnostic performance differences by biological sex and age",
+     "effect": "PPV was 96.3% under 48 months versus 83.8% over 48 months (p=0.025). No statistically significant sex differences were found; other age-group performance differences were not statistically significant.",
+     "quote": "While device performance was consistent across biological sex for all metrics and across age groups for most metrics, PPV performance differed between older and younger age groups."
+    },
+    {
+     "rec_id": "R303",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Availability of demographic information needed for subgroup bias analysis",
+     "effect": "Race/ethnicity and socio-economic status were not collected during routine device use, preventing covariate analysis of these features.",
+     "quote": "Similarly, information on patient race/ethnicity and socio-economic status are not collected as part of routine clinical device use, therefore we could not conduct covariate analysis on these features."
+    }
+   ],
+   "unlisted_practices": [
+    "Use diagnostic abstention for uncertain cases and tune positive and negative thresholds to balance misclassification against determinate-result coverage."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 254,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Canvas Dx"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R318",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Device performance by age and sex",
+     "effect": "Post-market monitoring across subgroups found no significant difference by biological sex, but positive predictive value was significantly higher for cases under 48 months of age.",
+     "quote": "The device had a statistically significant difference in PPV performance between age groups, with cases under 48 months of age achieving superior PPV (see Table 5 )."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Real-world diagnostic accuracy",
+     "effect": "Comparing real-world device outputs to a specialist consensus reference standard for determinate cases showed an NPV of 97.56% and a PPV of 92.44%.",
+     "quote": "For determinate cases, compared to the reference standard, Canvas Dx had an NPV of 97.56% (CI- 92.84% \u2212 100.0%) and a PPV of 92.44% (CI- 87.69% \u2212 97.19%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Incorporating an abstention mechanism or indeterminate output zone to manage misclassification risk for complex edge cases."
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "both",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 254,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Canvas Dx"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Real-world post-market accuracy versus clinical trial performance",
+   "effect": "Real-world NPV 97.6%, PPV 92.4% (vs trial 80.8%, p=0.024), determinate rate 63.0% vs 31.8% (p<0.001); no degradation, PPV and determinate rate improved",
+   "quote": "Compared to clinical trial results, real world performance was equivalent for all key metrics, with the exception of the determinate rate and the PPV which were significantly improved in real world performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Deployed device performance by biological sex and age group",
+   "effect": "No significant differences by sex; PPV differed by age (96.3% under 48 months vs 83.8% over 48 months, p=0.025); specificity 90.3% vs 66.7% (p=0.058)",
+   "quote": "The device had a statistically significant difference in PPV performance between age groups, with cases under 48 months of age achieving superior PPV (see Table 5 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R366",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Real-world diagnostic performance compared with original clinical trial performance",
+   "effect": "Clinical trial versus real world: PPV 80.8% versus 92.4% (p=0.024); NPV 98.2% versus 97.6% (p=1.0); determinate rate 31.8% versus 63.0% (p<0.001).",
+   "quote": "Compared to clinical trial results, real world performance was equivalent for all key metrics, with the exception of the determinate rate and the PPV which were significantly improved in real world performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic performance differences by biological sex and age",
+   "effect": "PPV was 96.3% under 48 months versus 83.8% over 48 months (p=0.025). No statistically significant sex differences were found; other age-group performance differences were not statistically significant.",
+   "quote": "While device performance was consistent across biological sex for all metrics and across age groups for most metrics, PPV performance differed between older and younger age groups.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R303",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Availability of demographic information needed for subgroup bias analysis",
+   "effect": "Race/ethnicity and socio-economic status were not collected during routine device use, preventing covariate analysis of these features.",
+   "quote": "Similarly, information on patient race/ethnicity and socio-economic status are not collected as part of routine clinical device use, therefore we could not conduct covariate analysis on these features.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R318",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Device performance by age and sex",
+   "effect": "Post-market monitoring across subgroups found no significant difference by biological sex, but positive predictive value was significantly higher for cases under 48 months of age.",
+   "quote": "The device had a statistically significant difference in PPV performance between age groups, with cases under 48 months of age achieving superior PPV (see Table 5 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Real-world diagnostic accuracy",
+   "effect": "Comparing real-world device outputs to a specialist consensus reference standard for determinate cases showed an NPV of 97.56% and a PPV of 92.44%.",
+   "quote": "For determinate cases, compared to the reference standard, Canvas Dx had an NPV of 97.56% (CI- 92.84% \u2212 100.0%) and a PPV of 92.44% (CI- 87.69% \u2212 97.19%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Diagnostic abstention (indeterminate output) mechanism with threshold selection to trade determinate rate against accuracy",
+  "Incorporating an abstention mechanism or indeterminate output zone to manage misclassification risk for complex edge cases.",
+  "Use diagnostic abstention for uncertain cases and tune positive and negative thresholds to balance misclassification against determinate-result coverage."
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:40796609",
+ "screen": {
+  "id": "pmid:40796609",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "decision threshold selection",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates real-world clinical performance and post-market surveillance data of an FDA-authorized AI diagnostic device (Canvas Dx) for pediatric autism diagnosis.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40796609",
+   "empirical": 0.93,
+   "tests_practice": 0.25,
+   "real_deployment": 0.88
+  }
+ }
+}

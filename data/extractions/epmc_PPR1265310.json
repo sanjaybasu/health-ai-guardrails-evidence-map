@@ -1,0 +1,361 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea; USA",
+   "sample_size": 184958,
+   "sample_unit": "surgical cases (INSPIRE n=127,413; MOVER n=57,545)",
+   "models_evaluated": [
+    "XGBoost",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Cross-population AUC and calibration slope of mortality models versus within-stratum performance",
+     "effect": "Aggregate AUCs concealed lower within-stratum AUCs (gap 5.0\u201316.5 pp; worst case aggregate 0.756 vs 0.58\u20130.60); pre-Platt calibration slopes ranged 0.41\u20131.29.",
+     "quote": "Pre-Platt calibration slopes ranged 0.41\u20131.29 across all eight cross-population runs; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration slope before and after Platt scaling recalibration on external cohort",
+     "effect": "5-fold CV Platt scaling restored calibration slopes from 0.41\u20131.29 to 0.95\u20131.02.",
+     "quote": "Pre-Platt calibration slopes ranged 0.41\u20131.29 across all eight cross-population runs; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Direction asymmetry in external transferability between Korean and US cohorts",
+     "effect": "Cross-continental transferability direction-asymmetric (+8.53 pp, 95% CI 6.91\u201310.24, bootstrap p = 0.001).",
+     "quote": "Cross-continental transferability was markedly direction-asymmetric (+8.53 pp, 95% CI 6.91\u201310.24, bootstrap  p = 0.001)"
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of case-mix differences between development and validation cohorts on transferability",
+     "effect": "Asymmetry survived matching on ASA and comorbidity, attenuated to 70\u201386% of baseline after matching emergency proportion.",
+     "quote": "the asymmetry survived matching on ASA and comorbidity, attenuated to 70\u201386% of baseline after matching emergency proportion, and was untestable for temporal period."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Aggregate metrics concealing within-stratum discrimination (Simpson's paradox)",
+     "effect": "Simpson's paradox gap of 5.0\u201316.5 pp; worst case aggregate AUC 0.756 vs within-stratum 0.58\u20130.60.",
+     "quote": "Across the eight cross-population runs, aggregate AUCs concealed substantially lower within-stratum AUCs (Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst case: aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60)."
+    }
+   ],
+   "unlisted_practices": [
+    "Case-level paired bootstrap inference for comparing external validation performance",
+    "Bidirectional external validation across cohorts",
+    "SHAP rank correlation to assess feature-importance transferability"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Korea; USA",
+   "sample_size": 184958,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "XGBoost",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Subgroup discrimination metrics",
+     "effect": "Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60.",
+     "quote": "Across the eight cross-population runs, aggregate AUCs concealed substantially lower within-stratum AUCs (Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst case: aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Direction asymmetry stress test",
+     "effect": "+8.53 pp asymmetry (95% CI 6.91\u201310.24; p=0.001); survived ASA/comorbidity matching; attenuated to 70\u201386% after emergency matching.",
+     "quote": "Cross-continental transferability was markedly direction-asymmetric (+8.53 pp, 95% CI 6.91\u201310.24, bootstrap  p = 0.001); the asymmetry survived matching on ASA and comorbidity, attenuated to 70\u201386% of baseline after matching emergency proportion, and was untestable for temporal period."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Dataset-shift transferability",
+     "effect": "+8.53 pp direction asymmetry, 95% CI 6.91\u201310.24; survived ASA/comorbidity matching and partially persisted after emergency matching.",
+     "quote": "Cross-continental transferability was markedly direction-asymmetric (+8.53 pp, 95% CI 6.91\u201310.24, bootstrap  p = 0.001); the asymmetry survived matching on ASA and comorbidity, attenuated to 70\u201386% of baseline after matching emergency proportion, and was untestable for temporal period."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration after Platt scaling",
+     "effect": "Pre-Platt slopes 0.41\u20131.29; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02.",
+     "quote": "Pre-Platt calibration slopes ranged 0.41\u20131.29 across all eight cross-population runs; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02."
+    }
+   ],
+   "unlisted_practices": [
+    "Case-level paired bootstrap inference for cross-population model evaluation",
+    "SHAP rank correlation to assess feature-importance transferability"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "South Korea, United States",
+   "sample_size": 184958,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "XGBoost",
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup discrimination concealed by aggregate AUC",
+     "effect": "aggregate AUCs concealed lower within-stratum AUCs (Simpson\u2019s paradox gap 5.0\u201316.5 pp; worst case: aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60)",
+     "quote": "Across the eight cross-population runs, aggregate AUCs concealed substantially lower within-stratum AUCs (Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst case: aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration slope restoration via local recalibration",
+     "effect": "calibration slopes improved from 0.41\u20131.29 pre-Platt scaling to 0.95\u20131.02 following 5-fold cross-validation Platt scaling",
+     "quote": "Pre-Platt calibration slopes ranged 0.41\u20131.29 across all eight cross-population runs; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea; USA",
+ "sample_unit": "surgical cases (INSPIRE n=127,413; MOVER n=57,545)",
+ "sample_size": 184958,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "XGBoost",
+  "logistic regression"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration slope before and after Platt scaling recalibration on external cohort",
+   "effect": "5-fold CV Platt scaling restored calibration slopes from 0.41\u20131.29 to 0.95\u20131.02.",
+   "quote": "Pre-Platt calibration slopes ranged 0.41\u20131.29 across all eight cross-population runs; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of case-mix differences between development and validation cohorts on transferability",
+   "effect": "Asymmetry survived matching on ASA and comorbidity, attenuated to 70\u201386% of baseline after matching emergency proportion.",
+   "quote": "the asymmetry survived matching on ASA and comorbidity, attenuated to 70\u201386% of baseline after matching emergency proportion, and was untestable for temporal period.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Aggregate metrics concealing within-stratum discrimination (Simpson's paradox)",
+   "effect": "Simpson's paradox gap of 5.0\u201316.5 pp; worst case aggregate AUC 0.756 vs within-stratum 0.58\u20130.60.",
+   "quote": "Across the eight cross-population runs, aggregate AUCs concealed substantially lower within-stratum AUCs (Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst case: aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Cross-population AUC and calibration slope of mortality models versus within-stratum performance",
+   "effect": "Aggregate AUCs concealed lower within-stratum AUCs (gap 5.0\u201316.5 pp; worst case aggregate 0.756 vs 0.58\u20130.60); pre-Platt calibration slopes ranged 0.41\u20131.29.",
+   "quote": "Pre-Platt calibration slopes ranged 0.41\u20131.29 across all eight cross-population runs; 5-fold CV Platt scaling restored slopes to 0.95\u20131.02.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Direction asymmetry in external transferability between Korean and US cohorts",
+   "effect": "Cross-continental transferability direction-asymmetric (+8.53 pp, 95% CI 6.91\u201310.24, bootstrap p = 0.001).",
+   "quote": "Cross-continental transferability was markedly direction-asymmetric (+8.53 pp, 95% CI 6.91\u201310.24, bootstrap  p = 0.001)",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Subgroup discrimination metrics",
+   "effect": "Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60.",
+   "quote": "Across the eight cross-population runs, aggregate AUCs concealed substantially lower within-stratum AUCs (Simpson\u2019s paradox gap range 5.0\u201316.5 pp; worst case: aggregate AUC 0.756 vs within-stratum AUCs 0.58\u20130.60).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Bidirectional external validation across cohorts",
+  "Case-level paired bootstrap inference for comparing external validation performance",
+  "Case-level paired bootstrap inference for cross-population model evaluation",
+  "SHAP rank correlation to assess feature-importance transferability"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1265310",
+ "screen": {
+  "id": "epmc:PPR1265310",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration (Platt scaling) and bidirectional external validation before deployment",
+  "user": "none",
+  "reason": "Empirical study testing cross-continental model validation failure modes and specifically evaluating local recalibration (Platt scaling) before and after deployment across external cohorts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local recalibration via Platt scaling"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1265310",
+   "empirical": 0.95,
+   "tests_practice": 0.6,
+   "real_deployment": 0.05
+  }
+ }
+}

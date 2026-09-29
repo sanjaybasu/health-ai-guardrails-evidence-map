@@ -1,0 +1,425 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Multi-country (English, Chinese, Malay, Thai, Persian settings)",
+   "sample_size": 150,
+   "sample_unit": "physician-reviewed records (prospective study; 50 dialogues)",
+   "models_evaluated": [
+    "Qwen3 VL 235B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Chinese",
+    "Malay",
+    "Thai",
+    "Persian"
+   ],
+   "links": [
+    {
+     "rec_id": "R270",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance across patient languages in clinical tasks",
+     "effect": "Performance degraded from high- to low-resource languages: HealthBench 0.3743 to 0.3180; glaucoma accuracy 50.7% to 32.7%; ICU parameter recall 100.0% to 48.5%.",
+     "quote": "LLMs/VLMs performance degraded consistently from high-to low-resource languages across al l tasks."
+    },
+    {
+     "rec_id": "R272",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI performance on non-English inputs, including low-resource languages",
+     "effect": "Radiology macro-F1 fell from 0.2938 to 0.2149-0.2424, consistent with selective pathology suppression; Thai-pivot correction burden 59.0% vs English-pivot 50.7% (p=0.003).",
+     "quote": "Multilingual deployment produced clinically consequential failures, including missed pathology, distorted physiological extraction, and amplified multimodal misclassification, that were invisible to monolingual validation and not reliably flagged by model confidence."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance gaps across language subgroups masked by monolingual validation",
+     "effect": "Failures across languages were invisible to monolingual validation; performance degraded consistently from high- to low-resource languages across all tasks.",
+     "quote": "Multilingual deployment produced clinically consequential failures, including missed pathology, distorted physiological extraction, and amplified multimodal misclassification, that were invisible to monolingual validation and not reliably flagged by model confidence."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ability of model confidence (perplexity) to flag erroneous outputs",
+     "effect": "Perplexity-based confidence failed to flag errors (AUROC 0.41-0.66).",
+     "quote": "perplexity-based confidence failed to flag errors (AUROC 0\u00b741\u20130\u00b766)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Proportion of AI-generated records needing physician edits in prospective study",
+     "effect": "98.7% of records required physician edits; overall modification score 53.6%.",
+     "quote": "In the prospective study, 98\u00b77% of records required physician edits (overall modification score 53\u00b76%); Thai-pivot correction burden (59\u00b70%) exceeded English-pivot (5 0\u00b77%, p=0\u00b7003) and Chinese-direct (51\u00b70%, p=0\u00b7004)."
+    }
+   ],
+   "unlisted_practices": [
+    "Back-translation pivot inference to restore performance in low-resource languages",
+    "Token-level uncertainty toolkit to localise reasoning instability"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 150,
+   "sample_unit": "physician-reviewed records",
+   "models_evaluated": [
+    "Qwen3 VL 235B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Chinese",
+    "Malay",
+    "Thai",
+    "Persian"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "monolingual validation misses multilingual failures",
+     "effect": "Clinically consequential multilingual failures were invisible to monolingual validation; HealthBench 0\u00b73743 to 0\u00b73180 and ICU parameter recall 100\u00b70% to 48\u00b75%.",
+     "quote": "Multilingual deployment produced clinically consequential failures, including missed pathology, distorted physiological extraction, and amplified multimodal misclassification, that were invisible to monolingual validation and not reliably flagged by model confidence."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "brittleness under language variation",
+     "effect": "HealthBench 0\u00b73743 to 0\u00b73180; radiology macro-F1 0\u00b72938 to 0\u00b72149\u20130\u00b72424; glaucoma accuracy 50\u00b77% to 32\u00b77%; ICU parameter recall 100\u00b70% to 48\u00b75%.",
+     "quote": "Key gaps included: HealthBench score declining from 0\u00b73743 to 0\u00b73180; radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, consistent with selective pathology suppression; glaucoma accuracy from 50\u00b77% to 32\u00b77%; ICU parameter recall from 100\u00b70% to 48\u00b75%."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "physician edits to AI records",
+     "effect": "98\u00b77% of records required physician edits; overall modification score 53\u00b76%; Thai-pivot burden 59\u00b70% vs English-pivot 5 0\u00b77%, p=0\u00b7003.",
+     "quote": "In the prospective study, 98\u00b77% of records required physician edits (overall modification score 53\u00b76%); Thai-pivot correction burden (59\u00b70%) exceeded English-pivot (5 0\u00b77%, p=0\u00b7003) and Chinese-direct (51\u00b70%, p=0\u00b7004)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance by language subgroup",
+     "effect": "Performance degraded from high-to low-resource languages: HealthBench 0\u00b73743 to 0\u00b73180, glaucoma accuracy 50\u00b77% to 32\u00b77%, ICU recall 100\u00b70% to 48\u00b75%.",
+     "quote": "Key gaps included: HealthBench score declining from 0\u00b73743 to 0\u00b73180; radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, consistent with selective pathology suppression; glaucoma accuracy from 50\u00b77% to 32\u00b77%; ICU parameter recall from 100\u00b70% to 48\u00b75%."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "confidence detection of errors",
+     "effect": "Instability localized to 40\u201370% of the normalized trajectory; perplexity-based confidence failed to flag errors, AUROC 0\u00b741\u20130\u00b766.",
+     "quote": "Token-level analysis localised instability to mid-chain stages (40\u201370% of the normalised trajectory); perplexity-based confidence failed to flag errors (AUROC 0\u00b741\u20130\u00b766)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinical output accuracy",
+     "effect": "Radiology macro-F1 fell 0\u00b72938 to 0\u00b72149\u20130\u00b72424; glaucoma accuracy 50\u00b77% to 32\u00b77%; ICU parameter recall 100\u00b70% to 48\u00b75%.",
+     "quote": "Key gaps included: HealthBench score declining from 0\u00b73743 to 0\u00b73180; radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, consistent with selective pathology suppression; glaucoma accuracy from 50\u00b77% to 32\u00b77%; ICU parameter recall from 100\u00b70% to 48\u00b75%."
+    }
+   ],
+   "unlisted_practices": [
+    "Use back-translation pivot inference to restore multilingual medical AI performance.",
+    "Use token-level uncertainty analysis to localise cross-lingual reasoning instability."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "Not reported",
+   "sample_size": 150,
+   "sample_unit": "records",
+   "models_evaluated": [
+    "Qwen3 VL 235B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "Chinese",
+    "Malay",
+    "Thai",
+    "Persian"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "proportion of records requiring physician edits",
+     "effect": "98\u00b77% of records required physician edits with overall modification score 53\u00b76%",
+     "quote": "In the prospective study, 98\u00b77% of records required physician edits (overall modification score 53\u00b76%); Thai-pivot correction burden (59\u00b70%) exceeded English-pivot (5 0\u00b77%, p=0\u00b7003) and Chinese-direct (51\u00b70%, p=0\u00b7004)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance degradation from high- to low-resource languages across clinical tasks",
+     "effect": "HealthBench score declined from 0\u00b73743 to 0\u00b73180, radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, glaucoma accuracy from 50\u00b77% to 32\u00b77%, ICU recall from 100\u00b70% to 48\u00b75%",
+     "quote": "Key gaps included: HealthBench score declining from 0\u00b73743 to 0\u00b73180; radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, consistent with selective pathology suppression; glaucoma accuracy from 50\u00b77% to 32\u00b77%; ICU parameter recall from 100\u00b70% to 48\u00b75%."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "error detection by perplexity-based confidence",
+     "effect": "perplexity-based confidence failed to flag errors with AUROC 0\u00b741\u20130\u00b766",
+     "quote": "Token-level analysis localised instability to mid-chain stages (40\u201370% of the normalised trajectory); perplexity-based confidence failed to flag errors (AUROC 0\u00b741\u20130\u00b766)."
+    }
+   ],
+   "unlisted_practices": [
+    "Back-translation pivot inference to restore multilingual model performance",
+    "Token-level uncertainty auditing to localise reasoning instability"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "physician-reviewed records (prospective study; 50 dialogues)",
+ "sample_size": 150,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "English",
+  "Malay",
+  "Persian",
+  "Thai"
+ ],
+ "models_evaluated": [
+  "Qwen3 VL 235B"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance gaps across language subgroups masked by monolingual validation",
+   "effect": "Failures across languages were invisible to monolingual validation; performance degraded consistently from high- to low-resource languages across all tasks.",
+   "quote": "Multilingual deployment produced clinically consequential failures, including missed pathology, distorted physiological extraction, and amplified multimodal misclassification, that were invisible to monolingual validation and not reliably flagged by model confidence.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Ability of model confidence (perplexity) to flag erroneous outputs",
+   "effect": "Perplexity-based confidence failed to flag errors (AUROC 0.41-0.66).",
+   "quote": "perplexity-based confidence failed to flag errors (AUROC 0\u00b741\u20130\u00b766).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Proportion of AI-generated records needing physician edits in prospective study",
+   "effect": "98.7% of records required physician edits; overall modification score 53.6%.",
+   "quote": "In the prospective study, 98\u00b77% of records required physician edits (overall modification score 53\u00b76%); Thai-pivot correction burden (59\u00b70%) exceeded English-pivot (5 0\u00b77%, p=0\u00b7003) and Chinese-direct (51\u00b70%, p=0\u00b7004).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "monolingual validation misses multilingual failures",
+   "effect": "Clinically consequential multilingual failures were invisible to monolingual validation; HealthBench 0\u00b73743 to 0\u00b73180 and ICU parameter recall 100\u00b70% to 48\u00b75%.",
+   "quote": "Multilingual deployment produced clinically consequential failures, including missed pathology, distorted physiological extraction, and amplified multimodal misclassification, that were invisible to monolingual validation and not reliably flagged by model confidence.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "brittleness under language variation",
+   "effect": "HealthBench 0\u00b73743 to 0\u00b73180; radiology macro-F1 0\u00b72938 to 0\u00b72149\u20130\u00b72424; glaucoma accuracy 50\u00b77% to 32\u00b77%; ICU parameter recall 100\u00b70% to 48\u00b75%.",
+   "quote": "Key gaps included: HealthBench score declining from 0\u00b73743 to 0\u00b73180; radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, consistent with selective pathology suppression; glaucoma accuracy from 50\u00b77% to 32\u00b77%; ICU parameter recall from 100\u00b70% to 48\u00b75%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "physician edits to AI records",
+   "effect": "98\u00b77% of records required physician edits; overall modification score 53\u00b76%; Thai-pivot burden 59\u00b70% vs English-pivot 5 0\u00b77%, p=0\u00b7003.",
+   "quote": "In the prospective study, 98\u00b77% of records required physician edits (overall modification score 53\u00b76%); Thai-pivot correction burden (59\u00b70%) exceeded English-pivot (5 0\u00b77%, p=0\u00b7003) and Chinese-direct (51\u00b70%, p=0\u00b7004).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "clinical output accuracy",
+   "effect": "Radiology macro-F1 fell 0\u00b72938 to 0\u00b72149\u20130\u00b72424; glaucoma accuracy 50\u00b77% to 32\u00b77%; ICU parameter recall 100\u00b70% to 48\u00b75%.",
+   "quote": "Key gaps included: HealthBench score declining from 0\u00b73743 to 0\u00b73180; radiology macro-F1 from 0\u00b72938 to 0\u00b72149\u20130\u00b72424, consistent with selective pathology suppression; glaucoma accuracy from 50\u00b77% to 32\u00b77%; ICU parameter recall from 100\u00b70% to 48\u00b75%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R270",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R272",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Back-translation pivot inference to restore multilingual model performance",
+  "Back-translation pivot inference to restore performance in low-resource languages",
+  "Token-level uncertainty auditing to localise reasoning instability",
+  "Token-level uncertainty toolkit to localise reasoning instability",
+  "Use back-translation pivot inference to restore multilingual medical AI performance.",
+  "Use token-level uncertainty analysis to localise cross-lingual reasoning instability."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1235566",
+ "screen": {
+  "id": "epmc:PPR1235566",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "inference paradigms (back-translation pivot) and token-level uncertainty detection toolkit",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates multilingual safety degradations across clinical tasks, tests deployment inference paradigms (back-translation pivot vs native language) and an uncertainty audit toolkit to detect unsafe outputs, including physician review.",
+  "jev": {
+   "id": "epmc:PPR1235566",
+   "empirical": 0.97,
+   "tests_practice": 0.83,
+   "real_deployment": 0.67
+  }
+ }
+}

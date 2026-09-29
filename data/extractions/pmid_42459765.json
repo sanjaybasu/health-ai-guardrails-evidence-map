@@ -1,0 +1,349 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient"
+   ],
+   "country": "Not reported (public YouTube corpus; authors affiliated in Sweden)",
+   "sample_size": 50,
+   "sample_unit": "audio clips (medical-education speech, ~10 min each)",
+   "models_evaluated": [
+    "Gemini Flash 2.5",
+    "Vox Mini",
+    "Speechmatics",
+    "Whisper Turbo v3",
+    "Whisper Large v3",
+    "MedASR",
+    "Wav2Vec 2.0",
+    "NeMo QuartzNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether cross-model disagreement flags human-verified ASR transcript errors for review",
+     "effect": "Flagging positions with A \u2264 6 selected 28.6% of positions and captured 93.7% of HC errors; A \u2264 5 selected 18.1% and captured 81.9%. High-risk band error rate 56.3% vs 0.6% low-risk.",
+     "quote": "Flagging tokens with A \u2264 6 selected 28.6% of positions and captured 93.7% of HC errors ( Figure 6B )."
+    },
+    {
+     "rec_id": "R367",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference-free sampling of transcript regions for review to estimate real-world accuracy",
+     "effect": "Shared-wrong errors where all 8 models agreed but were wrong: 78 of 4,914 HC errors (1.59%); recommends periodic random audit of high-confidence spans.",
+     "quote": "Among 4,914 HC errors, 78 occurred at A = 8, corresponding to a shared-wrong rate of 1.59%."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Whether disagreement-based highlighting could focus clinician review on error-prone spans",
+     "effect": "Concept validated only offline: high recall at modest PPV (56.3% at A \u2264 3; ~21% at A \u2264 6). No clinician usability study was conducted.",
+     "quote": "At the broader A \u2264 6 threshold, the estimated PPV was approximately 21%, meaning that the majority of reviewed tokens would not contain verified errors."
+    }
+   ],
+   "unlisted_practices": [
+    "Using multi-ASR cross-model disagreement as a reference-free triage signal for prioritizing human review of transcripts"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient"
+   ],
+   "country": "Sweden",
+   "sample_size": 50,
+   "sample_unit": "medical-education audio clips",
+   "models_evaluated": [
+    "Gemini Flash 2.5",
+    "Vox Mini",
+    "Speechmatics",
+    "Whisper Turbo v3",
+    "Whisper Large v3",
+    "MedASR",
+    "Wav2Vec 2.0",
+    "NeMo QuartzNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement across ASR systems",
+     "effect": "Vox Mini 93.3% identical; Gemini 92.7%; Whisper Turbo 92.5%; Speechmatics 91.7%; MedASR 72.7%; NeMo 72.4%.",
+     "quote": "Vox Mini achieved the highest mean agreement (93.3%; SD = 3.2), whereas MedASR and NeMo QuartzNet showed substantially lower agreement (72.7%; SD = 12.2; and 72.4%; SD = 9.2, respectively)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Risk-band calibration to HC errors",
+     "effect": "HC error rates rose from 0.6% (A \u22657; 71.5% positions) to 17.2% (A = 4\u20136; 25.8%) and 56.3% (A \u2264 3; 2.8%).",
+     "quote": "Error rates increased monotonically across risk bands."
+    },
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Review workload to recover errors",
+     "effect": "Flagging A \u2264 6 selected 28.6% of positions and captured 93.7% of HC errors.",
+     "quote": "Flagging tokens with A \u2264 6 selected 28.6% of positions and captured 93.7% of HC errors ( Figure 6B )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Shared-wrong high-agreement transcription errors",
+     "effect": "Among 4,914 HC errors, 78 occurred at A = 8; shared-wrong rate was 1.59%.",
+     "quote": "Among 4,914 HC errors, 78 occurred at A = 8, corresponding to a shared-wrong rate of 1.59%."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Accent subgroup risk profiles",
+     "effect": "Low-risk proportions differed: 76.6% American (n=8), 75.9% Australian (n=8), 69.2% Singaporean (n=10); subgroup estimates were exploratory.",
+     "quote": "Among higher-representation groups, low-risk proportions were 76.6% (American; n = 8), 75.9% (Australian; n = 8), and 69.2% (Singaporean; n = 10)."
+    }
+   ],
+   "unlisted_practices": [
+    "Leave-one-model-out consensus scoring for reference-free ASR quality estimation"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "Sweden",
+   "sample_size": 50,
+   "sample_unit": "audio clips",
+   "models_evaluated": [
+    "Gemini Flash 2.5",
+    "Vox Mini",
+    "Speechmatics",
+    "Whisper Turbo v3",
+    "Whisper Large v3",
+    "MedASR",
+    "Wav2Vec 2.0",
+    "NeMo QuartzNet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Cross-model disagreement among automatic speech recognition systems as a reference-free signal to localize transcription uncertainty and prioritize human review"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Sweden",
+ "sample_unit": "audio clips (medical-education speech, ~10 min each)",
+ "sample_size": 50,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Gemini Flash 2.5",
+  "MedASR",
+  "NeMo QuartzNet",
+  "Speechmatics",
+  "Vox Mini",
+  "Wav2Vec 2.0",
+  "Whisper Large v3",
+  "Whisper Turbo v3"
+ ],
+ "links": [
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Whether disagreement-based highlighting could focus clinician review on error-prone spans",
+   "effect": "Concept validated only offline: high recall at modest PPV (56.3% at A \u2264 3; ~21% at A \u2264 6). No clinician usability study was conducted.",
+   "quote": "At the broader A \u2264 6 threshold, the estimated PPV was approximately 21%, meaning that the majority of reviewed tokens would not contain verified errors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Risk-band calibration to HC errors",
+   "effect": "HC error rates rose from 0.6% (A \u22657; 71.5% positions) to 17.2% (A = 4\u20136; 25.8%) and 56.3% (A \u2264 3; 2.8%).",
+   "quote": "Error rates increased monotonically across risk bands.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R518",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Review workload to recover errors",
+   "effect": "Flagging A \u2264 6 selected 28.6% of positions and captured 93.7% of HC errors.",
+   "quote": "Flagging tokens with A \u2264 6 selected 28.6% of positions and captured 93.7% of HC errors ( Figure 6B ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R479",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R367",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Cross-model disagreement among automatic speech recognition systems as a reference-free signal to localize transcription uncertainty and prioritize human review",
+  "Leave-one-model-out consensus scoring for reference-free ASR quality estimation",
+  "Using multi-ASR cross-model disagreement as a reference-free triage signal for prioritizing human review of transcripts"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42459765",
+ "screen": {
+  "id": "pmid:42459765",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "cross-model ASR disagreement to prioritize human review",
+  "user": "clinician_or_staff",
+  "reason": "The study tests an operational quality-assurance and human-in-the-loop guardrail (using cross-model disagreement to prioritize and focus human review of speech-to-text transcripts) on a medical speech corpus.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "cross-model disagreement for prioritizing human review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42459765",
+   "empirical": 0.92,
+   "tests_practice": 0.5,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,360 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 139180,
+   "sample_unit": "ED encounters (62,585 + 34,244 at location 1; 24,992 + 17,359 at location 2)",
+   "models_evaluated": [
+    "random forest",
+    "logistic regression with L1 regularization",
+    "K-nearest neighbors"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model AUC when transferred between hospitals with different populations and settings",
+     "effect": "Model trained at location 2 and tested at location 1 had AUC 0.69 pre-COVID (drop of 0.09) and 0.51 during COVID-era (drop of 0.27) versus location 1-trained model.",
+     "quote": "For example, a model trained at location 2 and tested at location 1 had an AUC of 0.69 during pre-COVID (a drop of 0.09 from the location 1 trained model) and an AUC 0.51 during the COVID-era (a drop of 0.27 from the location 1 trained model)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model performance when applied to new site (spatial) and new time period (temporal drift)",
+     "effect": "Pre-COVID model performed well in COVID-era at location 1 (0.82 vs 0.78) but not at location 2 (0.56 vs 0.64/0.66); location 2 to 1 transfer fell to 0.51.",
+     "quote": "We evaluated the impact of sudden temporal data drift and found that a model trained pre-COVID performed well during the COVID-era at location 1, but not at location 2 (see Figure 3 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across sites, reported separately by site",
+     "effect": "Baseline AUC for ARI boarders 0.794/0.808 at location 1 versus best 0.642 at location 2; transferred models performed worse (0.51 vs 0.78).",
+     "quote": "For location 2, we found that ARI boarders during the COVID-era performed best, with an AUC of 0.642."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External-site and later-period validation performance versus internal performance",
+     "effect": "Models transferred from location 2 to location 1 performed much worse than local models (AUC 0.51 vs 0.78), showing internal performance can overstate performance at other sites.",
+     "quote": "We found that models trained at location 2 and tested at location 1 performed significantly worse than models that were trained/tested at location 1, while models trained at location 1 and tested at location 2 performed similar (or even better) to those trained/tested at location 2."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 139180,
+   "sample_unit": "ED-patient encounters",
+   "models_evaluated": [
+    "logistic regression with L1 regularization",
+    "K-nearest neighbors",
+    "random forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external site transfer AUC",
+     "effect": "Transferred location 2\u21921 model AUC 0.51 during COVID-era vs 0.78 for the location 1-trained model.",
+     "quote": "Models that were transferred from location 2 to location 1 performed worse than models trained at location 1 (0.51 vs 0.78)."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local versus transferred AUC",
+     "effect": "Location 2\u21921 AUC 0.69 pre-COVID (drop 0.09) and 0.51 COVID-era (drop 0.27).",
+     "quote": "For example, a model trained at location 2 and tested at location 1 had an AUC of 0.69 during pre-COVID (a drop of 0.09 from the location 1 trained model) and an AUC 0.51 during the COVID-era (a drop of 0.27 from the location 1 trained model)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "spatial dataset shift",
+     "effect": "Location 2\u21921 AUC 0.69 pre-COVID (drop 0.09) and 0.51 COVID-era (drop 0.27).",
+     "quote": "For example, a model trained at location 2 and tested at location 1 had an AUC of 0.69 during pre-COVID (a drop of 0.09 from the location 1 trained model) and an AUC 0.51 during the COVID-era (a drop of 0.27 from the location 1 trained model)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "site-specific transferability",
+     "effect": "Location 2\u21921 significantly worse; location 1\u21922 similar or better; COVID-era location2\u21921 AUC 0.51 vs 0.78 local.",
+     "quote": "We found that models trained at location 2 and tested at location 1 performed significantly worse than models that were trained/tested at location 1, while models trained at location 1 and tested at location 2 performed similar (or even better) to those trained/tested at location 2."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "temporal drift during pandemic",
+     "effect": "Location 1 pre-COVID model AUC 0.82 vs COVID-era 0.78/0.76; location 2 pre-COVID model 0.56 vs COVID-era 0.64/0.66.",
+     "quote": "We evaluated the impact of sudden temporal data drift and found that a model trained pre-COVID performed well during the COVID-era at location 1, but not at location 2 (see Figure 3 )."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "extension to another hospital",
+     "effect": "Transferred location2\u21921 model performed worse: AUC 0.51 vs 0.78 in COVID-era.",
+     "quote": "Overall, our findings reinforce prior research that suggests models trained (or conceived) at one location and tested at another location may not perform well, and extreme care is needed when attempting to apply models across locations."
+    }
+   ],
+   "unlisted_practices": [
+    "Sensitivity testing of ED-crowding prediction performance across forecast horizons and crowding percentile thresholds."
+   ]
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 139180,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "Random forest",
+    "Logistic regression",
+    "K-nearest neighbors"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination under spatial data drift across hospital sites",
+     "effect": "AUC dropped from 0.78 for the local model to 0.51 for a model transferred from location 2 to location 1 during the COVID-era.",
+     "quote": "Models that were transferred from location 2 to location 1 performed worse than models trained at location 1 (0.51 vs 0.78)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model performance generalization across hospital sites",
+     "effect": "AUC was 0.69 pre-COVID (0.09 drop) and 0.51 during COVID-era (0.27 drop) when a model trained at location 2 was tested at location 1, compared to location 1 models.",
+     "quote": "For example, a model trained at location 2 and tested at location 1 had an AUC of 0.69 during pre-COVID (a drop of 0.09 from the location 1 trained model) and an AUC 0.51 during the COVID-era (a drop of 0.27 from the location 1 trained model)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ED encounters (62,585 + 34,244 at location 1; 24,992 + 17,359 at location 2)",
+ "sample_size": 139180,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "K-nearest neighbors",
+  "Logistic regression",
+  "Random forest",
+  "logistic regression with L1 regularization",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model AUC when transferred between hospitals with different populations and settings",
+   "effect": "Model trained at location 2 and tested at location 1 had AUC 0.69 pre-COVID (drop of 0.09) and 0.51 during COVID-era (drop of 0.27) versus location 1-trained model.",
+   "quote": "For example, a model trained at location 2 and tested at location 1 had an AUC of 0.69 during pre-COVID (a drop of 0.09 from the location 1 trained model) and an AUC 0.51 during the COVID-era (a drop of 0.27 from the location 1 trained model).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "extension to another hospital",
+   "effect": "Transferred location2\u21921 model performed worse: AUC 0.51 vs 0.78 in COVID-era.",
+   "quote": "Overall, our findings reinforce prior research that suggests models trained (or conceived) at one location and tested at another location may not perform well, and extreme care is needed when attempting to apply models across locations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance variation across sites, reported separately by site",
+   "effect": "Baseline AUC for ARI boarders 0.794/0.808 at location 1 versus best 0.642 at location 2; transferred models performed worse (0.51 vs 0.78).",
+   "quote": "For location 2, we found that ARI boarders during the COVID-era performed best, with an AUC of 0.642.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External-site and later-period validation performance versus internal performance",
+   "effect": "Models transferred from location 2 to location 1 performed much worse than local models (AUC 0.51 vs 0.78), showing internal performance can overstate performance at other sites.",
+   "quote": "We found that models trained at location 2 and tested at location 1 performed significantly worse than models that were trained/tested at location 1, while models trained at location 1 and tested at location 2 performed similar (or even better) to those trained/tested at location 2.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "local versus transferred AUC",
+   "effect": "Location 2\u21921 AUC 0.69 pre-COVID (drop 0.09) and 0.51 COVID-era (drop 0.27).",
+   "quote": "For example, a model trained at location 2 and tested at location 1 had an AUC of 0.69 during pre-COVID (a drop of 0.09 from the location 1 trained model) and an AUC 0.51 during the COVID-era (a drop of 0.27 from the location 1 trained model).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "temporal drift during pandemic",
+   "effect": "Location 1 pre-COVID model AUC 0.82 vs COVID-era 0.78/0.76; location 2 pre-COVID model 0.56 vs COVID-era 0.64/0.66.",
+   "quote": "We evaluated the impact of sudden temporal data drift and found that a model trained pre-COVID performed well during the COVID-era at location 1, but not at location 2 (see Figure 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Sensitivity testing of ED-crowding prediction performance across forecast horizons and crowding percentile thresholds."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36308445",
+ "screen": {
+  "id": "pmid:36308445",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and drift assessment (retraining locally vs transferring models across sites/time)",
+  "user": "none",
+  "reason": "Evaluates predictive models for ED crowding under spatial (cross-site transfer) and temporal (pandemic shift) data drift to inform implementation considerations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "spatial and temporal drift monitoring/evaluation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36308445",
+   "empirical": 0.96,
+   "tests_practice": 0.1,
+   "real_deployment": 0.04
+  }
+ }
+}

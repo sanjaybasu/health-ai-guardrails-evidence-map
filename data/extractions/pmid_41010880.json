@@ -1,0 +1,334 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Mexico",
+   "sample_size": 200,
+   "sample_unit": "arterial blood gas cases",
+   "models_evaluated": [
+    "ChatGPT GPT-4o",
+    "Copilot GPT-4",
+    "Gemini 1.5-flash/2.5-flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement with expert reference on primary and secondary acid-base disorders, LLM-S (user interpretation) vs LLM-I (LLM interpretation)",
+     "effect": "APSD kappa rose from 0.61-0.65 with LLM interpretation (LLM-I) to 0.81-0.91 with user-supervised interpretation (LLM-S); AMA kappa from 0.48-0.76 to \u22650.85.",
+     "quote": "In the LLM-S method, APSD agreement improved substantially, with \u03ba = 0.91 for ChatGPT and \u03ba = 0.81 for both Copilot and Gemini."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Comparison of LLM-assisted evaluation methods with vs without user supervision; overreliance not assessed",
+     "effect": "Supervised (human-in-the-loop) use improved APSD agreement (\u03ba 0.81-0.91 vs 0.61-0.65), but no comparison of users with vs without AI and overreliance was not evaluated.",
+     "quote": "One is that we did not evaluate whether LLM-assisted interpretation improves learners understanding of acid\u2013base disorders or, conversely, fosters an overreliance on model support."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM behavior under input variation and prompt design during pilot testing (forced disorder detection, overinterpretation, hypoalbuminemia)",
+     "effect": "Pilot testing showed LLMs forced detection of a disorder when 'no disorder' option was absent, overinterpreted mild electrolyte deviations, and misattributed hypoalbuminemia to liver disease and respiratory alkalosis.",
+     "quote": "Furthermore, in the pilot testing we found that including cases with hypoalbuminemia prompted the LLM to attribute the finding to chronic liver disease and suggest the presence of respiratory alkalosis, even when the remaining data did not support such disorder."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "LLM calculation and formula errors in acid-base compensation computations",
+     "effect": "Errors under LLM-S were few: Copilot had two (chronic formula misapplied; arithmetic sign error); ChatGPT one and Gemini four failures to impute a primary disorder. No calculation issues in albumin-corrected anion gap.",
+     "quote": "Errors in the LLM-S evaluations included a failure to impute a primary disorder in a mixed case for ChatGPT; two errors for Copilot (a misapplication of a chronic compensation formula to an acute metabolic alkalosis, and an incorrect directional change in bicarbonate for respiratory alkalosis due to an arithmetic sign error); and four failures to impute a primary disorder for Gemini (three mixed cases and one simple case)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement of three general-purpose LLMs against pathologist reference standard for ABG interpretation",
+     "effect": "Primary disorder agreement \u03ba \u2265 0.88 for all LLMs; secondary disorder agreement varied by model and method (ChatGPT LLM-S \u03ba = 0.91 vs Copilot/Gemini 0.81).",
+     "quote": "Agreement for identifying the primary acid-base (APD) disorder was strong across all approaches (Cohen's \u03ba \u2265 0.88)."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured, algorithmic conditional prompting with user-directed calculation steps to improve LLM accuracy",
+    "Use of LLMs as educational tools for trainees to learn to recognize LLM errors"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Mexico",
+   "sample_size": 200,
+   "sample_unit": "ABG cases",
+   "models_evaluated": [
+    "ChatGPT GPT-4o",
+    "Copilot GPT-4",
+    "Gemini 1.5-flash",
+    "Gemini 2.5-flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "mixed-disorder interpretation agreement",
+     "effect": "LLM-S APSD \u03ba = 0.91 for ChatGPT and \u03ba = 0.81 for Copilot/Gemini; LLM-I \u03ba = 0.61\u20130.65.",
+     "quote": "The improved performance of the LLM-S (human-in-the-loop) approach, particularly in APSD analysis, underscores the importance of strict user supervision."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "mixed acid-base disorder identification",
+     "effect": "LLM-I APSD: ChatGPT \u03ba = 0.65, Copilot \u03ba = 0.61, Gemini \u03ba = 0.62; LLM-S: \u03ba = 0.91, 0.81, 0.81.",
+     "quote": "For identifying both primary and secondary disorders regardless of order (APSD), LLM-I showed moderate agreement (ChatGPT \u03ba = 0.65, Copilot \u03ba = 0.61, Gemini \u03ba = 0.62), whereas LLM-S achieved strong agreement (ChatGPT \u03ba = 0.91, Copilot \u03ba = 0.81, Gemini \u03ba = 0.81)."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "compensation formula calculation errors",
+     "effect": "Only Copilot made formula-related errors, limited to two cases (1%).",
+     "quote": "Notably, only Copilot made formula-related errors, and these were limited to two cases (1%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Mexico",
+   "sample_size": 200,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "ChatGPT GPT-4o",
+    "Copilot GPT-4",
+    "Gemini 1.5-flash",
+    "Gemini 2.5-flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Spanish"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "agreement on primary and secondary acid-base disorders",
+     "effect": "APSD agreement was moderate for standalone LLM-I (ChatGPT \u03ba=0.65, Copilot \u03ba=0.61, Gemini \u03ba=0.62) but strong for supervised LLM-S (ChatGPT \u03ba=0.91, Copilot \u03ba=0.81, Gemini \u03ba=0.81).",
+     "quote": "For identifying both primary and secondary disorders regardless of order (APSD), LLM-I showed moderate agreement (ChatGPT \u03ba = 0.65, Copilot \u03ba = 0.61, Gemini \u03ba = 0.62), whereas LLM-S achieved strong agreement (ChatGPT \u03ba = 0.91, Copilot \u03ba = 0.81, Gemini \u03ba = 0.81)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Mexico",
+ "sample_unit": "arterial blood gas cases",
+ "sample_size": 200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Spanish"
+ ],
+ "models_evaluated": [
+  "ChatGPT GPT-4o",
+  "Copilot GPT-4",
+  "Gemini 1.5-flash",
+  "Gemini 1.5-flash/2.5-flash",
+  "Gemini 2.5-flash"
+ ],
+ "links": [
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement with expert reference on primary and secondary acid-base disorders, LLM-S (user interpretation) vs LLM-I (LLM interpretation)",
+   "effect": "APSD kappa rose from 0.61-0.65 with LLM interpretation (LLM-I) to 0.81-0.91 with user-supervised interpretation (LLM-S); AMA kappa from 0.48-0.76 to \u22650.85.",
+   "quote": "In the LLM-S method, APSD agreement improved substantially, with \u03ba = 0.91 for ChatGPT and \u03ba = 0.81 for both Copilot and Gemini.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "LLM calculation and formula errors in acid-base compensation computations",
+   "effect": "Errors under LLM-S were few: Copilot had two (chronic formula misapplied; arithmetic sign error); ChatGPT one and Gemini four failures to impute a primary disorder. No calculation issues in albumin-corrected anion gap.",
+   "quote": "Errors in the LLM-S evaluations included a failure to impute a primary disorder in a mixed case for ChatGPT; two errors for Copilot (a misapplication of a chronic compensation formula to an acute metabolic alkalosis, and an incorrect directional change in bicarbonate for respiratory alkalosis due to an arithmetic sign error); and four failures to impute a primary disorder for Gemini (three mixed cases and one simple case).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM behavior under input variation and prompt design during pilot testing (forced disorder detection, overinterpretation, hypoalbuminemia)",
+   "effect": "Pilot testing showed LLMs forced detection of a disorder when 'no disorder' option was absent, overinterpreted mild electrolyte deviations, and misattributed hypoalbuminemia to liver disease and respiratory alkalosis.",
+   "quote": "Furthermore, in the pilot testing we found that including cases with hypoalbuminemia prompted the LLM to attribute the finding to chronic liver disease and suggest the presence of respiratory alkalosis, even when the remaining data did not support such disorder.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Agreement of three general-purpose LLMs against pathologist reference standard for ABG interpretation",
+   "effect": "Primary disorder agreement \u03ba \u2265 0.88 for all LLMs; secondary disorder agreement varied by model and method (ChatGPT LLM-S \u03ba = 0.91 vs Copilot/Gemini 0.81).",
+   "quote": "Agreement for identifying the primary acid-base (APD) disorder was strong across all approaches (Cohen's \u03ba \u2265 0.88).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "agreement on primary and secondary acid-base disorders",
+   "effect": "APSD agreement was moderate for standalone LLM-I (ChatGPT \u03ba=0.65, Copilot \u03ba=0.61, Gemini \u03ba=0.62) but strong for supervised LLM-S (ChatGPT \u03ba=0.91, Copilot \u03ba=0.81, Gemini \u03ba=0.81).",
+   "quote": "For identifying both primary and secondary disorders regardless of order (APSD), LLM-I showed moderate agreement (ChatGPT \u03ba = 0.65, Copilot \u03ba = 0.61, Gemini \u03ba = 0.62), whereas LLM-S achieved strong agreement (ChatGPT \u03ba = 0.91, Copilot \u03ba = 0.81, Gemini \u03ba = 0.81).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Structured, algorithmic conditional prompting with user-directed calculation steps to improve LLM accuracy",
+  "Use of LLMs as educational tools for trainees to learn to recognize LLM errors"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41010880",
+ "screen": {
+  "id": "pmid:41010880",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "human-in-the-loop supervision",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates medical students using LLMs for arterial blood gas interpretation, comparing unsupervised LLM interpretation to an LLM interpretation with human-in-the-loop supervision model.",
+  "jev": {
+   "id": "pmid:41010880",
+   "empirical": 0.97,
+   "tests_practice": 0.87,
+   "real_deployment": 0.03
+  }
+ }
+}

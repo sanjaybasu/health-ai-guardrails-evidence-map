@@ -1,0 +1,245 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Maryland avoidable hospitalization predictive model (Medicaid and Medicare versions)",
+    "Unadapted model (Medicare coefficients applied to Medicaid)"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Predictive performance of population-adapted vs unadapted model in Medicaid",
+     "effect": "Model trained on each population performed well in both; applying Medicare coefficients to Medicaid (unadapted) showed poor performance relative to the adapted model.",
+     "quote": "The unadapted Medicaid model displayed poor performance relative to the adapted model."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance when model transferred to a new population without re-evaluation",
+     "effect": "Risk factors and weightings differed, sometimes dramatically, across populations; unadapted model applied to Medicaid performed poorly.",
+     "quote": "However, the most salient risk factors and their relative weightings differed, sometimes dramatically, across the 2 populations."
+    }
+   ],
+   "unlisted_practices": [
+    "Inspecting driving risk factors behind predictive model scores across populations"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "Medicaid and Medicare enrollees",
+   "models_evaluated": [
+    "Avoidable hospitalization predictive model adapted to Medicaid",
+    "Avoidable hospitalization predictive model adapted to Medicare",
+    "Unadapted Medicaid model using Medicare coefficients"
+   ],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Predictive performance with versus without target-population adaptation",
+     "effect": "The unadapted Medicaid model performed poorly relative to the adapted model; numerical performance estimates were not reported.",
+     "quote": "The unadapted Medicaid model displayed poor performance relative to the adapted model."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of Medicare model coefficients to Medicaid enrollees",
+     "effect": "Applying Medicare coefficients to Medicaid produced poor performance relative to the Medicaid-adapted model; numerical performance estimates were not reported.",
+     "quote": "The unadapted Medicaid model displayed poor performance relative to the adapted model."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "enrollees",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": true,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model performance",
+     "effect": "The unadapted model applied to the Medicaid population performed poorly compared to the model adapted to that specific population.",
+     "quote": "The unadapted Medicaid model displayed poor performance relative to the adapted model."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance generalization",
+     "effect": "The unadapted Medicaid model performed poorly relative to the adapted model, highlighting the hazard of applying a model beyond its initially evaluated population.",
+     "quote": "The unadapted Medicaid model displayed poor performance relative to the adapted model."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": null,
+ "population": {
+  "medicaid": true,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Avoidable hospitalization predictive model adapted to Medicaid",
+  "Avoidable hospitalization predictive model adapted to Medicare",
+  "Maryland avoidable hospitalization predictive model (Medicaid and Medicare versions)",
+  "Unadapted Medicaid model using Medicare coefficients",
+  "Unadapted model (Medicare coefficients applied to Medicaid)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive performance of population-adapted vs unadapted model in Medicaid",
+   "effect": "Model trained on each population performed well in both; applying Medicare coefficients to Medicaid (unadapted) showed poor performance relative to the adapted model.",
+   "quote": "The unadapted Medicaid model displayed poor performance relative to the adapted model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance when model transferred to a new population without re-evaluation",
+   "effect": "Risk factors and weightings differed, sometimes dramatically, across populations; unadapted model applied to Medicaid performed poorly.",
+   "quote": "However, the most salient risk factors and their relative weightings differed, sometimes dramatically, across the 2 populations.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Inspecting driving risk factors behind predictive model scores across populations"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:39103294",
+ "screen": {
+  "id": "pmid:39103294",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "local recalibration/retraining on target population",
+  "user": "none",
+  "reason": "Evaluates the impact of adapting/retraining a predictive risk model to a specific target population versus deploying an unadapted model across distinct publicly insured populations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "population-specific model adaptation and retraining"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39103294",
+   "empirical": 0.9,
+   "tests_practice": 0.77,
+   "real_deployment": 0.28
+  }
+ }
+}

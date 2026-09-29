@@ -1,0 +1,260 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 3643,
+   "sample_unit": "de-identified clinical notes",
+   "models_evaluated": [
+    "Llama 3.2 3B Instruct",
+    "Llama 3.1 8B Instruct",
+    "DeepSeek-R1-Distill-Llama-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM classification accuracy sensitivity to temperature, model size, and prompt examples",
+     "effect": "Accuracy ranged from 51.9% to 70.2% across 12 configurations; 3B without examples had TPR of 2%; temperature effects varied by model size.",
+     "quote": "The pre-trained models demonstrated varying levels of accuracy depending on the model size, temperature setting, and with and without examples ( Table 1 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM accuracy detecting stigmatizing language versus human-annotated reference standard",
+     "effect": "Best configuration (8B, temp 0.25, examples) had 70.2% accuracy, TPR 94.1%, TNR 47.4%; many false positives on neutral clinical descriptions.",
+     "quote": "The best performance in terms of overall accuracy was the 8B (largest) model with a temperature of 0.25 (smallest) with examples, which achieved an overall accuracy of 70.2%."
+    }
+   ],
+   "unlisted_practices": [
+    "Using LLMs to detect stigmatizing language in clinical documentation",
+    "Few-shot examples in prompts to improve classification accuracy",
+    "Tuning model size and temperature by note type"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 3643,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "hugging-quants/Llama-3.2-3B-Instruct-Q8_0-GGUF",
+    "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF",
+    "lmstudio-community/DeepSeek-R1-Distill-Llama-8B-GGUF"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "stigmatizing-language classification errors",
+     "effect": "Best model TPR was 94.1% but TNR was 47.4%; worst model accuracy was 51.9%.",
+     "quote": "This model had the best overall True Positive Rate (TPR; Predicting \u201cStigmatizing\u201d as \u201cStigmatizing\u201d) at 94.1% although it performed the worst overall True Negative Rate (TNR; Predicting \u201cNot Stigmatizing\u201d as \u201cNot Stigmatizing\u201d) at 47.4%."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy by few-shot prompting",
+     "effect": "Six no-example configurations were bottom 6 for overall accuracy, but top 6 for TNR.",
+     "quote": "Of the 12 overall variations, the 6 models without examples made up the bottom 6, the worst performers in terms of overall accuracy, although they were the top 6 performers in terms of TNR."
+    }
+   ],
+   "unlisted_practices": [
+    "Compare LLM model size, temperature settings, and few-shot examples for stigmatizing-language classification.",
+    "Evaluate stigmatizing-language detection performance by clinical note type."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 3643,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "Llama-3.2-3B-Instruct",
+    "Meta-Llama-3.1-8B-Instruct",
+    "DeepSeek-R1-Distill-Llama-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "clinical notes",
+ "sample_size": 3643,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1-Distill-Llama-8B",
+  "Llama 3.1 8B Instruct",
+  "Llama 3.2 3B Instruct",
+  "Llama-3.2-3B-Instruct",
+  "Meta-Llama-3.1-8B-Instruct",
+  "hugging-quants/Llama-3.2-3B-Instruct-Q8_0-GGUF",
+  "lmstudio-community/DeepSeek-R1-Distill-Llama-8B-GGUF",
+  "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF"
+ ],
+ "links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM accuracy detecting stigmatizing language versus human-annotated reference standard",
+   "effect": "Best configuration (8B, temp 0.25, examples) had 70.2% accuracy, TPR 94.1%, TNR 47.4%; many false positives on neutral clinical descriptions.",
+   "quote": "The best performance in terms of overall accuracy was the 8B (largest) model with a temperature of 0.25 (smallest) with examples, which achieved an overall accuracy of 70.2%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "accuracy by few-shot prompting",
+   "effect": "Six no-example configurations were bottom 6 for overall accuracy, but top 6 for TNR.",
+   "quote": "Of the 12 overall variations, the 6 models without examples made up the bottom 6, the worst performers in terms of overall accuracy, although they were the top 6 performers in terms of TNR.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Compare LLM model size, temperature settings, and few-shot examples for stigmatizing-language classification.",
+  "Evaluate stigmatizing-language detection performance by clinical note type.",
+  "Few-shot examples in prompts to improve classification accuracy",
+  "Tuning model size and temperature by note type",
+  "Using LLMs to detect stigmatizing language in clinical documentation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41937804",
+ "screen": {
+  "id": "pmid:41937804",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt configuration (temperature settings and example prompts)",
+  "user": "none",
+  "reason": "The study tests deployment/configuration choices (temperature settings and inclusion of few-shot example prompts) on LLM accuracy for detecting stigmatizing language in retrospective clinical notes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "hyperparameter and prompt optimization (temperature tuning, few-shot examples)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41937804",
+   "empirical": 0.97,
+   "tests_practice": 0.2,
+   "real_deployment": 0.05
+  }
+ }
+}

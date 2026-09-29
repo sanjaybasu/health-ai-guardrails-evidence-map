@@ -1,0 +1,273 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 33,
+   "sample_unit": "test patients (one MRI image per patient)",
+   "models_evaluated": [
+    "ResNet v2 152 with dense classifier",
+    "SWA-ResNet",
+    "Bayesian subspace inference calibrated classifier",
+    "random forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and abstention rate when model defers uncertain cases",
+     "effect": "Abstention mechanism raised accuracy from 80.8% to 95.5% with a 34.2% (n=12) abstention rate; 10/12 abstained cases were NOTACP.",
+     "quote": "Specifically, we observed an accuracy of 95.5%, sensitivity of 0.933, specificity of 0.833, FNR of 0.067, and FPR of 0.125."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether calibrated predictive uncertainty (variance) identifies uncertain predictions",
+     "effect": "Mean predictive values were uninformative, but predictive variance separated classes; combining ArgMax and variance-based predictions gave 95.5% accuracy versus 68.6% for ArgMax alone.",
+     "quote": "Therefore, the variance of the predictive distributions is informative in our classification task."
+    }
+   ],
+   "unlisted_practices": [
+    "Bayesian subspace inference to quantify predictive uncertainty in a deep learning image classifier"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 86,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "ResNet v2 152 deep learning ACP classifier",
+    "SWA-ResNet",
+    "Bayesian DL calibrated classifier with PCA subspace inference",
+    "Random forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy with uncertainty-based abstention",
+     "effect": "Accuracy improved from 80.8% to 95.5%, with a 34.2% abstention rate.",
+     "quote": "Our model accuracy improved from 80.8% to 95.5%, with a 34.2% abstention rate."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Variance as uncertainty signal",
+     "effect": "Variance was indicative of predictive uncertainty; mean values were not informative.",
+     "quote": "However, the variance of predictive distributions was indicative of predictive uncertainty."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Standalone calibrated classifier errors",
+     "effect": "Accuracy 68.6%, sensitivity 0.882, specificity 0.5, FNR 0.118, FPR 0.5.",
+     "quote": "This approach on the calibrated model resulted in an accuracy of 68.6%, sensitivity of 0.882, specificity of 0.5, false negative rate (FNR) of 0.118, and a false positive rate (FPR) of 0.5."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 86,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "ResNet v2 152",
+    "SWA-ResNet",
+    "random forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic accuracy and abstention rate with classification abstention mechanism",
+     "effect": "accuracy improved from 80.8% to 95.5% with a 34.2% abstention rate",
+     "quote": "Our model accuracy improved from 80.8% to 95.5%, with a 34.2% abstention rate."
+    }
+   ],
+   "unlisted_practices": [
+    "Bayesian subspace inference calibration to estimate predictive uncertainty in deep learning classifiers"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 86,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Bayesian DL calibrated classifier with PCA subspace inference",
+  "Bayesian subspace inference calibrated classifier",
+  "Random forest",
+  "ResNet v2 152",
+  "ResNet v2 152 deep learning ACP classifier",
+  "ResNet v2 152 with dense classifier",
+  "SWA-ResNet",
+  "XGBoost",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy and abstention rate when model defers uncertain cases",
+   "effect": "Abstention mechanism raised accuracy from 80.8% to 95.5% with a 34.2% (n=12) abstention rate; 10/12 abstained cases were NOTACP.",
+   "quote": "Specifically, we observed an accuracy of 95.5%, sensitivity of 0.933, specificity of 0.833, FNR of 0.067, and FPR of 0.125.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether calibrated predictive uncertainty (variance) identifies uncertain predictions",
+   "effect": "Mean predictive values were uninformative, but predictive variance separated classes; combining ArgMax and variance-based predictions gave 95.5% accuracy versus 68.6% for ArgMax alone.",
+   "quote": "Therefore, the variance of the predictive distributions is informative in our classification task.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Bayesian subspace inference calibration to estimate predictive uncertainty in deep learning classifiers",
+  "Bayesian subspace inference to quantify predictive uncertainty in a deep learning image classifier"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36980440",
+ "screen": {
+  "id": "pmid:36980440",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "uncertainty-based abstention with Bayesian calibration",
+  "user": "none",
+  "reason": "The study tests an uncertainty-aware abstention/deferral guardrail applied to a diagnostic deep learning model, evaluating accuracy changes when the model abstains from uncertain predictions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "uncertainty-based abstention mechanism"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36980440",
+   "empirical": 0.95,
+   "tests_practice": 0.79,
+   "real_deployment": 0.06
+  }
+ }
+}

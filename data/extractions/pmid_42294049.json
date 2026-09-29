@@ -1,0 +1,384 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 15,
+   "sample_unit": "cardiac surgery scenarios (rated by 5 surgeons; 3,750 binary ratings)",
+   "models_evaluated": [
+    "O1",
+    "O3-mini-high",
+    "DeepSeek-R1",
+    "GPT-4",
+    "Llama3-OpenBioLLM-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Evaluator detection of incorrect LLM outputs; overacceptance vs underrecognition rate between rounds",
+     "effect": "Overacceptance 7.57% vs underrecognition 2.59% (net gap +4.98%, p<0.001); in five highest-weighted dimensions 10.16% vs 3.68% (net +6.48%).",
+     "quote": "The overall overacceptance rate (affirmative-to-negative revisions) was 7.57%, whereas the underrecognition rate (negative-to-affirmative revisions) was 2.59%, yielding a net trust calibration gap of +4.98% (McNemar's test, p < 0.001)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Experts failing to recognize incorrect or hallucinated LLM output on first-pass review",
+     "effect": "Experienced surgeons often missed LLM errors at first glance; 10.16% of ratings in top-weighted dimensions revised affirmative to negative after seeing reference answers.",
+     "quote": "Notably, even experienced experts often failed to recognize LLM errors at first glance"
+    },
+    {
+     "rec_id": "R156",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Automation bias from fluent, well-structured LLM outputs suppressing clinician scrutiny",
+     "effect": "Overacceptance concentrated in safety-critical dimensions; overacceptance rate 10.16% nearly three times underrecognition 3.68%, net gap +6.48%.",
+     "quote": "This indicates that expert trust miscalibration was concentrated in precisely the dimensions where errors carry the greatest clinical consequence\u2014a finding consistent with automation bias, whereby plausible and fluently structured outputs reduce the likelihood of critical human scrutiny."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM clinical knowledge and reasoning quality in complex cardiac surgery scenarios",
+     "effect": "Median normalized scores 0.896 (O1) to 0.521 (Llama3-OpenBioLLM-70B); patient safety mean score 0.507; scenarios with complex longitudinal reasoning scored lowest (0.458, 0.430).",
+     "quote": "Patient safety (Q2) had the lowest average score (0.507); even the best-performing model, O1, reached only 0.600, while Llama3-OpenBioLLM-70B scored 0.307."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM accuracy on quantitative device sizing (mitral annuloplasty ring)",
+     "effect": "Four of five models recommended 30\u201332 mm ring vs reference 36\u201338 mm; scenario score 0.542 despite moderate complexity.",
+     "quote": "In Scenario 14, which required selecting a mitral annuloplasty ring size from echocardiographic data, four of five models recommended 30\u201332 mm, whereas the reference answer indicated 36\u201338 mm."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether benchmark/exam performance predicts competence in complex clinical decision-making",
+     "effect": "Top models scored well overall, but even O1 showed deficits in patient safety (0.600) and hallucination avoidance (0.667) on expert-designed scenarios.",
+     "quote": "Our results highlight that strong performance by LLMs on standardized exams does not ensure safe or reliable application in complex, high-stakes clinical decision-making."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-evaluator agreement (Fleiss' kappa) before and after viewing expert reference answers",
+     "effect": "Kappa rose from 0.0834 (round 1) to 0.1298 (round 2) after reviewing reference answers.",
+     "quote": "Agreement improved after the second-round review incorporating suggested answers ( \u03ba = 0.1298; 95% CI: 0.0981\u20130.1615; p < 0.0001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-phase blinded evaluation with reference answers to measure trust calibration (overacceptance/underrecognition)",
+    "Multi-agent prompting (seed responses synthesized by master prompt) for LLM output generation"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 15,
+   "sample_unit": "cardiac surgery scenarios",
+   "models_evaluated": [
+    "O1",
+    "O3-mini-high",
+    "DeepSeek-R1",
+    "GPT-4",
+    "Llama3-OpenBioLLM-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "inter-evaluator agreement",
+     "effect": "Fleiss' \u03ba increased from 0.0834 to 0.1298 after suggested answers; both p < 0.0001.",
+     "quote": "Agreement improved after the second-round review incorporating suggested answers ( \u03ba = 0.1298; 95% CI: 0.0981\u20130.1615; p < 0.0001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "comparative model performance",
+     "effect": "Median normalized scores: O1 0.896, O3-mini-high 0.854, DeepSeek-R1 0.792, GPT-4 0.667, Llama3-OpenBioLLM-70B 0.521.",
+     "quote": "Median normalized scores [25th\u201375th percentile] were highest for O1 [0.896 (0.667\u20130.990)], followed by O3-mini-high [0.854 (0.667\u20130.917)], DeepSeek-R1 [0.792 (0.510\u20131.000)], GPT-4 [0.667 (0.417\u20130.917)], and Llama3-OpenBioLLM-70B [0.521 (0.167\u20130.833)]."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinician overacceptance of flawed outputs",
+     "effect": "Overacceptance was 7.57% versus underrecognition 2.59%, net trust calibration gap +4.98%; McNemar p < 0.001.",
+     "quote": "The overall overacceptance rate (affirmative-to-negative revisions) was 7.57%, whereas the underrecognition rate (negative-to-affirmative revisions) was 2.59%, yielding a net trust calibration gap of +4.98% (McNemar's test, p < 0.001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "safety and hallucination performance",
+     "effect": "Patient safety 0.507, hallucination avoidance 0.549, and clinical efficiency 0.597 were lowest across models.",
+     "quote": "Across evaluation dimensions, scenario comprehension scored highest (0.920), while patient safety (0.507), hallucination avoidance (0.549), and clinical efficiency (0.597) were lowest across models."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 15,
+   "sample_unit": "scenarios",
+   "models_evaluated": [
+    "O1",
+    "O3-mini-high",
+    "DeepSeek-R1",
+    "GPT-4",
+    "Llama3-OpenBioLLM-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "expert clinician overacceptance of flawed LLM reasoning",
+     "effect": "Overall overacceptance rate was 7.57% versus 2.59% underrecognition (net gap +4.98%, p < 0.001); overacceptance reached 10.16% in the five highest-weighted safety-critical dimensions.",
+     "quote": "The overall overacceptance rate (affirmative-to-negative revisions) was 7.57%, whereas the underrecognition rate (negative-to-affirmative revisions) was 2.59%, yielding a net trust calibration gap of +4.98% (McNemar's test, p < 0.001)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "cardiac surgery scenarios (rated by 5 surgeons; 3,750 binary ratings)",
+ "sample_size": 15,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1",
+  "GPT-4",
+  "Llama3-OpenBioLLM-70B",
+  "O1",
+  "O3-mini-high"
+ ],
+ "links": [
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Evaluator detection of incorrect LLM outputs; overacceptance vs underrecognition rate between rounds",
+   "effect": "Overacceptance 7.57% vs underrecognition 2.59% (net gap +4.98%, p<0.001); in five highest-weighted dimensions 10.16% vs 3.68% (net +6.48%).",
+   "quote": "The overall overacceptance rate (affirmative-to-negative revisions) was 7.57%, whereas the underrecognition rate (negative-to-affirmative revisions) was 2.59%, yielding a net trust calibration gap of +4.98% (McNemar's test, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-evaluator agreement (Fleiss' kappa) before and after viewing expert reference answers",
+   "effect": "Kappa rose from 0.0834 (round 1) to 0.1298 (round 2) after reviewing reference answers.",
+   "quote": "Agreement improved after the second-round review incorporating suggested answers ( \u03ba = 0.1298; 95% CI: 0.0981\u20130.1615; p < 0.0001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Experts failing to recognize incorrect or hallucinated LLM output on first-pass review",
+   "effect": "Experienced surgeons often missed LLM errors at first glance; 10.16% of ratings in top-weighted dimensions revised affirmative to negative after seeing reference answers.",
+   "quote": "Notably, even experienced experts often failed to recognize LLM errors at first glance",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R156",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Automation bias from fluent, well-structured LLM outputs suppressing clinician scrutiny",
+   "effect": "Overacceptance concentrated in safety-critical dimensions; overacceptance rate 10.16% nearly three times underrecognition 3.68%, net gap +6.48%.",
+   "quote": "This indicates that expert trust miscalibration was concentrated in precisely the dimensions where errors carry the greatest clinical consequence\u2014a finding consistent with automation bias, whereby plausible and fluently structured outputs reduce the likelihood of critical human scrutiny.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether benchmark/exam performance predicts competence in complex clinical decision-making",
+   "effect": "Top models scored well overall, but even O1 showed deficits in patient safety (0.600) and hallucination avoidance (0.667) on expert-designed scenarios.",
+   "quote": "Our results highlight that strong performance by LLMs on standardized exams does not ensure safe or reliable application in complex, high-stakes clinical decision-making.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Multi-agent prompting (seed responses synthesized by master prompt) for LLM output generation",
+  "Two-phase blinded evaluation with reference answers to measure trust calibration (overacceptance/underrecognition)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42294049",
+ "screen": {
+  "id": "pmid:42294049",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "expert review with reference answers (human oversight of LLM output)",
+  "user": "clinician_or_staff",
+  "reason": "Empirical reader/evaluation study assessing LLM reasoning performance in cardiac surgery scenarios and measuring clinician overacceptance/judgment shifts when evaluating outputs, without testing a specific organizational deployment practice.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42294049",
+   "empirical": 0.96,
+   "tests_practice": 0.28,
+   "real_deployment": 0.03
+  }
+ }
+}

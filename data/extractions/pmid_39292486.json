@@ -1,0 +1,286 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 95326,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AHA-PREVENT",
+    "MLM-PREVENT (XGBoost, monotonically constrained)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration after local ML recalibration of AHA-PREVENT versus original model",
+     "effect": "MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P > .05) vs AHA-PREVENT overall (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001), and surpassed traditional recalibration; discrimination unchanged (\u0394C \u00b10.01).",
+     "quote": "In the test set of 38 137 patients (mean [SD] age, 64.8 [6.9] years, 22 708 [59.5]% women and 15 429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31 400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P > .05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001) and sex subgroups (men: \u03c723 = 2.1; P = .55 vs \u03c723 > 16.3; P < .001; women: \u03c723 = 6.5; P = .09 vs."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration of AHA-PREVENT on local New England EHR population",
+     "effect": "AHA-PREVENT showed poor calibration in the local cohort across risk categories (\u03c723 > 16.3; P < .001) overall and in men and women.",
+     "quote": "In the test set of 38 137 patients (mean [SD] age, 64.8 [6.9] years, 22 708 [59.5]% women and 15 429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31 400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P > .05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001) and sex subgroups (men: \u03c723 = 2.1; P = .55 vs \u03c723 > 16.3; P < .001; women: \u03c723 = 6.5; P = .09 vs."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Calibration by race and ethnicity subgroups after recalibration",
+     "effect": "MLM-PREVENT maintained or improved AHA-PREVENT's calibration in Asian, Black, and White individuals; Hispanic and other groups not reported as improved.",
+     "quote": "MLM-PREVENT maintained or improved AHA-PREVENT's calibration in Asian, Black, and White individuals."
+    }
+   ],
+   "unlisted_practices": [
+    "Monotonically constrained interpretable ML recalibration of a guideline risk model to a local population"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 95326,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AHA-PREVENT",
+    "MLM-PREVENT",
+    "traditional recalibration approach"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local calibration of AHA-PREVENT",
+     "effect": "AHA-PREVENT was miscalibrated overall: \u03c723\u2009>\u200916.3; P\u2009<\u2009.001, versus MLM-PREVENT \u03c723\u2009=\u20092.2; P\u2009=\u2009.53.",
+     "quote": "In the test set of 38\u202f137 patients (mean [SD] age, 64.8 [6.9] years, 22\u202f708 [59.5]% women and 15\u202f429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31\u202f400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P\u2009>\u2009.05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723\u2009=\u20092.2; P\u2009=\u2009.53 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001) and sex subgroups (men: \u03c723\u2009=\u20092.1; P\u2009=\u2009.55 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001; women: \u03c723\u2009=\u20096.5; P\u2009=\u2009.09 vs. \u03c723\u2009>\u200916.3; P\u2009<\u2009.001), while also surpassing a traditional recalibration approach."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "local recalibration performance",
+     "effect": "MLM-PREVENT improved calibration overall and by sex versus AHA-PREVENT, and surpassed a traditional recalibration approach.",
+     "quote": "In the test set of 38\u202f137 patients (mean [SD] age, 64.8 [6.9] years, 22\u202f708 [59.5]% women and 15\u202f429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31\u202f400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P\u2009>\u2009.05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723\u2009=\u20092.2; P\u2009=\u2009.53 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001) and sex subgroups (men: \u03c723\u2009=\u20092.1; P\u2009=\u2009.55 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001; women: \u03c723\u2009=\u20096.5; P\u2009=\u2009.09 vs. \u03c723\u2009>\u200916.3; P\u2009<\u2009.001), while also surpassing a traditional recalibration approach."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "sex subgroup calibration",
+     "effect": "AHA-PREVENT was miscalibrated in men and women: \u03c723\u2009>\u200916.3; P\u2009<\u2009.001 for both sex subgroups.",
+     "quote": "In the test set of 38\u202f137 patients (mean [SD] age, 64.8 [6.9] years, 22\u202f708 [59.5]% women and 15\u202f429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31\u202f400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P\u2009>\u2009.05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723\u2009=\u20092.2; P\u2009=\u2009.53 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001) and sex subgroups (men: \u03c723\u2009=\u20092.1; P\u2009=\u2009.55 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001; women: \u03c723\u2009=\u20096.5; P\u2009=\u2009.09 vs. \u03c723\u2009>\u200916.3; P\u2009<\u2009.001), while also surpassing a traditional recalibration approach."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 38137,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AHA-PREVENT",
+    "MLM-PREVENT (XGBoost)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration across risk categories and sex subgroups",
+     "effect": "MLM-PREVENT improved calibration vs AHA-PREVENT in overall cohort (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001) and sex subgroups (men: P = .55 vs P < .001; women: P = .09 vs P < .001).",
+     "quote": "In the test set of 38\u202f137 patients (mean [SD] age, 64.8 [6.9] years, 22\u202f708 [59.5]% women and 15\u202f429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31\u202f400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P\u2009>\u2009.05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723\u2009=\u20092.2; P\u2009=\u2009.53 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001) and sex subgroups (men: \u03c723\u2009=\u20092.1; P\u2009=\u2009.55 vs \u03c723\u2009>\u200916.3; P\u2009<\u2009.001; women: \u03c723\u2009=\u20096.5; P\u2009=\u2009.09 vs. \u03c723\u2009>\u200916.3; P\u2009<\u2009.001), while also surpassing a traditional recalibration approach."
+    }
+   ],
+   "unlisted_practices": [
+    "Monotonic constraints on machine learning models to preserve known risk factor associations and clinical interpretability during local recalibration"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 95326,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "AHA-PREVENT",
+  "MLM-PREVENT",
+  "MLM-PREVENT (XGBoost)",
+  "MLM-PREVENT (XGBoost, monotonically constrained)",
+  "traditional recalibration approach"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration after local ML recalibration of AHA-PREVENT versus original model",
+   "effect": "MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P > .05) vs AHA-PREVENT overall (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001), and surpassed traditional recalibration; discrimination unchanged (\u0394C \u00b10.01).",
+   "quote": "In the test set of 38 137 patients (mean [SD] age, 64.8 [6.9] years, 22 708 [59.5]% women and 15 429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31 400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P > .05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001) and sex subgroups (men: \u03c723 = 2.1; P = .55 vs \u03c723 > 16.3; P < .001; women: \u03c723 = 6.5; P = .09 vs.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of AHA-PREVENT on local New England EHR population",
+   "effect": "AHA-PREVENT showed poor calibration in the local cohort across risk categories (\u03c723 > 16.3; P < .001) overall and in men and women.",
+   "quote": "In the test set of 38 137 patients (mean [SD] age, 64.8 [6.9] years, 22 708 [59.5]% women and 15 429 [40.5%] men; 935 [2.5%] Asian, 2153 [5.6%] Black, 1414 [3.7%] Hispanic, 31 400 [82.3%] White, and 2235 [5.9%] other, including American Indian, multiple races, unspecified, and unrecorded, consolidated owing to small numbers), MLM-PREVENT had improved calibration (modified Hosmer-Lemeshow P > .05) compared to the AHA-PREVENT model across risk categories in the overall cohort (\u03c723 = 2.2; P = .53 vs \u03c723 > 16.3; P < .001) and sex subgroups (men: \u03c723 = 2.1; P = .55 vs \u03c723 > 16.3; P < .001; women: \u03c723 = 6.5; P = .09 vs.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Calibration by race and ethnicity subgroups after recalibration",
+   "effect": "MLM-PREVENT maintained or improved AHA-PREVENT's calibration in Asian, Black, and White individuals; Hispanic and other groups not reported as improved.",
+   "quote": "MLM-PREVENT maintained or improved AHA-PREVENT's calibration in Asian, Black, and White individuals.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Monotonic constraints on machine learning models to preserve known risk factor associations and clinical interpretability during local recalibration",
+  "Monotonically constrained interpretable ML recalibration of a guideline risk model to a local population"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39292486",
+ "screen": {
+  "id": "pmid:39292486",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration of risk model before deployment",
+  "user": "none",
+  "reason": "Evaluates local recalibration of an established risk prediction tool (AHA-PREVENT) to a local EHR patient population and tests calibration, discrimination, and subgroup performance compared to the original model.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local model recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39292486",
+   "empirical": 0.95,
+   "tests_practice": 0.52,
+   "real_deployment": 0.06
+  }
+ }
+}

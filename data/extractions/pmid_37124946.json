@@ -1,0 +1,85 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "United Kingdom",
+ "sample_size": 1251,
+ "sample_unit": "patients (MRI datasets)",
+ "models_evaluated": [
+  "state-of-the-art brain tumour segmentation models (nnU-Net-type, trained on varying MRI sequence subsets)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Segmentation accuracy (Dice) with missing MRI sequences versus complete set",
+   "effect": "Dice 0.907 (single sequence) to 0.945 (complete set) for whole tumours; 0.701 to 0.891 for component tissue types; models trained on incomplete data often equivalent to full-data models.",
+   "quote": "We demonstrate that models trained on incomplete data can segment lesions very well, often equivalently to those trained on the full completement of images, exhibiting Dice coefficients of 0.907 (single sequence) to 0.945 (complete set) for whole tumours and 0.701 (single sequence) to 0.891 (complete set) for component tissue types.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Segmentation accuracy on heterogeneous real-world local clinical imaging sample",
+   "effect": "On a 50-patient real-world tertiary-centre sample spanning 15 years, accuracy was maintained on non-isotropic acquisitions and post-operative imaging with tumour recurrence.",
+   "quote": "Our analysis includes validation on a heterogeneous, real-world 50 patient sample of brain tumour imaging acquired over the last 15 years at our tertiary centre, demonstrating maintained accuracy even on non-isotropic MRI acquisitions, or even on complex post-operative imaging with tumour recurrence.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Training segmentation models on incomplete MRI sequence sets to handle missing modalities",
+  "Quantifying enhancing tumour without contrast-enhanced imaging"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:37124946",
+ "screen": {
+  "id": "pmid:37124946",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates model robustness and generalizability across real-world variations (incomplete MRI sequences and low-quality data) in multi-site brain tumor datasets and an external real-world clinical cohort, but does not test a specific organizational deployment practice or safeguard.",
+  "jev": {
+   "id": "pmid:37124946",
+   "empirical": 0.96,
+   "tests_practice": 0.04,
+   "real_deployment": 0.13
+  }
+ }
+}

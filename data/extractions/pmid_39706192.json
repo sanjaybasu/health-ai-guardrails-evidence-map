@@ -1,0 +1,108 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "China",
+ "sample_size": null,
+ "sample_unit": "OCT images",
+ "models_evaluated": [
+  "FMUE",
+  "GPT-4V"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Model performance on external test sets from same and different OCT machines",
+   "effect": "FMUE achieved similar excellent performance on two external test sets from the same and different OCT machines.",
+   "quote": "The model achieves similar excellent performance on two external test sets from the same and different OCT machines.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "F1 score of AI versus clinicians and GPT-4V on OCT diagnosis",
+   "effect": "FMUE F1 96.30% vs retinal experts 86.95% (p=0.004), senior doctors 82.71%, junior doctors 66.55%, GPT-4V 32.39% (all p<0.001).",
+   "quote": "In human-model comparison, FMUE achieves a higher F1 score of 96.30% than retinal experts (86.95%, p = 0.004), senior doctors (82.71%, p < 0.001), junior doctors (66.55%, p < 0.001), and generative pretrained transformer 4 with vision (GPT-4V) (32.39%, p < 0.001).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Uncertainty scores flagging out-of-scope or low-quality images for manual check",
+   "effect": "FMUE predicts high uncertainty scores for >85% of images of non-target-category diseases or with low quality, prompting manual checks.",
+   "quote": "Besides, FMUE predicts high uncertainty scores for >85% images of non-target-category diseases or with low quality to prompt manual checks and prevent misdiagnosis.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Uncertainty estimation with a threshold strategy to flag unseen disease classes and improve F1 (95.74% to 97.44%)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:39706192",
+ "screen": {
+  "id": "pmid:39706192",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and evaluates a foundation model with uncertainty estimation (FMUE) for OCT diagnosis, testing uncertainty thresholding to prompt manual checks and prevent misdiagnosis of out-of-distribution/low-quality images.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "uncertainty estimation thresholding for manual review escalation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39706192",
+   "empirical": 0.96,
+   "tests_practice": 0.52,
+   "real_deployment": 0.09
+  }
+ }
+}

@@ -1,0 +1,355 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 215,
+   "sample_unit": "human-evaluated question-answer pairs",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini",
+    "GPT-4.1",
+    "OpenAI-o1",
+    "Gemma 3 27B",
+    "MedGemma 27B",
+    "Llama 3 70B",
+    "OpenBioLLM 70B",
+    "Qwen 3 32B",
+    "Qwen 3 Medical 32B",
+    "Llama 3.2 3B",
+    "Mistral 24B",
+    "Gemini 3.1 Pro",
+    "Gemini 3.1 Flash Lite",
+    "Gemini 3.5 Flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Answer quality on AMEGA benchmark with atomic fact-checking versus RAG alone",
+     "effect": "Significant improvement for all LLMs tested (P<.001 for 13/16 models, P<.01 for 2/16, P<.05 for 1/16); human-rated overall answer improvement up to 50% on tumor board cases.",
+     "quote": "The AMEGA auto-evaluation analysis revealed a significant improvement in answer quality by applying our fact-checking algorithm in contrast to RAG only for all LLMs tested ( P <.001 for 13/16 models, P <.01 for 2/16 models, and P <.05 for 1/16 models; Figure 3 ; see Table S6 in Multimedia Appendix 1 )."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether post-hoc verification against guideline evidence improves factuality beyond RAG grounding",
+     "effect": "Atomic fact-checking added to RAG improved answer quality; answers improved in 20%, 10%, 50% and 7.7% of cases versus worsened in 8%, 0%, 7.5% and 3%.",
+     "quote": "However, since the proportion of answers that improved (20%, 10%, 50%, and 7.7%) was substantially higher, the overall effect of fact-checking clearly enhanced the answer quality."
+    },
+    {
+     "rec_id": "R481",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of tracing each atomic fact to supporting guideline chunk",
+     "effect": "Simple chain-of-thought prompt identified the correct chunk in 75% of cases as first choice and 91.9% among the top 3 chunks.",
+     "quote": "A simple chain-of-thought prompt using GPT-4o identified the correct chunk in 75% of cases as the first choice and in 91.9% of cases among the top 3 chunks, outperforming a complex chain-of-thought prompt (instructing the LLM to assign scores and then rank) and cosine similarity with a text-embedding model (see Figure S4 in Multimedia Appendix 1 and Table S3 in Multimedia Appendix 1 for prompts)."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fact-level verification and source tracing of generated claims against guidelines",
+     "effect": "Framework detected hallucinations (up to 80% detection rate) and traced each atomic fact to source chunks; sensitivity 46-52% on test, tumor board and neurology sets.",
+     "quote": "Additionally, the framework achieved high explainability by tracing each atomic fact back to the most relevant chunks from the database, providing a granular, transparent explanation of the generated responses."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucination and inaccuracy rates in LLM oncology answers, including incorrect dosages",
+     "effect": "Initial RAG answers contained hallucinations and inaccuracies (hallucination rate 0-2%, inaccuracy rate 1-5% of facts); fact-checking detected only 25% of hallucinations in tumor board cases.",
+     "quote": "In the more complex tumor board test set, 25% of hallucinations and 24% of inaccuracies were found, with a balanced accuracy of 72%."
+    }
+   ],
+   "unlisted_practices": [
+    "Atomic fact decomposition with iterative rewriting loop",
+    "Comparison of medical fine-tuned versus generalist open-source models for fact-checking",
+    "Fact-checking versus self-refine self-correction baseline"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 215,
+   "sample_unit": "human-evaluated Q&As",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini",
+    "OpenAI-o1",
+    "Gemma 3 27B",
+    "MedGemma 27B",
+    "Llama 3 70B",
+    "OpenBioLLM 70B",
+    "Qwen 3 32B",
+    "Qwen 3 Medical 32B",
+    "Mistral 24B",
+    "Gemini 3.1 Pro",
+    "Gemini 3.1 Flash Lite",
+    "Gemini 3.5 Flash",
+    "Llama 3.2 3B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AMEGA answer quality versus RAG-only",
+     "effect": "Fact-checking improved answer quality for all 16 LLMs: P<.001 for 13/16, P<.01 for 2/16, P<.05 for 1/16.",
+     "quote": "The AMEGA auto-evaluation analysis revealed a significant improvement in answer quality by applying our fact-checking algorithm in contrast to RAG only for all LLMs tested ( P <.001 for 13/16 models, P <.01 for 2/16 models, and P <.05 for 1/16 models; Figure 3 ; see Table S6 in Multimedia Appendix 1 )."
+    },
+    {
+     "rec_id": "R481",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "supporting source chunk traceability",
+     "effect": "Correct guideline chunk identified first in 75% and within top 3 in 91.9% of cases.",
+     "quote": "A simple chain-of-thought prompt using GPT-4o identified the correct chunk in 75% of cases as the first choice and in 91.9% of cases among the top 3 chunks, outperforming a complex chain-of-thought prompt (instructing the LLM to assign scores and then rank) and cosine similarity with a text-embedding model (see Figure S4 in Multimedia Appendix 1 and Table S3 in Multimedia Appendix 1 for prompts)."
+    }
+   ],
+   "unlisted_practices": [
+    "Compare open-source medical fine-tuned LLMs with general-purpose counterparts for atomic fact-checking performance.",
+    "Compare atomic fact-checking with the self-refine self-correction framework.",
+    "Test few-shot prompting, correction looping, and ensembling choices for atomic veracity prediction."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 1552,
+   "sample_unit": "question-answer instances",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini",
+    "MedGemma 27B",
+    "Gemma 3 27B",
+    "Llama 3 70B",
+    "OpenBioLLM 70B",
+    "Qwen 3 32B",
+    "Qwen 3 Medical 32B",
+    "Mistral 24B",
+    "Llama 3.2 3B",
+    "OpenAI-o1",
+    "Gemini 3.1 Pro",
+    "Gemini 3.1 Flash Lite",
+    "Gemini 3.5 Flash"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "factual accuracy and answer quality with atomic fact-checking",
+     "effect": "Answer quality significantly improved across all 16 LLMs on AMEGA (P<.001 for 13/16); overall answer improvements occurred in 20%, 10%, and 50% of validation, test, and tumor board Q&A sets, respectively.",
+     "quote": "The AMEGA auto-evaluation analysis revealed a significant improvement in answer quality by applying our fact-checking algorithm in contrast to RAG only for all LLMs tested ( P <.001 for 13/16 models, P <.01 for 2/16 models, and P <.05 for 1/16 models; Figure 3 ; see Table S6 in Multimedia Appendix 1 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "human-evaluated question-answer pairs",
+ "sample_size": 215,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4.1",
+  "GPT-4o",
+  "GPT-4o-mini",
+  "Gemini 3.1 Flash Lite",
+  "Gemini 3.1 Pro",
+  "Gemini 3.5 Flash",
+  "Gemma 3 27B",
+  "Llama 3 70B",
+  "Llama 3.2 3B",
+  "MedGemma 27B",
+  "Mistral 24B",
+  "OpenAI-o1",
+  "OpenBioLLM 70B",
+  "Qwen 3 32B",
+  "Qwen 3 Medical 32B"
+ ],
+ "links": [
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Answer quality on AMEGA benchmark with atomic fact-checking versus RAG alone",
+   "effect": "Significant improvement for all LLMs tested (P<.001 for 13/16 models, P<.01 for 2/16, P<.05 for 1/16); human-rated overall answer improvement up to 50% on tumor board cases.",
+   "quote": "The AMEGA auto-evaluation analysis revealed a significant improvement in answer quality by applying our fact-checking algorithm in contrast to RAG only for all LLMs tested ( P <.001 for 13/16 models, P <.01 for 2/16 models, and P <.05 for 1/16 models; Figure 3 ; see Table S6 in Multimedia Appendix 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R481",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of tracing each atomic fact to supporting guideline chunk",
+   "effect": "Simple chain-of-thought prompt identified the correct chunk in 75% of cases as first choice and 91.9% among the top 3 chunks.",
+   "quote": "A simple chain-of-thought prompt using GPT-4o identified the correct chunk in 75% of cases as the first choice and in 91.9% of cases among the top 3 chunks, outperforming a complex chain-of-thought prompt (instructing the LLM to assign scores and then rank) and cosine similarity with a text-embedding model (see Figure S4 in Multimedia Appendix 1 and Table S3 in Multimedia Appendix 1 for prompts).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether post-hoc verification against guideline evidence improves factuality beyond RAG grounding",
+   "effect": "Atomic fact-checking added to RAG improved answer quality; answers improved in 20%, 10%, 50% and 7.7% of cases versus worsened in 8%, 0%, 7.5% and 3%.",
+   "quote": "However, since the proportion of answers that improved (20%, 10%, 50%, and 7.7%) was substantially higher, the overall effect of fact-checking clearly enhanced the answer quality.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R487",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Atomic fact decomposition with iterative rewriting loop",
+  "Compare atomic fact-checking with the self-refine self-correction framework.",
+  "Compare open-source medical fine-tuned LLMs with general-purpose counterparts for atomic fact-checking performance.",
+  "Comparison of medical fine-tuned versus generalist open-source models for fact-checking",
+  "Fact-checking versus self-refine self-correction baseline",
+  "Test few-shot prompting, correction looping, and ensembling choices for atomic veracity prediction."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42770666",
+ "screen": {
+  "id": "pmid:42770666",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "atomic fact-checking with retrieval grounding as output verification",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates an atomic fact-checking and automated correction guardrail applied to RAG LLM outputs across medical Q&A and tumor board cases, showing substantial reduction in factual errors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "atomic fact-checking output guardrail"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42770666",
+   "empirical": 0.95,
+   "tests_practice": 0.62,
+   "real_deployment": 0.1
+  }
+ }
+}

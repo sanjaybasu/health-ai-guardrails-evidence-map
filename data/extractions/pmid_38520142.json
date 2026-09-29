@@ -1,0 +1,388 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom (Wales and England)",
+   "sample_size": 81685,
+   "sample_unit": "older adults in external validation cohort (660,417 in development)",
+   "models_evaluated": [
+    "eFalls (LASSO logistic regression)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration before vs after local recalibration in external validation cohort",
+     "effect": "Recalibration corrected over-prediction: pooled calibration slope 0.964 (95% CI 0.908 to 1.020), CITL 0.064 (95% CI -0.027 to 0.154), vs CITL -0.874 before; discrimination unchanged.",
+     "quote": "Recalibration did not affect the discrimination performance or variability in calibration across practices (Supplementary Figures S3.12/S3.14), but corrected average over-prediction on apparent validation, giving a pooled calibration slope of 0.964 (95% CI: 0.908 to 1.020) and pooled CITL of 0.064 (95% CI: \u22120.027 to 0.154)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration of model applied to new population (external validation)",
+     "effect": "Model over-predicted risk in Bradford: pooled CITL -0.874 (95% CI -0.964 to -0.783), O/E 0.43 (95% CI 0.39 to 0.48); no better than treat-none at 10-25% thresholds.",
+     "quote": "Calibration curves ( Figure 1 ) show that the eFalls model over-predicted fall/fracture risk in the Connect Bradford population, with predicted risks exceeding observed risks across the full range of possible predicted values."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Variation in calibration and net benefit across general practices",
+     "effect": "Extent of over-prediction highly variable across GP practices; net benefit highly variable and did not stabilise with recalibration; c-statistic consistently above 0.6 in all practices.",
+     "quote": "As with calibration performance, net benefit was highly variable across GP practices, which did not stabilise with recalibration (Supplementary Figure S3.13)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model discrimination and calibration across clinical and deprivation subgroups",
+     "effect": "Fairly consistent across sex and deprivation; discrimination lower in severe frailty (c-statistic 0.643); over-prediction most evident in underweight and severely frail; poor performance in those missing WIMD.",
+     "quote": "Model performance was fairly consistent across sexes and deprivation subgroups, while over-prediction of falls risk was most evident in those who were underweight and those who had severe frailty."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Miscalibration from differences between development and validation populations",
+     "effect": "Fall incidence 4.9% in development vs 2.9% in validation, differing coding systems; model over-predicted risk in the external population (O/E 0.43).",
+     "quote": "This overestimation of risk was likely due to the higher incidence of falls in the development (4.9%) compared to the external validation cohorts (2.9%)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination and calibration on internal vs external validation data",
+     "effect": "C-statistic 0.72 on internal-external cross-validation vs 0.82 external; external validation revealed miscalibration (CITL -0.87) that internal validation did not show.",
+     "quote": "While the eFalls model was well calibrated on internal and internal\u2013external cross-validation (in Welsh national-level data in SAIL), on external validation in Connected Bradford, although there was evidence for excellent discrimination, fall/fracture risk was slightly overestimated on average."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Net benefit at clinician-specified risk thresholds (10-25%) on external validation",
+     "effect": "Model was no better than treat-none in the prespecified 10-25% range before recalibration; after recalibration superior for thresholds up to 18%.",
+     "quote": "Decision curves show that the eFalls model had clinical utility at lower threshold probabilities on external validation, but was no better than the treat-none alternative in the pre-specified range of 10\u201325%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 742102,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "eFalls prediction model",
+    "recalibrated eFalls model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external calibration and discrimination",
+     "effect": "External c-statistic 0.82 (95% CI: 0.80 to 0.83); calibration-in-the-large, -0.87 (95% CI: -0.96 to -0.78).",
+     "quote": "Calibration was variable across practices, with some over-prediction in the validation population (calibration-in-the-large, -0.87; 95% CI: -0.96 to -0.78)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "dataset shift and calibration",
+     "effect": "Fall/fracture incidence 4.9% in development versus 2.9% in external cohorts; authors attributed overestimation to this difference.",
+     "quote": "This overestimation of risk was likely due to the higher incidence of falls in the development (4.9%) compared to the external validation cohorts (2.9%)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "recalibration calibration",
+     "effect": "Corrected average over-prediction on apparent validation: calibration slope 0.964 (95% CI: 0.908 to 1.020); CITL 0.064 (95% CI: \u22120.027 to 0.154).",
+     "quote": "Recalibration did not affect the discrimination performance or variability in calibration across practices (Supplementary Figures S3.12/S3.14), but corrected average over-prediction on apparent validation, giving a pooled calibration slope of 0.964 (95% CI: 0.908 to 1.020) and pooled CITL of 0.064 (95% CI: \u22120.027 to 0.154)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "practice-level performance",
+     "effect": "Across external practices, CITL 95% prediction interval \u22121.375 to \u22120.372; c-statistic prediction interval 0.715 to 0.886.",
+     "quote": "The extent of over-prediction was highly variable across GP practices (see Figures 3 and S3.12), but was seen consistently across subgroups by IMD, frailty, sex and BMI (Supplementary Figures S3.15\u2013S3.18)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "frailty subgroup discrimination",
+     "effect": "Severely frail subgroup c-statistic 0.643 (95% CI: 0.638 to 0.646), lower than overall external 0.816.",
+     "quote": "When assessed across frailty groups, discrimination was notably lower in the severely frail subgroup, with a c-statistic of 0.643 (95% CI: 0.638 to 0.646), most likely due to the narrower case-mix distribution."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "new-setting miscalibration",
+     "effect": "External validation showed miscalibration: O/E 0.432 overall and pooled across practices O/E 0.431 (95% CI: 0.388 to 0.479).",
+     "quote": "Due to differences in systems and coding ontologies across the model development and validation datasets, the eFalls model showed some miscalibration on external validation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 742102,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "eFalls"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration and net benefit after local recalibration",
+     "effect": "Recalibration corrected over-prediction (pooled calibration slope 0.964, CITL 0.064 vs uncalibrated 1.203, -0.874) and improved net benefit, making it superior for threshold probabilities up to 18%.",
+     "quote": "Recalibration did not affect the discrimination performance or variability in calibration across practices (Supplementary Figures S3.12/S3.14), but corrected average over-prediction on apparent validation, giving a pooled calibration slope of 0.964 (95% CI: 0.908 to 1.020) and pooled CITL of 0.064 (95% CI: \u22120.027 to 0.154)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "patients",
+ "sample_size": 742102,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "eFalls",
+  "eFalls (LASSO logistic regression)",
+  "eFalls prediction model",
+  "recalibrated eFalls model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration before vs after local recalibration in external validation cohort",
+   "effect": "Recalibration corrected over-prediction: pooled calibration slope 0.964 (95% CI 0.908 to 1.020), CITL 0.064 (95% CI -0.027 to 0.154), vs CITL -0.874 before; discrimination unchanged.",
+   "quote": "Recalibration did not affect the discrimination performance or variability in calibration across practices (Supplementary Figures S3.12/S3.14), but corrected average over-prediction on apparent validation, giving a pooled calibration slope of 0.964 (95% CI: 0.908 to 1.020) and pooled CITL of 0.064 (95% CI: \u22120.027 to 0.154).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration of model applied to new population (external validation)",
+   "effect": "Model over-predicted risk in Bradford: pooled CITL -0.874 (95% CI -0.964 to -0.783), O/E 0.43 (95% CI 0.39 to 0.48); no better than treat-none at 10-25% thresholds.",
+   "quote": "Calibration curves ( Figure 1 ) show that the eFalls model over-predicted fall/fracture risk in the Connect Bradford population, with predicted risks exceeding observed risks across the full range of possible predicted values.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Variation in calibration and net benefit across general practices",
+   "effect": "Extent of over-prediction highly variable across GP practices; net benefit highly variable and did not stabilise with recalibration; c-statistic consistently above 0.6 in all practices.",
+   "quote": "As with calibration performance, net benefit was highly variable across GP practices, which did not stabilise with recalibration (Supplementary Figure S3.13).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Model discrimination and calibration across clinical and deprivation subgroups",
+   "effect": "Fairly consistent across sex and deprivation; discrimination lower in severe frailty (c-statistic 0.643); over-prediction most evident in underweight and severely frail; poor performance in those missing WIMD.",
+   "quote": "Model performance was fairly consistent across sexes and deprivation subgroups, while over-prediction of falls risk was most evident in those who were underweight and those who had severe frailty.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Miscalibration from differences between development and validation populations",
+   "effect": "Fall incidence 4.9% in development vs 2.9% in validation, differing coding systems; model over-predicted risk in the external population (O/E 0.43).",
+   "quote": "This overestimation of risk was likely due to the higher incidence of falls in the development (4.9%) compared to the external validation cohorts (2.9%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration on internal vs external validation data",
+   "effect": "C-statistic 0.72 on internal-external cross-validation vs 0.82 external; external validation revealed miscalibration (CITL -0.87) that internal validation did not show.",
+   "quote": "While the eFalls model was well calibrated on internal and internal\u2013external cross-validation (in Welsh national-level data in SAIL), on external validation in Connected Bradford, although there was evidence for excellent discrimination, fall/fracture risk was slightly overestimated on average.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Net benefit at clinician-specified risk thresholds (10-25%) on external validation",
+   "effect": "Model was no better than treat-none in the prespecified 10-25% range before recalibration; after recalibration superior for thresholds up to 18%.",
+   "quote": "Decision curves show that the eFalls model had clinical utility at lower threshold probabilities on external validation, but was no better than the treat-none alternative in the pre-specified range of 10\u201325%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external calibration and discrimination",
+   "effect": "External c-statistic 0.82 (95% CI: 0.80 to 0.83); calibration-in-the-large, -0.87 (95% CI: -0.96 to -0.78).",
+   "quote": "Calibration was variable across practices, with some over-prediction in the validation population (calibration-in-the-large, -0.87; 95% CI: -0.96 to -0.78).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38520142",
+ "screen": {
+  "id": "pmid:38520142",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration before deployment",
+  "user": "none",
+  "reason": "Pure model development and retrospective external validation study without evaluation of deployment, workflow, safety guardrails, or human use.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38520142",
+   "empirical": 0.9,
+   "tests_practice": 0.55,
+   "real_deployment": 0.06
+  }
+ }
+}

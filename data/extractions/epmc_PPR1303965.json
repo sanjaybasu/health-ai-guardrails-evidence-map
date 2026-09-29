@@ -1,0 +1,321 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "any_ai"
+   ],
+   "country": "United States",
+   "sample_size": 66,
+   "sample_unit": "deidentified clinical notes (Study 1); 56 clinical spans (Study 2); 84 terms (Study 3)",
+   "models_evaluated": [
+    "MedGemma",
+    "Gemma",
+    "Gemma 3 27B",
+    "sci_md",
+    "SciBERT",
+    "Llama 3.3",
+    "BGE-large-en-v1.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference-matched linking of known-concept spans under complete retrieval versus masked retrieval versus LLM-only inference",
+     "effect": "Complete retrieval linked 28/28 known-concept spans (100%; 95% CI 87.9%-100%); masking assigned POSSIBLE_CANDIDATES to all 28; LLM-only linked 3/28 (10.7%).",
+     "quote": "In Study 2, complete retrieval returned a reference-matched link for 28/28 known-concept spans (100%; 95% CI, 87.9%-100%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Separate evaluation of extraction, retrieval, evidence-grounded linking, and extension candidacy",
+    "Using embedding-based matching versus exact string matching to assess concept extraction agreement"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "multiple units: 66 notes; 56 spans/168 span-condition outputs; 84 terms",
+   "models_evaluated": [
+    "MedGemma",
+    "Gemma",
+    "sci_md",
+    "SciBERT",
+    "Llama 3.3",
+    "BGE-large-en-v1.5",
+    "Gemma 3 27B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "interannotator span agreement",
+     "effect": "Exact-match F1 was 0.29; embedding-match F1 was 0.75.",
+     "quote": "In Study 1, interannotator exact-match F1 was 0.29 and embedding-match F1 was 0.75."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "metric-dependent extraction performance",
+     "effect": "Automated exact-match F1 ranged 0.07-0.17; embedding-match F1 ranged 0.32-0.55.",
+     "quote": "Automated exact-match F1 scores ranged from 0.07 to 0.17; embedding-match F1 was highest for MedGemma (0.55), followed by Gemma (0.53),  sci_md and SciBERT (each 0.43), and Llama 3.3 (0.32)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "side-by-side extraction model ranking",
+     "effect": "MedGemma embedding F1 0.55; Gemma 0.53; sci_md/SciBERT 0.43; Llama 3.3 0.32.",
+     "quote": "Automated exact-match F1 scores ranged from 0.07 to 0.17; embedding-match F1 was highest for MedGemma (0.55), followed by Gemma (0.53),  sci_md and SciBERT (each 0.43), and Llama 3.3 (0.32)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "evidence-conditioned terminology linking",
+     "effect": "Complete retrieval linked 28/28 (100%; 95% CI, 87.9%-100%); masking made all 28 POSSIBLE_CANDIDATES; LLM-only assigned LINKED to 3/28.",
+     "quote": "Measured extraction performance varied substantially by matching definition, whereas exact-link decisions varied with the availability of matched terminology evidence."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "concept extraction accuracy",
+     "effect": "Automated exact-match F1 was 0.07-0.17; best embedding-match F1 was MedGemma 0.55.",
+     "quote": "Automated exact-match F1 scores ranged from 0.07 to 0.17; embedding-match F1 was highest for MedGemma (0.55), followed by Gemma (0.53),  sci_md and SciBERT (each 0.43), and Llama 3.3 (0.32)."
+    }
+   ],
+   "unlisted_practices": [
+    "Semantic retrieval triage for ontology-extension candidacy among initially unmatched clinical terms."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "notes, spans, and terms",
+   "models_evaluated": [
+    "MedGemma",
+    "Gemma",
+    "sci_md",
+    "SciBERT",
+    "Llama 3.3",
+    "Gemma 3 27B",
+    "BGE-large-en-v1.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "reference-matched concept linking rate under complete retrieval versus LLM-only inference",
+     "effect": "Complete retrieval returned reference-matched links for 28/28 (100%; 95% CI, 87.9%-100%) versus 3/28 (10.7%) for LLM-only inference, which assigned POSSIBLE_CANDIDATES to 25/28 (89.3%).",
+     "quote": "In Study 2, complete retrieval returned a reference-matched link for 28/28 known-concept spans (100%; 95% CI, 87.9%-100%)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "deidentified clinical notes (Study 1); 56 clinical spans (Study 2); 84 terms (Study 3)",
+ "sample_size": 66,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BGE-large-en-v1.5",
+  "Gemma",
+  "Gemma 3 27B",
+  "Llama 3.3",
+  "MedGemma",
+  "SciBERT",
+  "sci_md"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reference-matched linking of known-concept spans under complete retrieval versus masked retrieval versus LLM-only inference",
+   "effect": "Complete retrieval linked 28/28 known-concept spans (100%; 95% CI 87.9%-100%); masking assigned POSSIBLE_CANDIDATES to all 28; LLM-only linked 3/28 (10.7%).",
+   "quote": "In Study 2, complete retrieval returned a reference-matched link for 28/28 known-concept spans (100%; 95% CI, 87.9%-100%).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "interannotator span agreement",
+   "effect": "Exact-match F1 was 0.29; embedding-match F1 was 0.75.",
+   "quote": "In Study 1, interannotator exact-match F1 was 0.29 and embedding-match F1 was 0.75.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "metric-dependent extraction performance",
+   "effect": "Automated exact-match F1 ranged 0.07-0.17; embedding-match F1 ranged 0.32-0.55.",
+   "quote": "Automated exact-match F1 scores ranged from 0.07 to 0.17; embedding-match F1 was highest for MedGemma (0.55), followed by Gemma (0.53),  sci_md and SciBERT (each 0.43), and Llama 3.3 (0.32).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "side-by-side extraction model ranking",
+   "effect": "MedGemma embedding F1 0.55; Gemma 0.53; sci_md/SciBERT 0.43; Llama 3.3 0.32.",
+   "quote": "Automated exact-match F1 scores ranged from 0.07 to 0.17; embedding-match F1 was highest for MedGemma (0.55), followed by Gemma (0.53),  sci_md and SciBERT (each 0.43), and Llama 3.3 (0.32).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Semantic retrieval triage for ontology-extension candidacy among initially unmatched clinical terms.",
+  "Separate evaluation of extraction, retrieval, evidence-grounded linking, and extension candidacy",
+  "Using embedding-based matching versus exact string matching to assess concept extraction agreement"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1303965",
+ "screen": {
+  "id": "epmc:PPR1303965",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding ablation (terminology evidence retrieval vs masking vs LLM-only)",
+  "user": "none",
+  "reason": "The study tests an evidence-bounded linking pipeline with an ablation comparing retrieval grounding (complete graph retrieval vs. LLM-only inference vs. concept masking) for clinical concept mapping and ontology triage.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval grounding added to an existing tool"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1303965",
+   "empirical": 0.96,
+   "tests_practice": 0.42,
+   "real_deployment": 0.07
+  }
+ }
+}

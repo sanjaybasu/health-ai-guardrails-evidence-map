@@ -1,0 +1,399 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 55303,
+   "sample_unit": "deliveries (2019 AMC 8007; 2020 AMC 9623; clinical research network 37673)",
+   "models_evaluated": [
+    "Logistic regression with L2 regularization PPD risk model (baseline)",
+    "Fairness through blindness (race nullified)",
+    "Retrained without race",
+    "Reweighing variants"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fairness metrics by race subgroup (White vs non-White) across three datasets before deployment",
+     "effect": "Baseline model met equal-error-rate metrics but failed statistical parity and disparate impact in AMC data; clinical research network metrics were all within range, so fairness varied across datasets.",
+     "quote": "The clinical research network dataset\u2019s observed metrics are all within the defined fairness range."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of five debiasing approaches on fairness metrics and model accuracy",
+     "effect": "All approaches largely improved fairness metrics except predictive parity difference; approaches 2, 4, 5 most successful; blindness improved fairness without compromising performance; reweighing reduced sensitivity by about 0.25.",
+     "quote": "While it is commonly a concern that debiasing method may compromise predictive performance, for our study, they improved fairness without compromise."
+    },
+    {
+     "rec_id": "R306",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Governance review of race as model input and effect of removing race on performance and fairness",
+     "effect": "Reviewers questioned race as a predictor; removing race (fairness through blindness) improved statistical parity difference from -0.175, -0.011, -0.122 to -0.094, -0.056, 0.004 without loss of AUC.",
+     "quote": "The review of this model included an examination of race as a predictor in the model from a modeling and end-user perspective, and questioned the use of race for its potential impact on model bias."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Threshold selection using decision curve net benefit, sensitivity, and positive prediction rates",
+     "effect": "Net benefit was highest at 0.3-0.4 thresholds; 0.2 predicted 19-23% positive versus 13-18% at 0.3 and 11-15% at 0.4; threshold 0.3 balanced true and false positives while 0.2 missed fewer at-risk patients.",
+     "quote": "A threshold of 0.3 produces positive predictions that are close to the observed prevalence at the AMC, while a threshold of 0.2 generates more positive predictions potentially allowing us to capture more at-risk patients albeit with false positive predictions."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance on local post-development AMC data (2019, 2020) against reference outcome",
+     "effect": "Model maintained predictive performance on local later-year data (AUC 0.96 in 2019, 0.97 in 2020; sensitivity 0.95, 0.97 at threshold 0.3) though it showed unequal positive prediction rates.",
+     "quote": "We found that the original model maintained predictive performance and, while satisfying fairness metrics that prioritized equal error rates, did not create equal positive prediction rates between White and non-White patients."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model performance and fairness in a later year (COVID-19) and a different clinical research network population",
+     "effect": "AUC remained high (0.94-0.97) across datasets, but fairness varied: biased on statistical parity in AMC data, generally unbiased in the clinical research network data.",
+     "quote": "The findings revealed that the model exhibited biased performance in the AMC data but showed less bias in the clinical research network data, thus showing fairness metrics may vary across datasets."
+    },
+    {
+     "rec_id": "R141",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Multidisciplinary governance review of model inputs and clinician interpretability changed the deployed model design",
+     "effect": "Expert review raised concern about clinicians interpreting race as a predictor, and this fed into selecting fairness through blindness as the revised model.",
+     "quote": "More importantly, it meets the expert feedback highlighting the difficulties clinicians might face interpreting race as a top predictor in a clinical decision support tool."
+    }
+   ],
+   "unlisted_practices": [
+    "Decision curve analysis (net benefit) to choose classification threshold",
+    "Comparing multiple debiasing approaches (blindness, reweighing) before implementation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 55303,
+   "sample_unit": "deliveries",
+   "models_evaluated": [
+    "Baseline postpartum depression logistic regression risk model",
+    "Approach 1: fairness through blindness/nullified race using original parameters",
+    "Approach 2: removed race and retrained logistic regression",
+    "Approach 3: reweighing by White/non-White race using observed PPD rate",
+    "Approach 4: reweighing using literature PPD prevalence",
+    "Approach 5: removed race and retrained with reweighing using literature rate"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "performance and fairness across datasets",
+     "effect": "Baseline AUCs were 0.96, 0.97, and 0.94; AMC data showed biased performance, whereas clinical research network data showed less bias.",
+     "quote": "The findings revealed that the model exhibited biased performance in the AMC data but showed less bias in the clinical research network data, thus showing fairness metrics may vary across datasets."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "racial subgroup fairness metrics",
+     "effect": "At threshold 0.3, baseline statistical parity/disparate impact were \u22120.175/0.403 (2019 AMC) and \u22120.122/0.599 (2020 AMC), outside [\u22120.1, 0.1]/[0.8, 1.25].",
+     "quote": "However, both statistical parity difference and disparate impact did not meet the fairness criteria."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "debiasing effects on fairness and accuracy",
+     "effect": "Approach 2 improved statistical parity to \u22120.094, \u22120.056, and 0.004 with AUC 0.97, 0.96, 0.95, but AMC disparate impact remained 0.49/0.735.",
+     "quote": "Despite various methods employed to improve fairness metrics and meet the definition of fairness, the efforts achieved a limited reduction in the predicted positivity rate gap, while still maintaining sensitivity."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "risk threshold tradeoffs",
+     "effect": "Threshold 0.2 predicted 19% and 23% positive, versus 0.3 at 13% and 18% and 0.4 at 11% and 15%; lower thresholds had higher sensitivity.",
+     "quote": "A risk threshold of 0.3 seems to be most balanced in true positive and false positives, but a threshold of 0.2 will miss fewer at-risk patients."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 55303,
+   "sample_unit": "deliveries",
+   "models_evaluated": [
+    "logistic regression with L2 regularization"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "effect of debiasing methods on model fairness and predictive performance",
+     "effect": "Fairness through blindness improved statistical parity difference to acceptable range without compromising AUC (0.95-0.97) or sensitivity (0.94), whereas reweighing approaches decreased sensitivity by around 0.25.",
+     "quote": "While it is commonly a concern that debiasing method may compromise predictive performance, for our study, they improved fairness without compromise."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "deliveries",
+ "sample_size": 55303,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Approach 1: fairness through blindness/nullified race using original parameters",
+  "Approach 2: removed race and retrained logistic regression",
+  "Approach 3: reweighing by White/non-White race using observed PPD rate",
+  "Approach 4: reweighing using literature PPD prevalence",
+  "Approach 5: removed race and retrained with reweighing using literature rate",
+  "Baseline postpartum depression logistic regression risk model",
+  "Fairness through blindness (race nullified)",
+  "Logistic regression with L2 regularization PPD risk model (baseline)",
+  "Retrained without race",
+  "Reweighing variants",
+  "logistic regression with L2 regularization"
+ ],
+ "links": [
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Effect of five debiasing approaches on fairness metrics and model accuracy",
+   "effect": "All approaches largely improved fairness metrics except predictive parity difference; approaches 2, 4, 5 most successful; blindness improved fairness without compromising performance; reweighing reduced sensitivity by about 0.25.",
+   "quote": "While it is commonly a concern that debiasing method may compromise predictive performance, for our study, they improved fairness without compromise.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Threshold selection using decision curve net benefit, sensitivity, and positive prediction rates",
+   "effect": "Net benefit was highest at 0.3-0.4 thresholds; 0.2 predicted 19-23% positive versus 13-18% at 0.3 and 11-15% at 0.4; threshold 0.3 balanced true and false positives while 0.2 missed fewer at-risk patients.",
+   "quote": "A threshold of 0.3 produces positive predictions that are close to the observed prevalence at the AMC, while a threshold of 0.2 generates more positive predictions potentially allowing us to capture more at-risk patients albeit with false positive predictions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Fairness metrics by race subgroup (White vs non-White) across three datasets before deployment",
+   "effect": "Baseline model met equal-error-rate metrics but failed statistical parity and disparate impact in AMC data; clinical research network metrics were all within range, so fairness varied across datasets.",
+   "quote": "The clinical research network dataset\u2019s observed metrics are all within the defined fairness range.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance on local post-development AMC data (2019, 2020) against reference outcome",
+   "effect": "Model maintained predictive performance on local later-year data (AUC 0.96 in 2019, 0.97 in 2020; sensitivity 0.95, 0.97 at threshold 0.3) though it showed unequal positive prediction rates.",
+   "quote": "We found that the original model maintained predictive performance and, while satisfying fairness metrics that prioritized equal error rates, did not create equal positive prediction rates between White and non-White patients.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance and fairness in a later year (COVID-19) and a different clinical research network population",
+   "effect": "AUC remained high (0.94-0.97) across datasets, but fairness varied: biased on statistical parity in AMC data, generally unbiased in the clinical research network data.",
+   "quote": "The findings revealed that the model exhibited biased performance in the AMC data but showed less bias in the clinical research network data, thus showing fairness metrics may vary across datasets.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R141",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Multidisciplinary governance review of model inputs and clinician interpretability changed the deployed model design",
+   "effect": "Expert review raised concern about clinicians interpreting race as a predictor, and this fed into selecting fairness through blindness as the revised model.",
+   "quote": "More importantly, it meets the expert feedback highlighting the difficulties clinicians might face interpreting race as a top predictor in a clinical decision support tool.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "racial subgroup fairness metrics",
+   "effect": "At threshold 0.3, baseline statistical parity/disparate impact were \u22120.175/0.403 (2019 AMC) and \u22120.122/0.599 (2020 AMC), outside [\u22120.1, 0.1]/[0.8, 1.25].",
+   "quote": "However, both statistical parity difference and disparate impact did not meet the fairness criteria.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R306",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing multiple debiasing approaches (blindness, reweighing) before implementation",
+  "Decision curve analysis (net benefit) to choose classification threshold"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38531676",
+ "screen": {
+  "id": "pmid:38531676",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "pre-implementation fairness evaluation, threshold selection, and debiasing",
+  "user": "clinician_or_staff",
+  "reason": "Empirical pre-implementation evaluation comparing specific debiasing strategies (fairness through blindness vs reweighing) and decision-threshold selection methods for equity and clinical appropriateness prior to EHR implementation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "algorithmic debiasing and threshold selection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38531676",
+   "empirical": 0.96,
+   "tests_practice": 0.57,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,408 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 462,
+   "sample_unit": "participants (450 nursing students and 12 licensed nurses; 4125 case records analyzed)",
+   "models_evaluated": [
+    "logistic regression (lasso) patient deterioration prediction model with saliency-based visual explanations"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Nurse performance with vs without AI recommendations, by AI correctness, assessing overreliance in joint human-AI system",
+     "effect": "With AI recommendations nurses improved when AI was most correct (+52.8% emergency, +67.4% non-emergency) but worsened when AI was most misleading (\u2212120.5% emergency, \u221296.3% non-emergency) versus no AI.",
+     "quote": "Compared to nurses working without AI augmentation, nurses working with AI recommendations performed better on both emergency ( + 52.8%, odds ratio = 1.86, 95% CI [1.49, 2.23], z = 6.06, p < 0.001) and non-emergency ( + 67.4%, odds ratio = 1.62, 95% CI [1.35, 1.89], z = 5.59, p < 0.001) cases when the AI algorithm was most correct, but worse on both emergency (\u2212120.5%, odds ratio = 0.414, 95% CI [0.327, 0.501], z = \u22128.25, p < 0.001) and non-emergency (\u221296.3%, odds ratio = 0.418, 95% CI [0.333, 0.503], z = \u22128.41, p < 0.001) cases when the AI algorithm was most erroneous or misleading."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Joint nurse-AI performance versus AI standalone metrics in the intended interface",
+     "effect": "Favorable standalone AI benchmarks did not ensure safe joint performance; AI augmentation both improved and degraded nurse performance depending on AI correctness.",
+     "quote": "Due to these interactions, optimizing the performance of AI algorithms alone does not necessarily optimize the performance of the joint human-AI system 44 , 45 ."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether nurses detected incorrect AI recommendations (automation bias/overreliance)",
+     "effect": "When AI recommendations were most misleading, nurses' concern for emergency patients was indistinguishable from non-emergency patients and vice versa; degradation nearly twice the maximum improvement.",
+     "quote": "When AI recommendations were most misleading, nurses\u2019 concern was not significantly different from their concern for the opposite category of patients without AI augmentation."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether AI explanations helped nurses recognize and recover from AI errors",
+     "effect": "Adding explanations to recommendations did not significantly alter results; explanation-only condition still degraded performance on misleading non-emergency cases (\u221233.6%).",
+     "quote": "The addition of AI explanations did not significantly alter results when AI recommendations were also shown."
+    },
+    {
+     "rec_id": "R156",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether explanation-based interface cues surfaced AI errors and reduced misleading influence",
+     "effect": "Explanations designed to highlight algorithm errors did not attenuate degraded performance under misleading AI and could themselves degrade performance.",
+     "quote": "The addition of AI explanations did not attenuate these effects and could themselves degrade performance."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Effect of explanations of AI output on clinician performance when AI misleading",
+     "effect": "Saliency-based explanations did not mitigate harm from misleading recommendations; explanation-only worsened non-emergency performance (\u221233.6%, p=0.004).",
+     "quote": "Our findings add to growing concerns about the effectiveness of explainable AI to reliably help people recognize and recover from AI errors 26 , 29 , 47 , 48 , 52 \u2013 54 ."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Testing across a range of cases producing strong to poor AI performance to reveal hidden harms",
+     "effect": "Oversampling mediocre/poor AI cases revealed harms that representative sampling or aggregate measures might have obscured (benefits from frequent correct cases outweighing rare larger harms).",
+     "quote": "If we had representatively sampled from the distribution of AI outputs or computed a weighted average of our results based on the probability of occurrence (see Supplementary Fig. 10 ), the frequent but smaller benefits from correct AI recommendations might have outweighed the rare but larger costs from misleading AI recommendations."
+    },
+    {
+     "rec_id": "R106",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether pre-deployment human-in-the-loop evaluation reveals safety risks of AI tool before clinical use",
+     "effect": "Simulated evaluation with nurses revealed severe potential risks (degradation from misleading AI) prior to deployment despite favorable benchmark performance.",
+     "quote": "The study we conducted is an example of one such evaluation which was able to empirically reveal severe potential risks prior to deployment."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluate human-AI joint performance across cases with a range of AI correctness rather than aggregate accuracy",
+    "Avoid relying on aggregate metrics that equate frequent small benefits with rare severe harms",
+    "Re-evaluate human-AI system after any AI algorithm retraining or alteration"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 462,
+   "sample_unit": "nursing students and licensed nurses",
+   "models_evaluated": [
+    "logistic regression patient deterioration prediction algorithm",
+    "salience-based visual explainable AI technique"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "human-AI performance versus unaided nurses",
+     "effect": "+52.8%/+67.4% when AI most correct; \u2212120.5%/\u221296.3% when most misleading, all p < 0.001.",
+     "quote": "Compared to nurses working without AI augmentation, nurses working with AI recommendations performed better on both emergency ( + 52.8%, odds ratio = 1.86, 95% CI [1.49, 2.23], z = 6.06, p < 0.001) and non-emergency ( + 67.4%, odds ratio = 1.62, 95% CI [1.35, 1.89], z = 5.59, p < 0.001) cases when the AI algorithm was most correct, but worse on both emergency (\u2212120.5%, odds ratio = 0.414, 95% CI [0.327, 0.501], z = \u22128.25, p < 0.001) and non-emergency (\u221296.3%, odds ratio = 0.418, 95% CI [0.333, 0.503], z = \u22128.41, p < 0.001) cases when the AI algorithm was most erroneous or misleading."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AI versus unaided nurse performance",
+     "effect": "Nurses without AI were better than AI in 4 cases, worse in 4, and not different in 2.",
+     "quote": "Nurses without AI augmentation reported concern that was significantly better than the AI algorithm in 4 cases (3 emergency, 1 non-emergency), significantly worse than the AI algorithm in 4 cases (1 emergency, 3 non-emergency), and not significantly different than the AI algorithm in 2 cases (1 emergency, 1 non-emergency)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician performance in the intended interface",
+     "effect": "+52.8%/+67.4% when AI most correct; \u2212120.5%/\u221296.3% when most misleading, all p < 0.001.",
+     "quote": "Compared to nurses working without AI augmentation, nurses working with AI recommendations performed better on both emergency ( + 52.8%, odds ratio = 1.86, 95% CI [1.49, 2.23], z = 6.06, p < 0.001) and non-emergency ( + 67.4%, odds ratio = 1.62, 95% CI [1.35, 1.89], z = 5.59, p < 0.001) cases when the AI algorithm was most correct, but worse on both emergency (\u2212120.5%, odds ratio = 0.414, 95% CI [0.327, 0.501], z = \u22128.25, p < 0.001) and non-emergency (\u221296.3%, odds ratio = 0.418, 95% CI [0.333, 0.503], z = \u22128.41, p < 0.001) cases when the AI algorithm was most erroneous or misleading."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "overreliance on misleading AI recommendations",
+     "effect": "When recommendations were misleading, performance worsened \u2212120.5% for emergency and \u221296.3% for non-emergency cases.",
+     "quote": "When AI recommendations were most misleading, nurses\u2019 concern was not significantly different from their concern for the opposite category of patients without AI augmentation."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "effect of visual AI explanations",
+     "effect": "Explanations alone: +23.9% for correct emergency cases; \u221233.6% for misleading non-emergency cases; not significant in other comparisons.",
+     "quote": "When only AI explanations were shown, nurses performed better on emergency cases when the AI algorithm was most correct ( + 23.9%, odds ratio = 1.29, 95% CI [1.05, 1.53], z = 2.64, p = 0.008), worse on non-emergency cases when the AI algorithm was most misleading (\u221233.6%, odds ratio = 0.746, 95% CI [0.599, 0.893], z = \u22122.91, p = 0.004), and not significantly different on either emergency cases when the AI algorithm was most misleading or non-emergency cases when the AI algorithm was most correct."
+    }
+   ],
+   "unlisted_practices": [
+    "Pre-deployment evaluations should examine challenging cases spanning strong, mediocre, and poor AI performance."
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 462,
+   "sample_unit": "clinicians",
+   "models_evaluated": [
+    "logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "nurse concern differentiation with vs without AI explanations",
+     "effect": "The addition of AI explanations did not significantly alter results when recommendations were shown, and explanations alone degraded performance on misleading non-emergency cases (-33.6%, p=0.004).",
+     "quote": "The addition of AI explanations did not significantly alter results when AI recommendations were also shown."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "nurse differentiation of emergency vs non-emergency patients with misleading AI recommendations",
+     "effect": "Nurses performed worse on emergency (-120.5%, OR 0.414, 95% CI [0.327, 0.501], p<0.001) and non-emergency (-96.3%, OR 0.418, 95% CI [0.333, 0.503], p<0.001) cases when AI recommendations were most misleading.",
+     "quote": "Compared to nurses working without AI augmentation, nurses working with AI recommendations performed better on both emergency ( + 52.8%, odds ratio = 1.86, 95% CI [1.49, 2.23], z = 6.06, p < 0.001) and non-emergency ( + 67.4%, odds ratio = 1.62, 95% CI [1.35, 1.89], z = 5.59, p < 0.001) cases when the AI algorithm was most correct, but worse on both emergency (\u2212120.5%, odds ratio = 0.414, 95% CI [0.327, 0.501], z = \u22128.25, p < 0.001) and non-emergency (\u221296.3%, odds ratio = 0.418, 95% CI [0.333, 0.503], z = \u22128.41, p < 0.001) cases when the AI algorithm was most erroneous or misleading."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "rct",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "participants (450 nursing students and 12 licensed nurses; 4125 case records analyzed)",
+ "sample_size": 462,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "logistic regression",
+  "logistic regression (lasso) patient deterioration prediction model with saliency-based visual explanations",
+  "logistic regression patient deterioration prediction algorithm",
+  "salience-based visual explainable AI technique"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Nurse performance with vs without AI recommendations, by AI correctness, assessing overreliance in joint human-AI system",
+   "effect": "With AI recommendations nurses improved when AI was most correct (+52.8% emergency, +67.4% non-emergency) but worsened when AI was most misleading (\u2212120.5% emergency, \u221296.3% non-emergency) versus no AI.",
+   "quote": "Compared to nurses working without AI augmentation, nurses working with AI recommendations performed better on both emergency ( + 52.8%, odds ratio = 1.86, 95% CI [1.49, 2.23], z = 6.06, p < 0.001) and non-emergency ( + 67.4%, odds ratio = 1.62, 95% CI [1.35, 1.89], z = 5.59, p < 0.001) cases when the AI algorithm was most correct, but worse on both emergency (\u2212120.5%, odds ratio = 0.414, 95% CI [0.327, 0.501], z = \u22128.25, p < 0.001) and non-emergency (\u221296.3%, odds ratio = 0.418, 95% CI [0.333, 0.503], z = \u22128.41, p < 0.001) cases when the AI algorithm was most erroneous or misleading.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Joint nurse-AI performance versus AI standalone metrics in the intended interface",
+   "effect": "Favorable standalone AI benchmarks did not ensure safe joint performance; AI augmentation both improved and degraded nurse performance depending on AI correctness.",
+   "quote": "Due to these interactions, optimizing the performance of AI algorithms alone does not necessarily optimize the performance of the joint human-AI system 44 , 45 .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether nurses detected incorrect AI recommendations (automation bias/overreliance)",
+   "effect": "When AI recommendations were most misleading, nurses' concern for emergency patients was indistinguishable from non-emergency patients and vice versa; degradation nearly twice the maximum improvement.",
+   "quote": "When AI recommendations were most misleading, nurses\u2019 concern was not significantly different from their concern for the opposite category of patients without AI augmentation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "effect of visual AI explanations",
+   "effect": "Explanations alone: +23.9% for correct emergency cases; \u221233.6% for misleading non-emergency cases; not significant in other comparisons.",
+   "quote": "When only AI explanations were shown, nurses performed better on emergency cases when the AI algorithm was most correct ( + 23.9%, odds ratio = 1.29, 95% CI [1.05, 1.53], z = 2.64, p = 0.008), worse on non-emergency cases when the AI algorithm was most misleading (\u221233.6%, odds ratio = 0.746, 95% CI [0.599, 0.893], z = \u22122.91, p = 0.004), and not significantly different on either emergency cases when the AI algorithm was most misleading or non-emergency cases when the AI algorithm was most correct.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R156",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether explanation-based interface cues surfaced AI errors and reduced misleading influence",
+   "effect": "Explanations designed to highlight algorithm errors did not attenuate degraded performance under misleading AI and could themselves degrade performance.",
+   "quote": "The addition of AI explanations did not attenuate these effects and could themselves degrade performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R106",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether pre-deployment human-in-the-loop evaluation reveals safety risks of AI tool before clinical use",
+   "effect": "Simulated evaluation with nurses revealed severe potential risks (degradation from misleading AI) prior to deployment despite favorable benchmark performance.",
+   "quote": "The study we conducted is an example of one such evaluation which was able to empirically reveal severe potential risks prior to deployment.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R104",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Avoid relying on aggregate metrics that equate frequent small benefits with rare severe harms",
+  "Evaluate human-AI joint performance across cases with a range of AI correctness rather than aggregate accuracy",
+  "Pre-deployment evaluations should examine challenging cases spanning strong, mediocre, and poor AI performance.",
+  "Re-evaluate human-AI system after any AI algorithm retraining or alteration"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40533485",
+ "screen": {
+  "id": "pmid:40533485",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI recommendations with vs without explanations; joint human-AI evaluation before deployment",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests nurse decision-making using combinations of AI recommendations and explanations on simulated clinical cases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI explanations alongside recommendations"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40533485",
+   "empirical": 0.9,
+   "tests_practice": 0.31,
+   "real_deployment": 0.04
+  }
+ }
+}

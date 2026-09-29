@@ -1,0 +1,301 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 32,
+   "sample_unit": "vessels (coronary lesions with invasive iFR)",
+   "models_evaluated": [
+    "GPT-5.2 (gpt-5.2-2025-12-11) without RAG",
+    "GPT-5.2 with RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between LLM-predicted and invasive iFR with vs without retrieval grounding in guidelines",
+     "effect": "RAG reduced MAE from 0.064 to 0.029, RMSE 0.083 to 0.038, correlation r 0.205 to 0.830; AUC 0.583 to 0.931 (small pilot, n=32, exploratory).",
+     "quote": "With RAG, point estimates favored improved continuous agreement, with MAE decreasing to 0.029, RMSE to 0.038, and correlation increasing to r = 0.830 (p < 0.001)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reproducibility of LLM outputs across repeated runs and settings",
+     "effect": "No seed or deterministic decoding; each case run once per condition; run-to-run reproducibility not assessed; authors note outputs may vary across snapshots, settings, and stochastic runs.",
+     "quote": "Because repeat-run reproducibility was not formally tested, the observed results should be interpreted as the performance of this specific prompt, retrieval pipeline, and model configuration rather than as a deterministic property of GPT-5.2."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether LLM outputs improve clinician performance in workflow (standalone vs human-AI)",
+     "effect": "Study evaluated only standalone model outputs; no human comparator or clinician-plus-AI testing, so human-AI team performance is unknown.",
+     "quote": "In addition, the study examined model outputs in a controlled retrospective setting and did not test whether these outputs improve clinician performance or can be safely integrated into real-world workflow."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Comparison of LLM against clinician expert assessment",
+     "effect": "No blinded interventional cardiologist comparator, so relative performance versus expert visual assessment cannot be determined.",
+     "quote": "Importantly, this study did not include a blinded human interventional cardiologist comparator; therefore, we cannot determine whether the LLM or RAG workflow performs better, worse, or similarly to expert visual angiographic assessment, and future work should benchmark model outputs against experienced physicians reviewing the same cases."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Representativeness of the iFR-selected, ischemia-enriched cohort for broader angiography populations",
+     "effect": "Cohort was 25/32 ischemic (78.1%), selected by clinical decision to perform iFR; performance may not generalize to unselected, lower-prevalence angiography populations; specificity based on 7 non-ischemic lesions.",
+     "quote": "As a result, model performance in this cohort may not reflect performance in unselected angiographic populations that include a broader mix of normal vessels, mild disease, clearly severe stenoses, diffuse disease, complex multivessel disease, and lesions not considered suitable or necessary for invasive physiology."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Overconfident or miscalibrated numeric iFR estimates from the LLM",
+     "effect": "Both models overcalled ischemia in non-ischemic lesions; No-RAG specificity 0.143 (6 false positives of 7); authors list overconfident numeric iFR estimates despite limited visual information as a failure mode.",
+     "quote": "Notably, among lesions with measured iFR > 0.89, both the No-RAG and RAG models still often assigned values within or near the ischemic range, indicating a persistent tendency to overcall physiologic significance based on angiographic appearance alone."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 32,
+   "sample_unit": "vessels",
+   "models_evaluated": [
+    "OpenAI GPT-5.2 No-RAG",
+    "OpenAI GPT-5.2 RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "iFR agreement and ischemia discrimination",
+     "effect": "RAG improved MAE 0.064 to 0.029, r 0.205 to 0.830, limits \u00b10.156 to \u00b10.075, and AUC 0.58 to 0.93.",
+     "quote": "Within this selected cohort, several key findings emerged: (1) continuous agreement with invasive iFR improved, with reduced absolute error (MAE 0.064 to 0.029) and stronger correlation (r = 0.205 to 0.830, p < 0.001), accompanied by narrower limits of agreement (\u00b10.156 to \u00b10.075); (2) discrimination for ischemia (iFR \u2264 0.89) also improved (AUC 0.58 to 0.93, p = 0.010); (3) qualitative analysis demonstrated a systematic shift from morphology-dominant procedural framing toward earlier integration of physiologic thresholds, guideline references, and graded uncertainty."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy versus invasive iFR",
+     "effect": "No-RAG had sensitivity 0.920, specificity 0.143, accuracy 0.750, and AUC 0.583 versus invasive iFR.",
+     "quote": "The No-RAG model demonstrated sensitivity 0.920 (95% CI 0.75\u20130.98), specificity 0.143 (95% CI 0.03\u20130.51), accuracy 0.750 (95% CI 0.58\u20130.87), and AUC 0.583 (bootstrap 95% CI 0.30\u20130.85) ( Table 2 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 32,
+   "sample_unit": "vessels",
+   "models_evaluated": [
+    "GPT-5.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "agreement between predicted and measured iFR",
+     "effect": "MAE decreased from 0.064 to 0.029 (\u0394MAE -0.035, 95% CI -0.052 to -0.021); RMSE decreased from 0.083 to 0.038; correlation increased from r=0.205 to 0.830 (p<0.001); AUC increased from 0.583 to 0.931 (p=0.010)",
+     "quote": "Bootstrap resampling (15,000 iterations) demonstrated a statistically significant reduction in absolute error, with \u0394MAE (RAG \u2212 No-RAG) 95% CI \u22120.052 to \u22120.021."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "vessels",
+ "sample_size": 32,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "GPT-5.2",
+  "GPT-5.2 (gpt-5.2-2025-12-11) without RAG",
+  "GPT-5.2 with RAG",
+  "OpenAI GPT-5.2 No-RAG",
+  "OpenAI GPT-5.2 RAG"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "iFR agreement and ischemia discrimination",
+   "effect": "RAG improved MAE 0.064 to 0.029, r 0.205 to 0.830, limits \u00b10.156 to \u00b10.075, and AUC 0.58 to 0.93.",
+   "quote": "Within this selected cohort, several key findings emerged: (1) continuous agreement with invasive iFR improved, with reduced absolute error (MAE 0.064 to 0.029) and stronger correlation (r = 0.205 to 0.830, p < 0.001), accompanied by narrower limits of agreement (\u00b10.156 to \u00b10.075); (2) discrimination for ischemia (iFR \u2264 0.89) also improved (AUC 0.58 to 0.93, p = 0.010); (3) qualitative analysis demonstrated a systematic shift from morphology-dominant procedural framing toward earlier integration of physiologic thresholds, guideline references, and graded uncertainty.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42452714",
+ "screen": {
+  "id": "pmid:42452714",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "multimodal_foundation",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation (RAG)",
+  "user": "none",
+  "reason": "Evaluates the addition of retrieval-augmented generation (RAG) to an existing multimodal LLM (GPT-5.2) against a baseline without RAG for estimating coronary physiology from angiographic images.",
+  "jev": {
+   "id": "pmid:42452714",
+   "empirical": 0.96,
+   "tests_practice": 0.83,
+   "real_deployment": 0.05
+  }
+ }
+}

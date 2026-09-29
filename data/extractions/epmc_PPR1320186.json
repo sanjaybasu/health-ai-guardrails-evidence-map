@@ -1,0 +1,339 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "unspecified",
+   "sample_size": 45,
+   "sample_unit": "sepsis vignettes and conceptual questions",
+   "models_evaluated": [
+    "four open-weight LLMs (7\u201323.6B parameters, three model families, including one biomedically fine-tuned model)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Superseded-vocabulary use with guideline corpus context versus no-context baseline",
+     "effect": "Injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline.",
+     "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline."
+    },
+    {
+     "rec_id": "R476",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Superseded-vocabulary use when retrieval corpus mixes current and superseded definitions",
+     "effect": "Full five-document corpus mixing Sepsis-3 and SIRS-based definitions increased superseded-vocabulary use for every model versus no-context baseline.",
+     "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Use of outdated (superseded) guideline vocabulary with a corpus containing superseded definitions",
+     "effect": "Corpus containing superseded SIRS-based definitions increased superseded-vocabulary use in all four models relative to no context.",
+     "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Physician-rated validity of stated clinical rationale despite correct conclusions",
+     "effect": "Stated clinical rationale valid in only 53.7% of responses despite near-ceiling conclusion accuracy; qSOFA-as-diagnostic and lactate-as-organ-dysfunction conflations.",
+     "quote": "a blinded physician review, corroborated by a second independent reviewer, found the stated clinical rationale valid in only 53.7% of responses despite near-ceiling conclusion accuracy"
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Conclusion accuracy of fine-tuned model under injected distractor context",
+     "effect": "One biomedically fine-tuned model's accuracy collapsed to 17.9\u201325.0% under injected context, while three models kept 89\u2013100% accuracy.",
+     "quote": "Third, three models maintained high (89\u2013100%) conclusion accuracy across conditions, but one biomedically fine-tuned model showed a severe, distractor-driven accuracy collapse, falling to 17.9\u201325.0% under injected context."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether correct final-answer accuracy reflects valid clinical reasoning",
+     "effect": "Rationale valid in only 53.7% of responses despite 89\u2013100% conclusion accuracy in three models.",
+     "quote": "Finally, correct final answers substantially overstated the clinical validity of the models\u2019 stated rationale"
+    }
+   ],
+   "unlisted_practices": [
+    "static retrieval pruning (restricting corpus access) to reduce outdated-terminology use",
+    "deterministic lexical tracker to measure superseded versus current guideline vocabulary"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 45,
+   "sample_unit": "physician-reviewed sepsis vignettes and conceptual questions",
+   "models_evaluated": [
+    "four open-weight LLMs (7\u201323.6 billion parameters, three model families)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "superseded-guideline terminology after context",
+     "effect": "Guideline context of any kind increased superseded-vocabulary use for every model relative to no-context.",
+     "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "validity of clinical rationale",
+     "effect": "Rationale was valid in only 53.7% of responses despite near-ceiling conclusion accuracy.",
+     "quote": "Finally, correct final answers substantially overstated the clinical validity of the models\u2019 stated rationale: a blinded physician review, corroborated by a second independent reviewer, found the stated clinical rationale valid in only 53.7% of responses despite near-ceiling conclusion accuracy, chiefly reflecting quick Sequential Organ Failure Assessment (qSOFA)-as-diagnostic and lactate-as-organ-dysfunction conflations."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "diagnostic conclusion accuracy",
+     "effect": "Three models had 89\u2013100% accuracy; one biomedically fine-tuned model fell to 17.9\u201325.0% under injected context.",
+     "quote": "Third, three models maintained high (89\u2013100%) conclusion accuracy across conditions, but one biomedically fine-tuned model showed a severe, distractor-driven accuracy collapse, falling to 17.9\u201325.0% under injected context."
+    }
+   ],
+   "unlisted_practices": [
+    "Static retrieval pruning/context restriction to reduce superseded-guideline vocabulary use"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Unspecified",
+   "sample_size": 45,
+   "sample_unit": "vignettes and conceptual questions",
+   "models_evaluated": [
+    "Four open-weight LLMs (7\u201323.6B parameters)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "superseded-guideline vocabulary density",
+     "effect": "Injecting guideline context increased superseded-vocabulary use for every model relative to the no-context baseline.",
+     "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline."
+    }
+   ],
+   "unlisted_practices": [
+    "Static retrieval pruning",
+    "Context restriction of retrieval corpus"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "unspecified",
+ "sample_unit": "sepsis vignettes and conceptual questions",
+ "sample_size": 45,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Four open-weight LLMs (7\u201323.6B parameters)",
+  "four open-weight LLMs (7\u201323.6 billion parameters, three model families)",
+  "four open-weight LLMs (7\u201323.6B parameters, three model families, including one biomedically fine-tuned model)"
+ ],
+ "links": [
+  {
+   "rec_id": "R477",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Use of outdated (superseded) guideline vocabulary with a corpus containing superseded definitions",
+   "effect": "Corpus containing superseded SIRS-based definitions increased superseded-vocabulary use in all four models relative to no context.",
+   "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Physician-rated validity of stated clinical rationale despite correct conclusions",
+   "effect": "Stated clinical rationale valid in only 53.7% of responses despite near-ceiling conclusion accuracy; qSOFA-as-diagnostic and lactate-as-organ-dysfunction conflations.",
+   "quote": "a blinded physician review, corroborated by a second independent reviewer, found the stated clinical rationale valid in only 53.7% of responses despite near-ceiling conclusion accuracy",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Superseded-vocabulary use with guideline corpus context versus no-context baseline",
+   "effect": "Injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline.",
+   "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Conclusion accuracy of fine-tuned model under injected distractor context",
+   "effect": "One biomedically fine-tuned model's accuracy collapsed to 17.9\u201325.0% under injected context, while three models kept 89\u2013100% accuracy.",
+   "quote": "Third, three models maintained high (89\u2013100%) conclusion accuracy across conditions, but one biomedically fine-tuned model showed a severe, distractor-driven accuracy collapse, falling to 17.9\u201325.0% under injected context.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether correct final-answer accuracy reflects valid clinical reasoning",
+   "effect": "Rationale valid in only 53.7% of responses despite 89\u2013100% conclusion accuracy in three models.",
+   "quote": "Finally, correct final answers substantially overstated the clinical validity of the models\u2019 stated rationale",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R476",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Context restriction of retrieval corpus",
+  "Static retrieval pruning",
+  "Static retrieval pruning/context restriction to reduce superseded-guideline vocabulary use",
+  "deterministic lexical tracker to measure superseded versus current guideline vocabulary",
+  "static retrieval pruning (restricting corpus access) to reduce outdated-terminology use"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1320186",
+ "screen": {
+  "id": "epmc:PPR1320186",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval context pruning / restriction",
+  "user": "none",
+  "reason": "The study tests whether narrowing guideline context via static retrieval pruning acts as an effective deployment safeguard against LLMs using outdated/superseded clinical knowledge.",
+  "jev": {
+   "id": "epmc:PPR1320186",
+   "empirical": 0.96,
+   "tests_practice": 0.87,
+   "real_deployment": 0.03
+  }
+ }
+}

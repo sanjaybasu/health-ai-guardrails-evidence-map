@@ -1,0 +1,338 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Ireland",
+   "sample_size": 20,
+   "sample_unit": "clinical claims (plus one acne scenario with 16 expert-identified claims)",
+   "models_evaluated": [
+    "GPT-4o",
+    "OpenBioLLM-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether LLM fact-checking of its own response catches errors versus expert verification",
+     "effect": "GPT-4o and OpenBioLLM-70B had 86% agreement with experts on the acne scenario. Both LLM fact-checks missed the understated urgency of stopping isotretinoin and the folic acid issue. Experts identified 3 mostly-true claims that the LLMs called true.",
+     "quote": "The experts disagreed with the LLM classification of the claim about the use of folic acid because the response understated the importance of taking folic acid during pregnancy."
+    },
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Accuracy and speed of LLM fact-checking of generated medical claims versus expert pharmacists",
+     "effect": "On 20 claims, GPT-4o agreed 100% and OpenBioLLM-70B 95% with experts. For the acne response both agreed 86%, but the LLM consistency check missed an internal inconsistency about stopping isotretinoin. GPT-4o took 42 seconds versus 18 minutes for experts.",
+     "quote": "This inconsistency was not detected by the consistency check ( Textbox 3 )."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Completeness and urgency of LLM clinical advice on isotretinoin during suspected pregnancy",
+     "effect": "LLM responses did not consistently convey the urgency of discontinuing isotretinoin when pregnancy is suspected, nor adequately convey folic acid importance. One response recommended stopping only after a positive pregnancy test.",
+     "quote": "However, the LLMs did not consistently recommend immediately stopping isotretinoin or sufficiently guide the patient to take folic acid."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether LLM fact-checks flagged understated or inconsistent advice rather than rating it true",
+     "effect": "GPT-4o and OpenBioLLM-70B each rated all 13 claims true with none mostly true, whereas experts rated 3 of 16 claims as mostly true; the LLM verdicts did not flag understated urgency.",
+     "quote": "By comparison, GPT-4o identified 13 claims to verify and deemed all these claims to be true."
+    }
+   ],
+   "unlisted_practices": [
+    "Using an LLM to prompt patients to redraft and improve their own prompt before asking a health question",
+    "Patient co-design of the evaluation scenario and prompts"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 21,
+   "sample_unit": "items (1 clinical scenario and 20 medical claims)",
+   "models_evaluated": [
+    "GPT-4o",
+    "OpenBioLLM-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "elicitation of missing medication details",
+     "effect": "GPT-4o asked for acne medication details; OpenBioLLM-70B did not, despite a shorter 75-word response versus 279 words.",
+     "quote": "However, OpenBioLLM-70B did not mention the risk of acne medication during pregnancy and did not ask the patient to provide more information on her medication."
+    },
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "automated fact-checking agreement and speed",
+     "effect": "Scenario agreement was 86% for both; on 20 claims GPT-4o was 100% and OpenBioLLM-70B 95%; times: experts 18 min, GPT-4o 42 s, OpenBio 33 min.",
+     "quote": "For the set of 20 medical claims, GPT-4o fact-checking had 100% agreement with that of human experts, whereas OpenBioLLM-70B had 95% agreement."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert review identifying unsafe omissions",
+     "effect": "Experts reviewed 16 claims, rating 13 true and 3 mostly true, and identified understated folic acid importance and isotretinoin urgency issues.",
+     "quote": "The experts disagreed with the LLM classification of the claim about the use of folic acid because the response understated the importance of taking folic acid during pregnancy."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "teratogenic medication exposure escalation",
+     "effect": "Both LLMs had 86% agreement with experts but did not consistently communicate urgent isotretinoin discontinuation when pregnancy was suspected.",
+     "quote": "The large language models did not consistently convey the urgency of discontinuing isotretinoin treatment when pregnancy is suspected."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinical drug-knowledge fact-checking error",
+     "effect": "OpenBioLLM-70B diverged on 1/20 claims about pediatric antihistamine use; GPT-4o agreed with experts on 20/20.",
+     "quote": "OpenBioLLM-70B diverged from human experts and GPT-4o on 1 question related to pediatric use of antihistamines."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 20,
+   "sample_unit": "claims",
+   "models_evaluated": [
+    "GPT-4o",
+    "OpenBioLLM-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R485",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement of automated fact-checking with clinical experts",
+     "effect": "GPT-4o had 100% agreement and OpenBioLLM-70B had 95% agreement with human experts across 20 medical claims, completed in 42 seconds and 33 minutes respectively versus 18 minutes for experts",
+     "quote": "For the set of 20 medical claims, GPT-4o fact-checking had 100% agreement with that of human experts, whereas OpenBioLLM-70B had 95% agreement."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt redrafting: prompting large language models to identify missing information and suggest improvements to patient health prompts"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "Ireland",
+ "sample_unit": "clinical claims (plus one acne scenario with 16 expert-identified claims)",
+ "sample_size": 20,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "OpenBioLLM-70B"
+ ],
+ "links": [
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether LLM fact-checking of its own response catches errors versus expert verification",
+   "effect": "GPT-4o and OpenBioLLM-70B had 86% agreement with experts on the acne scenario. Both LLM fact-checks missed the understated urgency of stopping isotretinoin and the folic acid issue. Experts identified 3 mostly-true claims that the LLMs called true.",
+   "quote": "The experts disagreed with the LLM classification of the claim about the use of folic acid because the response understated the importance of taking folic acid during pregnancy.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R485",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Accuracy and speed of LLM fact-checking of generated medical claims versus expert pharmacists",
+   "effect": "On 20 claims, GPT-4o agreed 100% and OpenBioLLM-70B 95% with experts. For the acne response both agreed 86%, but the LLM consistency check missed an internal inconsistency about stopping isotretinoin. GPT-4o took 42 seconds versus 18 minutes for experts.",
+   "quote": "This inconsistency was not detected by the consistency check ( Textbox 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Completeness and urgency of LLM clinical advice on isotretinoin during suspected pregnancy",
+   "effect": "LLM responses did not consistently convey the urgency of discontinuing isotretinoin when pregnancy is suspected, nor adequately convey folic acid importance. One response recommended stopping only after a positive pregnancy test.",
+   "quote": "However, the LLMs did not consistently recommend immediately stopping isotretinoin or sufficiently guide the patient to take folic acid.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "elicitation of missing medication details",
+   "effect": "GPT-4o asked for acne medication details; OpenBioLLM-70B did not, despite a shorter 75-word response versus 279 words.",
+   "quote": "However, OpenBioLLM-70B did not mention the risk of acne medication during pregnancy and did not ask the patient to provide more information on her medication.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "teratogenic medication exposure escalation",
+   "effect": "Both LLMs had 86% agreement with experts but did not consistently communicate urgent isotretinoin discontinuation when pregnancy was suspected.",
+   "quote": "The large language models did not consistently convey the urgency of discontinuing isotretinoin treatment when pregnancy is suspected.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Patient co-design of the evaluation scenario and prompts",
+  "Prompt redrafting: prompting large language models to identify missing information and suggest improvements to patient health prompts",
+  "Using an LLM to prompt patients to redraft and improve their own prompt before asking a health question"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41985066",
+ "screen": {
+  "id": "pmid:41985066",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM automated fact-checking of responses versus human expert review",
+  "user": "patient",
+  "reason": "The study empirically assesses safeguards for patient-facing LLM interactions, specifically automated LLM fact-checking of medical outputs and interactive prompt improvement to elicit safe clinical information.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "automated LLM fact-checking and prompt redrafting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41985066",
+   "empirical": 0.95,
+   "tests_practice": 0.11,
+   "real_deployment": 0.04
+  }
+ }
+}

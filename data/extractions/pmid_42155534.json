@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "technology": [
+  "predictive_risk"
+ ],
+ "country": "India",
+ "sample_size": 80,
+ "sample_unit": "patients (prospective external validation across three hospitals)",
+ "models_evaluated": [
+  "TabNet",
+  "Random Forest",
+  "XGBoost",
+  "SVM"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop from internal cross-validation to prospective external multi-site data",
+   "effect": "Internal F1 96.22%; external multi-site F1 ranged from 83.70% to 87.00% across three hospitals, attributed partly to inter-site variability in feature availability and recording protocols.",
+   "quote": "External multi-site F1 scores ranged from 83.70% to 87.00% across all three hospitals, reflecting an expected performance reduction in prospective real-world data, partly attributed to inter-site variability in feature availability and clinical data recording protocols.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance variation across sites in external validation",
+   "effect": "External F1 scores ranged from 83.70% to 87.00% across three Kerala hospitals, versus 96.22% F1 in internal cross-validation.",
+   "quote": "External multi-site F1 scores ranged from 83.70% to 87.00% across all three hospitals, reflecting an expected performance reduction in prospective real-world data, partly attributed to inter-site variability in feature availability and clinical data recording protocols.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Physician-in-the-loop blinded review of XAI explanations for concordance with clinical judgment",
+  "Leakage-free SMOTE applied only within training folds of cross-validation",
+  "Feature-tailored hybrid imputation for missing clinical data"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42155534",
+ "screen": {
+  "id": "pmid:42155534",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates an explainable TabNet model for GDM prediction incorporating dual-stage physician-in-the-loop review with XAI explanations and multi-site clinical validation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "physician-in-the-loop review with explainability"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42155534",
+   "empirical": 0.96,
+   "tests_practice": 0.53,
+   "real_deployment": 0.24
+  }
+ }
+}

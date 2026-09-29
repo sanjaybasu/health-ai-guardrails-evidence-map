@@ -1,0 +1,257 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 6,
+   "sample_unit": "radiologists (each reading 200 bone age radiographs)",
+   "models_evaluated": [
+    "Custom CNN bone age assessment algorithm (trained on RSNA Bone Age Challenge and Cheng-Hsin General Hospital images)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist bone age accuracy (MAD) with vs without AI assistance, and automation bias assessed",
+     "effect": "MAD improved from 0.74 to 0.46 years with AI (p<0.001); >1 year error proportion 24.0% vs 8.4%; improved predictions 16.8% vs worsened 2.3%; less experienced radiologists prone to automation bias.",
+     "quote": "The overall accuracy of senior, mid-level, and junior radiologists improved significantly with AI assistance than without AI assistance (MAD: 0.74 vs 0.46 years, p < 0.001; proportion of assessments for which MAD exceeded 1 year: 24.0% vs 8.4%, p < 0.001)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of AI on radiologist performance in reader-study workflow versus standalone",
+     "effect": "Radiologist MAD improved from 0.74 to 0.46 years with AI assistance (p<0.001); proportion >1 year error fell 24.0% to 8.4%.",
+     "quote": "As illustrated in Fig. 5 , the radiologists\u2019 assessment accuracy improved significantly ( p < 0.001) with AI assistance (MAD, 0.46 years) when compared with that without AI assistance (MAD, 0.74 years)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "hazard_mixed",
+     "outcome": "Automation bias and whether radiologists detected/rejected AI outputs",
+     "effect": "Worsened predictions with AI in 2.3% vs improved 16.8%; junior radiologists accepted AI more readily; senior radiologists disagreed more (253 disagreements, 21.2%).",
+     "quote": "Our study revealed that junior radiologists were more easily influenced by AI interpretations and generally accepted them."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 200,
+   "sample_unit": "radiographs",
+   "models_evaluated": [
+    "AI algorithm for bone age assessment"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Radiologist bone age assessment accuracy",
+     "effect": "Without vs with AI: MAD 0.74 vs 0.46 years; MAD>1 year 24.0% vs 8.4%; both p < 0.001.",
+     "quote": "The overall accuracy of senior, mid-level, and junior radiologists improved significantly with AI assistance than without AI assistance (MAD: 0.74 vs 0.46 years, p < 0.001; proportion of assessments for which MAD exceeded 1 year: 24.0% vs 8.4%, p < 0.001)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Automation bias and AI disagreements by experience",
+     "effect": "Worsened \u22651 y: 28 (2.3%) vs improved \u22651 y: 201 (16.8%); disagreements: S1/S2 65/65, M1/M2 23/55, J1/J2 18/27.",
+     "quote": "Radiologists reading BAs were prone to automation bias when being supported by an AI algorithm, especially in less experienced radiologists."
+    }
+   ],
+   "unlisted_practices": [
+    "Timing of providing AI assistance immediately versus after a delay"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 6,
+   "sample_unit": "radiologists",
+   "models_evaluated": [
+    "Convolutional neural network model for bone age assessment"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "worsened bone age predictions with AI assistance",
+     "effect": "2.3% (28/1200) less accurate predictions with AI assistance versus 16.8% (201/1200) improved (p < 0.001)",
+     "quote": "The proportion of improved BA predictions with AI assistance (16.8%) was significantly higher than that of less accurate predictions with AI assistance (2.3%; p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Immediate versus delayed provision of AI assistance during image interpretation"
+   ]
+  }
+ },
+ "design": "rct",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Taiwan",
+ "sample_unit": "radiologists (each reading 200 bone age radiographs)",
+ "sample_size": 6,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AI algorithm for bone age assessment",
+  "Convolutional neural network model for bone age assessment",
+  "Custom CNN bone age assessment algorithm (trained on RSNA Bone Age Challenge and Cheng-Hsin General Hospital images)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Radiologist bone age accuracy (MAD) with vs without AI assistance, and automation bias assessed",
+   "effect": "MAD improved from 0.74 to 0.46 years with AI (p<0.001); >1 year error proportion 24.0% vs 8.4%; improved predictions 16.8% vs worsened 2.3%; less experienced radiologists prone to automation bias.",
+   "quote": "The overall accuracy of senior, mid-level, and junior radiologists improved significantly with AI assistance than without AI assistance (MAD: 0.74 vs 0.46 years, p < 0.001; proportion of assessments for which MAD exceeded 1 year: 24.0% vs 8.4%, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Automation bias and AI disagreements by experience",
+   "effect": "Worsened \u22651 y: 28 (2.3%) vs improved \u22651 y: 201 (16.8%); disagreements: S1/S2 65/65, M1/M2 23/55, J1/J2 18/27.",
+   "quote": "Radiologists reading BAs were prone to automation bias when being supported by an AI algorithm, especially in less experienced radiologists.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of AI on radiologist performance in reader-study workflow versus standalone",
+   "effect": "Radiologist MAD improved from 0.74 to 0.46 years with AI assistance (p<0.001); proportion >1 year error fell 24.0% to 8.4%.",
+   "quote": "As illustrated in Fig. 5 , the radiologists\u2019 assessment accuracy improved significantly ( p < 0.001) with AI assistance (MAD, 0.46 years) when compared with that without AI assistance (MAD, 0.74 years).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Immediate versus delayed provision of AI assistance during image interpretation",
+  "Timing of providing AI assistance immediately versus after a delay"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40369744",
+ "screen": {
+  "id": "pmid:40369744",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI assistance with clinician review and override; timing of AI assistance (early vs delayed)",
+  "user": "clinician_or_staff",
+  "reason": "This prospective randomized crossover reader study evaluates the impact of AI assistance on radiologists' accuracy and investigates workflow practices (early vs. delayed AI assistance) to mitigate automation bias.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI assistance timing and human review"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40369744",
+   "empirical": 0.97,
+   "tests_practice": 0.62,
+   "real_deployment": 0.12
+  }
+ }
+}

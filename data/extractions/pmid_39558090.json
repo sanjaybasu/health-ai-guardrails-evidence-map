@@ -1,0 +1,322 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 200,
+   "sample_unit": "clinical notes (5000 question-answer pairs; >300,000 experiments)",
+   "models_evaluated": [
+    "GPT-4-turbo-128k",
+    "GPT-3.5-turbo-16k",
+    "Llama-3-70B",
+    "Llama-3-8B",
+    "OpenBioLLM-70B",
+    "OpenBioLLM-8B",
+    "Mixtral-8x22B",
+    "Mixtral-8x7B",
+    "BioMistral-7B",
+    "Gemma-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM accuracy and output formatting under increasing prompt burden (notes and questions)",
+     "effect": "Accuracy and formatting deteriorated as the number of questions and notes rose; GPT-4-turbo-128k and Llama-3-70B were resilient up to 50 tasks, while smaller models failed with JSON and Omission errors.",
+     "quote": "Performance deteriorated as the number of questions and notes increased."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance trends replicated on external public MedMCQA dataset",
+     "effect": "External MedMCQA validation aligned with primary trends: GPT-4-turbo-128k accuracy stable from 5 to 50 questions with a minimal decrease at 75; Llama-3-70B held to 25 questions then declined.",
+     "quote": "These validation results align with trends observed in the primary experiments."
+    }
+   ],
+   "unlisted_practices": [
+    "Concatenating multiple notes and questions into one LLM query to cut API cost (up to 17-fold savings at 50 tasks)",
+    "Re-querying omitted answers and detecting JSON/omission format failures as a mitigable error class"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 5000,
+   "sample_unit": "EHR question-answer pairs generated from 200 clinical notes",
+   "models_evaluated": [
+    "GPT-4-turbo-128k",
+    "GPT-3.5-turbo-16k",
+    "Llama-3-70B",
+    "Llama-3-8B",
+    "OpenBioLLM-70B",
+    "OpenBioLLM-8B",
+    "Mixtral-8x22B",
+    "Mixtral-8x7B",
+    "BioMistral-7B",
+    "Gemma-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "GPT-generated reference answer errors",
+     "effect": "In 250 reviewed pairs: evaluator 1 rated 234 T, 8 TI, 8 F; evaluator 2 rated 238 T, 4 TI, 8 F; agreement was 92.4%.",
+     "quote": "The first evaluator rated 234 pairs as \u201cT\u201d, 8 as \u201cTI\u201d, and 8 as \u201cF\u201d (96.8% acceptable)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Prompt-burden and position sensitivity",
+     "effect": "GPT-4-turbo-128k failures were 3.82% (2.94\u20134.70%) in quartile 1 versus 13.66% (11.28\u201316.03%) in quartile 4.",
+     "quote": "Specifically, GPT-4-turbo-128k had only 3.82% (2.94\u20134.70%) of failures in quartile 1 but 13.66% (11.28\u201316.03%) in quartile 4, indicating perhaps a bias towards questions presented earlier in the group."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Same-data model comparison",
+     "effect": "High-capacity GPT-4-turbo-128k and Llama-3\u201370B were superior; OpenBioLLM-8B and BioMistral-7B JSON failure rates were near 100%.",
+     "quote": "There were significant differences in the performance of various LLMs across experiments as the prompt complexity increased."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Structured-output failures",
+     "effect": "OpenBioLLM-8B and BioMistral-7B JSON failure rates were near 100%, preventing assessment of Omission errors.",
+     "quote": "As the JSON failure rates were near 100% for OpenBioLLM-8B and BioMistral-7B, it was not possible to evaluate them for Omission errors."
+    }
+   ],
+   "unlisted_practices": [
+    "Concatenating multiple clinical notes and tasks into a single LLM prompt to reduce API cost",
+    "Selecting high-capacity LLMs for batched EHR extraction up to 50 simultaneous tasks"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 200,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "GPT-3.5-turbo-16k",
+    "GPT-4-turbo-128k",
+    "Llama-3-70B",
+    "Llama-3-8B",
+    "OpenBioLLM-70B",
+    "OpenBioLLM-8B",
+    "Mixtral-8x22B",
+    "Mixtral-8x7B",
+    "BioMistral-7B",
+    "Gemma-7B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Question-answering accuracy and format failure under increasing task burden",
+     "effect": "Performance deteriorated as questions and notes increased; in large tasks, fact-based accuracy was 68.1% for GPT-4-turbo vs 19.9% for GPT-3.5-turbo, with substantial increases in JSON and omission failure rates.",
+     "quote": "Performance deteriorated as the number of questions and notes increased."
+    }
+   ],
+   "unlisted_practices": [
+    "Query concatenation and multi-task prompt batching for enterprise cost reduction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "clinical notes (5000 question-answer pairs; >300,000 experiments)",
+ "sample_size": 200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BioMistral-7B",
+  "GPT-3.5-turbo-16k",
+  "GPT-4-turbo-128k",
+  "Gemma-7B",
+  "Llama-3-70B",
+  "Llama-3-8B",
+  "Mixtral-8x22B",
+  "Mixtral-8x7B",
+  "OpenBioLLM-70B",
+  "OpenBioLLM-8B"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "LLM accuracy and output formatting under increasing prompt burden (notes and questions)",
+   "effect": "Accuracy and formatting deteriorated as the number of questions and notes rose; GPT-4-turbo-128k and Llama-3-70B were resilient up to 50 tasks, while smaller models failed with JSON and Omission errors.",
+   "quote": "Performance deteriorated as the number of questions and notes increased.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "GPT-generated reference answer errors",
+   "effect": "In 250 reviewed pairs: evaluator 1 rated 234 T, 8 TI, 8 F; evaluator 2 rated 238 T, 4 TI, 8 F; agreement was 92.4%.",
+   "quote": "The first evaluator rated 234 pairs as \u201cT\u201d, 8 as \u201cTI\u201d, and 8 as \u201cF\u201d (96.8% acceptable).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Concatenating multiple clinical notes and tasks into a single LLM prompt to reduce API cost",
+  "Concatenating multiple notes and questions into one LLM query to cut API cost (up to 17-fold savings at 50 tasks)",
+  "Query concatenation and multi-task prompt batching for enterprise cost reduction",
+  "Re-querying omitted answers and detecting JSON/omission format failures as a mitigable error class",
+  "Selecting high-capacity LLMs for batched EHR extraction up to 50 simultaneous tasks"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:39558090",
+ "screen": {
+  "id": "pmid:39558090",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt concatenation of multiple notes and tasks (batching) with task-load limits",
+  "user": "none",
+  "reason": "Empirical evaluation of prompt bundling/concatenation strategies to test computational load, formatting failure rates, accuracy limits, and cost-effectiveness at enterprise scale on clinical notes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "task/prompt concatenation for cost optimization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:39558090",
+   "empirical": 0.95,
+   "tests_practice": 0.25,
+   "real_deployment": 0.12
+  }
+ }
+}

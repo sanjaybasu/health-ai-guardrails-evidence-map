@@ -1,0 +1,313 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 26896,
+   "sample_unit": "emergency department visits (7897 patients)",
+   "models_evaluated": [
+    "logistic regression suicide risk model (IHS-specific)",
+    "Ask Suicide-Screening Questions (ASQ)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": true,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity of ML model versus ASQ screening on same data for suicide attempt/death within 90 days",
+     "effect": "ML medium-risk threshold sensitivity 0.782 (95% CI 0.648-0.915) vs ASQ alone 0.178 (95% CI 0.073-0.282); NPV 0.999 vs 0.997.",
+     "quote": "The ML model outperformed ASQ screening on sensitivity and NPV at the evaluated thresholds; however, because the model included prior screening and ideation features, this comparison reflects the incremental value of longitudinal EHR information rather than a contemporaneous head-to-head assessment of the index screening alone."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity of ML plus screening in parallel (ML as adjunct) versus screening alone",
+     "effect": "Parallel ASQ or ML medium/high risk sensitivity 0.795 (95% CI 0.671-0.920) vs ASQ alone 0.178, without missing any cases caught by screening; PPV 0.012.",
+     "quote": "Instead, parallel testing brings immediate value to the field by preserving universal screening and allowing ML to act as a clinical \u201csafety net\u201d to identify at-risk patients who are missed by current practices."
+    },
+    {
+     "rec_id": "R248",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reliance on ML dependent on prior EHR history; patients with sparse data and missing screening",
+     "effect": "37.3% (16,019/42,915) of ED visits lacked documented ASQ screening; ML requires longitudinal data, so patients new to the system have minimal data for prediction.",
+     "quote": "Patients with limited or no prior health care encounters\u2014such as those new to the system or seeking care for the first time\u2014would have minimal data for the algorithm to analyze."
+    },
+    {
+     "rec_id": "R138",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Predictive values at local prevalence for suicide risk identification",
+     "effect": "At 0.4% outcome prevalence, PPVs were low (0.012-0.050) despite reasonable sensitivity/specificity; NPV 0.997-0.999.",
+     "quote": "The PPVs we observed (0.012-0.050) reflect the mathematical reality that low prevalence constrains PPV even when sensitivity and specificity are reasonable, a challenge inherent to predicting any rare outcome."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ASQ sensitivity in local American Indian population lacking validation",
+     "effect": "ASQ sensitivity was only 0.178; 41 of 55 (74.5%) patients with outcome never screened ASQ positive; no suicide death was ASQ positive.",
+     "quote": "Our findings, showing a sensitivity of only 0.178, suggest that the tool may perform differently in this population or that implementation challenges limit effectiveness."
+    }
+   ],
+   "unlisted_practices": [
+    "Combining ML risk model with screening in parallel versus serial testing strategies",
+    "Using ML to verify negative screens or flag patients when screening is missed"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 26896,
+   "sample_unit": "emergency department visits with documented ASQ screening",
+   "models_evaluated": [
+    "IHS-specific logistic regression suicide risk model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "sensitivity of adjunctive parallel testing",
+     "effect": "Parallel ASQ or ML \u226575th percentile: sensitivity 0.795, specificity 0.742; ASQ alone sensitivity 0.178, specificity 0.970.",
+     "quote": "Parallel testing strategies, where patients were flagged if they were screened as positive or were classified as at risk by the ML model, substantially improved sensitivity compared to screening alone."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus ASQ performance",
+     "effect": "ML \u226575th percentile sensitivity 0.782, NPV 0.999 vs ASQ sensitivity 0.178, NPV 0.997.",
+     "quote": "The ML model outperformed ASQ screening on sensitivity and NPV at the evaluated thresholds; however, because the model included prior screening and ideation features, this comparison reflects the incremental value of longitudinal EHR information rather than a contemporaneous head-to-head assessment of the index screening alone."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "PPV-sensitivity trade-off",
+     "effect": "Serial high-risk ML AND ASQ: PPV 0.050 vs ASQ 0.022, but sensitivity 0.129 vs 0.178.",
+     "quote": "Third, serial testing requiring both positive ML classification and positive screening achieved more than a 2-fold improvement in PPV (0.050 vs 0.022) but with reduced sensitivity (0.129 vs 0.178)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 7897,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "logistic regression ML model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Parallel testing combining machine learning suicide risk prediction with universal clinical screening to catch at-risk patients missed by screening alone",
+    "Serial testing combining machine learning suicide risk prediction with clinical screening"
+   ]
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "emergency department visits (7897 patients)",
+ "sample_size": 26896,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Ask Suicide-Screening Questions (ASQ)",
+  "IHS-specific logistic regression suicide risk model",
+  "logistic regression ML model",
+  "logistic regression suicide risk model (IHS-specific)"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity of ML model versus ASQ screening on same data for suicide attempt/death within 90 days",
+   "effect": "ML medium-risk threshold sensitivity 0.782 (95% CI 0.648-0.915) vs ASQ alone 0.178 (95% CI 0.073-0.282); NPV 0.999 vs 0.997.",
+   "quote": "The ML model outperformed ASQ screening on sensitivity and NPV at the evaluated thresholds; however, because the model included prior screening and ideation features, this comparison reflects the incremental value of longitudinal EHR information rather than a contemporaneous head-to-head assessment of the index screening alone.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity of ML plus screening in parallel (ML as adjunct) versus screening alone",
+   "effect": "Parallel ASQ or ML medium/high risk sensitivity 0.795 (95% CI 0.671-0.920) vs ASQ alone 0.178, without missing any cases caught by screening; PPV 0.012.",
+   "quote": "Instead, parallel testing brings immediate value to the field by preserving universal screening and allowing ML to act as a clinical \u201csafety net\u201d to identify at-risk patients who are missed by current practices.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R138",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Predictive values at local prevalence for suicide risk identification",
+   "effect": "At 0.4% outcome prevalence, PPVs were low (0.012-0.050) despite reasonable sensitivity/specificity; NPV 0.997-0.999.",
+   "quote": "The PPVs we observed (0.012-0.050) reflect the mathematical reality that low prevalence constrains PPV even when sensitivity and specificity are reasonable, a challenge inherent to predicting any rare outcome.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "PPV-sensitivity trade-off",
+   "effect": "Serial high-risk ML AND ASQ: PPV 0.050 vs ASQ 0.022, but sensitivity 0.129 vs 0.178.",
+   "quote": "Third, serial testing requiring both positive ML classification and positive screening achieved more than a 2-fold improvement in PPV (0.050 vs 0.022) but with reduced sensitivity (0.129 vs 0.178).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R248",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "Combining ML risk model with screening in parallel versus serial testing strategies",
+  "Parallel testing combining machine learning suicide risk prediction with universal clinical screening to catch at-risk patients missed by screening alone",
+  "Serial testing combining machine learning suicide risk prediction with clinical screening",
+  "Using ML to verify negative screens or flag patients when screening is missed"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42114005",
+ "screen": {
+  "id": "pmid:42114005",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert threshold selection and combining ML risk model with screening (parallel vs serial)",
+  "user": "clinician_or_staff",
+  "reason": "The study directly evaluates workflow integration strategies (parallel vs. serial combining of ML model predictions with clinical ASQ screening tools) and alert threshold choices for suicide risk identification.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "parallel vs serial integration of ML risk model with standard clinical screening"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42114005",
+   "empirical": 0.96,
+   "tests_practice": 0.74,
+   "real_deployment": 0.07
+  }
+ }
+}

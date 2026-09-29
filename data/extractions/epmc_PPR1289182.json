@@ -1,0 +1,247 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "pre_post_no_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 51,
+   "sample_unit": "de-identified sarcoma cases (each run three times)",
+   "models_evaluated": [
+    "Anthropic Claude Opus 4.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Decision-code reproducibility across three repeated runs of the same case under schema enforcement",
+     "effect": "Overall reproducibility was 93.9% (1,006/1,071 decision-code instances stable); 17 cases (33.3%) had 100% reproducibility; reconstruction decision least stable (74.5%).",
+     "quote": "Overall reproducibility was 93.9% (1,006 / 1,071 decision-code instances stable)."
+    }
+   ],
+   "unlisted_practices": [
+    "Schema-enforced structured JSON output via tool-use enforcement with controlled-vocabulary decision codes to reduce hallucinations",
+    "Setting temperature to 0.0 for reproducibility",
+    "Iterative refinement of prompts with semantic clarifications and conditional logic"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "",
+   "sample_size": 51,
+   "sample_unit": "sarcoma cases",
+   "models_evaluated": [
+    "Anthropic Claude Opus 4.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Decision-code reproducibility across identical runs",
+     "effect": "93.9% (1,006 / 1,071) stable; reconstruction decision least stable at 74.5%.",
+     "quote": "Overall reproducibility was 93.9% (1,006 / 1,071 decision-code instances stable)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Structurally fabricated hallucinations",
+     "effect": "No structurally fabricated content in any of 154 final-schema runs.",
+     "quote": "No structurally fabricated content occurred in any of the 154 runs under the final schema."
+    }
+   ],
+   "unlisted_practices": [
+    "Schema-enforced JSON/Pydantic output with controlled-vocabulary decision codes, semantic clarifications, and conditional logic to improve LLM reproducibility and reduce structurally fabricated hallucinations."
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 51,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "Anthropic Claude Opus 4.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "decision-code reproducibility across repeated runs",
+     "effect": "Overall reproducibility was 93.9% (1,006/1,071 instances stable); 17 cases (33.3%) had 100% reproducibility across all 21 codes; stability ranged from 74.5% (reconstruction) to 98.0% (imaging).",
+     "quote": "Overall reproducibility was 93.9% (1,006 / 1,071 decision-code instances stable)."
+    }
+   ],
+   "unlisted_practices": [
+    "Schema-enforced structured LLM output (e.g., Pydantic schema via tool use) with controlled vocabularies and conditional logic to improve reproducibility and prevent hallucinations"
+   ]
+  }
+ },
+ "design": "pre_post_no_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "de-identified sarcoma cases (each run three times)",
+ "sample_size": 51,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Anthropic Claude Opus 4.5"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Decision-code reproducibility across identical runs",
+   "effect": "93.9% (1,006 / 1,071) stable; reconstruction decision least stable at 74.5%.",
+   "quote": "Overall reproducibility was 93.9% (1,006 / 1,071 decision-code instances stable).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Decision-code reproducibility across three repeated runs of the same case under schema enforcement",
+   "effect": "Overall reproducibility was 93.9% (1,006/1,071 decision-code instances stable); 17 cases (33.3%) had 100% reproducibility; reconstruction decision least stable (74.5%).",
+   "quote": "Overall reproducibility was 93.9% (1,006 / 1,071 decision-code instances stable).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R482",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Iterative refinement of prompts with semantic clarifications and conditional logic",
+  "Schema-enforced JSON/Pydantic output with controlled-vocabulary decision codes, semantic clarifications, and conditional logic to improve LLM reproducibility and reduce structurally fabricated hallucinations.",
+  "Schema-enforced structured JSON output via tool-use enforcement with controlled-vocabulary decision codes to reduce hallucinations",
+  "Schema-enforced structured LLM output (e.g., Pydantic schema via tool use) with controlled vocabularies and conditional logic to improve reproducibility and prevent hallucinations",
+  "Setting temperature to 0.0 for reproducibility"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1289182",
+ "screen": {
+  "id": "epmc:PPR1289182",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "schema-enforced structured output to constrain hallucinations",
+  "user": "none",
+  "reason": "Empirical study testing schema enforcement via Pydantic/tool-use and semantic conditional rules as a guardrail to prevent hallucinations and improve reproducibility in LLM-based tumor board simulation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "schema-enforced output constraints and prompt rules"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1289182",
+   "empirical": 0.93,
+   "tests_practice": 0.32,
+   "real_deployment": 0.04
+  }
+ }
+}

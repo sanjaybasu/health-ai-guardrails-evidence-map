@@ -1,0 +1,106 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "United States (Boston Children's Hospital); external US and international centers",
+ "sample_size": 58083,
+ "sample_unit": "echocardiograms (54,727 internal; 3,356 referral)",
+ "models_evaluated": [
+  "EchoFocus-CHD",
+  "PanEcho"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Critical CHD detection AUROC internal test versus external referral cohort",
+   "effect": "Internal AUROC 0.94 for composite critical CHD fell to 0.77 on the referral cohort, showing internal validation overstated performance at external sites.",
+   "quote": "Performance declined during evaluation on the referral cohort to detect critical CHD (AUROC, 0.77), coinciding with greater expert disagreement on referral cases (\u03ba=0.72 versus 0.82 for internal cases).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop at new sites; domain shift between cohorts",
+   "effect": "Critical CHD AUROC dropped from 0.94 internal to 0.77 in the referral cohort; UMAP analysis revealed domain shift between cohorts.",
+   "quote": "whereas uniform manifold approximation and projection analysis revealed a domain shift between cohorts.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "International critical CHD AUROC and calibration after retraining on all available US patients",
+   "effect": "Retraining on all available US patients attenuated domain shift, improving international critical CHD AUROC to 0.87 and improving calibration.",
+   "quote": "Retraining on all available US patients attenuated domain shift effects, improving international critical CHD detection (AUROC, 0.87) and calibration.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Explainability analysis showing the model attends to clinically relevant echo views across cohorts"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:41902792",
+ "screen": {
+  "id": "pmid:41902792",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study tests an echocardiography diagnostic deep learning model across internal and external cohorts, directly testing and evaluating domain shift mitigation via retraining on diverse cohorts before deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retraining/recalibration for domain shift mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41902792",
+   "empirical": 0.97,
+   "tests_practice": 0.38,
+   "real_deployment": 0.06
+  }
+ }
+}

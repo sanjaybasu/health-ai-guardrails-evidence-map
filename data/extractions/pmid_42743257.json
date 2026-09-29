@@ -1,0 +1,333 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Korea",
+   "sample_size": 6904,
+   "sample_unit": "color fundus photographs",
+   "models_evaluated": [
+    "VUNO Med-FundusDx"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Sensitivity for DR and AMD when AI-negative images skip clinician review versus human-only reading",
+     "effect": "DR sensitivity fell 0.9168 to 0.8838 (diff -0.0330; p<0.001); AMD 0.8570 to 0.8445 (diff -0.0124; p=0.008); ophthalmologist review reduced to 7.3%-16.8% of images.",
+     "quote": "For DR, mean sensitivity decreased from 0.9168 to 0.8838 (difference, -0.0330; 95% CI, -0.0495 to -0.0165; p < 0.001), whereas the increase in specificity did not reach statistical significance."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AI-assisted negative-screening workflow versus human-only reading on same images: sensitivity, specificity, workload",
+     "effect": "Workload cut to 7.3%-8.0% (DR), 11.7%-11.9% (RVO), 13.5%-16.8% (AMD); sensitivity lower for DR and AMD, unchanged for RVO; specificity not significantly changed.",
+     "quote": "Thus, the MRMC analysis showed a significant sensitivity trade-off for DR and AMD, with no statistically significant specificity gain, while RVO performance was preserved."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Human-AI team performance in intended deployment mode, including automation bias",
+     "effect": "Study simulated triage on reader outputs obtained without AI access, so it could not assess real-time reader behavior, anchoring or overreliance; these were left to prospective studies.",
+     "quote": "Therefore, the diagnostic performance estimated in this study should be interpreted as a workflow-level simulation under fixed reader decisions, rather than as the prospective performance of an interactive human-AI system."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of a more conservative operating threshold (0.995 vs 0.99) on sensitivity and review workload",
+     "effect": "For DR, sensitivity rose to 0.85-0.94 with review up modestly (7-8% to 8-9%); for AMD little sensitivity gain but review rose from 14-17% to 18-22%; RVO unchanged.",
+     "quote": "For AMD, the same change yielded little sensitivity gain but a larger increase in review burden (about 14%\u201317% to 18%\u201322%), and RVO sensitivity was unchanged."
+    },
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "False negatives from out-of-distribution or atypical pathology outside the AI's target disease scope",
+     "effect": "Composite false negatives included myopic chorioretinal atrophy, geographic atrophy, and treatment-altered DR; AI negatives were appropriate within scope but missed out-of-distribution pathology.",
+     "quote": "While such classifications were appropriate within the algorithm\u2019s defined scope, this discrepancy highlights a potential limitation of disease-specific AI models in negative-screening workflows, particularly when encountering out-of-distribution retinal pathologies."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Generalizability of performance beyond single tertiary center and exclusion of ambiguous cases",
+     "effect": "Discordant cases excluded (AMD 6.1%-11.6%); AMD full-cohort referral burden 19.6% versus 13.5%-16.8% in reader-agreed sets; results may overestimate performance.",
+     "quote": "The primary AMD estimates should therefore be interpreted as results for reader-agreed cases rather than definitive performance in a full screening population containing ambiguous findings."
+    }
+   ],
+   "unlisted_practices": [
+    "AI negative-screening triage gate with disease-specific operating thresholds to reduce specialist workload",
+    "uncertainty-based referral or selective review of borderline AI-negative cases (proposed)"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Republic of Korea",
+   "sample_size": 6904,
+   "sample_unit": "color fundus photographs",
+   "models_evaluated": [
+    "VUNO Med-FundusDx"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Missed disease when AI-negative outputs substituted for diagnosis",
+     "effect": "DR sensitivity decreased 0.9168 to 0.8838 (difference -0.0330; p < 0.001); AMD 0.8570 to 0.8445 (difference -0.0124; p = 0.008).",
+     "quote": "AI-assisted negative-screening can reduce ophthalmologist workload across multiple retinal diseases, but with disease-specific safety trade-offs: because AI-negative images are not reviewed, reduced sensitivity for DR and AMD means a small proportion of true-positive cases would go undetected, potentially delaying diagnosis and treatment for sight-threatening disease."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity loss when AI-negative images bypassed review",
+     "effect": "Composite sensitivity decreased 0.9122 to 0.9039 (difference -0.0083; p < 0.001) while review burden fell to 27.7%-30.1%.",
+     "quote": "This trade-off is clinically important because, in the present negative-screening workflow, AI-negative images were classified directly as negative and were not reviewed by ophthalmologists; therefore, any false-negative triage decision constituted a missed positive case within the workflow itself."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Korea",
+   "sample_size": 6904,
+   "sample_unit": "color fundus photographs",
+   "models_evaluated": [
+    "VUNO Med-FundusDx"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "diagnostic sensitivity under AI-assisted negative-screening triage",
+     "effect": "Sensitivity decreased for DR (0.9168 to 0.8838, p < 0.001) and AMD (0.8570 to 0.8445, p = 0.008), was unchanged for RVO (0.9807, p = 1.000), and decreased for composite disease (0.9122 to 0.9039, p < 0.001).",
+     "quote": "AI-assisted negative-screening can reduce ophthalmologist workload across multiple retinal diseases, but with disease-specific safety trade-offs: because AI-negative images are not reviewed, reduced sensitivity for DR and AMD means a small proportion of true-positive cases would go undetected, potentially delaying diagnosis and treatment for sight-threatening disease."
+    }
+   ],
+   "unlisted_practices": [
+    "AI-assisted negative-screening triage workflow"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "color fundus photographs",
+ "sample_size": 6904,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "VUNO Med-FundusDx"
+ ],
+ "links": [
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Sensitivity for DR and AMD when AI-negative images skip clinician review versus human-only reading",
+   "effect": "DR sensitivity fell 0.9168 to 0.8838 (diff -0.0330; p<0.001); AMD 0.8570 to 0.8445 (diff -0.0124; p=0.008); ophthalmologist review reduced to 7.3%-16.8% of images.",
+   "quote": "For DR, mean sensitivity decreased from 0.9168 to 0.8838 (difference, -0.0330; 95% CI, -0.0495 to -0.0165; p < 0.001), whereas the increase in specificity did not reach statistical significance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AI-assisted negative-screening workflow versus human-only reading on same images: sensitivity, specificity, workload",
+   "effect": "Workload cut to 7.3%-8.0% (DR), 11.7%-11.9% (RVO), 13.5%-16.8% (AMD); sensitivity lower for DR and AMD, unchanged for RVO; specificity not significantly changed.",
+   "quote": "Thus, the MRMC analysis showed a significant sensitivity trade-off for DR and AMD, with no statistically significant specificity gain, while RVO performance was preserved.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R070",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "False negatives from out-of-distribution or atypical pathology outside the AI's target disease scope",
+   "effect": "Composite false negatives included myopic chorioretinal atrophy, geographic atrophy, and treatment-altered DR; AI negatives were appropriate within scope but missed out-of-distribution pathology.",
+   "quote": "While such classifications were appropriate within the algorithm\u2019s defined scope, this discrepancy highlights a potential limitation of disease-specific AI models in negative-screening workflows, particularly when encountering out-of-distribution retinal pathologies.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Generalizability of performance beyond single tertiary center and exclusion of ambiguous cases",
+   "effect": "Discordant cases excluded (AMD 6.1%-11.6%); AMD full-cohort referral burden 19.6% versus 13.5%-16.8% in reader-agreed sets; results may overestimate performance.",
+   "quote": "The primary AMD estimates should therefore be interpreted as results for reader-agreed cases rather than definitive performance in a full screening population containing ambiguous findings.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "Missed disease when AI-negative outputs substituted for diagnosis",
+   "effect": "DR sensitivity decreased 0.9168 to 0.8838 (difference -0.0330; p < 0.001); AMD 0.8570 to 0.8445 (difference -0.0124; p = 0.008).",
+   "quote": "AI-assisted negative-screening can reduce ophthalmologist workload across multiple retinal diseases, but with disease-specific safety trade-offs: because AI-negative images are not reviewed, reduced sensitivity for DR and AMD means a small proportion of true-positive cases would go undetected, potentially delaying diagnosis and treatment for sight-threatening disease.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "diagnostic sensitivity under AI-assisted negative-screening triage",
+   "effect": "Sensitivity decreased for DR (0.9168 to 0.8838, p < 0.001) and AMD (0.8570 to 0.8445, p = 0.008), was unchanged for RVO (0.9807, p = 1.000), and decreased for composite disease (0.9122 to 0.9039, p < 0.001).",
+   "quote": "AI-assisted negative-screening can reduce ophthalmologist workload across multiple retinal diseases, but with disease-specific safety trade-offs: because AI-negative images are not reviewed, reduced sensitivity for DR and AMD means a small proportion of true-positive cases would go undetected, potentially delaying diagnosis and treatment for sight-threatening disease.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "AI negative-screening triage gate with disease-specific operating thresholds to reduce specialist workload",
+  "AI-assisted negative-screening triage workflow",
+  "uncertainty-based referral or selective review of borderline AI-negative cases (proposed)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42743257",
+ "screen": {
+  "id": "pmid:42743257",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI-assisted negative-screening triage workflow",
+  "user": "clinician_or_staff",
+  "reason": "The study tests an AI-assisted triage deployment workflow (AI-negative cases bypass specialist review, AI-positive cases undergo human review) versus standard human review, measuring impact on workload and safety/missed cases.",
+  "jev": {
+   "id": "pmid:42743257",
+   "empirical": 0.98,
+   "tests_practice": 0.91,
+   "real_deployment": 0.07
+  }
+ }
+}

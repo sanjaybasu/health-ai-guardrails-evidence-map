@@ -1,0 +1,415 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 94,
+   "sample_unit": "participants (student and qualified diagnostic radiographers)",
+   "models_evaluated": [
+    "ResNet-152 CNN trained on MURA with GradCAM saliency heatmap"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Radiographer diagnostic accuracy with vs without AI feedback (heatmap, binary), including overreliance when AI incorrect",
+     "effect": "AI feedback improved accuracy overall (AI correct +13.4 points) but reduced it when AI incorrect (-4.8 overall; -9.6 students); heatmap lowered accuracy in pathological cases (65.85% to 57.62%) before binary feedback raised it (72.35%).",
+     "quote": "The AI feedback (i.e., heatmap and binary AI decision) proved beneficial to participants except for situations where the AI was incorrect and pathological examinations in the student group (decrease in accuracy of 3.4%)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "hazard_present",
+     "outcome": "Automation bias and users' detection of incorrect AI outputs",
+     "effect": "When AI was incorrect, accuracy fell 9.6% in students and 4.3% in radiographers; students more likely to switch to a more incorrect response, suggesting susceptibility to automation bias.",
+     "quote": "A greater impact was seen in the student group where accuracy fell by 9.6% compared with 4.3% amongst radiographers, suggesting in this sample that the student group is more susceptible to automation bias ( Table 5b )."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AI performance as used by clinicians, effect on user accuracy versus standalone model",
+     "effect": "The AI was correct on 57.1% of exams, yet net user accuracy improved with AI feedback in most conditions; harmful when AI was incorrect.",
+     "quote": "In most conditions there was a positive impact from the AI feedback despite the poor performance of the model."
+    },
+    {
+     "rec_id": "R235",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of output presentation (heatmap vs binary diagnosis with confidence) on accuracy",
+     "effect": "Heatmap alone lowered accuracy (overall 52.2% to 52.8% flat; students 49.9% to 45.6%), while binary diagnosis with confidence raised accuracy (overall 60.6%).",
+     "quote": "This is supported here experimentally by the increase in accuracy across all conditions when provided with the binary diagnosis, including % confidence of the system in its decision."
+    },
+    {
+     "rec_id": "R223",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether saliency heatmap explanations improved clinician diagnostic accuracy",
+     "effect": "Heatmap explanation decreased accuracy in pathological cases (students 63.3% to 50.7%) and caused confusion, even when AI binary diagnosis was correct.",
+     "quote": "Further inspection of the descriptive statistics would indicate that there was a statistically significant decrease in performance following presentation of the heatmap, followed by an increase, exceeding the performance with the un-aided interpretation (No AI feedback 65.85%, post-heatmap 57.62%, post-binary feedback 72.35%), indicating that the heatmap was detrimental to performance in pathological cases."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI performance drop from lab test set to clinical dataset",
+     "effect": "AI performed well on the MURA test set but made correct predictions on only 12 of 21 clinical examinations (57.1% accuracy).",
+     "quote": "This study uses an AI which performed well in the laboratory (test set) but poorly with more clinically relevant images (clinical dataset)."
+    },
+    {
+     "rec_id": "R419",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Automation bias and users' susceptibility, especially less experienced users",
+     "effect": "Students more likely to change their mind (32.7% vs 19.3% following binary feedback) and showed greater accuracy drop when AI incorrect; authors recommend education on AI weaknesses.",
+     "quote": "Participants in this study tended to follow the diagnosis from the system, resulting in decreased accuracy in the diagnostic task in some cases."
+    }
+   ],
+   "unlisted_practices": [
+    "Exposing users to imperfect AI cases (approx 30/70 incorrect/correct split) during training to calibrate trust",
+    "Presenting AI advice on request rather than automatically to reduce automation bias"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Multinational; mostly United Kingdom and Ireland",
+   "sample_size": 94,
+   "sample_unit": "participants (student and qualified diagnostic radiographers)",
+   "models_evaluated": [
+    "ResNet-152 convolutional neural network trained on MURA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance on clinically relevant images",
+     "effect": "Clinically relevant dataset: AI correct on 12/21 examinations (57.1% accuracy), after reportedly performing well in the laboratory test set.",
+     "quote": "This study uses an AI which performed well in the laboratory (test set) but poorly with more clinically relevant images (clinical dataset)."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone binary AI diagnosis",
+     "effect": "AI standalone binary predictions were correct on 12/21 examinations (57.1% accuracy).",
+     "quote": "Of the 21 examinations included in this study, the AI made the correct prediction on 12 examinations (57.1% accuracy)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "diagnostic accuracy with versus without AI feedback",
+     "effect": "Overall accuracy was 52.2% with no feedback, 52.8% with heatmap, and 60.6% with binary feedback; when AI incorrect, binary feedback was 57.5% versus 62.3% no feedback.",
+     "quote": "The AI feedback (i.e., heatmap and binary AI decision) proved beneficial to participants except for situations where the AI was incorrect and pathological examinations in the student group (decrease in accuracy of 3.4%)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "automation bias after incorrect AI feedback",
+     "effect": "Incorrect AI feedback reduced accuracy by 4.8% overall, 9.6% in students and 4.3% in radiographers.",
+     "quote": "A greater impact was seen in the student group where accuracy fell by 9.6% compared with 4.3% amongst radiographers, suggesting in this sample that the student group is more susceptible to automation bias ( Table 5b )."
+    },
+    {
+     "rec_id": "R224",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "heatmap explanation effect on pathological accuracy",
+     "effect": "Pathological cases: no AI 65.85%, heatmap 57.62%, binary feedback 72.35%; heatmap significantly decreased performance.",
+     "quote": "Further inspection of the descriptive statistics would indicate that there was a statistically significant decrease in performance following presentation of the heatmap, followed by an increase, exceeding the performance with the un-aided interpretation (No AI feedback 65.85%, post-heatmap 57.62%, post-binary feedback 72.35%), indicating that the heatmap was detrimental to performance in pathological cases."
+    },
+    {
+     "rec_id": "R378",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinician trust after AI exposure",
+     "effect": "Start-to-end trust decreased by 0.7 in both groups: students 4.1 to 3.4; radiographers 3.9 to 3.2.",
+     "quote": "Trust at the end of the study, compared to the beginning, decreased in both groups (mean=3.4, n=44, SD 1.3; mean=3.2, n=34, SD 1.1, a decrease of 0.7 for both students and radiographers respectively)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 94,
+   "sample_unit": "radiographers",
+   "models_evaluated": [
+    "ResNet-152",
+    "GradCAM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic accuracy when AI feedback was incorrect",
+     "effect": "accuracy fell by 9.6% in students and 4.3% in radiographers (4.8% overall drop)",
+     "quote": "A greater impact was seen in the student group where accuracy fell by 9.6% compared with 4.3% amongst radiographers, suggesting in this sample that the student group is more susceptible to automation bias ( Table 5b )."
+    },
+    {
+     "rec_id": "R224",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic accuracy following AI heatmap explanations in pathological cases",
+     "effect": "accuracy decreased significantly from 65.85% pre-AI feedback to 57.62% post-heatmap (p=.015)",
+     "quote": "Further inspection of the descriptive statistics would indicate that there was a statistically significant decrease in performance following presentation of the heatmap, followed by an increase, exceeding the performance with the un-aided interpretation (No AI feedback 65.85%, post-heatmap 57.62%, post-binary feedback 72.35%), indicating that the heatmap was detrimental to performance in pathological cases."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "participants (student and qualified diagnostic radiographers)",
+ "sample_size": 94,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GradCAM",
+  "ResNet-152",
+  "ResNet-152 CNN trained on MURA with GradCAM saliency heatmap",
+  "ResNet-152 convolutional neural network trained on MURA"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Radiographer diagnostic accuracy with vs without AI feedback (heatmap, binary), including overreliance when AI incorrect",
+   "effect": "AI feedback improved accuracy overall (AI correct +13.4 points) but reduced it when AI incorrect (-4.8 overall; -9.6 students); heatmap lowered accuracy in pathological cases (65.85% to 57.62%) before binary feedback raised it (72.35%).",
+   "quote": "The AI feedback (i.e., heatmap and binary AI decision) proved beneficial to participants except for situations where the AI was incorrect and pathological examinations in the student group (decrease in accuracy of 3.4%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance drop from lab test set to clinical dataset",
+   "effect": "AI performed well on the MURA test set but made correct predictions on only 12 of 21 clinical examinations (57.1% accuracy).",
+   "quote": "This study uses an AI which performed well in the laboratory (test set) but poorly with more clinically relevant images (clinical dataset).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "automation bias after incorrect AI feedback",
+   "effect": "Incorrect AI feedback reduced accuracy by 4.8% overall, 9.6% in students and 4.3% in radiographers.",
+   "quote": "A greater impact was seen in the student group where accuracy fell by 9.6% compared with 4.3% amongst radiographers, suggesting in this sample that the student group is more susceptible to automation bias ( Table 5b ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R224",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "heatmap explanation effect on pathological accuracy",
+   "effect": "Pathological cases: no AI 65.85%, heatmap 57.62%, binary feedback 72.35%; heatmap significantly decreased performance.",
+   "quote": "Further inspection of the descriptive statistics would indicate that there was a statistically significant decrease in performance following presentation of the heatmap, followed by an increase, exceeding the performance with the un-aided interpretation (No AI feedback 65.85%, post-heatmap 57.62%, post-binary feedback 72.35%), indicating that the heatmap was detrimental to performance in pathological cases.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance as used by clinicians, effect on user accuracy versus standalone model",
+   "effect": "The AI was correct on 57.1% of exams, yet net user accuracy improved with AI feedback in most conditions; harmful when AI was incorrect.",
+   "quote": "In most conditions there was a positive impact from the AI feedback despite the poor performance of the model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R223",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether saliency heatmap explanations improved clinician diagnostic accuracy",
+   "effect": "Heatmap explanation decreased accuracy in pathological cases (students 63.3% to 50.7%) and caused confusion, even when AI binary diagnosis was correct.",
+   "quote": "Further inspection of the descriptive statistics would indicate that there was a statistically significant decrease in performance following presentation of the heatmap, followed by an increase, exceeding the performance with the un-aided interpretation (No AI feedback 65.85%, post-heatmap 57.62%, post-binary feedback 72.35%), indicating that the heatmap was detrimental to performance in pathological cases.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R419",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Automation bias and users' susceptibility, especially less experienced users",
+   "effect": "Students more likely to change their mind (32.7% vs 19.3% following binary feedback) and showed greater accuracy drop when AI incorrect; authors recommend education on AI weaknesses.",
+   "quote": "Participants in this study tended to follow the diagnosis from the system, resulting in decreased accuracy in the diagnostic task in some cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R235",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R378",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Exposing users to imperfect AI cases (approx 30/70 incorrect/correct split) during training to calibrate trust",
+  "Presenting AI advice on request rather than automatically to reduce automation bias"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40344152",
+ "screen": {
+  "id": "pmid:40344152",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI feedback format (saliency heatmaps vs diagnosis with confidence) for radiographer decision support",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the impact of different forms of AI feedback (saliency maps vs AI diagnosis with percentage confidence) on radiographer diagnostic accuracy, decision switching, and trust in a reader study.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI feedback design (heatmaps vs confidence scores)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40344152",
+   "empirical": 0.95,
+   "tests_practice": 0.26,
+   "real_deployment": 0.07
+  }
+ }
+}

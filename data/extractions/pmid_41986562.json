@@ -1,0 +1,431 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 300,
+   "sample_unit": "simulated hypertension cases",
+   "models_evaluated": [
+    "ChatGPT-4.1",
+    "Claude-4",
+    "Gemini-2.5 Pro",
+    "DeepSeek-V3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Physician accuracy with vs without LLM assistance, including poor-LLM assistance (overreliance)",
+     "effect": "Optimal LLM raised physician accuracy (community 73.4% to 82.5%; county 84.0% to 87.9%; teaching 91.5% to 92.0%); worst LLM lowered accuracy below baseline, inappropriate regimens 26.6% to 35.2%.",
+     "quote": "The worst LLM configurations decreased physician performance below baseline, increasing inappropriate regimen rates from 26.6% to 35.2% across all levels."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether physicians detected incorrect AI outputs / automation bias",
+     "effect": "With the worst model, accuracy declined for all six physicians (e.g., Physician 2 to 62.3%); case review showed automation bias with unnecessary escalation to drug therapy or downgrading of combination therapy.",
+     "quote": "Furthermore, a case-level review revealed classic automation bias: lifestyle-only strategies were unnecessarily escalated to drug therapy based on erroneous LLM suggestions, while guideline-concordant initial dual therapy was sometimes downgraded to monotherapy for patients who clearly qualified for combination treatment."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human-AI team performance versus unassisted physicians in intended workflow",
+     "effect": "Optimal LLM assistance improved accuracy for five of six physicians (e.g., Physician 1 to 84.3%, Physician 2 to 80.7%); worst-model assistance reduced accuracy for all participants.",
+     "quote": "When the optimal model was integrated into physicians\u2019 decision-making workflows, five physicians demonstrated improved accuracy compared with their standalone performance."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Regimen selection appropriateness including dosing and implausible drugs",
+     "effect": "Worst model generated implausible drug names/combinations; regimen-level performance weaker than upstream decisions; unsafe outputs included contraindicated combinations and inadequate dosing.",
+     "quote": "These unsafe outputs manifested distinct clinical patterns, including contraindicated drug combinations, inadequate dosing for high-risk patients, and failure to integrate critical comorbidities such as chronic kidney disease or heart failure."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Guideline-concordance of LLM treatment recommendations",
+     "effect": "Zero-shot accuracy ~62.7-65.0% vs up to 91.3% with guidance prompts; regimen selection remained a persistent challenge with neutral or incomplete regimens.",
+     "quote": "Even with optimal guidance prompt, models frequently produced neutral or incomplete regimens, particularly for patients with multiple comorbidities or advanced cardiovascular risk 8 ."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM accuracy compared against physicians and across models/prompts on same cases",
+     "effect": "Best configuration (GPT-4.1 Guidance-Self-Consistency, 91.3%) matched top physicians (92.7%) and exceeded community physicians; zero-shot DeepSeek 62.6%.",
+     "quote": "Overall, GPT-4.1 with the Guidance-Self-Consistency prompt proved to be the most effective model-prompt configuration, achieving the optimal accuracy of 91.3% across the main decision-making dimensions; thus, it was selected as the optimal model."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM performance variation across prompt phrasing strategies",
+     "effect": "Accuracy varied widely across 18 prompt strategies, e.g., ChatGPT-4.1 64.0% zero-shot vs 91.3% Guidance-Self-Consistency.",
+     "quote": "Across the 4 LLMs and 18 prompt engineering strategies, we observed a broad spectrum of performance, highlighting that both the choice of model and the design of prompts significantly influence clinical decision outcomes."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured guideline-based prompt engineering (guidance prompts, self-consistency, chain-of-thought) to improve LLM clinical decision accuracy"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 300,
+   "sample_unit": "simulated hypertension cases reviewed by 6 physicians",
+   "models_evaluated": [
+    "ChatGPT-4.1",
+    "Claude-4",
+    "Gemini-2.5 Pro",
+    "DeepSeek-V3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Task 1 accuracy by prompt strategy",
+     "effect": "ChatGPT-4.1 accuracy was 91.3% with Guidance-Self-Consistency versus 64.0% zero-shot.",
+     "quote": "Specifically, with the Guidance-Self-Consistency strategy, ChatGPT-4.1 achieved an accuracy of 91.3% for Task 1, while it only reached 64.0% under zero-shot prompting."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM treatment decision accuracy and hallucinations",
+     "effect": "DeepSeek zero-shot had lowest accuracy, 62.6%, and highest risk of hallucinations and inconsistencies.",
+     "quote": "In contrast, DeepSeek with a plain zero-shot prompt demonstrated the lowest accuracy at 62.6% and exhibited the highest risk of hallucinations and inconsistencies, and was therefore selected as the worst model."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "physician accuracy with AI assistance",
+     "effect": "Optimal LLM improved average accuracy: community 73.4% to 82.5%, county 84.0% to 87.9%, teaching 91.5% to 92.0%.",
+     "quote": "Optimal LLM assistance consistently enhanced physicians' average accuracy across all levels (community hospital: 73.4% to 82.5%; county hospital: 84.0% to 87.9%; teaching hospital: 91.5% to 92.0%) and reduced inappropriate regimen rates."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "automation bias in regimen selection",
+     "effect": "Worst-model assistance increased inappropriate regimens: P1 43.4%, P2 47.4%, P3 36.2%, P4 35.5%, P5 23.7%, P6 25.0%.",
+     "quote": "Furthermore, a case-level review revealed classic automation bias: lifestyle-only strategies were unnecessarily escalated to drug therapy based on erroneous LLM suggestions, while guideline-concordant initial dual therapy was sometimes downgraded to monotherapy for patients who clearly qualified for combination treatment."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "decision accuracy with worst LLM advice",
+     "effect": "Accuracy fell to 67.3%, 62.3%, 71.7%, 73.7%, 87.3%, and 83.3% for Physicians 1-6.",
+     "quote": "Accuracy decreased to 67.3% for Physician 1, 62.3% for Physician 2, 71.7% for Physician 3, 73.7% for Physician 4, 87.3% for Physician 5, and 83.3% for Physician 6."
+    }
+   ],
+   "unlisted_practices": [
+    "Guidance-based prompt engineering with self-consistency and structured reasoning frameworks for hypertension treatment recommendations"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 300,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "ChatGPT-4.1",
+    "Claude-4",
+    "Gemini-2.5 Pro",
+    "DeepSeek-V3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "initial hypertension treatment decision accuracy",
+     "effect": "Guidance-based prompt strategies improved ChatGPT-4.1 accuracy from 64.0% (zero-shot) to 91.3% (Guidance-Self-Consistency), Claude-4 from 65.0% to 88.3%, Gemini-2.5 Pro from 64.33% to 87.7%, and DeepSeek-V3 from 62.7% to 86.3%.",
+     "quote": "Guidance-based prompt engineering strategies significantly enhanced model accuracy on Task 1 compared to zero-shot prompting."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "physician inappropriate regimen rate under low-quality AI assistance",
+     "effect": "Worst LLM configurations decreased physician performance below baseline, increasing inappropriate regimen rates from 26.6% to 35.2% across all hospital levels.",
+     "quote": "The worst LLM configurations decreased physician performance below baseline, increasing inappropriate regimen rates from 26.6% to 35.2% across all levels."
+    }
+   ],
+   "unlisted_practices": [
+    "Multi-step reasoning prompt strategies (Chain-of-Thought, Tree-of-Thought, Reflexion, ReAct, Self-Consistency)"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "simulated hypertension cases",
+ "sample_size": 300,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "ChatGPT-4.1",
+  "Claude-4",
+  "DeepSeek-V3",
+  "Gemini-2.5 Pro"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Physician accuracy with vs without LLM assistance, including poor-LLM assistance (overreliance)",
+   "effect": "Optimal LLM raised physician accuracy (community 73.4% to 82.5%; county 84.0% to 87.9%; teaching 91.5% to 92.0%); worst LLM lowered accuracy below baseline, inappropriate regimens 26.6% to 35.2%.",
+   "quote": "The worst LLM configurations decreased physician performance below baseline, increasing inappropriate regimen rates from 26.6% to 35.2% across all levels.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether physicians detected incorrect AI outputs / automation bias",
+   "effect": "With the worst model, accuracy declined for all six physicians (e.g., Physician 2 to 62.3%); case review showed automation bias with unnecessary escalation to drug therapy or downgrading of combination therapy.",
+   "quote": "Furthermore, a case-level review revealed classic automation bias: lifestyle-only strategies were unnecessarily escalated to drug therapy based on erroneous LLM suggestions, while guideline-concordant initial dual therapy was sometimes downgraded to monotherapy for patients who clearly qualified for combination treatment.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human-AI team performance versus unassisted physicians in intended workflow",
+   "effect": "Optimal LLM assistance improved accuracy for five of six physicians (e.g., Physician 1 to 84.3%, Physician 2 to 80.7%); worst-model assistance reduced accuracy for all participants.",
+   "quote": "When the optimal model was integrated into physicians\u2019 decision-making workflows, five physicians demonstrated improved accuracy compared with their standalone performance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM accuracy compared against physicians and across models/prompts on same cases",
+   "effect": "Best configuration (GPT-4.1 Guidance-Self-Consistency, 91.3%) matched top physicians (92.7%) and exceeded community physicians; zero-shot DeepSeek 62.6%.",
+   "quote": "Overall, GPT-4.1 with the Guidance-Self-Consistency prompt proved to be the most effective model-prompt configuration, achieving the optimal accuracy of 91.3% across the main decision-making dimensions; thus, it was selected as the optimal model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Task 1 accuracy by prompt strategy",
+   "effect": "ChatGPT-4.1 accuracy was 91.3% with Guidance-Self-Consistency versus 64.0% zero-shot.",
+   "quote": "Specifically, with the Guidance-Self-Consistency strategy, ChatGPT-4.1 achieved an accuracy of 91.3% for Task 1, while it only reached 64.0% under zero-shot prompting.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "decision accuracy with worst LLM advice",
+   "effect": "Accuracy fell to 67.3%, 62.3%, 71.7%, 73.7%, 87.3%, and 83.3% for Physicians 1-6.",
+   "quote": "Accuracy decreased to 67.3% for Physician 1, 62.3% for Physician 2, 71.7% for Physician 3, 73.7% for Physician 4, 87.3% for Physician 5, and 83.3% for Physician 6.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "initial hypertension treatment decision accuracy",
+   "effect": "Guidance-based prompt strategies improved ChatGPT-4.1 accuracy from 64.0% (zero-shot) to 91.3% (Guidance-Self-Consistency), Claude-4 from 65.0% to 88.3%, Gemini-2.5 Pro from 64.33% to 87.7%, and DeepSeek-V3 from 62.7% to 86.3%.",
+   "quote": "Guidance-based prompt engineering strategies significantly enhanced model accuracy on Task 1 compared to zero-shot prompting.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Guidance-based prompt engineering with self-consistency and structured reasoning frameworks for hypertension treatment recommendations",
+  "Multi-step reasoning prompt strategies (Chain-of-Thought, Tree-of-Thought, Reflexion, ReAct, Self-Consistency)",
+  "Structured guideline-based prompt engineering (guidance prompts, self-consistency, chain-of-thought) to improve LLM clinical decision accuracy"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41986562",
+ "screen": {
+  "id": "pmid:41986562",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt engineering strategies (prompt guardrails)",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the impact of prompt engineering techniques on LLM performance and physician decision-making across clinical case vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering strategies (guidance-self-consistency vs zero-shot)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41986562",
+   "empirical": 0.95,
+   "tests_practice": 0.26,
+   "real_deployment": 0.04
+  }
+ }
+}

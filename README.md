@@ -13,11 +13,11 @@ Governance frameworks (CHAI, Joint Commission and CHAI, the Health AI Partnershi
 | Step | Code | Models |
 |---|---|---|
 | Fetch governance sources and hash them to detect revisions | `gem/governance.py` | none |
-| Extract atomic recommendations with verbatim quotes; merge, critique, revise | `gem/taxonomy.py` | Claude Opus 5.5, GPT-6, Gemini 3.1 Pro |
+| Extract atomic recommendations with verbatim quotes; merge, critique, revise | `gem/taxonomy.py` | claude-opus-5-5, gpt-6-astra, gemini-3.1-pro-preview |
 | Retrieve literature (Europe PMC incl. medRxiv/bioRxiv/Research Square, arXiv, OpenAlex) | `gem/fetch.py` | none |
-| Screen titles and abstracts; audit a sample of exclusions with a second vendor | `gem/evidence.py` | Gemini Flash, Claude Sonnet |
-| Calibrated second screen; arbitrate disagreements | `gem/jev.py` | Jev (TypeSafe), Claude Sonnet |
-| Route each study to relevant domains; extract links with a three-vendor panel; cross-examine single-vendor links | `gem/evidence.py` | Claude, OpenAI, Gemini |
+| Screen titles and abstracts; audit a sample of exclusions with a second vendor | `gem/evidence.py` | gemini-3.8-flash, claude-sonnet-5-5 |
+| Calibrated second screen; arbitrate disagreements | `gem/jev.py` | Jev (jev-latest, TypeSafe), claude-sonnet-5-5 |
+| Route each study to relevant domains; extract links with a three-vendor panel; cross-examine single-vendor links | `gem/evidence.py` | real-deployment tests: claude-opus-5-5, gpt-6-astra, gemini-3.1-pro-preview; offline tests: claude-sonnet-5-5, gpt-5.5, gemini-3.8-flash |
 | Score whether each quote supports its link | `gem/jev.py` | Jev |
 | Verify every quote against the source text | `gem/quotes.py` | none |
 | Assign evidence levels, compute status, build the site | `gem/evidence.py`, `gem/build_site.py` | none |

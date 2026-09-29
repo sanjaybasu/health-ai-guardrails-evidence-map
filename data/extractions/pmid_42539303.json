@@ -1,0 +1,340 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cluster_rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 118049,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Mayo Clinic palliative care machine-learning algorithm"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R108",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Time to palliative care consult/order, ACP notes, palliative diagnosis codes vs control",
+     "effect": "Time to 0.1% ordered 42.8 vs 63.9 days (posterior >0.99); consult completed 60.9 vs 71.8 days (posterior 0.88); ACP note and Z51.5 code unchanged (effects 1.04 and 1.03).",
+     "quote": "However, the intervention had a smaller effect on the time to the palliative care consultation, indicating that considerable barriers to timely consultations still existed."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Positive predictive value of algorithm presentations (top 40 weekly)",
+     "effect": "PPV 0.18; specialists accepted 273/1512 cases presented across both arms.",
+     "quote": "In this trial, the algorithm had a PPV of 0.18, with the palliative care specialist accepting 273/1512 cases presented across both arms."
+    }
+   ],
+   "unlisted_practices": [
+    "Specialist chart review filtering of algorithm-flagged patients before sending referral recommendation to PCP"
+   ]
+  },
+  "openai": {
+   "design": "cluster_rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 118049,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Mayo Clinic machine-learning algorithm predicting palliative care needs"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R515",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Time to palliative care consultation orders after risk-based identification and specialist-confirmed eligibility",
+     "effect": "Time to 0.1% having consultation orders was 42.8 (34.5\u201354.2) days with the intervention versus 63.9 (46.8\u201390.1) days with control; posterior probability of shorter time, > 0.99.",
+     "quote": "The median (95% credible interval) time to 0.1% of the population having the consultation ordered was 42.8 (34.5\u201354.2) days for the intervention arm and 63.9 (46.8\u201390.1) days for the control arm (posterior probability of a shorter time with the intervention, > 0.99; Fig. 3 )."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Positive predictive value against specialist assessment of consultation appropriateness",
+     "effect": "PPV was 0.18; specialists accepted 273/1512 presented cases. Nonacceptance could reflect already-addressed needs or unsuitable referral timing, rather than absence of palliative care needs.",
+     "quote": "In this trial, the algorithm had a PPV of 0.18, with the palliative care specialist accepting 273/1512 cases presented across both arms."
+    },
+    {
+     "rec_id": "R521",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinician-reported mismatch between referral alerts and patient-care timing",
+     "effect": "Among 28 responding PCPs (response rate, 30%), 6 (21%) reported that alert timing did not align with patient care; 2 (7%) disagreed with the recommendation.",
+     "quote": "In some instances, alert timing did not align with patient care ( n = 6 [21%]) or the PCP disagreed with the recommendation ( n = 2 [7%])."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cluster_rct",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 118049,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "internally developed machine-learning algorithm for palliative care prediction"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R108",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "time to 0.1% population palliative care consultation",
+     "effect": "60.9 days for the intervention compared with 71.8 days for the control",
+     "quote": "For the primary outcome of time to a palliative care consultation, the median (95% credible interval) time to 0.1% of the primary care adult population receiving the consultation was 60.9 (47.8\u201379.4) days for the intervention, as compared with 71.8 (50.9\u2013103.8) days for the control (posterior probability of a shorter time with the intervention, 0.88; Fig. 2 )."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "specialist disposition of AI predictions",
+     "effect": "24.6% of patients presented were accepted, 67.6% snoozed, and 7.7% excluded",
+     "quote": "Of the 934 patients presented, 230 (24.6%) were accepted at least once, 631 (67.6%) were snoozed, 72 (7.7%) were excluded, and 1 (0.1%) was never reviewed (lack of provider time)."
+    },
+    {
+     "rec_id": "R378",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PCP rating of alert helpfulness",
+     "effect": "75% of respondents found the alert helpful",
+     "quote": "Most respondents ( n = 21 [75%]) found the alert helpful: 4 (14%) rated it as \u201cextremely\u201d helpful, 7 (25%) as \u201cvery\u201d helpful, and 10 (36%) as \u201cmoderately\u201d helpful."
+    }
+   ],
+   "unlisted_practices": [
+    "Interposing a specialist clinician to review AI predictive alerts before notifying primary care providers to filter out inappropriate alerts."
+   ]
+  }
+ },
+ "design": "cluster_rct",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 118049,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Mayo Clinic machine-learning algorithm predicting palliative care needs",
+  "Mayo Clinic palliative care machine-learning algorithm",
+  "internally developed machine-learning algorithm for palliative care prediction"
+ ],
+ "links": [
+  {
+   "rec_id": "R108",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Time to palliative care consult/order, ACP notes, palliative diagnosis codes vs control",
+   "effect": "Time to 0.1% ordered 42.8 vs 63.9 days (posterior >0.99); consult completed 60.9 vs 71.8 days (posterior 0.88); ACP note and Z51.5 code unchanged (effects 1.04 and 1.03).",
+   "quote": "However, the intervention had a smaller effect on the time to the palliative care consultation, indicating that considerable barriers to timely consultations still existed.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R090",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Positive predictive value of algorithm presentations (top 40 weekly)",
+   "effect": "PPV 0.18; specialists accepted 273/1512 cases presented across both arms.",
+   "quote": "In this trial, the algorithm had a PPV of 0.18, with the palliative care specialist accepting 273/1512 cases presented across both arms.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R515",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Time to palliative care consultation orders after risk-based identification and specialist-confirmed eligibility",
+   "effect": "Time to 0.1% having consultation orders was 42.8 (34.5\u201354.2) days with the intervention versus 63.9 (46.8\u201390.1) days with control; posterior probability of shorter time, > 0.99.",
+   "quote": "The median (95% credible interval) time to 0.1% of the population having the consultation ordered was 42.8 (34.5\u201354.2) days for the intervention arm and 63.9 (46.8\u201390.1) days for the control arm (posterior probability of a shorter time with the intervention, > 0.99; Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Positive predictive value against specialist assessment of consultation appropriateness",
+   "effect": "PPV was 0.18; specialists accepted 273/1512 presented cases. Nonacceptance could reflect already-addressed needs or unsuitable referral timing, rather than absence of palliative care needs.",
+   "quote": "In this trial, the algorithm had a PPV of 0.18, with the palliative care specialist accepting 273/1512 cases presented across both arms.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R521",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician-reported mismatch between referral alerts and patient-care timing",
+   "effect": "Among 28 responding PCPs (response rate, 30%), 6 (21%) reported that alert timing did not align with patient care; 2 (7%) disagreed with the recommendation.",
+   "quote": "In some instances, alert timing did not align with patient care ( n = 6 [21%]) or the PCP disagreed with the recommendation ( n = 2 [7%]).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R108",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "time to 0.1% population palliative care consultation",
+   "effect": "60.9 days for the intervention compared with 71.8 days for the control",
+   "quote": "For the primary outcome of time to a palliative care consultation, the median (95% credible interval) time to 0.1% of the primary care adult population receiving the consultation was 60.9 (47.8\u201379.4) days for the intervention, as compared with 71.8 (50.9\u2013103.8) days for the control (posterior probability of a shorter time with the intervention, 0.88; Fig. 2 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R371",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R378",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Interposing a specialist clinician to review AI predictive alerts before notifying primary care providers to filter out inappropriate alerts.",
+  "Specialist chart review filtering of algorithm-flagged patients before sending referral recommendation to PCP"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42539303",
+ "screen": {
+  "id": "pmid:42539303",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "specialist review of algorithm flags before PCP referral notification",
+  "user": "clinician_or_staff",
+  "reason": "The pilot study implemented an ML model in live clinical operations to identify palliative care needs, incorporating specialist review/verification before sending alerts to primary care providers.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "specialist verification of ML predictions before PCP alert"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42539303",
+   "empirical": 0.95,
+   "tests_practice": 0.6,
+   "real_deployment": 0.91
+  }
+ }
+}

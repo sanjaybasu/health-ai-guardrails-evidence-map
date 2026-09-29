@@ -1,0 +1,297 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "ICU patients (MIMIC-IV) across year groups 2008-2019",
+   "models_evaluated": [
+    "L2-regularized logistic regression",
+    "L1-regularized logistic regression",
+    "Remove and Retrain (ROAR)",
+    "causal feature selection"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Baseline model out-of-distribution versus in-distribution performance under temporal shift",
+     "effect": "Baseline model showed significantly worse OOD (2017-2019) performance than ID (2008-2010) on long LOS and sepsis tasks.",
+     "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retraining parsimonious models on new-period data versus oracle models trained on all features",
+     "effect": "Retraining L1 and ROAR models on 2017-2019 data with selected features generally reached parity with oracle models trained on all features.",
+     "quote": "The retraining of these models on 2017-2019 data using features selected from training on 2008-2010 data generally reached parity with oracle models trained directly on 2017-2019 data using all available features."
+    }
+   ],
+   "unlisted_practices": [
+    "Feature selection (L1, ROAR, causal) to build parsimonious models robust to temporal dataset shift"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "intensive care unit patients",
+   "models_evaluated": [
+    "L2-regularized logistic regression baseline models",
+    "L1-regularized logistic regression feature selection",
+    "Remove and Retrain (ROAR)",
+    "causal feature selection",
+    "oracle models trained directly on 2017-2019 data using all available features"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "OOD versus ID model performance",
+     "effect": "Baseline model had significantly worse OOD performance for long LOS and sepsis than ID performance.",
+     "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retrained parsimonious model performance",
+     "effect": "Retraining on 2017-2019 data with 2008-2010-selected features generally reached parity with oracle models trained on 2017-2019 data using all features.",
+     "quote": "The retraining of these models on 2017-2019 data using features selected from training on 2008-2010 data generally reached parity with oracle models trained directly on 2017-2019 data using all available features."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal OOD performance degradation",
+     "effect": "Baseline model had significantly worse OOD performance for long LOS and sepsis than ID performance.",
+     "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Using feature selection methods (L1, ROAR, causal feature selection) to proactively improve temporal robustness of clinical prediction models"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "L2-regularized logistic regression",
+    "L1-regularized logistic regression",
+    "Remove and Retrain (ROAR)",
+    "causal feature selection"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "out-of-distribution performance on temporally later data",
+     "effect": "Baseline model showed significantly worse out-of-distribution performance on 2017-2019 data compared to in-distribution performance on 2008-2010 data for long LOS and sepsis tasks.",
+     "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "performance degradation from temporal dataset shift",
+     "effect": "Baseline model showed significantly worse out-of-distribution performance over time for long LOS and sepsis tasks compared to in-distribution performance.",
+     "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Feature selection (L1 regularization, Remove and Retrain, causal feature selection) to improve robustness to temporal dataset shift",
+    "Model retraining on recent out-of-distribution data"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ICU patients (MIMIC-IV) across year groups 2008-2019",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "L1-regularized logistic regression",
+  "L1-regularized logistic regression feature selection",
+  "L2-regularized logistic regression",
+  "L2-regularized logistic regression baseline models",
+  "Remove and Retrain (ROAR)",
+  "causal feature selection",
+  "oracle models trained directly on 2017-2019 data using all available features"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "Baseline model out-of-distribution versus in-distribution performance under temporal shift",
+   "effect": "Baseline model showed significantly worse OOD (2017-2019) performance than ID (2008-2010) on long LOS and sepsis tasks.",
+   "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "OOD versus ID model performance",
+   "effect": "Baseline model had significantly worse OOD performance for long LOS and sepsis than ID performance.",
+   "quote": "The baseline model showed significantly worse OOD performance with the long LOS and sepsis tasks when compared with the ID performance.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Retrained parsimonious model performance",
+   "effect": "Retraining on 2017-2019 data with 2008-2010-selected features generally reached parity with oracle models trained on 2017-2019 data using all features.",
+   "quote": "The retraining of these models on 2017-2019 data using features selected from training on 2008-2010 data generally reached parity with oracle models trained directly on 2017-2019 data using all available features.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Feature selection (L1 regularization, Remove and Retrain, causal feature selection) to improve robustness to temporal dataset shift",
+  "Feature selection (L1, ROAR, causal) to build parsimonious models robust to temporal dataset shift",
+  "Model retraining on recent out-of-distribution data",
+  "Using feature selection methods (L1, ROAR, causal feature selection) to proactively improve temporal robustness of clinical prediction models"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:36812932",
+ "screen": {
+  "id": "pmid:36812932",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "model retraining on recent data to mitigate temporal dataset shift (with feature selection)",
+  "user": "none",
+  "reason": "Empirically evaluates techniques (retraining and feature selection) to safeguard model performance against temporal dataset drift using MIMIC-IV data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "model retraining and feature selection for temporal dataset shift"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:36812932",
+   "empirical": 0.94,
+   "tests_practice": 0.49,
+   "real_deployment": 0.03
+  }
+ }
+}

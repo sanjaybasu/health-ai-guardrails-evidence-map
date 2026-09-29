@@ -1,0 +1,311 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 243946,
+   "sample_unit": "adult type 2 diabetes patients in regional HIE dataset (2,564,877 patient cross-sections)",
+   "models_evaluated": [
+    "XGBoost national model (IQVIA AEMR-trained)",
+    "XGBoost localized model (HSX-trained, 5-fold nested CV)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of locally retrained model versus national model on regional HIE data (AUROC, precision at 5% recall)",
+     "effect": "Localized model AUROC 0.774 vs national 0.751; precision at 5% recall 35.4% vs 25.5%; PR CIs overlap, so differences modest and localization is effort-intensive.",
+     "quote": "Model localization involved retraining on the regional dataset and resulted in improved AUROC (increased from 0.751 to 0.774), AUPRC (from 5.48% to 6.88%), and precision on the highest scoring patients (from 25.5% to 35.4% at 5% recall)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrepancies between national development data and regional deployment data in demographics and data capture",
+     "effect": "Regional data had lower capture of weight (65% vs 97.5%), BMI, HbA1c and insulin records; Caucasian share 60%/55% vs 84%/81% nationally; only 415 of 536 facilities share diagnoses.",
+     "quote": "Moreover, records of vitals (weight and BMI), lab test results (HbA1c), and prescribed medications (insulin) were found more frequently overall in the national dataset compared to the regional one."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Generalization of national model to new regional HIE population",
+     "effect": "National model retained good performance on HIE data (AUROC 0.751, precision 25.5% at 5% recall) despite dataset differences, but was improved by localization.",
+     "quote": "The revisited national model achieved satisfactory performance (measured by AUROC and PR curves), despite the differences between the national and regional datasets."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Precision at low recall levels chosen to reflect limited clinical screening capacity",
+     "effect": "Precision of 25.5% at 5% recall and 14.6% at 10% recall for national model; thresholds to be set by trade-off with screening capacity; authors plan 10% recall threshold.",
+     "quote": "This may involve, eg, setting model score thresholds (above which patients are flagged as high-risk) based on a trade-off between model precision and the HCO\u2019s screening capacity."
+    }
+   ],
+   "unlisted_practices": [
+    "Adapting model design (cohorts, features, time windows) to HIE data constraints such as latency and missing specialty information before deployment"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 2564877,
+   "sample_unit": "patient cross-sections in the regional HIE dataset",
+   "models_evaluated": [
+    "National XGBoost model trained on AEMR data",
+    "Localized XGBoost model retrained on HSX HIE data"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R071",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "precision from targeting highest-score patients",
+     "effect": "Highest-score screening yielded estimated 46-fold precision improvement at 5% recall and 26-fold at 10% recall versus random screening.",
+     "quote": "Therefore, if the algorithm was employed to screen the highest scoring patients\u2014ie, covering 5% or 10% of the total reclassified population\u2014an estimated 46-fold or 26-fold improvement in precision would be achieved compared to performing random screening on a portion of T2D population of equal size."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "development-versus-deployment population differences",
+     "effect": "Regional cohort differed from national: negative-to-positive ratio 177:1 vs 329:1; Caucasian patients with known race 60%/55% vs 84%/81% in positive/negative samples.",
+     "quote": "For example, this study\u2019s regional dataset showed higher incidence of T1D reclassification and greater racial diversity compared to the national dataset."
+    },
+    {
+     "rec_id": "R124",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "local input availability across HIE facilities",
+     "effect": "Only 415/536 facilities shared diagnoses; among these, 87% shared medications, 87% vital signs, 68% labs, and 21% procedures.",
+     "quote": "Out of 536 health facilities contributing to the HIE data pool, we found that only 415 share diagnoses records, which are crucial for identifying T2D patients and building cohorts for this study."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance after local retraining",
+     "effect": "Localization improved AUROC 0.751 to 0.774, AUPRC 5.48% to 6.88%, and precision at 5% recall 25.5% to 35.4%.",
+     "quote": "Model localization involved retraining on the regional dataset and resulted in improved AUROC (increased from 0.751 to 0.774), AUPRC (from 5.48% to 6.88%), and precision on the highest scoring patients (from 25.5% to 35.4% at 5% recall)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 243946,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination, AUPRC, and precision at 5% recall",
+     "effect": "AUROC increased from 0.751 to 0.774, AUPRC from 5.48% to 6.88%, and precision at 5% recall from 25.5% to 35.4% with local retraining.",
+     "quote": "Model localization involved retraining on the regional dataset and resulted in improved AUROC (increased from 0.751 to 0.774), AUPRC (from 5.48% to 6.88%), and precision on the highest scoring patients (from 25.5% to 35.4% at 5% recall)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "adult type 2 diabetes patients in regional HIE dataset (2,564,877 patient cross-sections)",
+ "sample_size": 243946,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Localized XGBoost model retrained on HSX HIE data",
+  "National XGBoost model trained on AEMR data",
+  "XGBoost",
+  "XGBoost localized model (HSX-trained, 5-fold nested CV)",
+  "XGBoost national model (IQVIA AEMR-trained)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of locally retrained model versus national model on regional HIE data (AUROC, precision at 5% recall)",
+   "effect": "Localized model AUROC 0.774 vs national 0.751; precision at 5% recall 35.4% vs 25.5%; PR CIs overlap, so differences modest and localization is effort-intensive.",
+   "quote": "Model localization involved retraining on the regional dataset and resulted in improved AUROC (increased from 0.751 to 0.774), AUPRC (from 5.48% to 6.88%), and precision on the highest scoring patients (from 25.5% to 35.4% at 5% recall).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Discrepancies between national development data and regional deployment data in demographics and data capture",
+   "effect": "Regional data had lower capture of weight (65% vs 97.5%), BMI, HbA1c and insulin records; Caucasian share 60%/55% vs 84%/81% nationally; only 415 of 536 facilities share diagnoses.",
+   "quote": "Moreover, records of vitals (weight and BMI), lab test results (HbA1c), and prescribed medications (insulin) were found more frequently overall in the national dataset compared to the regional one.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R124",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "local input availability across HIE facilities",
+   "effect": "Only 415/536 facilities shared diagnoses; among these, 87% shared medications, 87% vital signs, 68% labs, and 21% procedures.",
+   "quote": "Out of 536 health facilities contributing to the HIE data pool, we found that only 415 share diagnoses records, which are crucial for identifying T2D patients and building cohorts for this study.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R071",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adapting model design (cohorts, features, time windows) to HIE data constraints such as latency and missing specialty information before deployment"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41158612",
+ "screen": {
+  "id": "pmid:41158612",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and retraining (localization) before deployment",
+  "user": "none",
+  "reason": "Evaluates the feasibility and impact of local model recalibration/retraining (localization) versus a nationally trained model for clinical deployment using regional health information exchange data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local retraining and validation before deployment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41158612",
+   "empirical": 0.95,
+   "tests_practice": 0.8,
+   "real_deployment": 0.09
+  }
+ }
+}

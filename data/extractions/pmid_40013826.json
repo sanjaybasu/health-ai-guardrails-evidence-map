@@ -1,0 +1,277 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Not reported",
+   "sample_size": 280,
+   "sample_unit": "generated protocol sections (140 per model)",
+   "models_evaluated": [
+    "GPT-4",
+    "RAG-augmented GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinical thinking/logic score of generated protocol sections, RAG vs off-the-shelf GPT-4",
+     "effect": "RAG-augmented LLM scored about twice as high on clinical thinking and logic; eligibility criteria ~33% to ~86%, endpoints ~50% to ~73%; only this dimension survived Bonferroni correction.",
+     "quote": "However, the RAG-augmented LLM substantially outperforms the off-the-shelf LLM in terms of clinical thinking and logic , where the output of the RAG-augmented LLM scores approximately twice as high as the off-the-shelf LLM."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Presence and correctness of cited references in generated protocol text",
+     "effect": "Off-the-shelf GPT-4 does not natively source references so transparency could not be scored; RAG-augmented LLM references were correct and appropriate nearly 80% of the time.",
+     "quote": "Regarding transparency and references , the RAG-augmented LLM (by design) includes references, which we show to be correct and appropriate nearly 80% of the time."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Adherence of off-the-shelf LLM recommendations to current regulatory guidance",
+     "effect": "Off-the-shelf LLM scored just over 40% on clinical thinking and logic; example excluded HIV, diabetes, liver and kidney disease patients from a TB trial contrary to FDA guidance.",
+     "quote": "However, for clinical thinking and logic , the off-the-shelf LLM scores poorly (assessment score just over 40%), meaning that recommendations from the off-the-shelf LLM often do not follow the latest regulatory guidance or contain other errors."
+    }
+   ],
+   "unlisted_practices": [
+    "Using retrieval-augmented generation with regulatory guidance and ClinicalTrials.gov data to improve clinical trial protocol drafting",
+    "LLM-as-evaluator scoring of generated clinical trial document sections"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Not reported",
+   "sample_size": 280,
+   "sample_unit": "generated clinical trial protocol sections",
+   "models_evaluated": [
+    "off-the-shelf GPT-4",
+    "RAG-augmented GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Regulatory-guidance adherence in generated protocol sections",
+     "effect": "Endpoints improved from \u223c50% to \u223c73%; eligibility criteria from \u223c33% to \u223c86% with RAG.",
+     "quote": "On that dimension, we observed a large difference between off-the shelf LLM and RAG-augmented LLM for the endpoints section (score uplift from \u223c50% to \u223c73%) and even more pronounced for the eligibility criteria section (score uplift from \u223c33% to \u223c86%)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Off-the-shelf LLM adherence to latest regulatory guidance",
+     "effect": "Off-the-shelf LLM clinical thinking and logic score was just over 40%.",
+     "quote": "However, for clinical thinking and logic , the off-the-shelf LLM scores poorly (assessment score just over 40%), meaning that recommendations from the off-the-shelf LLM often do not follow the latest regulatory guidance or contain other errors."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Correctness and appropriateness of generated references",
+     "effect": "RAG references were correct and appropriate nearly 80% of the time.",
+     "quote": "Regarding transparency and references , the RAG-augmented LLM (by design) includes references, which we show to be correct and appropriate nearly 80% of the time."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 280,
+   "sample_unit": "protocol sections",
+   "models_evaluated": [
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinical thinking and logic score in generated protocol sections",
+     "effect": "RAG-augmented LLM scored approximately twice as high as off-the-shelf LLM, with score uplift from ~50% to ~73% for endpoints and ~33% to ~86% for eligibility criteria",
+     "quote": "However, the RAG-augmented LLM substantially outperforms the off-the-shelf LLM in terms of clinical thinking and logic , where the output of the RAG-augmented LLM scores approximately twice as high as the off-the-shelf LLM."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "generated protocol sections (140 per model)",
+ "sample_size": 280,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4",
+  "RAG-augmented GPT-4",
+  "off-the-shelf GPT-4"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinical thinking/logic score of generated protocol sections, RAG vs off-the-shelf GPT-4",
+   "effect": "RAG-augmented LLM scored about twice as high on clinical thinking and logic; eligibility criteria ~33% to ~86%, endpoints ~50% to ~73%; only this dimension survived Bonferroni correction.",
+   "quote": "However, the RAG-augmented LLM substantially outperforms the off-the-shelf LLM in terms of clinical thinking and logic , where the output of the RAG-augmented LLM scores approximately twice as high as the off-the-shelf LLM.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Presence and correctness of cited references in generated protocol text",
+   "effect": "Off-the-shelf GPT-4 does not natively source references so transparency could not be scored; RAG-augmented LLM references were correct and appropriate nearly 80% of the time.",
+   "quote": "Regarding transparency and references , the RAG-augmented LLM (by design) includes references, which we show to be correct and appropriate nearly 80% of the time.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Adherence of off-the-shelf LLM recommendations to current regulatory guidance",
+   "effect": "Off-the-shelf LLM scored just over 40% on clinical thinking and logic; example excluded HIV, diabetes, liver and kidney disease patients from a TB trial contrary to FDA guidance.",
+   "quote": "However, for clinical thinking and logic , the off-the-shelf LLM scores poorly (assessment score just over 40%), meaning that recommendations from the off-the-shelf LLM often do not follow the latest regulatory guidance or contain other errors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "LLM-as-evaluator scoring of generated clinical trial document sections",
+  "Using retrieval-augmented generation with regulatory guidance and ClinicalTrials.gov data to improve clinical trial protocol drafting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40013826",
+ "screen": {
+  "id": "pmid:40013826",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation grounding added to an off-the-shelf LLM",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates LLM generation of clinical trial protocol sections and directly compares standard off-the-shelf LLM output against retrieval-augmented generation (RAG) grounding with regulatory and registry documents.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40013826",
+   "empirical": 0.93,
+   "tests_practice": 0.72,
+   "real_deployment": 0.04
+  }
+ }
+}

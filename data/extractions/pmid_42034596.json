@@ -1,0 +1,284 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Japan",
+   "sample_size": 300,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "AIXA Osteo (X1AI-Osteo)",
+    "structure-preserving CycleGAN",
+    "large-mask inpainting model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External validation performance of Taiwan-developed osteoporosis model on Japanese real-world data before preprocessing",
+     "effect": "Before preprocessing, AUC 92.9%, sensitivity 88.6%, PPV 80.5%, CCC 0.956; preprocessing raised these to 97.2%, 95.7%, 90.5%, 0.994.",
+     "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance across sites and image acquisition differences in cross-domain application",
+     "effect": "Model needed image quality enhancement for cross-domain use; AUC rose from 92.9% to 97.2% after preprocessing to handle capture discrepancies.",
+     "quote": "This study uses real-world data from a Japanese clinical environment to externally evaluate the AIXA Osteo model and improves upon common image capture discrepancies in cross-domain applications and diagnostic variability arising from disparate reference databases."
+    }
+   ],
+   "unlisted_practices": [
+    "Image preprocessing (CycleGAN, inpainting) to harmonize image quality across sites",
+    "Feature fusion module to reconcile T-score reference databases (NHANES III vs Asian standards)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Japan",
+   "sample_size": 300,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "AIXA Osteo model architecture (X1AI-Osteo)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "cross-domain screening performance",
+     "effect": "Preprocessing improved AUC 92.9% to 97.2%, sensitivity 88.6% to 95.7%, PPV 80.5% to 90.5%.",
+     "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy with image-quality variability",
+     "effect": "Preprocessing improved AUC 92.9% to 97.2%, sensitivity 88.6% to 95.7%, PPV 80.5% to 90.5%.",
+     "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "osteoporosis screening accuracy",
+     "effect": "AUC was 92.9% before preprocessing and 97.2% after; sensitivity 88.6% to 95.7%; PPV 80.5% to 90.5%.",
+     "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%."
+    }
+   ],
+   "unlisted_practices": [
+    "Structure-preserving CycleGAN and large-mask inpainting preprocessing to enhance low-dose X-ray image quality and restore missing regions.",
+    "Feature fusion to reconcile T-scores between NHANES III and Asian standards."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Japan",
+   "sample_size": 300,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "AIXA Osteo",
+    "X1AI-Osteo",
+    "CycleGAN"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "osteoporosis screening AUC, sensitivity, and PPV",
+     "effect": "AUC improved from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and positive predictive value from 80.5% to 90.5%",
+     "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%."
+    }
+   ],
+   "unlisted_practices": [
+    "Structure-preserving CycleGAN and large-mask inpainting preprocessing for radiograph quality enhancement",
+    "Feature fusion module to reconcile disparate ethnic reference standards"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "participants",
+ "sample_size": 300,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AIXA Osteo",
+  "AIXA Osteo (X1AI-Osteo)",
+  "AIXA Osteo model architecture (X1AI-Osteo)",
+  "CycleGAN",
+  "X1AI-Osteo",
+  "large-mask inpainting model",
+  "structure-preserving CycleGAN"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "cross-domain screening performance",
+   "effect": "Preprocessing improved AUC 92.9% to 97.2%, sensitivity 88.6% to 95.7%, PPV 80.5% to 90.5%.",
+   "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "accuracy with image-quality variability",
+   "effect": "Preprocessing improved AUC 92.9% to 97.2%, sensitivity 88.6% to 95.7%, PPV 80.5% to 90.5%.",
+   "quote": "In a validation set of 300 participants, preprocessing improved the area under the curve of the model from 92.9% to 97.2%, sensitivity from 88.6% to 95.7%, and the positive predictive value from 80.5% to 90.5%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Feature fusion module to reconcile T-score reference databases (NHANES III vs Asian standards)",
+  "Feature fusion module to reconcile disparate ethnic reference standards",
+  "Feature fusion to reconcile T-scores between NHANES III and Asian standards.",
+  "Image preprocessing (CycleGAN, inpainting) to harmonize image quality across sites",
+  "Structure-preserving CycleGAN and large-mask inpainting preprocessing for radiograph quality enhancement",
+  "Structure-preserving CycleGAN and large-mask inpainting preprocessing to enhance low-dose X-ray image quality and restore missing regions."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42034596",
+ "screen": {
+  "id": "pmid:42034596",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local external validation with image preprocessing and reference-database harmonization before deployment",
+  "user": "none",
+  "reason": "The study tests an external validation pipeline with and without image preprocessing (harmonization and inpainting) and feature fusion to address domain shift across different clinical environments.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "cross-site domain adaptation and image harmonization preprocessing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42034596",
+   "empirical": 0.95,
+   "tests_practice": 0.44,
+   "real_deployment": 0.15
+  }
+ }
+}

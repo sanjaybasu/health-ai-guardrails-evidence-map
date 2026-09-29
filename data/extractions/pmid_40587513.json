@@ -1,0 +1,329 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 80,
+   "sample_unit": "trials (10 per custom GPT per model, plus 10 standard-prompt trials)",
+   "models_evaluated": [
+    "GPT-4",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reproducibility of extraction across 10 repeated runs; structured custom prompts vs standard prompts",
+     "effect": "Both models had high reproducibility (at least 8/10 outputs consistent or partially consistent). Custom GPT extracted exactly 2 benefits per trial (SD 0.0); standard prompts averaged 5.3 (SD 1.8, range 3-8).",
+     "quote": "Both models demonstrated high reproducibility, with at least 8 out of 10 outputs from each GPT rated as \u201cconsistent\u201d or \u201cpartially consistent\u201d ( Table 3 )."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy difference between GPT-4 and GPT-4o on research objectives extraction",
+     "effect": "GPT-4 achieved 30% accuracy on research objectives and background vs 80% for GPT-4o, showing model version changes alter performance; other elements 100% in both.",
+     "quote": "In contrast, GPT-4 achieved only 30% extraction accuracy for \u201cresearch objectives and background\u201d but demonstrated 100% extraction accuracy for the other two elements ( Table 2 )."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reference standard quality and rater independence in evaluating output accuracy",
+     "effect": "Evaluation used one unblinded evaluator with no inter-rater agreement and no verified gold standard, so subjective bias may have affected results.",
+     "quote": "The evaluation was conducted by a single researcher, and inter-rater agreement was not assessed."
+    },
+    {
+     "rec_id": "R498",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of document format on extraction output stability",
+     "effect": "ChatGPT struggled with complex-structure or image-text PDFs; converting to Word and standardizing headings significantly improved output stability (qualitative, no numbers).",
+     "quote": "From a technical perspective, we observed that ChatGPT struggled with PDF files that had complex structures or contained text stored as images."
+    }
+   ],
+   "unlisted_practices": [
+    "Structured, section-specific custom prompts to improve extraction accuracy and consistency",
+    "Standardizing input document format (Word, standardized headings) before LLM processing"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 90,
+   "sample_unit": "AI-generated output trials from one mock protocol/ICF",
+   "models_evaluated": [
+    "GPT-4",
+    "GPT-4o",
+    "OpenAI Custom GPTs (GPTs-1 to GPTs-4)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "IRB document extraction accuracy",
+     "effect": "GPT-4o: 80% for objectives/background and 100% for design and risks/benefits; GPT-4: 30% for objectives/background and 100% for other two elements.",
+     "quote": "GPT-4o achieved 80% extraction accuracy for the \u201cresearch objectives and background\u201d element, and 100% extraction accuracy for both \u201cresearch design\u201d and \u201cparticipant-related risks and benefits\u201d ( Table 1 )."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "repeated-run output reproducibility",
+     "effect": "Both GPT-4o and GPT-4 had high reproducibility: at least 8/10 outputs from each GPT were consistent or partially consistent.",
+     "quote": "Both models demonstrated high reproducibility, with at least 8 out of 10 outputs from each GPT rated as \u201cconsistent\u201d or \u201cpartially consistent\u201d ( Table 3 )."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "custom versus standard prompt variability",
+     "effect": "GPTs-3 extracted 2.0 benefits (SD 0.0; min/max 2/2); standard prompts 5.3 (SD 1.8; min 3, max 8).",
+     "quote": "In contrast, outputs generated using standard prompts showed greater variability in both the number and type of extracted participant-related benefits, with categories and counts differing significantly across trials ( Tables 4 and 5 )."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "complex PDF input handling",
+     "effect": "Complex PDFs or image-stored text made ChatGPT struggle; Word conversion and standardized headings significantly improved output stability; no quantitative values reported.",
+     "quote": "From a technical perspective, we observed that ChatGPT struggled with PDF files that had complex structures or contained text stored as images."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 90,
+   "sample_unit": "trials",
+   "models_evaluated": [
+    "GPT-4",
+    "GPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "extraction accuracy and reproducibility across trials",
+     "effect": "Customized prompts extracted 2.0 (SD 0.0) benefits consistently across 10 trials, whereas standard prompts averaged 5.3 (SD 1.8, range 3-8) with high category variability across trials.",
+     "quote": "GPTs with customized prompts produced more accurate and consistent outputs than standard prompts."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "trials (10 per custom GPT per model, plus 10 standard-prompt trials)",
+ "sample_size": 90,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese"
+ ],
+ "models_evaluated": [
+  "GPT-4",
+  "GPT-4o",
+  "OpenAI Custom GPTs (GPTs-1 to GPTs-4)"
+ ],
+ "links": [
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "custom versus standard prompt variability",
+   "effect": "GPTs-3 extracted 2.0 benefits (SD 0.0; min/max 2/2); standard prompts 5.3 (SD 1.8; min 3, max 8).",
+   "quote": "In contrast, outputs generated using standard prompts showed greater variability in both the number and type of extracted participant-related benefits, with categories and counts differing significantly across trials ( Tables 4 and 5 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reproducibility of extraction across 10 repeated runs; structured custom prompts vs standard prompts",
+   "effect": "Both models had high reproducibility (at least 8/10 outputs consistent or partially consistent). Custom GPT extracted exactly 2 benefits per trial (SD 0.0); standard prompts averaged 5.3 (SD 1.8, range 3-8).",
+   "quote": "Both models demonstrated high reproducibility, with at least 8 out of 10 outputs from each GPT rated as \u201cconsistent\u201d or \u201cpartially consistent\u201d ( Table 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "complex PDF input handling",
+   "effect": "Complex PDFs or image-stored text made ChatGPT struggle; Word conversion and standardized headings significantly improved output stability; no quantitative values reported.",
+   "quote": "From a technical perspective, we observed that ChatGPT struggled with PDF files that had complex structures or contained text stored as images.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R498",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Standardizing input document format (Word, standardized headings) before LLM processing",
+  "Structured, section-specific custom prompts to improve extraction accuracy and consistency"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40587513",
+ "screen": {
+  "id": "pmid:40587513",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "customized prompts (prompt guardrails)",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study testing LLM (GPT-4 and GPT-4o) performance for IRB pre-review tasks, comparing standard prompts against customized Japanese prompt guardrails/instructions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "customized Japanese prompt optimization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40587513",
+   "empirical": 0.95,
+   "tests_practice": 0.3,
+   "real_deployment": 0.06
+  }
+ }
+}

@@ -1,0 +1,390 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "emergency department chest-pain encounters",
+   "models_evaluated": [
+    "GPT-4o (2024-08-06)",
+    "GPT-4o-mini (2024-07-18)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "GPT-4o diagnostic sensitivity/specificity across three prompt variants (prevalence cues, removed category constraints)",
+     "effect": "Baseline sensitivity 79.3%, specificity 45.2%; prevalence cues 30.4%/83.0%; no diagnostic categories 8.8%/94.7%. Performance highly sensitive to prompt variation.",
+     "quote": "Baseline prompt (with diagnostic categories) achieved the highest sensitivity (79.3%, 95% confidence interval [CI] 73.4\u201384.1) with low specificity (45.2%, 95% CI 39.5\u201351.1), reflecting frequent over-calling of emergent conditions."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM diagnostic performance in stepwise simulation with real ED data versus static vignette expectations",
+     "effect": "In simulated stepwise setting with real data, GPT-4o over-predicted rare conditions (sensitivity 79.3%, specificity 45.2%) and diverged from physicians and BN-optimal pathways (RBO 0.060-0.097).",
+     "quote": "The relatively low diagnostic accuracy we observed may partly reflect this closer adherence to real-world complexity."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM calibration to realistic disease prevalence of life-threatening diagnoses",
+     "effect": "GPT-4o over-selected rare life-threatening diagnoses at baseline (specificity 45.2%, 155 false positives of 283 non-emergent); prevalence cues tempered but did not eliminate the bias.",
+     "quote": "This heterogeneity presents a more authentic calibration challenge, exposing the LLM\u2019s tendency to over-select \u201czebra\u201d diagnoses even when true prevalence information was provided."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of LLM differential/diagnosis selection for emergent chest pain conditions",
+     "effect": "Baseline over-called emergent conditions (specificity 45.2%); with prevalence cues or no categories, sensitivity fell to 30.4% and 8.8%, missing emergent diagnoses.",
+     "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%)."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Suitability of LLM diagnostic output for autonomous use",
+     "effect": "Configuration miscalibrated and not suitable for clinical deployment; authors support cautious stance against autonomous diagnostic use and recommend clinician oversight.",
+     "quote": "More broadly, our findings suggest that current diagnostic LLMs remain highly sensitive to prompt context and struggle with real-world clinical probabilities, supporting a cautious stance toward autonomous or patient-facing diagnostic use."
+    }
+   ],
+   "unlisted_practices": [
+    "Bayesian-network imputation of uncollected data to build more realistic simulated LLM evaluation environments",
+    "Benchmarking LLM information-seeking against mutual-information-optimal query pathways",
+    "Providing disease prevalence cues in prompts to calibrate LLM diagnoses"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "ED chest-pain encounters",
+   "models_evaluated": [
+    "GPT-4o (2024-08-06)",
+    "GPT-4o-mini (2024-07-18)",
+    "Bayesian network"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "stand-alone diagnostic decisions",
+     "effect": "Baseline prompt: 172 TP, 45 FN, 155 FP, 128 TN; sensitivity 79.3% (73.4\u201384.1), specificity 45.2% (39.5\u201351.1).",
+     "quote": "Baseline prompt (with diagnostic categories) achieved the highest sensitivity (79.3%, 95% confidence interval [CI] 73.4\u201384.1) with low specificity (45.2%, 95% CI 39.5\u201351.1), reflecting frequent over-calling of emergent conditions."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic stability under prompt changes",
+     "effect": "Prevalence cues/no-category prompts raised specificity to 83.0%/94.7% but reduced sensitivity to 30.4%/8.8%, from baseline 79.3% sensitivity and 45.2% specificity.",
+     "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%)."
+    },
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "emergent diagnosis recognition",
+     "effect": "No-category prompt: 19 TP, 198 FN; sensitivity 8.8% (5.7\u201313.3), specificity 94.7% (91.4\u201396.8).",
+     "quote": "Removing diagnostic category constraints further increased specificity (94.7%, 95% CI 91.4\u201396.8) with minimal sensitivity (8.8%, 95% CI 5.7\u201313.3)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "information-seeking versus benchmarks",
+     "effect": "RBO with BN optimum ranged 0.060-0.097; GPT-4o requested fewer vitals/labs and 30%+ more imaging than clinicians.",
+     "quote": "Rank-biased overlap between GPT-4o's information-seeking sequence and the Bayesian-network mutual-information optimum was low across diagnoses (range 0.060-0.097), and the model diverged from clinician behavior by requesting fewer vitals ([Formula: see text]-fold) and labs ([Formula: see text]-fold), while requesting 30%+ more imaging data."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic output accuracy",
+     "effect": "Baseline sensitivity 79.3%, specificity 45.2%; prevalence/no-category prompts reduced false alarms by 107/140 per 500 but sensitivity fell to 30.4%/8.8%.",
+     "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding disease-prevalence cues to diagnostic LLM prompts",
+    "Removing predefined diagnosis categories from diagnostic LLM prompts",
+    "Using Bayesian-network imputation for uncollected clinical variables in LLM simulations",
+    "Benchmarking LLM query order against mutual-information-optimal Bayesian-network pathways"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 500,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4o-mini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic sensitivity and specificity for emergent conditions across prompting strategies",
+     "effect": "Sensitivity was 79.3% (specificity 45.2%) with baseline prompt, 30.4% (specificity 83.0%) with prevalence cues, and 8.8% (specificity 94.7%) without diagnostic category constraints, missing emergent conditions in up to 198 of 217 cases.",
+     "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Providing disease prevalence cues within prompts to calibrate diagnostic probabilities",
+    "Simulating stepwise clinical data acquisition using Bayesian network probabilistic imputation for missing variables"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "emergency department chest-pain encounters",
+ "sample_size": 500,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Bayesian network",
+  "GPT-4o",
+  "GPT-4o (2024-08-06)",
+  "GPT-4o-mini",
+  "GPT-4o-mini (2024-07-18)"
+ ],
+ "links": [
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Suitability of LLM diagnostic output for autonomous use",
+   "effect": "Configuration miscalibrated and not suitable for clinical deployment; authors support cautious stance against autonomous diagnostic use and recommend clinician oversight.",
+   "quote": "More broadly, our findings suggest that current diagnostic LLMs remain highly sensitive to prompt context and struggle with real-world clinical probabilities, supporting a cautious stance toward autonomous or patient-facing diagnostic use.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "emergent diagnosis recognition",
+   "effect": "No-category prompt: 19 TP, 198 FN; sensitivity 8.8% (5.7\u201313.3), specificity 94.7% (91.4\u201396.8).",
+   "quote": "Removing diagnostic category constraints further increased specificity (94.7%, 95% CI 91.4\u201396.8) with minimal sensitivity (8.8%, 95% CI 5.7\u201313.3).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM diagnostic performance in stepwise simulation with real ED data versus static vignette expectations",
+   "effect": "In simulated stepwise setting with real data, GPT-4o over-predicted rare conditions (sensitivity 79.3%, specificity 45.2%) and diverged from physicians and BN-optimal pathways (RBO 0.060-0.097).",
+   "quote": "The relatively low diagnostic accuracy we observed may partly reflect this closer adherence to real-world complexity.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of LLM differential/diagnosis selection for emergent chest pain conditions",
+   "effect": "Baseline over-called emergent conditions (specificity 45.2%); with prevalence cues or no categories, sensitivity fell to 30.4% and 8.8%, missing emergent diagnoses.",
+   "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "diagnostic stability under prompt changes",
+   "effect": "Prevalence cues/no-category prompts raised specificity to 83.0%/94.7% but reduced sensitivity to 30.4%/8.8%, from baseline 79.3% sensitivity and 45.2% specificity.",
+   "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "diagnostic output accuracy",
+   "effect": "Baseline sensitivity 79.3%, specificity 45.2%; prevalence/no-category prompts reduced false alarms by 107/140 per 500 but sensitivity fell to 30.4%/8.8%.",
+   "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding disease-prevalence cues to diagnostic LLM prompts",
+  "Bayesian-network imputation of uncollected data to build more realistic simulated LLM evaluation environments",
+  "Benchmarking LLM information-seeking against mutual-information-optimal query pathways",
+  "Benchmarking LLM query order against mutual-information-optimal Bayesian-network pathways",
+  "Providing disease prevalence cues in prompts to calibrate LLM diagnoses",
+  "Providing disease prevalence cues within prompts to calibrate diagnostic probabilities",
+  "Removing predefined diagnosis categories from diagnostic LLM prompts",
+  "Simulating stepwise clinical data acquisition using Bayesian network probabilistic imputation for missing variables",
+  "Using Bayesian-network imputation for uncollected clinical variables in LLM simulations"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41735989",
+ "screen": {
+  "id": "pmid:41735989",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt guardrails (prevalence cues and diagnostic category constraints)",
+  "user": "none",
+  "reason": "Empirical study testing different prompting strategies (including disease-prevalence cues and category constraints) as a prompt-level safeguard/calibration technique to mitigate over-prediction of rare diseases during stepwise simulated diagnosis.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompting with disease-prevalence cues and diagnostic category constraints"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41735989",
+   "empirical": 0.95,
+   "tests_practice": 0.49,
+   "real_deployment": 0.04
+  }
+ }
+}

@@ -1,0 +1,327 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 109719,
+   "sample_unit": "anaesthetic cases (surgical patients)",
+   "models_evaluated": [
+    "H2O AutoML GLM",
+    "Default Random Forest",
+    "Gradient Boosting Machine",
+    "XGBoost",
+    "Deep Learning",
+    "Stacked Ensemble"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance degradation from data drift during COVID pandemic",
+     "effect": "Mean AUROC fell from 0.92 to 0.87 (-5.5%) and AUPR from 0.22 to 0.07 (-69.11%) on in-pandemic test data; input distributions differed significantly (Kolmogorov-Smirnov).",
+     "quote": "The models produced showed excellent areas under receiver-operating characteristic and acceptable precision-recall curves when tested on a dataset from January-March 2020, but significant degradation when tested on a dataset collected in the first wave of the COVID pandemic from April-May 2020."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of trained models on new-period data after sudden external change",
+     "effect": "All model families deteriorated in-pandemic; none of the weighting, recent-data, or scaling modifications prevented the loss in performance.",
+     "quote": "None of the modifications carried out could prevent the significant deterioration in performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Training-time robustness measures (time-weighting older data, using only recent data, z-scaling inputs) to prevent drift degradation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 109719,
+   "sample_unit": "anaesthetic cases",
+   "models_evaluated": [
+    "Generalized Linear Model with regularization",
+    "Default Random Forest",
+    "Gradient Boosting Machine",
+    "eXtreme Gradient Boosting",
+    "Deep Learning",
+    "Stacked Ensembles"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal test performance under pandemic shift",
+     "effect": "All native models: AUROC 0.92 (0.03) pre vs 0.87 (0.04) in-pandemic; AUPR 0.22 (0.05) vs 0.07 (0.02); p<0.001.",
+     "quote": "The models produced showed excellent areas under receiver-operating characteristic and acceptable precision-recall curves when tested on a dataset from January-March 2020, but significant degradation when tested on a dataset collected in the first wave of the COVID pandemic from April-May 2020."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Robustness to real-world pandemic variation",
+     "effect": "Native all-model mean AUROC/AUPR fell 0.92/0.22 to 0.87/0.07 (p<0.001); modified models also lost performance.",
+     "quote": "Most models suffer from a performance loss in the pandemic, not only the native ones, but also those modified by means of the \u201cweight\u201d, \u201c6 months\u201d and \u201cscaled\u201d methods."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Input distribution shift from development data",
+     "effect": "Validation vs in-pandemic: age 56 vs 58, RPC ordered 27.0% vs 37.7%, consults 2.00 vs 3.00; all p<0.001; mortality p=0.458.",
+     "quote": "During the pandemic, there was a change in the probability distribution of input features."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation from concept and covariate drift",
+     "effect": "Stacked models: AUROC 0.95 (0.01) to 0.91 (0.01), AUPR 0.26 (0.03) to 0.09 (0.00), p<0.001.",
+     "quote": "Both the parametric and non-parametric methods represented in the AutoML framework experienced a loss of performance at the beginning of the COVID-pandemic which was caused by concept drift and covariate shift."
+    }
+   ],
+   "unlisted_practices": [
+    "Preemptively weighting older training data less to improve robustness to sudden drift",
+    "Training only on the most recent six months of data to improve robustness to sudden drift",
+    "Z-transforming numerical inputs to improve robustness to covariate shift"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 109719,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "GLM",
+    "Default Random Forest",
+    "Gradient Boosting Machine",
+    "XGBoost",
+    "Deep Learning",
+    "Stacked Ensemble"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "German"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUROC and AUPR degradation under pandemic data drift",
+     "effect": "Across 269 models, mean AUROC decreased from 0.92 to 0.87 (-5.50%) and mean AUPR decreased from 0.22 to 0.07 (-69.11%, both p < 0.001) during the COVID-19 pandemic.",
+     "quote": "The models produced showed excellent areas under receiver-operating characteristic and acceptable precision-recall curves when tested on a dataset from January-March 2020, but significant degradation when tested on a dataset collected in the first wave of the COVID pandemic from April-May 2020."
+    }
+   ],
+   "unlisted_practices": [
+    "Temporal sample weighting (weighting older training data weaker) during model training to prevent drift-induced performance degradation",
+    "Restricting model training data to the most recent historical period (e.g., past 6 months) to mitigate data drift",
+    "Z-score normalization of numerical input parameters to improve model robustness to sudden covariate shift"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "anaesthetic cases (surgical patients)",
+ "sample_size": 109719,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "German"
+ ],
+ "models_evaluated": [
+  "Deep Learning",
+  "Default Random Forest",
+  "GLM",
+  "Generalized Linear Model with regularization",
+  "Gradient Boosting Machine",
+  "H2O AutoML GLM",
+  "Stacked Ensemble",
+  "Stacked Ensembles",
+  "XGBoost",
+  "eXtreme Gradient Boosting"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance degradation from data drift during COVID pandemic",
+   "effect": "Mean AUROC fell from 0.92 to 0.87 (-5.5%) and AUPR from 0.22 to 0.07 (-69.11%) on in-pandemic test data; input distributions differed significantly (Kolmogorov-Smirnov).",
+   "quote": "The models produced showed excellent areas under receiver-operating characteristic and acceptable precision-recall curves when tested on a dataset from January-March 2020, but significant degradation when tested on a dataset collected in the first wave of the COVID pandemic from April-May 2020.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Temporal test performance under pandemic shift",
+   "effect": "All native models: AUROC 0.92 (0.03) pre vs 0.87 (0.04) in-pandemic; AUPR 0.22 (0.05) vs 0.07 (0.02); p<0.001.",
+   "quote": "The models produced showed excellent areas under receiver-operating characteristic and acceptable precision-recall curves when tested on a dataset from January-March 2020, but significant degradation when tested on a dataset collected in the first wave of the COVID pandemic from April-May 2020.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Robustness to real-world pandemic variation",
+   "effect": "Native all-model mean AUROC/AUPR fell 0.92/0.22 to 0.87/0.07 (p<0.001); modified models also lost performance.",
+   "quote": "Most models suffer from a performance loss in the pandemic, not only the native ones, but also those modified by means of the \u201cweight\u201d, \u201c6 months\u201d and \u201cscaled\u201d methods.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Input distribution shift from development data",
+   "effect": "Validation vs in-pandemic: age 56 vs 58, RPC ordered 27.0% vs 37.7%, consults 2.00 vs 3.00; all p<0.001; mortality p=0.458.",
+   "quote": "During the pandemic, there was a change in the probability distribution of input features.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R545",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Preemptively weighting older training data less to improve robustness to sudden drift",
+  "Restricting model training data to the most recent historical period (e.g., past 6 months) to mitigate data drift",
+  "Temporal sample weighting (weighting older training data weaker) during model training to prevent drift-induced performance degradation",
+  "Training only on the most recent six months of data to improve robustness to sudden drift",
+  "Training-time robustness measures (time-weighting older data, using only recent data, z-scaling inputs) to prevent drift degradation",
+  "Z-score normalization of numerical input parameters to improve model robustness to sudden covariate shift",
+  "Z-transforming numerical inputs to improve robustness to covariate shift"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38308256",
+ "screen": {
+  "id": "pmid:38308256",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "drift mitigation in model training (data weighting, recent-data training, z-transformation)",
+  "user": "none",
+  "reason": "Empirically tests methods to mitigate model degradation from pandemic-induced data drift on surgical mortality risk prediction models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "training-time drift mitigation methods (temporal weighting, recency filtering, normalization)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38308256",
+   "empirical": 0.96,
+   "tests_practice": 0.42,
+   "real_deployment": 0.07
+  }
+ }
+}

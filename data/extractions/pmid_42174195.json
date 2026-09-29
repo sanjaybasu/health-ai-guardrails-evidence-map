@@ -1,0 +1,466 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 1269,
+   "sample_unit": "seizure semiology descriptions",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "Mixtral-8x7B",
+    "Qwen-72B",
+    "LlaMA2-70B",
+    "LlaMA3-70B",
+    "OpenBioLLM-70B",
+    "Med42-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "French",
+    "Spanish",
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of sources and citations in LLM reasoning outputs, verified by two raters",
+     "effect": "Citation accuracy was 76% for GPT-4 versus 19% for Mixtral-8x7B; correct predictions could rest on hallucinated knowledge and inaccurate citation.",
+     "quote": "Additionally, Fig. 3 (d) demonstrates GPT-4\u2019s superior citation accuracy (76% for GPT-4 vs. 19% for Mixtral), indicating GPT-4\u2019s enhanced ability to provide evidence-based sources for its decision."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance sensitivity to input variation: narrative length, persona prompt, and language",
+     "effect": "Performance varied with description length (U-shaped, up to 32%), persona (GPT-4 +13.68%), and language (Mixtral -8% in same-language non-English setting; GPT-4 -1.4%, n.s.).",
+     "quote": "However, in the same-language setting (non-English symptoms and prompt), Mixtral\u2019s performance declines substantially by 8%, while GPT-4 remains stable (-1.4%, n.s.)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Calibration and confidence of LLM likelihood outputs versus correctness",
+     "effect": "Confidence and Brier calibration improved with prompt engineering (FS-CoT, SC best); GPT-4 best calibrated even zero-shot, but high confidence does not guarantee correctness.",
+     "quote": "Notably, GPT-4 shows the best calibration, even in the zero-shot condition."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Correctness of LLM clinical knowledge recall and reasoning rated by epileptologist",
+     "effect": "GPT-4 knowledge recall errors 17.28% vs Mixtral 43.21%; Mixtral incorrect reasoning 38.27% vs GPT-4 20.99%; correct output 56.79% vs 29.63%.",
+     "quote": "When examining specific dimensions (Fig. 3 (c)), GPT-4 made fewer errors for knowledge recall than Mixtral (17.28% vs. 43.21%; z-test for proportions, p <0.05)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "LLM F1 for seizure onset zone localization compared with clinicians and naive baseline",
+     "effect": "Zero-shot F1 of GPT-4 52.27% and Mixtral 51.66% versus clinicians 48.77% and 46.75%; naive classifier 38.21%.",
+     "quote": "Exceptions are Mixtral-8 \u00d7 7B and GPT-4, which achieved substantially higher F1 scores than all other models of 51.66% and 52.27%, respectively (95% CI: [51.43, 51.90], [52.04, 52.50]), comparable to the clinician\u2019s performance: Clinician 1 - 48.77% (95% CI: [48.53, 49.02]) and Clinician 2 - 46.75% (95% CI: [46.51, 46.99])."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering strategies (few-shot, chain-of-thought, self-consistency) to improve LLM accuracy",
+    "Clinical persona impersonation prompting to improve performance",
+    "Cross-lingual prompt language effects on LLM performance"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 1269,
+   "sample_unit": "seizure semiology entries",
+   "models_evaluated": [
+    "gpt-3.5-turbo-1106",
+    "gpt-4-1106-preview",
+    "Mixtral-8 \u00d7 7B",
+    "Qwen-72B-Chat",
+    "LlaMA-2-70B-chat",
+    "LlaMA-3-70B-chat",
+    "OpenBioLLM-70B",
+    "Med42-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "French",
+    "Spanish",
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "SOZ localization accuracy against ground truth",
+     "effect": "Top zero-shot F1 was 51.66% for Mixtral and 52.27% for GPT-4, versus clinicians 48.77% and 46.75%.",
+     "quote": "Exceptions are Mixtral-8 \u00d7 7B and GPT-4, which achieved substantially higher F1 scores than all other models of 51.66% and 52.27%, respectively (95% CI: [51.43, 51.90], [52.04, 52.50]), comparable to the clinician\u2019s performance: Clinician 1 - 48.77% (95% CI: [48.53, 49.02]) and Clinician 2 - 46.75% (95% CI: [46.51, 46.99])."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "model F1 versus clinicians",
+     "effect": "GPT-4 and Mixtral achieved 52.27% and 51.66% F1, comparable to clinicians at 48.77% and 46.75%.",
+     "quote": "Exceptions are Mixtral-8 \u00d7 7B and GPT-4, which achieved substantially higher F1 scores than all other models of 51.66% and 52.27%, respectively (95% CI: [51.43, 51.90], [52.04, 52.50]), comparable to the clinician\u2019s performance: Clinician 1 - 48.77% (95% CI: [48.53, 49.02]) and Clinician 2 - 46.75% (95% CI: [46.51, 46.99])."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "expert-rated reasoning correctness and completeness",
+     "effect": "In 81 CoT responses, GPT-4 correctness/completeness 56.79%/65.00% vs Mixtral 29.63%/34.57%, p<0.05.",
+     "quote": "As shown in Fig. 3 (b) GPT-4 significantly outperformed Mixtral in both correctness (56.79% vs. 29.63%; z-test for proportions, p <0.05) and completeness (65.00% vs. 34.57%; z-test for proportions, p <0.05)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hallucinated reasoning and inaccurate citations",
+     "effect": "Clinical experts found correct predictions could rely on hallucinated knowledge and inaccurate source citation.",
+     "quote": "However, reasoning analysis by clinical experts reveal that correct prediction can be based on hallucinated knowledge and inaccurate source citation, underscoring the need to improve interpretability of LLMs in clinical use."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "source citation accuracy",
+     "effect": "Citation accuracy was 76% for GPT-4 and 19% for Mixtral.",
+     "quote": "Additionally, Fig. 3 (d) demonstrates GPT-4\u2019s superior citation accuracy (76% for GPT-4 vs. 19% for Mixtral), indicating GPT-4\u2019s enhanced ability to provide evidence-based sources for its decision."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "calibration of likelihood estimates",
+     "effect": "Zero-shot calibration showed high variance; refined prompting markedly improved calibration for all models.",
+     "quote": "As shown in Fig. 2 (b) top, models exhibit a high variance in calibration in the zero-shot condition."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance under input and language variations",
+     "effect": "Performance variation was 13.7% for persona, 32.7% for narrative length, and 14.2% for language context.",
+     "quote": "Performance is further strongly modulated by clinical in-context impersonation, narrative length and language context (13.7%, 32.7% and 14.2% performance variation, respectively)."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "F1 across prompt strategies",
+     "effect": "Median F1 improvement vs zero-shot: Few-Shot 6.49%, CoT 9.62%, FS-CoT 9.49%, SC 10.02%.",
+     "quote": "Importantly, we observed a substantial performance increase when introducing prompt-engineering across all models: Median F1 improvement relative to ZS was 6.49% for Few-Shot prompting, 9.62% for CoT, 9.49% in FS-CoT, and 10.02% increase for SC."
+    }
+   ],
+   "unlisted_practices": [
+    "Clinical expert persona prompting to improve diagnostic performance and confidence",
+    "Self-consistency aggregation by median-based majority voting across five independent response chains"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 1269,
+   "sample_unit": "semiology entries",
+   "models_evaluated": [
+    "GPT-3.5",
+    "GPT-4",
+    "Mixtral-8x7B",
+    "Qwen-72B",
+    "LLaMA-2-70B",
+    "LLaMA-3-70B",
+    "OpenBioLLM-70B",
+    "Med42-70B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English",
+    "French",
+    "Spanish",
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "source citation accuracy in model reasoning",
+     "effect": "Citation accuracy was 76% for GPT-4 and 19% for Mixtral-8x7B across 81 queries evaluated independently by two raters.",
+     "quote": "Differences in citation accuracy were particularly strong (GPT-4: 76%, Mixtral: 19%), reflecting ongoing challenges in factual grounding and source attribution for generative models 62 , 63 ."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "explanation reasoning correctness and fidelity",
+     "effect": "Clinical experts found correct predictions could rely on hallucinated knowledge, with incorrect reasoning rates of 20.99% for GPT-4 and 38.27% for Mixtral-8x7B (p < 0.05).",
+     "quote": "However, reasoning analysis by clinical experts reveal that correct prediction can be based on hallucinated knowledge and inaccurate source citation, underscoring the need to improve interpretability of LLMs in clinical use."
+    }
+   ],
+   "unlisted_practices": [
+    "clinician-guided chain-of-thought prompting",
+    "in-context clinical persona impersonation",
+    "self-consistency prompting with majority voting"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "seizure semiology descriptions",
+ "sample_size": 1269,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "English",
+  "French",
+  "Spanish"
+ ],
+ "models_evaluated": [
+  "GPT-3.5",
+  "GPT-4",
+  "LLaMA-2-70B",
+  "LLaMA-3-70B",
+  "LlaMA-2-70B-chat",
+  "LlaMA-3-70B-chat",
+  "LlaMA2-70B",
+  "LlaMA3-70B",
+  "Med42-70B",
+  "Mixtral-8 \u00d7 7B",
+  "Mixtral-8x7B",
+  "OpenBioLLM-70B",
+  "Qwen-72B",
+  "Qwen-72B-Chat",
+  "gpt-3.5-turbo-1106",
+  "gpt-4-1106-preview"
+ ],
+ "links": [
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of sources and citations in LLM reasoning outputs, verified by two raters",
+   "effect": "Citation accuracy was 76% for GPT-4 versus 19% for Mixtral-8x7B; correct predictions could rest on hallucinated knowledge and inaccurate citation.",
+   "quote": "Additionally, Fig. 3 (d) demonstrates GPT-4\u2019s superior citation accuracy (76% for GPT-4 vs. 19% for Mixtral), indicating GPT-4\u2019s enhanced ability to provide evidence-based sources for its decision.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance sensitivity to input variation: narrative length, persona prompt, and language",
+   "effect": "Performance varied with description length (U-shaped, up to 32%), persona (GPT-4 +13.68%), and language (Mixtral -8% in same-language non-English setting; GPT-4 -1.4%, n.s.).",
+   "quote": "However, in the same-language setting (non-English symptoms and prompt), Mixtral\u2019s performance declines substantially by 8%, while GPT-4 remains stable (-1.4%, n.s.).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration and confidence of LLM likelihood outputs versus correctness",
+   "effect": "Confidence and Brier calibration improved with prompt engineering (FS-CoT, SC best); GPT-4 best calibrated even zero-shot, but high confidence does not guarantee correctness.",
+   "quote": "Notably, GPT-4 shows the best calibration, even in the zero-shot condition.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 0.5,
+   "outcome": "LLM F1 for seizure onset zone localization compared with clinicians and naive baseline",
+   "effect": "Zero-shot F1 of GPT-4 52.27% and Mixtral 51.66% versus clinicians 48.77% and 46.75%; naive classifier 38.21%.",
+   "quote": "Exceptions are Mixtral-8 \u00d7 7B and GPT-4, which achieved substantially higher F1 scores than all other models of 51.66% and 52.27%, respectively (95% CI: [51.43, 51.90], [52.04, 52.50]), comparable to the clinician\u2019s performance: Clinician 1 - 48.77% (95% CI: [48.53, 49.02]) and Clinician 2 - 46.75% (95% CI: [46.51, 46.99]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R104",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "expert-rated reasoning correctness and completeness",
+   "effect": "In 81 CoT responses, GPT-4 correctness/completeness 56.79%/65.00% vs Mixtral 29.63%/34.57%, p<0.05.",
+   "quote": "As shown in Fig. 3 (b) GPT-4 significantly outperformed Mixtral in both correctness (56.79% vs. 29.63%; z-test for proportions, p <0.05) and completeness (65.00% vs. 34.57%; z-test for proportions, p <0.05).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "hallucinated reasoning and inaccurate citations",
+   "effect": "Clinical experts found correct predictions could rely on hallucinated knowledge and inaccurate source citation.",
+   "quote": "However, reasoning analysis by clinical experts reveal that correct prediction can be based on hallucinated knowledge and inaccurate source citation, underscoring the need to improve interpretability of LLMs in clinical use.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "F1 across prompt strategies",
+   "effect": "Median F1 improvement vs zero-shot: Few-Shot 6.49%, CoT 9.62%, FS-CoT 9.49%, SC 10.02%.",
+   "quote": "Importantly, we observed a substantial performance increase when introducing prompt-engineering across all models: Median F1 improvement relative to ZS was 6.49% for Few-Shot prompting, 9.62% for CoT, 9.49% in FS-CoT, and 10.02% increase for SC.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Clinical expert persona prompting to improve diagnostic performance and confidence",
+  "Clinical persona impersonation prompting to improve performance",
+  "Cross-lingual prompt language effects on LLM performance",
+  "Prompt engineering strategies (few-shot, chain-of-thought, self-consistency) to improve LLM accuracy",
+  "Self-consistency aggregation by median-based majority voting across five independent response chains",
+  "clinician-guided chain-of-thought prompting",
+  "in-context clinical persona impersonation",
+  "self-consistency prompting with majority voting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42174195",
+ "screen": {
+  "id": "pmid:42174195",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt engineering with clinician-guided chain-of-thought",
+  "user": "none",
+  "reason": "Evaluates LLMs on epilepsy diagnostic narratives while testing specific deployment/prompting practices (chain-of-thought prompting strategies and clinical role impersonation) along with safety/interpretability aspects like hallucinated reasoning and source citations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "chain-of-thought prompting and role impersonation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42174195",
+   "empirical": 0.96,
+   "tests_practice": 0.29,
+   "real_deployment": 0.04
+  }
+ }
+}

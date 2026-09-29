@@ -1,0 +1,88 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "any_ai",
+  "generative_llm"
+ ],
+ "country": "",
+ "sample_size": 8469,
+ "sample_unit": "requests",
+ "models_evaluated": [
+  "Jev 1.13",
+  "GPT-6 Sol (medium reasoning)",
+  "GPT-6 Sol (no reasoning)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Rate of choosing 'I don't know or cannot answer' on unanswerable questions",
+   "effect": "Of 162 unanswerable questions, Jev chose the 'I don't know' option for 10.5% (GPT-6 Sol, 8.6%), so both models rarely deferred.",
+   "quote": "Of the 162 questions whose correct answer was \"I don't know or cannot answer\", Jev chose that option for 10.5% (GPT-6 Sol, 8.6%).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Calibration and confidence-accuracy relationship of model probabilities on MetaMedQA",
+   "effect": "Jev ECE 0.063 vs 0.146 for GPT-6 Sol; Jev answers with p>=0.9 (52.9% of questions) were 93.4% accurate, but GPT-6 Sol matched that accuracy at similar coverage. On DiagnosisArena-MCQ, AUROC 0.645 vs 0.768.",
+   "quote": "On MetaMedQA, Jev's probabilities were the best calibrated (expected calibration error 0.063 vs 0.146), and its answers with a probability of at least 0.9 (52.9% of questions) were 93.4% accurate, but GPT-6 Sol was as accurate when it accepted a similar proportion of questions.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "selective prediction using probability thresholds to abstain on low-confidence answers"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2609.34024",
+ "screen": {
+  "id": "arxiv:2609.34024",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a non-generative classification/probability model (Jev) alongside GPT-6 on standard medical question-answering and diagnostic benchmarks without evaluating an implementation safeguard or deployment practice.",
+  "jev": {
+   "id": "arxiv:2609.34024",
+   "empirical": 0.95,
+   "tests_practice": 0.07,
+   "real_deployment": 0.02
+  }
+ }
+}

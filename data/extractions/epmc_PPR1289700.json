@@ -1,0 +1,92 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk",
+  "agentic"
+ ],
+ "country": "United States",
+ "sample_size": 317,
+ "sample_unit": "patients (eICU demo N=200; MIMIC-IV demo N=117)",
+ "models_evaluated": [
+  "Agentic-TimesFM-AKI",
+  "Gemma-4 Sentinel",
+  "TimesFM"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Performance drop from internal eICU evaluation to external MIMIC-IV validation (domain shift)",
+   "effect": "eICU internal accuracy 0.970 (95% CI 0.945-0.990), F1 0.966; external MIMIC-IV validation showed severe performance degradation.",
+   "quote": "However, external validation on the MIMIC-IV cohort revealed severe performance degradation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model robustness to input/schema formatting variation",
+   "effect": "Framework showed structural formatting fragility and domain shift on out-of-distribution EHR data.",
+   "quote": "While the dual-model framework provides highly accurate and interpretable AKI alerts on familiar schema cohorts, it suffers from structural formatting fragility and domain shift.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Training predictive models on differentially private synthetic data (\u03b5=10)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1289700",
+ "screen": {
+  "id": "epmc:PPR1289700",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates a novel agentic dual-model (LLM + time series) architecture for predicting AKI, demonstrating performance degradation on external validation due to schema/domain shift.",
+  "jev": {
+   "id": "epmc:PPR1289700",
+   "empirical": 0.9,
+   "tests_practice": 0.09,
+   "real_deployment": 0.05
+  }
+ }
+}

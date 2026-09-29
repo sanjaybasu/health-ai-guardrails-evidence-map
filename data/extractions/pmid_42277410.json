@@ -1,0 +1,395 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "United States (MIMIC-IV); Taiwan DRG approximation",
+   "sample_size": 19827,
+   "sample_unit": "test admissions",
+   "models_evaluated": [
+    "PLM-ICD",
+    "LAAT",
+    "MultiResCNN",
+    "CAML",
+    "Bi-GRU",
+    "CNN",
+    "TF-IDF + Logistic Regression",
+    "BioClinicalBERT",
+    "MedGemma 4B",
+    "BioMistral-7B",
+    "TachyHealth"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CRS reduction from human review queue prioritized by revenue risk versus random or confidence-based prioritization",
+     "effect": "At 20% review rate, revenue-targeted prioritization achieved 43.2% CRS reduction vs 20.0% random and 19.7% confidence-based; 91% of oracle bound (47.4%). Simulation assumed perfect correction.",
+     "quote": "At the practically relevant 20% review rate: S3 achieved F1-micro of 0.7423 with 43.2% CRS reduction; S3-TW (Tw-DRG targeting) achieved similar F1 of 0.7435 with 43.1% CRS reduction; while S2 (confidence-based) achieved only 19.7% and S1 (random) achieved 20.0% CRS reduction."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability of performance from single-center MIMIC-IV to broader US hospitals and Taiwan",
+     "effect": "MIMIC-IV is a single tertiary center; DRG distribution differs from CMS national claims (top-20 concentration 23.9% vs 36.2%); Tw-DRG evaluated only by approximation (93.9% coverage); transfer to non-US systems should not be assumed.",
+     "quote": "Institution-specific staffing patterns, documentation conventions, coding practices, billing resources, and technology infrastructure further limit generalizability to broader US hospital settings, and transfer to non-US healthcare systems (including Taiwan) should not be assumed from this dataset alone."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Zero-shot open-source LLM ICD-10-CM coding accuracy on 200 admissions",
+     "effect": "Zero-shot LLMs performed far worse than fine-tuned models: MedGemma F1-micro 0.0185, BioMistral 0.0058, TachyHealth 0.0013, versus PLM-ICD 0.5934.",
+     "quote": "The three zero-shot LLMs fared far worse: MedGemma (F1-micro = 0.0185), BioMistral (0.0058), and TachyHealth (0.0013), consistent with prior findings that task-specific fine-tuning remains necessary for ICD coding 20 ."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Robustness of human review benefit to reviewer error (failure to correct AI errors)",
+     "effect": "At 20% review, S3 CRS reduction fell from 43.2% (e=0%) to 38.9%, 34.6%, 30.2% at e=10%, 20%, 30%; still 1.5-fold greater than random at perfect correction. Simulated, not real reviewers.",
+     "quote": "Even at the highest reviewer error rate (30%), revenue-targeted review retained 30.2% CRS reduction under MS-DRG, still 1.5-fold greater than random sampling at perfect correction (20.0%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Revenue-weighted evaluation metrics (RSI/CRS) for AI coding error consequence",
+    "Prioritizing human coder review by estimated financial risk rather than model confidence",
+    "Cross-payment-system (MS-DRG vs Tw-DRG) ranking stability assessment"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "United States; Taiwan",
+   "sample_size": 19827,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "TF-IDF + Logistic Regression",
+    "BioClinicalBERT",
+    "CNN",
+    "Bi-GRU",
+    "CAML",
+    "MultiResCNN",
+    "LAAT",
+    "PLM-ICD",
+    "MedGemma 4B",
+    "BioMistral-7B",
+    "TachyHealth"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ICD coding accuracy",
+     "effect": "PLM-ICD F1-micro 0.5934; CNN 0.4811; zero-shot LLMs 0.0185, 0.0058, 0.0013.",
+     "quote": "The three zero-shot LLMs fared far worse: MedGemma (F1-micro = 0.0185), BioMistral (0.0058), and TachyHealth (0.0013), consistent with prior findings that task-specific fine-tuning remains necessary for ICD coding 20 ."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model selection by accuracy and reimbursement risk",
+     "effect": "PLM-ICD F1-micro 0.5934; CNN 0.4811; CRS gap 26.5%.",
+     "quote": "Model CRS rankings mirrored F1-micro rankings (Table 3 ): PLM-ICD had the lowest mean CRS (24.86 per admission) and CNN the highest (31.45), a 26.5% gap in aggregate reimbursement risk."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Metric sensitivity to operational performance",
+     "effect": "AUC-micro 0.976\u20130.993 despite F1-micro range 0.481\u20130.593.",
+     "quote": "Uniformly high AUC-micro scores (0.976\u20130.993) coexist with a wide F1-micro range (0.481\u20130.593): with 7942 codes per admission, the vast majority of code-admission pairs are true negatives that all models correctly identify."
+    },
+    {
+     "rec_id": "R498",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Truncation impact on coding accuracy",
+     "effect": "BioClinicalBERT F1-micro 0.4645 vs TF-IDF 0.5528; 99.7% exceeded 512 tokens.",
+     "quote": "The self-trained TF-IDF baseline achieved F1-micro of 0.5528 on the restricted top-50 label space, while BioClinicalBERT reached only 0.4645, underperforming the simpler baseline because its 512-token limit discards most of each discharge summary (99.7% exceeded this length)."
+    },
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Revenue-prioritized human review",
+     "effect": "At 20% review, revenue targeting reduced CRS 43.2% vs random 20.0% and confidence 19.7%.",
+     "quote": "At the practically relevant 20% review rate: S3 achieved F1-micro of 0.7423 with 43.2% CRS reduction; S3-TW (Tw-DRG targeting) achieved similar F1 of 0.7435 with 43.1% CRS reduction; while S2 (confidence-based) achieved only 19.7% and S1 (random) achieved 20.0% CRS reduction."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human review of AI coding outputs",
+     "effect": "At 20% review, S3 achieved 43.2% CRS reduction; with 30% reviewer error still 30.2%.",
+     "quote": "Even at the highest reviewer error rate (30%), revenue-targeted review retained 30.2% CRS reduction under MS-DRG, still 1.5-fold greater than random sampling at perfect correction (20.0%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Use Revenue Sensitivity Index and Coding Reimbursement Score to evaluate automated ICD-10-CM coding models.",
+    "Compare coding model reimbursement risk under multiple national DRG payment systems."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "any_ai"
+   ],
+   "country": "USA",
+   "sample_size": 19827,
+   "sample_unit": "admissions",
+   "models_evaluated": [
+    "PLM-ICD",
+    "LAAT",
+    "MultiResCNN",
+    "CAML",
+    "Bi-GRU",
+    "CNN",
+    "TF-IDF + Logistic Regression",
+    "BioClinicalBERT",
+    "MedGemma 4B",
+    "BioMistral-7B",
+    "TachyHealth"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "eng"
+   ],
+   "links": [
+    {
+     "rec_id": "R518",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Coding Reimbursement Score reduction and F1-micro",
+     "effect": "At 20% review, revenue-targeted prioritization achieved 43.2% CRS reduction versus 20.0% for random review and 19.7% for confidence-based review.",
+     "quote": "At the practically relevant 20% review rate: S3 achieved F1-micro of 0.7423 with 43.2% CRS reduction; S3-TW (Tw-DRG targeting) achieved similar F1 of 0.7435 with 43.1% CRS reduction; while S2 (confidence-based) achieved only 19.7% and S1 (random) achieved 20.0% CRS reduction."
+    }
+   ],
+   "unlisted_practices": [
+    "Evaluating automated clinical coding systems using reimbursement-weighted metrics (Revenue Sensitivity Index and Coding Reimbursement Score) rather than standard unweighted classification metrics"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States (MIMIC-IV); Taiwan DRG approximation",
+ "sample_unit": "admissions",
+ "sample_size": 19827,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "eng"
+ ],
+ "models_evaluated": [
+  "Bi-GRU",
+  "BioClinicalBERT",
+  "BioMistral-7B",
+  "CAML",
+  "CNN",
+  "LAAT",
+  "MedGemma 4B",
+  "MultiResCNN",
+  "PLM-ICD",
+  "TF-IDF + Logistic Regression",
+  "TachyHealth"
+ ],
+ "links": [
+  {
+   "rec_id": "R518",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "CRS reduction from human review queue prioritized by revenue risk versus random or confidence-based prioritization",
+   "effect": "At 20% review rate, revenue-targeted prioritization achieved 43.2% CRS reduction vs 20.0% random and 19.7% confidence-based; 91% of oracle bound (47.4%). Simulation assumed perfect correction.",
+   "quote": "At the practically relevant 20% review rate: S3 achieved F1-micro of 0.7423 with 43.2% CRS reduction; S3-TW (Tw-DRG targeting) achieved similar F1 of 0.7435 with 43.1% CRS reduction; while S2 (confidence-based) achieved only 19.7% and S1 (random) achieved 20.0% CRS reduction.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Metric sensitivity to operational performance",
+   "effect": "AUC-micro 0.976\u20130.993 despite F1-micro range 0.481\u20130.593.",
+   "quote": "Uniformly high AUC-micro scores (0.976\u20130.993) coexist with a wide F1-micro range (0.481\u20130.593): with 7942 codes per admission, the vast majority of code-admission pairs are true negatives that all models correctly identify.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R498",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Truncation impact on coding accuracy",
+   "effect": "BioClinicalBERT F1-micro 0.4645 vs TF-IDF 0.5528; 99.7% exceeded 512 tokens.",
+   "quote": "The self-trained TF-IDF baseline achieved F1-micro of 0.5528 on the restricted top-50 label space, while BioClinicalBERT reached only 0.4645, underperforming the simpler baseline because its 512-token limit discards most of each discharge summary (99.7% exceeded this length).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Compare coding model reimbursement risk under multiple national DRG payment systems.",
+  "Cross-payment-system (MS-DRG vs Tw-DRG) ranking stability assessment",
+  "Evaluating automated clinical coding systems using reimbursement-weighted metrics (Revenue Sensitivity Index and Coding Reimbursement Score) rather than standard unweighted classification metrics",
+  "Prioritizing human coder review by estimated financial risk rather than model confidence",
+  "Revenue-weighted evaluation metrics (RSI/CRS) for AI coding error consequence",
+  "Use Revenue Sensitivity Index and Coding Reimbursement Score to evaluate automated ICD-10-CM coding models."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42277410",
+ "screen": {
+  "id": "pmid:42277410",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "revenue-targeted human-in-the-loop review prioritization",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically simulates and compares five human-AI review workflows/prioritization strategies for AI-assisted ICD coding to evaluate deployment safety and efficiency.",
+  "jev": {
+   "id": "pmid:42277410",
+   "empirical": 0.96,
+   "tests_practice": 0.92,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,257 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "unspecified",
+   "sample_size": 512,
+   "sample_unit": "synthetic oncology records (fully gated corpus)",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Rejection of invalid synthetic records by automated symbolic gate versus ungated generation",
+     "effect": "Ungated, 29.9% of records contain schema failures and 20.1% contain clinically invalid staging. Schema validation rejects 148 of 512 records, ontology grounding a further 24, staging-logic none.",
+     "quote": "Ungated, 29.9% of records contain schema failures and 20.1% contain clinically invalid staging."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of retrieval augmentation on gate compliance across generators",
+     "effect": "Retrieval improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third.",
+     "quote": "Retrieval augmentation is strongly model-dependent: it improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third."
+    }
+   ],
+   "unlisted_practices": [
+    "Symbolic schema, ontology (SNOMED), and AJCC staging-logic validation gate during synthetic data generation"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 512,
+   "sample_unit": "synthetic oncology records",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "schema and clinical-validity filtering",
+     "effect": "Ungated: 29.9% schema failures, 20.1% clinically invalid staging; gated corpus rejected 148/512 schema and 24 ontology records.",
+     "quote": "Schema validation is the load-bearing filter: within the fully gated corpus it rejects 148 of 512 records, ontology grounding a further 24, and staging-logic validation none---the only generator producing logic violations is already excluded on schema, making clinical-logic validation a generator-conditional safeguard rather than the dominant filter."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "retrieval augmentation effect on gate compliance",
+     "effect": "Improved one generator by 12.5 percentage points; no measurable effect for second; collapsed output in third.",
+     "quote": "Retrieval augmentation is strongly model-dependent: it improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinically invalid oncology staging",
+     "effect": "Ungated, 20.1% of records contained clinically invalid staging.",
+     "quote": "Ungated, 29.9% of records contain schema failures and 20.1% contain clinically invalid staging."
+    }
+   ],
+   "unlisted_practices": [
+    "Reporting ontology density as a proxy for corpus quality"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 512,
+   "sample_unit": "records",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "gate compliance under retrieval augmentation",
+     "effect": "Retrieval augmentation improved gate compliance by 12.5 percentage points for one generator, had no measurable effect for a second, and collapsed output in a third.",
+     "quote": "Retrieval augmentation is strongly model-dependent: it improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "rejection of invalid records by symbolic gate components",
+     "effect": "Schema validation rejected 148 of 512 records and ontology grounding rejected 24, while staging-logic validation rejected none because logic violations were already excluded on schema.",
+     "quote": "Schema validation is the load-bearing filter: within the fully gated corpus it rejects 148 of 512 records, ontology grounding a further 24, and staging-logic validation none---the only generator producing logic violations is already excluded on schema, making clinical-logic validation a generator-conditional safeguard rather than the dominant filter."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "synthetic oncology records (fully gated corpus)",
+ "sample_size": 512,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [],
+ "links": [
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Rejection of invalid synthetic records by automated symbolic gate versus ungated generation",
+   "effect": "Ungated, 29.9% of records contain schema failures and 20.1% contain clinically invalid staging. Schema validation rejects 148 of 512 records, ontology grounding a further 24, staging-logic none.",
+   "quote": "Ungated, 29.9% of records contain schema failures and 20.1% contain clinically invalid staging.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of retrieval augmentation on gate compliance across generators",
+   "effect": "Retrieval improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third.",
+   "quote": "Retrieval augmentation is strongly model-dependent: it improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Reporting ontology density as a proxy for corpus quality",
+  "Symbolic schema, ontology (SNOMED), and AJCC staging-logic validation gate during synthetic data generation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "arxiv:2608.22085",
+ "screen": {
+  "id": "arxiv:2608.22085",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "symbolic validation gate and retrieval augmentation for synthetic data generation",
+  "user": "none",
+  "reason": "The study empirically tests and isolates specific quality-assurance guardrails (schema validation, ontology grounding, staging-logic validation, and retrieval augmentation) applied to LLMs generating synthetic clinical oncology data.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "symbolic gating and quality-assurance filters for synthetic data generation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2608.22085",
+   "empirical": 0.92,
+   "tests_practice": 0.79,
+   "real_deployment": 0.04
+  }
+ }
+}

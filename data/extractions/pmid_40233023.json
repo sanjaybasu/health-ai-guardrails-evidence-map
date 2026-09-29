@@ -1,0 +1,327 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Viet Nam",
+   "sample_size": 2708,
+   "sample_unit": "participants (chest radiographs with Ultra results)",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR v3.1.0.0",
+    "Lunit INSIGHT CXR v3.9.0.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R545",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity, specificity and added testing after software version update, with and without threshold recalibration",
+     "effect": "At the old cut-off 0.217, new version had sensitivity 96.4% but specificity 23.1% (p<0.001), +36.4% Ultra testing; recalibrated to 0.480, specificity 43.2%, +4.1% testing, p=0.148.",
+     "quote": "When a second cut-off threshold is selected for the newer v3.9.0.1 software so that it achieves a 90% sensitivity (0.480), there is no statistical difference with the newer software\u2019s specificity (43.2%) or the additional Ultra tests indicated (+4.1%) compared with the v3.1.0.0 software version (p = 0.148) at its original threshold."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of recalibrating decision threshold after model update on specificity and testing volume",
+     "effect": "Without recalibration new version specificity fell to 23.1% (+36.4% testing); after recalibration to 0.480, specificity 43.2% and +4.1% testing, not significantly different from old version.",
+     "quote": "When using an cut-off threshold optimized for the older software version, the newer software was significantly less accurate than its predecessors."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity/specificity of new software at original versus re-calibrated cut-off threshold",
+     "effect": "Original threshold: specificity 23.1% vs 45.8% for old version; re-calibrated threshold 0.480 gave 90.4% sensitivity and 43.2% specificity, no significant difference (p=0.148).",
+     "quote": "However, when the cut-off threshold was re-calibrated, there were no significant differences in sensitivity and specificity between the software versions."
+    },
+    {
+     "rec_id": "R137",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of updated software version at previously validated threshold",
+     "effect": "New version at old threshold: specificity 23.1% vs 45.8%, +36.4% diagnostic testing; performance matched predecessor only after recalibration.",
+     "quote": "Between successive Lunit CAD software versions, there was a significant increase in the median abnormality score which translates to significantly decreased specificity and thus significantly increased diagnostic testing indication if the abnormality score cut-off threshold is not re-calibrated for the new software version."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retesting after software update to confirm performance and thresholds remain valid",
+     "effect": "Update raised AUC 0.76 to 0.78 (p=0.029) but shifted abnormality scores, cutting specificity at old threshold from 45.8% to 23.1%.",
+     "quote": "As new CAD software versions are rolled out, cut-off thresholds must be re-calibrated to ensure the continued accuracy of CXR interpretation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Viet Nam",
+   "sample_size": 2708,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR v3.1.0.0",
+    "Lunit INSIGHT CXR v3.9.0.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance after software update at unchanged cutoff",
+     "effect": "At cutoff 0.217, v3.9.0.1 had sensitivity 96.4%, specificity 23.1%, and +36.4% Ultra testing versus v3.1.0.0 specificity 45.8%.",
+     "quote": "Using this same cut-off threshold, the newer v3.9.0.1 software achieves a significantly higher sensitivity of 96.4%, but a significantly lower specificity of 23.1% (p < 0.001)."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity, specificity, and testing after threshold recalibration",
+     "effect": "Recalibrated v3.9.0.1 threshold 0.480: sensitivity 90.4%, specificity 43.2%, +4.1% Ultra tests; no statistical difference versus v3.1.0.0, p=0.148.",
+     "quote": "When a second cut-off threshold is selected for the newer v3.9.0.1 software so that it achieves a 90% sensitivity (0.480), there is no statistical difference with the newer software\u2019s specificity (43.2%) or the additional Ultra tests indicated (+4.1%) compared with the v3.1.0.0 software version (p = 0.148) at its original threshold."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AUC differences across demographic and clinical subgroups",
+     "effect": "Newer software improved AUC in past TB 0.67 vs 0.73 (p=0.003), older individuals 0.75 vs 0.77 (p=0.040), and males 0.73 vs 0.76 (p=0.008).",
+     "quote": "Similarly, there were no significant differences AUCs between the CAD software versions in younger individuals (0.78 vs 0.80, p = 0.425) and females (0.80 vs 0.79, p = 0.875), but the newer v3.9.0.1 software\u2019s AUCs were significantly higher among older individuals (0.75 vs 0.77, p = 0.040) and males (0.73 vs 0.76, p = 0.008)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Viet Nam",
+   "sample_size": 2708,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "Lunit INSIGHT CXR v3.1.0.0",
+    "Lunit INSIGHT CXR v3.9.0.1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "specificity and diagnostic testing volume after threshold recalibration",
+     "effect": "At the unadjusted cutoff (0.217), specificity fell to 23.1% (+36.4% tests, p<0.001); recalibrating to 0.480 restored 90.4% sensitivity with 43.2% specificity and +4.1% tests (p=0.148 vs predecessor).",
+     "quote": "When a second cut-off threshold is selected for the newer v3.9.0.1 software so that it achieves a 90% sensitivity (0.480), there is no statistical difference with the newer software\u2019s specificity (43.2%) or the additional Ultra tests indicated (+4.1%) compared with the v3.1.0.0 software version (p = 0.148) at its original threshold."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Viet Nam",
+ "sample_unit": "participants",
+ "sample_size": 2708,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Lunit INSIGHT CXR v3.1.0.0",
+  "Lunit INSIGHT CXR v3.9.0.1"
+ ],
+ "links": [
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of recalibrating decision threshold after model update on specificity and testing volume",
+   "effect": "Without recalibration new version specificity fell to 23.1% (+36.4% testing); after recalibration to 0.480, specificity 43.2% and +4.1% testing, not significantly different from old version.",
+   "quote": "When using an cut-off threshold optimized for the older software version, the newer software was significantly less accurate than its predecessors.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R545",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity, specificity and added testing after software version update, with and without threshold recalibration",
+   "effect": "At the old cut-off 0.217, new version had sensitivity 96.4% but specificity 23.1% (p<0.001), +36.4% Ultra testing; recalibrated to 0.480, specificity 43.2%, +4.1% testing, p=0.148.",
+   "quote": "When a second cut-off threshold is selected for the newer v3.9.0.1 software so that it achieves a 90% sensitivity (0.480), there is no statistical difference with the newer software\u2019s specificity (43.2%) or the additional Ultra tests indicated (+4.1%) compared with the v3.1.0.0 software version (p = 0.148) at its original threshold.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity/specificity of new software at original versus re-calibrated cut-off threshold",
+   "effect": "Original threshold: specificity 23.1% vs 45.8% for old version; re-calibrated threshold 0.480 gave 90.4% sensitivity and 43.2% specificity, no significant difference (p=0.148).",
+   "quote": "However, when the cut-off threshold was re-calibrated, there were no significant differences in sensitivity and specificity between the software versions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R137",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of updated software version at previously validated threshold",
+   "effect": "New version at old threshold: specificity 23.1% vs 45.8%, +36.4% diagnostic testing; performance matched predecessor only after recalibration.",
+   "quote": "Between successive Lunit CAD software versions, there was a significant increase in the median abnormality score which translates to significantly decreased specificity and thus significantly increased diagnostic testing indication if the abnormality score cut-off threshold is not re-calibrated for the new software version.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Retesting after software update to confirm performance and thresholds remain valid",
+   "effect": "Update raised AUC 0.76 to 0.78 (p=0.029) but shifted abnormality scores, cutting specificity at old threshold from 45.8% to 23.1%.",
+   "quote": "As new CAD software versions are rolled out, cut-off thresholds must be re-calibrated to ensure the continued accuracy of CXR interpretation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R545",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance after software update at unchanged cutoff",
+   "effect": "At cutoff 0.217, v3.9.0.1 had sensitivity 96.4%, specificity 23.1%, and +36.4% Ultra testing versus v3.1.0.0 specificity 45.8%.",
+   "quote": "Using this same cut-off threshold, the newer v3.9.0.1 software achieves a significantly higher sensitivity of 96.4%, but a significantly lower specificity of 23.1% (p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AUC differences across demographic and clinical subgroups",
+   "effect": "Newer software improved AUC in past TB 0.67 vs 0.73 (p=0.003), older individuals 0.75 vs 0.77 (p=0.040), and males 0.73 vs 0.76 (p=0.008).",
+   "quote": "Similarly, there were no significant differences AUCs between the CAD software versions in younger individuals (0.78 vs 0.80, p = 0.425) and females (0.80 vs 0.79, p = 0.875), but the newer v3.9.0.1 software\u2019s AUCs were significantly higher among older individuals (0.75 vs 0.77, p = 0.040) and males (0.73 vs 0.76, p = 0.008).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40233023",
+ "screen": {
+  "id": "pmid:40233023",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "threshold recalibration across software updates",
+  "user": "none",
+  "reason": "Evaluates commercial CAD software across version updates and tests the impact of cut-off threshold recalibration versus using old thresholds on screening performance.",
+  "jev": {
+   "id": "pmid:40233023",
+   "empirical": 0.97,
+   "tests_practice": 0.82,
+   "real_deployment": 0.11
+  }
+ }
+}

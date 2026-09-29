@@ -1,0 +1,407 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 31612,
+   "sample_unit": "deliveries (8646 at BTH; 22,966 at PFW)",
+   "models_evaluated": [
+    "Original postpartum HDP readmission calculator (2024)",
+    "Recalibrated site-specific logistic models",
+    "Recalibrated models plus census tract SVI"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination of original calculator on local data versus published, and after local recalibration",
+     "effect": "Original calculator c-statistic 0.71 (BTH) and 0.61 (PFW) vs 0.80 originally; calibration poor; after refit c-statistics 0.84 and 0.74.",
+     "quote": "This performance was lower than the original calculator's published model discrimination (c\u2010statistic 0.80), and calibration was poor."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Improvement in discrimination from local tuning methods (intercept, logistic, full refit)",
+     "effect": "Recalibration-in-the-large and logistic recalibration gave minimal improvement; full refit raised c-statistic to 0.84 (BTH) and 0.74 (PFW); refit models had higher net benefit.",
+     "quote": "After refitting new models on each site, BTH's c\u2010statistic improved to 0.84, and PFW's c\u2010statistic improved to 0.74 (Figure 1 )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance degradation from population differences between original development cohort and local sites",
+     "effect": "Original model discrimination dropped at both sites (0.71/0.72 BTH, 0.61 PFW vs 0.80) and external validation did not detect population shifts.",
+     "quote": "External validation is used primarily to determine model transportability, but in this case the original model did not detect shifts in differences between our populations and the original calculator's cohort."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model generalization to new hospital populations",
+     "effect": "Original calculator c-statistics 0.71 and 0.61 at new sites versus 0.80 in the original cohort; recalibration was needed.",
+     "quote": "Model discrimination for each of our cohorts using the original calculator was satisfactory, albeit with lower discriminative ability (c-statistics were 0.71 and 0.61 for BTH and PFW, respectively), compared with the original calculator's cohort (c-statistic 0.80)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance differences across sites with different demographics",
+     "effect": "Original calculator performed worse at PFW (0.61) than BTH (0.72); refit c-statistics 0.84 vs 0.74; site-stratified models needed.",
+     "quote": "Our models demonstrated that differences in baseline risk, case mix, and hospital settings (even a few city blocks apart, as our hospitals are) will alter the performance of a risk prediction model."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding neighborhood-level Social Vulnerability Index as a model input to improve prediction",
+    "Decision curve analysis to assess net benefit of the calculator"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 31612,
+   "sample_unit": "deliveries",
+   "models_evaluated": [
+    "Original postpartum HDP readmission calculator",
+    "BTH refit postpartum HDP readmission calculator",
+    "PFW refit postpartum HDP readmission calculator",
+    "SVI-augmented refit postpartum HDP readmission calculators"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": true,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External discrimination",
+     "effect": "External c-statistics were 0.71 (BTH) and 0.61 (PFW) versus original cohort c-statistic 0.80.",
+     "quote": "Model discrimination for each of our cohorts using the original calculator was satisfactory, albeit with lower discriminative ability (c-statistics were 0.71 and 0.61 for BTH and PFW, respectively), compared with the original calculator's cohort (c-statistic 0.80)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration",
+     "effect": "Original calculator performance was lower than published c\u2010statistic 0.80, and calibration was poor.",
+     "quote": "This performance was lower than the original calculator's published model discrimination (c\u2010statistic 0.80), and calibration was poor."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local validation performance",
+     "effect": "Using the original calculator locally, model performance was 0.72 for BTH and 0.61 for PFW.",
+     "quote": "Model performance for postpartum HDP readmission at each hospital using the original calculator was 0.72 for BTH and 0.61 for PFW."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination after refitting",
+     "effect": "Refit local models improved c\u2010statistics to 0.84 (BTH) and 0.74 (PFW).",
+     "quote": "After refitting new models on each site, BTH's c\u2010statistic improved to 0.84, and PFW's c\u2010statistic improved to 0.74 (Figure 1 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Site-stratified discrimination",
+     "effect": "Original calculator differed by site: 0.72 for BTH and 0.61 for PFW.",
+     "quote": "Model performance for postpartum HDP readmission at each hospital using the original calculator was 0.72 for BTH and 0.61 for PFW."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Transportability across settings",
+     "effect": "Authors concluded baseline risk, case mix, and hospital setting differences altered risk-model performance.",
+     "quote": "Our models demonstrated that differences in baseline risk, case mix, and hospital settings (even a few city blocks apart, as our hospitals are) will alter the performance of a risk prediction model."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding census tract-level Social Vulnerability Index (SVI) to postpartum HDP readmission risk calculators"
+   ]
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 31612,
+   "sample_unit": "deliveries",
+   "models_evaluated": [
+    "original calculator for postpartum HDP readmission",
+    "recalibrated HDP readmission models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model discrimination on local cohorts compared to original published performance",
+     "effect": "c-statistics were 0.71 for BTH and 0.61 for PFW, lower than the original calculator cohort c-statistic of 0.80",
+     "quote": "Model discrimination for each of our cohorts using the original calculator was satisfactory, albeit with lower discriminative ability (c-statistics were 0.71 and 0.61 for BTH and PFW, respectively), compared with the original calculator's cohort (c-statistic 0.80)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model discrimination after local refitting versus original model",
+     "effect": "c-statistics improved from 0.71 to 0.84 for BTH and from 0.61 to 0.74 for PFW after refitting variable coefficients to local hospital data",
+     "quote": "This recalibration demonstrated improved discriminative ability (c-statistics for BTH and PFW were 0.84 and 0.74, respectively)."
+    }
+   ],
+   "unlisted_practices": [
+    "Incorporating neighborhood-level social determinants of health (Social Vulnerability Index) into clinical risk prediction models"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "deliveries",
+ "sample_size": 31612,
+ "population": {
+  "medicaid": false,
+  "safety_net": true,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": true,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BTH refit postpartum HDP readmission calculator",
+  "Original postpartum HDP readmission calculator",
+  "Original postpartum HDP readmission calculator (2024)",
+  "PFW refit postpartum HDP readmission calculator",
+  "Recalibrated models plus census tract SVI",
+  "Recalibrated site-specific logistic models",
+  "SVI-augmented refit postpartum HDP readmission calculators",
+  "original calculator for postpartum HDP readmission",
+  "recalibrated HDP readmission models"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Improvement in discrimination from local tuning methods (intercept, logistic, full refit)",
+   "effect": "Recalibration-in-the-large and logistic recalibration gave minimal improvement; full refit raised c-statistic to 0.84 (BTH) and 0.74 (PFW); refit models had higher net benefit.",
+   "quote": "After refitting new models on each site, BTH's c\u2010statistic improved to 0.84, and PFW's c\u2010statistic improved to 0.74 (Figure 1 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance degradation from population differences between original development cohort and local sites",
+   "effect": "Original model discrimination dropped at both sites (0.71/0.72 BTH, 0.61 PFW vs 0.80) and external validation did not detect population shifts.",
+   "quote": "External validation is used primarily to determine model transportability, but in this case the original model did not detect shifts in differences between our populations and the original calculator's cohort.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local validation performance",
+   "effect": "Using the original calculator locally, model performance was 0.72 for BTH and 0.61 for PFW.",
+   "quote": "Model performance for postpartum HDP readmission at each hospital using the original calculator was 0.72 for BTH and 0.61 for PFW.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination of original calculator on local data versus published, and after local recalibration",
+   "effect": "Original calculator c-statistic 0.71 (BTH) and 0.61 (PFW) vs 0.80 originally; calibration poor; after refit c-statistics 0.84 and 0.74.",
+   "quote": "This performance was lower than the original calculator's published model discrimination (c\u2010statistic 0.80), and calibration was poor.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model generalization to new hospital populations",
+   "effect": "Original calculator c-statistics 0.71 and 0.61 at new sites versus 0.80 in the original cohort; recalibration was needed.",
+   "quote": "Model discrimination for each of our cohorts using the original calculator was satisfactory, albeit with lower discriminative ability (c-statistics were 0.71 and 0.61 for BTH and PFW, respectively), compared with the original calculator's cohort (c-statistic 0.80).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance differences across sites with different demographics",
+   "effect": "Original calculator performed worse at PFW (0.61) than BTH (0.72); refit c-statistics 0.84 vs 0.74; site-stratified models needed.",
+   "quote": "Our models demonstrated that differences in baseline risk, case mix, and hospital settings (even a few city blocks apart, as our hospitals are) will alter the performance of a risk prediction model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External discrimination",
+   "effect": "External c-statistics were 0.71 (BTH) and 0.61 (PFW) versus original cohort c-statistic 0.80.",
+   "quote": "Model discrimination for each of our cohorts using the original calculator was satisfactory, albeit with lower discriminative ability (c-statistics were 0.71 and 0.61 for BTH and PFW, respectively), compared with the original calculator's cohort (c-statistic 0.80).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Site-stratified discrimination",
+   "effect": "Original calculator differed by site: 0.72 for BTH and 0.61 for PFW.",
+   "quote": "Model performance for postpartum HDP readmission at each hospital using the original calculator was 0.72 for BTH and 0.61 for PFW.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.89
+ },
+ "unlisted_practices": [
+  "Adding census tract-level Social Vulnerability Index (SVI) to postpartum HDP readmission risk calculators",
+  "Adding neighborhood-level Social Vulnerability Index as a model input to improve prediction",
+  "Decision curve analysis to assess net benefit of the calculator",
+  "Incorporating neighborhood-level social determinants of health (Social Vulnerability Index) into clinical risk prediction models"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42596914",
+ "screen": {
+  "id": "pmid:42596914",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration",
+  "user": "none",
+  "reason": "The study evaluates the deployment practice of local validation and recalibration of an existing predictive risk calculator across two hospital cohorts, including testing the addition of local neighborhood-level SDOH variables.",
+  "jev": {
+   "id": "pmid:42596914",
+   "empirical": 0.67,
+   "tests_practice": 0.84,
+   "real_deployment": 0.04
+  }
+ }
+}

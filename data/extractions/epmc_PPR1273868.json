@@ -1,0 +1,100 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": 50000,
+ "sample_unit": "patients (MIMIC-IV admissions cohort; test split n=9,857)",
+ "models_evaluated": [
+  "MedGemma 4B (LoRA-adapted, MedGemma StructCore)",
+  "GPT-4.1-mini",
+  "tabular baseline (A4)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Calibration of readmission risk probabilities from A3 model",
+   "effect": "Predicted probabilities over-confident in higher-risk bins; A3 calibration slope 0.741; pre-deployment recalibration needed.",
+   "quote": "Because predicted probabilities are over-confident in higher-risk bins (A3 calibration slope 0.741), pre-deployment recalibration is a prerequisite for any probability-based clinical use.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Objective signal loss between pipeline stages with signal-integrity audit and regeneration",
+   "effect": "Doc-level objective loss of 15.55% (N=4,000) reduced to 8.48% by offline hybrid regeneration without extra LLM calls.",
+   "quote": "a signal-integrity audit (N=4,000) finds 15.55% doc-level objective loss, reduced to 8.48% by offline hybrid regeneration without extra LLM calls.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Local-first on-device small-model deployment to avoid cloud data transfer",
+  "Prompt KV-cache reuse for bit-exact, faster inference",
+  "Schema-guided structured extraction with format-validity checks (KVT4 output contract)"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1273868",
+ "screen": {
+  "id": "epmc:PPR1273868",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and tests a local text-structuring pipeline incorporating a signal-integrity gate and offline hybrid regeneration to reduce silent objective signal loss and maintain contract stability for clinical risk prediction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "signal-integrity auditing and deterministic regeneration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1273868",
+   "empirical": 0.95,
+   "tests_practice": 0.43,
+   "real_deployment": 0.03
+  }
+ }
+}

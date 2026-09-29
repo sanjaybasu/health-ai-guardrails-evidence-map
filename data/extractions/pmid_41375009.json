@@ -1,0 +1,464 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Norway",
+   "sample_size": 99,
+   "sample_unit": "cervical punch biopsies (whole-slide images)",
+   "models_evaluated": [
+    "EagleEye"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R129",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether pathologist review corrects AI errors in ACIS and suspected SCC calls",
+     "effect": "After adjudication (EE + P2), ACIS restored from 13/20 to 18/20 and SCC calls reduced from 4 to 1 of 20; 6 of 7 AI-flagged SCC in P1-CIN3 retained.",
+     "quote": "After expert adjudication in the EE + P2 condition, ACIS was restored to 18/20 and SCC was reduced to 1/20, demonstrating that the human reviewer corrected virtually all high-consequence AI errors."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CIN2+ calling with vs without AI assistance for the same pathologist",
+     "effect": "EE + P2 identified 69 CIN2+ vs P2 alone 70; agreement with P2-digital 90.7% (\u03ba 0.79) for EE+P2 vs 88.7% (\u03ba 0.74) for EE alone; P1 sensitivity 83.8% vs AI-assisted reference; no significant shift (p=1.00).",
+     "quote": "These findings indicate that, for the high-volume expert reader, the AI-assisted workflow (EE + P2) did not significantly alter the overall CIN2+ calling rate relative to unaided digital review, but rather redistributed a small number of borderline cases in both directions."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI performance compared against original pathologist sign-out at CIN2+ threshold",
+     "effect": "Using P1 as reference, EagleEye sensitivity 93.3% (56/60), specificity 71.8% (28/39); agreement with P1 \u03ba=0.67.",
+     "quote": "Against P1 as reference, EE identified 56/60 CIN2+ cases (sensitivity 93.3%) with specificity 71.8% (28/39), corresponding to 11 false positives (P1 <CIN2) and 4 false negatives."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Representativeness and generalizability of test data (single-centre, spectrum-balanced, prevalence-inflated)",
+     "effect": "Single centre, one scanner, spectrum-balanced convenience sample with inflated CIN2+ prevalence (~60\u201370%); PPV/NPV would be lower at 5\u201310% prevalence; external validation needed.",
+     "quote": "Second, the dataset was intentionally spectrum-balanced with a much higher CIN2+/ACIS prevalence than in routine screening or ordinary referral cohorts; this spectrum bias inflates PPV/NPV and may also influence \u03ba, so predictive values reported here should be considered study-internal and would be lower at 5\u201310% CIN2+ prevalence."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Adequacy of reference standard for accuracy estimates",
+     "effect": "No independent gold standard; P1 sign-out and AI-assisted EE+P2 used as references, the latter subject to incorporation/verification bias.",
+     "quote": "Because EE + P2 incorporates the intervention under study, this comparison is subject to verification/incorporation bias and is presented strictly as an internal case-finding exploration rather than as a formal estimate of P1 diagnostic accuracy; all sensitivity/specificity estimates versus EE + P2 should therefore be interpreted as study-internal performance metrics, not as externally generalizable truth standards."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Justification of decision threshold for AI slide-level positivity",
+     "effect": "The \u226515-tile operating point was chosen heuristically, not from ROC or decision-curve analysis; no continuous score or tunable operating point.",
+     "quote": "The threshold was not derived from formal ROC or decision-curve calibration and is therefore reported as a methodological limitation."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Multi-site and device validation of AI performance",
+     "effect": "Validation was on a single site with one scanner and one H&E protocol; multi-site validation across scanners and staining protocols identified as required.",
+     "quote": "First, this was an internal, single-center study from a single Norwegian university hospital, with its own screening routines, case mix, HPV vaccination coverage and referral patterns, using one H&E protocol and one scanner."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AI false negatives and overcalls that clinician review must catch",
+     "effect": "EE had 4 false negatives and 11 false positives vs P1; under-called ACIS (13/20) with 3 downgraded to CIN1; pathologist review corrected most errors.",
+     "quote": "EE alone under-called ACIS (13/20) and redistributed the remainder in both clinically unfavorable directions\u2014downward to CIN1 (n = 3), which represents a potential false negative at the treatment threshold, and upward to SCC (n = 4), which represents a false positive invasive call ( Table 9 )."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI accuracy for rare glandular lesions (ACIS) versus squamous disease",
+     "effect": "EagleEye alone called ACIS in 13/20 cases; performance clearly weaker than for squamous disease, attributed to sparse training data.",
+     "quote": "Performance on glandular lesions was clearly weaker than on squamous disease."
+    }
+   ],
+   "unlisted_practices": [
+    "Using AI-highlighted heatmaps and ranked tile galleries as attention guidance for pathologists",
+    "Sensitivity-oriented AI operating point acting as a safety-net layer with human filtering of false positives"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Norway",
+   "sample_size": 99,
+   "sample_unit": "cervical biopsy cases",
+   "models_evaluated": [
+    "EagleEye"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AI-assisted versus unaided expert digital reading",
+     "effect": "P2-digital vs EE+P2: sensitivity 92.8%, specificity 86.7%; 4 apparent false positives, 5 apparent false negatives; McNemar p=1.00.",
+     "quote": "These findings indicate that, for the high-volume expert reader, the AI-assisted workflow (EE + P2) did not significantly alter the overall CIN2+ calling rate relative to unaided digital review, but rather redistributed a small number of borderline cases in both directions."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI-alone missed or downgraded lesions",
+     "effect": "EE alone under-called ACIS 13/20; downgraded to CIN1 n = 3 and upgraded to SCC n = 4.",
+     "quote": "Pathologists showed high concordance on glandular disease (P2: 19\u201320/20 ACIS, with only a single digital downgrade), whereas EE alone under-called ACIS (13/20) and redistributed the remainder in both clinically unfavorable directions\u2014downward to CIN1 (n = 3), which represents a potential false negative at the treatment threshold, and upward to SCC (n = 4), which represents a false positive invasive call ( Table 9 )."
+    },
+    {
+     "rec_id": "R163",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Adjunct AI with pathologist final authority",
+     "effect": "EagleEye reached 93.3% sensitivity and 71.8% specificity; AI guidance surfaced additional CIN2+ while final responsibility remained with pathologists.",
+     "quote": "Taken together, these findings support EagleEye as a safety-net decision-support tool that can reduce the risk of missed high-grade lesions and promote more consistent grading of cervical biopsies, while final diagnostic responsibility remains with the pathologist."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expert detection of incorrect AI outputs",
+     "effect": "After adjudication, ACIS increased from EE-alone 13/20 to 18/20, and false invasive SCC calls decreased to 1/20.",
+     "quote": "After expert adjudication in the EE + P2 condition, ACIS was restored to 18/20 and false invasive calls were largely removed (SCC 1/20)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI-alone diagnostic accuracy errors",
+     "effect": "Against P1, EE sensitivity was 93.3% and specificity 71.8%, with 11 false positives and 4 false negatives.",
+     "quote": "Against P1 as reference, EE identified 56/60 CIN2+ cases (sensitivity 93.3%) with specificity 71.8% (28/39), corresponding to 11 false positives (P1 <CIN2) and 4 false negatives."
+    }
+   ],
+   "unlisted_practices": [
+    "Visual comparison of AI heatmaps with p16 immunohistochemistry",
+    "Comparing digital whole-slide imaging reads with light microscopy reads"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Norway",
+   "sample_size": 99,
+   "sample_unit": "biopsies",
+   "models_evaluated": [
+    "EagleEye"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CIN2+ agreement under human-in-the-loop review versus standalone AI",
+     "effect": "Agreement with P2-digital increased from 88.7% (kappa 0.74) for EagleEye alone to 90.7% (kappa 0.79) for AI-assisted review (EE + P2).",
+     "quote": "Relative to P2-digital, agreement with the algorithm increased from 88.7% (\u03ba = 0.74) for EE alone to 90.7% (\u03ba = 0.79) for EE + P2, indicating incremental value of human adjudication in a human-in-the-loop workflow, where the expert accepts or dismisses AI-suggested foci."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician correction of high-consequence AI errors",
+     "effect": "Clinician review of AI outputs restored ACIS from 13/20 to 18/20 and reduced false-positive squamous cell carcinoma calls from 4 to 1.",
+     "quote": "After expert adjudication in the EE + P2 condition, ACIS was restored to 18/20 and SCC was reduced to 1/20, demonstrating that the human reviewer corrected virtually all high-consequence AI errors."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Norway",
+ "sample_unit": "cervical punch biopsies (whole-slide images)",
+ "sample_size": 99,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "EagleEye"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "CIN2+ calling with vs without AI assistance for the same pathologist",
+   "effect": "EE + P2 identified 69 CIN2+ vs P2 alone 70; agreement with P2-digital 90.7% (\u03ba 0.79) for EE+P2 vs 88.7% (\u03ba 0.74) for EE alone; P1 sensitivity 83.8% vs AI-assisted reference; no significant shift (p=1.00).",
+   "quote": "These findings indicate that, for the high-volume expert reader, the AI-assisted workflow (EE + P2) did not significantly alter the overall CIN2+ calling rate relative to unaided digital review, but rather redistributed a small number of borderline cases in both directions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "AI false negatives and overcalls that clinician review must catch",
+   "effect": "EE had 4 false negatives and 11 false positives vs P1; under-called ACIS (13/20) with 3 downgraded to CIN1; pathologist review corrected most errors.",
+   "quote": "EE alone under-called ACIS (13/20) and redistributed the remainder in both clinically unfavorable directions\u2014downward to CIN1 (n = 3), which represents a potential false negative at the treatment threshold, and upward to SCC (n = 4), which represents a false positive invasive call ( Table 9 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R129",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether pathologist review corrects AI errors in ACIS and suspected SCC calls",
+   "effect": "After adjudication (EE + P2), ACIS restored from 13/20 to 18/20 and SCC calls reduced from 4 to 1 of 20; 6 of 7 AI-flagged SCC in P1-CIN3 retained.",
+   "quote": "After expert adjudication in the EE + P2 condition, ACIS was restored to 18/20 and SCC was reduced to 1/20, demonstrating that the human reviewer corrected virtually all high-consequence AI errors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance compared against original pathologist sign-out at CIN2+ threshold",
+   "effect": "Using P1 as reference, EagleEye sensitivity 93.3% (56/60), specificity 71.8% (28/39); agreement with P1 \u03ba=0.67.",
+   "quote": "Against P1 as reference, EE identified 56/60 CIN2+ cases (sensitivity 93.3%) with specificity 71.8% (28/39), corresponding to 11 false positives (P1 <CIN2) and 4 false negatives.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Representativeness and generalizability of test data (single-centre, spectrum-balanced, prevalence-inflated)",
+   "effect": "Single centre, one scanner, spectrum-balanced convenience sample with inflated CIN2+ prevalence (~60\u201370%); PPV/NPV would be lower at 5\u201310% prevalence; external validation needed.",
+   "quote": "Second, the dataset was intentionally spectrum-balanced with a much higher CIN2+/ACIS prevalence than in routine screening or ordinary referral cohorts; this spectrum bias inflates PPV/NPV and may also influence \u03ba, so predictive values reported here should be considered study-internal and would be lower at 5\u201310% CIN2+ prevalence.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Adequacy of reference standard for accuracy estimates",
+   "effect": "No independent gold standard; P1 sign-out and AI-assisted EE+P2 used as references, the latter subject to incorporation/verification bias.",
+   "quote": "Because EE + P2 incorporates the intervention under study, this comparison is subject to verification/incorporation bias and is presented strictly as an internal case-finding exploration rather than as a formal estimate of P1 diagnostic accuracy; all sensitivity/specificity estimates versus EE + P2 should therefore be interpreted as study-internal performance metrics, not as externally generalizable truth standards.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Justification of decision threshold for AI slide-level positivity",
+   "effect": "The \u226515-tile operating point was chosen heuristically, not from ROC or decision-curve analysis; no continuous score or tunable operating point.",
+   "quote": "The threshold was not derived from formal ROC or decision-curve calibration and is therefore reported as a methodological limitation.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R174",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Expert detection of incorrect AI outputs",
+   "effect": "After adjudication, ACIS increased from EE-alone 13/20 to 18/20, and false invasive SCC calls decreased to 1/20.",
+   "quote": "After expert adjudication in the EE + P2 condition, ACIS was restored to 18/20 and false invasive calls were largely removed (SCC 1/20).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "CIN2+ agreement under human-in-the-loop review versus standalone AI",
+   "effect": "Agreement with P2-digital increased from 88.7% (kappa 0.74) for EagleEye alone to 90.7% (kappa 0.79) for AI-assisted review (EE + P2).",
+   "quote": "Relative to P2-digital, agreement with the algorithm increased from 88.7% (\u03ba = 0.74) for EE alone to 90.7% (\u03ba = 0.79) for EE + P2, indicating incremental value of human adjudication in a human-in-the-loop workflow, where the expert accepts or dismisses AI-suggested foci.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "clinician correction of high-consequence AI errors",
+   "effect": "Clinician review of AI outputs restored ACIS from 13/20 to 18/20 and reduced false-positive squamous cell carcinoma calls from 4 to 1.",
+   "quote": "After expert adjudication in the EE + P2 condition, ACIS was restored to 18/20 and SCC was reduced to 1/20, demonstrating that the human reviewer corrected virtually all high-consequence AI errors.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R163",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing digital whole-slide imaging reads with light microscopy reads",
+  "Sensitivity-oriented AI operating point acting as a safety-net layer with human filtering of false positives",
+  "Using AI-highlighted heatmaps and ranked tile galleries as attention guidance for pathologists",
+  "Visual comparison of AI heatmaps with p16 immunohistochemistry"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41375009",
+ "screen": {
+  "id": "pmid:41375009",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI-assisted pathologist review / human-in-the-loop workflow",
+  "user": "clinician_or_staff",
+  "reason": "The study compares pathologist alone, AI alone, and an AI-assisted pathologist workflow (human-in-the-loop) to evaluate its effect on diagnostic accuracy for cervical biopsies.",
+  "jev": {
+   "id": "pmid:41375009",
+   "empirical": 0.97,
+   "tests_practice": 0.89,
+   "real_deployment": 0.07
+  }
+ }
+}

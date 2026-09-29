@@ -1,0 +1,343 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1739666,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "random forest (ranger) models for 30-day mortality, readmission, pneumonia based on ACS NSQIP universal risk calculator structure"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R365",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Fairness gaps by race and sex over time with and without population-level model updating",
+     "effect": "Updating restored fairness gaps in some cases (readmission sex gaps) and exacerbated or did not close them in others (pneumonia race gap not closed; ICI gap larger for males); overall performance affected more than fairness.",
+     "quote": "During periods of fairness drift, updating models restored fairness in some cases and exacerbated fairness gaps in others."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Emergence of subgroup performance disparities over time after deployment (fairness drift)",
+     "effect": "Fairness drift observed by race and sex; pneumonia model race accuracy and specificity gaps grew (P<.01 for trend); sex accuracy and specificity gaps increased in original models for all 3 outcomes (P<.01).",
+     "quote": "We observed fairness drift in both the original and temporally updated models."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance and calibration drift of deployed prediction models over 10 years",
+     "effect": "Accuracy and calibration deteriorated over time in all models, largest for readmission; surveillance-based updating stabilized calibration for mortality and pneumonia but did not restore accuracy.",
+     "quote": "Accuracy and calibration deteriorated over time in all models, with the largest population-level performance changes observed for the readmission model."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of recalibration triggered by drift detection on overall performance and fairness",
+     "effect": "Updating restored readmission accuracy and calibration but not mortality/pneumonia accuracy; reduced readmission sensitivity below initial; effects on fairness gaps varied.",
+     "quote": "For the readmission model, the surveillance-based model updating process restored both accuracy and calibration to levels comparable or better than initial performance."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup performance gaps at initial validation by race and sex",
+     "effect": "Specificity and accuracy higher for female vs male in all models; sensitivity lower for female in readmission and pneumonia models; no AUC, O:E, or ICI differences by race or sex.",
+     "quote": "Sensitivity was lower for female vs male patients in models for readmission and pneumonia."
+    }
+   ],
+   "unlisted_practices": [
+    "fairness-informed drift detection and model updating methods",
+    "population-level surveillance-based recalibration using dynamic calibration curves and Adwin drift detection"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 1739666,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "Random forest model predicting 30-day post-surgical mortality",
+    "Random forest model predicting 30-day unplanned readmission",
+    "Random forest model predicting 30-day post-surgical pneumonia",
+    "Surveillance-based updated versions of the random forest models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "overall temporal performance drift",
+     "effect": "Accuracy and calibration deteriorated over time in all models; largest population-level changes were for readmission.",
+     "quote": "Accuracy and calibration deteriorated over time in all models, with the largest population-level performance changes observed for the readmission model."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "fairness drift across sex subgroups",
+     "effect": "Accuracy and specificity gaps by sex increased in original models for all 3 outcomes (P < .01 trends in both metrics).",
+     "quote": "Over time, the accuracy and specificity gaps between female and male patients increased in the original models for all 3 outcomes ( P < .01 for trends in gap in both metrics)."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration drift after model updating",
+     "effect": "Model updating corrected calibration drift in both populations in all models and reduced readmission ICI-gap variability.",
+     "quote": "The model updating process corrected calibration drift in both populations in all models and reduced the variability of the ICI gap for the readmission model."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "fairness impact of model updates",
+     "effect": "Updating restored fairness in some cases and exacerbated fairness gaps in others; no numeric estimate reported.",
+     "quote": "During periods of fairness drift, updating models restored fairness in some cases and exacerbated fairness gaps in others."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA",
+   "sample_size": 1739666,
+   "sample_unit": "surgical cases",
+   "models_evaluated": [
+    "Random forest post-surgical risk models (ACS NSQIP features: mortality, readmission, pneumonia)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Subgroup accuracy and specificity gaps over time",
+     "effect": "Over 10 years, accuracy and specificity gaps between female and male patients increased across all 3 models (P < .01), and Black-White accuracy and specificity gaps widened for pneumonia (P < .01).",
+     "quote": "Over time, the accuracy and specificity gaps between female and male patients increased in the original models for all 3 outcomes ( P < .01 for trends in gap in both metrics)."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Calibration and accuracy after surveillance-based model updating",
+     "effect": "Surveillance-based updating stabilized calibration for mortality and pneumonia but did not restore accuracy, while restoring both calibration and accuracy for readmission; effects on fairness gaps were mixed across outcomes.",
+     "quote": "The surveillance-based model updating process stabilized calibration of the mortality and pneumonia models but did not restore accuracy."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "surgical cases",
+ "sample_size": 1739666,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Random forest model predicting 30-day post-surgical mortality",
+  "Random forest model predicting 30-day post-surgical pneumonia",
+  "Random forest model predicting 30-day unplanned readmission",
+  "Random forest post-surgical risk models (ACS NSQIP features: mortality, readmission, pneumonia)",
+  "Surveillance-based updated versions of the random forest models",
+  "random forest (ranger) models for 30-day mortality, readmission, pneumonia based on ACS NSQIP universal risk calculator structure"
+ ],
+ "links": [
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Emergence of subgroup performance disparities over time after deployment (fairness drift)",
+   "effect": "Fairness drift observed by race and sex; pneumonia model race accuracy and specificity gaps grew (P<.01 for trend); sex accuracy and specificity gaps increased in original models for all 3 outcomes (P<.01).",
+   "quote": "We observed fairness drift in both the original and temporally updated models.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance and calibration drift of deployed prediction models over 10 years",
+   "effect": "Accuracy and calibration deteriorated over time in all models, largest for readmission; surveillance-based updating stabilized calibration for mortality and pneumonia but did not restore accuracy.",
+   "quote": "Accuracy and calibration deteriorated over time in all models, with the largest population-level performance changes observed for the readmission model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Effect of recalibration triggered by drift detection on overall performance and fairness",
+   "effect": "Updating restored readmission accuracy and calibration but not mortality/pneumonia accuracy; reduced readmission sensitivity below initial; effects on fairness gaps varied.",
+   "quote": "For the readmission model, the surveillance-based model updating process restored both accuracy and calibration to levels comparable or better than initial performance.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R365",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Fairness gaps by race and sex over time with and without population-level model updating",
+   "effect": "Updating restored fairness gaps in some cases (readmission sex gaps) and exacerbated or did not close them in others (pneumonia race gap not closed; ICI gap larger for males); overall performance affected more than fairness.",
+   "quote": "During periods of fairness drift, updating models restored fairness in some cases and exacerbated fairness gaps in others.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup performance gaps at initial validation by race and sex",
+   "effect": "Specificity and accuracy higher for female vs male in all models; sensitivity lower for female in readmission and pneumonia models; no AUC, O:E, or ICI differences by race or sex.",
+   "quote": "Sensitivity was lower for female vs male patients in models for readmission and pneumonia.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R545",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "fairness impact of model updates",
+   "effect": "Updating restored fairness in some cases and exacerbated fairness gaps in others; no numeric estimate reported.",
+   "quote": "During periods of fairness drift, updating models restored fairness in some cases and exacerbated fairness gaps in others.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "fairness-informed drift detection and model updating methods",
+  "population-level surveillance-based recalibration using dynamic calibration curves and Adwin drift detection"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40079820",
+ "screen": {
+  "id": "pmid:40079820",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "periodic model updating / drift monitoring for fairness",
+  "user": "none",
+  "reason": "Empirical study using retrospective longitudinal VA data to evaluate fairness drift and compare model outcomes with versus without model maintenance/updating over time across demographic groups.",
+  "jev": {
+   "id": "pmid:40079820",
+   "empirical": 0.96,
+   "tests_practice": 0.86,
+   "real_deployment": 0.19
+  }
+ }
+}

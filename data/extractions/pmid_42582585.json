@@ -1,0 +1,315 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "free-text liver MRI reports",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "ChatGPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Report-level extraction success by center (site) for each LLM",
+     "effect": "ChatGPT-4o varied across centers (Center 2 89.0% vs Center 4 78.0%, P=0.032); DeepSeek-V3 showed no significant difference across centers (P=0.114).",
+     "quote": "Additionally, ChatGPT-4o exhibited significant variability across centers, particularly between Center 2 and Center 4 (89.0% vs. 78.0%, P=0.032), whereas DeepSeek-V3 showed no such difference."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Extraction performance under varied input and prompting conditions across heterogeneous report styles",
+     "effect": "Performance varied by lesion count and field; the models had lower accuracy on numerical information expressed in Chinese. Each report was tested once, so reproducibility across repeated runs was not assessed.",
+     "quote": "In addition, the LLMs showed relatively lower accuracy in extracting numerical information expressed in Chinese, suggesting additional challenges in handling linguistic variability."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Overestimation of report-level extraction accuracy owing to predominance of negative fields",
+     "effect": "Report-level success fell from 85.4% to 75.9% (DeepSeek-V3) and from 83.3% to 73.4% (ChatGPT-4o) when only positive fields were assessed.",
+     "quote": "In the sensitivity analysis ( Table S4 ), the report-level extraction success rates decreased to 75.9% (607/800) for DeepSeek-V3 and 73.4% (587/800) for ChatGPT-4o."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot prompting versus zero-shot prompting for LLM information extraction",
+    "Center-specific versus global few-shot examples for prompting",
+    "Converting free-text radiology reports to structured reports with an LLM"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "ChatGPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "positive-field extraction success",
+     "effect": "Success decreased to 75.9% (607/800) for DeepSeek-V3 and 73.4% (587/800) for ChatGPT-4o.",
+     "quote": "In the sensitivity analysis ( Table S4 ), the report-level extraction success rates decreased to 75.9% (607/800) for DeepSeek-V3 and 73.4% (587/800) for ChatGPT-4o."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "center-stratified extraction performance",
+     "effect": "ChatGPT-4o varied across centers: Center 2 89.0% vs Center 4 78.0%, P=0.032; DeepSeek-V3 did not.",
+     "quote": "Additionally, ChatGPT-4o exhibited significant variability across centers, particularly between Center 2 and Center 4 (89.0% vs. 78.0%, P=0.032), whereas DeepSeek-V3 showed no such difference."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "macro F1 with local prompting",
+     "effect": "Center-specific prompting improved F1 by 0.017-0.024 for DeepSeek-V3 and 0.014-0.026 for ChatGPT-4o versus global prompting.",
+     "quote": "Center-specific prompting consistently outperformed global prompting (\u2206F1: 0.017-0.024 for DeepSeek-V3; 0.014-0.026 for ChatGPT-4o)."
+    },
+    {
+     "rec_id": "R103",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "reader-rated clarity and communication",
+     "effect": "Structured reports scored higher than free-text for clarity and communication, both P<0.001; LLM-generated comparable to manual, both P>0.05.",
+     "quote": "In the exploratory clinical evaluation, structured reports received higher scores for clarity and communication than free-text reports (both P<0.001), while LLM-generated reports received scores comparable to those of manually structured reports (both P>0.05)."
+    }
+   ],
+   "unlisted_practices": [
+    "Using few-shot prompting instead of zero-shot prompting for LLM extraction from radiology reports",
+    "Selecting approximately four few-shot examples because additional examples showed diminishing performance gains"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 800,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "DeepSeek-V3",
+    "ChatGPT-4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "field-level macro F1 score",
+     "effect": "Center-specific prompting consistently outperformed global prompting (\u2206F1: 0.017-0.024 for DeepSeek-V3; 0.014-0.026 for ChatGPT-4o across k=2-12).",
+     "quote": "Center-specific prompting consistently outperformed global prompting (\u2206F1: 0.017-0.024 for DeepSeek-V3; 0.014-0.026 for ChatGPT-4o)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "report-level extraction success across centers",
+     "effect": "ChatGPT-4o exhibited significant variability across centers (Center 2: 89.0% vs Center 4: 78.0%, P=0.032), whereas DeepSeek-V3 showed no significant difference across centers (P=0.114).",
+     "quote": "Additionally, ChatGPT-4o exhibited significant variability across centers, particularly between Center 2 and Center 4 (89.0% vs. 78.0%, P=0.032), whereas DeepSeek-V3 showed no such difference."
+    }
+   ],
+   "unlisted_practices": [
+    "few-shot prompting compared to zero-shot prompting"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "reports",
+ "sample_size": 800,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "ChatGPT-4o",
+  "DeepSeek-V3"
+ ],
+ "links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Report-level extraction success by center (site) for each LLM",
+   "effect": "ChatGPT-4o varied across centers (Center 2 89.0% vs Center 4 78.0%, P=0.032); DeepSeek-V3 showed no significant difference across centers (P=0.114).",
+   "quote": "Additionally, ChatGPT-4o exhibited significant variability across centers, particularly between Center 2 and Center 4 (89.0% vs. 78.0%, P=0.032), whereas DeepSeek-V3 showed no such difference.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Overestimation of report-level extraction accuracy owing to predominance of negative fields",
+   "effect": "Report-level success fell from 85.4% to 75.9% (DeepSeek-V3) and from 83.3% to 73.4% (ChatGPT-4o) when only positive fields were assessed.",
+   "quote": "In the sensitivity analysis ( Table S4 ), the report-level extraction success rates decreased to 75.9% (607/800) for DeepSeek-V3 and 73.4% (587/800) for ChatGPT-4o.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "macro F1 with local prompting",
+   "effect": "Center-specific prompting improved F1 by 0.017-0.024 for DeepSeek-V3 and 0.014-0.026 for ChatGPT-4o versus global prompting.",
+   "quote": "Center-specific prompting consistently outperformed global prompting (\u2206F1: 0.017-0.024 for DeepSeek-V3; 0.014-0.026 for ChatGPT-4o).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R103",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Center-specific versus global few-shot examples for prompting",
+  "Converting free-text radiology reports to structured reports with an LLM",
+  "Few-shot prompting versus zero-shot prompting for LLM information extraction",
+  "Selecting approximately four few-shot examples because additional examples showed diminishing performance gains",
+  "Using few-shot prompting instead of zero-shot prompting for LLM extraction from radiology reports",
+  "few-shot prompting compared to zero-shot prompting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42582585",
+ "screen": {
+  "id": "pmid:42582585",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "center-specific few-shot prompting",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates information extraction from liver MRI reports using LLMs, tests specific prompting deployment strategies (global vs center-specific few-shot prompting to handle local variations), and includes human clinician evaluation of the outputs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "center-specific few-shot prompting vs global prompting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42582585",
+   "empirical": 0.98,
+   "tests_practice": 0.25,
+   "real_deployment": 0.08
+  }
+ }
+}

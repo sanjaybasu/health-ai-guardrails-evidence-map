@@ -1,0 +1,316 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 2379,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "multiagent LLM-based system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic concordance with and without a pre-specified safety confidence threshold",
+     "effect": "Top-1 diagnosis matched clinicians in 91.3% overall, rising to 96.3% among cases meeting the pre-specified safety confidence threshold.",
+     "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold."
+    },
+    {
+     "rec_id": "R067",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic concordance restricted to common, lower-complexity conditions",
+     "effect": "Concordance was 97.9% in common, lower-complexity conditions meeting the confidence threshold vs 91.3% overall.",
+     "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 2379,
+   "sample_unit": "patient encounters",
+   "models_evaluated": [
+    "Unnamed multiagent LLM-based clinical system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R071",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic agreement in confidence-gated, common, lower-complexity encounters",
+     "effect": "Top-1 diagnostic agreement was 91.3% overall, 96.3% among confidence-threshold-eligible cases, and 97.9% among common, lower-complexity conditions meeting the same threshold.",
+     "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Errors in care-disposition suggestions",
+     "effect": "Overall disposition error rate was 2.5%, with no errors in suggestions to emergency room or home management.",
+     "quote": "Disposition accuracy was similarly high, with an overall error rate of 2.5% and no errors in suggestions to emergency room or home management."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "both",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "United States",
+   "sample_size": 2379,
+   "sample_unit": "encounters",
+   "models_evaluated": [
+    "multiagent LLM-based system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R067",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic match rate",
+     "effect": "Diagnostic accuracy increased from 91.3% overall to 97.9% in common, lower-complexity conditions meeting a safety confidence threshold.",
+     "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold."
+    },
+    {
+     "rec_id": "R110",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Prospective diagnostic accuracy",
+     "effect": "In a silent-mode evaluation during 2,379 real clinical encounters, the AI's top diagnosis matched the blinded treating clinician in 91.3% of cases.",
+     "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Escalation disposition accuracy",
+     "effect": "The system had an overall disposition error rate of 2.5%, with zero errors in escalating patients to the emergency room or suggesting home management.",
+     "quote": "Disposition accuracy was similarly high, with an overall error rate of 2.5% and no errors in suggestions to emergency room or home management."
+    }
+   ],
+   "unlisted_practices": [
+    "implementing explicit safety confidence thresholds for AI outputs",
+    "staged, task-calibrated autonomous deployment expanding scope as real-world evidence accrues"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "encounters",
+ "sample_size": 2379,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Unnamed multiagent LLM-based clinical system",
+  "multiagent LLM-based system"
+ ],
+ "links": [
+  {
+   "rec_id": "R067",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic concordance restricted to common, lower-complexity conditions",
+   "effect": "Concordance was 97.9% in common, lower-complexity conditions meeting the confidence threshold vs 91.3% overall.",
+   "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic concordance with and without a pre-specified safety confidence threshold",
+   "effect": "Top-1 diagnosis matched clinicians in 91.3% overall, rising to 96.3% among cases meeting the pre-specified safety confidence threshold.",
+   "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R071",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic agreement in confidence-gated, common, lower-complexity encounters",
+   "effect": "Top-1 diagnostic agreement was 91.3% overall, 96.3% among confidence-threshold-eligible cases, and 97.9% among common, lower-complexity conditions meeting the same threshold.",
+   "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Errors in care-disposition suggestions",
+   "effect": "Overall disposition error rate was 2.5%, with no errors in suggestions to emergency room or home management.",
+   "quote": "Disposition accuracy was similarly high, with an overall error rate of 2.5% and no errors in suggestions to emergency room or home management.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R110",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Prospective diagnostic accuracy",
+   "effect": "In a silent-mode evaluation during 2,379 real clinical encounters, the AI's top diagnosis matched the blinded treating clinician in 91.3% of cases.",
+   "quote": "The AI\u2019s top-1 diagnosis matched the clinician\u2019s diagnosis in 91.3% of cases overall, increasing to 96.3% among cases meeting a pre-specified safety confidence threshold, and 97.9% in common, lower-complexity conditions that met the same confidence threshold.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Escalation disposition accuracy",
+   "effect": "The system had an overall disposition error rate of 2.5%, with zero errors in escalating patients to the emergency room or suggesting home management.",
+   "quote": "Disposition accuracy was similarly high, with an overall error rate of 2.5% and no errors in suggestions to emergency room or home management.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "implementing explicit safety confidence thresholds for AI outputs",
+  "staged, task-calibrated autonomous deployment expanding scope as real-world evidence accrues"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "epmc:PPR1267218",
+ "screen": {
+  "id": "epmc:PPR1267218",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "confidence-threshold safety gating",
+  "user": "clinician_or_staff",
+  "reason": "Empirical study testing a multiagent LLM deployed in silent mode alongside 2,379 live primary care telemedicine visits, evaluating diagnostic accuracy stratified by an operational safety confidence threshold gating mechanism.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "safety confidence threshold gating / silent-mode deployment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1267218",
+   "empirical": 0.94,
+   "tests_practice": 0.3,
+   "real_deployment": 0.95
+  }
+ }
+}

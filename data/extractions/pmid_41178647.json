@@ -1,0 +1,384 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "Australia",
+   "sample_size": 200,
+   "sample_unit": "narrated orthodontic diagnostic and treatment planning summaries",
+   "models_evaluated": [
+    "Heidi Health",
+    "DigitalTCO",
+    "Dragon Medical One",
+    "Dragon Professional Anywhere",
+    "Amazon",
+    "Google",
+    "Speechmatics",
+    "Whisper",
+    "GPT4oTranscribe",
+    "GPT4oTranscribeCorrected (GPT4oTranscribe + GPT4o)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Hallucinations and clinical terminology errors in ASR transcripts",
+     "effect": "Hallucinations absent except Whisper (n=57) and DigitalTCO (n=1); clinically significant errors seen with all systems, ranging 2% to 66%.",
+     "quote": "Hallucinations were absent except for Whisper (n = 57) and DigitalTCO (n = 1)."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinically significant transcription errors that would require verification",
+     "effect": "Clinically significant errors seen with all systems, ranging from 2% to 66% (GPT4oTranscribeCorrected clean; Dragon Medical One background noise).",
+     "quote": "Importantly, clinically significant errors were seen with all systems, ranging from 2% to 66% (GPT4oTranscribeCorrected clean; Dragon Medical One background noise, respectively)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "ASR accuracy under background noise and narrator accent variation",
+     "effect": "Background noise increased DWER and WER (P<0.001); accent had no effect in clean conditions (P=0.65) and small effect with noise (P=0.001).",
+     "quote": "Across systems, background noise increased DWER and WER (P < 0.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparative transcription accuracy across 10 ASR systems on same data",
+     "effect": "GPT4oTranscribeCorrected best (DWER 3.5%; WER 3.7%); Heidi Health best commercial (DWER 6.2%); Dragon Professional Anywhere worst (WER 33.9%).",
+     "quote": "Heidi Health was the highest-performing commercial system (DWER = 6.2%; WER = 5.4%), with Dragon Professional Anywhere being the worst (WER = 33.9%)."
+    }
+   ],
+   "unlisted_practices": [
+    "LLM-based generative error correction of ASR transcripts to reduce clinical terminology errors"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "not reported",
+   "sample_size": 200,
+   "sample_unit": "orthodontic diagnostic and treatment planning summaries",
+   "models_evaluated": [
+    "Heidi Health",
+    "DigitalTCO",
+    "Dragon Medical One",
+    "Dragon Professional Anywhere",
+    "Amazon",
+    "Google",
+    "Speechmatics",
+    "Whisper",
+    "GPT4oTranscribe",
+    "GPT4oTranscribeCorrected"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "background noise effect on ASR errors",
+     "effect": "Background noise increased DWER and WER (P < 0.001).",
+     "quote": "Across systems, background noise increased DWER and WER (<i>P</i>\u2009<\u20090.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "lexical and semantic differences across systems",
+     "effect": "ROUGE, BERT, and BART scores differed across systems (P < 0.001).",
+     "quote": "Significant differences were seen across systems for ROUGE, BERT, and BART scores (<i>P</i>\u2009<\u20090.001)."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinically significant transcription errors",
+     "effect": "Clinically significant errors ranged from 2% to 66% across systems/conditions.",
+     "quote": "Importantly, clinically significant errors were seen with all systems, ranging from 2% to 66% (GPT4oTranscribeCorrected clean; Dragon Medical One background noise, respectively)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "hallucinations in ASR transcripts",
+     "effect": "Hallucinations were absent except for Whisper (n=57) and DigitalTCO (n=1).",
+     "quote": "Hallucinations were absent except for Whisper (<i>n</i>\u2009=\u200957) and DigitalTCO (<i>n</i>\u2009=\u20091)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transcription accuracy versus spoken input",
+     "effect": "Best system had DWER=3.5%, WER=3.7%; DWER decreased 54.9% versus GPT4oTranscribe.",
+     "quote": "GPT4oTranscribeCorrected was transcriptionally most accurate (DWER\u2009=\u20093.5%; WER\u2009=\u20093.7%), with DWER decreasing by 54.9% versus GPT4oTranscribe."
+    }
+   ],
+   "unlisted_practices": [
+    "Use LLM-based generative error correction after ASR transcription."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 200,
+   "sample_unit": "summaries",
+   "models_evaluated": [
+    "Heidi Health",
+    "DigitalTCO",
+    "Dragon Medical One",
+    "Dragon Professional Anywhere",
+    "Amazon",
+    "Google",
+    "Speechmatics",
+    "Whisper",
+    "GPT4oTranscribe",
+    "GPT4oTranscribeCorrected",
+    "GPT4o"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "effect of background noise on transcription error rates",
+     "effect": "background noise significantly increased domain word error rate and word error rate across all systems (P < 0.001)",
+     "quote": "Across systems, background noise increased DWER and WER (<i>P</i>\u2009<\u20090.001)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transcription hallucinations",
+     "effect": "Whisper produced 57 hallucinations and DigitalTCO produced 1, while hallucinations were absent in other systems",
+     "quote": "Hallucinations were absent except for Whisper (<i>n</i>\u2009=\u200957) and DigitalTCO (<i>n</i>\u2009=\u20091)."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-stage pipeline coupling automatic speech recognition with a large language model for generative error correction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "narrated orthodontic diagnostic and treatment planning summaries",
+ "sample_size": 200,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Amazon",
+  "DigitalTCO",
+  "Dragon Medical One",
+  "Dragon Professional Anywhere",
+  "GPT4o",
+  "GPT4oTranscribe",
+  "GPT4oTranscribeCorrected",
+  "GPT4oTranscribeCorrected (GPT4oTranscribe + GPT4o)",
+  "Google",
+  "Heidi Health",
+  "Speechmatics",
+  "Whisper"
+ ],
+ "links": [
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "transcription hallucinations",
+   "effect": "Whisper produced 57 hallucinations and DigitalTCO produced 1, while hallucinations were absent in other systems",
+   "quote": "Hallucinations were absent except for Whisper (<i>n</i>\u2009=\u200957) and DigitalTCO (<i>n</i>\u2009=\u20091).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparative transcription accuracy across 10 ASR systems on same data",
+   "effect": "GPT4oTranscribeCorrected best (DWER 3.5%; WER 3.7%); Heidi Health best commercial (DWER 6.2%); Dragon Professional Anywhere worst (WER 33.9%).",
+   "quote": "Heidi Health was the highest-performing commercial system (DWER = 6.2%; WER = 5.4%), with Dragon Professional Anywhere being the worst (WER = 33.9%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "background noise effect on ASR errors",
+   "effect": "Background noise increased DWER and WER (P < 0.001).",
+   "quote": "Across systems, background noise increased DWER and WER (<i>P</i>\u2009<\u20090.001).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Clinically significant transcription errors that would require verification",
+   "effect": "Clinically significant errors seen with all systems, ranging from 2% to 66% (GPT4oTranscribeCorrected clean; Dragon Medical One background noise).",
+   "quote": "Importantly, clinically significant errors were seen with all systems, ranging from 2% to 66% (GPT4oTranscribeCorrected clean; Dragon Medical One background noise, respectively).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "clinically significant transcription errors",
+   "effect": "Clinically significant errors ranged from 2% to 66% across systems/conditions.",
+   "quote": "Importantly, clinically significant errors were seen with all systems, ranging from 2% to 66% (GPT4oTranscribeCorrected clean; Dragon Medical One background noise, respectively).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "LLM-based generative error correction of ASR transcripts to reduce clinical terminology errors",
+  "Two-stage pipeline coupling automatic speech recognition with a large language model for generative error correction",
+  "Use LLM-based generative error correction after ASR transcription."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41178647",
+ "screen": {
+  "id": "pmid:41178647",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM-based generative error correction of ASR transcripts",
+  "user": "none",
+  "reason": "The study directly evaluates whether adding a downstream LLM generative error correction stage to an existing speech recognition tool (GPT4oTranscribe vs GPT4oTranscribeCorrected) mitigates transcription errors and hallucinations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "generative LLM post-processing error correction"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41178647",
+   "empirical": 0.98,
+   "tests_practice": 0.35,
+   "real_deployment": 0.08
+  }
+ }
+}

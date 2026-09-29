@@ -1,0 +1,85 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "France",
+ "sample_size": 1000,
+ "sample_unit": "oncological summaries (breast cancer patients)",
+ "models_evaluated": [
+  "Mistral Small",
+  "Mistral Medium",
+  "Mistral Large",
+  "Magistral",
+  "Mistral:latest"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "French"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Test-retest reproducibility of LLM cancer staging across repeated runs",
+   "effect": "Kappa > 0.95 for Mistral Large and Medium; top models test\u2013retest reliability exceeding 97%; smaller and locally deployed models lacked robustness, especially unit conversions and complex staging rules.",
+   "quote": "The top-performing models had a test\u2013retest reliability exceeding 97%, while smaller models and locally deployed versions lacked sufficient robustness, particularly in handling unit conversions and complex staging rules.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Stepwise structured prompting (tumour size, nodal status, metastasis) versus direct stage request improves LLM staging accuracy"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1083835",
+ "screen": {
+  "id": "epmc:PPR1083835",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluated Mistral LLMs on 1000 real-world oncological summaries for cancer staging, explicitly testing whether a stepwise component-based prompt (emulating clinical reasoning) improves performance over direct stage querying.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "stepwise reasoning prompting"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1083835",
+   "empirical": 0.96,
+   "tests_practice": 0.12,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,339 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 300,
+   "sample_unit": "note sets (50 cases x 6 physicians)",
+   "models_evaluated": [
+    "Y-KNOT-EDN (Llama3-8B fine-tuned)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether physician review of LLM drafts removed the confabulation before finalizing notes",
+     "effect": "The single confabulation in 50 LLM drafts was removed in 5 of 6 LLM-assisted notes; the least-experienced physician missed it. Physician editing improved conciseness but slightly lowered completeness and correctness scores versus drafts.",
+     "quote": "The single confabulation documented unperformed procedures (splint application, dressing) and was removed in 5 of 6 LLM-assisted notes\u2014by all except the least-experienced physician\u2014indicating that brief clinician review remains necessary despite high baseline quality."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Note quality and writing time for physicians with versus without LLM assistance",
+     "effect": "LLM-assisted notes scored higher than manual notes on all 4C metrics (all P<.001); median writing time fell from 69.5 to 32.0 seconds.",
+     "quote": "The median documentation time per note dropped from 69.5 (95% CI, 65.5-78.0) seconds for manual notes to 32.0 (95% CI, 29.5-36.0) seconds for LLM-assisted notes (P < .001)."
+    },
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Omissions and confabulations in LLM-generated discharge note drafts",
+     "effect": "In a 50-draft audit, 6 omission cases and 1 confabulation case were identified.",
+     "quote": "In a targeted audit of the 50 LLM drafts, 6 omission cases and 1 confabulation case were identified (examples summarized in eTable 8 in Supplement 1 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning a lightweight on-premise open-source LLM on local ED discharge cases",
+    "Deliberately excluding unreliable EHR fields as LLM input to reduce hallucination",
+    "Rule-based postprocessing inserting standardized patient education statements"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 300,
+   "sample_unit": "note sets (from 50 ED test cases)",
+   "models_evaluated": [
+    "Y-KNOT-EDN",
+    "Y-KNOT-med-base",
+    "Llama3-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "manual vs LLM-assisted documentation time",
+     "effect": "Median time decreased from 69.5 (95% CI, 65.5-78.0) to 32.0 (95% CI, 29.5-36.0) seconds; H-L reduction 35.0 seconds.",
+     "quote": "Overall, the median time decreased from 69.5 (95% CI, 65.5-78.0) seconds for manual notes to 32.0 (95% CI, 29.5-36.0) seconds with LLM support, an H-L median reduction of 35.0 (95% CI, 29.5-41.5) seconds."
+    },
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician removal of confabulation",
+     "effect": "One confabulation documented unperformed procedures; 5 of 6 physicians removed it during editing, all except the least-experienced physician.",
+     "quote": "The single confabulation documented unperformed procedures (splint application, dressing) and was removed in 5 of 6 LLM-assisted notes\u2014by all except the least-experienced physician\u2014indicating that brief clinician review remains necessary despite high baseline quality."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missed incorrect AI output",
+     "effect": "One confabulation was removed by 5 of 6 physicians; the least-experienced physician did not remove it.",
+     "quote": "The single confabulation documented unperformed procedures (splint application, dressing) and was removed in 5 of 6 LLM-assisted notes\u2014by all except the least-experienced physician\u2014indicating that brief clinician review remains necessary despite high baseline quality."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "omissions and confabulations in drafts",
+     "effect": "Audit of 50 LLM drafts identified 6 omission cases and 1 confabulation case.",
+     "quote": "In a targeted audit of the 50 LLM drafts, 6 omission cases and 1 confabulation case were identified (examples summarized in eTable 8 in Supplement 1 )."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "interrater reliability of note scoring",
+     "effect": "ICC: 0.58 completeness, 0.39 correctness, 0.62 conciseness, 0.55 clinical utility; correctness reliability relatively lower.",
+     "quote": "The analysis revealed intraclass correlation coefficient values of 0.58 (95% CI, 0.50-0.64) for completeness, 0.39 (95% CI, 0.27-0.47) for correctness, 0.62 (95% CI, 0.55-0.68) for conciseness, and 0.55 (95% CI, 0.48-0.62) for clinical utility."
+    }
+   ],
+   "unlisted_practices": [
+    "Use of an on-site fine-tuned LLM assistant to draft emergency department discharge notes compared with manual note writing"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "South Korea",
+   "sample_size": 50,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "Y-KNOT-EDN",
+    "Llama3-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Korean",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "removal of confabulated procedures during clinician review",
+     "effect": "Confabulated procedures were removed in 5 of 6 LLM-assisted notes by physicians during editing, missed only by the least-experienced physician.",
+     "quote": "The single confabulation documented unperformed procedures (splint application, dressing) and was removed in 5 of 6 LLM-assisted notes\u2014by all except the least-experienced physician\u2014indicating that brief clinician review remains necessary despite high baseline quality."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "note sets (50 cases x 6 physicians)",
+ "sample_size": 300,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Korean"
+ ],
+ "models_evaluated": [
+  "Llama3-8B",
+  "Y-KNOT-EDN",
+  "Y-KNOT-EDN (Llama3-8B fine-tuned)",
+  "Y-KNOT-med-base"
+ ],
+ "links": [
+  {
+   "rec_id": "R151",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether physician review of LLM drafts removed the confabulation before finalizing notes",
+   "effect": "The single confabulation in 50 LLM drafts was removed in 5 of 6 LLM-assisted notes; the least-experienced physician missed it. Physician editing improved conciseness but slightly lowered completeness and correctness scores versus drafts.",
+   "quote": "The single confabulation documented unperformed procedures (splint application, dressing) and was removed in 5 of 6 LLM-assisted notes\u2014by all except the least-experienced physician\u2014indicating that brief clinician review remains necessary despite high baseline quality.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Note quality and writing time for physicians with versus without LLM assistance",
+   "effect": "LLM-assisted notes scored higher than manual notes on all 4C metrics (all P<.001); median writing time fell from 69.5 to 32.0 seconds.",
+   "quote": "The median documentation time per note dropped from 69.5 (95% CI, 65.5-78.0) seconds for manual notes to 32.0 (95% CI, 29.5-36.0) seconds for LLM-assisted notes (P < .001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Omissions and confabulations in LLM-generated discharge note drafts",
+   "effect": "In a 50-draft audit, 6 omission cases and 1 confabulation case were identified.",
+   "quote": "In a targeted audit of the 50 LLM drafts, 6 omission cases and 1 confabulation case were identified (examples summarized in eTable 8 in Supplement 1 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "missed incorrect AI output",
+   "effect": "One confabulation was removed by 5 of 6 physicians; the least-experienced physician did not remove it.",
+   "quote": "The single confabulation documented unperformed procedures (splint application, dressing) and was removed in 5 of 6 LLM-assisted notes\u2014by all except the least-experienced physician\u2014indicating that brief clinician review remains necessary despite high baseline quality.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "interrater reliability of note scoring",
+   "effect": "ICC: 0.58 completeness, 0.39 correctness, 0.62 conciseness, 0.55 clinical utility; correctness reliability relatively lower.",
+   "quote": "The analysis revealed intraclass correlation coefficient values of 0.58 (95% CI, 0.50-0.64) for completeness, 0.39 (95% CI, 0.27-0.47) for correctness, 0.62 (95% CI, 0.55-0.68) for conciseness, and 0.55 (95% CI, 0.48-0.62) for clinical utility.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Deliberately excluding unreliable EHR fields as LLM input to reduce hallucination",
+  "Fine-tuning a lightweight on-premise open-source LLM on local ED discharge cases",
+  "Rule-based postprocessing inserting standardized patient education statements",
+  "Use of an on-site fine-tuned LLM assistant to draft emergency department discharge notes compared with manual note writing"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41118162",
+ "screen": {
+  "id": "pmid:41118162",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "clinician review and editing of LLM-drafted notes",
+  "user": "clinician_or_staff",
+  "reason": "The study directly evaluates clinician editing/review of LLM-generated discharge note drafts compared to raw LLM drafts and manual documentation on quality and efficiency metrics.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "clinician review and editing of drafts"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41118162",
+   "empirical": 0.97,
+   "tests_practice": 0.73,
+   "real_deployment": 0.69
+  }
+ }
+}

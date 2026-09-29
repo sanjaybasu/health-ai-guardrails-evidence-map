@@ -1,0 +1,83 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "United States",
+ "sample_size": 2500,
+ "sample_unit": "synthetic clinical notes",
+ "models_evaluated": [
+  "Zero-Trust Data Sanitization (ZTDS) client-side de-identification engine",
+  "cloud-based DLP proxy gateways"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R348",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "PHI detection recall and latency of client-side de-identification before LLM API transmission, versus cloud DLP proxy",
+   "effect": "ZTDS achieved 99.94% recall on direct HIPAA 18 identifiers with 1.84 ms latency per note, versus 242.6 ms for cloud DLP proxy; zero outbound PHI bytes in network packet inspection.",
+   "quote": "In a benchmark evaluation across 2,500 synthetic multi-center clinical notes containing dense, co-occurring PHI entities (names, medical record numbers, dates, geographic subdivisions, biometricidentifiers, device identifiers, and contact vectors), the client-side ZTDS engine achieved a 99.94% recall rate on direct HIPAA 18 identifiers with an average processing latency of 1.84 ms per standard clinicalnote (mean length: 1,420 characters).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Client-side ephemeral de-identification with local token re-identification session dictionary before sending text to third-party AI APIs, as a route to avoid Business Associate status"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1324775",
+ "screen": {
+  "id": "epmc:PPR1324775",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "client-side de-identification before sending text to LLM APIs",
+  "user": "none",
+  "reason": "The study develops and empirically benchmarks a client-side ephemeral de-identification / data sanitization safeguard to prevent PHI exfiltration when sending clinical text to cloud-hosted LLM APIs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "client-side de-identification safeguard"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1324775",
+   "empirical": 0.64,
+   "tests_practice": 0.37,
+   "real_deployment": 0.05
+  }
+ }
+}

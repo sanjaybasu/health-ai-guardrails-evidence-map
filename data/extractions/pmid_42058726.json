@@ -1,0 +1,383 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 8440,
+   "sample_unit": "source concepts (6,179 medication names and 2,261 laboratory test names)",
+   "models_evaluated": [
+    "BioLORD-2023 (ArcMAP, fine-tuned)",
+    "SapBERT",
+    "KRISSBERT",
+    "CODER",
+    "Qwen3-0.6B embedding",
+    "EmbeddingGemma-300M",
+    "Claude 3.7 Sonnet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Top-1 accuracy for lab test mapping before vs after fine-tuning on local data",
+     "effect": "BioLORD top-1 accuracy rose from 37.0% (baseline) to 91.6% after fine-tuning on local hospital data; all models reached 89.0-93.0% top-1 with full training data.",
+     "quote": "Our results demonstrate the importance of domain-specific fine-tuning, with top-1 accuracy for laboratory test names increasing from 37.0% to 91.6%."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Mapping accuracy on a held-out new hospital and variation across hospitals",
+     "effect": "Weighted top-1 accuracy on an unseen hospital was 73.5% vs 91.6% fully fine-tuned; per-hospital finetuned top-1 ranged 25.0% to 96.3%; baseline std across hospitals 7.9% for lab tests.",
+     "quote": "However, when simulating the onboarding of a new hospital, the system achieves a weighted average top-1 accuracy of only 73.5%, indicating substantial variability across NHS hospital systems."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Real-world lab test mapping accuracy vs published benchmark performance",
+     "effect": "Models reporting 80%-90% top-1 on standard benchmarks achieved baseline top-1 below 40% on real NHS laboratory test names (BioLORD 37.0%).",
+     "quote": "Consequently, baseline top-1 accuracies remain below 40%, underscoring that pre-training on biomedical literature and ontology definitions alone is insufficient to capture the extreme variability and abbreviation patterns encountered in laboratory test naming."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Cosine similarity confidence for correct vs incorrect predictions",
+     "effect": "Mean cosine similarity 0.97 \u00b1 0.06 for correct (n=457) vs 0.81 \u00b1 0.14 for incorrect (n=64) predictions; Welch t=8.8, p<0.01.",
+     "quote": "Results indicate a significant difference in mean similarity score under Welch's t -test (t-statistic: 8.8 p -value <0.01), highlighting the model's ability to quantify uncertainty in its predictions."
+    }
+   ],
+   "unlisted_practices": [
+    "Continuous learning pipeline that retrains the model on expert-validated mappings (top-1 on hold-out rose 89.43% to 94.22%, p=0.021)",
+    "Human-in-the-loop review interface presenting top-5 suggestions for expert validation vs manual spreadsheet mapping (>2-fold efficiency gain)",
+    "Restricting edit permissions to trained users with read-only access for downstream consumers to limit error propagation into model updates"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 646,
+   "sample_unit": "source concepts mapped or marked not relevant in 10 real-world ArcMAP sessions by one clinical informatician",
+   "models_evaluated": [
+    "ArcMAP (fine-tuned BioLORD-2023)",
+    "BioLORD-2023",
+    "SapBERT",
+    "KRISSBERT",
+    "CODER",
+    "Qwen3-0.6B",
+    "EmbeddingGemma-300M",
+    "Claude 3.7 Sonnet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Laboratory concept mapping accuracy after local fine-tuning",
+     "effect": "BioLORD laboratory-test top-1 accuracy increased from 37.0% without fine-tuning to 91.6% after domain-specific fine-tuning.",
+     "quote": "Our results demonstrate the importance of domain-specific fine-tuning, with top-1 accuracy for laboratory test names increasing from 37.0% to 91.6%."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Mapping accuracy when generalizing to an unseen hospital",
+     "effect": "BioLORD top-1 accuracy decreased from 91.6% in the fully fine-tuned setting to 73.5% when evaluated on hospitals excluded from training.",
+     "quote": "Evaluating the onboarding of a new hospital (Exp1-S3) revealed a reduction in mean performance, with BioLORD's top-1 accuracy decreasing from 91.6% in the fully fine-tuned setting to 73.5%."
+    },
+    {
+     "rec_id": "R135",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Real-world session accuracy compared with static hold-out performance",
+     "effect": "Static hold-out top-1 accuracy increased from 89.43% to 94.22%; real-world session accuracy ranged from 80.26% to 98.15%, with an additional low outlier of 56.7% in session 2.",
+     "quote": "In contrast, top-1 accuracy on session-specific test sets exhibited greater variability, ranging from 80.26% to 98.15%, with one notable outlier in session 2 ( acc top1 = 56.7%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 8440,
+   "sample_unit": "source concepts",
+   "models_evaluated": [
+    "BioLORD",
+    "SapBERT",
+    "KRISSBERT",
+    "CODER",
+    "Qwen3",
+    "EmbeddingGemma",
+    "Claude 3.7 Sonnet"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "mapping efficiency",
+     "effect": "estimated >2-fold increase in efficiency when using ArcMAP compared to manual sessions",
+     "quote": "In contrast, during the manual mapping sessions without ArcMAP, only 31.7 \u00b1 0.9 ( Supplementary Table 2 ) concepts were mapped on average, resulting in an estimated >2-fold increase in efficiency when using ArcMAP."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy at a new hospital",
+     "effect": "achieved a weighted average top-1 accuracy of only 73.5% across new hospital systems",
+     "quote": "However, when simulating the onboarding of a new hospital, the system achieves a weighted average top-1 accuracy of only 73.5%, indicating substantial variability across NHS hospital systems."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "top-1 accuracy for laboratory test names",
+     "effect": "increased from 37.0% to 91.6% after domain-specific fine-tuning",
+     "quote": "Our results demonstrate the importance of domain-specific fine-tuning, with top-1 accuracy for laboratory test names increasing from 37.0% to 91.6%."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "quantification of uncertainty",
+     "effect": "significant difference in mean similarity score between correct (0.97) and incorrect (0.81) predictions",
+     "quote": "Results indicate a significant difference in mean similarity score under Welch's t-test (t-statistic: 8.8 p-value <0.01), highlighting the model's ability to quantify uncertainty in its predictions."
+    }
+   ],
+   "unlisted_practices": [
+    "Continuous active learning during production mapping sessions to incrementally update embeddings based on user-validated mappings"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "source concepts (6,179 medication names and 2,261 laboratory test names)",
+ "sample_size": 8440,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ArcMAP (fine-tuned BioLORD-2023)",
+  "BioLORD",
+  "BioLORD-2023",
+  "BioLORD-2023 (ArcMAP, fine-tuned)",
+  "CODER",
+  "Claude 3.7 Sonnet",
+  "EmbeddingGemma",
+  "EmbeddingGemma-300M",
+  "KRISSBERT",
+  "Qwen3",
+  "Qwen3-0.6B",
+  "Qwen3-0.6B embedding",
+  "SapBERT"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Top-1 accuracy for lab test mapping before vs after fine-tuning on local data",
+   "effect": "BioLORD top-1 accuracy rose from 37.0% (baseline) to 91.6% after fine-tuning on local hospital data; all models reached 89.0-93.0% top-1 with full training data.",
+   "quote": "Our results demonstrate the importance of domain-specific fine-tuning, with top-1 accuracy for laboratory test names increasing from 37.0% to 91.6%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R135",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Real-world lab test mapping accuracy vs published benchmark performance",
+   "effect": "Models reporting 80%-90% top-1 on standard benchmarks achieved baseline top-1 below 40% on real NHS laboratory test names (BioLORD 37.0%).",
+   "quote": "Consequently, baseline top-1 accuracies remain below 40%, underscoring that pre-training on biomedical literature and ontology definitions alone is insufficient to capture the extreme variability and abbreviation patterns encountered in laboratory test naming.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Cosine similarity confidence for correct vs incorrect predictions",
+   "effect": "Mean cosine similarity 0.97 \u00b1 0.06 for correct (n=457) vs 0.81 \u00b1 0.14 for incorrect (n=64) predictions; Welch t=8.8, p<0.01.",
+   "quote": "Results indicate a significant difference in mean similarity score under Welch's t -test (t-statistic: 8.8 p -value <0.01), highlighting the model's ability to quantify uncertainty in its predictions.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Mapping accuracy when generalizing to an unseen hospital",
+   "effect": "BioLORD top-1 accuracy decreased from 91.6% in the fully fine-tuned setting to 73.5% when evaluated on hospitals excluded from training.",
+   "quote": "Evaluating the onboarding of a new hospital (Exp1-S3) revealed a reduction in mean performance, with BioLORD's top-1 accuracy decreasing from 91.6% in the fully fine-tuned setting to 73.5%.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Mapping accuracy on a held-out new hospital and variation across hospitals",
+   "effect": "Weighted top-1 accuracy on an unseen hospital was 73.5% vs 91.6% fully fine-tuned; per-hospital finetuned top-1 ranged 25.0% to 96.3%; baseline std across hospitals 7.9% for lab tests.",
+   "quote": "However, when simulating the onboarding of a new hospital, the system achieves a weighted average top-1 accuracy of only 73.5%, indicating substantial variability across NHS hospital systems.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "mapping efficiency",
+   "effect": "estimated >2-fold increase in efficiency when using ArcMAP compared to manual sessions",
+   "quote": "In contrast, during the manual mapping sessions without ArcMAP, only 31.7 \u00b1 0.9 ( Supplementary Table 2 ) concepts were mapped on average, resulting in an estimated >2-fold increase in efficiency when using ArcMAP.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Continuous active learning during production mapping sessions to incrementally update embeddings based on user-validated mappings",
+  "Continuous learning pipeline that retrains the model on expert-validated mappings (top-1 on hold-out rose 89.43% to 94.22%, p=0.021)",
+  "Human-in-the-loop review interface presenting top-5 suggestions for expert validation vs manual spreadsheet mapping (>2-fold efficiency gain)",
+  "Restricting edit permissions to trained users with read-only access for downstream consumers to limit error propagation into model updates"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42058726",
+ "screen": {
+  "id": "pmid:42058726",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "any_ai"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "human-in-the-loop expert review with continuous fine-tuning",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a real-world deployed human-in-the-loop EHR concept mapping tool across five NHS hospitals, specifically testing the impact of a continuous learning/fine-tuning pipeline from clinician feedback.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "continuous fine-tuning from expert feedback"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42058726",
+   "empirical": 0.96,
+   "tests_practice": 0.66,
+   "real_deployment": 0.71
+  }
+ }
+}

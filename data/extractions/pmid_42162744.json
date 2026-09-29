@@ -1,0 +1,274 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "rct",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 727,
+   "sample_unit": "patients (HPSCC; reader study on 51 cases with 6 radiation oncologists)",
+   "models_evaluated": [
+    "tri-sequence 3D nnU-Net"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reader contouring DSC, time, and consistency with versus without AI assistance in randomized crossover",
+     "effect": "AI assistance increased mean DSC in juniors from 0.73 to 0.86 and seniors from 0.79 to 0.84, reduced contouring time by 55%, improved Fleiss' \u03ba from 0.69 to 0.86 (all p < 0.01).",
+     "quote": "In the reader study, AI assistance increased mean DSC in juniors from 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and in seniors from 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15, reduced contouring time by 55%, and improved Fleiss' \u03ba from 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12 (all p < 0.01)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Model segmentation DSC across internal and two external sites",
+     "effect": "Mean DSC 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts; risk model AUC 0.89 internally vs 0.71-0.78 externally.",
+     "quote": "Tri-sequence mean DSC was 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts."
+    }
+   ],
+   "unlisted_practices": [
+    "MRI quality-feature-based prediction of low-overlap auto-segmentation cases to support deployment"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 727,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "tri-sequence 3D nnU-Net",
+    "XGBoost-based low-overlap risk model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician contouring accuracy, time, and agreement",
+     "effect": "AI increased DSC juniors 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and seniors 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15; reduced time 55%; \u03ba 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12.",
+     "quote": "In the reader study, AI assistance increased mean DSC in juniors from 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and in seniors from 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15, reduced contouring time by 55%, and improved Fleiss' \u03ba from 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12 (all p < 0.01)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician contouring accuracy, time, and agreement",
+     "effect": "AI increased DSC juniors 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and seniors 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15; reduced time 55%; \u03ba 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12.",
+     "quote": "In the reader study, AI assistance increased mean DSC in juniors from 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and in seniors from 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15, reduced contouring time by 55%, and improved Fleiss' \u03ba from 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12 (all p < 0.01)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Segmentation performance across internal and external cohorts",
+     "effect": "Mean DSC was 0.87 \u00b1 0.11 internally, 0.85 \u00b1 0.14 in external cohort 1, and 0.82 \u00b1 0.16 in external cohort 2.",
+     "quote": "Tri-sequence mean DSC was 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts."
+    }
+   ],
+   "unlisted_practices": [
+    "Quality-aware low-overlap risk modeling using MRI-quality features and auto-segmentation-derived tumor volume to flag likely segmentation failures."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Unknown",
+   "sample_size": 727,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "tri-sequence 3D nnU-Net",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "segmentation overlap across internal and external cohorts",
+     "effect": "mean DSC was 0.87 \u00b1 0.11 internally versus 0.85 \u00b1 0.14 in external cohort 1 and 0.82 \u00b1 0.16 in external cohort 2",
+     "quote": "Tri-sequence mean DSC was 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 727,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "XGBoost",
+  "XGBoost-based low-overlap risk model",
+  "tri-sequence 3D nnU-Net"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Reader contouring DSC, time, and consistency with versus without AI assistance in randomized crossover",
+   "effect": "AI assistance increased mean DSC in juniors from 0.73 to 0.86 and seniors from 0.79 to 0.84, reduced contouring time by 55%, improved Fleiss' \u03ba from 0.69 to 0.86 (all p < 0.01).",
+   "quote": "In the reader study, AI assistance increased mean DSC in juniors from 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and in seniors from 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15, reduced contouring time by 55%, and improved Fleiss' \u03ba from 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12 (all p < 0.01).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Model segmentation DSC across internal and two external sites",
+   "effect": "Mean DSC 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts; risk model AUC 0.89 internally vs 0.71-0.78 externally.",
+   "quote": "Tri-sequence mean DSC was 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician contouring accuracy, time, and agreement",
+   "effect": "AI increased DSC juniors 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and seniors 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15; reduced time 55%; \u03ba 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12.",
+   "quote": "In the reader study, AI assistance increased mean DSC in juniors from 0.73 \u00b1 0.16 to 0.86 \u00b1 0.14 and in seniors from 0.79 \u00b1 0.13 to 0.84 \u00b1 0.15, reduced contouring time by 55%, and improved Fleiss' \u03ba from 0.69 \u00b1 0.12 to 0.86 \u00b1 0.12 (all p < 0.01).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "segmentation overlap across internal and external cohorts",
+   "effect": "mean DSC was 0.87 \u00b1 0.11 internally versus 0.85 \u00b1 0.14 in external cohort 1 and 0.82 \u00b1 0.16 in external cohort 2",
+   "quote": "Tri-sequence mean DSC was 0.87 \u00b1 0.11 internally and 0.85 \u00b1 0.14 and 0.82 \u00b1 0.16 in external cohorts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "MRI quality-feature-based prediction of low-overlap auto-segmentation cases to support deployment",
+  "Quality-aware low-overlap risk modeling using MRI-quality features and auto-segmentation-derived tumor volume to flag likely segmentation failures."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42162744",
+ "screen": {
+  "id": "pmid:42162744",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI-assisted contouring with clinician review vs manual contouring",
+  "user": "clinician_or_staff",
+  "reason": "The study conducts a randomized crossover reader study evaluating AI-assisted vs manual contouring by junior and senior oncologists (human-in-the-loop assistance) and evaluates an exploratory deployment-support low-overlap risk model to detect poor-quality segmentation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI-assisted contouring vs manual clinician workflow and low-overlap quality risk modeling"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42162744",
+   "empirical": 0.98,
+   "tests_practice": 0.41,
+   "real_deployment": 0.15
+  }
+ }
+}

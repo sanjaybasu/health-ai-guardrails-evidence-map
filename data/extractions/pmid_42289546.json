@@ -1,0 +1,339 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 120,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "CNN-BiLSTM with 8-head attention (proposed multimodal model)",
+    "Multimodal CNN-LSTM without attention",
+    "Transformer encoder baseline",
+    "Late-fusion CNN-LSTM",
+    "Single-modality CNN",
+    "Single-modality LSTM",
+    "Random Forest",
+    "SVM-RBF"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "False alarm burden and positive predictive value of fall-risk alerts",
+     "effect": "Window-level high-risk PPV 6.25% (5/80); deployment false positive rate 8.2% (134 false alarms/1,634 alerts); deployment alert PPV 87.8% after episode-level aggregation; sensitivity 89.5% (51/57 episodes).",
+     "quote": "We stress, however, that the extreme class imbalance (fall windows constitute only 0.05% of total windows, with a high-risk PPV of merely 6.25%) severely limits the stability and interpretability of sensitivity estimates; a single misclassification among the six fall events shifts sensitivity by roughly 17% points."
+    }
+   ],
+   "unlisted_practices": [
+    "Rule-based episode-level aggregation and trend filtering of model outputs to reduce false alarms before alerting users",
+    "Tiered graded alerts with automatic caregiver and emergency escalation for fall risk"
+   ]
+  },
+  "openai": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 80,
+   "sample_unit": "older adults in the comparative field deployment (40 active-alert; 40 passive-monitoring)",
+   "models_evaluated": [
+    "Multimodal CNN-LSTM with eight-head attention",
+    "Multimodal CNN-LSTM without attention",
+    "Random Forest (100 trees)",
+    "SVM-RBF (C = 10)",
+    "Single-modality CNN (accelerometer only)",
+    "Single-modality LSTM (accelerometer only)",
+    "Transformer Encoder (4 layers, dimension 256, 8 heads)",
+    "Late-fusion modality-specific models with weighted averaging"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Overall accuracy masking poor high-risk classification under extreme class imbalance",
+     "effect": "Reported accuracy was 94.2%, versus 97.98% for always-low-risk predictions. High-risk PPV was 6.25%; sensitivity was 83.3% (5/6), with one misclassification shifting sensitivity by approximately 17% points.",
+     "quote": "A classifier that predicted \u201clow risk\u201d for every window would achieve 97.98% accuracy, which is actually higher than our model\u2019s overall figure\u2014the difference being that our model trades some majority-class accuracy for improved sensitivity to minority-class events, as intended by the focal loss objective."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missed high-risk episodes and unnecessary alerts during field deployment",
+     "effect": "Deployment sensitivity was 89.5% (51/57 high-risk episodes detected); reported false positive rate was 8.2% (134 false alarms/1,634 alerts). Separately reported active-alert PPV was 87.8%, using aggregated alert episodes.",
+     "quote": "An important methodological note concerns the apparent discrepancy between the window-level high-risk PPV of 6.25% (Table 5 ) and the deployment-level total active-alert PPV of 87.8%: the former evaluates each individual 2-second window independently, whereas the latter evaluates temporally aggregated alert episodes that have passed through the rule-based warning engine\u2019s trend filtering, contextual modifiers, and minimum-duration thresholds."
+    },
+    {
+     "rec_id": "R526",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fall incidence with active warnings versus passive monitoring",
+     "effect": "Falls/person-month: 0.82 \u00b1 0.35 versus 2.14 \u00b1 0.61; RR = 0.38 (95% CI: 0.24\u20130.62). Non-randomized, bundled intervention; exploratory association rather than causal efficacy evidence.",
+     "quote": "During a three-month field deployment involving 80 participants, the group receiving active alerts recorded 62% fewer falls than the passive-monitoring control group, but we cannot attribute this outcome to the real-time warning mechanism alone given the non-randomized design and the additional intervention components (daily risk summaries, caregiver notifications) that could independently alter behavior; this finding is strictly exploratory."
+    },
+    {
+     "rec_id": "R145",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "User satisfaction, usability, and wearing adherence during the pilot",
+     "effect": "User satisfaction averaged 4.3/5; wearing compliance reached 91.3% of waking hours. The System Usability Scale score was 82.5 \u00b1 7.8.",
+     "quote": "User satisfaction averaged 4.3/5 on a Likert scale, and wearing compliance reached 91.3% of waking hours."
+    }
+   ],
+   "unlisted_practices": [
+    "Episode-level aggregation with trend filtering, contextual modifiers, and minimum-duration thresholds before issuing fall-risk alerts."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 120,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "CNN-LSTM with attention"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R108",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fall incidence",
+     "effect": "the active-alert group had 62% fewer falls (0.82 vs. 2.14 falls per person-month; p < 0.01) compared to the passive control",
+     "quote": "In a subsequent three-month deployment with 80 participants, the group receiving active alerts recorded 62% fewer falls than the passive-monitoring control group (0.82 vs. 2.14 falls per person-month; p < 0.01)."
+    },
+    {
+     "rec_id": "R142",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "usability and wearing compliance",
+     "effect": "user satisfaction averaged 4.3/5 and wearing compliance reached 91.3% of waking hours",
+     "quote": "User satisfaction averaged 4.3/5 on a Likert scale, and wearing compliance reached 91.3% of waking hours."
+    }
+   ],
+   "unlisted_practices": [
+    "Multimodal sensor fusion",
+    "Rule-based multi-tier alerting with temporal trend filtering and contextual modifiers"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "patient",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 120,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "CNN-BiLSTM with 8-head attention (proposed multimodal model)",
+  "CNN-LSTM with attention",
+  "Late-fusion CNN-LSTM",
+  "Late-fusion modality-specific models with weighted averaging",
+  "Multimodal CNN-LSTM with eight-head attention",
+  "Multimodal CNN-LSTM without attention",
+  "Random Forest",
+  "Random Forest (100 trees)",
+  "SVM-RBF",
+  "SVM-RBF (C = 10)",
+  "Single-modality CNN",
+  "Single-modality CNN (accelerometer only)",
+  "Single-modality LSTM",
+  "Single-modality LSTM (accelerometer only)",
+  "Transformer Encoder (4 layers, dimension 256, 8 heads)",
+  "Transformer encoder baseline"
+ ],
+ "links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Overall accuracy masking poor high-risk classification under extreme class imbalance",
+   "effect": "Reported accuracy was 94.2%, versus 97.98% for always-low-risk predictions. High-risk PPV was 6.25%; sensitivity was 83.3% (5/6), with one misclassification shifting sensitivity by approximately 17% points.",
+   "quote": "A classifier that predicted \u201clow risk\u201d for every window would achieve 97.98% accuracy, which is actually higher than our model\u2019s overall figure\u2014the difference being that our model trades some majority-class accuracy for improved sensitivity to minority-class events, as intended by the focal loss objective.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R526",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Fall incidence with active warnings versus passive monitoring",
+   "effect": "Falls/person-month: 0.82 \u00b1 0.35 versus 2.14 \u00b1 0.61; RR = 0.38 (95% CI: 0.24\u20130.62). Non-randomized, bundled intervention; exploratory association rather than causal efficacy evidence.",
+   "quote": "During a three-month field deployment involving 80 participants, the group receiving active alerts recorded 62% fewer falls than the passive-monitoring control group, but we cannot attribute this outcome to the real-time warning mechanism alone given the non-randomized design and the additional intervention components (daily risk summaries, caregiver notifications) that could independently alter behavior; this finding is strictly exploratory.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R145",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "User satisfaction, usability, and wearing adherence during the pilot",
+   "effect": "User satisfaction averaged 4.3/5; wearing compliance reached 91.3% of waking hours. The System Usability Scale score was 82.5 \u00b1 7.8.",
+   "quote": "User satisfaction averaged 4.3/5 on a Likert scale, and wearing compliance reached 91.3% of waking hours.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R142",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "usability and wearing compliance",
+   "effect": "user satisfaction averaged 4.3/5 and wearing compliance reached 91.3% of waking hours",
+   "quote": "User satisfaction averaged 4.3/5 on a Likert scale, and wearing compliance reached 91.3% of waking hours.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R108",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Episode-level aggregation with trend filtering, contextual modifiers, and minimum-duration thresholds before issuing fall-risk alerts.",
+  "Multimodal sensor fusion",
+  "Rule-based episode-level aggregation and trend filtering of model outputs to reduce false alarms before alerting users",
+  "Rule-based multi-tier alerting with temporal trend filtering and contextual modifiers",
+  "Tiered graded alerts with automatic caregiver and emergency escalation for fall risk"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42289546",
+ "screen": {
+  "id": "pmid:42289546",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "active real-time alerts vs passive monitoring",
+  "user": "both",
+  "reason": "Evaluates a multimodal wearable fall risk prediction system deployed in a 3-month field test comparing active real-time alerts versus passive monitoring on fall outcomes and compliance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "active alerts vs passive monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42289546",
+   "empirical": 0.97,
+   "tests_practice": 0.72,
+   "real_deployment": 0.92
+  }
+ }
+}

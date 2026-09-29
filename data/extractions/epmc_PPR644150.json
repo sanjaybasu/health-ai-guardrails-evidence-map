@@ -1,0 +1,81 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "chest radiograph images (CheXpert training; CheXphoto perturbed test set)",
+ "models_evaluated": [
+  "six ANNs for chest radiograph classification (architectures not named in the text)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Robust accuracy of chest radiograph classifiers on naturally and synthetically perturbed images (CheXphoto)",
+   "effect": "Models produced by RoMIA show 3-5% improvement in robust accuracy on perturbed CheXphoto images, implying baseline models are brittle to input perturbations.",
+   "quote": "Models produced by RoMIA show 3-5% improvement in robust accuracy, suggesting that the proposed methods can be a useful step towards enabling the adoption of ANNs in medical imaging applications.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Noise-added training to improve robustness of imaging models",
+  "Fine-tuning with input mixing using images from a different source",
+  "DCT-based denoising of images before classification"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR644150",
+ "screen": {
+  "id": "epmc:PPR644150",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates RoMIA, which incorporates input preprocessing/denoising and robust training interventions to guard against clinical image perturbations and noise.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "input denoising and robustness preprocessing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR644150",
+   "empirical": 0.93,
+   "tests_practice": 0.23,
+   "real_deployment": 0.04
+  }
+ }
+}

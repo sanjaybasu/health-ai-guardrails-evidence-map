@@ -1,0 +1,348 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 409307,
+   "sample_unit": "ED presentations",
+   "models_evaluated": [
+    "Ensemble stacking model (XGBoost, TabNet, MLP, logistic regression base learners; LR meta-learner) with BioClinicalBERT embeddings"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R150",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model calibration and discrimination across retraining cadences over 5-year simulation",
+     "effect": "Weekly retraining AMDBE 2.57 (AUROC 0.843); monthly AMDBE 2.73 non-inferior; longer intervals showed progressive calibration degradation (p<0.001); static model AMDBE 10.6 in 2024 vs 1.79 weekly.",
+     "quote": "Monthly, or more frequent, model retraining sustains discrimination and calibration for paediatric ED admission prediction."
+    },
+    {
+     "rec_id": "R366",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model performance across periodic retraining schedules versus no retraining",
+     "effect": "Static model AUROC fell from 0.852 in 2019 to 0.799 in 2024 and AMDBE rose from 2.73 to 10.6; weekly retraining held AUROC 0.851 to 0.838 and AMDBE 2.47 to 1.78.",
+     "quote": "Performance drift was more pronounced in calibration than discrimination metrics, as AUROC for the static model declined from 0.852 in 2019 to 0.799 in 2024, whereas AMDBE rose from 2.73 in 2019 to 10.6 in 2024."
+    },
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of retraining/recalibration frequency on miscalibration after population and data drift",
+     "effect": "Retraining weekly to monthly kept AMDBE 2.57-2.73; longer cadences up to static reached AMDBE 3.5-7.7 mean; static calibration intercept moved from 0.034 to 0.321.",
+     "quote": "In contrast, longer cadences allowed drift to accumulate, resulting in miscalibration and predicted operational error."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Data, concept and covariate drift in static model over time",
+     "effect": "Domain-classifier AUROC 0.92-0.99 for 2022-2024 vs training window; static model AMDBE rose to 10.6 in 2024, systematic underestimation of demand.",
+     "quote": "Such drift resulted in systematic underestimation of demand, which, without retraining, could have negative operational implications for bed management, surge preparedness and flow planning."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether discrimination metrics conceal calibration degradation",
+     "effect": "Static model AUROC declined modestly (0.852 to 0.799) while AMDBE rose from 2.73 to 10.6; AMDBE showed variability even when AUROC appeared stable.",
+     "quote": "AMDBE expressed more concept drift than traditionally reported measures such as AUROC, sensitivity and specificity."
+    }
+   ],
+   "unlisted_practices": [
+    "Cost-effectiveness analysis of retraining cadence (computational burden vs performance)",
+    "Performance-triggered adaptive retraining based on drift threshold"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 409307,
+   "sample_unit": "ED presentations",
+   "models_evaluated": [
+    "Ensemble stacking model (XGBoost, TabNet, multilayer perceptron, and logistic regression base learners with logistic regression meta-learner)",
+    "Weekly retraining configuration",
+    "Fortnightly retraining configuration",
+    "Monthly retraining configuration",
+    "Bimonthly retraining configuration",
+    "Trimonthly retraining configuration",
+    "Semiannual retraining configuration",
+    "Annual retraining configuration",
+    "Biennial retraining configuration",
+    "Triennial retraining configuration",
+    "Static/no-retraining configuration"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration by retraining cadence",
+     "effect": "Weekly AMDBE 2.57; fortnightly/monthly AMDBE 2.61/2.73 non-inferior; longer intervals degraded (p\u2009<\u20090.001); static 2024 AMDBE 10.6 vs 1.79 weekly.",
+     "quote": "Fortnightly and monthly cadences were non-inferior (AMDBE 2.61 and 2.73), whereas longer intervals showed progressive calibration degradation (p\u2009<\u20090.001) and stable AUROC."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance degradation from drift",
+     "effect": "Static AUROC declined 0.852\u21920.799 and AMDBE rose 2.73\u219210.6 from 2019 to 2024.",
+     "quote": "Performance drift was more pronounced in calibration than discrimination metrics, as AUROC for the static model declined from 0.852 in 2019 to 0.799 in 2024, whereas AMDBE rose from 2.73 in 2019 to 10.6 in 2024."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration drift missed by discrimination",
+     "effect": "Static AMDBE rose 2.73\u219210.6 while AUROC only declined 0.852\u21920.799 from 2019 to 2024.",
+     "quote": "AMDBE expressed more concept drift than traditionally reported measures such as AUROC, sensitivity and specificity."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "temporal dataset shift",
+     "effect": "Domain classifier AUROC 0.92\u20130.99 differentiated 2022\u20132024 from July 2018\u2013June 2019 presentations.",
+     "quote": "Whilst covariate distributions remained relatively stable until 2021, the domain\u2010classifier performance greatly improved from January 2022 onwards, achieving an AUROC of 0.92\u20130.99 when differentiating presentations from the 2022\u20132024 period from the initial training window of July 2018 to June 2019."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Australia",
+   "sample_size": 409307,
+   "sample_unit": "ED presentations",
+   "models_evaluated": [
+    "Ensemble stacking model (XGBoost, TabNet, MLP, logistic regression, BioClinicalBERT)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "concept drift and bed calibration error",
+     "effect": "Mean AMDBE reached 10.6 in 2024 for the static model compared to 1.79 for the weekly retraining model, demonstrating pronounced concept drift without retraining.",
+     "quote": "Concept drift was most pronounced in the static model, with a mean AMDBE of 10.6 in 2024 compared to 1.79 for the weekly model."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration versus discrimination performance drift",
+     "effect": "Static model AUROC declined from 0.852 in 2019 to 0.799 in 2024, whereas AMDBE rose from 2.73 to 10.6, showing calibration degraded substantially more than discrimination.",
+     "quote": "Performance drift was more pronounced in calibration than discrimination metrics, as AUROC for the static model declined from 0.852 in 2019 to 0.799 in 2024, whereas AMDBE rose from 2.73 in 2019 to 10.6 in 2024."
+    }
+   ],
+   "unlisted_practices": [
+    "Periodic model retraining at regular intervals (such as weekly, fortnightly, or monthly) to mitigate temporal performance and calibration drift"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Australia",
+ "sample_unit": "ED presentations",
+ "sample_size": 409307,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Annual retraining configuration",
+  "Biennial retraining configuration",
+  "Bimonthly retraining configuration",
+  "Ensemble stacking model (XGBoost, TabNet, MLP, logistic regression base learners; LR meta-learner) with BioClinicalBERT embeddings",
+  "Ensemble stacking model (XGBoost, TabNet, MLP, logistic regression, BioClinicalBERT)",
+  "Ensemble stacking model (XGBoost, TabNet, multilayer perceptron, and logistic regression base learners with logistic regression meta-learner)",
+  "Fortnightly retraining configuration",
+  "Monthly retraining configuration",
+  "Semiannual retraining configuration",
+  "Static/no-retraining configuration",
+  "Triennial retraining configuration",
+  "Trimonthly retraining configuration",
+  "Weekly retraining configuration"
+ ],
+ "links": [
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of retraining/recalibration frequency on miscalibration after population and data drift",
+   "effect": "Retraining weekly to monthly kept AMDBE 2.57-2.73; longer cadences up to static reached AMDBE 3.5-7.7 mean; static calibration intercept moved from 0.034 to 0.321.",
+   "quote": "In contrast, longer cadences allowed drift to accumulate, resulting in miscalibration and predicted operational error.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Data, concept and covariate drift in static model over time",
+   "effect": "Domain-classifier AUROC 0.92-0.99 for 2022-2024 vs training window; static model AMDBE rose to 10.6 in 2024, systematic underestimation of demand.",
+   "quote": "Such drift resulted in systematic underestimation of demand, which, without retraining, could have negative operational implications for bed management, surge preparedness and flow planning.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether discrimination metrics conceal calibration degradation",
+   "effect": "Static model AUROC declined modestly (0.852 to 0.799) while AMDBE rose from 2.73 to 10.6; AMDBE showed variability even when AUROC appeared stable.",
+   "quote": "AMDBE expressed more concept drift than traditionally reported measures such as AUROC, sensitivity and specificity.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "temporal dataset shift",
+   "effect": "Domain classifier AUROC 0.92\u20130.99 differentiated 2022\u20132024 from July 2018\u2013June 2019 presentations.",
+   "quote": "Whilst covariate distributions remained relatively stable until 2021, the domain\u2010classifier performance greatly improved from January 2022 onwards, achieving an AUROC of 0.92\u20130.99 when differentiating presentations from the 2022\u20132024 period from the initial training window of July 2018 to June 2019.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R150",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R366",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Cost-effectiveness analysis of retraining cadence (computational burden vs performance)",
+  "Performance-triggered adaptive retraining based on drift threshold",
+  "Periodic model retraining at regular intervals (such as weekly, fortnightly, or monthly) to mitigate temporal performance and calibration drift"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42087699",
+ "screen": {
+  "id": "pmid:42087699",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "model retraining frequency optimization",
+  "user": "none",
+  "reason": "Empirical study testing different model retraining cadences to monitor and mitigate concept drift over a 5-year rolling temporal simulation.",
+  "jev": {
+   "id": "pmid:42087699",
+   "empirical": 0.97,
+   "tests_practice": 0.85,
+   "real_deployment": 0.07
+  }
+ }
+}

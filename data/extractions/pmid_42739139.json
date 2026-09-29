@@ -1,0 +1,355 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Korea",
+   "sample_size": 6904,
+   "sample_unit": "color fundus photographs (2593 patients)",
+   "models_evaluated": [
+    "VUNO Med-FundusDx v1.0.0"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Sensitivity/specificity of AI-human double reading versus human-human double reading, plus human reads per image",
+     "effect": "DR/RVO: no significant difference (all p\u22650.05). AMD: sensitivity 0.916 and 0.950 (p<0.001) vs 0.845, one combination 0.842 (p=0.742); human reads 1.02-1.11 vs 2.00-2.10 per image.",
+     "quote": "Across AI-human combinations, sensitivity and specificity did not differ significantly from human-human reading (all p \u2265 0.05; specificity differences \u22640.001)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AI-human double reading compared with conventional human-human double reading on the same images",
+     "effect": "Comparable accuracy for DR and RVO with about 46-49% fewer human reads; AMD sensitivity higher in two of three configurations, with lower specificity (\u22650.978).",
+     "quote": "Accordingly, human\u2013human double reading required 2.00 to 2.10 human reads per image, whereas AI\u2013human double reading required 1.02 to 1.11, corresponding to a 46% to 49% reduction in human reading events ( Table 2 )."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Standalone AI sensitivity versus prespecified 0.99 target on local single-center cohort",
+     "effect": "Standalone sensitivity 0.929 for AMD and 0.931 for DR, below the 0.99 target; 0.994 for RVO. Attributed partly to domain shift.",
+     "quote": "A related consideration is that, as a standalone classifier, the AI system did not reach its prespecified operating target of 0.99 sensitivity for two of the three diseases, achieving a standalone sensitivity of 0.929 for AMD and 0.931 for DR, although it reached 0.994 for RVO."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of AI operating threshold (target sensitivity 0.95 vs 0.995) on workflow sensitivity, specificity, and reads",
+     "effect": "For AMD, raising target sensitivity from 0.95 to 0.995 raised workflow sensitivity from 0.854 to 0.940 (AI-R1-R2), lowered specificity from 0.992 to 0.967, and increased reads from 1.04-1.07 to 1.10-1.17.",
+     "quote": "For AMD, raising the AI target sensitivity from 0.95 to 0.995 increased workflow sensitivity from 0.854 to 0.940 for AI\u2013R1\u2013R2 and from 0.921 to 0.973 for AI\u2013R1\u2013R3, while workflow specificity fell from 0.992 to 0.967 and from 0.991 to 0.966 respectively, and mean human reads per image rose from 1.04\u20131.07 to 1.10\u20131.17."
+    }
+   ],
+   "unlisted_practices": [
+    "Replacing one of two first-pass human readers with AI in double reading with human arbitration",
+    "Keeping AI and human first-pass reads independent to limit automation bias"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Republic of Korea",
+   "sample_size": 6904,
+   "sample_unit": "color fundus photographs",
+   "models_evaluated": [
+    "VUNO Med-FundusDx v1.0.0"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-human double-reading performance",
+     "effect": "Human reads 1.02\u20131.11 vs 2.00\u20132.10; DR/RVO no significant loss; AMD sensitivity 0.842\u20130.950 vs 0.845, specificity \u22650.978.",
+     "quote": "AI\u2013human double reading with arbitration substantially reduced repeated human reading while preserving diagnostic reliability for DR and RVO and demonstrating reader-configuration-dependent performance for AMD."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "operating-threshold tradeoffs",
+     "effect": "AMD target 0.95\u21920.995 raised sensitivity 0.854\u21920.940/0.921\u21920.973, lowered specificity 0.992\u21920.967/0.991\u21920.966, reads 1.04\u20131.07\u21921.10\u20131.17.",
+     "quote": "For AMD, raising the AI target sensitivity from 0.95 to 0.995 increased workflow sensitivity from 0.854 to 0.940 for AI\u2013R1\u2013R2 and from 0.921 to 0.973 for AI\u2013R1\u2013R3, while workflow specificity fell from 0.992 to 0.967 and from 0.991 to 0.966 respectively, and mean human reads per image rose from 1.04\u20131.07 to 1.10\u20131.17."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone versus workflow specificity",
+     "effect": "Standalone specificity was 0.925 for RVO and 0.938 for AMD, while workflow specificity was \u22650.978 across diseases.",
+     "quote": "Although standalone AI specificity was as low as 0.925 for RVO and 0.938 for AMD, workflow specificity remained 0.978 or higher across all diseases."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "fixed-threshold local sensitivity",
+     "effect": "Target sensitivity 0.99; standalone sensitivity was 0.929 for AMD, 0.931 for DR, and 0.994 for RVO.",
+     "quote": "A related consideration is that, as a standalone classifier, the AI system did not reach its prespecified operating target of 0.99 sensitivity for two of the three diseases, achieving a standalone sensitivity of 0.929 for AMD and 0.931 for DR, although it reached 0.994 for RVO."
+    },
+    {
+     "rec_id": "R161",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AI false-negative correction",
+     "effect": "False-negative correction: AMD 2\u201320/67 (3\u201330%); DR 17\u201320/37 (46\u201354%); RVO 0\u20131/2, despite human review/arbitration.",
+     "quote": "Correction of standalone AI false negatives was less consistent (AMD, 2\u201320 of 67 [3\u201330%]; DR, 17\u201320 of 37 [46\u201354%]; RVO, 0\u20131 of 2) ( Table S3 )."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "South Korea",
+   "sample_size": 6904,
+   "sample_unit": "color fundus photographs",
+   "models_evaluated": [
+    "VUNO Med-FundusDx v1.0.0"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Standalone AI sensitivity relative to prespecified operating target",
+     "effect": "Sensitivity was 0.929 for AMD and 0.931 for DR, failing to meet the 0.99 target, while reaching 0.994 for RVO.",
+     "quote": "A related consideration is that, as a standalone classifier, the AI system did not reach its prespecified operating target of 0.99 sensitivity for two of the three diseases, achieving a standalone sensitivity of 0.929 for AMD and 0.931 for DR, although it reached 0.994 for RVO."
+    }
+   ],
+   "unlisted_practices": [
+    "Replacing one human reader with artificial intelligence in a double-reading screening workflow with human arbitration of discordant cases"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "color fundus photographs",
+ "sample_size": 6904,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "VUNO Med-FundusDx v1.0.0"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "fixed-threshold local sensitivity",
+   "effect": "Target sensitivity 0.99; standalone sensitivity was 0.929 for AMD, 0.931 for DR, and 0.994 for RVO.",
+   "quote": "A related consideration is that, as a standalone classifier, the AI system did not reach its prespecified operating target of 0.99 sensitivity for two of the three diseases, achieving a standalone sensitivity of 0.929 for AMD and 0.931 for DR, although it reached 0.994 for RVO.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Sensitivity/specificity of AI-human double reading versus human-human double reading, plus human reads per image",
+   "effect": "DR/RVO: no significant difference (all p\u22650.05). AMD: sensitivity 0.916 and 0.950 (p<0.001) vs 0.845, one combination 0.842 (p=0.742); human reads 1.02-1.11 vs 2.00-2.10 per image.",
+   "quote": "Across AI-human combinations, sensitivity and specificity did not differ significantly from human-human reading (all p \u2265 0.05; specificity differences \u22640.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AI-human double reading compared with conventional human-human double reading on the same images",
+   "effect": "Comparable accuracy for DR and RVO with about 46-49% fewer human reads; AMD sensitivity higher in two of three configurations, with lower specificity (\u22650.978).",
+   "quote": "Accordingly, human\u2013human double reading required 2.00 to 2.10 human reads per image, whereas AI\u2013human double reading required 1.02 to 1.11, corresponding to a 46% to 49% reduction in human reading events ( Table 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI-human double-reading performance",
+   "effect": "Human reads 1.02\u20131.11 vs 2.00\u20132.10; DR/RVO no significant loss; AMD sensitivity 0.842\u20130.950 vs 0.845, specificity \u22650.978.",
+   "quote": "AI\u2013human double reading with arbitration substantially reduced repeated human reading while preserving diagnostic reliability for DR and RVO and demonstrating reader-configuration-dependent performance for AMD.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R105",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "standalone versus workflow specificity",
+   "effect": "Standalone specificity was 0.925 for RVO and 0.938 for AMD, while workflow specificity was \u22650.978 across diseases.",
+   "quote": "Although standalone AI specificity was as low as 0.925 for RVO and 0.938 for AMD, workflow specificity remained 0.978 or higher across all diseases.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R161",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "AI false-negative correction",
+   "effect": "False-negative correction: AMD 2\u201320/67 (3\u201330%); DR 17\u201320/37 (46\u201354%); RVO 0\u20131/2, despite human review/arbitration.",
+   "quote": "Correction of standalone AI false negatives was less consistent (AMD, 2\u201320 of 67 [3\u201330%]; DR, 17\u201320 of 37 [46\u201354%]; RVO, 0\u20131 of 2) ( Table S3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R090",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Keeping AI and human first-pass reads independent to limit automation bias",
+  "Replacing one human reader with artificial intelligence in a double-reading screening workflow with human arbitration of discordant cases",
+  "Replacing one of two first-pass human readers with AI in double reading with human arbitration"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42739139",
+ "screen": {
+  "id": "pmid:42739139",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI as first-pass reader in double reading with human arbitration",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates replacing one human reader with AI in a double-reading with arbitration workflow (AI-human vs human-human double reading) to assess workload reduction and diagnostic accuracy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI-human double reading workflow with arbitration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42739139",
+   "empirical": 0.98,
+   "tests_practice": 0.79,
+   "real_deployment": 0.06
+  }
+ }
+}

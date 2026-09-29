@@ -1,0 +1,457 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "England",
+   "sample_size": 521,
+   "sample_unit": "paired consecutive OCT clinic visits",
+   "models_evaluated": [
+    "Moorfields/DeepMind OCT segmentation AI system (IRF, SRF, SHRM) with threshold rules",
+    "Ridge-regularized logistic regression",
+    "Random forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI threshold performance across two sites with different OCT devices, reported by site",
+     "effect": "Same thresholds optimised accuracy at both centres (Heidelberg NEC, Topcon MEH); aggregate R9 NPV 95.3% (85.5-97.9%), PPV 57.8%; site-specific results reported in supplement.",
+     "quote": "A strength of this external validation study is its inclusion of two independent centres, using different OCT imaging equipment suppliers, compared to the same reference standard."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "AI accuracy across age, sex, ethnicity and diabetic subgroups",
+     "effect": "Accuracy 74.6-87.1% across subgroups with overlapping CIs; no significant difference in errors, but low ethnic diversity and small error counts limited the analysis.",
+     "quote": "The distribution of errors from R9 did not appear to differ significantly between subgroups defined by age, sex, ethnicity or diabetic status (Table 2 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI-led assessments versus real-world clinician assessments against reading-centre reference standard",
+     "effect": "AI R9 NPV 95.3% vs real-world 81.6%; rNPV 1.17 (1.11-1.23) and rPPV 1.39 (1.10-1.76), meeting superiority criteria.",
+     "quote": "Applying the thresholds described in R9 to determine AI-led assessments produced a comparable rNPV of 1.17 (1.11\u20131.23) and an improved rPPV of 1.39 (1.10\u20131.76)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Reference standard from blinded independent reading centre grading",
+     "effect": "Reference standard produced by blinded review at Moorfields Ophthalmic Reading Centre using a protocol reflective of NHS care.",
+     "quote": "A reference standard was produced by the blinded review of OCTs and basic clinical data by Moorfields Ophthalmic Reading Centre using a grading protocol reflective of standard NHS care (Supplementary Text 1 )."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External validation on data not used for training, from a second site",
+     "effect": "Thresholds explored on NEC then tested on MEH dataset, which did not use imaging from AI training; patterns of performance very similar in both datasets.",
+     "quote": "These rule sets were subsequently applied to the MEH dataset, where the patterns of performance were very similar in both datasets (Supplementary Table 5 )."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Errors of autonomous AI assessment and complementarity with clinician errors",
+     "effect": "R9 gave 15 false negatives and 84 false positives; 57 errors not made in real-world care, with non-anatomical segmentations in poor-quality images, suggesting clinician-AI interaction could mitigate risks.",
+     "quote": "AI-led assessments of nAMD disease activity and those made in real-world care commonly disagreed with the reference standard for different clinical cases."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI errors linked to poor input image quality",
+     "effect": "18 of 37 (48.6%) NEC errors not made in real-world care involved non-anatomical segmentations, all in cases with suboptimal imaging quality on at least one b-scan.",
+     "quote": "All of these occurred in cases with suboptimal imaging quality on at least one b-scan."
+    }
+   ],
+   "unlisted_practices": [
+    "Optimising non-zero quantitative decision thresholds on AI segmentation outputs for clinical decisions"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "England",
+   "sample_size": 521,
+   "sample_unit": "pairs of ipsilateral retinal OCTs from consecutive visits",
+   "models_evaluated": [
+    "retinal OCT segmentation AI system",
+    "Ridge-regularized Logistic Regression",
+    "Random Forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external multisite validation robustness",
+     "effect": "Validated 521 OCT pairs from NEC (n=262) and MEH (n=259); performance appeared robust outside the training dataset.",
+     "quote": "The AI system\u2019s performance appears robust outside of its training dataset and subgroup analysis did not identify any concerns for biased performance between the different age, sex or ethnic groups presented."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "predefined local validation endpoint",
+     "effect": "R9 rNPV 1.17 (1.11-1.23) met clinical/statistical superiority; rPPV 1.39 (1.10-1.76).",
+     "quote": "The rNPV of 1.17 (1.11-1.23) met predefined criteria for clinical and statistical superiority and accompanied an rPPV of 1.39 (1.10-1.76)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus real-world assessments",
+     "effect": "AI R9 versus real-world care: rNPV 1.17 (1.11\u20131.23) and rPPV 1.39 (1.10\u20131.76).",
+     "quote": "Applying the thresholds described in R9 to determine AI-led assessments produced a comparable rNPV of 1.17 (1.11\u20131.23) and an improved rPPV of 1.39 (1.10\u20131.76)."
+    },
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "decision-threshold effect on overtreatment",
+     "effect": "R1 rPPV 0.942 (0.75\u20131.19); R9 rPPV 1.39 (1.10\u20131.76) with similar rNPV 1.17.",
+     "quote": "Whilst taking any increase of IRF, SRF or SHRM between clinic visits demonstrated non-inferior levels of sight-threatening undertreatment for AI compared to standard care, using higher thresholds for disease activity also enabled reductions in demand-generating overtreatment."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "subgroup error distribution",
+     "effect": "No significant error differences; accuracy: age 78.6\u201384.6%, sex 79.9\u201381.7%, ethnicity 79.5\u201387.1%, diabetes 74.6% vs 81.8%.",
+     "quote": "The distribution of errors from R9 did not appear to differ significantly between subgroups defined by age, sex, ethnicity or diabetic status (Table 2 )."
+    },
+    {
+     "rec_id": "R510",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "implausible segmentation outputs",
+     "effect": "18/37 (48.6%) NEC R9 errors not made in real-world care had non-anatomical IRF/SRF segmentations.",
+     "quote": "For the 37 errors that R9 led to in the NEC dataset, which were not made in real-world care, 18 (48.6%) involved segmentations of IRF or SRF that were immediately apparent as non-anatomical on clinical review (Fig. 3 )."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "missed disease activity by autonomous AI",
+     "effect": "15 false-negative AI-led R9 outputs among 521 pairs: 5 NEC and 10 MEH.",
+     "quote": "Across the 521 pairs of clinic visits, 15 false negative outputs from AI-led decisions using R9 occurred (5 NEC and 10 MEH)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 521,
+   "sample_unit": "clinic visit pairs",
+   "models_evaluated": [
+    "Deep learning retinal OCT segmentation model",
+    "Ridge-regularized Logistic Regression",
+    "Random Forest"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "performance variation across hospital sites and OCT acquisition devices",
+     "effect": "patterns of diagnostic performance across rule sets were very similar between the two hospital sites using different OCT devices",
+     "quote": "These rule sets were subsequently applied to the MEH dataset, where the patterns of performance were very similar in both datasets (Supplementary Table 5 )."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "performance disparity across demographic and clinical patient subgroups",
+     "effect": "error distribution of rule set 9 did not differ significantly across age, sex, ethnicity, or diabetic status subgroups",
+     "quote": "The distribution of errors from R9 did not appear to differ significantly between subgroups defined by age, sex, ethnicity or diabetic status (Table 2 )."
+    },
+    {
+     "rec_id": "R510",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "proportion of AI-specific errors caused by non-anatomical segmentations",
+     "effect": "18 of 37 errors (48.6%) made by AI but not in real-world care involved segmentations immediately apparent as non-anatomical on clinical review",
+     "quote": "For the 37 errors that R9 led to in the NEC dataset, which were not made in real-world care, 18 (48.6%) involved segmentations of IRF or SRF that were immediately apparent as non-anatomical on clinical review (Fig. 3 )."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "England",
+ "sample_unit": "paired consecutive OCT clinic visits",
+ "sample_size": 521,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Deep learning retinal OCT segmentation model",
+  "Moorfields/DeepMind OCT segmentation AI system (IRF, SRF, SHRM) with threshold rules",
+  "Random Forest",
+  "Random forest",
+  "Ridge-regularized Logistic Regression",
+  "Ridge-regularized logistic regression",
+  "retinal OCT segmentation AI system"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI-led assessments versus real-world clinician assessments against reading-centre reference standard",
+   "effect": "AI R9 NPV 95.3% vs real-world 81.6%; rNPV 1.17 (1.11-1.23) and rPPV 1.39 (1.10-1.76), meeting superiority criteria.",
+   "quote": "Applying the thresholds described in R9 to determine AI-led assessments produced a comparable rNPV of 1.17 (1.11\u20131.23) and an improved rPPV of 1.39 (1.10\u20131.76).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External validation on data not used for training, from a second site",
+   "effect": "Thresholds explored on NEC then tested on MEH dataset, which did not use imaging from AI training; patterns of performance very similar in both datasets.",
+   "quote": "These rule sets were subsequently applied to the MEH dataset, where the patterns of performance were very similar in both datasets (Supplementary Table 5 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Errors of autonomous AI assessment and complementarity with clinician errors",
+   "effect": "R9 gave 15 false negatives and 84 false positives; 57 errors not made in real-world care, with non-anatomical segmentations in poor-quality images, suggesting clinician-AI interaction could mitigate risks.",
+   "quote": "AI-led assessments of nAMD disease activity and those made in real-world care commonly disagreed with the reference standard for different clinical cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "subgroup error distribution",
+   "effect": "No significant error differences; accuracy: age 78.6\u201384.6%, sex 79.9\u201381.7%, ethnicity 79.5\u201387.1%, diabetes 74.6% vs 81.8%.",
+   "quote": "The distribution of errors from R9 did not appear to differ significantly between subgroups defined by age, sex, ethnicity or diabetic status (Table 2 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R510",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "implausible segmentation outputs",
+   "effect": "18/37 (48.6%) NEC R9 errors not made in real-world care had non-anatomical IRF/SRF segmentations.",
+   "quote": "For the 37 errors that R9 led to in the NEC dataset, which were not made in real-world care, 18 (48.6%) involved segmentations of IRF or SRF that were immediately apparent as non-anatomical on clinical review (Fig. 3 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI errors linked to poor input image quality",
+   "effect": "18 of 37 (48.6%) NEC errors not made in real-world care involved non-anatomical segmentations, all in cases with suboptimal imaging quality on at least one b-scan.",
+   "quote": "All of these occurred in cases with suboptimal imaging quality on at least one b-scan.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "predefined local validation endpoint",
+   "effect": "R9 rNPV 1.17 (1.11-1.23) met clinical/statistical superiority; rPPV 1.39 (1.10-1.76).",
+   "quote": "The rNPV of 1.17 (1.11-1.23) met predefined criteria for clinical and statistical superiority and accompanied an rPPV of 1.39 (1.10-1.76).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 0.67,
+   "outcome": "performance variation across hospital sites and OCT acquisition devices",
+   "effect": "patterns of diagnostic performance across rule sets were very similar between the two hospital sites using different OCT devices",
+   "quote": "These rule sets were subsequently applied to the MEH dataset, where the patterns of performance were very similar in both datasets (Supplementary Table 5 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Optimising non-zero quantitative decision thresholds on AI segmentation outputs for clinical decisions"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40973777",
+ "screen": {
+  "id": "pmid:40973777",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local threshold optimisation and external validation before deployment",
+  "user": "clinician_or_staff",
+  "reason": "Multicenter external validation of an AI tool using predefined fluid volume decision thresholds for monitoring nAMD, testing if set thresholds maintain safety and performance across clinical sites.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "threshold selection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40973777",
+   "empirical": 0.97,
+   "tests_practice": 0.22,
+   "real_deployment": 0.12
+  }
+ }
+}

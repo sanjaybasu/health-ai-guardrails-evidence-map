@@ -1,0 +1,320 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 7075,
+   "sample_unit": "ICU stays (3,692 training, 1,582 MIMIC-IV internal test, 1,801 eICU-CRD external)",
+   "models_evaluated": [
+    "LASSO logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Calibration slope after local updating (offset-only, recalibration learning curve) in eICU",
+     "effect": "Offset-only updating retained a slope of 0.437. At 125 events, same-system median out-of-sample slope was 0.877, but hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2).",
+     "quote": "Offset-only updating retained a slope of 0.437."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration performance across hospitals in eICU-CRD",
+     "effect": "Hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2), and only 2 of 67 hospitals had at least 10 events.",
+     "quote": "additional pooled events did not correct unseen-hospital transport, and no single-hospital threshold was estimable."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination and calibration of frozen model on external database vs internal test",
+     "effect": "AUROC 0.768 internally and 0.746 externally; external calibration-in-the-large \u22120.712 (overprediction) with slope 0.446.",
+     "quote": "The model retained cross-database discrimination but not calibrated absolute risk."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration under preserved discrimination",
+     "effect": "Internal calibration slope 1.501 (under-dispersed) despite CITL 0.007; external CITL \u22120.712 with slope 0.446; external AUROC 0.746.",
+     "quote": "Mean overprediction (calibration-in-the-large \u2212 0.712) occurred with a slope of 0.446."
+    }
+   ],
+   "unlisted_practices": [
+    "Reporting calibration slope and calibration-in-the-large alongside discrimination in external validation",
+    "Recalibration learning curve to estimate events needed for local updating"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 7075,
+   "sample_unit": "ICU stays",
+   "models_evaluated": [
+    "LASSO logistic model for near-term documented vasopressin treatment signal"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "poor calibration despite discrimination",
+     "effect": "External AUROC 0.746; mean overprediction calibration-in-the-large \u2212 0.712; slope 0.446.",
+     "quote": "Mean overprediction (calibration-in-the-large\u2009\u2212\u20090.712) occurred with a slope of 0.446."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "cross-database transport performance",
+     "effect": "Internal AUROC 0.768; external AUROC 0.746; external calibration-in-the-large \u2212 0.712 with slope 0.446.",
+     "quote": "The model retained cross-database discrimination but not calibrated absolute risk."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "hospital-held-out calibration",
+     "effect": "Median slope 0.877 same-system vs 0.789 hospital-held-out; 93.6% vs 38.4% within 0.8\u20131.2.",
+     "quote": "At the largest same-system target of 125 events, median out-of-sample slope was 0.877 (93.6% of repetitions within 0.8\u20131.2); hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2), and only 2 of 67 hospitals had at least 10 events."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 7075,
+   "sample_unit": "stays",
+   "models_evaluated": [
+    "LASSO logistic model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration and discrimination after cross-database transfer",
+     "effect": "AUROC was preserved (0.746 externally vs 0.768 internally), but calibration failed with mean overprediction (calibration-in-the-large -0.712) and slope 0.446 (vs internal slope 1.501, calibration-in-the-large 0.007).",
+     "quote": "The model retained cross-database discrimination but not calibrated absolute risk."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external versus internal prediction calibration",
+     "effect": "Internally, calibration-in-the-large was 0.007 with slope 1.501, but externally calibration-in-the-large was -0.712 with slope 0.446, reflecting opposite calibration errors and marked overprediction.",
+     "quote": "Internally, mean predicted risk was aligned (calibration-in-the-large 0.007), but a slope of 1.501 indicated under-dispersed predictions; externally, the calibration errors were opposite in direction."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "recalibration slope across sample sizes and hospitals",
+     "effect": "Median slope was 0.877 (93.6% within 0.8\u20131.2) at 125 same-system events, but hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2), and only 2 of 67 hospitals had >=10 events.",
+     "quote": "At the largest same-system target of 125 events, median out-of-sample slope was 0.877 (93.6% of repetitions within 0.8\u20131.2); hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2), and only 2 of 67 hospitals had at least 10 events."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "ICU stays (3,692 training, 1,582 MIMIC-IV internal test, 1,801 eICU-CRD external)",
+ "sample_size": 7075,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "LASSO logistic model",
+  "LASSO logistic model for near-term documented vasopressin treatment signal",
+  "LASSO logistic regression"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration slope after local updating (offset-only, recalibration learning curve) in eICU",
+   "effect": "Offset-only updating retained a slope of 0.437. At 125 events, same-system median out-of-sample slope was 0.877, but hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2).",
+   "quote": "Offset-only updating retained a slope of 0.437.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration performance across hospitals in eICU-CRD",
+   "effect": "Hospital-held-out slope was 0.789 (38.4% within 0.8\u20131.2), and only 2 of 67 hospitals had at least 10 events.",
+   "quote": "additional pooled events did not correct unseen-hospital transport, and no single-hospital threshold was estimable.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Discrimination and calibration of frozen model on external database vs internal test",
+   "effect": "AUROC 0.768 internally and 0.746 externally; external calibration-in-the-large \u22120.712 (overprediction) with slope 0.446.",
+   "quote": "The model retained cross-database discrimination but not calibrated absolute risk.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration under preserved discrimination",
+   "effect": "Internal calibration slope 1.501 (under-dispersed) despite CITL 0.007; external CITL \u22120.712 with slope 0.446; external AUROC 0.746.",
+   "quote": "Mean overprediction (calibration-in-the-large \u2212 0.712) occurred with a slope of 0.446.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external versus internal prediction calibration",
+   "effect": "Internally, calibration-in-the-large was 0.007 with slope 1.501, but externally calibration-in-the-large was -0.712 with slope 0.446, reflecting opposite calibration errors and marked overprediction.",
+   "quote": "Internally, mean predicted risk was aligned (calibration-in-the-large 0.007), but a slope of 1.501 indicated under-dispersed predictions; externally, the calibration errors were opposite in direction.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Recalibration learning curve to estimate events needed for local updating",
+  "Reporting calibration slope and calibration-in-the-large alongside discrimination in external validation"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1318940",
+ "screen": {
+  "id": "epmc:PPR1318940",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration/updating before deployment",
+  "user": "none",
+  "reason": "The study directly evaluates external validation across ICU databases and tests local updating/recalibration strategies (offset updating, learning curves for recalibration) to fix calibration drift.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local validation and recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1318940",
+   "empirical": 0.95,
+   "tests_practice": 0.3,
+   "real_deployment": 0.04
+  }
+ }
+}

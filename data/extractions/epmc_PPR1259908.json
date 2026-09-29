@@ -1,0 +1,352 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 45680,
+   "sample_unit": "patients (34,987 All of Us development cohort; 10,693 BioMe external validation)",
+   "models_evaluated": [
+    "XGBoost M1",
+    "XGBoost M2",
+    "XGBoost M3",
+    "Revised Framingham Stroke Risk Profile",
+    "Pooled Cohort Equations"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Discrimination and calibration of stroke model in external cohort versus development cohort",
+     "effect": "AUROC 0.745 in BioMe, but predictions systematically high (aggregate O/E 0.12 vs 1.00 in AoU), consistent with intercept-shift miscalibration.",
+     "quote": "A machine-learning ensemble combining clinical, laboratory, and polygenic features outperformed traditional risk scores by 0.16\u20130.18 AUROC and retained discriminative validity in an ancestrally distinct external cohort but required site-specific recalibration of absolute risk."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Calibration after local intercept recalibration by ancestry group",
+     "effect": "BioMe-fit intercept recalibration restored calibration in African American and Hispanic participants but not European American participants.",
+     "quote": "Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants."
+    },
+    {
+     "rec_id": "R306",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Incremental discrimination gain from adding self-reported race as model input",
+     "effect": "Race added small gains only with PRS (BioMe +0.022, P=0.034; AoU +0.006, P=0.052), not without PRS; overlapped with polygenic signal.",
+     "quote": "The marginal contribution of self-reported race overlapped with polygenic signal, supporting per-ancestry calibration over universal race-aware model deployment."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing ML model against established risk scores (rFSRP, PCE) on same data",
+    "Race-blind versus race-aware model specification comparison"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 45680,
+   "sample_unit": "adults",
+   "models_evaluated": [
+    "XGBoost M1 clinical baseline model",
+    "XGBoost M2 clinical plus laboratory feature trajectories model",
+    "XGBoost M3 clinical plus laboratory trajectories plus 20 polygenic risk scores model",
+    "Revised Framingham Stroke Risk Profile",
+    "Pooled Cohort Equations"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external validation discrimination and calibration",
+     "effect": "Bio Me AUROC 0.745; aggregate O/E 0.12 vs. 1.00 in AoU, indicating high predictions.",
+     "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "comparison with traditional risk scores",
+     "effect": "M3 AUROC 0.813; \u0394AUROC 0.164 vs rFSRP and 0.181 vs PCE; both P < 0.001.",
+     "quote": "In the AoU test partition (n = 6,998; 384 cases), M3 achieved AUROC 0.813 (95% CI, 0.788\u20130.837), outperforming the Revised Framingham Stroke Risk Profile (\u0394AUROC 0.164) and Pooled Cohort Equations (\u0394AUROC 0.181; both  P < 0.001)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "intercept recalibration by ancestry",
+     "effect": "Bio Me-fit recalibration restored calibration in African American and Hispanic but not European American participants.",
+     "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "subgroup performance by cohort and race",
+     "effect": "PRS \u0394AUROC + 0.042 (P = 0.003) only in Bio Me Hispanic; no significant gain in five other combinations.",
+     "quote": "PRS contribution was significant only in the Bio  Me Hispanic (\u0394AUROC + 0.042;  P = 0.003), with no significant within-stratum gain in five other cohort-by-race combinations."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 45680,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "XGBoost",
+    "Revised Framingham Stroke Risk Profile",
+    "Pooled Cohort Equations"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external discrimination and calibration",
+     "effect": "AUROC 0.745 in external cohort vs 0.813; aggregate O/E ratio 0.12 vs 1.00",
+     "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external site discrimination and calibration",
+     "effect": "AUROC dropped to 0.745 with aggregate O/E 0.12 showing systematic overprediction",
+     "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "subgroup calibration after local intercept recalibration",
+     "effect": "recalibration restored calibration in African American and Hispanic but not European American participants",
+     "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients (34,987 All of Us development cohort; 10,693 BioMe external validation)",
+ "sample_size": 45680,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Pooled Cohort Equations",
+  "Revised Framingham Stroke Risk Profile",
+  "XGBoost",
+  "XGBoost M1",
+  "XGBoost M1 clinical baseline model",
+  "XGBoost M2",
+  "XGBoost M2 clinical plus laboratory feature trajectories model",
+  "XGBoost M3",
+  "XGBoost M3 clinical plus laboratory trajectories plus 20 polygenic risk scores model"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination and calibration of stroke model in external cohort versus development cohort",
+   "effect": "AUROC 0.745 in BioMe, but predictions systematically high (aggregate O/E 0.12 vs 1.00 in AoU), consistent with intercept-shift miscalibration.",
+   "quote": "A machine-learning ensemble combining clinical, laboratory, and polygenic features outperformed traditional risk scores by 0.16\u20130.18 AUROC and retained discriminative validity in an ancestrally distinct external cohort but required site-specific recalibration of absolute risk.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration after local intercept recalibration by ancestry group",
+   "effect": "BioMe-fit intercept recalibration restored calibration in African American and Hispanic participants but not European American participants.",
+   "quote": "Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R306",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Incremental discrimination gain from adding self-reported race as model input",
+   "effect": "Race added small gains only with PRS (BioMe +0.022, P=0.034; AoU +0.006, P=0.052), not without PRS; overlapped with polygenic signal.",
+   "quote": "The marginal contribution of self-reported race overlapped with polygenic signal, supporting per-ancestry calibration over universal race-aware model deployment.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "external validation discrimination and calibration",
+   "effect": "Bio Me AUROC 0.745; aggregate O/E 0.12 vs. 1.00 in AoU, indicating high predictions.",
+   "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "comparison with traditional risk scores",
+   "effect": "M3 AUROC 0.813; \u0394AUROC 0.164 vs rFSRP and 0.181 vs PCE; both P < 0.001.",
+   "quote": "In the AoU test partition (n = 6,998; 384 cases), M3 achieved AUROC 0.813 (95% CI, 0.788\u20130.837), outperforming the Revised Framingham Stroke Risk Profile (\u0394AUROC 0.164) and Pooled Cohort Equations (\u0394AUROC 0.181; both  P < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external site discrimination and calibration",
+   "effect": "AUROC dropped to 0.745 with aggregate O/E 0.12 showing systematic overprediction",
+   "quote": "Discrimination transferred to Bio  Me (AUROC 0.745) but predictions were systematically high (aggregate O/E 0.12 vs. 1.00 in AoU), consistent with intercept-shift miscalibration; Bio  Me -fit intercept recalibration restored calibration in African American and Hispanic but not European American participants.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Comparing ML model against established risk scores (rFSRP, PCE) on same data",
+  "Race-blind versus race-aware model specification comparison"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1259908",
+ "screen": {
+  "id": "epmc:PPR1259908",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration across ancestrally distinct cohorts",
+  "user": "none",
+  "reason": "The study develops a risk prediction model and tests a specific deployment safeguard/practice (site- and ancestry-specific intercept recalibration) upon external validation across diverse patient cohorts.",
+  "jev": {
+   "id": "epmc:PPR1259908",
+   "empirical": 0.96,
+   "tests_practice": 0.82,
+   "real_deployment": 0.03
+  }
+ }
+}

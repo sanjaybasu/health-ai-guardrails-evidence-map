@@ -1,0 +1,342 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 24077,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LASSO",
+    "Random Forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUROC on same-period internal test versus temporally later prospective test set",
+     "effect": "Performance on the prospective cohort dropped slightly versus internal validation: LASSO 0.81 to 0.76, XGBoost 0.80 to 0.78, RF 0.80 to 0.78.",
+     "quote": "When testing these models on the prospective cohort (Fig. 2b ) performance decreases slightly, with an AUROC of 0.76 [0.76, 0.77] for the LASSO, 0.78 [0.78, 0.79] for the XGBoost and 0.78 [0.78, 0.79] for the RF."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance across training/test years, model longevity and effect of annual retraining",
+     "effect": "Performance on future test sets varied between AUROC 0.64 and 0.76 depending on training years; older data still yielded reasonable performance, and later added recent data did not necessarily raise performance.",
+     "quote": "The results from the sliding window experiment highlight that depending on which years (fixed training sample size, n = 3000) the model is trained, performance on the future test sets varies considerably, ranging between AUROCs of 0.64 and 0.76."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Temporal drift in features, labels and patient population between training and later years",
+     "effect": "Label ratio stayed overall stable, but top features varied strongly over time (e.g., therapy goal, albumin); authors describe moderate drift, with performance decreasing slightly.",
+     "quote": "The heatmap displays large variations for almost all top features."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of data valuation pruning and feature reduction on prospective performance",
+     "effect": "Data values declined sharply before 2014; final model trained on 2014-2020 data with 405 of 1050 features and tested on independent 2022 set, with comparable performance across the three models.",
+     "quote": "Supplementary Fig. S3 shows comparable performance of all three models (LASSO, XGBoost, and RF) in three configurations: when trained i) on full data, ii) upon data pruning, i.e., after removing the years with the lowest data value averages (2010\u20132013), and iii) upon data pruning and permutation importance-based feature reduction."
+    }
+   ],
+   "unlisted_practices": [
+    "Data valuation algorithms to prune low-value training years",
+    "Permutation-importance feature reduction on temporally held-out data",
+    "Sliding-window training to assess recency versus volume trade-off"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 24077,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Least Absolute Shrinkage and Selection Operator (LASSO)",
+    "Random Forest (RF)",
+    "Extreme Gradient Boosting (XGBoost)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Temporal validation discrimination",
+     "effect": "Prospective-cohort AUROC decreased to 0.76 [0.76, 0.77] LASSO; 0.78 [0.78, 0.79] XGBoost/RF.",
+     "quote": "When testing these models on the prospective cohort (Fig. 2b ) performance decreases slightly, with an AUROC of 0.76 [0.76, 0.77] for the LASSO, 0.78 [0.78, 0.79] for the XGBoost and 0.78 [0.78, 0.79] for the RF."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate model AUROC",
+     "effect": "Prospective AUROC: LASSO 0.76 [0.76, 0.77], XGBoost 0.78 [0.78, 0.79], RF 0.78 [0.78, 0.79].",
+     "quote": "When testing these models on the prospective cohort (Fig. 2b ) performance decreases slightly, with an AUROC of 0.76 [0.76, 0.77] for the LASSO, 0.78 [0.78, 0.79] for the XGBoost and 0.78 [0.78, 0.79] for the RF."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Temporal representativeness assessment",
+     "effect": "Therapy Goal Curative used frequently in 2010\u20132015 and 2018\u20132022, but barely during 2015\u20132018.",
+     "quote": "For example, the variable that records the intention in which a therapy is administered (\u2018Therapy Goal Curative\u2019) is frequently used from 2010\u20132015 and 2018\u20132022, but barely used during 2015\u20132018."
+    },
+    {
+     "rec_id": "R150",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal model performance variability",
+     "effect": "With fixed n = 3000, future test AUROC varied considerably, ranging from 0.64 to 0.76.",
+     "quote": "The results from the sliding window experiment highlight that depending on which years (fixed training sample size, n = 3000) the model is trained, performance on the future test sets varies considerably, ranging between AUROCs of 0.64 and 0.76."
+    }
+   ],
+   "unlisted_practices": [
+    "Data valuation algorithms to remove low-value training years before prospective testing",
+    "Permutation-importance feature pruning for temporal robustness"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 24077,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LASSO",
+    "Random Forest",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination on prospective versus retrospective validation cohorts",
+     "effect": "AUROC decreased from retrospective training/validation (LASSO 0.81, XGBoost 0.80, RF 0.80) to prospective temporal validation (LASSO 0.76 [0.76, 0.77], XGBoost 0.78 [0.78, 0.79], RF 0.78 [0.78, 0.79]).",
+     "quote": "When testing these models on the prospective cohort (Fig. 2b ) performance decreases slightly, with an AUROC of 0.76 [0.76, 0.77] for the LASSO, 0.78 [0.78, 0.79] for the XGBoost and 0.78 [0.78, 0.79] for the RF."
+    }
+   ],
+   "unlisted_practices": [
+    "Temporal data valuation algorithms (KNNShapley, Data-Oob) to identify and prune lower-value historical training years",
+    "Permutation importance-based recursive feature elimination on prospective validation data"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 24077,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Extreme Gradient Boosting (XGBoost)",
+  "LASSO",
+  "Least Absolute Shrinkage and Selection Operator (LASSO)",
+  "Random Forest",
+  "Random Forest (RF)",
+  "XGBoost"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUROC on same-period internal test versus temporally later prospective test set",
+   "effect": "Performance on the prospective cohort dropped slightly versus internal validation: LASSO 0.81 to 0.76, XGBoost 0.80 to 0.78, RF 0.80 to 0.78.",
+   "quote": "When testing these models on the prospective cohort (Fig. 2b ) performance decreases slightly, with an AUROC of 0.76 [0.76, 0.77] for the LASSO, 0.78 [0.78, 0.79] for the XGBoost and 0.78 [0.78, 0.79] for the RF.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R150",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance across training/test years, model longevity and effect of annual retraining",
+   "effect": "Performance on future test sets varied between AUROC 0.64 and 0.76 depending on training years; older data still yielded reasonable performance, and later added recent data did not necessarily raise performance.",
+   "quote": "The results from the sliding window experiment highlight that depending on which years (fixed training sample size, n = 3000) the model is trained, performance on the future test sets varies considerably, ranging between AUROCs of 0.64 and 0.76.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Temporal drift in features, labels and patient population between training and later years",
+   "effect": "Label ratio stayed overall stable, but top features varied strongly over time (e.g., therapy goal, albumin); authors describe moderate drift, with performance decreasing slightly.",
+   "quote": "The heatmap displays large variations for almost all top features.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "discrimination on prospective versus retrospective validation cohorts",
+   "effect": "AUROC decreased from retrospective training/validation (LASSO 0.81, XGBoost 0.80, RF 0.80) to prospective temporal validation (LASSO 0.76 [0.76, 0.77], XGBoost 0.78 [0.78, 0.79], RF 0.78 [0.78, 0.79]).",
+   "quote": "When testing these models on the prospective cohort (Fig. 2b ) performance decreases slightly, with an AUROC of 0.76 [0.76, 0.77] for the LASSO, 0.78 [0.78, 0.79] for the XGBoost and 0.78 [0.78, 0.79] for the RF.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Data valuation algorithms to prune low-value training years",
+  "Data valuation algorithms to remove low-value training years before prospective testing",
+  "Permutation importance-based recursive feature elimination on prospective validation data",
+  "Permutation-importance feature pruning for temporal robustness",
+  "Permutation-importance feature reduction on temporally held-out data",
+  "Sliding-window training to assess recency versus volume trade-off",
+  "Temporal data valuation algorithms (KNNShapley, Data-Oob) to identify and prune lower-value historical training years"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40596645",
+ "screen": {
+  "id": "pmid:40596645",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local temporal validation and drift diagnostics before deployment",
+  "user": "none",
+  "reason": "The study develops and demonstrates a four-stage local diagnostic framework to evaluate temporal validation, data drift, and model longevity before/during deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "temporal validation and drift monitoring framework"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40596645",
+   "empirical": 0.9,
+   "tests_practice": 0.23,
+   "real_deployment": 0.05
+  }
+ }
+}

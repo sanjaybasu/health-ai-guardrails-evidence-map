@@ -1,0 +1,299 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 960,
+   "sample_unit": "vignette-factor combinations (60 clinician-authored vignettes x 16 variations)",
+   "models_evaluated": [
+    "GPT-4o-mini",
+    "MedGemma 27B",
+    "GPT-4o-mini + UMLS-CUI augmentation",
+    "MedGemma 27B + UMLS-CUI augmentation",
+    "CUI-only voting classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Emergency-case accuracy and under-triage with versus without UMLS-CUI augmentation",
+     "effect": "CUI augmentation decreased under-triage but increased over-triage in both models. Emergency-case accuracy rose from 73.0% to 80.7% (GPT-4o-mini) and from 60.5% to 68.5% (MedGemma 27B).",
+     "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B."
+    },
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Baseline LLM recognition of emergency cases in triage vignettes",
+     "effect": "Baseline emergency-case accuracy was 73.0% for GPT-4o-mini and 60.5% for MedGemma 27B, indicating missed emergencies.",
+     "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Sensitivity of triage output to anchoring statements with and without CUI augmentation",
+     "effect": "CUI augmentation reduced susceptibility to anchoring statements (no numbers in abstract).",
+     "quote": "CUI augmentation also reduced susceptibility to anchoring statements."
+    }
+   ],
+   "unlisted_practices": [
+    "Augmenting LLM prompts with standardized UMLS concept identifiers extracted by NER for triage"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 960,
+   "sample_unit": "vignette-factor combinations",
+   "models_evaluated": [
+    "CUI-only classification",
+    "MedGemma 27B",
+    "MedGemma 27B augmented with CUIs",
+    "GPT-4o-mini",
+    "GPT-4o-mini augmented with CUIs"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "emergency triage recognition",
+     "effect": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B.",
+     "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "anchoring-statement sensitivity",
+     "effect": "CUI augmentation reduced susceptibility to anchoring statements; no magnitude reported.",
+     "quote": "CUI augmentation also reduced susceptibility to anchoring statements."
+    }
+   ],
+   "unlisted_practices": [
+    "UMLS-CUI augmentation of LLM prompts for clinical triage"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 960,
+   "sample_unit": "vignette-factor combinations",
+   "models_evaluated": [
+    "MedGemma 27B",
+    "GPT-4o-mini",
+    "ClinicalBERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "emergency-case accuracy",
+     "effect": "Emergency-case accuracy was 73.0% for GPT-4o-mini and 60.5% for MedGemma 27B (improved to 80.7% and 68.5% with CUI augmentation)",
+     "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B."
+    }
+   ],
+   "unlisted_practices": [
+    "Ontology-grounded prompt augmentation using Unified Medical Language System (UMLS) Concept Unique Identifiers (CUIs)"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "not reported",
+ "sample_unit": "vignette-factor combinations",
+ "sample_size": 960,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CUI-only classification",
+  "CUI-only voting classifier",
+  "ClinicalBERT",
+  "GPT-4o-mini",
+  "GPT-4o-mini + UMLS-CUI augmentation",
+  "GPT-4o-mini augmented with CUIs",
+  "MedGemma 27B",
+  "MedGemma 27B + UMLS-CUI augmentation",
+  "MedGemma 27B augmented with CUIs"
+ ],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "emergency triage recognition",
+   "effect": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B.",
+   "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Emergency-case accuracy and under-triage with versus without UMLS-CUI augmentation",
+   "effect": "CUI augmentation decreased under-triage but increased over-triage in both models. Emergency-case accuracy rose from 73.0% to 80.7% (GPT-4o-mini) and from 60.5% to 68.5% (MedGemma 27B).",
+   "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Baseline LLM recognition of emergency cases in triage vignettes",
+   "effect": "Baseline emergency-case accuracy was 73.0% for GPT-4o-mini and 60.5% for MedGemma 27B, indicating missed emergencies.",
+   "quote": "Emergency-case accuracy improved from 73.0% to 80.7% for GPT-4o-mini and from 60.5% to 68.5% for MedGemma 27B.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Augmenting LLM prompts with standardized UMLS concept identifiers extracted by NER for triage",
+  "Ontology-grounded prompt augmentation using Unified Medical Language System (UMLS) Concept Unique Identifiers (CUIs)",
+  "UMLS-CUI augmentation of LLM prompts for clinical triage"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1295338",
+ "screen": {
+  "id": "epmc:PPR1295338",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "UMLS-CUI ontology-grounded prompt augmentation",
+  "user": "none",
+  "reason": "The study directly compares baseline LLM outputs to LLMs augmented with standardized clinical concept guardrails (UMLS-CUI augmentation) to evaluate reduction of under-triage safety risks across clinical vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "ontology-grounded prompt augmentation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1295338",
+   "empirical": 0.97,
+   "tests_practice": 0.47,
+   "real_deployment": 0.03
+  }
+ }
+}

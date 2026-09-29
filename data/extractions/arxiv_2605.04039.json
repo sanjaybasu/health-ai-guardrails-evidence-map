@@ -1,0 +1,100 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "unknown",
+ "sample_size": 200,
+ "sample_unit": "questions",
+ "models_evaluated": [],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy and safety errors with clean clinician-defined evidence versus closed-book prompting across 34 LLMs",
+   "effect": "Mean accuracy rose from 73.5% to 94.1%; high-risk error fell from 12.0% to 2.6%; contradiction from 12.7% to 2.3%; dangerous overconfidence from 8.0% to 1.6%.",
+   "quote": "Clean evidence produced the strongest improvement, increasing mean accuracy from 73.5% to 94.1%, while reducing high-risk error from 12.0% to 2.6%, contradiction from 12.7% to 2.3%, and dangerous overconfidence from 8.0% to 1.6%.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Safety of standard and agentic RAG retrieval grounding versus clean evidence",
+   "effect": "Standard and agentic RAG did not reproduce clean-evidence safety; agentic RAG improved accuracy and reduced contradiction, but high-risk error and dangerous overconfidence remained elevated.",
+   "quote": "Standard RAG and agentic RAG did not reproduce this safety profile: agentic RAG improved accuracy over standard RAG and reduced contradiction, but high-risk error and dangerous overconfidence remained elevated.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Rate of dangerous overconfidence in LLM answers across deployment conditions",
+   "effect": "Dangerous overconfidence was 8.0% closed-book, falling to 1.6% with clean evidence, and remained elevated under standard and agentic RAG.",
+   "quote": "Clean evidence produced the strongest improvement, increasing mean accuracy from 73.5% to 94.1%, while reducing high-risk error from 12.0% to 2.6%, contradiction from 12.7% to 2.3%, and dangerous overconfidence from 8.0% to 1.6%.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Scaling model size, context length, or inference-time compute to improve clinical LLM safety (max-context prompting and extra compute did not close the safety gap)",
+  "Worst-case, question-level analysis of clinically consequential LLM errors"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2605.04039",
+ "screen": {
+  "id": "arxiv:2605.04039",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation (RAG) and evidence grounding",
+  "user": "none",
+  "reason": "Evaluates safety metrics across various deployment configurations/safeguards including clean evidence grounding, standard RAG, and agentic RAG on a radiology safety benchmark.",
+  "jev": {
+   "id": "arxiv:2605.04039",
+   "empirical": 0.96,
+   "tests_practice": 0.87,
+   "real_deployment": 0.04
+  }
+ }
+}

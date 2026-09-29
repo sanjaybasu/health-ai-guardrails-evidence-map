@@ -1,0 +1,367 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 35,
+   "sample_unit": "questions (each answered by 4 LLMs under 2 prompts; 280 responses per prompt)",
+   "models_evaluated": [
+    "ChatGPT 3.5",
+    "ChatGPT 4.0",
+    "ChatGPT 4o",
+    "Google Gemini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R292",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Flesch-Kincaid grade level of LLM responses with vs without child-targeted reading-level prompt",
+     "effect": "FKGL fell from 9.63\u201311.99 (Prompt A) to 6.36\u20137.01 (Prompt B); FRE rose from ~42\u201353 to ~73\u201377; all p<0.001 across four LLMs.",
+     "quote": "The FKGL decreased by approximately four grades, ranging from 9.63\u201311.99 to 6.36\u20137.01."
+    },
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Readability of AI-generated patient education with plain-language child-targeted prompt vs adult prompt",
+     "effect": "Prompt B responses had significantly higher readability (FKGL, FRE, syllables/word) for all LLMs (p \u2264 0.001); dominant reading level moved from college/10th\u201312th grade to 6th\u20137th grade.",
+     "quote": "Specifically, responses to prompt B exhibit higher readability scores in terms of FKGL, FRE score, average syllables per word, and reading level."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ophthalmologist-rated potential harm and correctness of LLM myopia education responses",
+     "effect": "About 30% of ChatGPT 4o responses rated slightly harmful; ChatGPT 3.5 and Gemini each got 1.14% 'extremely harmful' ratings for Prompt B; authors say clinicians must review all LLM materials.",
+     "quote": "Additionally, approximately 30% of the ChatGPT 4o responses were still rated as \u201cslightly harmful.\u201d"
+    },
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Accuracy, completeness and harm of responses when tailored for children versus adults",
+     "effect": "Prompt A elicited more correct, complete, concise responses than prompt B; ChatGPT 3.5 and Gemini were worse on all four metrics under Prompt B (all p<0.02).",
+     "quote": "In general, prompt A elicited more correct, complete, and concise responses from the four language models than did prompt B."
+    },
+    {
+     "rec_id": "R298",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Consistency of LLM response quality across equivalent prompts varying in audience/literacy level",
+     "effect": "Responses differed significantly between adult and child prompts in correctness, completeness, conciseness, and harm for some models (e.g., ChatGPT 3.5 and Gemini all p<0.02).",
+     "quote": "Large language models exhibit significant variations in their responses to different prompts ( Figure 4 )."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Poor-quality responses on questions needing clinical judgment",
+     "effect": "Seven of 35 questions received significantly more poor responses; ChatGPT 3.5 had most 'discouraged' ratings, ChatGPT 4o fewest; authors advise LLMs be supplementary, not substitutive.",
+     "quote": "It is crucial to avoid relying solely on LLMs for diagnosis or treatment decisions, ensuring that these AI tools serve a supplementary rather than substitutive role."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering with an audience-specific instruction (child age 8\u201312) to tailor generative AI education materials"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 280,
+   "sample_unit": "LLM-generated responses",
+   "models_evaluated": [
+    "ChatGPT 3.5",
+    "ChatGPT 4.0",
+    "ChatGPT 4o",
+    "Google Gemini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "performance differences across LLMs",
+     "effect": "ChatGPT 4o led correctness A 91%, B 83%; conciseness A 79%, B 63%; low-harm ratings A 99%, B 97%; all p<0.001.",
+     "quote": "ChatGPT 4o achieved the most positive ratings (\"good\" and above) in correctness (Prompt A: 91%; Prompt B: 83%) and conciseness (Prompt A: 79%; Prompt B: 63%), as well as the lowest negative ratings in potential harm ratings (\"not at all\" and \"slightly,\" Prompt A: 99%; Prompt B: 97%) in the generation of educational materials for both adults and children (all <i>p</i>\u2009<\u20090.001)."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "readability of child materials",
+     "effect": "Child prompt reduced FKGL approximately four grades, from 9.63\u201311.99 to 6.36\u20137.01.",
+     "quote": "The FKGL decreased by approximately four grades, ranging from 9.63\u201311.99 to 6.36\u20137.01."
+    },
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "child-prompt performance",
+     "effect": "ChatGPT 3.5 and Gemini parent-prompt responses outperformed child-prompt responses in all four areas (all p<0.02).",
+     "quote": "When participants responded to prompt A, both ChatGPT 3.5 and Gemini outperformed their responses to prompt B in all four areas (all p < 0.02)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "harmful education responses",
+     "effect": "ChatGPT 3.5 and Gemini each received 1.14% \u201cextremely harmful\u201d ratings.",
+     "quote": "Notably, both ChatGPT 3.5 and Gemini received 1.14% \u201cextremely harmful\u201d ratings, highlighting the importance of developing safe and reliable AI models."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 35,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "ChatGPT 3.5",
+    "ChatGPT 4.0",
+    "ChatGPT 4o",
+    "Google Gemini"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R297",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinical accuracy and potential harm of child-targeted vs adult-targeted responses",
+     "effect": "Prompt A elicited more correct, complete, and concise responses than Prompt B across models (p < 0.05); ChatGPT 3.5 and Gemini had 1.14% extremely harmful ratings for Prompt B",
+     "quote": "In general, prompt A elicited more correct, complete, and concise responses from the four language models than did prompt B."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering with explicit age and readability constraints to lower reading grade level of generative AI patient education materials"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "China",
+ "sample_unit": "questions (each answered by 4 LLMs under 2 prompts; 280 responses per prompt)",
+ "sample_size": 35,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ChatGPT 3.5",
+  "ChatGPT 4.0",
+  "ChatGPT 4o",
+  "Google Gemini"
+ ],
+ "links": [
+  {
+   "rec_id": "R292",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Flesch-Kincaid grade level of LLM responses with vs without child-targeted reading-level prompt",
+   "effect": "FKGL fell from 9.63\u201311.99 (Prompt A) to 6.36\u20137.01 (Prompt B); FRE rose from ~42\u201353 to ~73\u201377; all p<0.001 across four LLMs.",
+   "quote": "The FKGL decreased by approximately four grades, ranging from 9.63\u201311.99 to 6.36\u20137.01.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R297",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.67,
+   "outcome": "Accuracy, completeness and harm of responses when tailored for children versus adults",
+   "effect": "Prompt A elicited more correct, complete, concise responses than prompt B; ChatGPT 3.5 and Gemini were worse on all four metrics under Prompt B (all p<0.02).",
+   "quote": "In general, prompt A elicited more correct, complete, and concise responses from the four language models than did prompt B.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R289",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Readability of AI-generated patient education with plain-language child-targeted prompt vs adult prompt",
+   "effect": "Prompt B responses had significantly higher readability (FKGL, FRE, syllables/word) for all LLMs (p \u2264 0.001); dominant reading level moved from college/10th\u201312th grade to 6th\u20137th grade.",
+   "quote": "Specifically, responses to prompt B exhibit higher readability scores in terms of FKGL, FRE score, average syllables per word, and reading level.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Ophthalmologist-rated potential harm and correctness of LLM myopia education responses",
+   "effect": "About 30% of ChatGPT 4o responses rated slightly harmful; ChatGPT 3.5 and Gemini each got 1.14% 'extremely harmful' ratings for Prompt B; authors say clinicians must review all LLM materials.",
+   "quote": "Additionally, approximately 30% of the ChatGPT 4o responses were still rated as \u201cslightly harmful.\u201d",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R298",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Consistency of LLM response quality across equivalent prompts varying in audience/literacy level",
+   "effect": "Responses differed significantly between adult and child prompts in correctness, completeness, conciseness, and harm for some models (e.g., ChatGPT 3.5 and Gemini all p<0.02).",
+   "quote": "Large language models exhibit significant variations in their responses to different prompts ( Figure 4 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Prompt engineering with an audience-specific instruction (child age 8\u201312) to tailor generative AI education materials",
+  "Prompt engineering with explicit age and readability constraints to lower reading grade level of generative AI patient education materials"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40755959",
+ "screen": {
+  "id": "pmid:40755959",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "reading-level constrained prompting for child-friendly output",
+  "user": "patient",
+  "reason": "The study tests whether adapting the prompt (Prompt A for adults vs. Prompt B for children) alters readability, completeness, conciseness, and potential harm of LLM-generated patient education materials.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering for audience reading level"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40755959",
+   "empirical": 0.96,
+   "tests_practice": 0.09,
+   "real_deployment": 0.04
+  }
+ }
+}

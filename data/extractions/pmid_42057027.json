@@ -1,0 +1,349 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 13,
+   "sample_unit": "prospective SMS recruitment rounds (model development used 11,616 Nanjing SMS records)",
+   "models_evaluated": [
+    "XGBoost",
+    "Support Vector Machine",
+    "K-Nearest Neighbors",
+    "Logistic Regression",
+    "Decision Tree",
+    "Random Forest",
+    "Multi-Layer Perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Recall at new sites after fine-tuning with 10% local data",
+     "effect": "Fine-tuning with 10% local data raised Suzhou RF recall from 0.67 to 0.77 and Yangzhou MLP recall from 0.58 to 0.68.",
+     "quote": "Subsequent fine-tuning with 10% local data further enhanced performance on top of direct generalization (Suzhou RF recall increased to 0.77, Yangzhou MLP to 0.68), rather than compensating for any shortcomings of generalization."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Cross-site recall of Nanjing-trained models in Suzhou and Yangzhou",
+     "effect": "Transferred RF recall was 0.67 in Suzhou vs 0.77 locally, and 0.63 in Yangzhou vs 0.64 locally. MLP recall was 0.63 and 0.58.",
+     "quote": "Specifically, the RF model achieved a recall of 0.67 in Suzhou (compared to 0.77 with local optimization) and 0.63 in Yangzhou (versus 0.64 locally), while the MLP model attained recall scores of 0.63 and 0.58, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Incremental retraining of the model with newly collected data after each deployment round before the next round",
+    "Ensemble of MLP and RF with prioritized intersection for selecting outreach targets",
+    "Adjusting prediction thresholds to minimize overlap with conventional recruitment lists"
+   ]
+  },
+  "openai": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 13,
+   "sample_unit": "prospective recruitment rounds across three cities",
+   "models_evaluated": [
+    "eXtreme Gradient Boosting (XGBoost)",
+    "Support Vector Machine (SVM)",
+    "K-Nearest Neighbors (KNN)",
+    "Logistic Regression (LR)",
+    "Decision Tree (DT)",
+    "Random Forest (RF)",
+    "Multi-Layer Perceptron (MLP)",
+    "Integrated MLP and RF recruitment model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Recruitment success compared with conventional donor selection",
+     "effect": "High-willingness donor recruitment success was 408.28%, 25.19%, and 47.31% higher than conventional methods in Nanjing, Suzhou, and Yangzhou, respectively.",
+     "quote": "On average, the recruitment success rate for high-willingness donors was 408.28%, 25.19%, and 47.31% higher than that of conventional methods in Nanjing (\u03c7 2 = 35.471, p = 0.000), Suzhou (\u03c7 2 = 9.384, p = 0.009), and Yangzhou (\u03c7 2 = 96.701, p = 0.000), respectively, as shown in Table 1 ."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Donor prediction recall following local fine-tuning",
+     "effect": "Fine-tuning with 10% local data increased Suzhou RF recall to 0.77 and Yangzhou MLP recall to 0.68.",
+     "quote": "Subsequent fine-tuning with 10% local data further enhanced performance on top of direct generalization (Suzhou RF recall increased to 0.77, Yangzhou MLP to 0.68), rather than compensating for any shortcomings of generalization."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Variation in donor prediction recall across cities",
+     "effect": "Recall differed between Suzhou and Yangzhou: RF 0.67 versus 0.63 and MLP 0.63 versus 0.58. Locally optimized RF recall was 0.77 and 0.64, respectively.",
+     "quote": "Specifically, the RF model achieved a recall of 0.67 in Suzhou (compared to 0.77 with local optimization) and 0.63 in Yangzhou (versus 0.64 locally), while the MLP model attained recall scores of 0.63 and 0.58, respectively."
+    }
+   ],
+   "unlisted_practices": [
+    "Prioritize eligible blood donors for SMS recruitment using predicted donation willingness.",
+    "Adjust donation-willingness thresholds to balance donor recall against unsuccessful SMS outreach and recruitment-list redundancy.",
+    "Use resampling and cost-sensitive learning to address severe class imbalance in donor-response prediction."
+   ]
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China",
+   "sample_size": 513523,
+   "sample_unit": "donations",
+   "models_evaluated": [
+    "Multi-Layer Perceptron (MLP)",
+    "Random Forest (RF)",
+    "eXtreme Gradient Boosting (XGBoost)",
+    "Support Vector Machine (SVM)",
+    "K-Nearest Neighbors (KNN)",
+    "Logistic Regression (LR)",
+    "Decision Tree (DT)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "model recall after fine-tuning",
+     "effect": "fine-tuning with 10% local data improved Suzhou RF recall to 0.77 and Yangzhou MLP to 0.68",
+     "quote": "Subsequent fine-tuning with 10% local data further enhanced performance on top of direct generalization (Suzhou RF recall increased to 0.77, Yangzhou MLP to 0.68), rather than compensating for any shortcomings of generalization."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "recall rates across separate sites",
+     "effect": "models achieved recall rates of 0.63 and 0.67 in Suzhou, and 0.58 and 0.63 in Yangzhou",
+     "quote": "The fine-tuned models demonstrated good generalizability, achieving recall rates of 0.63 and 0.67 in Suzhou, and 0.58 and 0.63 in Yangzhou, respectively."
+    },
+    {
+     "rec_id": "R142",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "recruitment success rate in prospective validation",
+     "effect": "increased the recruitment success rate for high-willingness donors by an average of 151.57%",
+     "quote": "It increased the recruitment success rate for high-willingness donors by an average of 151.57% (up to 408.28% in Nanjing) while recruitment efficiency increased by an average of 96.52% (up to 138.75% in Yangzhou)."
+    }
+   ],
+   "unlisted_practices": [
+    "incremental learning to periodically fine-tune models using new local data after each recruitment round"
+   ]
+  }
+ },
+ "design": "prospective_with_comparator",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "prospective SMS recruitment rounds (model development used 11,616 Nanjing SMS records)",
+ "sample_size": 13,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "Decision Tree",
+  "Decision Tree (DT)",
+  "Integrated MLP and RF recruitment model",
+  "K-Nearest Neighbors",
+  "K-Nearest Neighbors (KNN)",
+  "Logistic Regression",
+  "Logistic Regression (LR)",
+  "Multi-Layer Perceptron",
+  "Multi-Layer Perceptron (MLP)",
+  "Random Forest",
+  "Random Forest (RF)",
+  "Support Vector Machine",
+  "Support Vector Machine (SVM)",
+  "XGBoost",
+  "eXtreme Gradient Boosting (XGBoost)"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Recall at new sites after fine-tuning with 10% local data",
+   "effect": "Fine-tuning with 10% local data raised Suzhou RF recall from 0.67 to 0.77 and Yangzhou MLP recall from 0.58 to 0.68.",
+   "quote": "Subsequent fine-tuning with 10% local data further enhanced performance on top of direct generalization (Suzhou RF recall increased to 0.77, Yangzhou MLP to 0.68), rather than compensating for any shortcomings of generalization.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Cross-site recall of Nanjing-trained models in Suzhou and Yangzhou",
+   "effect": "Transferred RF recall was 0.67 in Suzhou vs 0.77 locally, and 0.63 in Yangzhou vs 0.64 locally. MLP recall was 0.63 and 0.58.",
+   "quote": "Specifically, the RF model achieved a recall of 0.67 in Suzhou (compared to 0.77 with local optimization) and 0.63 in Yangzhou (versus 0.64 locally), while the MLP model attained recall scores of 0.63 and 0.58, respectively.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Recruitment success compared with conventional donor selection",
+   "effect": "High-willingness donor recruitment success was 408.28%, 25.19%, and 47.31% higher than conventional methods in Nanjing, Suzhou, and Yangzhou, respectively.",
+   "quote": "On average, the recruitment success rate for high-willingness donors was 408.28%, 25.19%, and 47.31% higher than that of conventional methods in Nanjing (\u03c7 2 = 35.471, p = 0.000), Suzhou (\u03c7 2 = 9.384, p = 0.009), and Yangzhou (\u03c7 2 = 96.701, p = 0.000), respectively, as shown in Table 1 .",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R131",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "recall rates across separate sites",
+   "effect": "models achieved recall rates of 0.63 and 0.67 in Suzhou, and 0.58 and 0.63 in Yangzhou",
+   "quote": "The fine-tuned models demonstrated good generalizability, achieving recall rates of 0.63 and 0.67 in Suzhou, and 0.58 and 0.63 in Yangzhou, respectively.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R142",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "recruitment success rate in prospective validation",
+   "effect": "increased the recruitment success rate for high-willingness donors by an average of 151.57%",
+   "quote": "It increased the recruitment success rate for high-willingness donors by an average of 151.57% (up to 408.28% in Nanjing) while recruitment efficiency increased by an average of 96.52% (up to 138.75% in Yangzhou).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adjust donation-willingness thresholds to balance donor recall against unsuccessful SMS outreach and recruitment-list redundancy.",
+  "Adjusting prediction thresholds to minimize overlap with conventional recruitment lists",
+  "Ensemble of MLP and RF with prioritized intersection for selecting outreach targets",
+  "Incremental retraining of the model with newly collected data after each deployment round before the next round",
+  "Prioritize eligible blood donors for SMS recruitment using predicted donation willingness.",
+  "Use resampling and cost-sensitive learning to address severe class imbalance in donor-response prediction.",
+  "incremental learning to periodically fine-tune models using new local data after each recruitment round"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:42057027",
+ "screen": {
+  "id": "pmid:42057027",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "local fine-tuning of model on new-site data before deployment",
+  "user": "clinician_or_staff",
+  "reason": "The study prospective evaluates an ML-based recruitment framework deployed across three cities, testing implementation/adaptation practices including local model fine-tuning with 10% local data and dynamic threshold adjustments to generalize donor recruitment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "local fine-tuning and dynamic threshold adjustment"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42057027",
+   "empirical": 0.95,
+   "tests_practice": 0.28,
+   "real_deployment": 0.82
+  }
+ }
+}

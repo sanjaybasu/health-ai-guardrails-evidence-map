@@ -1,0 +1,345 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA, Sweden, Germany, Finland (TEDDY); USA, Canada, Australia (TrialNet)",
+   "sample_size": 11866,
+   "sample_unit": "participants (7798 TEDDY; 4068 TrialNet)",
+   "models_evaluated": [
+    "Original linear Cox landmark model (GRS2, autoantibodies, family history, age)",
+    "Stratified Cox landmark model",
+    "Logistic recalibrated stratified model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration (Brier score) of TEDDY-derived model in TrialNet before vs after local recalibration",
+     "effect": "Stratified model underestimated risk in TrialNet (Brier 0.40); logistic recalibration improved Brier to 0.16 (p<0.001); ages 8-17: 0.403 to 0.161.",
+     "quote": "We observed significantly reduced Brier score values indiciating improved calibration in the recalibrated model compared to either the stratified or original prediction models (Fig. 3 )."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of logistic recalibration on calibration in new cohort",
+     "effect": "Logistic recalibration removed risk underestimation (about five-fold in children) and reduced Brier score from 0.40 to 0.16 in TrialNet.",
+     "quote": "We observed that logisitic recalibration significantly improved the model\u2019s performance, removing the underestimation of risk and resulting in more accurate and calibrated predictions (Fig. 2 , Additional File 3\u2014Table S2C)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Differences between development and validation cohorts' baseline risk affecting model calibration",
+     "effect": "5-year T1D risk TrialNet 35% vs TEDDY 2% (p<0.001); model underestimated risk about five-fold in children under 8 (predicted 10% vs observed 50%).",
+     "quote": "With an observed probability of 50%, predicted risk estimates are underestimated by approximately five-fold in children under 8 years old (predicted risk: 10%) and in those aged 8\u201317 years (predicted risk: 9%), while understimation was approximately 2.5-fold in adults (predicted risk: 20%)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model calibration when applied to new screening population beyond development context",
+     "effect": "Model discriminated comparably (3-year AUC 0.712 TrialNet vs 0.756 TEDDY) but was poorly calibrated in TrialNet (Brier 0.40) until recalibrated.",
+     "quote": "As expected, given differences in cohort selection criteria, we observed consistent underestimation of the risk of type 1 diabetes in TrialNet (Additional File 2\u2014Figure S5)."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of model in external validation cohort vs internal development cohort",
+     "effect": "External validation in TrialNet showed similar discrimination but inferior calibration (Brier 0.40) versus development cohort.",
+     "quote": "The stratified model showed similar discriminative ability in autoantibody-positive participants across TEDDY and TrialNet, but inferior calibration in TrialNet (Brier score 0.40 [95% CI 0.38,0.43])."
+    }
+   ],
+   "unlisted_practices": [
+    "Logistic recalibration of survival prediction model to new screening cohort baseline risk",
+    "Stratifying prediction model by autoantibody status to address heterogeneity",
+    "Providing web-based individual risk calculator with visualisations"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "USA, Sweden, Germany, Finland, Canada, Australia",
+   "sample_size": 11884,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "Original type 1 diabetes prediction model",
+    "Stratified Cox landmark prediction model",
+    "Logistically recalibrated stratified model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External-cohort calibration",
+     "effect": "External TrialNet calibration was inferior: Brier score 0.40 [95% CI 0.38,0.43].",
+     "quote": "The stratified model showed similar discriminative ability in autoantibody-positive participants across TEDDY and TrialNet, but inferior calibration in TrialNet (Brier score 0.40 [95% CI 0.38,0.43])."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Risk underestimation after cohort shift",
+     "effect": "At 50% observed probability, predicted risk was 10% (<8 years), 9% (8\u201317), and 20% (adults).",
+     "quote": "With an observed probability of 50%, predicted risk estimates are underestimated by approximately five-fold in children under 8 years old (predicted risk: 10%) and in those aged 8\u201317 years (predicted risk: 9%), while understimation was approximately 2.5-fold in adults (predicted risk: 20%)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration after recalibration",
+     "effect": "Ages 8\u201317 Brier improved from 0.403 [95% CI 0.375,0.430] to 0.161 [95% CI 0.144,0.166]; difference=0.2422.",
+     "quote": "The difference between the Brier Score in the recalibrated model compared to the stratified prediction model was largest in participants aged between 8 and 17 years old (stratified model Brier Score = 0.403 [95% CI 0.375,0.430]; recalibrated model Brier Score = 0.161 [95% CI 0.144,0.166]; difference = 0.2422)."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization to new screening context",
+     "effect": "The TEDDY-derived model underestimated TrialNet risk; 50% observed risk was predicted as 10%, 9%, and 20% across age groups.",
+     "quote": "With an observed probability of 50%, predicted risk estimates are underestimated by approximately five-fold in children under 8 years old (predicted risk: 10%) and in those aged 8\u201317 years (predicted risk: 9%), while understimation was approximately 2.5-fold in adults (predicted risk: 20%)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 11884,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "Stratified Cox proportional hazards model",
+    "Recalibrated stratified Cox model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R550",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "calibration Brier score after logistic recalibration",
+     "effect": "Brier score improved from 0.403 (95% CI 0.375, 0.430) to 0.161 (95% CI 0.144, 0.166) in participants aged 8 to 17 years (difference 0.2422)",
+     "quote": "The difference between the Brier Score in the recalibrated model compared to the stratified prediction model was largest in participants aged between 8 and 17 years old (stratified model Brier Score = 0.403 [95% CI 0.375,0.430]; recalibrated model Brier Score = 0.161 [95% CI 0.144,0.166]; difference = 0.2422)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "USA, Sweden, Germany, Finland (TEDDY); USA, Canada, Australia (TrialNet)",
+ "sample_unit": "participants",
+ "sample_size": 11884,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Logistic recalibrated stratified model",
+  "Logistically recalibrated stratified model",
+  "Original linear Cox landmark model (GRS2, autoantibodies, family history, age)",
+  "Original type 1 diabetes prediction model",
+  "Recalibrated stratified Cox model",
+  "Stratified Cox landmark model",
+  "Stratified Cox landmark prediction model",
+  "Stratified Cox proportional hazards model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of logistic recalibration on calibration in new cohort",
+   "effect": "Logistic recalibration removed risk underestimation (about five-fold in children) and reduced Brier score from 0.40 to 0.16 in TrialNet.",
+   "quote": "We observed that logisitic recalibration significantly improved the model\u2019s performance, removing the underestimation of risk and resulting in more accurate and calibrated predictions (Fig. 2 , Additional File 3\u2014Table S2C).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Differences between development and validation cohorts' baseline risk affecting model calibration",
+   "effect": "5-year T1D risk TrialNet 35% vs TEDDY 2% (p<0.001); model underestimated risk about five-fold in children under 8 (predicted 10% vs observed 50%).",
+   "quote": "With an observed probability of 50%, predicted risk estimates are underestimated by approximately five-fold in children under 8 years old (predicted risk: 10%) and in those aged 8\u201317 years (predicted risk: 9%), while understimation was approximately 2.5-fold in adults (predicted risk: 20%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model calibration when applied to new screening population beyond development context",
+   "effect": "Model discriminated comparably (3-year AUC 0.712 TrialNet vs 0.756 TEDDY) but was poorly calibrated in TrialNet (Brier 0.40) until recalibrated.",
+   "quote": "As expected, given differences in cohort selection criteria, we observed consistent underestimation of the risk of type 1 diabetes in TrialNet (Additional File 2\u2014Figure S5).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of model in external validation cohort vs internal development cohort",
+   "effect": "External validation in TrialNet showed similar discrimination but inferior calibration (Brier 0.40) versus development cohort.",
+   "quote": "The stratified model showed similar discriminative ability in autoantibody-positive participants across TEDDY and TrialNet, but inferior calibration in TrialNet (Brier score 0.40 [95% CI 0.38,0.43]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration (Brier score) of TEDDY-derived model in TrialNet before vs after local recalibration",
+   "effect": "Stratified model underestimated risk in TrialNet (Brier 0.40); logistic recalibration improved Brier to 0.16 (p<0.001); ages 8-17: 0.403 to 0.161.",
+   "quote": "We observed significantly reduced Brier score values indiciating improved calibration in the recalibrated model compared to either the stratified or original prediction models (Fig. 3 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R550",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "calibration Brier score after logistic recalibration",
+   "effect": "Brier score improved from 0.403 (95% CI 0.375, 0.430) to 0.161 (95% CI 0.144, 0.166) in participants aged 8 to 17 years (difference 0.2422)",
+   "quote": "The difference between the Brier Score in the recalibrated model compared to the stratified prediction model was largest in participants aged between 8 and 17 years old (stratified model Brier Score = 0.403 [95% CI 0.375,0.430]; recalibrated model Brier Score = 0.161 [95% CI 0.144,0.166]; difference = 0.2422).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Logistic recalibration of survival prediction model to new screening cohort baseline risk",
+  "Providing web-based individual risk calculator with visualisations",
+  "Stratifying prediction model by autoantibody status to address heterogeneity"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40691800",
+ "screen": {
+  "id": "pmid:40691800",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration before deployment in new population",
+  "user": "none",
+  "reason": "The study evaluates the external validity of a predictive risk model across different screening cohorts and explicitly tests whether logistic recalibration overcomes cohort-specific miscalibration.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local recalibration across cohorts"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40691800",
+   "empirical": 0.79,
+   "tests_practice": 0.75,
+   "real_deployment": 0.1
+  }
+ }
+}

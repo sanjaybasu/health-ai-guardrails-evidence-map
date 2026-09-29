@@ -1,0 +1,278 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 2296,
+   "sample_unit": "thyroid nodules",
+   "models_evaluated": [
+    "AI-SONIC Thyroid (US_THYROID_S, version A1.01.001.001, Demetics Medical Technology)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Junior and senior radiologist diagnostic performance with versus without AI assistance",
+     "effect": "Junior+AI improved specificity 0.837 to 0.921, accuracy 0.833 to 0.895, AUC 0.829 to 0.871 (all p<0.001), with no sensitivity gain; the AI alone had AUC 0.901, and the senior+AI gain was not significant.",
+     "quote": "Compared to independent readings by junior radiologists, AI-assisted readings significantly improved their specificity, accuracy, and AUC (0.837 vs. 0.921, 0.833 vs. 0.895, 0.829 vs. 0.871, respectively; all p < 0.001), where specificity and accuracy were comparable to those of senior radiologists ( p > 0.05) (Table 4 )."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Junior radiologists misled by incorrect AI outputs",
+     "effect": "AI output reverted 31 originally correct junior classifications (17 benign, 14 malignant), versus 193 corrected misclassifications.",
+     "quote": "In total, there were substantially more cases where the junior radiologists benefited from consulting diagnostic results by the AI system than being misled (193 vs 31 summing up benign and malignant classified nodules)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "AI performance consistency across three medical centers",
+     "effect": "Site-specific analyses at three centers (1039, 426, 831 nodules) showed that the AI was comparable to senior radiologists and superior to junior radiologists at each site.",
+     "quote": "Additionally, this study performed analysis of diagnosis of thyroid nodules by radiologists of different levels and the AI system across the three medical centers using different diagnostic criteria namely pathology and consensus of senior specialists separately, yielding consistent results."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 2296,
+   "sample_unit": "thyroid nodules",
+   "models_evaluated": [
+    "AI-SONIC\u2122 Thyroid (US_THYROID_S, version A1.01.001.001; EfficientNet architecture)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Correct junior-radiologist classifications changed to errors after consulting AI",
+     "effect": "Among 2296 nodules, junior radiologists benefited in 193 cases but were misled in 31; 17 benign and 14 malignant nodules initially classified correctly were changed to incorrect classifications.",
+     "quote": "In total, there were substantially more cases where the junior radiologists benefited from consulting diagnostic results by the AI system than being misled (193 vs 31 summing up benign and malignant classified nodules)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "China",
+   "sample_size": 2296,
+   "sample_unit": "nodules",
+   "models_evaluated": [
+    "AI-SONIC Thyroid"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic performance of junior radiologists",
+     "effect": "AI assistance significantly improved junior radiologists' AUC from 0.829 to 0.871.",
+     "quote": "Compared to independent readings by junior radiologists, AI-assisted readings significantly improved their specificity, accuracy, and AUC (0.837 vs. 0.921, 0.833 vs. 0.895, 0.829 vs. 0.871, respectively; all p < 0.001), where specificity and accuracy were comparable to those of senior radiologists ( p > 0.05) (Table 4 )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "diagnostic performance of AI versus clinicians",
+     "effect": "AI demonstrated superior AUC compared to junior radiologists (0.901 vs. 0.829) and comparable AUC to senior radiologists (0.901 vs. 0.892).",
+     "quote": "Summing over all cases which were analyzed separately using either pathology or the arbitration committee as the diagnostic criteria, or in our proposed term, the 2e diagnostic criteria, the AI system demonstrated superior sensitivity, specificity, accuracy, and AUC compared to junior radiologists (0.868 vs. 0.820, 0.934 vs. 0.837, 0.917 vs. 0.833, 0.901 vs. 0.829, respectively; all p < 0.001), and showed comparable results to senior radiologists\u2019 readings (0.868 vs. 0.849, 0.934 vs. 0.934, 0.917 vs. 0.912, 0.901 vs. 0.892, respectively; all p > 0.05)."
+    },
+    {
+     "rec_id": "R174",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinicians misled by incorrect AI outputs",
+     "effect": "AI diagnosis misled junior radiologists to revert 31 originally correct diagnoses out of 2296 nodules.",
+     "quote": "However, out of 2296 nodules in total except cases where junior radiologists corrected their original miss-classifications of nodule malignancy after consulting recommendations of the AI system (32 and 161 respective nodule cases for which originally miss-classified as benign or malignant were corrected), there were also cases where diagnosis by the AI system misled the junior radiologists (17 and 14 respective nodule cases for which originally correctly-classified as benign or malignant were reverted)."
+    }
+   ],
+   "unlisted_practices": [
+    "using a composite diagnostic reference standard to include unbiopsied cases in evaluation"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "thyroid nodules",
+ "sample_size": 2296,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AI-SONIC Thyroid",
+  "AI-SONIC Thyroid (US_THYROID_S, version A1.01.001.001, Demetics Medical Technology)",
+  "AI-SONIC\u2122 Thyroid (US_THYROID_S, version A1.01.001.001; EfficientNet architecture)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Junior and senior radiologist diagnostic performance with versus without AI assistance",
+   "effect": "Junior+AI improved specificity 0.837 to 0.921, accuracy 0.833 to 0.895, AUC 0.829 to 0.871 (all p<0.001), with no sensitivity gain; the AI alone had AUC 0.901, and the senior+AI gain was not significant.",
+   "quote": "Compared to independent readings by junior radiologists, AI-assisted readings significantly improved their specificity, accuracy, and AUC (0.837 vs. 0.921, 0.833 vs. 0.895, 0.829 vs. 0.871, respectively; all p < 0.001), where specificity and accuracy were comparable to those of senior radiologists ( p > 0.05) (Table 4 ).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R174",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Junior radiologists misled by incorrect AI outputs",
+   "effect": "AI output reverted 31 originally correct junior classifications (17 benign, 14 malignant), versus 193 corrected misclassifications.",
+   "quote": "In total, there were substantially more cases where the junior radiologists benefited from consulting diagnostic results by the AI system than being misled (193 vs 31 summing up benign and malignant classified nodules).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance consistency across three medical centers",
+   "effect": "Site-specific analyses at three centers (1039, 426, 831 nodules) showed that the AI was comparable to senior radiologists and superior to junior radiologists at each site.",
+   "quote": "Additionally, this study performed analysis of diagnosis of thyroid nodules by radiologists of different levels and the AI system across the three medical centers using different diagnostic criteria namely pathology and consensus of senior specialists separately, yielding consistent results.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "diagnostic performance of AI versus clinicians",
+   "effect": "AI demonstrated superior AUC compared to junior radiologists (0.901 vs. 0.829) and comparable AUC to senior radiologists (0.901 vs. 0.892).",
+   "quote": "Summing over all cases which were analyzed separately using either pathology or the arbitration committee as the diagnostic criteria, or in our proposed term, the 2e diagnostic criteria, the AI system demonstrated superior sensitivity, specificity, accuracy, and AUC compared to junior radiologists (0.868 vs. 0.820, 0.934 vs. 0.837, 0.917 vs. 0.833, 0.901 vs. 0.829, respectively; all p < 0.001), and showed comparable results to senior radiologists\u2019 readings (0.868 vs. 0.849, 0.934 vs. 0.934, 0.917 vs. 0.912, 0.901 vs. 0.892, respectively; all p > 0.05).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "using a composite diagnostic reference standard to include unbiopsied cases in evaluation"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:38992655",
+ "screen": {
+  "id": "pmid:38992655",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "AI assistance for junior radiologists (human-in-the-loop review)",
+  "user": "clinician_or_staff",
+  "reason": "The study prospective evaluated AI assistance compared to unassisted junior and senior radiologists in real clinical practice across three medical centers.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "AI assistance for clinician decision-making"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38992655",
+   "empirical": 0.97,
+   "tests_practice": 0.51,
+   "real_deployment": 0.85
+  }
+ }
+}

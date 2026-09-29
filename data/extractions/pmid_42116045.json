@@ -1,0 +1,298 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China; United States (NHANES external validation)",
+   "sample_size": 5562,
+   "sample_unit": "participants (3346 hospital checkup; 2216 NHANES)",
+   "models_evaluated": [
+    "XGBoost",
+    "random forest",
+    "decision tree",
+    "SVM-RBF",
+    "multilayer perceptron",
+    "naive Bayes",
+    "k-nearest neighbors",
+    "ridge logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Calibration/probability accuracy on external NHANES hold-out before vs after local recalibration",
+     "effect": "Brier score fell from 0.286 to 0.109 and log loss from 1.253 to 0.388 after recalibration; AUC 0.826 vs 0.810; calibration intercept 0.103, slope 0.684.",
+     "quote": "Probability accuracy improved significantly: the Brier score decreased from 0.286 to 0.109, and the log loss from 1.253 to 0.388."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance on external population versus internal test set",
+     "effect": "Internal test AUC 0.995 versus external NHANES hold-out AUC 0.826 before recalibration and 0.810 after; miscalibration before recalibration.",
+     "quote": "On the hold-out validation subset, discrimination was good before recalibration (AUC = 0.826) (Fig. 5 A) and remained similar after applying the fixed calibrator (AUC = 0.810)."
+    }
+   ],
+   "unlisted_practices": [
+    "Post hoc recalibration of a locally developed model on a small labeled sample from a new population",
+    "SHAP-based explanations of predictions for a screening model",
+    "Strict leakage control during model development with a sequestered test set"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China; United States",
+   "sample_size": 5562,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "decision tree",
+    "random forest",
+    "support-vector machine with radial-basis-function kernel",
+    "multilayer perceptron",
+    "extreme gradient boosting",
+    "na\u00efve Bayes",
+    "k-nearest neighbors",
+    "ridge logistic regression",
+    "elastic-net logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "domain shift in external validation",
+     "effect": "External raw calibration was poor: Brier 0.286 and log loss 1.253 before recalibration; domain shift was reduced but not eliminated.",
+     "quote": "Outcomes were defined by ultrasound in development and by CAP in external validation, so threshold and sensitivity differences can cause domain shift; recalibration reduced but did not eliminate this issue, and confirmation with additional imaging standards is needed."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate algorithm comparison",
+     "effect": "XGBoost best: AUC 0.995, F1 0.955, accuracy 0.992, precision/specificity 1.000, sensitivity 0.914; RF second AUC 0.990.",
+     "quote": "XGBoost demonstrated the best discrimination (AUC 0.995) and, at the F1-max threshold, the strongest overall classification performance with an F1 score (F1) of 0.955, accuracy (ACC) of 0.992, precision (PRE) of 1.000, specificity (SPE) of 1.000, and sensitivity (SEN) of 0.914."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "post hoc recalibration probability accuracy",
+     "effect": "Brier score decreased from 0.286 to 0.109; log loss decreased from 1.253 to 0.388 after recalibration.",
+     "quote": "Probability accuracy improved significantly: the Brier score decreased from 0.286 to 0.109, and the log loss from 1.253 to 0.388."
+    }
+   ],
+   "unlisted_practices": [
+    "Decision curve analysis to identify threshold ranges for triage",
+    "SHAP-based global and individual feature explanations"
+   ]
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "China, United States",
+   "sample_size": 5562,
+   "sample_unit": "participants",
+   "models_evaluated": [
+    "XGBoost",
+    "Random Forest",
+    "Support Vector Machine",
+    "Multilayer Perceptron",
+    "Decision Tree",
+    "Na\u00efve Bayes",
+    "k-Nearest Neighbors",
+    "Ridge Logistic Regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "probability calibration on external hold-out data",
+     "effect": "Brier score decreased from 0.286 to 0.109 and log loss from 1.253 to 0.388 while AUC was 0.826 vs 0.810",
+     "quote": "In the hold-out validation subset, discrimination remained robust both before and after recalibration (AUC 0.826 vs. 0.810), while probability accuracy improved significantly (Brier score decreased from 0.286 to 0.109; log loss from 1.253 to 0.388)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China; United States (NHANES external validation)",
+ "sample_unit": "participants",
+ "sample_size": 5562,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Decision Tree",
+  "Multilayer Perceptron",
+  "Na\u00efve Bayes",
+  "Random Forest",
+  "Ridge Logistic Regression",
+  "SVM-RBF",
+  "Support Vector Machine",
+  "XGBoost",
+  "decision tree",
+  "elastic-net logistic regression",
+  "extreme gradient boosting",
+  "k-Nearest Neighbors",
+  "k-nearest neighbors",
+  "multilayer perceptron",
+  "naive Bayes",
+  "na\u00efve Bayes",
+  "random forest",
+  "ridge logistic regression",
+  "support-vector machine with radial-basis-function kernel"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Calibration/probability accuracy on external NHANES hold-out before vs after local recalibration",
+   "effect": "Brier score fell from 0.286 to 0.109 and log loss from 1.253 to 0.388 after recalibration; AUC 0.826 vs 0.810; calibration intercept 0.103, slope 0.684.",
+   "quote": "Probability accuracy improved significantly: the Brier score decreased from 0.286 to 0.109, and the log loss from 1.253 to 0.388.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Performance on external population versus internal test set",
+   "effect": "Internal test AUC 0.995 versus external NHANES hold-out AUC 0.826 before recalibration and 0.810 after; miscalibration before recalibration.",
+   "quote": "On the hold-out validation subset, discrimination was good before recalibration (AUC = 0.826) (Fig. 5 A) and remained similar after applying the fixed calibrator (AUC = 0.810).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "candidate algorithm comparison",
+   "effect": "XGBoost best: AUC 0.995, F1 0.955, accuracy 0.992, precision/specificity 1.000, sensitivity 0.914; RF second AUC 0.990.",
+   "quote": "XGBoost demonstrated the best discrimination (AUC 0.995) and, at the F1-max threshold, the strongest overall classification performance with an F1 score (F1) of 0.955, accuracy (ACC) of 0.992, precision (PRE) of 1.000, specificity (SPE) of 1.000, and sensitivity (SEN) of 0.914.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Decision curve analysis to identify threshold ranges for triage",
+  "Post hoc recalibration of a locally developed model on a small labeled sample from a new population",
+  "SHAP-based explanations of predictions for a screening model",
+  "SHAP-based global and individual feature explanations",
+  "Strict leakage control during model development with a sequestered test set"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42116045",
+ "screen": {
+  "id": "pmid:42116045",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "post hoc local recalibration",
+  "user": "none",
+  "reason": "The study develops a predictive model and specifically evaluates the practice of post hoc local recalibration upon external validation across cohorts to maintain probability accuracy and net benefit.",
+  "jev": {
+   "id": "pmid:42116045",
+   "empirical": 0.96,
+   "tests_practice": 0.83,
+   "real_deployment": 0.05
+  }
+ }
+}

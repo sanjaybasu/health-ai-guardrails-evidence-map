@@ -1,0 +1,322 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "quasi_experimental",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States, Germany",
+   "sample_size": 11,
+   "sample_unit": "pathologists scoring 35 biopsy regions of interest",
+   "models_evaluated": [
+    "Gastric PD-L1 CPS AI Model (Mindpeak)",
+    "IHC multi-organ foundation model (Mindpeak)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist interobserver agreement at PD-L1 CPS \u22655 with vs without AI assistance",
+     "effect": "Fleiss' kappa rose from 0.52 (manual) to 0.76 (AI-assisted), p<0.01; agreement among all 11 pathologists 43% vs 69%; any two 77% vs 91%.",
+     "quote": "Agreement among pathologists by Fleiss\u2019 Kappa showed overall improved agreement from 0.52 (0.40\u20130.65) with manual scoring on day 1 to 0.76 (0.62-0.87) with AI-assisted scoring on day 2 with statistical significance ( p < 0.01, Bootstrapping of differences) (Fig. 3 c)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI performance as used by pathologists in workflow (manual vs AI-assisted scoring agreement and positive calls)",
+     "effect": "AI assistance increased ICC (e.g., total tumor cells 0.38 to 0.90) and positive CPS\u22655 cases from 15 to 26 (31% increase).",
+     "quote": "Pathologists identified 15 cases as PD-L1 CPS \u2265 5 positive with manual scoring on day 1 compared to 26 cases as PD-L1 CPS \u2265 5 positive by AI-assisted scoring on day 2, corresponding to a 31% increase of positive cases found when using AI-assistance."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI agreement with reference consensus on independent held-out test set of 55 cases from 3 labs",
+     "effect": "Fine-tuned model agreement 96.4% (95% CI 88.6-100) vs 81.8% for foundation model; kappa 0.91 vs 0.62; further validated on 97 independent biopsies.",
+     "quote": "Data for AI development, both for pretraining and finetuning, did not overlap with the study data."
+    }
+   ],
+   "unlisted_practices": [
+    "Pathologist-in-the-loop fine-tuning with expert-derived annotation decision rules (Gastric Cell Atlas)",
+    "Augmented reality microscope overlay of AI outputs to build clinician trust"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany; Belgium; United States",
+   "sample_size": 35,
+   "sample_unit": "ROIs/biopsy cases in ARM experiment, rated by 11 pathologists",
+   "models_evaluated": [
+    "IHC foundation model",
+    "Gastric PD-L1 CPS AI Model",
+    "ARM-AI system with Gastric PD-L1 CPS AI Model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement after expert decision rules",
+     "effect": "Agreement improved from 81.8% before Gastric Cell Atlas decision rules to 96.4% after.",
+     "quote": "Left, agreement of Gastric PD-L1 CPS AI Model against reference consensus score before Gastric Cell Atlas decision rules (81.8%) and after (96.4%)."
+    },
+    {
+     "rec_id": "R171",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist-in-loop finetuning concordance",
+     "effect": "Agreement increased from 81.8% (95% CI, 68.6%, 94.3%) to 96.4% (95% CI, 88.6%, 100%); \u03ba 0.62 to 0.91; p < 0.05.",
+     "quote": "Compared to the original IHC foundation model, the finetuned Gastric PD-L1 CPS AI Model showed improved concordance against the reference consensus increasing agreement from 81.8% (95% CI, 68.6%, 94.3%) to 96.4% (95% CI, 88.6%, 100%) ( p < 0.05, McNemar\u2019s test) and Cohen\u2019s Kappa \u03ba from 0.62 (95% CI, 0.36, 0.86) to 0.91 (95% CI, 0.71, 1.0) ( p < 0.05, Bootstrapping) (Fig. 1c )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus pathologist concordance",
+     "effect": "At CPS \u22655, AI-pathologist \u03ba=0.46 (95% CI, 0.37, 0.54) vs pathologist-pathologist \u03ba=0.39 (95% CI, 0.29, 0.48); p < 0.05.",
+     "quote": "At a PD-L1 CPS \u2265 5 cut-off, the concordance between PD-L1 AI scores and pathologists\u2019 manual scores was higher (Cohen\u2019s \u03ba = 0.46; 95% CI, 0.37, 0.54) than the average concordance among pathologists\u2019 manual scores (Cohen\u2019s \u03ba = 0.39; 95% CI, 0.29, 0.48) with statistical significance ( p < 0.05, Bootstrapping) as well as higher than for the original IHC foundation model ( p < 0.001, Bootstrapping)."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Case agreement with AI assistance",
+     "effect": "Any 2 pathologists: 77% vs 91% (+14%); 11 pathologists: 43% vs 69% (+26%).",
+     "quote": "Using difficult to interpret regions on gastroesophageal biopsies, we show that AI-assistance improved case agreement between any 2 pathologists by 14% (agreement on 77% vs 91%) and among 11 pathologists by 26% (agreement on 43% vs 69%)."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Workflow Fleiss kappa agreement",
+     "effect": "Fleiss\u2019 \u03ba improved from 0.52 (0.40\u20130.65) manual to 0.76 (0.62-0.87) AI-assisted; p < 0.01.",
+     "quote": "Agreement among pathologists by Fleiss\u2019 Kappa showed overall improved agreement from 0.52 (0.40\u20130.65) with manual scoring on day 1 to 0.76 (0.62-0.87) with AI-assisted scoring on day 2 with statistical significance ( p < 0.01, Bootstrapping of differences) (Fig. 3 c)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 35,
+   "sample_unit": "biopsy cases",
+   "models_evaluated": [
+    "Gastric PD-L1 CPS AI Model",
+    "IHC foundation model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R171",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model concordance with reference consensus score",
+     "effect": "Agreement increased from 81.8% to 96.4% (p < 0.05) and Cohen's kappa from 0.62 to 0.91 (p < 0.05)",
+     "quote": "Compared to the original IHC foundation model, the finetuned Gastric PD-L1 CPS AI Model showed improved concordance against the reference consensus increasing agreement from 81.8% (95% CI, 68.6%, 94.3%) to 96.4% (95% CI, 88.6%, 100%) ( p < 0.05, McNemar\u2019s test) and Cohen\u2019s Kappa \u03ba from 0.62 (95% CI, 0.36, 0.86) to 0.91 (95% CI, 0.71, 1.0) ( p < 0.05, Bootstrapping) (Fig. 1c )."
+    }
+   ],
+   "unlisted_practices": [
+    "Augmented reality microscope overlay for real-time AI assistance during pathology review"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States, Germany",
+ "sample_unit": "pathologists scoring 35 biopsy regions of interest",
+ "sample_size": 35,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "ARM-AI system with Gastric PD-L1 CPS AI Model",
+  "Gastric PD-L1 CPS AI Model",
+  "Gastric PD-L1 CPS AI Model (Mindpeak)",
+  "IHC foundation model",
+  "IHC multi-organ foundation model (Mindpeak)"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Pathologist interobserver agreement at PD-L1 CPS \u22655 with vs without AI assistance",
+   "effect": "Fleiss' kappa rose from 0.52 (manual) to 0.76 (AI-assisted), p<0.01; agreement among all 11 pathologists 43% vs 69%; any two 77% vs 91%.",
+   "quote": "Agreement among pathologists by Fleiss\u2019 Kappa showed overall improved agreement from 0.52 (0.40\u20130.65) with manual scoring on day 1 to 0.76 (0.62-0.87) with AI-assisted scoring on day 2 with statistical significance ( p < 0.01, Bootstrapping of differences) (Fig. 3 c).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI performance as used by pathologists in workflow (manual vs AI-assisted scoring agreement and positive calls)",
+   "effect": "AI assistance increased ICC (e.g., total tumor cells 0.38 to 0.90) and positive CPS\u22655 cases from 15 to 26 (31% increase).",
+   "quote": "Pathologists identified 15 cases as PD-L1 CPS \u2265 5 positive with manual scoring on day 1 compared to 26 cases as PD-L1 CPS \u2265 5 positive by AI-assisted scoring on day 2, corresponding to a 31% increase of positive cases found when using AI-assistance.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R171",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Pathologist-in-loop finetuning concordance",
+   "effect": "Agreement increased from 81.8% (95% CI, 68.6%, 94.3%) to 96.4% (95% CI, 88.6%, 100%); \u03ba 0.62 to 0.91; p < 0.05.",
+   "quote": "Compared to the original IHC foundation model, the finetuned Gastric PD-L1 CPS AI Model showed improved concordance against the reference consensus increasing agreement from 81.8% (95% CI, 68.6%, 94.3%) to 96.4% (95% CI, 88.6%, 100%) ( p < 0.05, McNemar\u2019s test) and Cohen\u2019s Kappa \u03ba from 0.62 (95% CI, 0.36, 0.86) to 0.91 (95% CI, 0.71, 1.0) ( p < 0.05, Bootstrapping) (Fig. 1c ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AI versus pathologist concordance",
+   "effect": "At CPS \u22655, AI-pathologist \u03ba=0.46 (95% CI, 0.37, 0.54) vs pathologist-pathologist \u03ba=0.39 (95% CI, 0.29, 0.48); p < 0.05.",
+   "quote": "At a PD-L1 CPS \u2265 5 cut-off, the concordance between PD-L1 AI scores and pathologists\u2019 manual scores was higher (Cohen\u2019s \u03ba = 0.46; 95% CI, 0.37, 0.54) than the average concordance among pathologists\u2019 manual scores (Cohen\u2019s \u03ba = 0.39; 95% CI, 0.29, 0.48) with statistical significance ( p < 0.05, Bootstrapping) as well as higher than for the original IHC foundation model ( p < 0.001, Bootstrapping).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Augmented reality microscope overlay for real-time AI assistance during pathology review",
+  "Augmented reality microscope overlay of AI outputs to build clinician trust",
+  "Pathologist-in-the-loop fine-tuning with expert-derived annotation decision rules (Gastric Cell Atlas)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40355526",
+ "screen": {
+  "id": "pmid:40355526",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI assistance with pathologist-in-the-loop review via augmented reality microscope",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates the impact of an AI-assisted augmented reality microscope overlay on interobserver agreement and diagnostic consistency among pathologists assessing PD-L1 CPS.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "augmented reality microscope AI overlay assistance"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40355526",
+   "empirical": 0.96,
+   "tests_practice": 0.77,
+   "real_deployment": 0.24
+  }
+ }
+}

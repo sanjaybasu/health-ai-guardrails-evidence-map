@@ -1,0 +1,240 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "multimodal_foundation"
+   ],
+   "country": "unspecified",
+   "sample_size": 6076,
+   "sample_unit": "OCT B-scans (from 80 subjects)",
+   "models_evaluated": [
+    "BRISQUE",
+    "NIQE",
+    "PIQE",
+    "SNR",
+    "PSNR",
+    "EfficientNet-b0",
+    "ResNet-50",
+    "ViT-B/16",
+    "RETFound"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R509",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Ability of quality gates to flag B-scans that will yield unreliable segmentation before model use",
+     "effect": "Scalar NR-IQA metrics inadequate (|r| < 0.20); ImageNet representations reached ROC-AUC up to 0.77; RETFound (OCT-specific FM) reached ROC-AUC about 0.81.",
+     "quote": "All scalar NR-IQA metrics proved inadequate (|  r |  < 0.20)."
+    }
+   ],
+   "unlisted_practices": [
+    "Task-specific input quality gating using learned representations (linear probing on pretrained/foundation model embeddings) instead of device-reported scan quality scores or scalar NR-IQA metrics"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 6076,
+   "sample_unit": "OCT B-scans",
+   "models_evaluated": [
+    "BRISQUE",
+    "NIQE",
+    "PIQE",
+    "SNR",
+    "PSNR",
+    "EfficientNet-b0",
+    "ResNet-50",
+    "ViT-B/16",
+    "RETFound",
+    "K-Means"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Task-specific OCT input quality gating",
+     "effect": "ImageNet-based pretrained representations improved upon NR-IQA, achieving ROC-AUC up to 0.77.",
+     "quote": "General-purpose ImageNet-based pretrained representations (EfficientNet-b0, ResNet-50, ViT-B/16) improve upon NR-IQA, achieving ROC-AUC up to 0.77, indicating that learned representations are better suited to task-specific quality gating than hand-crafted scalar statistics."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Not reported",
+   "sample_size": 6076,
+   "sample_unit": "OCT B-scans",
+   "models_evaluated": [
+    "EfficientNet-b0",
+    "ResNet-50",
+    "ViT-B/16",
+    "RETFound"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination of task-specific input quality gating",
+     "effect": "RETFound achieved ROC-AUC approximately 0.81 for task-specific quality gating",
+     "quote": "Retinal foundation models (FMs) further close the gap: RETFound (OCT-specific FM) achieves ROC-AUC \u2248 0.81."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "OCT B-scans",
+ "sample_size": 6076,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "BRISQUE",
+  "EfficientNet-b0",
+  "K-Means",
+  "NIQE",
+  "PIQE",
+  "PSNR",
+  "RETFound",
+  "ResNet-50",
+  "SNR",
+  "ViT-B/16"
+ ],
+ "links": [
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Task-specific OCT input quality gating",
+   "effect": "ImageNet-based pretrained representations improved upon NR-IQA, achieving ROC-AUC up to 0.77.",
+   "quote": "General-purpose ImageNet-based pretrained representations (EfficientNet-b0, ResNet-50, ViT-B/16) improve upon NR-IQA, achieving ROC-AUC up to 0.77, indicating that learned representations are better suited to task-specific quality gating than hand-crafted scalar statistics.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R509",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Task-specific input quality gating using learned representations (linear probing on pretrained/foundation model embeddings) instead of device-reported scan quality scores or scalar NR-IQA metrics"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1320788",
+ "screen": {
+  "id": "epmc:PPR1320788",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "task-specific input quality gating",
+  "user": "none",
+  "reason": "The study empirically evaluates quality-gating approaches (safeguards/input filters to reject low-quality scans before downstream AI segmentation) comparing traditional scalar metrics to foundation model representations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "input quality gating"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1320788",
+   "empirical": 0.94,
+   "tests_practice": 0.44,
+   "real_deployment": 0.07
+  }
+ }
+}

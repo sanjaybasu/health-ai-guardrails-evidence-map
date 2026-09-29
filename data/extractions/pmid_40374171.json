@@ -1,0 +1,395 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 1854,
+   "sample_unit": "simulated patient scenarios (MEWS triage); 264 scenarios for department guidance",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4-Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Run-to-run consistency (Kendall correlation) of MEWS scoring across 10 repeated runs, before vs after prompt engineering",
+     "effect": "GPT-4-Turbo mean Kendall coefficient improved from 0.6176 (SD 0.2135) to 1.00 (SD 0); GPT-4o improved from 0.8327 to 0.8646 (not significant, P=.32).",
+     "quote": "For GPT-4-Turbo, the mean value dramatically improved from 0.6176 (SD 0.2135) in trial 1 to 1.00 (SD 0) in trial 2."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "MEWS scoring accuracy of GPT-4 models compared with nurses' manual calculation",
+     "effect": "GPT-4o accuracy after prompt engineering was 96.20% vs 81.8% for nurses' manual calculation from a previous study; GPT-4-Turbo reached 100%.",
+     "quote": "This is particularly notable when compared to the finding of a previous study, which indicated that the overall accuracy rate of nurses\u2019 manual calculations was 81.8% [ 20 ]."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Arithmetic errors in summing MEWS parameter scores by unoptimized prompts",
+     "effect": "Before prompt engineering, overall accuracy was 63.41% (GPT-4o) and 63.93% (GPT-4-Turbo); the model often failed to sum correct parameter scores.",
+     "quote": "Despite accurately determining individual parameter scores, ChatGPT frequently failed to sum them accurately."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Accuracy of triage scoring and department guidance in simulated emergency department scenarios",
+     "effect": "Triage accuracy 96.2%-100% after prompt engineering; department guidance accuracy 92.63% (95% CI 90.34%-94.93%), lowest in dermatology (79.57%); miscalculations of 1-2 points could miss patients needing immediate care.",
+     "quote": "Minor deviation of 1 or 2 scores in the MEWS can lead to overlooking patients needing immediate care or providing unnecessary treatment, thus wasting medical resources [ 29 ]."
+    },
+    {
+     "rec_id": "R061",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Adherence to prompt constraints (single department, predefined list) in department guidance",
+     "effect": "Despite repeating instructions in every query, the model sometimes recommended multiple departments or departments outside the predefined list.",
+     "quote": "Despite these measures, instances of the model recommending multiple departments still occurred."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "MEWS scoring accuracy after clarifying input data usage and format via prompt engineering",
+     "effect": "Accuracy rose from 63.93% to 100% (GPT-4-Turbo) and 63.41% to 96.20% (GPT-4o) after prompt revision addressing confused parameters and AVPU conversion.",
+     "quote": "The results from both GPT-4o and GPT-4-Turbo models in trial 2 showed significant improvement ( Figure 2 )."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "MEWS triage accuracy before vs after prompt engineering with structured prompt",
+     "effect": "GPT-4-Turbo accuracy rose from 63.93% to 100%; GPT-4o from 63.41% to 96.20%; average difference from standard score fell to 0 and 0.08.",
+     "quote": "GPT-4-Turbo achieved an impressive accuracy of 100% across all the 10 runs."
+    },
+    {
+     "rec_id": "R067",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Overreliance on patient medical history in department guidance errors",
+     "effect": "Physicians attributed 43.42% of overall guidance errors to overreliance on patient medical history rather than current symptoms.",
+     "quote": "Another key finding in this part of the experiment was that the guidance provided by ChatGPT (GPT-4o model) was sometimes influenced by the medical history of patients, where physicians attributed 43.42% of the overall guidance error to an overreliance on the medical history of patients."
+    }
+   ],
+   "unlisted_practices": [
+    "Including restrictive instruction prompt in every query to prevent instruction forgetting",
+    "Using Python tool for arithmetic calculations to avoid summation errors"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "any_ai",
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2118,
+   "sample_unit": "simulated patient scenarios",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4-Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "MEWS scoring accuracy after prompt engineering",
+     "effect": "Accuracy improved from 63.93% to 100% for GPT-4-Turbo and 63.41% to 96.20% for GPT-4o.",
+     "quote": "ChatGPT's triage accuracy, based on MEWS, improved following prompt engineering."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Repeated-run consistency",
+     "effect": "GPT-4o Kendall mean 0.8327 to 0.8646; GPT-4-Turbo 0.6176 to 1.00 after prompt engineering.",
+     "quote": "For GPT-4-Turbo, the mean value dramatically improved from 0.6176 (SD 0.2135) in trial 1 to 1.00 (SD 0) in trial 2."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Triage and department-guidance accuracy",
+     "effect": "Post-prompt GPT-4-Turbo triage 100%; GPT-4o triage 96.20%; GPT-4o department guidance 92.63%.",
+     "quote": "The overall accuracy for the 3 major departments was 92.63% (95% CI 90.34%-94.93%), with internal medicine departments achieving the highest accuracy of 93.51% (95% CI 90.85%-96.17%)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Same-data model comparison",
+     "effect": "After prompt engineering, GPT-4-Turbo achieved 100% triage accuracy versus GPT-4o 96.2%.",
+     "quote": "GPT-4-Turbo achieved an accuracy of 100% compared to GPT-4o's accuracy of 96.2%, despite GPT-4o initially showing better performance prior to prompt engineering."
+    }
+   ],
+   "unlisted_practices": [
+    "Including the restrictive clinical prompt in every query to reduce forgetting of prior instructions",
+    "Using an LLM\u2019s Python plugin or explicit computation instructions for MEWS score summation"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "CHN",
+   "sample_size": 2118,
+   "sample_unit": "scenarios",
+   "models_evaluated": [
+    "GPT-4o",
+    "GPT-4-Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "zho"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "triage scoring accuracy variation across repeated runs",
+     "effect": "accuracy across 10 runs ranged 27.18%-76.05% (overall 63.41%) for GPT-4o and 26.59%-96.60% (overall 63.93%) for GPT-4-Turbo",
+     "quote": "For GPT-4o, grading accuracy ranged from 27.18% (run 9) to 76.05% (runs 2 and 10), with an overall accuracy of 63.41%."
+    }
+   ],
+   "unlisted_practices": [
+    "prompt engineering"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "simulated patient scenarios (MEWS triage); 264 scenarios for department guidance",
+ "sample_size": 2118,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "zho"
+ ],
+ "models_evaluated": [
+  "GPT-4-Turbo",
+  "GPT-4o"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "MEWS scoring accuracy of GPT-4 models compared with nurses' manual calculation",
+   "effect": "GPT-4o accuracy after prompt engineering was 96.20% vs 81.8% for nurses' manual calculation from a previous study; GPT-4-Turbo reached 100%.",
+   "quote": "This is particularly notable when compared to the finding of a previous study, which indicated that the overall accuracy rate of nurses\u2019 manual calculations was 81.8% [ 20 ].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "MEWS triage accuracy before vs after prompt engineering with structured prompt",
+   "effect": "GPT-4-Turbo accuracy rose from 63.93% to 100%; GPT-4o from 63.41% to 96.20%; average difference from standard score fell to 0 and 0.08.",
+   "quote": "GPT-4-Turbo achieved an impressive accuracy of 100% across all the 10 runs.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Repeated-run consistency",
+   "effect": "GPT-4o Kendall mean 0.8327 to 0.8646; GPT-4-Turbo 0.6176 to 1.00 after prompt engineering.",
+   "quote": "For GPT-4-Turbo, the mean value dramatically improved from 0.6176 (SD 0.2135) in trial 1 to 1.00 (SD 0) in trial 2.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Run-to-run consistency (Kendall correlation) of MEWS scoring across 10 repeated runs, before vs after prompt engineering",
+   "effect": "GPT-4-Turbo mean Kendall coefficient improved from 0.6176 (SD 0.2135) to 1.00 (SD 0); GPT-4o improved from 0.8327 to 0.8646 (not significant, P=.32).",
+   "quote": "For GPT-4-Turbo, the mean value dramatically improved from 0.6176 (SD 0.2135) in trial 1 to 1.00 (SD 0) in trial 2.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R067",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Overreliance on patient medical history in department guidance errors",
+   "effect": "Physicians attributed 43.42% of overall guidance errors to overreliance on patient medical history rather than current symptoms.",
+   "quote": "Another key finding in this part of the experiment was that the guidance provided by ChatGPT (GPT-4o model) was sometimes influenced by the medical history of patients, where physicians attributed 43.42% of the overall guidance error to an overreliance on the medical history of patients.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R061",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Including restrictive instruction prompt in every query to prevent instruction forgetting",
+  "Including the restrictive clinical prompt in every query to reduce forgetting of prior instructions",
+  "Using Python tool for arithmetic calculations to avoid summation errors",
+  "Using an LLM\u2019s Python plugin or explicit computation instructions for MEWS score summation",
+  "prompt engineering"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40374171",
+ "screen": {
+  "id": "pmid:40374171",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt engineering to improve triage accuracy",
+  "user": "none",
+  "reason": "Evaluated the performance of LLMs (GPT-4o, GPT-4-Turbo) for emergency department triage and outpatient guidance on simulated clinical scenarios, explicitly testing outcomes before and after prompt engineering.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40374171",
+   "empirical": 0.95,
+   "tests_practice": 0.23,
+   "real_deployment": 0.02
+  }
+ }
+}

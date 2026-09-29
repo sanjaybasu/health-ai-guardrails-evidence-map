@@ -1,0 +1,302 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 896,
+   "sample_unit": "patients with MCI (363 in independent test set)",
+   "models_evaluated": [
+    "Morph CT Plus",
+    "logistic regression",
+    "random forest",
+    "gradient boosting",
+    "support vector machine",
+    "XGBoost",
+    "multilayer perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Intermediate-risk group size and PPV/NPV under 90% vs 95% sensitivity/specificity dual cutoffs",
+     "effect": "90% strategy limited intermediate-risk group to 27.3% (n=99) vs 49.6% (n=180) for 95%; accuracy 87.5% vs 89.1%; PPV 83.3% vs 86.2%; NPV 90.4% vs 90.7%.",
+     "quote": "This strategy limited the intermediate-risk group to 27.3% of patients, enabling definitive risk classification for 72.7% of the cohort with 87.5% overall accuracy ( Table 2 )."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability across sites and acquisition devices",
+     "effect": "Single-center cohort with a single PET/CT scanner model; no external validation and no validation on routine clinical CT.",
+     "quote": "First, this study was conducted within a single-center cohort (K-ROAD), and the model has not been externally validated in geographically or ethnically diverse populations."
+    }
+   ],
+   "unlisted_practices": [
+    "Dual-cutoff three-tier risk stratification to reduce definitive misclassification",
+    "Use of low-dose CT from PET attenuation correction as an MRI alternative for prognosis"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "South Korea",
+   "sample_size": 896,
+   "sample_unit": "patients with mild cognitive impairment",
+   "models_evaluated": [
+    "Morph CT Plus",
+    "logistic regression",
+    "random forest",
+    "gradient boosting",
+    "support vector machine",
+    "extreme gradient boosting",
+    "multilayer perceptron"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "held-out test discrimination and accuracy",
+     "effect": "Independent test set (n=363): AUC 0.870, accuracy 0.793, sensitivity 0.701, specificity 0.861.",
+     "quote": "On the independent test set (n=363), the logistic regression model achieved an AUC of 0.870, with accuracy of 0.793, sensitivity of 0.701, and specificity of 0.861 ( Supplementary Fig. 1B )."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "same-data classifier comparison",
+     "effect": "Among six classifiers, logistic regression had the highest cross-validation AUC, 0.861\u00b10.012.",
+     "quote": "Logistic regression achieved the highest cross-validation AUC (0.861\u00b10.012) and was selected for subsequent analyses ( Supplementary Fig. 1A )."
+    },
+    {
+     "rec_id": "R090",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "operating-threshold workflow burden",
+     "effect": "90% strategy intermediate-risk 27.3% (n=99) vs 49.6% (n=180) for 95%; accuracy 87.5% vs 89.1%.",
+     "quote": "The 90% strategy was superior for clinical triage, limiting the intermediate-risk group to 27.3% (n=99) compared to 49.6% (n=180) in the 95% strategy."
+    },
+    {
+     "rec_id": "R513",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "risk-category predictive values",
+     "effect": "For 90% risk categories, low-risk NPV was 90.4% and high-risk PPV was 83.3%.",
+     "quote": "The low-risk group achieved 90.4% (95% confidence interval [CI], 84.6%\u201394.5%) NPV and the high-risk group achieved 83.3% (95% CI, 74.9%\u201389.8%) PPV."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "predictive_risk"
+   ],
+   "country": "South Korea",
+   "sample_size": 896,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Morph CT Plus"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "intermediate-risk classification rate and triage accuracy",
+     "effect": "90% strategy limited intermediate-risk classifications to 27.3% (n=99) with 87.5% accuracy, versus 49.6% (n=180) with 89.1% accuracy for 95% strategy",
+     "quote": "The 90% strategy was superior for clinical triage, limiting the intermediate-risk group to 27.3% (n=99) compared to 49.6% (n=180) in the 95% strategy."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "South Korea",
+ "sample_unit": "patients with MCI (363 in independent test set)",
+ "sample_size": 896,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Morph CT Plus",
+  "XGBoost",
+  "extreme gradient boosting",
+  "gradient boosting",
+  "logistic regression",
+  "multilayer perceptron",
+  "random forest",
+  "support vector machine"
+ ],
+ "links": [
+  {
+   "rec_id": "R090",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Intermediate-risk group size and PPV/NPV under 90% vs 95% sensitivity/specificity dual cutoffs",
+   "effect": "90% strategy limited intermediate-risk group to 27.3% (n=99) vs 49.6% (n=180) for 95%; accuracy 87.5% vs 89.1%; PPV 83.3% vs 86.2%; NPV 90.4% vs 90.7%.",
+   "quote": "This strategy limited the intermediate-risk group to 27.3% of patients, enabling definitive risk classification for 72.7% of the cohort with 87.5% overall accuracy ( Table 2 ).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "intermediate-risk classification rate and triage accuracy",
+   "effect": "90% strategy limited intermediate-risk classifications to 27.3% (n=99) with 87.5% accuracy, versus 49.6% (n=180) with 89.1% accuracy for 95% strategy",
+   "quote": "The 90% strategy was superior for clinical triage, limiting the intermediate-risk group to 27.3% (n=99) compared to 49.6% (n=180) in the 95% strategy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R513",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dual-cutoff three-tier risk stratification to reduce definitive misclassification",
+  "Use of low-dose CT from PET attenuation correction as an MRI alternative for prognosis"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42088083",
+ "screen": {
+  "id": "pmid:42088083",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert threshold selection (dual-cutoff risk stratification)",
+  "user": "none",
+  "reason": "The study evaluates a deep learning model for predicting dementia conversion from low-dose CT scans and explicitly tests/compares operational risk-stratification cutoff strategies (90% vs 95% sensitivity/specificity operating targets) to optimize clinical triage workflow.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "risk stratification cutoff thresholds"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42088083",
+   "empirical": 0.96,
+   "tests_practice": 0.67,
+   "real_deployment": 0.07
+  }
+ }
+}

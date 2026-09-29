@@ -1,0 +1,300 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom (Scotland)",
+   "sample_size": 518,
+   "sample_unit": "MRI scans/participants (259 dementia cases, 259 matched controls)",
+   "models_evaluated": [
+    "RBF support vector machine with distance-from-hyperplane reject option"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Leakage-free validation using nested cross-validation with feature selection restricted to training data",
+     "effect": "Nested 5x5 cross-validation, t-test feature reduction applied only to training data; average AUC 0.71, accuracy 66.8% (internal validation only; no external or temporal test set).",
+     "quote": "The t-test was applied only to training data to avoid data leakage, produced a t-map indicating voxel significance between groups, avoiding double dipping."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of predictions stratified by distance-from-hyperplane patient-level confidence",
+     "effect": "Confidence-based stratification identified a high-confidence subgroup of ~35% of scans with accuracy ~80%, versus 66.8% overall accuracy (AUC 0.71) across all scans.",
+     "quote": "This strategy allows the model to prioritise high confidence classifications, achieving approximately 80 percent accuracy for one third of scans while maintaining a consistent baseline performance with AUC equal to 0.71 across the entire dataset."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reporting of uncertainty (confidence intervals) for performance metrics",
+     "effect": "Confidence intervals were not estimated; only fold-level variability was reported, and no subgroup calibration was reported.",
+     "quote": "Confidence intervals were not estimated due to the nested cross validation framework; however, variability across outer folds is reported to provide an indication of model stability and uncertainty."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance across heterogeneous scanners and sites",
+     "effect": "Scans came from heterogeneous NHS scanners in one region; the authors claim consistent performance across them but report no separate performance by site or device and list this as a limitation.",
+     "quote": "Routinely collected scans showed heterogeneity in image parameters and equipment, but this was necessary for scaling to a population level."
+    }
+   ],
+   "unlisted_practices": [
+    "Reject option (selective prediction/deferral) using distance-from-hyperplane threshold to trade coverage for accuracy",
+    "Manual expert review of routine MRI scans to exclude artefacts before model training",
+    "Secure trusted research environment with disclosure checks on exported results"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "Scotland, United Kingdom",
+   "sample_size": 518,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Radial Basis Function support vector machine (RBF-SVM) with distance-from-hyperplane confidence calibration"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "future dementia classification accuracy",
+     "effect": "Average AUC 0.71 and accuracy 66.8% across five outer folds.",
+     "quote": "The RBF-SVM model performance across five outer folds of the nested cross-validation demonstrated an average AUC score of 0.71 and accuracy of 66.8% in discriminating between scans labelled as future dementia cases and controls as illustrated in Fig. 3 (B)."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "confidence-stratified prediction accuracy",
+     "effect": "High-confidence classifications achieved approximately 80% accuracy for one third of scans; baseline AUC 0.71.",
+     "quote": "This strategy allows the model to prioritise high confidence classifications, achieving approximately 80 percent accuracy for one third of scans while maintaining a consistent baseline performance with AUC equal to 0.71 across the entire dataset."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 518,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RBF-SVM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R488",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prediction accuracy in high-confidence subgroup",
+     "effect": "Prediction accuracy increased to around 80% within a high-confidence subgroup comprising approximately 35% of scans, compared to 66.8% baseline accuracy across all data.",
+     "quote": "Confidence-based stratification identified a high-confidence subgroup comprising approximately 35% of scans, within which prediction accuracy increased to around 80%."
+    }
+   ],
+   "unlisted_practices": [
+    "Support vector machine reject option (selective prediction) using distance-from-hyperplane confidence calibration"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom (Scotland)",
+ "sample_unit": "patients",
+ "sample_size": 518,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "RBF support vector machine with distance-from-hyperplane reject option",
+  "RBF-SVM",
+  "Radial Basis Function support vector machine (RBF-SVM) with distance-from-hyperplane confidence calibration"
+ ],
+ "links": [
+  {
+   "rec_id": "R488",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "confidence-stratified prediction accuracy",
+   "effect": "High-confidence classifications achieved approximately 80% accuracy for one third of scans; baseline AUC 0.71.",
+   "quote": "This strategy allows the model to prioritise high confidence classifications, achieving approximately 80 percent accuracy for one third of scans while maintaining a consistent baseline performance with AUC equal to 0.71 across the entire dataset.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy of predictions stratified by distance-from-hyperplane patient-level confidence",
+   "effect": "Confidence-based stratification identified a high-confidence subgroup of ~35% of scans with accuracy ~80%, versus 66.8% overall accuracy (AUC 0.71) across all scans.",
+   "quote": "This strategy allows the model to prioritise high confidence classifications, achieving approximately 80 percent accuracy for one third of scans while maintaining a consistent baseline performance with AUC equal to 0.71 across the entire dataset.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reporting of uncertainty (confidence intervals) for performance metrics",
+   "effect": "Confidence intervals were not estimated; only fold-level variability was reported, and no subgroup calibration was reported.",
+   "quote": "Confidence intervals were not estimated due to the nested cross validation framework; however, variability across outer folds is reported to provide an indication of model stability and uncertainty.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Manual expert review of routine MRI scans to exclude artefacts before model training",
+  "Reject option (selective prediction/deferral) using distance-from-hyperplane threshold to trade coverage for accuracy",
+  "Secure trusted research environment with disclosure checks on exported results",
+  "Support vector machine reject option (selective prediction) using distance-from-hyperplane confidence calibration"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42169066",
+ "screen": {
+  "id": "pmid:42169066",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "confidence-based stratification of predictions (distance-from-hyperplane calibration)",
+  "user": "none",
+  "reason": "The study evaluates a safety-aware deployment practice of confidence-based stratification/calibration (distance-from-hyperplane) to selectively use high-certainty predictions on real-world routine NHS brain MRI scans.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "confidence calibration thresholding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42169066",
+   "empirical": 0.96,
+   "tests_practice": 0.5,
+   "real_deployment": 0.04
+  }
+ }
+}

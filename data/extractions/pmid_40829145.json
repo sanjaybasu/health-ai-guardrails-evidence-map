@@ -1,0 +1,408 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "multimodal_foundation",
+    "generative_llm",
+    "imaging_diagnostic"
+   ],
+   "country": "Singapore",
+   "sample_size": 192,
+   "sample_unit": "thyroid nodules (6912 model responses)",
+   "models_evaluated": [
+    "LLaVA",
+    "LLaVA-Med",
+    "OpenAI o3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Effect of prompt engineering and image labeling on accuracy and run-to-run consistency of TI-RADS outputs",
+     "effect": "Modified prompts raised overall consistency (59.5% vs 36%, P<.001) but reduced overall accuracy (45% vs 39.8%, P=.01) and shape/margin accuracy; o3 consistency ranged up to 85.4%.",
+     "quote": "Surprisingly, there was a mixed effect from use of the modified prompt as compared with the basic prompt ( Table 3 ), with poorer consistency for composition (56.2% vs 61.7%, P =.008), but higher consistency for margins (57.5% vs 38.5%, P <.001), echogenic foci (62.9% vs 58.6%, P =.04), and overall TI-RADS classification level (59.5% vs 36%, P <.001)."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy of multimodal LLMs in TI-RADS classification of thyroid nodules",
+     "effect": "Best overall TI-RADS classification accuracy was only 57.3%; authors conclude even the best model output was suboptimal for clinical deployment.",
+     "quote": "The best accuracy obtained for overall TI-RADS classification level was still only 57.3%."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of three candidate multimodal models (open-source, fine-tuned, commercial) against expert ratings on same data",
+     "effect": "o3 had highest validity (98.6% vs 91.5% LLaVA vs 75% LLaVA-Med) and best accuracy for most components; overall accuracy up to 57.3%.",
+     "quote": "The OpenAI o3 model produced the highest proportion of valid responses (2273/2304, 98.6%), followed by the LLaVA model (2108/2304, 91.5%), then the LLaVA-Med model (1729/2304, 75%, P <.001 for overall comparison)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output accuracy against expert reference standard for TI-RADS components",
+     "effect": "Overall accuracy was low across models (o3 0.56, LLaVA 0.36, LLaVA-Med 0.35); model outputs were inaccurate against ground truth.",
+     "quote": "The best accuracy obtained for overall TI-RADS classification level was still only 57.3%."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Rate of invalid or uninterpretable responses, including inability to interpret the image",
+     "effect": "11.6% of responses were invalid (6110/6912 valid); LLaVA-Med valid in only 75%; most invalid due to inability to interpret the image.",
+     "quote": "Most invalid responses were due to the inability of the LLM to interpret the provided image (\u201cI am unable to view the image itself\u201d)."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering (task decomposition, contextualization, constrained output format) to improve LLM output",
+    "Radiologist-annotated image labeling to improve multimodal model performance",
+    "Domain-specific fine-tuning of vision-language models"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "predictive_risk",
+    "imaging_diagnostic"
+   ],
+   "country": "not reported",
+   "sample_size": 192,
+   "sample_unit": "thyroid nodules",
+   "models_evaluated": [
+    "LLaVA",
+    "LLaVA-Med",
+    "OpenAI o3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "stand-alone TI-RADS classification accuracy",
+     "effect": "Even the best overall TI-RADS classification accuracy was only 57.3%.",
+     "quote": "The best accuracy obtained for overall TI-RADS classification level was still only 57.3%."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "reproducibility across repeated outputs",
+     "effect": "Interrater reliability ranged \u22120.15 to 0.49; no combination achieved Fleiss\u2019 Kappa above 0.60.",
+     "quote": "Due to the relatively high frequency of invalid responses, interrater reliability was poor across all combinations of input variables, ranging between \u22120.15 and 0.49."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "comparative model validity",
+     "effect": "Valid responses: o3 2273/2304 (98.6%), LLaVA 2108/2304 (91.5%), LLaVA-Med 1729/2304 (75%; P <.001).",
+     "quote": "The OpenAI o3 model produced the highest proportion of valid responses (2273/2304, 98.6%), followed by the LLaVA model (2108/2304, 91.5%), then the LLaVA-Med model (1729/2304, 75%, P <.001 for overall comparison)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "fine-tuned model performance",
+     "effect": "LLaVA-Med overall TI-RADS accuracy was 0.35 vs LLaVA 0.36; overall consistency was 0.27 vs LLaVA 0.52.",
+     "quote": "The consistency of both o3 and LLaVA models was largely comparable across all categories except that of margins (80% vs 54.6% respectively, P <.001), while that of LLaVA-Med was significantly poorer than both across all categories ( Table 3 )."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy against expert ratings",
+     "effect": "Best overall TI-RADS classification accuracy was only 57.3%, indicating suboptimal diagnostic output accuracy.",
+     "quote": "The best accuracy obtained for overall TI-RADS classification level was still only 57.3%."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "prompt engineering accuracy and consistency",
+     "effect": "Composition accuracy improved 56.3% vs 41.9%, but shape, margins, and overall TI-RADS worsened; overall consistency improved 59.5% vs 36%.",
+     "quote": "However, prompt engineering had a mixed effect on accuracy."
+    }
+   ],
+   "unlisted_practices": [
+    "Radiologist-annotated region-of-interest image labeling as preprocessing for multimodal LLM image classification",
+    "Medical-domain instruction tuning or fine-tuning of multimodal LLMs to improve imaging classification performance",
+    "Best-of-three aggregation of repeated LLM outputs",
+    "Manual recalculation of TI-RADS total score from LLM-generated component scores"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "Singapore",
+   "sample_size": 192,
+   "sample_unit": "nodules",
+   "models_evaluated": [
+    "LLaVA",
+    "LLaVA-Med",
+    "OpenAI o3"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "inter-run consistency and reliability of model outputs",
+     "effect": "Fleiss kappa was <0.60 across all combinations (ranging from -0.15 to 0.49), with consistency reaching at most 85.4% for o3 and substantially lower for other models",
+     "quote": "Interrater reliability was consistently poor across all combinations (Fleiss' kappa<0.60)."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt engineering with task decomposition and constrained output formatting",
+    "Image annotation overlay with radiologist-annotated regions of interest",
+    "Domain-specific medical instruction fine-tuning"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "country": "Singapore",
+ "sample_unit": "thyroid nodules (6912 model responses)",
+ "sample_size": 192,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "LLaVA",
+  "LLaVA-Med",
+  "OpenAI o3"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of three candidate multimodal models (open-source, fine-tuned, commercial) against expert ratings on same data",
+   "effect": "o3 had highest validity (98.6% vs 91.5% LLaVA vs 75% LLaVA-Med) and best accuracy for most components; overall accuracy up to 57.3%.",
+   "quote": "The OpenAI o3 model produced the highest proportion of valid responses (2273/2304, 98.6%), followed by the LLaVA model (2108/2304, 91.5%), then the LLaVA-Med model (1729/2304, 75%, P <.001 for overall comparison).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Output accuracy against expert reference standard for TI-RADS components",
+   "effect": "Overall accuracy was low across models (o3 0.56, LLaVA 0.36, LLaVA-Med 0.35); model outputs were inaccurate against ground truth.",
+   "quote": "The best accuracy obtained for overall TI-RADS classification level was still only 57.3%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "reproducibility across repeated outputs",
+   "effect": "Interrater reliability ranged \u22120.15 to 0.49; no combination achieved Fleiss\u2019 Kappa above 0.60.",
+   "quote": "Due to the relatively high frequency of invalid responses, interrater reliability was poor across all combinations of input variables, ranging between \u22120.15 and 0.49.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of prompt engineering and image labeling on accuracy and run-to-run consistency of TI-RADS outputs",
+   "effect": "Modified prompts raised overall consistency (59.5% vs 36%, P<.001) but reduced overall accuracy (45% vs 39.8%, P=.01) and shape/margin accuracy; o3 consistency ranged up to 85.4%.",
+   "quote": "Surprisingly, there was a mixed effect from use of the modified prompt as compared with the basic prompt ( Table 3 ), with poorer consistency for composition (56.2% vs 61.7%, P =.008), but higher consistency for margins (57.5% vs 38.5%, P <.001), echogenic foci (62.9% vs 58.6%, P =.04), and overall TI-RADS classification level (59.5% vs 36%, P <.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "stand-alone TI-RADS classification accuracy",
+   "effect": "Even the best overall TI-RADS classification accuracy was only 57.3%.",
+   "quote": "The best accuracy obtained for overall TI-RADS classification level was still only 57.3%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "prompt engineering accuracy and consistency",
+   "effect": "Composition accuracy improved 56.3% vs 41.9%, but shape, margins, and overall TI-RADS worsened; overall consistency improved 59.5% vs 36%.",
+   "quote": "However, prompt engineering had a mixed effect on accuracy.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Best-of-three aggregation of repeated LLM outputs",
+  "Domain-specific fine-tuning of vision-language models",
+  "Domain-specific medical instruction fine-tuning",
+  "Image annotation overlay with radiologist-annotated regions of interest",
+  "Manual recalculation of TI-RADS total score from LLM-generated component scores",
+  "Medical-domain instruction tuning or fine-tuning of multimodal LLMs to improve imaging classification performance",
+  "Prompt engineering (task decomposition, contextualization, constrained output format) to improve LLM output",
+  "Prompt engineering with task decomposition and constrained output formatting",
+  "Radiologist-annotated image labeling to improve multimodal model performance",
+  "Radiologist-annotated region-of-interest image labeling as preprocessing for multimodal LLM image classification"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40829145",
+ "screen": {
+  "id": "pmid:40829145",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "generative_llm",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt engineering and image annotation",
+  "user": "none",
+  "reason": "The study empirically tests whether deployment-level implementation practices (prompt engineering variations and radiologist image annotation/labeling) affect the accuracy and consistency of multimodal LLMs in evaluating ultrasound thyroid nodules.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompt engineering and image annotation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40829145",
+   "empirical": 0.96,
+   "tests_practice": 0.11,
+   "real_deployment": 0.03
+  }
+ }
+}

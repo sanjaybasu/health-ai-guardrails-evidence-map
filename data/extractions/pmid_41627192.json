@@ -1,0 +1,215 @@
+{
+ "route": "panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "kidney stone cases",
+   "models_evaluated": [
+    "AI-augmented kidney stone composition test V1",
+    "retrained V2 model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model concordance on AI-influenced vs human-only reference labels",
+     "effect": "V2 had 10% lower concordance than V1 on AI-influenced production hold-out set, similar on pre-AI set, but outperformed V1 on human-only or human-corrected labels, especially for less-common stone types.",
+     "quote": "These findings revealed an AI label feedback loop, confounding retraining and evaluation."
+    }
+   ],
+   "unlisted_practices": [
+    "Maintain ongoing human-only annotation of a case subset to prevent AI label feedback loops when retraining and evaluating deployed models",
+    "Construct validation sets excluding AI-influenced labels when evaluating retrained models"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Not reported",
+   "sample_size": null,
+   "sample_unit": "kidney stone cases",
+   "models_evaluated": [
+    "AI-augmented kidney stone composition model V1",
+    "Retrained kidney stone composition model V2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model concordance across validation sets with AI-influenced versus human-generated labels",
+     "effect": "V2 showed a 10% lower concordance rate than V1 on mostly AI-influenced labels, similar performance on pre-AI labels, and better performance on recent human-only or human-corrected labels, revealing confounded evaluation.",
+     "quote": "These findings revealed an AI label feedback loop, confounding retraining and evaluation."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Unknown",
+   "sample_size": null,
+   "sample_unit": "datasets",
+   "models_evaluated": [
+    "V1",
+    "V2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model concordance rate",
+     "effect": "V2 showed 10% lower concordance than V1 on AI-influenced labels but outperformed V1 on human-only or human-corrected labels.",
+     "quote": "Notably, V2 outperformed V1 on the recent subset of cases with human-only or human-corrected labels, particularly for less-common stone types."
+    }
+   ],
+   "unlisted_practices": [
+    "mitigating AI label feedback loops by using ongoing human annotation and careful validation set construction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "kidney stone cases",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AI-augmented kidney stone composition model V1",
+  "AI-augmented kidney stone composition test V1",
+  "Retrained kidney stone composition model V2",
+  "V1",
+  "V2",
+  "retrained V2 model"
+ ],
+ "links": [
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model concordance on AI-influenced vs human-only reference labels",
+   "effect": "V2 had 10% lower concordance than V1 on AI-influenced production hold-out set, similar on pre-AI set, but outperformed V1 on human-only or human-corrected labels, especially for less-common stone types.",
+   "quote": "These findings revealed an AI label feedback loop, confounding retraining and evaluation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Construct validation sets excluding AI-influenced labels when evaluating retrained models",
+  "Maintain ongoing human-only annotation of a case subset to prevent AI label feedback loops when retraining and evaluating deployed models",
+  "mitigating AI label feedback loops by using ongoing human annotation and careful validation set construction"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:41627192",
+ "screen": {
+  "id": "pmid:41627192",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "ongoing human annotation and careful validation set construction for retraining",
+  "user": "clinician_or_staff",
+  "reason": "Empirically investigates an AI label feedback loop in a long-deployed clinical test, evaluating how retraining data and validation set construction strategies (human-only vs AI-influenced labels) affect performance monitoring and retraining.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "drift monitoring and validation set curation to detect AI label feedback loops"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41627192",
+   "empirical": 0.95,
+   "tests_practice": 0.4,
+   "real_deployment": 0.94
+  }
+ }
+}

@@ -1,0 +1,365 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 56,
+   "sample_unit": "scenario-level runs (28 synthetic emergency vignettes x 2 replicates); 16 Base/Worse counterfactual comparisons per strategy",
+   "models_evaluated": [
+    "GPT-5.2 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R243",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Safety violations and under-triage with escalation routing from lean to safe persona versus lean baseline",
+     "effect": "Lean baseline had safety violations in 8/56 (14.3%); routed strategies 0/56. Monotonicity violations fell from 10/16 (62.5%) to 2/16 (ROUTER_R1) and 0/16 (ROUTER_R2_CF); simulated calls 1.21 for R1.",
+     "quote": "Routing strategies eliminated safety violations while keeping test counts near the lean baseline (ROUTER_R1 mean: 2.14; ROUTER_R2 mean: 2.20; ROUTER_R3 mean: 2.21)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Deferral to conservative policy on red flags while limiting test suggestions (over-deferral proxy)",
+     "effect": "Routing escalated in 21.4% of scenarios for ROUTER_R1, eliminated safety violations, and kept mean tests at 2.14-2.21 versus 1.95 lean and 3.38-4.32 SAFE.",
+     "quote": "ROUTER_R1 required an average of 1.21 simulated LLM calls per scenario, reflecting escalation in 21.4% of scenarios."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Sensitivity of LLM safety behavior to prompt configuration and counterfactual worsening of inputs",
+     "effect": "LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%) while SAFE personas had 0/16; same model appeared safer or riskier by prompt configuration.",
+     "quote": "Across eight Base/Worse vignette pairs with two replicates each, LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) for both P_HL and P_LL."
+    },
+    {
+     "rec_id": "R099",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Under-triage and omitted escalation actions for deteriorated emergency vignettes",
+     "effect": "Lean persona had contraindication/sequence violations in 8/56 (14.3%); monotonicity violations dominated by under-triage of Worse vignettes below minimum admission level.",
+     "quote": "Violations were dominated by under-triage patterns in which the Worse vignette received a plan below the minimum admission level implied by red-flag features, often accompanied by missing escalation actions."
+    }
+   ],
+   "unlisted_practices": [
+    "Persona prompting with LEAN-to-SAFE routing/cascade as safety wrapper",
+    "Counterfactual monotonicity testing of worsened vignettes as a stress test"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported",
+   "sample_size": 56,
+   "sample_unit": "synthetic scenario-level runs; plus 16 Base/Worse comparisons per strategy",
+   "models_evaluated": [
+    "GPT-5.2 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Japanese"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "counterfactual monotonicity under worsened vignettes",
+     "effect": "LEAN personas: 10/16 violations (62.5%; 95% Wilson CI: 38.6-81.5%); SAFE personas: 0/16.",
+     "quote": "Across eight Base/Worse vignette pairs with two replicates each, LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) for both P_HL and P_LL."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "red-flag escalation safety and monotonicity failures",
+     "effect": "Routing eliminated safety violations; monotonicity violations fell to ROUTER_R1 2/16 and ROUTER_R2_CF 0/16.",
+     "quote": "Routing eliminated safety violations and reduced monotonicity violations (ROUTER_R1 2/16; ROUTER_R2_CF 0/16) while keeping test counts near the lean baseline in the main router simulation (means: 2.14-2.21) with modest simulated call overhead (ROUTER_R1 1.21 calls; ROUTER_R2_AUDIT 2.00 calls)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "automated red-flag routing for unsafe outputs",
+     "effect": "BASE_HL safety violations: 8/56 (14.3%); routed strategies: 0/56, with mean tests 2.14-2.21.",
+     "quote": "Routing strategies eliminated safety violations while keeping test counts near the lean baseline (ROUTER_R1 mean: 2.14; ROUTER_R2 mean: 2.20; ROUTER_R3 mean: 2.21)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "contraindication or unsafe sequence violations",
+     "effect": "BASE_HL had 8/56 safety violations (14.3%; 95% Wilson CI: 7.4%-25.7%); SAFE baselines and routed strategies had 0/56.",
+     "quote": "The lean baseline BASE_HL suggested the fewest tests (mean: 1.95) but produced contraindication/sequence safety violations in 8/56 scenarios (14.3%; 95% Wilson CI: 7.4%-25.7%; mean severity 0.39) (Table 3 )."
+    }
+   ],
+   "unlisted_practices": [
+    "Persona routing from a LEAN prompt to a SAFE prompt using automated red-flag triggers",
+    "Dual-run LEAN/SAFE persona auditing with conservative override",
+    "Optional low-time-pressure SAFE persona arbitration for disposition disagreement"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Japan",
+   "sample_size": 56,
+   "sample_unit": "scenarios",
+   "models_evaluated": [
+    "GPT-5.2 Pro"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "ja"
+   ],
+   "links": [
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "contraindication and sequence safety violations",
+     "effect": "LEAN baseline produced safety violations in 8/56 scenarios (14.3%; 95% Wilson CI: 7.4%-25.7%; mean severity 0.39).",
+     "quote": "In the router simulation, the lean baseline BASE_HL suggested the fewest tests (mean: 1.95) but produced contraindication/sequence safety violations in 8/56 scenarios (14.3%; 95% Wilson CI: 7.4%-25.7%; mean severity 0.39) (Table 3 )."
+    },
+    {
+     "rec_id": "R243",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "counterfactual monotonicity violations from under-triage",
+     "effect": "LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) due to under-triage and missing escalation actions.",
+     "quote": "Across eight Base/Worse vignette pairs with two replicates each, LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) for both P_HL and P_LL."
+    }
+   ],
+   "unlisted_practices": [
+    "Persona routing combining a lean prompt persona with a safe prompt persona via automated red-flag triggers or dual-run auditing"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Japan",
+ "sample_unit": "scenario-level runs (28 synthetic emergency vignettes x 2 replicates); 16 Base/Worse counterfactual comparisons per strategy",
+ "sample_size": 56,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Japanese",
+  "ja"
+ ],
+ "models_evaluated": [
+  "GPT-5.2 Pro"
+ ],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Safety violations and under-triage with escalation routing from lean to safe persona versus lean baseline",
+   "effect": "Lean baseline had safety violations in 8/56 (14.3%); routed strategies 0/56. Monotonicity violations fell from 10/16 (62.5%) to 2/16 (ROUTER_R1) and 0/16 (ROUTER_R2_CF); simulated calls 1.21 for R1.",
+   "quote": "Routing strategies eliminated safety violations while keeping test counts near the lean baseline (ROUTER_R1 mean: 2.14; ROUTER_R2 mean: 2.20; ROUTER_R3 mean: 2.21).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Sensitivity of LLM safety behavior to prompt configuration and counterfactual worsening of inputs",
+   "effect": "LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%) while SAFE personas had 0/16; same model appeared safer or riskier by prompt configuration.",
+   "quote": "Across eight Base/Worse vignette pairs with two replicates each, LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) for both P_HL and P_LL.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R099",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Under-triage and omitted escalation actions for deteriorated emergency vignettes",
+   "effect": "Lean persona had contraindication/sequence violations in 8/56 (14.3%); monotonicity violations dominated by under-triage of Worse vignettes below minimum admission level.",
+   "quote": "Violations were dominated by under-triage patterns in which the Worse vignette received a plan below the minimum admission level implied by red-flag features, often accompanied by missing escalation actions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "automated red-flag routing for unsafe outputs",
+   "effect": "BASE_HL safety violations: 8/56 (14.3%); routed strategies: 0/56, with mean tests 2.14-2.21.",
+   "quote": "Routing strategies eliminated safety violations while keeping test counts near the lean baseline (ROUTER_R1 mean: 2.14; ROUTER_R2 mean: 2.20; ROUTER_R3 mean: 2.21).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "contraindication and sequence safety violations",
+   "effect": "LEAN baseline produced safety violations in 8/56 scenarios (14.3%; 95% Wilson CI: 7.4%-25.7%; mean severity 0.39).",
+   "quote": "In the router simulation, the lean baseline BASE_HL suggested the fewest tests (mean: 1.95) but produced contraindication/sequence safety violations in 8/56 scenarios (14.3%; 95% Wilson CI: 7.4%-25.7%; mean severity 0.39) (Table 3 ).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "counterfactual monotonicity violations from under-triage",
+   "effect": "LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) due to under-triage and missing escalation actions.",
+   "quote": "Across eight Base/Worse vignette pairs with two replicates each, LEAN personas violated counterfactual monotonicity in 10/16 comparisons (62.5%; 95% Wilson CI: 38.6-81.5%) for both P_HL and P_LL.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Counterfactual monotonicity testing of worsened vignettes as a stress test",
+  "Dual-run LEAN/SAFE persona auditing with conservative override",
+  "Optional low-time-pressure SAFE persona arbitration for disposition disagreement",
+  "Persona prompting with LEAN-to-SAFE routing/cascade as safety wrapper",
+  "Persona routing combining a lean prompt persona with a safe prompt persona via automated red-flag triggers or dual-run auditing",
+  "Persona routing from a LEAN prompt to a SAFE prompt using automated red-flag triggers"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42181412",
+ "screen": {
+  "id": "pmid:42181412",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "persona routing with red-flag escalation and dual-run auditing",
+  "user": "none",
+  "reason": "Empirical evaluation comparing baseline prompting versus persona routing/escalation strategies to prevent clinical safety and monotonicity violations in simulated emergency scenarios.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "persona routing and escalation guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42181412",
+   "empirical": 0.87,
+   "tests_practice": 0.7,
+   "real_deployment": 0.01
+  }
+ }
+}

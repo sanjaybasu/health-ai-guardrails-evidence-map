@@ -1,0 +1,86 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": 3160,
+ "sample_unit": "ICU admissions",
+ "models_evaluated": [
+  "LLaMA 3.1 8B",
+  "LLaMA 3.3 70B",
+  "GPT-5.2"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Delirium prediction AUROC with vs without injected clinical knowledge report, and with random control reports",
+   "effect": "Clinically meaningful knowledge report improved AUROC by 8.57 points (8B) and 1.99 points (70B); random control reports did not improve and often degraded performance.",
+   "quote": "Adding a clinically meaningful external knowledge report improves AUROC by 8.57 percentage points for the 8B model and 1.99 percentage points for the 70B model compared to no external knowledge.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using locally deployable open-weight LLMs with inference-time knowledge injection as a privacy-preserving alternative to frontier closed models",
+  "Using SHAP-based attribution to confirm injected knowledge is used in prediction"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2607.20453",
+ "screen": {
+  "id": "arxiv:2607.20453",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study tests an inference-time deployment practice (injecting an external clinical knowledge report into prompts of existing models without retraining) compared to baseline prompting across MIMIC-IV ICU admissions for delirium prediction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "inference-time clinical knowledge injection"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2607.20453",
+   "empirical": 0.95,
+   "tests_practice": 0.23,
+   "real_deployment": 0.04
+  }
+ }
+}

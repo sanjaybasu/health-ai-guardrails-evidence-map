@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 2788,
+ "sample_unit": "questions",
+ "models_evaluated": [
+  "Haiku-4.5",
+  "Qwen-3.6-Plus"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Medical QA accuracy with vs without knowledge-graph-backed validation of LLM reasoner outputs",
+   "effect": "With Haiku-4.5, KG validation gave +0.61 pp over no validator; QKG with context matching gave +1.40 pp over no validator and +0.79 pp over KG without context matching (all p<0.05). With Qwen-3.6-Plus, QKG gain over no validator was +5.96 pp.",
+   "quote": "With Haiku-4.5 as both the Reasoner and the Validator, KG-backed validation significantly improves over a no-validator baseline ($+0.61$ pp), and QKG with context matching yields the largest gain, outperforming both KG validation without context matching ($+0.79$ pp) and the no-validator baseline ($+1.40$ pp; paired McNemar, all $p<0.05$).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Context-dependent triplet validity in a knowledge graph, with patient-group-specific constraints used to check applicability of evidence to the patient context"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2604.23972",
+ "screen": {
+  "id": "arxiv:2604.23972",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "knowledge graph-based validation with context matching (retrieval grounding)",
+  "user": "none",
+  "reason": "Evaluates a deployment safeguard/pipeline (a reasoner-validator setup using context-sensitive knowledge graph verification vs no validation / standard KG) on medical QA benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "KG-grounded validation and context-sensitive retrieval"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2604.23972",
+   "empirical": 0.89,
+   "tests_practice": 0.39,
+   "real_deployment": 0.03
+  }
+ }
+}

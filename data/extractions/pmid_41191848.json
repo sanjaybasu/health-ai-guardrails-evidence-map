@@ -1,0 +1,395 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Singapore",
+   "sample_size": 50,
+   "sample_unit": "postoperative breast cancer cases",
+   "models_evaluated": [
+    "TheSerenityBot (Claude-2 with NCCN RAG)",
+    "Claude-2",
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of adjuvant therapy recommendations, guideline-grounded RAG vs ungrounded LLMs vs tumor board consensus",
+     "effect": "TSB (Claude-2 + NCCN RAG) accuracy 0.89 vs Claude-2 0.86 (P=.080) and GPT-4 0.78 (P<.001); GPT-4 much lower on genetic testing (OR 0.05).",
+     "quote": "TSB achieved an overall accuracy of 0.89, compared with 0.86 for Claude-2 and 0.78 for GPT-4 across all seven modalities."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether AI flagged missing or anomalous input (menopausal status) that prevented valid output",
+     "effect": "In a T2N1 case with unclear menopausal status, TSB recommended Oncotype testing, whereas MTB recommended chemotherapy; AI did not flag the missing variable.",
+     "quote": "The AI did not identify the missing menopausal status as a critical variable."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Concordance of AI treatment recommendations with expert consensus and guidelines, discordant cases",
+     "effect": "TSB recommended endocrine therapy for three low ER-positive DCIS cases where MTB withheld; also recommended redundant genetic testing and RT without considering margin status in two patients.",
+     "quote": "Similarly, TSB automatically recommended RT after lumpectomy in two patients without considering margin status or the need for re-excision."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy, precision, recall, F1 of AI outputs against MTB consensus reference standard",
+     "effect": "TSB accuracy 0.89, precision 0.85, recall 0.82, F1 0.80; GPT-4 precision 0.60, F1 0.70.",
+     "quote": "The primary outcome was overall performance of the three AI models across seven therapy modalities, using human consensus from MTB as ground truth."
+    },
+    {
+     "rec_id": "R500",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Recommendations reflecting available prior patient data (longitudinal recall)",
+     "effect": "AI recommended genetic testing for a patient who had already undergone testing, reflecting limitation in longitudinal data recall.",
+     "quote": "In another case, the AI recommended GT for a patient who had already undergone testing."
+    },
+    {
+     "rec_id": "R481",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Whether tool displays supporting source content for recommendations",
+     "effect": "TSB output includes a Sources drop-down with guideline excerpts and links; described as improving interpretability, but effect not tested.",
+     "quote": "TSB improves interpretability by referencing relevant clinical guidelines when generating recommendations, thereby enhancing transparency."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Singapore",
+   "sample_size": 50,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "TheSerenityBot (TSB)",
+    "Claude-2",
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Candidate model comparison",
+     "effect": "TSB accuracy 0.89, Claude-2 0.86, and GPT-4 0.78; GPT-4 was significantly lower than TSB (P < .001).",
+     "quote": "TSB achieved an overall accuracy of 0.89, compared with 0.86 for Claude-2 and 0.78 for GPT-4 across all seven modalities."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Guideline-augmented RAG accuracy",
+     "effect": "TSB outperformed GPT-4 (estimate \u201311.2; P < .001), but Claude-2 accuracy reduction versus TSB was nonsignificant (estimate \u20133.00; P = .080).",
+     "quote": "In the comparative analysis using GEEs, Claude-2 showed a nonsignificant reduction in accuracy compared with TSB (estimate, \u20133.00 [95% CI, \u20136.36 to 0.33]; P = .080)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Inaccurate therapy recommendations",
+     "effect": "Overall accuracy was below 1.0 for all models: TSB 0.89, Claude-2 0.86, GPT-4 0.78.",
+     "quote": "TSB achieved an overall accuracy of 0.89, compared with 0.86 for Claude-2 and 0.78 for GPT-4 across all seven modalities."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Missing input not flagged",
+     "effect": "One discordant Oncotype case had unclear menopausal status; TSB suggested testing while MTB recommended chemotherapy if premenopausal.",
+     "quote": "The AI did not identify the missing menopausal status as a critical variable."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Uncertain-case deferral",
+     "effect": "One T2N1 case with unclear menopausal status produced an Oncotype Dx recommendation instead of a flagged data gap needing clarification.",
+     "quote": "The AI did not identify the missing menopausal status as a critical variable."
+    },
+    {
+     "rec_id": "R480",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Automated report hallucinations",
+     "effect": "All automatically generated reports were accurate with no hallucinations before use as prompts.",
+     "quote": "All automatically generated reports were accurate with no hallucinations and used as prompts for all three AI models."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Singapore",
+   "sample_size": 50,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "TheSerenityBot (TSB)",
+    "Claude-2",
+    "GPT-4"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy of adjuvant therapy recommendations across seven modalities",
+     "effect": "TSB accuracy 0.89 vs 0.86 for Claude-2 (P=.080) and 0.78 for GPT-4 (P<.001); Claude-2 recall significantly lower (P=.0441)",
+     "quote": "TSB achieved an overall accuracy of 0.89, compared with 0.86 for Claude-2 and 0.78 for GPT-4 across all seven modalities."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Singapore",
+ "sample_unit": "patients",
+ "sample_size": 50,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "Claude-2",
+  "GPT-4",
+  "TheSerenityBot (Claude-2 with NCCN RAG)",
+  "TheSerenityBot (TSB)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "Accuracy of adjuvant therapy recommendations, guideline-grounded RAG vs ungrounded LLMs vs tumor board consensus",
+   "effect": "TSB (Claude-2 + NCCN RAG) accuracy 0.89 vs Claude-2 0.86 (P=.080) and GPT-4 0.78 (P<.001); GPT-4 much lower on genetic testing (OR 0.05).",
+   "quote": "TSB achieved an overall accuracy of 0.89, compared with 0.86 for Claude-2 and 0.78 for GPT-4 across all seven modalities.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether AI flagged missing or anomalous input (menopausal status) that prevented valid output",
+   "effect": "In a T2N1 case with unclear menopausal status, TSB recommended Oncotype testing, whereas MTB recommended chemotherapy; AI did not flag the missing variable.",
+   "quote": "The AI did not identify the missing menopausal status as a critical variable.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Concordance of AI treatment recommendations with expert consensus and guidelines, discordant cases",
+   "effect": "TSB recommended endocrine therapy for three low ER-positive DCIS cases where MTB withheld; also recommended redundant genetic testing and RT without considering margin status in two patients.",
+   "quote": "Similarly, TSB automatically recommended RT after lumpectomy in two patients without considering margin status or the need for re-excision.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R500",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Recommendations reflecting available prior patient data (longitudinal recall)",
+   "effect": "AI recommended genetic testing for a patient who had already undergone testing, reflecting limitation in longitudinal data recall.",
+   "quote": "In another case, the AI recommended GT for a patient who had already undergone testing.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Candidate model comparison",
+   "effect": "TSB accuracy 0.89, Claude-2 0.86, and GPT-4 0.78; GPT-4 was significantly lower than TSB (P < .001).",
+   "quote": "TSB achieved an overall accuracy of 0.89, compared with 0.86 for Claude-2 and 0.78 for GPT-4 across all seven modalities.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R176",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Uncertain-case deferral",
+   "effect": "One T2N1 case with unclear menopausal status produced an Oncotype Dx recommendation instead of a flagged data gap needing clarification.",
+   "quote": "The AI did not identify the missing menopausal status as a critical variable.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R481",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R480",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41191848",
+ "screen": {
+  "id": "pmid:41191848",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding with NCCN guidelines",
+  "user": "none",
+  "reason": "Evaluates whether augmenting an existing LLM (Claude-2) with clinical practice guidelines (NCCN) improves accuracy compared to unaugmented baseline LLMs on retrospective clinical breast tumor board cases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval grounding added to an existing tool"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41191848",
+   "empirical": 0.96,
+   "tests_practice": 0.51,
+   "real_deployment": 0.08
+  }
+ }
+}

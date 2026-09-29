@@ -1,0 +1,86 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 1381,
+ "sample_unit": "clinical notes",
+ "models_evaluated": [
+  "DeBERTa v3 (distilled)",
+  "four LLMs (two proprietary, two open-weight)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R330",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Span-level precision and recall of PHI de-identification against gold-standard annotations",
+   "effect": "Best distilled model reached micro-averaged precision 0.89 and recall 0.88; macro-averaged per-category recall 0.81 vs 0.90 for the cloud teacher, so some PHI is missed.",
+   "quote": "Our best distilled model reaches micro-averaged span-level precision of 0.89 and recall of 0.88 while running on standard workstation hardware.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Cross-dataset generalization of de-identification models across institutions and PHI categories",
+   "effect": "Diversity-trained models generalized well on universal structured PHI categories, but institution-specific entities remained hard to transfer in both directions.",
+   "quote": "Cross-dataset evaluation shows that diversity-trained models generalize well on universal structured PHI categories, while institution-specific entities remain hard to transfer in both directions, which suggests pairing broad-coverage models with specialized models for high-volume, semi-structured note types.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Teacher-student distillation of LLMs into locally deployable small language models for on-premise PHI de-identification",
+  "Set-cover diversity sampling of demographic and document-type strata to build a de-identification benchmark"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2605.03301",
+ "screen": {
+  "id": "arxiv:2605.03301",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and benchmarks a new dataset (SHIELD) and distilled small language models for clinical text de-identification, evaluating model performance across strata rather than testing an organizational deployment practice.",
+  "jev": {
+   "id": "arxiv:2605.03301",
+   "empirical": 0.96,
+   "tests_practice": 0.1,
+   "real_deployment": 0.08
+  }
+ }
+}

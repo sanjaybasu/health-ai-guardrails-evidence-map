@@ -1,0 +1,330 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Puerto Rico (USA)",
+   "sample_size": 9267,
+   "sample_unit": "cases (122,441 slides) in 3-year deployment; validation 101 cases/1279 slides",
+   "models_evaluated": [
+    "Galen Prostate AI (Ibex Medical Analytics)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Local validation accuracy on Puerto Rican cohort vs original developer populations",
+     "effect": "Cancer detection AUC 0.994 (95% CI 0.988-0.997), sensitivity 96.6%, specificity 96.7%, NPV 99.2%; Gleason GG1 vs GG2+ AUC 0.901, similar to original populations.",
+     "quote": "Results show a similar high diagnostic accuracy for cancer in this Puerto Rican population as in the original populations vs benign with an AUC of 0.994 (95% CI: 0.988\u20130.997)."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist review of AI alerts to resolve false-positive AI cancer calls",
+     "effect": "In validation, all 17 false-positive slide alerts were resolved by pathologist review as benign mimics; in deployment, 1733 benign cases alerted but only 128 (2.9%) changed after review.",
+     "quote": "Following pathologist review, all 17 slide alerts were resolved and shown to be triggered by glands (normal, atrophic, and seminal vesicle) as well as inflammation ( Table 2 ), features that may mimic malignant glands."
+    },
+    {
+     "rec_id": "R138",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist-plus-AI second read vs pathologist alone diagnosis changes (AI Impact)",
+     "effect": "2.9% (128/4385) benign cases and 1.21% (24/1984) GG1 cases revised after AI alerts; overall AI Impact 1.8%, ranging 0.75% to 3.5% per pathologist.",
+     "quote": "After review by the pathologist, 0.3% (155/57119) of the benign slides and 2.9% (128/4385) of benign cases required a change of diagnosis."
+    }
+   ],
+   "unlisted_practices": [
+    "Using AI as a 100% quality-control second read applied to all slides after primary pathologist review, with alerts resolved before sign-out"
+   ]
+  },
+  "openai": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Puerto Rico (United States)",
+   "sample_size": 9267,
+   "sample_unit": "prostate biopsy cases analyzed during routine clinical deployment",
+   "models_evaluated": [
+    "Galen\u2122 Prostate AI"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R161",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False-negative cancer findings in slides labeled benign by AI",
+     "effect": "AI called nine cancer slides benign; seven were GG1, and the other two were GG2 and GG4. No cancers were missed at the case level out of 1279 WSI.",
+     "quote": "At the slide level, Galen\u2122 called nine slides benign that were cancer."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pathologist identification and resolution of false-positive AI cancer alerts",
+     "effect": "Pathologist review resolved all 17 slide alerts across 12 validation cases as false positives triggered by benign tissue features.",
+     "quote": "Following pathologist review, all 17 slide alerts were resolved and shown to be triggered by glands (normal, atrophic, and seminal vesicle) as well as inflammation ( Table 2 ), features that may mimic malignant glands."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Diagnostic revisions following AI-assisted second review in routine pathology workflow",
+     "effect": "Over 3 years, diagnoses revised before sign-out yielded an overall AI Impact\u2122 of 1.8%, ranging from 0.75% up to 3.5% per individual pathologist.",
+     "quote": "In our real-world data, AI Impact\u2122 ranged from 0.75% up to 3.5% per individual pathologist, with a normalized group effect of 1.8%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "prospective_with_comparator",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States (Puerto Rico)",
+   "sample_size": 9267,
+   "sample_unit": "cases",
+   "models_evaluated": [
+    "Galen Prostate AI"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": true,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "cancer detection accuracy in local validation",
+     "effect": "In the local validation set, the AI achieved an AUC of 0.994, with 96.6% sensitivity and 96.7% specificity.",
+     "quote": "The AUC for cancer detection in the validation set was 0.994 (95% CI 0.988\u20130.997), with a 96.7% (95% CI 95.6\u201397.8) specificity and a 96.6% (95% CI 93.3\u201398.8) sensitivity."
+    },
+    {
+     "rec_id": "R173",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "false-negative rate reduction in clinical workflow",
+     "effect": "Integrating the AI as a second-read system in the intended clinical workflow reduced the group's false-negative rate by 1.8%.",
+     "quote": "The use of the Galen\u2122 Prostate AI algorithm in a second-read implementation had the effect of providing alerts for review such that the false-negative rate of the group was reduced by the amount indicated by the AI Impact\u2122."
+    },
+    {
+     "rec_id": "R371",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "rate of diagnosis change after AI alert",
+     "effect": "During real-world deployment over 3 years, pathologists reviewed AI alerts and revised the diagnosis in 2.9% of benign cases.",
+     "quote": "After review by the pathologist, 0.3% (155/57119) of the benign slides and 2.9% (128/4385) of benign cases required a change of diagnosis."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "real_deployment",
+ "user": "clinician_or_staff",
+ "country": "Puerto Rico (USA)",
+ "sample_unit": "cases (122,441 slides) in 3-year deployment; validation 101 cases/1279 slides",
+ "sample_size": 9267,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": true,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Galen Prostate AI",
+  "Galen Prostate AI (Ibex Medical Analytics)",
+  "Galen\u2122 Prostate AI"
+ ],
+ "links": [
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Pathologist review of AI alerts to resolve false-positive AI cancer calls",
+   "effect": "In validation, all 17 false-positive slide alerts were resolved by pathologist review as benign mimics; in deployment, 1733 benign cases alerted but only 128 (2.9%) changed after review.",
+   "quote": "Following pathologist review, all 17 slide alerts were resolved and shown to be triggered by glands (normal, atrophic, and seminal vesicle) as well as inflammation ( Table 2 ), features that may mimic malignant glands.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R173",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Diagnostic revisions following AI-assisted second review in routine pathology workflow",
+   "effect": "Over 3 years, diagnoses revised before sign-out yielded an overall AI Impact\u2122 of 1.8%, ranging from 0.75% up to 3.5% per individual pathologist.",
+   "quote": "In our real-world data, AI Impact\u2122 ranged from 0.75% up to 3.5% per individual pathologist, with a normalized group effect of 1.8%.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Local validation accuracy on Puerto Rican cohort vs original developer populations",
+   "effect": "Cancer detection AUC 0.994 (95% CI 0.988-0.997), sensitivity 96.6%, specificity 96.7%, NPV 99.2%; Gleason GG1 vs GG2+ AUC 0.901, similar to original populations.",
+   "quote": "Results show a similar high diagnostic accuracy for cancer in this Puerto Rican population as in the original populations vs benign with an AUC of 0.994 (95% CI: 0.988\u20130.997).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R138",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Pathologist-plus-AI second read vs pathologist alone diagnosis changes (AI Impact)",
+   "effect": "2.9% (128/4385) benign cases and 1.21% (24/1984) GG1 cases revised after AI alerts; overall AI Impact 1.8%, ranging 0.75% to 3.5% per pathologist.",
+   "quote": "After review by the pathologist, 0.3% (155/57119) of the benign slides and 2.9% (128/4385) of benign cases required a change of diagnosis.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R161",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "False-negative cancer findings in slides labeled benign by AI",
+   "effect": "AI called nine cancer slides benign; seven were GG1, and the other two were GG2 and GG4. No cancers were missed at the case level out of 1279 WSI.",
+   "quote": "At the slide level, Galen\u2122 called nine slides benign that were cancer.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "cancer detection accuracy in local validation",
+   "effect": "In the local validation set, the AI achieved an AUC of 0.994, with 96.6% sensitivity and 96.7% specificity.",
+   "quote": "The AUC for cancer detection in the validation set was 0.994 (95% CI 0.988\u20130.997), with a 96.7% (95% CI 95.6\u201397.8) specificity and a 96.6% (95% CI 93.3\u201398.8) sensitivity.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R371",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "gemini"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Using AI as a 100% quality-control second read applied to all slides after primary pathologist review, with alerts resolved before sign-out"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:38868487",
+ "screen": {
+  "id": "pmid:38868487",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "local validation before go-live and AI second-read use in routine pathology",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates the validation and 3-year real-world clinical deployment of an AI second-read system in a CLIA-certified pathology laboratory.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "real_deployment",
+   "tests_practice": true,
+   "practice": "AI second read workflow"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38868487",
+   "empirical": 0.96,
+   "tests_practice": 0.15,
+   "real_deployment": 0.95
+  }
+ }
+}

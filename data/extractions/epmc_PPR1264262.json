@@ -1,0 +1,254 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 169,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AdaBoost classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discharge destination accuracy of ML model versus standard-of-care decisions on same patients",
+     "effect": "ML accuracy 82% (95% CI 0.76\u20130.86); 138 vs 124 correct versus standard of care, p = 0.041",
+     "quote": "representing a significant improvement over standard-of-care decisions (138 vs 124 correct, p = 0.041)"
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Internal validation of model performance using cross-validation on single-center data",
+     "effect": "5-fold cross-validation on 169 patients at a single center; micro-averaged AUC 0.94 (95% CI 0.92\u20130.96), accuracy 82%; no external validation.",
+     "quote": "We developed and internally validated an AdaBoost classifier using electronic health record and CGA data from 169 patients aged \u2265 70 years undergoing surgery at a single center."
+    }
+   ],
+   "unlisted_practices": [
+    "Excluding the most uncertain 15% of predictions (human-in-the-loop deferral) raised accuracy to 85% (p = 0.006)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 169,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AdaBoost classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "correct discharge destination recommendations",
+     "effect": "ML: 138 correct; standard-of-care: 124 correct; p\u2009=\u20090.041.",
+     "quote": "The ML model achieved a micro-averaged ROC area under the curve of 0.94 [95% CI 0.92\u20130.96] and an accuracy of 82% [95% CI 0.76\u20130.86], representing a significant improvement over standard-of-care decisions (138 vs 124 correct, p\u2009=\u20090.041)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy after uncertainty-based deferral",
+     "effect": "Excluding the 15% highest-uncertainty predictions increased remaining accuracy to 85% (p\u2009=\u20090.006).",
+     "quote": "Mimicking a human-in-the-loop strategy, we excluded the 15% of predictions with the highest uncertainty, which increased accuracy for the remaining predictions to 85% (p\u2009=\u20090.006)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "model discharge destination accuracy",
+     "effect": "AUC was 0.94 [95% CI 0.92\u20130.96]; accuracy was 82% [95% CI 0.76\u20130.86].",
+     "quote": "The ML model achieved a micro-averaged ROC area under the curve of 0.94 [95% CI 0.92\u20130.96] and an accuracy of 82% [95% CI 0.76\u20130.86], representing a significant improvement over standard-of-care decisions (138 vs 124 correct, p\u2009=\u20090.041)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Germany",
+   "sample_size": 169,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "AdaBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "prediction accuracy after deferral of uncertain cases",
+     "effect": "accuracy increased to 85% (p = 0.006) after excluding the 15% most uncertain predictions",
+     "quote": "Mimicking a human-in-the-loop strategy, we excluded the 15% of predictions with the highest uncertainty, which increased accuracy for the remaining predictions to 85% (p = 0.006)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "patients",
+ "sample_size": 169,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "AdaBoost",
+  "AdaBoost classifier"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discharge destination accuracy of ML model versus standard-of-care decisions on same patients",
+   "effect": "ML accuracy 82% (95% CI 0.76\u20130.86); 138 vs 124 correct versus standard of care, p = 0.041",
+   "quote": "representing a significant improvement over standard-of-care decisions (138 vs 124 correct, p = 0.041)",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "accuracy after uncertainty-based deferral",
+   "effect": "Excluding the 15% highest-uncertainty predictions increased remaining accuracy to 85% (p\u2009=\u20090.006).",
+   "quote": "Mimicking a human-in-the-loop strategy, we excluded the 15% of predictions with the highest uncertainty, which increased accuracy for the remaining predictions to 85% (p\u2009=\u20090.006).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Excluding the most uncertain 15% of predictions (human-in-the-loop deferral) raised accuracy to 85% (p = 0.006)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1264262",
+ "screen": {
+  "id": "epmc:PPR1264262",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "uncertainty-based deferral to human review",
+  "user": "none",
+  "reason": "The study develops a discharge destination prediction model and tests a specific deployment safeguard/practice (a human-in-the-loop strategy excluding the 15% most uncertain predictions) to evaluate its effect on prediction accuracy.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "selective prediction based on uncertainty thresholding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1264262",
+   "empirical": 0.96,
+   "tests_practice": 0.79,
+   "real_deployment": 0.19
+  }
+ }
+}

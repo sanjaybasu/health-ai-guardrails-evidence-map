@@ -1,0 +1,219 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 361,
+   "sample_unit": "test sequences (8 patients)",
+   "models_evaluated": [
+    "LSTM",
+    "GRU",
+    "BiLSTM+Attention"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": true
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Precision, recall and alert burden at default versus F1-optimized thresholds",
+     "effect": "Default thresholds gave 20\u201323% precision with 94\u2013100% recall; optimized thresholds raised precision to 73\u201382% with 56.25% recall, cutting expected false alarms by more than half.",
+     "quote": "Default thresholds yielded 20\u201323% precision with 94\u2013 100% recall\u2014unacceptable for caregiver-facing alerts."
+    }
+   ],
+   "unlisted_practices": [
+    "Reporting alerts per 100 patient-weeks and PPV alongside accuracy for rare-event forecasting"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 361,
+   "sample_unit": "sequences",
+   "models_evaluated": [
+    "LSTM",
+    "GRU",
+    "BiLSTM+Attention"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PPV, sensitivity, and alert burden by threshold",
+     "effect": "Optimized thresholds raised precision to 73\u201382% with 56.25% recall and reduced expected false alarms by more than half versus default thresholds.",
+     "quote": "Optimized thresholds raised precision to 73\u201382% with 56.25% recall (BiL-STM: accuracy 91.15%, F1 0.667)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "both",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 361,
+   "sample_unit": "sequences",
+   "models_evaluated": [
+    "LSTM",
+    "GRU",
+    "BiLSTM+Attention"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R512",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "caregiver alert precision under default thresholds",
+     "effect": "default thresholds yielded 20\u201323% precision with 94\u2013100% recall, which was unacceptable for caregiver-facing alerts",
+     "quote": "Default thresholds yielded 20\u201323% precision with 94\u2013 100% recall\u2014unacceptable for caregiver-facing alerts."
+    }
+   ],
+   "unlisted_practices": [
+    "F1-score threshold optimization on validation data to reduce false alert burden in rare-event forecasting"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "United Kingdom",
+ "sample_unit": "sequences",
+ "sample_size": 361,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "BiLSTM+Attention",
+  "GRU",
+  "LSTM"
+ ],
+ "links": [
+  {
+   "rec_id": "R512",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Precision, recall and alert burden at default versus F1-optimized thresholds",
+   "effect": "Default thresholds gave 20\u201323% precision with 94\u2013100% recall; optimized thresholds raised precision to 73\u201382% with 56.25% recall, cutting expected false alarms by more than half.",
+   "quote": "Default thresholds yielded 20\u201323% precision with 94\u2013 100% recall\u2014unacceptable for caregiver-facing alerts.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R512",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "caregiver alert precision under default thresholds",
+   "effect": "default thresholds yielded 20\u201323% precision with 94\u2013100% recall, which was unacceptable for caregiver-facing alerts",
+   "quote": "Default thresholds yielded 20\u201323% precision with 94\u2013 100% recall\u2014unacceptable for caregiver-facing alerts.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 0.67,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.93
+ },
+ "unlisted_practices": [
+  "F1-score threshold optimization on validation data to reduce false alert burden in rare-event forecasting",
+  "Reporting alerts per 100 patient-weeks and PPV alongside accuracy for rare-event forecasting"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1278848",
+ "screen": {
+  "id": "epmc:PPR1278848",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "alert threshold selection",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates alert threshold optimization/selection to manage alert fatigue and burden in dementia agitation monitoring compared to default thresholds.",
+  "jev": {
+   "id": "epmc:PPR1278848",
+   "empirical": 0.9,
+   "tests_practice": 0.9,
+   "real_deployment": 0.09
+  }
+ }
+}

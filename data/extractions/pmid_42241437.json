@@ -1,0 +1,102 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "South Korea",
+ "sample_size": 14832,
+ "sample_unit": "encounters (common evaluable test subset)",
+ "models_evaluated": [
+  "Qwen3-8B-Base (LoRA + GRPO fine-tuned)",
+  "XGBoost"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Korean"
+ ],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "Strict under-triage of KTAS 1-2 cases predicted as levels 4-5, and over-triage",
+   "effect": "Fine-tuned model strict under-triage 0.65%; within-one-level agreement 97.13%; fewer extreme errors and lower under-triage than XGBoost in selected high-acuity groups, at the cost of higher over-triage.",
+   "quote": "However, the fine-tuned model showed fewer extreme errors and lower strict under-triage in selected high-acuity groups, at the cost of higher over-triage.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Overall triage performance of fine-tuned LLM versus structured-data XGBoost comparator",
+   "effect": "LLM accuracy 58.60%, macro-F1 0.417, QWK 0.535 vs XGBoost accuracy 69.40%, macro-F1 0.618, QWK 0.651; LLM had a safer error profile.",
+   "quote": "The structured-data comparator showed higher overall performance, with an accuracy of 69.40%, a macro-F1 score of 0.618, and a quadratic weighted kappa of 0.651.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Lack of external and prospective validation of the model",
+   "effect": "Single-center retrospective benchmark; authors state external and prospective validation are necessary before clinical implementation.",
+   "quote": "External and prospective validation will be necessary before clinical implementation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Safety-oriented reward design in reinforcement fine-tuning (GRPO) to reduce under-triage"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42241437",
+ "screen": {
+  "id": "pmid:42241437",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study is a retrospective benchmark evaluating a fine-tuned small language model (Qwen3-8B) with a safety-oriented reward design against an XGBoost model on pediatric emergency triage data. It evaluates model accuracy and error profiles (safety metrics like strict under-triage) rather than testing an organizational deployment practice or safeguard.",
+  "jev": {
+   "id": "pmid:42241437",
+   "empirical": 0.97,
+   "tests_practice": 0.08,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "multimodal_foundation",
+  "imaging_diagnostic",
+  "generative_llm"
+ ],
+ "country": "United States",
+ "sample_size": 77,
+ "sample_unit": "zero-concordance teledermatology cases (360 clinical photographs)",
+ "models_evaluated": [
+  "MedGemma-4B-IT"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": true,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Top-1 and top-k diagnostic accuracy of AI on challenging teledermatology cases",
+   "effect": "Strict top-1 accuracy 0.0% (0/77), 3.9% at top-10; relaxed concept-level top-1 28.6%, top-10 45.5%, so the model is unreliable as a stand-alone diagnosis.",
+   "quote": "MedGemma achieved 0.0% strict top-1 accuracy, 1.3% top-3 accuracy, 3.9% top-5 accuracy, and 3.9% top-10 accuracy.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Model accuracy variation across diagnostic categories",
+   "effect": "Performance varied by category: 54.5% top-10 accuracy for Other diagnoses versus 0.0% for neoplastic conditions.",
+   "quote": "Performance varied across diagnostic categories, with highest accuracy in Other categories (54.5%) and lowest in neoplastic conditions (0.0%).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Using a compact vision-language model as a differential-expansion prompt rather than for definitive diagnosis in teledermatology"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1240449",
+ "screen": {
+  "id": "epmc:PPR1240449",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Retrospective evaluation of MedGemma-4B-IT on difficult teledermatology cases to evaluate diagnostic accuracy and differential diagnosis generation without testing a specific deployment safeguard or practice comparison.",
+  "jev": {
+   "id": "epmc:PPR1240449",
+   "empirical": 0.97,
+   "tests_practice": 0.06,
+   "real_deployment": 0.08
+  }
+ }
+}

@@ -1,0 +1,321 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 93,
+   "sample_unit": "lumbar spine MRI reports",
+   "models_evaluated": [
+    "GPT-4 (gpt-4-0613)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Flesch-Kincaid reading level of GPT-simplified reports versus original reports",
+     "effect": "Reading level fell from 11.47 (SD 1.44) to 8.50 (SD 1.27), p < 0.001; word count unchanged (p = 0.510).",
+     "quote": "With the base prompt, the average word count was not significantly changed (399.64 SD 72.70, p = 0.510) though the average reading level was significantly decreased to between 8 and 9th grade (8.50 SD 1.27, p < 0.001)."
+    },
+    {
+     "rec_id": "R292",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Reading grade level of patient-facing translations relative to original reports",
+     "effect": "Mean grade level reduced from 11.47 to 8.50 with the base prompt, and 9.01 with the enhanced prompt. It remains at 8th-9th grade, above the commonly recommended level.",
+     "quote": "With the base prompt, the average word count was not significantly changed (399.64 SD 72.70, p = 0.510) though the average reading level was significantly decreased to between 8 and 9th grade (8.50 SD 1.27, p < 0.001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Omission and inaccuracy rates of GPT translations against radiology report by spine surgeon review",
+     "effect": "Base prompt: 35% major omissions, 20% minor omissions, 6% major inaccuracies, 3% minor inaccuracies; mean Likert 3.48 (SD 1.56).",
+     "quote": "Of the 93 reports reviewed, 35% had a major omission, 20% had a minor omission, 6% had a major inaccuracy, and 3% had a minor inaccuracy."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Errors in stenosis location, prior surgery description, and spine pathology in translations",
+     "effect": "Even with enhanced prompting, errors remained: 3 omitted stenosis level, 4 prior-surgery errors, 3 inaccurate pathology descriptions.",
+     "quote": "In analyzing the errors present in the enhanced prompt, three report translations failed to report the location of spinal stenosis (Table 4 )."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Frequency of clinically relevant omissions and inaccuracies in AI-simplified reports needing verification",
+     "effect": "34-35% of translations omitted a clinically relevant item and 6% had a clinically significant inaccuracy; only 36 of 93 had no errors.",
+     "quote": "Of these 93 reports, 36 were indicated to have had no errors."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot prompting with high-scoring example translations to reduce omissions in radiology report simplification"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 93,
+   "sample_unit": "lumbar spine MRI radiology reports",
+   "models_evaluated": [
+    "GPT-4 API (gpt-4-0613)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R289",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Flesch-Kincaid reading level of patient-facing translations",
+     "effect": "Average grade level fell from 11.47 (SD 1.44) in original reports to 8.50 (SD 1.27) with base prompt, p < 0.001.",
+     "quote": "With the base prompt, the average word count was not significantly changed (399.64 SD 72.70, p = 0.510) though the average reading level was significantly decreased to between 8 and 9th grade (8.50 SD 1.27, p < 0.001)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinically relevant omissions and inaccuracies",
+     "effect": "Among 93 base-prompt translations: 35% major omission, 20% minor omission, 6% major inaccuracy, and 3% minor inaccuracy.",
+     "quote": "Of the 93 reports reviewed, 35% had a major omission, 20% had a minor omission, 6% had a major inaccuracy, and 3% had a minor inaccuracy."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot enhanced prompting using high-scoring report translations to reduce omissions in LLM radiology report simplification."
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United States",
+   "sample_size": 93,
+   "sample_unit": "radiology reports",
+   "models_evaluated": [
+    "GPT-4 (gpt-4-0613)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R151",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "major and minor omissions and inaccuracies in AI report translations",
+     "effect": "Base prompt translations had 35% major omissions, 20% minor omissions, 6% major inaccuracies, and 3% minor inaccuracies across 93 reports",
+     "quote": "Of the 93 reports reviewed, 35% had a major omission, 20% had a minor omission, 6% had a major inaccuracy, and 3% had a minor inaccuracy."
+    }
+   ],
+   "unlisted_practices": [
+    "Few-shot exemplar prompting using high-scoring reports to improve accuracy and reduce omissions in AI report simplification"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "United States",
+ "sample_unit": "lumbar spine MRI reports",
+ "sample_size": 93,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4 (gpt-4-0613)",
+  "GPT-4 API (gpt-4-0613)"
+ ],
+ "links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Omission and inaccuracy rates of GPT translations against radiology report by spine surgeon review",
+   "effect": "Base prompt: 35% major omissions, 20% minor omissions, 6% major inaccuracies, 3% minor inaccuracies; mean Likert 3.48 (SD 1.56).",
+   "quote": "Of the 93 reports reviewed, 35% had a major omission, 20% had a minor omission, 6% had a major inaccuracy, and 3% had a minor inaccuracy.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Frequency of clinically relevant omissions and inaccuracies in AI-simplified reports needing verification",
+   "effect": "34-35% of translations omitted a clinically relevant item and 6% had a clinically significant inaccuracy; only 36 of 93 had no errors.",
+   "quote": "Of these 93 reports, 36 were indicated to have had no errors.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R289",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Flesch-Kincaid reading level of patient-facing translations",
+   "effect": "Average grade level fell from 11.47 (SD 1.44) in original reports to 8.50 (SD 1.27) with base prompt, p < 0.001.",
+   "quote": "With the base prompt, the average word count was not significantly changed (399.64 SD 72.70, p = 0.510) though the average reading level was significantly decreased to between 8 and 9th grade (8.50 SD 1.27, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R151",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "major and minor omissions and inaccuracies in AI report translations",
+   "effect": "Base prompt translations had 35% major omissions, 20% minor omissions, 6% major inaccuracies, and 3% minor inaccuracies across 93 reports",
+   "quote": "Of the 93 reports reviewed, 35% had a major omission, 20% had a minor omission, 6% had a major inaccuracy, and 3% had a minor inaccuracy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R289",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R292",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Few-shot enhanced prompting using high-scoring report translations to reduce omissions in LLM radiology report simplification.",
+  "Few-shot exemplar prompting using high-scoring reports to improve accuracy and reduce omissions in AI report simplification",
+  "Few-shot prompting with high-scoring example translations to reduce omissions in radiology report simplification"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40921880",
+ "screen": {
+  "id": "pmid:40921880",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "enhanced prompt engineering (prompt guardrails) for report simplification",
+  "user": "patient",
+  "reason": "Evaluates GPT-4 for simplifying MRI reports for patients and specifically tests an enhanced prompt strategy to reduce omission of clinically relevant information.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "enhanced prompt design"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40921880",
+   "empirical": 0.97,
+   "tests_practice": 0.5,
+   "real_deployment": 0.07
+  }
+ }
+}

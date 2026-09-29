@@ -1,0 +1,85 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Taiwan",
+ "sample_size": 33,
+ "sample_unit": "pathology reports",
+ "models_evaluated": [
+  "Med42-8B (distilled)",
+  "Llama-3-8B",
+  "Gemini 2.0 Flash"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy of local LLM on local hospital reports vs expert audit",
+   "effect": "Distilled Med42-8B achieved 90.91% accuracy, macro F1 0.92 (kappa 0.86) on 33 audited TMUH reports, versus 78.79% accuracy and F1 0.79 for Llama-3-8B.",
+   "quote": "Within the audited 33-case clinical subset, the distilled domain-specific Med42-8B model demonstrated a diagnostic accuracy of 90.91% and a macro F1-score of 0.92 (substantial agreement with experts, \u03ba = 0.86), significantly outperforming the general-purpose Llama-3-8B student model (accuracy: 78.79%, macro F1-score: 0.79).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Instruction-based distillation from a large teacher LLM into a locally deployable small language model for data sovereignty",
+  "Deterministic StopOnProperJSON output constraint to prevent generative looping",
+  "Tiered WHO logic framework as a semantic constraint on reasoning"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42761637",
+ "screen": {
+  "id": "pmid:42761637",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a local deployment architecture using model distillation and structured constraints (StopOnProperJSON mechanism and WHO Tiered Logic) to preserve privacy and prevent hallucinations in cancer registry abstraction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local deployment / model distillation for data sovereignty"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42761637",
+   "empirical": 0.94,
+   "tests_practice": 0.38,
+   "real_deployment": 0.21
+  }
+ }
+}

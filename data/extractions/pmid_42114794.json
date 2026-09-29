@@ -1,0 +1,226 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Australia",
+   "sample_size": 208,
+   "sample_unit": "clinical notes per task (agitation and malnutrition tasks, each n = 208)",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether retrieval strategies in RAG improve grounding, answer quality and item-level accuracy for clinical information extraction",
+     "effect": "Reranking and hybrid ensemble strategies significantly outperformed standalone BM25 and dense retrieval; dense reranking gave Answer F1 0.946 and Item-level Accuracy 0.963 for agitation; ensemble methods gave 0.944 for malnutrition.",
+     "quote": "A repeated-measures ANOVA reveals that reranking and hybrid ensemble strategies significantly outperform both standalone sparse (BM25) and dense retrieval across both tasks."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparison of retrieval strategies (sparse, dense, reranking, fusion) within RAG pipelines for clinical information extraction"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Australia",
+   "sample_size": 416,
+   "sample_unit": "clinical named-entity extraction cases; 208 per task",
+   "models_evaluated": [
+    "BM25 sparse retrieval RAG",
+    "bi-encoder dense retrieval RAG",
+    "dense retrieval with cross-encoder rerank RAG",
+    "dynamic linear fusion of sparse and dense scores RAG",
+    "reciprocal rank fusion RAG",
+    "hybrid coarse-to-fine reranking RAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "same-data comparison of RAG retrieval methods",
+     "effect": "Reranking and hybrid ensemble strategies significantly outperformed BM25 and dense; agitation Answer F1 0.946, item accuracy 0.963; malnutrition best item accuracy 0.944.",
+     "quote": "A repeated-measures ANOVA reveals that reranking and hybrid ensemble strategies significantly outperform both standalone sparse (BM25) and dense retrieval across both tasks."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM clinical extraction errors",
+     "effect": "Three error types were identified: intrinsic hallucination, extrinsic hallucination, and false negatives.",
+     "quote": "Through error analysis, we identify three LLM error types in clinical named entity recognition: intrinsic hallucination, extrinsic hallucination, and false negatives, and elucidate how RAG mitigates each."
+    }
+   ],
+   "unlisted_practices": [
+    "Using reranking-based or hybrid ensemble retrieval instead of standalone sparse or dense retrieval in clinical RAG information extraction."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Australia",
+   "sample_size": 208,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Dense reranking (cross-encoder reranking) and hybrid ensemble retrieval strategies in retrieval-augmented generation pipelines for clinical information extraction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Australia",
+ "sample_unit": "clinical notes per task (agitation and malnutrition tasks, each n = 208)",
+ "sample_size": 208,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BM25 sparse retrieval RAG",
+  "bi-encoder dense retrieval RAG",
+  "dense retrieval with cross-encoder rerank RAG",
+  "dynamic linear fusion of sparse and dense scores RAG",
+  "hybrid coarse-to-fine reranking RAG",
+  "reciprocal rank fusion RAG"
+ ],
+ "links": [],
+ "contested_links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparison of retrieval strategies (sparse, dense, reranking, fusion) within RAG pipelines for clinical information extraction",
+  "Dense reranking (cross-encoder reranking) and hybrid ensemble retrieval strategies in retrieval-augmented generation pipelines for clinical information extraction",
+  "Using reranking-based or hybrid ensemble retrieval instead of standalone sparse or dense retrieval in clinical RAG information extraction."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42114794",
+ "screen": {
+  "id": "pmid:42114794",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG retrieval strategy comparison)",
+  "user": "none",
+  "reason": "Empirical study comparing different retrieval grounding strategies (RAG configurations including sparse, dense, and reranking) to optimize faithfulness and mitigate hallucinations in clinical information extraction from aged care notes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation grounding and reranking"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42114794",
+   "empirical": 0.96,
+   "tests_practice": 0.16,
+   "real_deployment": 0.08
+  }
+ }
+}

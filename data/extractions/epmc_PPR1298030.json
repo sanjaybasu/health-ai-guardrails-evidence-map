@@ -1,0 +1,357 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Bangladesh",
+   "sample_size": 9538,
+   "sample_unit": "women",
+   "models_evaluated": [
+    "logistic regression",
+    "elastic net",
+    "random forest",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC under random, cluster-grouped, and leave-one-division-out validation designs",
+     "effect": "Withholding a whole division cost 0.044 to 0.060 AUC, more than 100 times the change from cluster grouping (at most 0.0004); cross-validation does not measure performance in unseen districts.",
+     "quote": "Withholding a whole division cost 0.044 to 0.060, more than 100 times as much, and still cost 0.033 to 0.056 after the strongest predictor, an outcome-derived district rate, was removed from every model."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance loss when model fitted to 2019 applied to 2025 round",
+     "effect": "A model fitted to 2019 data lost 0.083 AUC when applied to 2025; predictor importance agreement was moderate (Spearman 0.61).",
+     "quote": "A model fitted to 2019 data lost 0.083 when applied to 2025, and the two rounds agreed only moderately on which predictors mattered (Spearman rank correlation 0.61)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Subgroup calibration across wealth, residence, and division",
+     "effect": "Calibration held in every wealth quintile, both residence categories and seven of eight divisions; Sylhet was the exception.",
+     "quote": "Calibration held in every wealth quintile, both residence categories and seven of eight divisions; Sylhet was the exception."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of complex ML models against logistic regression baseline",
+     "effect": "No model improved on logistic regression by a margin worth acting on; AUC ranged 0.724 to 0.736 under cluster-grouped validation, spread 0.012.",
+     "quote": "No model improved on logistic regression by a margin worth acting on: the area under the receiver operating characteristic curve ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012."
+    }
+   ],
+   "unlisted_practices": [
+    "geographic holdout validation (leave-one-region-out) to estimate performance in unseen districts",
+    "cluster-aware cross-validation grouped by sampling cluster"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Bangladesh",
+   "sample_size": 9538,
+   "sample_unit": "women",
+   "models_evaluated": [
+    "logistic regression",
+    "elastic net",
+    "random forest",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "geographic holdout discrimination",
+     "effect": "Whole-division holdout reduced AUC by 0.044 to 0.060; 0.033 to 0.056 after removing district rate.",
+     "quote": "Withholding a whole division cost 0.044 to 0.060, more than 100 times as much, and still cost 0.033 to 0.056 after the strongest predictor, an outcome-derived district rate, was removed from every model."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "algorithm comparison AUC",
+     "effect": "AUC ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012; no model beat logistic regression meaningfully.",
+     "quote": "No model improved on logistic regression by a margin worth acting on: the area under the receiver operating characteristic curve ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "subgroup calibration",
+     "effect": "Calibration held for every wealth quintile, both residence categories, and 7/8 divisions; Sylhet was the exception.",
+     "quote": "Calibration held in every wealth quintile, both residence categories and seven of eight divisions; Sylhet was the exception."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "temporal transfer performance",
+     "effect": "A 2019-trained model lost 0.083 AUC on 2025; predictor-rank Spearman correlation was 0.61.",
+     "quote": "A model fitted to 2019 data lost 0.083 when applied to 2025, and the two rounds agreed only moderately on which predictors mattered (Spearman rank correlation 0.61)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Bangladesh",
+   "sample_size": 9538,
+   "sample_unit": "women",
+   "models_evaluated": [
+    "logistic regression",
+    "elastic net",
+    "random forest",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination loss under geographic holdout validation",
+     "effect": "withholding a whole division reduced discrimination by 0.044 to 0.060, and by 0.033 to 0.056 after removing an outcome-derived district rate",
+     "quote": "Withholding a whole division cost 0.044 to 0.060, more than 100 times as much, and still cost 0.033 to 0.056 after the strongest predictor, an outcome-derived district rate, was removed from every model."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination of machine learning models compared to logistic regression",
+     "effect": "AUROC ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012; no model improved on logistic regression by an actionable margin",
+     "quote": "No model improved on logistic regression by a margin worth acting on: the area under the receiver operating characteristic curve ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Bangladesh",
+ "sample_unit": "women",
+ "sample_size": 9538,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "elastic net",
+  "gradient boosting",
+  "logistic regression",
+  "random forest"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUC under random, cluster-grouped, and leave-one-division-out validation designs",
+   "effect": "Withholding a whole division cost 0.044 to 0.060 AUC, more than 100 times the change from cluster grouping (at most 0.0004); cross-validation does not measure performance in unseen districts.",
+   "quote": "Withholding a whole division cost 0.044 to 0.060, more than 100 times as much, and still cost 0.033 to 0.056 after the strongest predictor, an outcome-derived district rate, was removed from every model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Subgroup calibration across wealth, residence, and division",
+   "effect": "Calibration held in every wealth quintile, both residence categories and seven of eight divisions; Sylhet was the exception.",
+   "quote": "Calibration held in every wealth quintile, both residence categories and seven of eight divisions; Sylhet was the exception.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of complex ML models against logistic regression baseline",
+   "effect": "No model improved on logistic regression by a margin worth acting on; AUC ranged 0.724 to 0.736 under cluster-grouped validation, spread 0.012.",
+   "quote": "No model improved on logistic regression by a margin worth acting on: the area under the receiver operating characteristic curve ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance loss when model fitted to 2019 applied to 2025 round",
+   "effect": "A model fitted to 2019 data lost 0.083 AUC when applied to 2025; predictor importance agreement was moderate (Spearman 0.61).",
+   "quote": "A model fitted to 2019 data lost 0.083 when applied to 2025, and the two rounds agreed only moderately on which predictors mattered (Spearman rank correlation 0.61).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "temporal transfer performance",
+   "effect": "A 2019-trained model lost 0.083 AUC on 2025; predictor-rank Spearman correlation was 0.61.",
+   "quote": "A model fitted to 2019 data lost 0.083 when applied to 2025, and the two rounds agreed only moderately on which predictors mattered (Spearman rank correlation 0.61).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "discrimination loss under geographic holdout validation",
+   "effect": "withholding a whole division reduced discrimination by 0.044 to 0.060, and by 0.033 to 0.056 after removing an outcome-derived district rate",
+   "quote": "Withholding a whole division cost 0.044 to 0.060, more than 100 times as much, and still cost 0.033 to 0.056 after the strongest predictor, an outcome-derived district rate, was removed from every model.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "discrimination of machine learning models compared to logistic regression",
+   "effect": "AUROC ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012; no model improved on logistic regression by an actionable margin",
+   "quote": "No model improved on logistic regression by a margin worth acting on: the area under the receiver operating characteristic curve ranged from 0.724 to 0.736 under cluster-grouped validation, a spread of 0.012.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "cluster-aware cross-validation grouped by sampling cluster",
+  "geographic holdout validation (leave-one-region-out) to estimate performance in unseen districts"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1298030",
+ "screen": {
+  "id": "epmc:PPR1298030",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "geographic holdout and temporal validation before deployment",
+  "user": "none",
+  "reason": "Empirically tests and compares internal vs geographically-held-out validation designs and temporal transfer checks to evaluate real-world performance transportability and equity.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "geographic validation design"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1298030",
+   "empirical": 0.93,
+   "tests_practice": 0.47,
+   "real_deployment": 0.04
+  }
+ }
+}

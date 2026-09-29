@@ -1,0 +1,270 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 640,
+   "sample_unit": "test radiographs (scaphoid crops), each perturbed across 44 degradation datasets",
+   "models_evaluated": [
+    "EfficientNetB1 scaphoid fracture classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Classifier accuracy under perturbed inputs (blur, noise, JPEG, CLAHE, resizing, screenshots) versus clean images",
+     "effect": "Accuracy fell from 92.03% clean as perturbation severity increased; Gaussian blur \u03c3=3.0 gave 72.0%, resize_400 71.9%, CLAHE clip 5 77.0%, ImageJ screenshot 78.1%.",
+     "quote": "However, as the perturbations increased in severity, image features deteriorated further, and model performance declined."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Silent performance loss from degraded or low-resolution input images",
+     "effect": "Resolution reduction and screenshots cut accuracy (MicroDicom 900\u00d71050 to 550\u00d7780: 86.3% to 82.8%; ImageJ 78.1%); no input quality check was tested.",
+     "quote": "The only difference between the datasets Screenshot_MicroDicom_1 and Screenshot_MicroDicom_2 was the resolution; changing the resolution from 900\u00d71050 to 550\u00d7780 pixels resulted in an accuracy reduction from 86.3% to 82.8%."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance variation across acquisition sources and display software",
+     "effect": "The model was robust to 12-bit rescaling methods (<1% accuracy drop), but viewer-specific screenshot capture reduced accuracy (ImageJ 78.1% vs MicroDicom_1 82.8% at similar resolution).",
+     "quote": "This suggests that viewer-specific display or resampling algorithms during screenshot capture may also influence model performance."
+    }
+   ],
+   "unlisted_practices": [
+    "Training with augmentation matched to expected degradations, such as CLAHE, blur, and grayscale noise, to improve robustness",
+    "Using PSNR and SSIM image-quality metrics to predict model performance",
+    "Quality control of image resolution and compression before AI inference"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 640,
+   "sample_unit": "radiographs in the independent test set, repeatedly perturbed",
+   "models_evaluated": [
+    "EfficientNetB1 scaphoid fracture classification model",
+    "scaphoid detection model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy under image perturbations",
+     "effect": "Clean accuracy was 92.03%; Gaussian blur_3.0 accuracy 0.7203, Resize_400 0.7188, CLAHE_5 0.7703, and Screenshot_ImageJ 0.7812.",
+     "quote": "For images with PSNR values between 35 and 50, linear regression analysis revealed that Gaussian blurring was associated with a 5% to 12% decrease in accuracy compared with other nongeometric transformation techniques."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "low-quality inputs reducing diagnostic accuracy",
+     "effect": "Changing screenshot resolution from 900\u00d71050 to 550\u00d7780 pixels reduced accuracy from 86.3% to 82.8%; Screenshot_ImageJ accuracy was 78.1%.",
+     "quote": "The only difference between the datasets Screenshot_MicroDicom_1 and Screenshot_MicroDicom_2 was the resolution; changing the resolution from 900\u00d71050 to 550\u00d7780 pixels resulted in an accuracy reduction from 86.3% to 82.8%."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Taiwan",
+   "sample_size": 640,
+   "sample_unit": "radiographs",
+   "models_evaluated": [
+    "EfficientNetB1"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "fracture classification accuracy under image perturbations",
+     "effect": "Accuracy declined from 0.9203 on clean images to 0.7203 under Gaussian blur (sigma=3.0) and 0.7703 under CLAHE, where recall dropped to 0.5390, while Gaussian blur decreased accuracy by 5% to 12%.",
+     "quote": "Model accuracy declined with increasing perturbation severity, but the extent varied across perturbation types."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Taiwan",
+ "sample_unit": "test radiographs (scaphoid crops), each perturbed across 44 degradation datasets",
+ "sample_size": 640,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "EfficientNetB1",
+  "EfficientNetB1 scaphoid fracture classification model",
+  "EfficientNetB1 scaphoid fracture classifier",
+  "scaphoid detection model"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Classifier accuracy under perturbed inputs (blur, noise, JPEG, CLAHE, resizing, screenshots) versus clean images",
+   "effect": "Accuracy fell from 92.03% clean as perturbation severity increased; Gaussian blur \u03c3=3.0 gave 72.0%, resize_400 71.9%, CLAHE clip 5 77.0%, ImageJ screenshot 78.1%.",
+   "quote": "However, as the perturbations increased in severity, image features deteriorated further, and model performance declined.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Silent performance loss from degraded or low-resolution input images",
+   "effect": "Resolution reduction and screenshots cut accuracy (MicroDicom 900\u00d71050 to 550\u00d7780: 86.3% to 82.8%; ImageJ 78.1%); no input quality check was tested.",
+   "quote": "The only difference between the datasets Screenshot_MicroDicom_1 and Screenshot_MicroDicom_2 was the resolution; changing the resolution from 900\u00d71050 to 550\u00d7780 pixels resulted in an accuracy reduction from 86.3% to 82.8%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "fracture classification accuracy under image perturbations",
+   "effect": "Accuracy declined from 0.9203 on clean images to 0.7203 under Gaussian blur (sigma=3.0) and 0.7703 under CLAHE, where recall dropped to 0.5390, while Gaussian blur decreased accuracy by 5% to 12%.",
+   "quote": "Model accuracy declined with increasing perturbation severity, but the extent varied across perturbation types.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Quality control of image resolution and compression before AI inference",
+  "Training with augmentation matched to expected degradations, such as CLAHE, blur, and grayscale noise, to improve robustness",
+  "Using PSNR and SSIM image-quality metrics to predict model performance"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41570307",
+ "screen": {
+  "id": "pmid:41570307",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "image quality control (resolution and blur checks)",
+  "user": "none",
+  "reason": "The study empirically tests AI robustness against specific image perturbations (noise, compression, resolution loss) to evaluate image quality control safeguards before diagnostic deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "input image quality control"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41570307",
+   "empirical": 0.95,
+   "tests_practice": 0.04,
+   "real_deployment": 0.04
+  }
+ }
+}

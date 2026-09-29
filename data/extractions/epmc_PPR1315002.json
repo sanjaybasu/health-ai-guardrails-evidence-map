@@ -1,0 +1,110 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 76,
+ "sample_unit": "emergency vignette stems (subtle or atypical emergencies)",
+ "models_evaluated": [
+  "Claude Opus 4.8",
+  "Claude Sonnet 5",
+  "Claude Haiku 4.5",
+  "Claude Fable 5",
+  "Gemini 3.1 Pro-Preview",
+  "Gemini 3.6 Flash",
+  "Gemini 3.5 Flash-Lite",
+  "Gemini 3.1 Flash-Lite"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "Spanish"
+ ],
+ "links": [
+  {
+   "rec_id": "R243",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Under-escalation of subtle or atypical emergencies to top acuity tier, with and without governance prompt",
+   "effect": "Base model missed 13.2% of 76 atypical emergencies; governance prompt cut this to 3.9% (McNemar 7 to 0, p = 0.016; NNT 11). Baseline under-triage ranged 2.6% to 34.2% across eight models.",
+   "quote": "the base model failed to escalate 13.2% (95% CI 7.3 to 22.6) to the top acuity tier",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R244",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "outcome": "Sensitivity for overt emergencies when patient minimizes or denies symptoms or third party reassures",
+   "effect": "Across 40 unambiguous emergencies in five framings on Opus 4.8, sensitivity stayed at or above 97.5% in every arm and was flat across framings.",
+   "quote": "sensitivity stayed at or above 97.5% in every arm and was flat across framings",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R526",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Effect of a cannot-miss reasoning prompt on recognition and escalation of emergencies",
+   "effect": "Governance prompt reduced under-triage in seven of twelve model-by-elicitation cells; stem-level pooled discordant pairs 31 to 10 (p = 0.001) under reasoning-permitted elicitation; no added false emergency alarms in any cell.",
+   "quote": "no cell of any model gained a false emergency alarm",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Prompt-level cannot-miss reasoning discipline (instruction-level intervention) for triage under-escalation",
+  "Deterministic safety-spine runtime enforcing versioned invariants (proposed, not evaluated)",
+  "Choice of elicitation mode (forced single-shot disposition vs reasoning-permitted) affecting triage hazard",
+  "LLM-simulated blinded physician panels as ground-truth adjudication"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1315002",
+ "screen": {
+  "id": "epmc:PPR1315002",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "prompt guardrails for emergency triage escalation",
+  "user": "none",
+  "reason": "The study empirically tests a prompt-level governance safeguard (a cannot-miss prompt discipline) against baseline model prompts across multiple LLMs to evaluate its effect on undertriage of quiet medical emergencies.",
+  "jev": {
+   "id": "epmc:PPR1315002",
+   "empirical": 0.95,
+   "tests_practice": 0.85,
+   "real_deployment": 0.02
+  }
+ }
+}

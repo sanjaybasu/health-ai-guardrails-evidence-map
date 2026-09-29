@@ -1,0 +1,263 @@
+{
+ "route": "panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Australia",
+   "sample_size": 600,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "DEFT BiLSTM-CRF with RoBERTa embeddings"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R330",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Residual PII missed by automated deidentification on local clinical notes",
+     "effect": "Overall strict entity-level F1 0.9507, recall 0.9526 on local notes (above the 0.95 benchmark), but ADDRESS recall was only 0.5 and PHONE F1 was 0.8571.",
+     "quote": "Furthermore, the DEFT system can use only 600 annotated clinical notes to achieve good performance with an F 1 -score of 0.9507, which is greater than 0.95, the rule-of-thumb benchmark for evaluating the reliability of a deidentification system [ 16 , 40 ]."
+    }
+   ],
+   "unlisted_practices": [
+    "Human-in-the-loop correction of AI preannotations for deidentification of free-text EMR data (43% faster annotation; F1 0.9922 vs 0.9869 without preannotation)",
+    "Iterative retraining of deidentification model on locally annotated data via interactive learning loop"
+   ]
+  },
+  "openai": {
+   "design": "quasi_experimental",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Australia",
+   "sample_size": 600,
+   "sample_unit": "annotated clinical notes (200 in the comparison with versus without preannotation)",
+   "models_evaluated": [
+    "DEFT: BiLSTM-CRF with RoBERTa embeddings",
+    "Liu et al (2017): ensemble model",
+    "Kim et al (2018): ensemble model",
+    "Tang et al (2019): BiLSTM-CRF with BERT",
+    "Catelli et al (2021): BiLSTM-CRF",
+    "Liu et al (2022): ensemble model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R330",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "PII detection precision, recall, and F1 for clinical-note deidentification",
+     "effect": "Using 600 annotated notes, model precision was 0.9487, recall 0.9526, and micro-F1 0.9507. Performance remained uneven: ADDRESS recall was 0.5.",
+     "quote": "Furthermore, the DEFT system can use only 600 annotated clinical notes to achieve good performance with an F 1 -score of 0.9507, which is greater than 0.95, the rule-of-thumb benchmark for evaluating the reliability of a deidentification system [ 16 , 40 ]."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Human annotation time and accuracy with versus without AI preannotation",
+     "effect": "For 200 notes annotated by one analyst, preannotation sped up annotation by 43% (95% CI 33.9-52.1; P <.001). Recall increased from 0.9756 to 0.9886 and micro-F1 from 0.9869 to 0.9922.",
+     "quote": "Through the 5-round comparison, the preannotation by the trained model sped up the annotation work by 43% (95% CI 33.9-52.1; P <.001)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Australia",
+   "sample_size": 200,
+   "sample_unit": "clinical notes",
+   "models_evaluated": [
+    "BiLSTM-CRF",
+    "DEFT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "annotation time",
+     "effect": "sped up annotation work by 43%",
+     "quote": "Through the 5-round comparison, the preannotation by the trained model sped up the annotation work by 43% (95% CI 33.9-52.1; P <.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "AI-assisted preannotation for de-identifying clinical text"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Australia",
+ "sample_unit": "clinical notes",
+ "sample_size": 600,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "BiLSTM-CRF",
+  "Catelli et al (2021): BiLSTM-CRF",
+  "DEFT",
+  "DEFT BiLSTM-CRF with RoBERTa embeddings",
+  "DEFT: BiLSTM-CRF with RoBERTa embeddings",
+  "Kim et al (2018): ensemble model",
+  "Liu et al (2017): ensemble model",
+  "Liu et al (2022): ensemble model",
+  "Tang et al (2019): BiLSTM-CRF with BERT"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Human annotation time and accuracy with versus without AI preannotation",
+   "effect": "For 200 notes annotated by one analyst, preannotation sped up annotation by 43% (95% CI 33.9-52.1; P <.001). Recall increased from 0.9756 to 0.9886 and micro-F1 from 0.9869 to 0.9922.",
+   "quote": "Through the 5-round comparison, the preannotation by the trained model sped up the annotation work by 43% (95% CI 33.9-52.1; P <.001).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R330",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Residual PII missed by automated deidentification on local clinical notes",
+   "effect": "Overall strict entity-level F1 0.9507, recall 0.9526 on local notes (above the 0.95 benchmark), but ADDRESS recall was only 0.5 and PHONE F1 was 0.8571.",
+   "quote": "Furthermore, the DEFT system can use only 600 annotated clinical notes to achieve good performance with an F 1 -score of 0.9507, which is greater than 0.95, the rule-of-thumb benchmark for evaluating the reliability of a deidentification system [ 16 , 40 ].",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R330",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "PII detection precision, recall, and F1 for clinical-note deidentification",
+   "effect": "Using 600 annotated notes, model precision was 0.9487, recall 0.9526, and micro-F1 0.9507. Performance remained uneven: ADDRESS recall was 0.5.",
+   "quote": "Furthermore, the DEFT system can use only 600 annotated clinical notes to achieve good performance with an F 1 -score of 0.9507, which is greater than 0.95, the rule-of-thumb benchmark for evaluating the reliability of a deidentification system [ 16 , 40 ].",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.33,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "AI-assisted preannotation for de-identifying clinical text",
+  "Human-in-the-loop correction of AI preannotations for deidentification of free-text EMR data (43% faster annotation; F1 0.9922 vs 0.9869 without preannotation)",
+  "Iterative retraining of deidentification model on locally annotated data via interactive learning loop"
+ ],
+ "models": {
+  "claude": "claude-opus-5-5",
+  "openai": "gpt-6-astra",
+  "gemini": "gemini-3.1-pro-preview"
+ },
+ "id": "pmid:37624624",
+ "screen": {
+  "id": "pmid:37624624",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "any_ai"
+  ],
+  "setting": "real_deployment",
+  "tests_practice": true,
+  "practice": "human-in-the-loop preannotation for deidentification",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a human-in-the-loop deep learning system for clinical text de-identification and tests the impact of model pre-annotation on manual annotation efficiency.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "human-in-the-loop interactive pre-annotation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:37624624",
+   "empirical": 0.95,
+   "tests_practice": 0.67,
+   "real_deployment": 0.37
+  }
+ }
+}

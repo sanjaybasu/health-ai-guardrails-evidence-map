@@ -1,0 +1,356 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Italy",
+   "sample_size": 40,
+   "sample_unit": "queries (15 open-ended questions and 25 simulated clinical scenarios)",
+   "models_evaluated": [
+    "GPT-4 Turbo (gpt-4-turbo-2024-04-09-preview) baseline",
+    "GPT-4 Turbo RAG-Top1",
+    "GPT-4 Turbo RAG-Top10",
+    "GPT-4 Turbo supervised fine-tuned (SFT)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expert-graded accuracy of open-ended HCV answers with vs without guideline retrieval grounding",
+     "effect": "Binary accuracy RAG-Top10 91.7% vs baseline 36.6% (p<0.001); RAG-Top1 81.7%; clarity 91.7% vs 46.6%.",
+     "quote": "On open-ended questions, RAG-Top10 outperformed baseline in accuracy (91.7% vs. 36.6%; p < 0.001) and clarity (91.7% vs. 46.6%; p < 0.001)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Complete accuracy of DAA regimen recommendations in 25 simulated scenarios, RAG vs baseline",
+     "effect": "Median accuracy baseline 24%, RAG-Top1 58%, RAG-Top10 76% (p<0.001 vs baseline).",
+     "quote": "Similarly, RAG-Top10 achieved the highest performance in prescribing the correct DAA regimen according to expert consensus in 76% of cases (vs. 24% for baseline model, p < 0.001)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Baseline GPT-4 accuracy on guideline-based HCV knowledge and treatment selection",
+     "effect": "Baseline binary accuracy 36.6% (guideline authors), 50% (tertiary experts); baseline correct DAA regimen in only 24% of scenarios.",
+     "quote": "The baseline model demonstrated a median accuracy of 24.0% (IQR: 22%), the RAG-Top1 configuration showed marked improvement with a median accuracy of 58.0% (IQR: 10%, vs. baseline, p < 0.001), the RAG-Top10 configuration emerged as the superior performer, achieving a median accuracy of 76.0% (IQR: 8%, vs. baseline, p < 0.001) and the SFT model demonstrated a median accuracy of 66.0% (IQR: 19%, vs. baseline, p < 0.001)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Inter-grader agreement among blinded expert raters for accuracy and clarity",
+     "effect": "Binary accuracy kappa slight to moderate (e.g., baseline 0.24-0.30); 10-point ICC higher (0.24 to 0.87); agreement varied by configuration and rater group.",
+     "quote": "In addition, the use of binary metrics for evaluating accuracy and clarity resulted in a slight to fair agreement among graders, in contrast to using a point-based scale, which resulted in a higher agreement."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of temperature/top-p settings and repeated runs on answer similarity to expert answers",
+     "effect": "Optimal at temperature 0-0.8 and top-p 0-0.5; all models declined dramatically at temperature >=1.4 and top-p >=0.7; RAG-Top10 most robust.",
+     "quote": "All models exhibit a dramatic performance decline with temperature \u2265 1.4 and Top\u2010 p \u2265 0.7, confirming that higher values introduce excessive variability in responses."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing text chunking strategies (sentence, fixed-length, paragraph) and number of retrieved chunks for RAG",
+    "Supervised fine-tuning of an LLM on clinical guidelines and Q/A pairs"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Italy; European guideline-author evaluators",
+   "sample_size": 40,
+   "sample_unit": "distinct queries (15 open-ended questions and 25 simulated clinical scenarios)",
+   "models_evaluated": [
+    "GPT-4 Turbo baseline (gpt-4-turbo-2024-04-09-preview)",
+    "GPT-4 Turbo with RAG-Top1",
+    "GPT-4 Turbo with RAG-Top10",
+    "GPT-4 Turbo with supervised fine-tuning"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Open-ended HCV answer accuracy",
+     "effect": "RAG-Top10 accuracy was 91.7% vs 36.6% baseline; RAG-Top1 81.7% and SFT 71.7%, p < 0.001.",
+     "quote": "In binary accuracy grading, RAG\u2010Top10 showed the highest performance (91.7% accuracy), followed by RAG\u2010Top1 (81.7%) and SFT (71.7%), all significantly outperforming the baseline (36.6%, p < 0.001)."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "DAA regimen recommendation accuracy",
+     "effect": "RAG-Top10 median accuracy 76.0% (IQR 8%) vs baseline 24.0% (IQR 22%); RAG-Top1 58.0%, SFT 66.0%.",
+     "quote": "The baseline model demonstrated a median accuracy of 24.0% (IQR: 22%), the RAG\u2010Top1 configuration showed marked improvement with a median accuracy of 58.0% (IQR: 10%, vs. baseline, p < 0.001), the RAG\u2010Top10 configuration emerged as the superior performer, achieving a median accuracy of 76.0% (IQR: 8%, vs. baseline, p < 0.001) and the SFT model demonstrated a median accuracy of 66.0% (IQR: 19%, vs. baseline, p < 0.001)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Guideline-based treatment recommendation errors",
+     "effect": "Baseline median DAA-regimen accuracy was 24.0%; even RAG-Top10 reached 76.0%, leaving incorrect or incomplete recommendations.",
+     "quote": "The baseline model demonstrated a median accuracy of 24.0% (IQR: 22%), the RAG\u2010Top1 configuration showed marked improvement with a median accuracy of 58.0% (IQR: 10%, vs. baseline, p < 0.001), the RAG\u2010Top10 configuration emerged as the superior performer, achieving a median accuracy of 76.0% (IQR: 8%, vs. baseline, p < 0.001) and the SFT model demonstrated a median accuracy of 66.0% (IQR: 19%, vs. baseline, p < 0.001)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Decoding-parameter robustness",
+     "effect": "Performance declined dramatically at temperature \u2265 1.4 and Top-p \u2265 0.7, indicating excessive response variability.",
+     "quote": "All models exhibit a dramatic performance decline with temperature \u2265 1.4 and Top\u2010 p \u2265 0.7, confirming that higher values introduce excessive variability in responses."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "HCV answer clarity",
+     "effect": "Baseline clarity was 46.6%; RAG-Top10 91.7%, RAG-Top1 86.6%, and SFT 88.3%, all p < 0.001.",
+     "quote": "Regarding clarity, RAG\u2010Top10 (91.7%), RAG\u2010Top1 (86.6%) and SFT (88.3%) all significantly outperformed the baseline (46.6%, p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Use supervised fine-tuning on domain-specific HCV guideline text and expert-derived Q/A pairs.",
+    "Optimize RAG retrieval with paragraph-based chunking and approximately top-10 retrieved chunks."
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Italy",
+   "sample_size": 40,
+   "sample_unit": "queries",
+   "models_evaluated": [
+    "GPT-4 Turbo"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy and clarity of clinical answers and treatment regimens",
+     "effect": "RAG-Top10 outperformed baseline in binary accuracy (91.7% vs 36.6%, p<0.001) and clarity (91.7% vs 46.6%, p<0.001), and achieved 76.0% complete accuracy in treatment regimen recommendations vs 24.0% for baseline (p<0.001).",
+     "quote": "Both the RAG and SFT frameworks outperform the baseline model in terms of accuracy and clarity for questions related to HCV management."
+    }
+   ],
+   "unlisted_practices": [
+    "Supervised fine-tuning on clinical practice guidelines and expert question-answer pairs",
+    "Hyperparameter optimization of temperature and top-p to reduce hallucinations"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "Italy",
+ "sample_unit": "queries (15 open-ended questions and 25 simulated clinical scenarios)",
+ "sample_size": 40,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "GPT-4 Turbo",
+  "GPT-4 Turbo (gpt-4-turbo-2024-04-09-preview) baseline",
+  "GPT-4 Turbo RAG-Top1",
+  "GPT-4 Turbo RAG-Top10",
+  "GPT-4 Turbo baseline (gpt-4-turbo-2024-04-09-preview)",
+  "GPT-4 Turbo supervised fine-tuned (SFT)",
+  "GPT-4 Turbo with RAG-Top1",
+  "GPT-4 Turbo with RAG-Top10",
+  "GPT-4 Turbo with supervised fine-tuning"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Expert-graded accuracy of open-ended HCV answers with vs without guideline retrieval grounding",
+   "effect": "Binary accuracy RAG-Top10 91.7% vs baseline 36.6% (p<0.001); RAG-Top1 81.7%; clarity 91.7% vs 46.6%.",
+   "quote": "On open-ended questions, RAG-Top10 outperformed baseline in accuracy (91.7% vs. 36.6%; p < 0.001) and clarity (91.7% vs. 46.6%; p < 0.001).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Baseline GPT-4 accuracy on guideline-based HCV knowledge and treatment selection",
+   "effect": "Baseline binary accuracy 36.6% (guideline authors), 50% (tertiary experts); baseline correct DAA regimen in only 24% of scenarios.",
+   "quote": "The baseline model demonstrated a median accuracy of 24.0% (IQR: 22%), the RAG-Top1 configuration showed marked improvement with a median accuracy of 58.0% (IQR: 10%, vs. baseline, p < 0.001), the RAG-Top10 configuration emerged as the superior performer, achieving a median accuracy of 76.0% (IQR: 8%, vs. baseline, p < 0.001) and the SFT model demonstrated a median accuracy of 66.0% (IQR: 19%, vs. baseline, p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-grader agreement among blinded expert raters for accuracy and clarity",
+   "effect": "Binary accuracy kappa slight to moderate (e.g., baseline 0.24-0.30); 10-point ICC higher (0.24 to 0.87); agreement varied by configuration and rater group.",
+   "quote": "In addition, the use of binary metrics for evaluating accuracy and clarity resulted in a slight to fair agreement among graders, in contrast to using a point-based scale, which resulted in a higher agreement.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of temperature/top-p settings and repeated runs on answer similarity to expert answers",
+   "effect": "Optimal at temperature 0-0.8 and top-p 0-0.5; all models declined dramatically at temperature >=1.4 and top-p >=0.7; RAG-Top10 most robust.",
+   "quote": "All models exhibit a dramatic performance decline with temperature \u2265 1.4 and Top\u2010 p \u2265 0.7, confirming that higher values introduce excessive variability in responses.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing text chunking strategies (sentence, fixed-length, paragraph) and number of retrieved chunks for RAG",
+  "Hyperparameter optimization of temperature and top-p to reduce hallucinations",
+  "Optimize RAG retrieval with paragraph-based chunking and approximately top-10 retrieved chunks.",
+  "Supervised fine-tuning of an LLM on clinical guidelines and Q/A pairs",
+  "Supervised fine-tuning on clinical practice guidelines and expert question-answer pairs",
+  "Use supervised fine-tuning on domain-specific HCV guideline text and expert-derived Q/A pairs."
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40960299",
+ "screen": {
+  "id": "pmid:40960299",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding on guidelines (RAG) vs baseline",
+  "user": "clinician_or_staff",
+  "reason": "The study compares baseline GPT-4 against retrieval-augmented generation (RAG) and supervised fine-tuning configurations to evaluate accuracy and clarity in hepatitis C management using clinical vignettes and expert questions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40960299",
+   "empirical": 0.97,
+   "tests_practice": 0.53,
+   "real_deployment": 0.03
+  }
+ }
+}

@@ -1,0 +1,373 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 1000,
+   "sample_unit": "chief complaints",
+   "models_evaluated": [
+    "Gemma3 1b",
+    "Gemma3 4b",
+    "Gemma3 12b",
+    "Qwen3 1.7b",
+    "Qwen3 8b",
+    "Qwen3 14b",
+    "DeepSeek-R1 1.5b",
+    "DeepSeek-R1 7b",
+    "DeepSeek-R1 14b",
+    "Llama2-Chinese 7b",
+    "Llama2-Chinese 13b",
+    "Llama3.1 8b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of 12 candidate open-source LLMs on same annotated data to select configuration",
+     "effect": "Qwen3-8b no-role macro F1 0.89 vs Llama3.1-8b 0.35-0.40 and Llama2-Chinese-7b 0.00-0.11; model choice greatly affected performance.",
+     "quote": "Among all configurations, Qwen3-8b with no-role prompting achieved a macro F 1 -score of 0.89 and balanced accuracy of 0.95\u00b10.06, with an inference time of 3.64 seconds per record, whereas Qwen3-1.7b under zero-shot prompting achieved a macro F 1 -score of 0.85 with a faster inference time of 1.61 seconds."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Inter-rater agreement of independent annotators establishing the reference standard",
+     "effect": "Two independent trained raters; symptom-specific Cohen kappa 0.87 to 1.00, overall mean 0.92 (SD 0.02); discrepancies resolved by consensus adjudication.",
+     "quote": "Symptom-specific Cohen \u03ba ranged from 0.87 to 1.00."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Sensitivity of LLM performance to prompt variation across models",
+     "effect": "Effect of prompting strategy was model-dependent; e.g., Qwen3-1.7b macro F1 0.63 (no-role) vs 0.85 (zero-shot); Qwen3-8b 0.89 no-role vs 0.78 zero-shot.",
+     "quote": "The effect of prompting strategy was model-dependent, and no single approach dominated across all models."
+    },
+    {
+     "rec_id": "R132",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Extraction performance by symptom prevalence (rare vs common symptoms)",
+     "effect": "Nausea F1 below 0.5 for all models except two under few-shot; diarrhea F1>0.8 for most models; rarer symptoms had greater variability.",
+     "quote": "The most challenging symptom was nausea, with F 1 -scores below 0.5 for all models except Qwen3-8b and Qwen3-1.7b under few-shot prompting."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalizability of LLM performance beyond single-site Chinese chief complaints",
+     "effect": "No external validation; results may not extend to non-Chinese EHRs, other institutions, or other symptom categories.",
+     "quote": "First, the absence of external validation across different clinical settings or languages constrains the conclusions about model generalizability."
+    }
+   ],
+   "unlisted_practices": [
+    "Locally deployed open-source LLMs on isolated network to keep patient data in-house",
+    "Comparison of prompting strategies (no-role, zero-shot, few-shot) and model size for information extraction",
+    "Regex-based deidentification of records before LLM input"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 1000,
+   "sample_unit": "chief complaints",
+   "models_evaluated": [
+    "Qwen3-1.7b",
+    "Qwen3-8b",
+    "Qwen3-14b",
+    "DeepSeek-R1-1.5b",
+    "DeepSeek-R1-7b",
+    "DeepSeek-R1-14b",
+    "Gemma3-1b",
+    "Gemma3-4b",
+    "Gemma3-12b",
+    "Llama2-Chinese-7b",
+    "Llama2-Chinese-13b",
+    "Llama3.1-8b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R093",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "reference standard interrater agreement",
+     "effect": "Two independent trained raters produced symptom-specific \u03ba 0.87-1.00; overall mean \u03ba 0.92 (SD 0.02), with consensus adjudication.",
+     "quote": "Symptom-specific Cohen \u03ba ranged from 0.87 to 1.00."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy-efficiency differences across model configurations",
+     "effect": "Qwen3-8b no-role: macro F1 0.89, balanced accuracy 0.95\u00b10.06, 3.64 s/record; Qwen3-1.7b zero-shot: macro F1 0.85, 1.61 s.",
+     "quote": "Among all configurations, Qwen3-8b with no-role prompting achieved a macro F 1 -score of 0.89 and balanced accuracy of 0.95\u00b10.06, with an inference time of 3.64 seconds per record, whereas Qwen3-1.7b under zero-shot prompting achieved a macro F 1 -score of 0.85 with a faster inference time of 1.61 seconds."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "symptom-specific extraction accuracy",
+     "effect": "Nausea F1 was <0.5 for all models except Qwen3-8b and Qwen3-1.7b under few-shot prompting.",
+     "quote": "The most challenging symptom was nausea, with F 1 -scores below 0.5 for all models except Qwen3-8b and Qwen3-1.7b under few-shot prompting."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "prompt-dependent performance variation",
+     "effect": "Prompt strategy affected F1 (\u03c72=163.9; P<.001) and balanced accuracy (\u03c72=151.8; P<.001); macro-F1 differences were small and inconsistent.",
+     "quote": "Overall, our results revealed a significant effect of prompting strategy on most performance metrics ( F 1 -score: \u03c7 2 2 =163.9; P <.001; balanced accuracy: \u03c7 2 2 =151.8; P <.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing no-role, zero-shot, and few-shot prompting strategies for EHR symptom extraction",
+    "Measuring inference time alongside extraction accuracy under fixed local hardware"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 1000,
+   "sample_unit": "chief complaints",
+   "models_evaluated": [
+    "Gemma3-1b",
+    "Gemma3-4b",
+    "Gemma3-12b",
+    "Qwen3-1.7b",
+    "Qwen3-8b",
+    "Qwen3-14b",
+    "DeepSeek-R1-1.5b",
+    "DeepSeek-R1-7b",
+    "DeepSeek-R1-14b",
+    "Llama2-Chinese-7b",
+    "Llama2-Chinese-13b",
+    "Llama3.1-8b"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Prompting strategy comparison (no-role, zero-shot, and few-shot) for clinical symptom extraction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "chief complaints",
+ "sample_size": 1000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1 1.5b",
+  "DeepSeek-R1 14b",
+  "DeepSeek-R1 7b",
+  "DeepSeek-R1-1.5b",
+  "DeepSeek-R1-14b",
+  "DeepSeek-R1-7b",
+  "Gemma3 12b",
+  "Gemma3 1b",
+  "Gemma3 4b",
+  "Gemma3-12b",
+  "Gemma3-1b",
+  "Gemma3-4b",
+  "Llama2-Chinese 13b",
+  "Llama2-Chinese 7b",
+  "Llama2-Chinese-13b",
+  "Llama2-Chinese-7b",
+  "Llama3.1 8b",
+  "Llama3.1-8b",
+  "Qwen3 1.7b",
+  "Qwen3 14b",
+  "Qwen3 8b",
+  "Qwen3-1.7b",
+  "Qwen3-14b",
+  "Qwen3-8b"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of 12 candidate open-source LLMs on same annotated data to select configuration",
+   "effect": "Qwen3-8b no-role macro F1 0.89 vs Llama3.1-8b 0.35-0.40 and Llama2-Chinese-7b 0.00-0.11; model choice greatly affected performance.",
+   "quote": "Among all configurations, Qwen3-8b with no-role prompting achieved a macro F 1 -score of 0.89 and balanced accuracy of 0.95\u00b10.06, with an inference time of 3.64 seconds per record, whereas Qwen3-1.7b under zero-shot prompting achieved a macro F 1 -score of 0.85 with a faster inference time of 1.61 seconds.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Inter-rater agreement of independent annotators establishing the reference standard",
+   "effect": "Two independent trained raters; symptom-specific Cohen kappa 0.87 to 1.00, overall mean 0.92 (SD 0.02); discrepancies resolved by consensus adjudication.",
+   "quote": "Symptom-specific Cohen \u03ba ranged from 0.87 to 1.00.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R132",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Comparing no-role, zero-shot, and few-shot prompting strategies for EHR symptom extraction",
+  "Comparison of prompting strategies (no-role, zero-shot, few-shot) and model size for information extraction",
+  "Locally deployed open-source LLMs on isolated network to keep patient data in-house",
+  "Measuring inference time alongside extraction accuracy under fixed local hardware",
+  "Prompting strategy comparison (no-role, zero-shot, and few-shot) for clinical symptom extraction",
+  "Regex-based deidentification of records before LLM input"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42647073",
+ "screen": {
+  "id": "pmid:42647073",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompting strategy selection (no-role, zero-shot, few-shot) and local deployment of open-source models",
+  "user": "none",
+  "reason": "The study benchmarks locally deployed open-source LLMs on symptom extraction from EHRs and tests the impact of different prompting strategies (no-role, zero-shot, and few-shot) as a deployment/implementation choice.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "prompting strategy optimization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42647073",
+   "empirical": 0.98,
+   "tests_practice": 0.11,
+   "real_deployment": 0.04
+  }
+ }
+}

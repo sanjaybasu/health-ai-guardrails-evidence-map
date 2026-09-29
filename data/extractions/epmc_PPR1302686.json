@@ -1,0 +1,87 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "any_ai"
+ ],
+ "country": "Brazil",
+ "sample_size": 500,
+ "sample_unit": "synthetic Portuguese clinical notes",
+ "models_evaluated": [
+  "Custom Presidio recognizers with mod-11 checksum validation",
+  "Default Presidio",
+  "Groq Llama 3.3 70B zero-shot"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Portuguese"
+ ],
+ "links": [
+  {
+   "rec_id": "R330",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "PII detection F1 for de-identification of Brazilian clinical notes by method",
+   "effect": "Custom Presidio macro F1 = 1.000 (n=500); default Presidio 0.270; Llama 3.3 0.989 (n=100). Default tools miss Brazilian identifiers, leaving re-identification risk unless customized.",
+   "quote": "Custom Presidio achieves macro F1 = 1.000 across all seven PII types (n = 500), versus 0.270 for default Presidio and 0.989 for Llama 3.3 (n = 100, rate-limited).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Locale-specific PII recognizers with mod-11 checksum validation for CPF and CNPJ",
+  "Rule-based deterministic de-identification preferred over LLMs for latency and verification at scale",
+  "Open-source release of recognizers and synthetic corpus for Brazilian clinical PII"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1302686",
+ "screen": {
+  "id": "epmc:PPR1302686",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "any_ai"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates and benchmarks specific deployment safeguard methods (custom PII recognizers with checksum validation vs. LLM zero-shot vs. default tools) for de-identifying clinical text before AI deployment.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "automated de-identification / PII scrubbing with checksum validation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1302686",
+   "empirical": 0.93,
+   "tests_practice": 0.3,
+   "real_deployment": 0.03
+  }
+ }
+}

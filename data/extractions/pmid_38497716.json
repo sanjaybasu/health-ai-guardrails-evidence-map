@@ -1,0 +1,289 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Kazakhstan",
+   "sample_size": 252,
+   "sample_unit": "nasopharyngeal swab samples",
+   "models_evaluated": [
+    "Decision Tree (C5.0)",
+    "k-Nearest Neighbors",
+    "Naive Bayes",
+    "Random Forest",
+    "SVM linear kernel",
+    "SVM radial basis function kernel",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Detection accuracy/AUC on Kazakhstan samples before vs after retraining on local data",
+     "effect": "Applying original pipeline gave AUC 0.67 (RF) and 0.60 (SVM-R) for Kazakhstan; retraining on combined SA-Kaz data raised AUC to 0.93 (RF) and 0.98 (SVM-R). NCARI accuracy rose from 48% to 95%.",
+     "quote": "Re-training the ML models to incorporate MALDI peak information from a diverse pool of Kazakhstan samples, including SARS-CoV-2+, NCARI subjects, and asymptomatic controls, led to a substantial improvement in detection accuracy."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of model trained on South American data when applied to Kazakhstan samples",
+     "effect": "Original pipeline trained on South American samples showed reduced efficiency on Kazakhstan samples; 2021 SARS-CoV-2 accuracy <60% for all models, similar to NCARI identification.",
+     "quote": "Our initial application of the original MALDI-TOF MS/ML pipeline, trained on South American samples ( 4 ), demonstrated reduced efficiency in identifying samples from Kazakhstan."
+    }
+   ],
+   "unlisted_practices": [
+    "Building open-access shared spectral databases to enable model adaptation across regions"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai"
+   ],
+   "country": "Kazakhstan; South America public datasets",
+   "sample_size": 615,
+   "sample_unit": "nasopharyngeal swab MALDI-TOF MS samples",
+   "models_evaluated": [
+    "Decision Tree (Quinlan\u2019s C5.0 algorithm)",
+    "k-Nearest Neighbors",
+    "Naive Bayes",
+    "Random Forest",
+    "Support vector machine with linear kernel",
+    "Support vector machine with radial basis function kernel",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local diagnostic accuracy",
+     "effect": "Established pipeline: SARS-CoV-2+ detection 91.0%, but NCARI accuracy 48.0% and AC 67.0% by top random forest model.",
+     "quote": "Applying the established MALDI-TOF MS pipeline \"as is\" resulted in a high detection rate for SARS-CoV-2+ samples (91.0%), but low accuracy for NCARIs (48.0%) and ACs (67.0%) by the top-performing random forest model."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Geographic and temporal generalization",
+     "effect": "South America-trained models had <60% accuracy for 2021 Kazakhstan SARS-CoV-2 and NCARI; RF identified ACs best at 68%.",
+     "quote": "Notably, the accuracy for 2021 SARS-CoV-2 was <60% for all models, similar to the accuracy for identifying NCARI."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Retraining with Kazakhstan spectra",
+     "effect": "Retraining improved Kazakhstan AUC: RF 0.67 to 0.93; SVM-R 0.60 to 0.98; SVM-R accuracy 88.0%, 95.0%, 78% for SARS-CoV-2+, NCARI, AC.",
+     "quote": "After re-training of the ML algorithms on the SA-Kaz peak intensity matrix, the accuracy of detection by the top-performing support vector machine with radial basis function kernel model was at 88.0%, 95.0%, and 78% for the Kazakhstan SARS-CoV-2+, NCARI, and AC subjects, respectively, with a SARS-CoV-2 vs rest receiver operating characteristic area under the curve of 0.983 [0.958, 0.987]; a high differentiation accuracy was maintained for the South American SARS-CoV-2 and NCARIs."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Kazakhstan",
+   "sample_size": 252,
+   "sample_unit": "samples",
+   "models_evaluated": [
+    "Decision Tree (C5.0)",
+    "k-Nearest Neighbors",
+    "Naive Bayes",
+    "Random Forest",
+    "Support Vector Machine with linear kernel",
+    "Support Vector Machine with radial basis function kernel",
+    "XGBoost"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy of external ML pipeline on local samples",
+     "effect": "Detection rate was 91.0% for SARS-CoV-2+, but accuracy was 48.0% for NCARIs and 67.0% for asymptomatic controls by the top-performing random forest model.",
+     "quote": "Applying the established MALDI-TOF MS pipeline \"as is\" resulted in a high detection rate for SARS-CoV-2+ samples (91.0%), but low accuracy for NCARIs (48.0%) and ACs (67.0%) by the top-performing random forest model."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "classification accuracy after retraining on combined local and international data",
+     "effect": "Retrained SVM-R detection accuracy was 88.0% for SARS-CoV-2+, 95.0% for NCARIs, and 78% for asymptomatic controls, with SARS-CoV-2 vs rest ROC AUC of 0.983 [0.958, 0.987].",
+     "quote": "After re-training of the ML algorithms on the SA-Kaz peak intensity matrix, the accuracy of detection by the top-performing support vector machine with radial basis function kernel model was at 88.0%, 95.0%, and 78% for the Kazakhstan SARS-CoV-2+, NCARI, and AC subjects, respectively, with a SARS-CoV-2 vs rest receiver operating characteristic area under the curve of 0.983 [0.958, 0.987]; a high differentiation accuracy was maintained for the South American SARS-CoV-2 and NCARIs."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "cross_sectional_or_descriptive",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Kazakhstan",
+ "sample_unit": "nasopharyngeal swab samples",
+ "sample_size": 252,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "models_evaluated": [
+  "Decision Tree (C5.0)",
+  "Decision Tree (Quinlan\u2019s C5.0 algorithm)",
+  "Naive Bayes",
+  "Random Forest",
+  "SVM linear kernel",
+  "SVM radial basis function kernel",
+  "Support Vector Machine with linear kernel",
+  "Support Vector Machine with radial basis function kernel",
+  "Support vector machine with linear kernel",
+  "Support vector machine with radial basis function kernel",
+  "XGBoost",
+  "k-Nearest Neighbors"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Detection accuracy/AUC on Kazakhstan samples before vs after retraining on local data",
+   "effect": "Applying original pipeline gave AUC 0.67 (RF) and 0.60 (SVM-R) for Kazakhstan; retraining on combined SA-Kaz data raised AUC to 0.93 (RF) and 0.98 (SVM-R). NCARI accuracy rose from 48% to 95%.",
+   "quote": "Re-training the ML models to incorporate MALDI peak information from a diverse pool of Kazakhstan samples, including SARS-CoV-2+, NCARI subjects, and asymptomatic controls, led to a substantial improvement in detection accuracy.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of model trained on South American data when applied to Kazakhstan samples",
+   "effect": "Original pipeline trained on South American samples showed reduced efficiency on Kazakhstan samples; 2021 SARS-CoV-2 accuracy <60% for all models, similar to NCARI identification.",
+   "quote": "Our initial application of the original MALDI-TOF MS/ML pipeline, trained on South American samples ( 4 ), demonstrated reduced efficiency in identifying samples from Kazakhstan.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local diagnostic accuracy",
+   "effect": "Established pipeline: SARS-CoV-2+ detection 91.0%, but NCARI accuracy 48.0% and AC 67.0% by top random forest model.",
+   "quote": "Applying the established MALDI-TOF MS pipeline \"as is\" resulted in a high detection rate for SARS-CoV-2+ samples (91.0%), but low accuracy for NCARIs (48.0%) and ACs (67.0%) by the top-performing random forest model.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Building open-access shared spectral databases to enable model adaptation across regions"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:38497716",
+ "screen": {
+  "id": "pmid:38497716",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local retraining with site-specific data before deployment",
+  "user": "none",
+  "reason": "The study focuses on developing and validating machine learning models to classify MALDI-TOF mass spectrometry data for SARS-CoV-2 detection, representing pure retrospective biomarker/diagnostic model development without evaluating a deployment practice, workflow, safety, or human use.",
+  "primary": {
+   "category": "out_of_scope",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:38497716",
+   "empirical": 0.95,
+   "tests_practice": 0.64,
+   "real_deployment": 0.11
+  }
+ }
+}

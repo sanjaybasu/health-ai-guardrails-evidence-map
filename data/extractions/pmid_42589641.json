@@ -1,0 +1,509 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported (public US cohorts CPTAC-PDAC and TCGA-PAAD; authors' future work references Turkey)",
+   "sample_size": 290,
+   "sample_unit": "tumor samples (140 CPTAC discovery, 150 TCGA external)",
+   "models_evaluated": [
+    "Extra Trees",
+    "Gaussian Naive Bayes",
+    "Multilayer Perceptron",
+    "L2-Logistic Regression",
+    "CatBoost",
+    "Random Forest",
+    "SVM-RBF",
+    "XGBoost",
+    "LightGBM",
+    "top-3 ensemble",
+    "CORAL",
+    "ComBat",
+    "split conformal",
+    "weighted conformal",
+    "CV+",
+    "Conformal Risk Control"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Conformal coverage under zero-shot transfer versus local recalibration on target-cohort sample",
+     "effect": "Zero-shot coverage plateaued near 0.85 at alpha=0.05; recalibrating on 37 held-out TCGA samples restored nominal coverage (split-conformal 0.984, 0.973, 0.893 at alpha 0.05, 0.10, 0.20).",
+     "quote": "In contrast, recalibrating the conformal layer on a held-out TCGA split (Regime 3; 37 calibration samples, all of the minority class), with the classifier still trained only on CPTAC and exposed to no TCGA label during training, restored nominal coverage at every level"
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination of a CPTAC-trained classifier on an external, independent cohort versus internal cross-validation",
+     "effect": "Internal nested CV AUROC ~0.96; external TCGA AUROC 0.913-0.938 (ensemble 0.961), with a small gap (0.959 to 0.938 for GNB) versus typical 5-15 point drops.",
+     "quote": "First, the modest \u0394AUROC of \u22120.021 for Gaussian Na\u00efve Bayes between internal cross-validation and external evaluation (0.959 \u2192 0.938) is among the smallest cross-cohort gaps reported in the PDAC subtype literature"
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Dataset shift between development and external cohorts affecting performance and conformal validity",
+     "effect": "Minimal batch effect on discrimination (cohort AUROC 0.58; 1.0% variance to cohort) but exchangeability violation caused ~10-point conformal undercoverage (~0.85 vs 0.95 target).",
+     "quote": "All four conformal procedures converged to a coverage ceiling of approximately 0.85 at \u03b1 = 0.05, despite targeting 0.95\u2014a residual 10-percentage-point undercoverage."
+    },
+    {
+     "rec_id": "R214",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether per-patient conformal uncertainty flags borderline tumors via abstention",
+     "effect": "Abstention was 14.0% (margin <0.25), 19.5% (0.25-0.50), 5.3% (0.50-1.00), and 0% (>1.0), concentrating on borderline tumors that warrant manual review.",
+     "quote": "That is, the conformal predictor abstained precisely on the biologically borderline tumors\u2014providing a principled mechanism for flagging cases that warrant manual pathology review."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reliability of reference-standard subtype labels (Moffitt vs PurIST agreement)",
+     "effect": "Moffitt-PurIST agreement 78.6% (kappa 0.54) in CPTAC and 70.7% (kappa 0.42) in TCGA; labels derived from signature raise circularity concern.",
+     "quote": "The Moffitt and PurIST subtype labels agreed in 78.6% of CPTAC samples (Cohen\u2019s \u03ba = 0.54, 95% CI 0.40\u20130.67) and 70.7% of TCGA samples (\u03ba = 0.42, 0.30\u20130.54), corresponding to moderate agreement."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Suitability for autonomous use versus decision-support given conformal undercoverage",
+     "effect": "Even best procedure (CRC) reached only 85.3% coverage vs 95% target; authors do not recommend autonomous use and confine tool to decision support under expert oversight.",
+     "quote": "However, because even CRC attains only 85.3% empirical coverage against the 0.95 target, we explicitly do not recommend any of these procedures for autonomous clinical use at \u03b1 = 0.05."
+    }
+   ],
+   "unlisted_practices": [
+    "Consensus multi-method explainable AI (SHAP, LIME, permutation, decision-curve ablation) for feature attribution",
+    "Domain adaptation (CORAL, ComBat) for cross-cohort transfer, which degraded performance",
+    "Conformal prediction with abstention for uncertainty quantification",
+    "Ensembling models and isotonic recalibration of probabilities"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 290,
+   "sample_unit": "tumor samples",
+   "models_evaluated": [
+    "L1-regularized logistic regression",
+    "L2-regularized logistic regression",
+    "elastic-net logistic regression",
+    "SVM-RBF",
+    "k-nearest neighbors",
+    "Gaussian Na\u00efve Bayes",
+    "random forest",
+    "Extra Trees",
+    "sklearn gradient boosting",
+    "XGBoost",
+    "LightGBM",
+    "CatBoost",
+    "multilayer perceptron",
+    "equal-weighted top-3 ensemble",
+    "Moffitt signature-score rule",
+    "PurIST",
+    "Mondrian split-conformal prediction",
+    "weighted Mondrian split-conformal prediction",
+    "CV+ Mondrian conformal prediction",
+    "Conformal Risk Control"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external discrimination generalization",
+     "effect": "Gaussian Na\u00efve Bayes AUROC changed 0.959 \u2192 0.938 (\u0394 \u22120.021) from internal to external validation.",
+     "quote": "First, the modest \u0394AUROC of \u22120.021 for Gaussian Na\u00efve Bayes between internal cross-validation and external evaluation (0.959 \u2192 0.938) is among the smallest cross-cohort gaps reported in the PDAC subtype literature, and contrasts favorably with the 5\u201315 percentage point deterioration typical in transcriptomic cancer-subtype classifiers [ 11 , 12 ]."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "reference label agreement",
+     "effect": "Moffitt-PurIST agreement was 78.6% in CPTAC (\u03ba=0.54) and 70.7% in TCGA (\u03ba=0.42).",
+     "quote": "The Moffitt and PurIST subtype labels agreed in 78.6% of CPTAC samples (Cohen\u2019s \u03ba = 0.54, 95% CI 0.40\u20130.67) and 70.7% of TCGA samples (\u03ba = 0.42, 0.30\u20130.54), corresponding to moderate agreement."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "calibration versus discrimination",
+     "effect": "Ensemble ECE 0.067 vs Gaussian Na\u00efve Bayes 0.031; ensemble F1 0.894 vs 0.916 despite discrimination gain.",
+     "quote": "This discrimination gain came at a calibration cost, however: the ensemble was the least well-calibrated model (ECE = 0.067, versus 0.031 for Gaussian Na\u00efve Bayes) and did not surpass Gaussian Na\u00efve Bayes in F1 (0.894 versus 0.916), so the single Gaussian Na\u00efve Bayes model remains preferable where well-calibrated probabilities are required."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "algorithm selection comparison",
+     "effect": "Mean AUROC ranged 0.902\u20130.962; only sklearn-GBM was significantly inferior by Wilcoxon (adjusted p = 0.008), not corrected t-test.",
+     "quote": "After Holm adjustment, the corrected resampled t -test identified no algorithm as differing significantly from Extra Trees; only sklearn-GBM, the weakest performer (0.902, 0.866\u20130.938), was significantly inferior under the Wilcoxon test (adjusted p = 0.008), and not under the corrected t -test (adjusted p = 0.15)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-cohort exchangeability failure",
+     "effect": "Zero-shot conformal coverage plateaued near 0.85 at \u03b1=0.05 versus 0.95 target, attributed to cross-cohort non-exchangeability.",
+     "quote": "This recovery demonstrates that the zero-shot failure is a property of cross-cohort non-exchangeability and not of the conformal machinery."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "target-cohort recalibration coverage",
+     "effect": "Target-cohort recalibration with 37 TCGA calibration samples restored split-conformal coverage: 0.984\u00b10.016, 0.973\u00b10.022, 0.893\u00b10.045.",
+     "quote": "In contrast, recalibrating the conformal layer on a held-out TCGA split (Regime 3; 37 calibration samples, all of the minority class), with the classifier still trained only on CPTAC and exposed to no TCGA label during training, restored nominal coverage at every level (split-conformal 0.984 \u00b1 0.016, 0.973 \u00b1 0.022 and 0.893 \u00b1 0.045 at \u03b1 = 0.05, 0.10 and 0.20, respectively, each meeting or exceeding its 1 \u2212 \u03b1 target; mean \u00b1 SD over 20 random calibration/test splits)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "abstention for uncertain tumors",
+     "effect": "Abstention was 14.0%, 19.5%, 5.3%, and 0% across increasing Moffitt margin strata.",
+     "quote": "Importantly, abstention behaved as theoretically expected with respect to the Moffitt label-assignment margin ( Supplementary Figure S2 ): samples with a margin below 0.25 had a 14.0% abstention rate, samples with a margin of 0.25\u20130.50 had a 19.5% rate, samples with a margin of 0.50\u20131.00 had a 5.3% rate, and samples with a margin above 1.0 had a 0% rate."
+    },
+    {
+     "rec_id": "R488",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "uncertainty coverage",
+     "effect": "At \u03b1=0.05, CRC coverage 0.853; split 0.847; weighted 0.847; CV+ 0.780, below 0.95 nominal.",
+     "quote": "Conformal Risk Control (CRC) achieved the highest empirical coverage at \u03b1 = 0.05 (0.853; abstention rate 0.0%; mean set size 1.000), followed by unweighted Mondrian split-conformal (0.847), weighted Mondrian (0.847), and CV+ (0.780)."
+    }
+   ],
+   "unlisted_practices": [
+    "Consensus feature selection across four orthogonal methods",
+    "Domain adaptation with CORAL and ComBat",
+    "Four-method consensus explainable-AI attribution with pathway enrichment",
+    "Histology filtering of the external validation cohort"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Turkey",
+   "sample_size": 290,
+   "sample_unit": "tumors",
+   "models_evaluated": [
+    "Extra Trees",
+    "Gaussian Na\u00efve Bayes",
+    "Multilayer Perceptron",
+    "L2-Logistic Regression",
+    "CatBoost",
+    "sklearn-GBM",
+    "XGBoost",
+    "LightGBM",
+    "SVM-RBF",
+    "k-nearest neighbors",
+    "Random Forest",
+    "L1-regularized logistic regression",
+    "Elastic-net logistic regression"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Conformal coverage across significance levels after local target-cohort recalibration",
+     "effect": "Split-conformal coverage was 0.984 \u00b1 0.016 at \u03b1=0.05, 0.973 \u00b1 0.022 at \u03b1=0.10, and 0.893 \u00b1 0.045 at \u03b1=0.20, meeting nominal targets.",
+     "quote": "In contrast, recalibrating the conformal layer on a held-out TCGA split (Regime 3; 37 calibration samples, all of the minority class), with the classifier still trained only on CPTAC and exposed to no TCGA label during training, restored nominal coverage at every level (split-conformal 0.984 \u00b1 0.016, 0.973 \u00b1 0.022 and 0.893 \u00b1 0.045 at \u03b1 = 0.05, 0.10 and 0.20, respectively, each meeting or exceeding its 1 \u2212 \u03b1 target; mean \u00b1 SD over 20 random calibration/test splits)."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Abstention rate across tumor label-assignment margin strata",
+     "effect": "Abstention was 14.0% for margin <0.25, 19.5% for 0.25-0.50, 5.3% for 0.50-1.00, and 0% for margin >1.0.",
+     "quote": "Importantly, abstention behaved as theoretically expected with respect to the Moffitt label-assignment margin (Supplementary Figure S2): samples with a margin below 0.25 had a 14.0% abstention rate, samples with a margin of 0.25\u20130.50 had a 19.5% rate, samples with a margin of 0.50\u20131.00 had a 5.3% rate, and samples with a margin above 1.0 had a 0% rate."
+    }
+   ],
+   "unlisted_practices": [
+    "Consensus explainable AI aggregating multiple attribution methods",
+    "Whole-matrix batch correction (ComBat, CORAL) for cross-cohort transfer"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported (public US cohorts CPTAC-PDAC and TCGA-PAAD; authors' future work references Turkey)",
+ "sample_unit": "tumor samples (140 CPTAC discovery, 150 TCGA external)",
+ "sample_size": 290,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "models_evaluated": [
+  "CORAL",
+  "CV+",
+  "CV+ Mondrian conformal prediction",
+  "CatBoost",
+  "ComBat",
+  "Conformal Risk Control",
+  "Elastic-net logistic regression",
+  "Extra Trees",
+  "Gaussian Naive Bayes",
+  "Gaussian Na\u00efve Bayes",
+  "L1-regularized logistic regression",
+  "L2-Logistic Regression",
+  "L2-regularized logistic regression",
+  "LightGBM",
+  "Moffitt signature-score rule",
+  "Mondrian split-conformal prediction",
+  "Multilayer Perceptron",
+  "PurIST",
+  "Random Forest",
+  "SVM-RBF",
+  "XGBoost",
+  "elastic-net logistic regression",
+  "equal-weighted top-3 ensemble",
+  "k-nearest neighbors",
+  "multilayer perceptron",
+  "random forest",
+  "sklearn gradient boosting",
+  "sklearn-GBM",
+  "split conformal",
+  "top-3 ensemble",
+  "weighted Mondrian split-conformal prediction",
+  "weighted conformal"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Conformal coverage under zero-shot transfer versus local recalibration on target-cohort sample",
+   "effect": "Zero-shot coverage plateaued near 0.85 at alpha=0.05; recalibrating on 37 held-out TCGA samples restored nominal coverage (split-conformal 0.984, 0.973, 0.893 at alpha 0.05, 0.10, 0.20).",
+   "quote": "In contrast, recalibrating the conformal layer on a held-out TCGA split (Regime 3; 37 calibration samples, all of the minority class), with the classifier still trained only on CPTAC and exposed to no TCGA label during training, restored nominal coverage at every level",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination of a CPTAC-trained classifier on an external, independent cohort versus internal cross-validation",
+   "effect": "Internal nested CV AUROC ~0.96; external TCGA AUROC 0.913-0.938 (ensemble 0.961), with a small gap (0.959 to 0.938 for GNB) versus typical 5-15 point drops.",
+   "quote": "First, the modest \u0394AUROC of \u22120.021 for Gaussian Na\u00efve Bayes between internal cross-validation and external evaluation (0.959 \u2192 0.938) is among the smallest cross-cohort gaps reported in the PDAC subtype literature",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "Dataset shift between development and external cohorts affecting performance and conformal validity",
+   "effect": "Minimal batch effect on discrimination (cohort AUROC 0.58; 1.0% variance to cohort) but exchangeability violation caused ~10-point conformal undercoverage (~0.85 vs 0.95 target).",
+   "quote": "All four conformal procedures converged to a coverage ceiling of approximately 0.85 at \u03b1 = 0.05, despite targeting 0.95\u2014a residual 10-percentage-point undercoverage.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reliability of reference-standard subtype labels (Moffitt vs PurIST agreement)",
+   "effect": "Moffitt-PurIST agreement 78.6% (kappa 0.54) in CPTAC and 70.7% (kappa 0.42) in TCGA; labels derived from signature raise circularity concern.",
+   "quote": "The Moffitt and PurIST subtype labels agreed in 78.6% of CPTAC samples (Cohen\u2019s \u03ba = 0.54, 95% CI 0.40\u20130.67) and 70.7% of TCGA samples (\u03ba = 0.42, 0.30\u20130.54), corresponding to moderate agreement.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "abstention for uncertain tumors",
+   "effect": "Abstention was 14.0%, 19.5%, 5.3%, and 0% across increasing Moffitt margin strata.",
+   "quote": "Importantly, abstention behaved as theoretically expected with respect to the Moffitt label-assignment margin ( Supplementary Figure S2 ): samples with a margin below 0.25 had a 14.0% abstention rate, samples with a margin of 0.25\u20130.50 had a 19.5% rate, samples with a margin of 0.50\u20131.00 had a 5.3% rate, and samples with a margin above 1.0 had a 0% rate.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R214",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether per-patient conformal uncertainty flags borderline tumors via abstention",
+   "effect": "Abstention was 14.0% (margin <0.25), 19.5% (0.25-0.50), 5.3% (0.50-1.00), and 0% (>1.0), concentrating on borderline tumors that warrant manual review.",
+   "quote": "That is, the conformal predictor abstained precisely on the biologically borderline tumors\u2014providing a principled mechanism for flagging cases that warrant manual pathology review.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R068",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Suitability for autonomous use versus decision-support given conformal undercoverage",
+   "effect": "Even best procedure (CRC) reached only 85.3% coverage vs 95% target; authors do not recommend autonomous use and confine tool to decision support under expert oversight.",
+   "quote": "However, because even CRC attains only 85.3% empirical coverage against the 0.95 target, we explicitly do not recommend any of these procedures for autonomous clinical use at \u03b1 = 0.05.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R488",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "uncertainty coverage",
+   "effect": "At \u03b1=0.05, CRC coverage 0.853; split 0.847; weighted 0.847; CV+ 0.780, below 0.95 nominal.",
+   "quote": "Conformal Risk Control (CRC) achieved the highest empirical coverage at \u03b1 = 0.05 (0.853; abstention rate 0.0%; mean set size 1.000), followed by unweighted Mondrian split-conformal (0.847), weighted Mondrian (0.847), and CV+ (0.780).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Conformal prediction with abstention for uncertainty quantification",
+  "Consensus explainable AI aggregating multiple attribution methods",
+  "Consensus feature selection across four orthogonal methods",
+  "Consensus multi-method explainable AI (SHAP, LIME, permutation, decision-curve ablation) for feature attribution",
+  "Domain adaptation (CORAL, ComBat) for cross-cohort transfer, which degraded performance",
+  "Domain adaptation with CORAL and ComBat",
+  "Ensembling models and isotonic recalibration of probabilities",
+  "Four-method consensus explainable-AI attribution with pathway enrichment",
+  "Histology filtering of the external validation cohort",
+  "Whole-matrix batch correction (ComBat, CORAL) for cross-cohort transfer"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42589641",
+ "screen": {
+  "id": "pmid:42589641",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration and conformal uncertainty quantification",
+  "user": "none",
+  "reason": "The study develops and externally validates a molecular subtype classifier for PDAC while specifically evaluating conformal prediction methods and demonstrating that local recalibration on target samples restores coverage under domain shift.",
+  "jev": {
+   "id": "pmid:42589641",
+   "empirical": 0.95,
+   "tests_practice": 0.81,
+   "real_deployment": 0.04
+  }
+ }
+}

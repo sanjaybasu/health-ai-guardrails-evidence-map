@@ -1,0 +1,96 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": 434,
+ "sample_unit": "expert-authored clinical narratives (217 counterfactual pairs)",
+ "models_evaluated": [
+  "Claude Sonnet 4.6",
+  "four frontier LLMs (eight configurations)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Gap between base accuracy and robust accuracy under counterfactual clinical perturbation",
+   "effect": "Base accuracy overstates robust accuracy by 16-28 percentage points in every model; residual BTR of 20% with EA-RAG.",
+   "quote": "Across eight configurations of four frontier LLMs, base accuracy overstates robust accuracy by 16-28 percentage points in every model.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Bias Trap Rate and base accuracy with retrieval-grounded method (EA-RAG) on Claude Sonnet 4.6",
+   "effect": "EA-RAG achieved 20.3% BTR and 65.0% robust accuracy, a 5.5 percentage point BTR reduction without degrading base accuracy.",
+   "quote": "EA-RAG achieves 20.3% BTR and 65.0% robust accuracy on Claude Sonnet 4.6, a 5.5 percentage point BTR reduction without degrading base accuracy.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Counterfactual paired-case benchmarking (Bias Trap Rate) to measure diagnostic robustness",
+  "Evidence-coverage retrieval with clinical parameter extraction, coverage auditing, and contrastive sub-queries"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2607.14385",
+ "screen": {
+  "id": "arxiv:2607.14385",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "retrieval grounding (EA-RAG) added to existing LLMs",
+  "user": "none",
+  "reason": "The paper introduces a benchmark (MamaBench) to test diagnostic robustness of LLMs using counterfactual pairs, and tests Evidence-Anchored RAG (a retrieval grounding safeguard) against standard base models to evaluate reduction in bias trap rate.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation (Evidence-Anchored RAG)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2607.14385",
+   "empirical": 0.96,
+   "tests_practice": 0.58,
+   "real_deployment": 0.03
+  }
+ }
+}
