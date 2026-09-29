@@ -38,13 +38,14 @@ def taxonomy_packet():
 
 
 def evidence_packet(n: int = 60, seed: int = 20260928):
-    """Random sample of evidence links, stratified so every tests_guardrail link from a deployment is included."""
+    """Stratified random sample: a third level 1-2 tests, a third other tests, a third hazard links."""
     REVIEW.mkdir(parents=True, exist_ok=True)
     ev = [json.loads(l) for l in EVIDENCE.read_text().splitlines()]
-    must = [e for e in ev if e["relation"] == "tests_guardrail" and e["level"] <= 3]
-    rest = [e for e in ev if e not in must]
-    random.Random(seed).shuffle(rest)
-    sample = must + rest[:max(0, n - len(must))]
+    rng = random.Random(seed)
+    strata = [[e for e in ev if e["relation"] == "tests_guardrail" and e["level"] <= 2],
+              [e for e in ev if e["relation"] == "tests_guardrail" and e["level"] > 2],
+              [e for e in ev if e["relation"] == "documents_hazard"]]
+    sample = [e for st in strata for e in rng.sample(st, min(len(st), n // 3))]
     t = {r["id"]: r["statement"] for r in yaml.safe_load(TAXONOMY.read_text())["recommendations"]}
     path = REVIEW / "evidence_spotcheck.csv"
     with path.open("w", newline="") as f:
