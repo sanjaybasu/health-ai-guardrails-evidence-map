@@ -72,8 +72,21 @@ def compute() -> dict:
         st = status(n_formal + n_comment, tests)
         if st in ("no_data", "consensus_without_evidence") and haz and n_formal + n_comment < 3:
             st = "hazard_documented_untested"
+        by_tech = {}
+        for t in tax.get("technologies", {}):
+            if t == "any_ai":
+                continue
+            tt = [e for e in tests if t in (e.get("technology") or [])]
+            th = [e for e in haz if t in (e.get("technology") or [])]
+            st_t = status(n_formal + n_comment, tt)
+            if st_t in ("no_data", "consensus_without_evidence") and th and n_formal + n_comment < 3:
+                st_t = "hazard_documented_untested"
+            by_tech[t] = {"status": st_t, "status_label": STATUS_LABEL[st_t],
+                          "best_level": min((e["level"] for e in tt), default=None),
+                          "n_tests": len({e["study"] for e in tt}), "n_hazard": len({e["study"] for e in th}),
+                          "underserved_tested": any(any(e["population"].get(f) for f in UNDERSERVED) for e in tt)}
         recs.append({
-            **r, "curation": r.get("status", "machine_draft"), "domain_label": DOMAINS[r["domain"]],
+            **r, "by_tech": by_tech, "curation": r.get("status", "machine_draft"), "domain_label": DOMAINS[r["domain"]],
             "n_endorse": n_formal + n_comment, "n_formal": n_formal, "n_commentary": n_comment,
             "n_must": len({e["source"] for e in es if e["strength"] == "must"}),
             "n_tests": len({e["study"] for e in tests}), "n_hazard": len({e["study"] for e in haz}),
@@ -138,8 +151,11 @@ def build():
     for f in (SITE / "static").iterdir():
         shutil.copy(f, DOCS / f.name)
     env = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=True)
+    import hashlib
+    build = hashlib.sha256(b"".join((SITE / "static" / f).read_bytes() for f in ("app.js", "style.css"))
+                           + (DOCS / "data" / "map.json").read_bytes()).hexdigest()[:10]
     for name in ("index.html", "methods.html", "changelog.html"):
-        (DOCS / name).write_text(env.get_template(name).render(s=data["stats"], changelog=_changelog()))
+        (DOCS / name).write_text(env.get_template(name).render(s=data["stats"], changelog=_changelog(), build=build))
     (DOCS / ".nojekyll").write_text("")
     print(f"site: {len(data['recs'])} recommendations; {data['stats']['n_evidence_edges']} evidence edges")
 

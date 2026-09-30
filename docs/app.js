@@ -1,4 +1,5 @@
 (() => {
+  const V = (document.currentScript && new URL(document.currentScript.src).searchParams.get("v")) || "";
   const STATUS_COLOR = {
     evidence_supported: "--s-supported", contested: "--s-contested", limited_evidence: "--s-limited",
     consensus_without_evidence: "--s-consensus", hazard_documented_untested: "--s-hazard", no_data: "--s-none",
@@ -17,14 +18,14 @@
   const $ = (id) => document.getElementById(id);
   let DATA, rows = [], sortKey = "n_endorse", sortDir = -1, showAll = false;
 
-  fetch("data/map.json").then((r) => r.json()).then((d) => {
+  fetch(`data/map.json?v=${V}`).then((r) => r.json()).then((d) => {
     DATA = d;
     for (const [k, v] of Object.entries(d.domains)) $("domain").insertAdjacentHTML("beforeend", `<option value="${k}">${esc(label(k))}</option>`);
-    for (const [k, v] of Object.entries(d.technologies || {})) $("tech").insertAdjacentHTML("beforeend", `<option value="${k}">${esc(TECH[k] || label(k))}</option>`);
+    for (const [k, v] of Object.entries(d.technologies || {}).filter(([k]) => k !== "any_ai")) $("tech").insertAdjacentHTML("beforeend", `<option value="${k}">${esc(TECH[k] || label(k))}</option>`);
     for (const [k, v] of Object.entries(d.status_labels)) $("status").insertAdjacentHTML("beforeend", `<option value="${k}">${esc(v)}</option>`);
     $("legend").innerHTML = Object.entries(d.status_labels).map(([k, v]) => `<span><i style="background:var(${STATUS_COLOR[k]})"></i>${esc(v)}</span>`).join("")
       + `<span><i style="background:transparent;border:2px solid var(--ring)"></i>Tested in an underserved population</span>`;
-    ["q", "domain", "target", "status", "tech", "us"].forEach((id) => $(id).addEventListener("input", render));
+    ["q", "domain", "target", "status", "tech", "specific", "us"].forEach((id) => $(id).addEventListener("input", render));
     document.querySelectorAll("#tbl th").forEach((th) => th.addEventListener("click", () => {
       const k = th.dataset.k; sortDir = sortKey === k ? -sortDir : (k === "statement" || k === "domain" || k === "status" ? 1 : -1); sortKey = k; renderTable();
     }));
@@ -36,11 +37,21 @@
 
   const label = (k) => k.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase());
 
+  // With a technology selected, each recommendation's status, best level, and counts come only from studies of that
+  // technology, so the map answers "which guardrails have evidence for the kind of AI I am deploying".
+  function view(r) {
+    const t = $("tech").value;
+    return t && r.by_tech && r.by_tech[t] ? { ...r, ...r.by_tech[t] } : r;
+  }
+
   function filtered() {
     const q = $("q").value.toLowerCase(), dom = $("domain").value, tgt = $("target").value, st = $("status").value;
-    return DATA.recs.filter((r) => (!q || (r.statement + " " + r.hazard + " " + r.id).toLowerCase().includes(q))
+    const t = $("tech").value, specific = $("specific").checked;
+    $("specific").disabled = !t;
+    $("techNote").textContent = t ? `Showing evidence from ${TECH[t] ? TECH[t].toLowerCase() : t} studies only. ` : "";
+    return DATA.recs.map(view).filter((r) => (!q || (r.statement + " " + r.hazard + " " + r.id).toLowerCase().includes(q))
       && (!dom || r.domain === dom) && (!tgt || r.applies_to.includes(tgt)) && (!st || r.status === st)
-      && (!$("tech").value || (r.technology || []).includes($("tech").value) || (r.technology || []).includes("any_ai"))
+      && (!t || (r.technology || []).includes(t) || (!specific && ((r.technology || []).includes("any_ai") || r.n_tests + r.n_hazard > 0)))
       && (!$("us").checked || r.underserved_tested));
   }
 
@@ -66,9 +77,7 @@
     const ticks = [0, 1, 3, 5, 10, 20, 40].filter((t) => t <= maxN);
     ticks.forEach((t) => { s += `<g class="axis"><line class="grid" x1="${x(t)}" x2="${x(t)}" y1="${m.t}" y2="${H - m.b}" stroke-dasharray="2 4"/><text x="${x(t)}" y="${H - m.b + 16}" text-anchor="middle">${t}</text></g>`; });
     s += `<g class="axis"><text x="${(m.l + W - m.r) / 2}" y="${H - 6}" text-anchor="middle">Distinct sources endorsing the recommendation</text></g>`;
-    const shown = new Set(rows.map((r) => r.id));
-    for (const r of DATA.recs) {
-      if (!shown.has(r.id)) continue;
+    for (const r of rows) {
       const jx = (hash(r.id) - 0.5) * 14, jy = (hash(r.id + "y") - 0.5) * band;
       const rad = 4 + Math.min(6, Math.sqrt(r.n_tests + r.n_hazard));
       s += `<circle tabindex="0" data-id="${r.id}" class="${r.underserved_tested ? "us" : ""}" cx="${x(r.n_endorse) + jx}" cy="${y(r.best_level) + jy}" r="${rad}" fill="${css(STATUS_COLOR[r.status])}" fill-opacity=".85"><title>${esc(r.id + ": " + r.statement)}</title></circle>`;
@@ -126,7 +135,7 @@
     const base = DATA && DATA.recs.find((x) => x.id === id);
     const dlg = $("detail");
     if (!base) { if (dlg.open) dlg.close(); return; }
-    if (!DETAIL[id]) DETAIL[id] = await fetch(`data/rec/${id}.json`).then((x) => x.json());
+    if (!DETAIL[id]) DETAIL[id] = await fetch(`data/rec/${id}.json?v=${V}`).then((x) => x.json());
     const r = { ...base, ...DETAIL[id] };
     const tests = r.evidence.filter((e) => e.relation === "tests_guardrail"), haz = r.evidence.filter((e) => e.relation === "documents_hazard");
     const ev = (e) => {

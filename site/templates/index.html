@@ -23,11 +23,12 @@
     </select>
     <select id="status" aria-label="Evidence status"><option value="">Any evidence status</option></select>
     <select id="tech" aria-label="Technology"><option value="">All AI technologies</option></select>
+    <label class="chk"><input type="checkbox" id="specific"> Only guardrails written for this technology</label>
     <label class="chk"><input type="checkbox" id="us"> Tested in underserved populations</label>
   </div>
   <figure class="mapfig">
     <div id="map" role="img" aria-label="Recommendations plotted by endorsement count and strongest evidence"></div>
-    <figcaption>Each point is one recommendation. Horizontal position is the number of distinct sources that endorse it; vertical position is the strongest study design that has tested it. Points with a dark ring were tested in at least one underserved population. Select a point for detail.</figcaption>
+    <figcaption><span id="techNote"></span>Each point is one recommendation. Horizontal position is the number of distinct sources that endorse it; vertical position is the strongest study design that has tested it. Points with a dark ring were tested in at least one underserved population. Select a point for detail.</figcaption>
     <div class="legend" id="legend"></div>
   </figure>
 </section>
@@ -53,4 +54,4 @@
 
 <dialog id="detail"><div id="detail-body"></div></dialog>
 {% endblock %}
-{% block scripts %}<script src="app.js"></script>{% endblock %}
+{% block scripts %}<script src="app.js?v={{ build }}"></script>{% endblock %}

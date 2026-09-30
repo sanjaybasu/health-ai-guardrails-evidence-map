@@ -301,6 +301,8 @@ def aggregate(outs: dict[str, dict], links: dict[str, list[dict]]) -> dict:
     agg["population"] = {f: _majority([outs[v]["population"][f] for v in vendors])[0] for f in POP_FLAGS}
     agree["population"] = statistics.mean(_majority([outs[v]["population"][f] for v in vendors])[1] for f in POP_FLAGS)
     agg["languages"] = sorted({x for v in vendors for x in outs[v]["languages"]})
+    tech_votes = Counter(t for v in vendors for t in set(outs[v].get("technology", [])))
+    agg["technology"] = sorted(t for t, n in tech_votes.items() if n >= need)
     agg["models_evaluated"] = sorted({x for v in vendors for x in outs[v]["models_evaluated"]})
     need = 2 if len(vendors) >= 3 else 1
     keyed = {}
@@ -533,9 +535,24 @@ def _randomization_stated(p: dict) -> bool:
     return bool(re.search(r"random|cluster-randomi[sz]ed|stepped[- ]wedge", text))
 
 
+def _study_tech(x: dict, screen_tech: dict) -> list[str]:
+    """Technology tags: the aggregated extraction, else a two-of-three vote over panel outputs, else the screen."""
+    if x.get("technology"):
+        return x["technology"]
+    raw = x.get("raw") or {}
+    if raw:
+        votes = Counter(t for o in raw.values() for t in set(o.get("technology", [])))
+        need = 2 if len(raw) >= 3 else 1
+        tech = sorted(t for t, n in votes.items() if n >= need)
+        if tech:
+            return tech
+    return screen_tech.get(x["id"], [])
+
+
 def assemble():
     """Write evidence.jsonl and commentary_endorsements.jsonl from all extraction files."""
     papers = fetch.load()
+    screen_tech = {json.loads(l)["id"]: json.loads(l).get("technology", []) for l in SCREEN.read_text().splitlines()}
     hv_path = ROOT / "data" / "human_verified.jsonl"
     verified = {tuple(json.loads(l)) for l in hv_path.read_text().splitlines()} if hv_path.exists() else set()
     ev, com, prop = [], [], []
@@ -561,7 +578,7 @@ def assemble():
                            "outcome": l["outcome"], "effect": l["effect"], "quote": l["quote"],
                            "design": design, "design_extracted": x["design"], "setting": x["setting"],
                            "user": x["user"], "level": lv,
-                           "technology": x.get("technology", []),
+                           "technology": _study_tech(x, screen_tech),
                            "sample_size": x.get("sample_size"), "sample_unit": x.get("sample_unit"),
                            "country": x.get("country"), "population": x["population"],
                            "languages": x.get("languages", []), "route": x["route"],
