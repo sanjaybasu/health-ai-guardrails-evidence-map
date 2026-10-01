@@ -80,7 +80,7 @@ table.small td, table.small th { font-size: 14px; }
 @media (max-width: 640px) {
   .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   nav a { margin: 0 14px 0 0; }
-  th:nth-child(2), td:nth-child(2), th:nth-child(6), td:nth-child(6) { display: none; }
+  #tbl th:nth-child(n+2):nth-child(-n+6), #tbl td:nth-child(n+2):nth-child(-n+6) { display: none; }
 }
 .more { margin-top: 12px; font: inherit; padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); cursor: pointer; }
 .attrib { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--line); }
@@ -95,3 +95,5 @@ table.small td, table.small th { font-size: 14px; }
 .trow:hover { background: var(--chip); }
 .tstat { text-align: right; min-width: 210px; }
 @media (max-width: 640px) { .trow { flex-direction: column; } .tstat { text-align: left; min-width: 0; } }
+@media (max-width: 640px) { table.small { display: block; overflow-x: auto; } }
+@media (max-width: 640px) { #tbl .pill { white-space: normal; display: inline-block; border-radius: 6px; padding: 3px 8px; line-height: 1.35; } #tbl td:last-child { width: 42%; } }
