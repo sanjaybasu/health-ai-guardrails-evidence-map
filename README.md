@@ -43,11 +43,11 @@ Budget caps live in `config.yaml` (`GEM_RUN_CAP` and `GEM_MONTH_CAP` override th
 - `data/taxonomy.yaml`: set a recommendation's `status` to `curated` after reviewing its wording; edit statements freely (ids are stable).
 - `data/proposed_recommendations.jsonl`: practices that studies or commentaries mention but the taxonomy lacks; add them to the taxonomy by hand.
 - `data/evidence.jsonl`: set `human_verified: true` only after checking a link against the paper.
-- Weekly pull requests list new links and status changes; merge after spot-checking.
+- Weekly pull requests list new links and status changes; they merge automatically when `gem/validate_site.py` and the tests pass, and stay open for review otherwise.
 
 ## Scheduled updates
 
-`.github/workflows/weekly.yml` runs every Monday at 06:00 UTC, opens a pull request with new data and a rebuilt site, and commits a heartbeat to `main` so the schedule stays active. The site is served by GitHub Pages from `docs/`.
+`.github/workflows/weekly.yml` runs every Monday at 06:00 UTC, opens a pull request with new data and a rebuilt site, merges it if the site validation passes, and commits a heartbeat to `main` so the schedule stays active. The site is served by GitHub Pages from `docs/`.
 
 ## Conflict of interest
 

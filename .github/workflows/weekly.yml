@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  pages: write
 
 concurrency:
   group: weekly-update
@@ -24,6 +25,8 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Save the published map as the baseline for validation
+        run: cp docs/data/map.json "$RUNNER_TEMP/base_map.json"
       - name: Run weekly pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -32,6 +35,12 @@ jobs:
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
         run: python -m gem.pipeline weekly
+      - name: Validate the rebuilt site
+        id: validate
+        continue-on-error: true
+        run: |
+          python -m pytest -q tests
+          python -m gem.validate_site "$RUNNER_TEMP/base_map.json"
       - name: Summarize changes for the pull request
         id: summary
         run: |
@@ -48,11 +57,12 @@ jobs:
               print("\nStatus changes:")
               for c in e["status_changes"]:
                   print(f"- {c['id']} {c['statement']}: {c['before']} -> {c['after']}")
-          print("\nEvery new link is machine-extracted. Spot-check the quotes in data/evidence.jsonl before merging.")
+          print("\nEvery new link is machine-extracted and marked unverified on the site. This PR merges automatically when the site validation passes.")
           PY
             echo 'EOF'
           } >> "$GITHUB_OUTPUT"
       - name: Open pull request with data and site changes
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           branch: weekly-update
@@ -65,7 +75,15 @@ jobs:
             docs/**
             state/cost_ledger.jsonl
             state/last_run.json
+      - name: Merge the pull request and rebuild Pages
+        if: steps.validate.outcome == 'success' && steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --merge --delete-branch -R ${{ github.repository }}
+          gh api -X POST repos/${{ github.repository }}/pages/builds || echo "Pages build request failed; the push may still trigger a build"
       - name: Heartbeat commit on main (keeps the schedule active)
+        if: always()
         run: |
           git fetch origin main
           git checkout -B main origin/main
@@ -75,3 +93,6 @@ jobs:
           git add state/heartbeat.json
           git commit -m "heartbeat" || exit 0
           git push origin main
+      - name: Fail the run when validation failed (the PR stays open for review)
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
