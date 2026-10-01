@@ -59,3 +59,11 @@ def test_aggregate_two_of_three():
     links = {"claude": [link("supports_practice")], "openai": [], "gemini": []}
     a = aggregate(outs, links)
     assert a["links"] == [] and a["contested_links"][0]["vendors"] == ["claude"]
+
+
+def test_aggregate_technology_two_of_three():
+    outs = {"claude": {**_out(), "technology": ["generative_llm"]},
+            "openai": {**_out(), "technology": ["generative_llm", "agentic"]},
+            "gemini": {**_out(), "technology": ["predictive_risk"]}}
+    a = aggregate(outs, {"claude": [], "openai": [], "gemini": []})
+    assert a["technology"] == ["generative_llm"]

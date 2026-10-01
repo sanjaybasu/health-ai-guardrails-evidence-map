@@ -101,14 +101,19 @@ def screen_audit(fraction: float | None = None, seed: int = 20260928):
     papers = fetch.load()
     excl = [r for r in rows if r["category"] in ("out_of_scope", "review")]
     random.Random(seed).shuffle(excl)
-    sample = excl[:max(1, int(len(excl) * fraction))]
+    sample = excl[:min(200, max(1, int(len(excl) * fraction)))]   # capped so a monthly audit stays inexpensive
     m = CFG["models"]["screen_audit"]
     disagree = []
     for r in sample:
         p = papers[r["id"]]
         user = f"Title: {p['title']}\nPublication types: {', '.join(p.get('pub_types') or [])}\nAbstract: {p['abstract']}"
-        out = llm.call(m["vendor"], m["model"], SCREEN_SYSTEM, user, SCREEN_SCHEMA, step="screen_audit",
-                       effort="low", max_tokens=2000)
+        try:
+            out = llm.call(m["vendor"], m["model"], SCREEN_SYSTEM, user, SCREEN_SCHEMA, step="screen_audit",
+                           effort="low", max_tokens=2000)
+        except llm.BudgetExceeded:
+            raise
+        except Exception:   # a refusal or failed call on one record should not stop the audit
+            continue
         if out["category"] in ("empirical_ai_health", "recommendation_commentary"):
             disagree.append({"id": r["id"], "primary": r["category"], "audit": out["category"]})
     res = {"sampled": len(sample), "disagreements": len(disagree), "items": disagree}
@@ -301,6 +306,7 @@ def aggregate(outs: dict[str, dict], links: dict[str, list[dict]]) -> dict:
     agg["population"] = {f: _majority([outs[v]["population"][f] for v in vendors])[0] for f in POP_FLAGS}
     agree["population"] = statistics.mean(_majority([outs[v]["population"][f] for v in vendors])[1] for f in POP_FLAGS)
     agg["languages"] = sorted({x for v in vendors for x in outs[v]["languages"]})
+    need = 2 if len(vendors) >= 3 else 1
     tech_votes = Counter(t for v in vendors for t in set(outs[v].get("technology", [])))
     agg["technology"] = sorted(t for t, n in tech_votes.items() if n >= need)
     agg["models_evaluated"] = sorted({x for v in vendors for x in outs[v]["models_evaluated"]})
