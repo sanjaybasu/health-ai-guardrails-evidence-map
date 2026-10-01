@@ -15,7 +15,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - id: check
+        env:
+          NOT_BEFORE: "2026-10-19"   # scheduled runs pause until this date; manual runs always proceed
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(date -u +%F)" \< "$NOT_BEFORE" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Scheduled run skipped until $NOT_BEFORE"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
   update:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 300
     steps:
