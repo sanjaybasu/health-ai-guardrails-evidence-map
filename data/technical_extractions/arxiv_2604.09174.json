@@ -1,0 +1,26 @@
+{
+ "id": "arxiv:2604.09174",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "monitoring_methods",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "LLM-only generation without retrieval, compared with Strict RAG (exclusive reliance on retrieved evidence) and Soft RAG (retrieved evidence plus parametric knowledge)",
+   "finding": "mixed",
+   "outcome": "Hallucination and retrieval-generation misalignment (relevant evidence retrieved but not correctly integrated), assessed at facet level across medical QA and HotpotQA",
+   "effect": "No numeric effect in the abstract. Hallucinations remain common in RAG even when relevant documents are retrieved. Failures are attributed more to how evidence is integrated during generation than to retrieval accuracy.",
+   "tradeoff": "New failure modes under RAG: evidence absence, evidence misalignment, and prior-driven overrides, where parametric knowledge overrides retrieved evidence. These remain hidden under answer-level evaluation.",
+   "quote": "Our results demonstrate that hallucinations in RAG systems are driven less by retrieval accuracy and more by how retrieved evidence is integrated during generation, with facet-level analysis exposing systematic evidence override and misalignment patterns that remain hidden under answer-level evaluation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding (Strict vs Soft RAG vs LLM-only)"
+}

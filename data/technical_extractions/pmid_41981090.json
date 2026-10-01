@@ -1,0 +1,57 @@
+{
+ "id": "pmid:41981090",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose base models (Mistral-7B instruct, Llama2-7B), fine-tuned and evaluated under identical settings",
+   "finding": "favours_control",
+   "outcome": "ICD-10-CM coding F-score after fine-tuning (internal test set)",
+   "effect": "Full-code F: BioMistral 0.780 vs Mistral-instruct 0.760; MedLlama2 0.774 vs Llama2 0.749. Top-50 F: BioMistral 0.906 vs Mistral-instruct 0.877; MedLlama2 0.880 vs Llama2 0.868. The advantage persisted on the KMUH RCT dataset (BioMistral 0.754 vs Mistral 0.736 full-code F). No significance testing was reported for the comparisons.",
+   "tradeoff": "",
+   "quote": "BioMistral achieved the highest downstream performance (F 1 -score = 0.78; win rate = 69.2%), followed by MedLlama2 and Mistral.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T090",
+   "comparator_used": "BioMistral trained on the full, non-deduplicated dataset (DischgDiag only)",
+   "finding": "favours_control",
+   "outcome": "Coding precision, recall and F-score, and training time",
+   "effect": "Deduplicated model outperformed the baseline on precision, recall and F1 and cut training time by 10.2%. Full-code F rose from 0.780 to 0.786 on the internal test set, from 0.754 to 0.764 on the KMUH RCT data, and from 0.620 to 0.626 on TMMH.",
+   "tradeoff": "",
+   "quote": "As shown in Fig. 5 , the deduplicated model consistently outperformed the baseline across precision, recall, and F 1 -scores, and reduced total training time by 10.2%.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T108",
+   "comparator_used": "Manual coding by certified coding specialists without AI assistance (control workflow in a randomized weekly rotation)",
+   "finding": "favours_control",
+   "outcome": "Coding time per discharge summary (RQ1) and coder satisfaction",
+   "effect": "Across 10,688 coded summaries, all three AI-assisted workflows (HAN, PubMedGPT-2, BioMistral) were faster than manual coding (Games-Howell, all p < 0.001). PubMedGPT-2 gave the largest time reduction, followed by BioMistral and HAN. The text gives no mean times in seconds. Workflow uptake rose from 37.26% to 90.59%.",
+   "tradeoff": "Satisfaction varied by model and coder background: HAN users were less likely to give positive or neutral ratings, and coders with <10 years of experience and Gen Y were the least satisfied. One late-career coder withdrew because they would not adopt the AI interface. Weekly rotation may be confounded by time, and the rotation was truncated by an ICD-10-CM version transition. Accuracy was not directly compared in the trial.",
+   "quote": "All three AI-assisted workflows yielded faster completion times than manual coding (Games-Howell, all p < 0.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "human-in-the-loop AI-assisted coding with coder review"
+}

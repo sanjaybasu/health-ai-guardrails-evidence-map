@@ -1,0 +1,42 @@
+{
+ "id": "pmid:42314450",
+ "families": [
+  "human_workflow_design",
+  "prompting",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T046",
+   "comparator_used": "Classifier outputting a prediction for every case (baseline overall accuracy 74.4%, no deferral)",
+   "finding": "favours_control",
+   "outcome": "Classification accuracy on retained predictions and share of baseline errors captured by deferral",
+   "effect": "At the 85% confidence threshold, accuracy on retained predictions was 90.8% versus 74.4% overall; deferral captured 83.3% of all baseline errors. On external validation, retained accuracy at the same threshold was 72.7%, against a macro F1 of 0.590 for all predictions.",
+   "tradeoff": "Deferred cases need clinician review. The abstract does not report the proportion deferred. The benefit was much smaller on the external dataset.",
+   "quote": "At an 85% confidence threshold, classification accuracy on retained predictions reached 90.8%, while deferral captured 83.3% of all baseline errors.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T048",
+   "comparator_used": "Uncalibrated classifier probabilities before post-hoc temperature scaling",
+   "finding": "favours_control",
+   "outcome": "Expected calibration error on the test set",
+   "effect": "Expected calibration error fell from 0.101 to 0.063",
+   "tradeoff": "",
+   "quote": "Temperature scaling reduced test expected calibration error from 0.101 to 0.063.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "selective prediction deferral threshold and confidence calibration"
+}

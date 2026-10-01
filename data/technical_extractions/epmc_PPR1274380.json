@@ -1,0 +1,50 @@
+{
+ "id": "epmc:PPR1274380",
+ "families": [
+  "model_choice_adaptation",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Source-center model used as-is on the target center (no adaptation), compared with a ladder of ten adaptation techniques across three backbones",
+   "finding": "mixed",
+   "outcome": "Cross-center AUC for structural findings (impacted teeth) versus texture findings (caries)",
+   "effect": "Impacted teeth AUC 0.71 to 0.92 after adaptation; caries stays near chance. Cheap adaptation (a few thousand trainable parameters, sixteen labeled teeth) recovers most of the achievable benefit for structural findings. Across all 126 configurations the guarantee never breaks.",
+   "tradeoff": "Texture findings such as early caries were not recovered by any adaptation, budget or backbone tested. Source performance was largely preserved.",
+   "quote": "Adaptation recovers structural pathology strongly (impacted teeth, AUC 0.71 to 0.92) but not texture pathology (caries stays near chance), independently of technique, budget, or backbone.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T080",
+   "comparator_used": "Model trained on the source center only and applied cross-center",
+   "finding": "favours_control",
+   "outcome": "Caries AUC when trained with target-center labels versus transferred across the acquisition gap",
+   "effect": "Caries AUC 0.79 from the target's own labels versus 0.60 when transferred across centers",
+   "tradeoff": "",
+   "quote": "Joint two-center training shows this is non-transfer, not unlearnability: caries is recoverable from the target's own labels (0.79) yet does not cross the acquisition gap (0.60).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T051",
+   "comparator_used": "Mahalanobis OOD gate fit on the source center versus the gate re-fit on the target center, across adaptation techniques",
+   "finding": "no_clear_difference",
+   "outcome": "Deferral (refusal) rate of the OOD gate on target-center data",
+   "effect": "A gate re-fit on the target defers about five percent there regardless of technique. The gate refuses inputs from the unseen center rather than predicting unreliably.",
+   "tradeoff": "Refusal reflects calibration, not adaptation strength. The gate acts as a directional distribution-shift detector, so refusal does not signal whether adaptation worked.",
+   "quote": "The refusal gate is a directional distribution-shift detector\u2014a gate re-fit on the target defers about five percent there regardless of technique\u2014so refusal reflects calibration, not adaptation strength.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "safety envelope with OOD refusal gate and local adaptation"
+}

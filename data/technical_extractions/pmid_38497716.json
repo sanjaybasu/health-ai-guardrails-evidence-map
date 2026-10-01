@@ -1,0 +1,25 @@
+{
+ "id": "pmid:38497716",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T080",
+   "comparator_used": "ML models trained only on South American public spectra (published pipeline applied as-is) vs models retrained on pooled South American plus Kazakhstan spectra",
+   "finding": "favours_control",
+   "outcome": "Detection accuracy for Kazakhstan samples (SARS-CoV-2+, NCARI, asymptomatic controls)",
+   "effect": "SA-only random forest: 91.0% SARS-CoV-2+, 48.0% NCARI, 67.0% AC. Pooled SA-Kaz SVM-RBF: 88.0% SARS-CoV-2+, 95.0% NCARI, 78% AC; SARS-CoV-2 vs rest AUC 0.983 [0.958, 0.987]; high accuracy maintained for South American samples.",
+   "tradeoff": "Detection of SARS-CoV-2+ samples fell slightly (91.0% to 88.0%). Authors note continuous re-optimization will be needed as respiratory infections evolve. The two arms also used different top-performing algorithms (random forest vs SVM-RBF).",
+   "quote": "Incorporation of spectral signatures from Kazakhstan substantially increased the accuracy of detection.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local retraining with site-specific data before deployment"
+}

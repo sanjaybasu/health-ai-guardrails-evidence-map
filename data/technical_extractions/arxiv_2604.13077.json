@@ -1,0 +1,72 @@
+{
+ "id": "arxiv:2604.13077",
+ "families": [
+  "language_literacy_handling",
+  "model_choice_adaptation",
+  "output_filtering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T065",
+   "comparator_used": "Zero-shot prompting (also few-shot with implausible examples)",
+   "finding": "no_clear_difference",
+   "outcome": "Extraction performance of physiology index values from CAG reports",
+   "effect": "Changes in prompt technique showed no significant improvement across models; best results were obtained with Llama using zero-shot prompting",
+   "tradeoff": "",
+   "quote": "Changes in the prompt techinique and adding a RegEx layer showed no significant improvement across models, while using constrained generation decreased performance, although having the benefit of allowing the usage of specific models that are not able to conform with the templates.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T004",
+   "comparator_used": "LLM outputs without the RegEx post-processing step",
+   "finding": "no_clear_difference",
+   "outcome": "Extraction performance of physiology index values from CAG reports",
+   "effect": "Adding a RegEx layer showed no significant improvement across models",
+   "tradeoff": "",
+   "quote": "Changes in the prompt techinique and adding a RegEx layer showed no significant improvement across models, while using constrained generation decreased performance, although having the benefit of allowing the usage of specific models that are not able to conform with the templates.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T005",
+   "comparator_used": "Unconstrained free-text generation",
+   "finding": "favours_comparator",
+   "outcome": "Extraction performance and format conformity",
+   "effect": "Constrained generation decreased performance; MedLlama had significantly lower performance in the constrained setting",
+   "tradeoff": "Constrained generation allowed use of specific models that cannot conform with the templates (e.g., MedLlama out-of-format in unconstrained setting)",
+   "quote": "Changes in the prompt techinique and adding a RegEx layer showed no significant improvement across models, while using constrained generation decreased performance, although having the benefit of allowing the usage of specific models that are not able to conform with the templates.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "Non-medical general-purpose LLMs",
+   "finding": "no_clear_difference",
+   "outcome": "Extraction performance of physiology index values from CAG reports",
+   "effect": "MedGemma showed similar results to non-medical models; MedLlama's results were out-of-format in the unconstrained setting and had significantly lower performance in the constrained one",
+   "tradeoff": "MedLlama produced out-of-format outputs in the unconstrained setting",
+   "quote": "While MedGemma demonstrated similar results to non-medical models, MedLlama's results were out-of-format in the unconstrained setting, and had a significant lower performance in the constrained one.",
+   "finding_agreement": 0.33,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "constrained generation and RegEx post-processing of LLM outputs"
+}

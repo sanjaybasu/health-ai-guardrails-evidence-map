@@ -1,0 +1,42 @@
+{
+ "id": "pmid:40574695",
+ "families": [
+  "human_workflow_design",
+  "prompting",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T046",
+   "comparator_used": "Uniform manual review of all cases (implied by the stated 75% reduction in review burden)",
+   "finding": "favours_control",
+   "outcome": "Classification accuracy (weighted F1) by uncertainty level, and manual review burden",
+   "effect": "Weighted F1 for low- vs high-uncertainty cases: 0.94 vs 0.57 in stage 1 and 0.82 vs 0.58 in stage 2. Overall F1 reached 0.955 after manual review of the remaining uncertain cases. Manual review burden fell by 75%.",
+   "tradeoff": "High-uncertainty cases performed poorly and still needed manual review: 285 of 1072 test cases went to chart review.",
+   "quote": "Low-uncertainty cases consistently outperformed high-uncertainty cases in both stages (weighted F1-scores: 0.94 vs 0.57 in stage 1 and 0.82 vs 0.58 in stage 2).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T042",
+   "comparator_used": "Stage 1 alone (zero-shot ensemble applied to all cases)",
+   "finding": "favours_control",
+   "outcome": "Overall F1-score against physician-labeled data",
+   "effect": "F1 rose from 0.840 (stage 1) to 0.878 (stage 2) to 0.955 (stage 3).",
+   "tradeoff": "Stage 3 relies on manual chart review for the final uncertain cases, and high-uncertainty cases still performed poorly in stage 2 (F1 0.58).",
+   "quote": "The overall framework performance showed a progressive improvement in F1-scores from 0.840 (stage 1) to 0.878 (stage 2) to 0.955 (stage 3).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "uncertainty-based selective human review of LLM outputs"
+}

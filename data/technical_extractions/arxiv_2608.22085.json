@@ -1,0 +1,42 @@
+{
+ "id": "arxiv:2608.22085",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "output_filtering"
+ ],
+ "links": [
+  {
+   "control_id": "T006",
+   "comparator_used": "Ungated generation without schema and SNOMED ontology validation",
+   "finding": "favours_control",
+   "outcome": "Share of synthetic records rejected for schema or ontology failures (filter attribution)",
+   "effect": "Schema validation rejected 148 of 512 records in the fully gated corpus; ontology grounding rejected a further 24. Ungated, 29.9% of records had schema failures.",
+   "tradeoff": "",
+   "quote": "Schema validation is the load-bearing filter: within the fully gated corpus it rejects 148 of 512 records, ontology grounding a further 24, and staging-logic validation none---the only generator producing logic violations is already excluded on schema, making clinical-logic validation a generator-conditional safeguard rather than the dominant filter.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Same generators without retrieval augmentation",
+   "finding": "mixed",
+   "outcome": "Gate compliance of generated synthetic records, per generator",
+   "effect": "Improved gate compliance by 12.5 percentage points for one generator, had no measurable effect for a second, and collapsed output in a third.",
+   "tradeoff": "Output collapse in one generator; the effect is strongly model-dependent, so retrieval needs per-model evaluation.",
+   "quote": "Retrieval augmentation is strongly model-dependent: it improves gate compliance for one generator by 12.5 percentage points, has no measurable effect for a second, and collapses output in a third.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "symbolic validation gate and retrieval augmentation for synthetic data generation"
+}

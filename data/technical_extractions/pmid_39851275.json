@@ -1,0 +1,38 @@
+{
+ "id": "pmid:39851275",
+ "families": [
+  "grounding_retrieval",
+  "language_literacy_handling",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Conventional GPT-4o (described as capable of retrieval-augmented generation) without the customized BM25 document retrieval",
+   "finding": "favours_comparator",
+   "outcome": "Number of correctly answered clinical questions (15-question Korean gastroenterology benchmark)",
+   "effect": "Customized GPT with BM25 retrieval over textbooks answered 8/15 correctly (10/15 after English terminology replacement); conventional GPT-4o scored 14/15; fellow 10/15; expert 15/15",
+   "tradeoff": "Judgment-based questions remained a challenge for the customized model; performance depended on Korean vs English terminology in the retrieved documents/questions",
+   "quote": "Conventional GPT-4o achieved the highest score among the AI models (14/15).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "Customized GPT without Chain of Thought prompting",
+   "finding": "no_clear_difference",
+   "outcome": "Reasoning performance on judgment-based questions",
+   "effect": "No improved reasoning with Chain of Thought prompting; no numbers reported",
+   "tradeoff": "",
+   "quote": "Even with the implementation of 'Chain of Thought' prompt engineering, the customized GPT did not achieve improved reasoning.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding on textbooks (customized RAG GPT) vs conventional GPT-4o"
+}

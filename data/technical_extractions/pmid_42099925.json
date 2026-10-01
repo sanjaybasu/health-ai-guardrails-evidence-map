@@ -1,0 +1,37 @@
+{
+ "id": "pmid:42099925",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same models without knowledge-base augmentation (DeepSeek-R1, DeepSeek-R1:8b, ChatGPT o3-mini-high alone)",
+   "finding": "favours_comparator",
+   "outcome": "MedQA diagnostic accuracy (1,000 questions)",
+   "effect": "For DeepSeek-R1, knowledge-base augmentation significantly reduced accuracy by 4.36% (p=0.0002); no significant benefit was observed for the other models.",
+   "tradeoff": "No consistent accuracy gain, and one model (DeepSeek-R1) lost accuracy with augmentation.",
+   "quote": "Knowledge-base augmentation did not consistently improve performance; for DeepSeek-R1, it significantly reduced accuracy by 4.36% ( p=0.0002 ), while no significant benefit was observed for the other models.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T081",
+   "comparator_used": "Cloud-based DeepSeek-R1 (and ChatGPT o3-mini-high) accessed externally; the local model is a distilled 8B variant, so capability is not matched",
+   "finding": "mixed",
+   "outcome": "First-attempt connection reliability versus diagnostic accuracy",
+   "effect": "Local DeepSeek-R1:8b had a connection failure rate of 0.2% (95% CI 0.0%-0.5%) versus 4.6% for cloud DeepSeek-R1, but accuracy was 55.0% (95% CI 51.9%-58.5%) versus 89.5% for DeepSeek-R1 and 78.2% for o3-mini-high.",
+   "tradeoff": "Much lower accuracy with the smaller local model, so the comparison is confounded by model size. Cloud DeepSeek-R1 also had longer latency (median 26.54 s).",
+   "quote": "The locally deployed DeepSeek-R1:8b demonstrated markedly stronger connection reliability (failure rate 0.2%, 95% CI: 0.0%-0.5%) but substantially reduced accuracy (55.0%, 95% CI: 51.9%-58.5%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding (knowledge-base augmentation) and local vs cloud deployment mode"
+}

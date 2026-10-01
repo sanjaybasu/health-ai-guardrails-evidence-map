@@ -1,0 +1,27 @@
+{
+ "id": "pmid:42552440",
+ "families": [
+  "alert_design",
+  "human_workflow_design",
+  "presentation_explanation"
+ ],
+ "links": [
+  {
+   "control_id": "T132",
+   "comparator_used": "Pre-deployment baseline COMPOSER BPA without LLM augmentation (counterfactual estimated by Bayesian structural time-series from pre-deployment trends)",
+   "finding": "favours_control",
+   "outcome": "Proportion of sepsis BPAs acknowledged by nurses as \"No Infection Suspected\" (proxy for clinical acceptance); time to antibiotics as a safety check",
+   "effect": "Model-predicted rate would have stayed around 25-30% without LLM; observed rate dropped approximately 18-22%, with pointwise deviations of roughly -5% to -15% and cumulative difference about -90% to -100%. Median BPA-to-antibiotics time went from 140.4 to 112.1 minutes. 2539 pre and 1978 post BPA events.",
+   "tradeoff": "\"Will notify MD immediately\" acknowledgements also fell, which the authors attribute to nurses using it interchangeably with \"Sepsis Treatment/Workup in Progress\". Median alert-to-initial-workup time rose from 104.1 to 132.3 minutes. 45% of nurses still agreed the BPA often identifies patients without infection. Authors note LLM infrastructure costs and a quasi-experimental design that cannot establish causality.",
+   "quote": "The causal impact analysis demonstrated a significant reduction in the percentage of BPAs acknowledged as \u201cNo Infection Suspected\u201d following the deployment of COMPOSER-LLM.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "LLM note-based augmentation of an existing sepsis alert to reduce false alerts"
+}

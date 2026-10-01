@@ -1,0 +1,39 @@
+{
+ "id": "pmid:37349541",
+ "families": [
+  "model_choice_adaptation",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T160",
+   "comparator_used": "Monitoring model performance alone (lagging indicators such as AUC)",
+   "finding": "favours_control",
+   "outcome": "Detection of a data feed outage during the 77-day simulated production period",
+   "effect": "Leading indicators (prediction volume, average predicted risk, PSI) showed a sharp drop in volume and a PSI spike in the weeks of May 16 and May 23, 2022. They flagged an EHR data feed outage that lagging performance monitoring would likely have missed. No numeric comparison was reported.",
+   "tradeoff": "",
+   "quote": "We note that this issue would likely not have been noticed if we were monitoring for model performance alone.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T153",
+   "comparator_used": "Monitoring model performance alone (lagging, label-dependent AUC), as a proxy for periodic labeled audits",
+   "finding": "favours_control",
+   "outcome": "Early detection of data drift and data quality problems before ground-truth outcomes were available",
+   "effect": "Weekly PSI monitoring, with automated alerts on breaches, detected a 2-week period of incomplete data caused by an API/EHR feed outage. The issue was then resolved. No quantitative comparison with an audit-based approach was reported.",
+   "tradeoff": "",
+   "quote": "We note that this issue would likely not have been noticed if we were monitoring for model performance alone.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "proactive in-production drift and fairness monitoring"
+}

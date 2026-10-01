@@ -1,0 +1,28 @@
+{
+ "id": "epmc:PPR1291162",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T173",
+   "comparator_used": "Linear multi-agent pipeline, where audit findings are not routed back to the summary agent, plus single-agent and naive RAG modes",
+   "finding": "favours_control",
+   "outcome": "Guideline Compliance Score (GCS) under knowledge base distribution shift",
+   "effect": "Stateful graph with safety floor kept GCS = 1.00 across all shift conditions. The linear pipeline's GCS fell from 1.00 to 0.36 under institutional vocabulary shift. The pattern held across both LLM backends and both embedding models.",
+   "tradeoff": "Added latency: 32.2s per patient under shift versus 12.5s for single-agent mode.",
+   "quote": "The stateful graph architecture maintained GCS = 1.00 across all shift conditions through its regime-aware safety floor, which operates independently of retrieval quality.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "programmatic safety floor with audit-feedback loop in multi-agent LLM system"
+}

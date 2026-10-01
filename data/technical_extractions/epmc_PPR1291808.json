@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1291808",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "OpenAI GPT-5.1 general-purpose model answering without retrieval (training knowledge alone)",
+   "finding": "favours_control",
+   "outcome": "Undertriage rate on the ordered MTS scale across 156 prompts per system",
+   "effect": "GPT-5.1 undertriaged 44.2% (69/156; 95% CI 36.7 to 52.1), including 75.0% of Red and 73.4% of Orange prompts. Both DR. INFO configurations undertriaged 11.5% (18/156; 95% CI 7.4 to 17.5), Fisher's exact p = 1.0e-10. With the misleading GP anchoring statement, GPT-5.1 undertriaged 8/8 Red prompts and DR. INFO undertriaged none.",
+   "tradeoff": "",
+   "quote": "On this benchmark, replacing a general purpose language model with an agentic retrieval augmented system over a curated clinical knowledge base substantially reduced the undertriage rate.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T144",
+   "comparator_used": "Same prompts without the objective clinical data block (vital signs, examination findings, laboratory results)",
+   "finding": "mixed",
+   "outcome": "Undertriage rate with versus without the objective clinical data block",
+   "effect": "Undertriage in DR. INFO with MTS retrieval fell from 19.2% to 3.8% (p = 0.005). DR. INFO Baseline and GPT-5.1 showed no comparable change.",
+   "tradeoff": "",
+   "quote": "Of the three configurations evaluated here, DR. INFO with MTS retrieval combined a clinically conservative assignment at Red priority with a reduction in undertriage when objective clinical data were added (19.2% to 3.8%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval-augmented generation grounding on clinical guidelines and anchoring bias stress-testing"
+}

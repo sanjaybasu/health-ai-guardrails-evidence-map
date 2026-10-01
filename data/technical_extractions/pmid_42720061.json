@@ -1,0 +1,25 @@
+{
+ "id": "pmid:42720061",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Published SafeNET model applied as-is with its original 14-variable schema, without modification, versus locally trained gradient-boosting models (CatBoost, LightGBM, XGBoost) built on the health system's own EHR data",
+   "finding": "favours_control",
+   "outcome": "Discrimination (AUC-ROC), F1 and calibration (Brier score) for post-transfer mortality",
+   "effect": "CatBoost AUC-ROC 0.92 vs 0.87 for SafeNET; F1 0.74 (95% CI 0.72-0.78) vs 0.73 (95% CI 0.69-0.77); Brier 0.04 vs 0.055",
+   "tradeoff": "Functional status variables were missing in 85% of encounters, which limited use of the original feature set. Precision stayed below 0.80 in several local configurations even though recall exceeded 0.70 across most models.",
+   "quote": "Locally trained CatBoost models outperformed SafeNET (AUC-ROC, 0.92; F1, 0.74; 95% CI, 0.72-0.78) and demonstrated improved calibration (Brier 0.04 vs. 0.055).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local validation and retraining before deployment"
+}

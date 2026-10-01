@@ -1,0 +1,56 @@
+{
+ "id": "pmid:42207158",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same DeepSeek-V3.2 models (base and reasoning) without RAG, assessed on internal retrieval datasets and external test datasets",
+   "finding": "mixed",
+   "outcome": "Classification performance on the subjective severity tasks",
+   "effect": "RAG significantly improved both models on internal retrieval datasets (P<.05) but not on external test datasets (P>.05). Adding RAG to V3.2-R lowered accuracy to 81%, versus 86% without RAG.",
+   "tradeoff": "Adding RAG to V3.2-R degraded performance on external data, suggesting potential noise interference. The authors say the finding is tied to their setup and current retrieval implementation.",
+   "quote": "Crucially, while RAG significantly improved both models' performance on internal retrieval datasets (P<.05), this benefit did not generalize to external test datasets (P>.05).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "High-speed base model V3.2-B, which answers directly without CoT reasoning",
+   "finding": "favours_control",
+   "outcome": "Accuracy and F1-score on subjective severity assessment",
+   "effect": "V3.2-B reached 56.6% accuracy on severity grading, with recall of 0 for minor anomalies. V3.2-R with CoT reached 86% accuracy and F1-score=0.75 on external data without RAG.",
+   "tradeoff": "",
+   "quote": "In contrast, the V3.2-R model utilizing CoT reasoning achieved superior robustness (86% accuracy and F1-score=0.75) on external data without RAG; notably, introducing RAG to V3.2-R degraded performance to 81%, suggesting potential noise interference.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "Standard high-speed base model DeepSeek-V3.2-B",
+   "finding": "favours_control",
+   "outcome": "Performance on subjective severity assessment, with factual extraction tasks as a contrast",
+   "effect": "The reasoning-enhanced V3.2-R reached 86% accuracy and F1-score=0.75 on external data. V3.2-B scored 56.6% accuracy on severity but above 90% accuracy and F1-score on factual tasks.",
+   "tradeoff": "The base model remains efficient for factual classification, so the authors recommend a fast-slow split rather than replacing it.",
+   "quote": "In contrast, the V3.2-R model utilizing CoT reasoning achieved superior robustness (86% accuracy and F1-score=0.75) on external data without RAG; notably, introducing RAG to V3.2-R degraded performance to 81%, suggesting potential noise interference.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG) added to existing LLM"
+}

@@ -1,0 +1,40 @@
+{
+ "id": "pmid:42009743",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "presentation_explanation"
+ ],
+ "links": [
+  {
+   "control_id": "T187",
+   "comparator_used": "Same three pathologists reading the internal test set unaided, without HSFLA invasive-focus ROI prompts (first reading session vs. second session after one month)",
+   "finding": "favours_control",
+   "outcome": "Pathologist diagnostic accuracy and reading time on lung adenocarcinoma subtyping of frozen-section WSIs",
+   "effect": "Absolute accuracy gains of 11.7%, 28.5% and 28.5% for the three pathologists (n=137 test WSIs); MIA vs IA accuracy rose from 85.9%/46.5%/47.5% to 96.0%/74.7%/71.7%; pooled AUC rose from 0.616 to 0.921; average diagnosis time fell by 31 s per WSI after accounting for AI run time.",
+   "tradeoff": "Includes 27 s of AI running time per WSI, which was offset by net time savings. Only three pathologists took part, limiting generalizability. The comparison is with versus without AI assistance, not heatmap versus a binary flag.",
+   "quote": "Notably, HSFLA\u2019s ROI suggestion feature reduced misdiagnosis rates by 11.7%, 28.5%, and 28.5% for the three pathologists, respectively.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T083",
+   "comparator_used": "Fully supervised ResNet-50 + FC classifier trained on manual pathologist patch-level annotations; also slide-level-label-only weakly supervised MIL methods",
+   "finding": "favours_control",
+   "outcome": "Lung adenocarcinoma subtype classification accuracy (AIS/MIA/IA) on internal and external test sets",
+   "effect": "Internal test ACC 95.62% (HSFLA, hybrid) vs 90.51% (fully supervised ResNet50+FC) and 70.80% (best weak MIL, DTFD-MIL); AIS recall 94.74% vs 84.21%. External test ACC 91.67% vs 86.67%. 3D patient-level ACC 94.29% vs 88.57%. With 50% of manual annotations masked, HSFLA kept 89.05% ACC internal and 78.33% external.",
+   "tradeoff": "Hybrid supervision still needed expert pixel-level annotation of MIA WSIs (180 for training), so annotation cost was reduced rather than removed. Weak labels alone performed far worse, and the hybrid model also added slide-level labels to the manual annotations.",
+   "quote": "Despite the availability of more precise supervision signals, the performance of the standalone ResNet-50 + FC remained inferior to that of HSFLA, achieving only 90.5% ACC and 92.2% AUC.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "human-machine interaction (pathologist review with AI aid) vs manual diagnosis alone"
+}

@@ -1,0 +1,38 @@
+{
+ "id": "pmid:42512088",
+ "families": [
+  "model_choice_adaptation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T046",
+   "comparator_used": "Full coverage, with the model outputting a prediction for every case (no abstention)",
+   "finding": "favours_control",
+   "outcome": "Accuracy among retained cases under resolution shift (GI endoscopy)",
+   "effect": "Accuracy 0.683 at full coverage to 0.852 (95% CI 0.835-0.871) at 25% coverage; balanced accuracy 0.646 to 0.798",
+   "tradeoff": "Only 25% of cases are automated at the best reported accuracy, and the rest are deferred to human review. Discrimination is not improved, and prospective validation is still required.",
+   "quote": "Selective prediction improved reliability among retained cases: under resolution shift, accuracy rose from 0.683 at full coverage to 0.852 (95% CI 0.835-0.871) at 25% coverage (balanced accuracy 0.646 \u2192 0.798).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T048",
+   "comparator_used": "Uncalibrated model probabilities under resolution shift",
+   "finding": "favours_control",
+   "outcome": "Calibration (expected calibration error) under acquisition shift",
+   "effect": "ECE 0.172 to 0.036 with temperature scaling and to 0.017 with isotonic regression",
+   "tradeoff": "Recalibration does not recover discrimination, and residual confident-wrong predictions remain, so selective prediction is still needed.",
+   "quote": "Target-domain recalibration substantially restores calibration under shift (ECE 0.172 \u2192 0.036 with temperature scaling; \u2192 0.017 with isotonic regression) but does not recover discrimination; selective prediction is complementary, mitigating residual confident-wrong predictions.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "uncertainty-aware selective prediction / model abstention"
+}

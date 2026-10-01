@@ -1,0 +1,69 @@
+{
+ "id": "pmid:42380678",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T016",
+   "comparator_used": "Guideline flowchart-only configuration (L1) in the ablation, on advanced cases",
+   "finding": "favours_control",
+   "outcome": "Tumor board concordance (TBCS \u22658/10) on advanced cases in the 11-level ablation (5 advanced cases)",
+   "effect": "Guideline flowcharts alone reached 20% on advanced cases; case memory plus literature and contextual enrichment (L8) reached 80%. The plain LLM baseline reached 0% overall.",
+   "tradeoff": "Similarity threshold not formally calibrated; low-confidence behaviour not systematically evaluated. When no cases pass the threshold the system falls back to plain LLM generation.",
+   "quote": "Guideline flowcharts alone restored full concordance for standard first-line scenarios (L1 100%) but achieved only 20% on advanced cases requiring precedent-based reasoning.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Plain LLM with no tools or retrieval (training knowledge only)",
+   "finding": "favours_control",
+   "outcome": "Tumor board concordance in the ablation (15 cases) and mean expert Likert rating (Q1-Q6) across 45 cases",
+   "effect": "Ablation: plain LLM 0% concordance (mean score 4.1) vs full agent 86.7% (mean score 9.0). gpt-oss-120b mean Likert 4.22 \u00b1 0.063 with HemaGuide vs 3.21 \u00b1 0.39 plain (P = 0.0015).",
+   "tradeoff": "Median latency 39 s per case (p95 62 s) on commodity hardware. Hallucinations still occurred in 2/664 cases (0.3%), so confabulation risk is mitigated but not eliminated. Plain models showed a 'stable but wrong' pattern.",
+   "quote": "The plain LLM baseline achieved 0% concordance across all 15 cases (mean score 4.1); the full agent achieved 86.7% concordance (mean score 9.0).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T169",
+   "comparator_used": "Plain LLM answering from its own knowledge (L0) and configurations lacking the relevant tool or data layer",
+   "finding": "favours_control",
+   "outcome": "Concordance by routing type in the ablation (5 cases per type)",
+   "effect": "Flowcharts alone L1 100% on guideline cases; case memory, literature and enrichment L8 80% on advanced cases; molecular toolkit L9 100% on molecular cases. Plain LLM baseline was 0% overall.",
+   "tradeoff": "Molecular mode had the highest latency variability (median 45 s, p95 123 s) because of multidatabase variant annotation.",
+   "quote": "Guideline-amenable, mostly newly diagnosed cases were fully resolved by flowcharts alone (L1 100%), advanced cases required the combination of case memory, literature and contextual enrichment (L8 80%), and molecular cases depended on the molecular interpretation toolkit (L9 100%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T175",
+   "comparator_used": "Single-component or fixed-tool ablation configurations (L1-L9) versus the full agent with autonomous routing (L10)",
+   "finding": "favours_control",
+   "outcome": "Concordance by case type in the ablation, with routing selecting the tool combination",
+   "effect": "No single component was sufficient across case types. Gains were routing-type-dependent, and the full routed agent reached 86.7% overall concordance.",
+   "tradeoff": "",
+   "quote": "These patterns suggest that the autonomous routing mechanism\u2014selecting the appropriate tool combination for each clinical scenario\u2014is the critical integrating element justifying the system\u2019s multimodal architecture.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "retrieval grounding in guidelines and case memory, with silent-mode testing"
+}

@@ -1,0 +1,70 @@
+{
+ "id": "epmc:PPR1268665",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "input_data_handling",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline LLM without retrieval (C0), compared with RAG over raw clinical text (C1)",
+   "finding": "favours_comparator",
+   "outcome": "Unsupported claim rate",
+   "effect": "Unsupported claims rose from 5.0% (95% CI: 3.8\u20136.4%) at baseline to 43.6% (95% CI: 40.1\u201347.2%) with RAG, an 8.7-fold increase (p < 0.001, Cohen's d = 2.31)",
+   "tradeoff": "RAG added a new failure mode: sharply more unsupported claims than the baseline LLM.",
+   "quote": "Contrary to prevailing assumptions, RAG increases rather than decreases hallucination in clinical text generation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T138",
+   "comparator_used": "RAG over raw clinical text (C1)",
+   "finding": "favours_control",
+   "outcome": "Unsupported claim rate",
+   "effect": "Structured artifacts in single-pass generation gave 8.4% (95% CI: 6.7\u201310.3%) unsupported claims, versus 43.6% (95% CI: 40.1\u201347.2%) with RAG over raw clinical text",
+   "tradeoff": "",
+   "quote": "Structured representation with explicit provenance offers a more effective approach to grounding LLM outputs in verifiable patient data.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T168",
+   "comparator_used": "Artifact-augmented single-pass generation (C2)",
+   "finding": "mixed",
+   "outcome": "Unsupported claims, contraindication miss rate, clinician utility",
+   "effect": "Agent workflow had 21.1% unsupported claims, with the lowest contraindication miss rate (0.04) and the highest clinician utility scores; single-pass artifact generation had 8.4% unsupported claims",
+   "tradeoff": "Unsupported claim rate (21.1%) was higher than in single-pass artifact generation (8.4%).",
+   "quote": "The agent workflow achieved 21.1% unsupported claims with the lowest contraindication miss rate (0.04) and highest clinician utility scores.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T022",
+   "comparator_used": "Ablation of the citation requirement from the artifact-based system",
+   "finding": "favours_control",
+   "outcome": "Clinical safety improvements",
+   "effect": "Citation requirements contributed most to safety improvements in the ablation analysis; no numbers given in the abstract",
+   "tradeoff": "",
+   "quote": "Ablation analysis revealed that citation requirements and constraint checking contributed most to safety improvements.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding vs structured artifact representation and agentic verification guardrails"
+}

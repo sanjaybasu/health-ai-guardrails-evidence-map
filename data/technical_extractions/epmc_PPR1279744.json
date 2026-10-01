@@ -1,0 +1,25 @@
+{
+ "id": "epmc:PPR1279744",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T138",
+   "comparator_used": "Raw FHIR JSON serialization (default format) vs. five alternative serialization strategies, including Narrative and Condensed",
+   "finding": "mixed",
+   "outcome": "Downstream LLM quality on clinical QA, reasoning and summarization, measured by token-level F1 and LLM-as-judge clinical rubric score",
+   "effect": "Condensed beat Raw JSON on F1 for 3/4 models (Wilcoxon p < 10^-17, N = 100), while Raw JSON scored higher on judge scores for 3/4 models (p < 10^-7). Narrative achieved 95% of Raw JSON's clinical quality at 83% fewer tokens. The Model x Serializer interaction was significant (Friedman p = 0.0009): GPT-5.4 favored Raw JSON, while Claude and the open-weight models favored compressed formats.",
+   "tradeoff": "Raw JSON gave the highest judge-rated quality but used far more tokens. Narrative cut tokens by 83% with about a 5% quality loss. No universal best format exists, so the benchmark recommends model-aware serialization. Llama 3.1 70B failed on 100% of complex patients despite being within its nominal context window.",
+   "quote": "The Pareto analysis resolves this tension: Narrative achieves 95% of Raw JSON\u2019s clinical quality at 83% fewer tokens.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "FHIR serialization format selection and pre-deployment capacity verification"
+}

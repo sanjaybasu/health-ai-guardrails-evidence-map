@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "United States",
+ "sample_size": null,
+ "sample_unit": "EHR-based clinical prediction tasks (VUMC and MIMIC IV)",
+ "models_evaluated": [
+  "GPT-3.5",
+  "GPT-4",
+  "gradient-boosting trees"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "AUROC and Brier score of LLMs versus locally trained gradient-boosting ML on same EHR prediction tasks",
+   "effect": "ML AUROC 0.847/0.894 (VUMC/MIMIC) vs GPT-3.5 0.537/0.517 and GPT-4 0.629/0.602; Brier ML 0.134 vs GPT-3.5 0.384 vs GPT-4 0.251 (VUMC).",
+   "quote": "Traditional ML [AUROC: 0.847, 0.894 (VUMC, MIMIC)] substantially outperformed GPT-3.5 (AUROC: 0.537, 0.517) and GPT-4 (AUROC: 0.629, 0.602) (with and without in-context learning) in predictive performance and output probability calibration [Brier Score (ML vs GPT-3.5 vs GPT-4): 0.134 vs 0.384 vs 0.251, 0.042 vs 0.06 vs 0.219)].",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Non-fine-tuned general LLM performance on clinical prediction tasks from EHR data",
+   "effect": "GPT-3.5 and GPT-4 had near-chance to poor AUROC (0.517-0.629) compared with locally trained ML, showing general LLM capability does not translate to clinical prediction competence.",
+   "quote": "These findings suggest that non-fine-tuned LLMs are less effective and robust than locally trained ML for clinical prediction tasks, but they are improving across releases.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:40056436",
+ "screen": {
+  "id": "pmid:40056436",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study empirically benchmarks LLMs vs traditional ML on EHR clinical prediction tasks, explicitly testing the impact of a safeguard/deployment practice: generalizing demographic variables for privacy protection, as well as evaluating fairness across demographic subgroups.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "privacy-preserving demographic data generalization"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40056436",
+   "tests_practice": 0.55,
+   "real_deployment": 0.04,
+   "empirical": 0.97
+  }
+ },
+ "oa_retried": true
+}

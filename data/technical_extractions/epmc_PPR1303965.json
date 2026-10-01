@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1303965",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T029",
+   "comparator_used": "LLM-only inference with no retrieved terminology evidence (and matched-concept masking)",
+   "finding": "favours_control",
+   "outcome": "Exact linking to the reference UMLS concept for known-concept spans (28 spans)",
+   "effect": "Complete retrieval returned a reference-matched link for 28/28 spans (100%; 95% CI, 87.9%-100%). With masking, all 28 were assigned POSSIBLE_CANDIDATES. LLM-only inference assigned POSSIBLE_CANDIDATES to 25/28 (89.3%) and LINKED to 3/28 (10.7%). Decisions on the 28 unsuitable-extension spans were identical across all three conditions.",
+   "tradeoff": "",
+   "quote": "In Study 2, complete retrieval returned a reference-matched link for 28/28 known-concept spans (100%; 95% CI, 87.9%-100%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose Gemma and other models (SciBERT, sci_md, Llama 3.3) for clinical concept extraction",
+   "finding": "no_clear_difference",
+   "outcome": "Embedding-match F1 for concept extraction against human annotation in 66 notes",
+   "effect": "MedGemma 0.55 vs Gemma 0.53, sci_md and SciBERT 0.43 each, Llama 3.3 0.32. Exact-match F1 for all automated pipelines ranged from 0.07 to 0.17.",
+   "tradeoff": "",
+   "quote": "embedding-match F1 was highest for MedGemma (0.55), followed by Gemma (0.53)",
+   "finding_agreement": 0.33,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding ablation (terminology evidence retrieval vs masking vs LLM-only)"
+}

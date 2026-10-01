@@ -1,0 +1,42 @@
+{
+ "id": "pmid:40604147",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "privacy_security_engineering",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same local Llama 3.2-11B baseline without retrieval (training knowledge alone)",
+   "finding": "favours_control",
+   "outcome": "Hallucination rate and mean rank of replies in synthetic iodinated contrast media consultations",
+   "effect": "Hallucinations 0% vs 8% (\u03c7\u00b2(Yates) = 6.38, p = 0.012); mean rank improved by 1.3 (Z = -4.82, p < 0.001)",
+   "tradeoff": "Performance gaps with cloud-based models persisted despite RAG.",
+   "quote": "Under controlled conditions, RAG eliminated hallucinations (0% vs 8%; \u03c7\u00b2\u208dYates\u208e = 6.38, p = 0.012) and improved mean rank by 1.3 (Z = -4.82, p < 0.001), though performance gaps with cloud models persist.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T081",
+   "comparator_used": "Cloud-based models (GPT-4o mini, Gemini 2.0 Flash, Claude 3.5 Haiku) accessed via external vendor APIs",
+   "finding": "mixed",
+   "outcome": "Response latency and quality ranking of the RAG-enhanced local model vs cloud models",
+   "effect": "Local RAG model faster (2.6 s vs 4.9-7.3 s); LLM judges preferred it over GPT-4o mini, but the radiologist ranked GPT-4o mini higher",
+   "tradeoff": "Performance gaps with cloud models persist; the radiologist ranked GPT-4o mini higher than the local RAG model.",
+   "quote": "The RAG-enhanced model remained faster (2.6 s vs 4.9-7.3 s) while the LLM-based judges preferred it over GPT-4o mini, though the radiologist ranked GPT-4o mini higher.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval-augmented generation grounding"
+}

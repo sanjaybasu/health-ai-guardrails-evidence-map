@@ -1,0 +1,42 @@
+{
+ "id": "pmid:42181390",
+ "families": [
+  "alert_design",
+  "human_workflow_design",
+  "output_filtering"
+ ],
+ "links": [
+  {
+   "control_id": "T015",
+   "comparator_used": "Same ILR patients in the 12 months before AI activation, when all transmitted alerts went to clinicians without AccuRhythm filtering (within-patient before-and-after)",
+   "finding": "favours_control",
+   "outcome": "Clinician-facing ILR alert volume and estimated physiologist review time",
+   "effect": "Total alerts fell from 4,261 to 2,509 (reported as 29% in the abstract and table, and 41.1% in the text). Mean paired change was -3.94 alerts per patient (95% CI -7.5 to -0.4; p=0.026). The AI suppressed 1,007 further alerts (28.6% of potential alerts). Estimated time released was 185-218 hours per year (about 3.6-4.2 hours per week). Reductions varied by site and were not significant within individual sites.",
+   "tradeoff": "Downstream clinical outcomes and missed true events were not assessed. Bypass rules for symptom-correlated events and prolonged AF intentionally limit suppression. Time savings were estimated from published time-and-motion data, not measured locally. The design was uncontrolled before-and-after.",
+   "quote": "Overall, the total number of clinician-facing alerts reviewed decreased from 4,261 prior to AI activation to 2,509 following AI activation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T132",
+   "comparator_used": "Same ILR patients in the 12 months before AI activation, when primary device alerts for AF and pause were shown without secondary AI filtering (within-patient before-and-after)",
+   "finding": "favours_control",
+   "outcome": "Clinician-facing false AF and pause alert burden",
+   "effect": "Of 1,007 alerts removed, 887 were false AF alerts and 120 were false pause alerts. Total viewed alerts fell from 4,261 to 2,509. Mean paired difference was -3.94 alerts per patient (95% CI -7.5 to -0.4; p=0.026), and the Wilcoxon signed-rank p=0.018.",
+   "tradeoff": "Sensitivity and missed true events were not measured in this study, and no downstream clinical outcomes were assessed. Effect size varied by site, and the study had no contemporaneous control. The effect is specific to a proprietary vendor algorithm.",
+   "quote": "During the post-AI period, a further 1,007 alerts were suppressed by the AI algorithm which would have otherwise entered the clinical workflow.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "Activating AI alert-filtering algorithm to suppress false ILR alerts (before-and-after comparison)"
+}

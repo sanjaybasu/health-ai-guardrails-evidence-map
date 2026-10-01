@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1246843",
+ "families": [
+  "grounding_retrieval",
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T145",
+   "comparator_used": "Same model given the same data and prompted to summarize it with no rules (unconstrained LLM baseline)",
+   "finding": "favours_control",
+   "outcome": "Accuracy of numerical and categorical statements in generated clinical summaries",
+   "effect": "1 substantive content error across 2,067 harness checks (0.05%) for the constrained pipeline vs about two in five checkable numerical statements wrong in the unconstrained baseline; no hard errors in the narrative prose",
+   "tradeoff": "Soft errors (information combined across waves or measures) in 8 of 25 briefs (32%), which the harness does not check; clinician review incomplete (4 of 7 target)",
+   "quote": "Across the three models (Gemma 4 31B, Gemini 3 Flash, GPT-4.1), the harness identified one substantive content error, meaning one that would change a clinician\u2019s reading, for a rate of 0.05%, against an unconstrained baseline in which about two in five checkable numerical statements were wrong.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T022",
+   "comparator_used": "Unconstrained baseline summaries from the same model without the rules and evidence-ID design",
+   "finding": "favours_control",
+   "outcome": "Traceability of statements to source data",
+   "effect": "Every constrained brief carried a traceable evidence-ID on each statement; every unconstrained baseline brief contained at least one statement with no traceable basis in the source data",
+   "tradeoff": "",
+   "quote": "Every constrained brief also carried a traceable evidence-ID on each statement, as the design requires, while every unconstrained baseline brief contained at least one statement with no traceable basis in the source data.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "rules-based data constraint and evidence-ID grounding pipeline"
+}

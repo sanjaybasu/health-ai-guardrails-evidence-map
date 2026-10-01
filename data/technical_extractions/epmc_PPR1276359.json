@@ -1,0 +1,55 @@
+{
+ "id": "epmc:PPR1276359",
+ "families": [
+  "language_literacy_handling",
+  "model_choice_adaptation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T038",
+   "comparator_used": "Exhaustive manual review of all patients (simulated selective-review workflow ranked by uncertainty)",
+   "finding": "favours_control",
+   "outcome": "Proportion of patients needing expert review to capture all LLM extraction errors",
+   "effect": "Complete error coverage by reviewing 8.3% of patients for hemiplegia, 8.2% for headache and 19.6% for seizure",
+   "tradeoff": "Requires 15 LLM calls per model per patient (five temperatures x three repeats); seizure needed a larger review share (19.6%) than the other targets.",
+   "quote": "Entropy-based triage achieved complete error coverage by reviewing <10% of patients for hemiplegia (8.3%) and headache (8.2%), and 19.6% for seizure.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T053",
+   "comparator_used": "No reliability scoring (correctly classified cases used as the reference)",
+   "finding": "favours_control",
+   "outcome": "Ability of consistency-based Shannon entropy across repeated calls to separate misclassified from correctly classified cases",
+   "effect": "Entropy in misclassified cases was 2.4-3.4 times higher than in correctly classified cases",
+   "tradeoff": "Requires 15 repeated calls per model per patient (five temperatures x three repeats).",
+   "quote": "Entropy in misclassified cases was 2.4\u20133.4 times higher than in correctly classified cases.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T046",
+   "comparator_used": "Simulated uncertainty-ranked selective expert review vs reviewing more/all patients to achieve complete error coverage.",
+   "finding": "favours_control",
+   "outcome": "Expert-review workload needed to cover extraction errors.",
+   "effect": "Complete error coverage by reviewing <10% of patients for hemiplegia (8.3%) and headache (8.2%), and 19.6% for seizure.",
+   "tradeoff": "Still required expert review of the flagged subset: 8.3%, 8.2%, and 19.6% of patients for the reported targets.",
+   "quote": "Entropy-based triage achieved complete error coverage by reviewing <10% of patients for hemiplegia (8.3%) and headache (8.2%), and 19.6% for seizure.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "uncertainty-based selective human review"
+}

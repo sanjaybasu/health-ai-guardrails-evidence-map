@@ -1,0 +1,38 @@
+{
+ "id": "pmid:42447946",
+ "families": [
+  "monitoring_methods",
+  "output_filtering",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T053",
+   "comparator_used": "multi-sample (consistency-based) baselines and post-hoc checking",
+   "finding": "favours_control",
+   "outcome": "Detection latency and lead time before error onset",
+   "effect": "Probe latency ~10ms per answer versus ~10s for multi-sample baselines; trigger fires roughly 10-35 tokens before error onset versus zero lead time for a post-hoc check",
+   "tradeoff": "",
+   "quote": "Probe latency is \u223c10ms per answer versus \u223c10s for multi-sample baselines.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T001",
+   "comparator_used": "generation without probe-triggered intervention (implied unmitigated baseline)",
+   "finding": "favours_control",
+   "outcome": "Hallucination detection (EDR@5) and hallucination reduction under false-positive-rate caps",
+   "effect": "EDR@5 up to 0.390 (PubMedQA) and 0.352 (MedHallu) at cap \u03b3\u22640.10, rising to 0.587 with 29%-59% hallucination reduction at cap \u03b3\u22640.20",
+   "tradeoff": "Detection rate depends on the false-positive-rate cap, with lower EDR at the strict cap. The Endoscopy case study has wide confidence intervals because of a small confirmed-correct denominator (26-52 per backbone).",
+   "quote": "On the public biomedical QA benchmarks the probe yields viable detection across all backbone-dataset combinations: EDR@5 up to 0.390 (PubMedQA) and 0.352 (MedHallu) at the strict cap \u03b3\u22640.10, rising to 0.587 with 29%-59% hallucination reduction at the monitoring cap \u03b3\u22640.20.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "real-time hallucination detection with FPR-constrained trigger calibration"
+}

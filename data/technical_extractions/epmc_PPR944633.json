@@ -1,0 +1,42 @@
+{
+ "id": "epmc:PPR944633",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T140",
+   "comparator_used": "Anonymized original medical reports as input (full record) versus manually generated case summaries",
+   "finding": "favours_control",
+   "outcome": "Agreement with Heart Team (Cohen's kappa), reliability (ICC) and bias toward TAVR (FBI) for guideline-concordant treatment decisions",
+   "effect": "Original reports: kappa \u22120.47\u20130.22, ICC 0.0\u20131.0, FBI 0.95\u20131.51. Summaries plus guideline knowledge: kappa \u22120.02\u20130.63, ICC 0.01\u20131.0, FBI 0.46\u20131.23. The two changes were reported together, so the summary effect cannot be separated from the guideline effect.",
+   "tradeoff": "Summaries were generated manually, so the approach needs extensively curated input. Hallucinations occurred in all LLMs, and some responses were unreliable and biased.",
+   "quote": "The LLMs\u2019 performance improved substantially when case summaries were used as input and additional guideline knowledge was added to the prompt (kappa: \u22120.02\u20130.63, ICC: 0.01\u20131.0, FBI: 0.46\u20131.23).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T064",
+   "comparator_used": "Prompt without added guideline knowledge, using original medical reports as input",
+   "finding": "favours_control",
+   "outcome": "Agreement with Heart Team (Cohen's kappa), reliability (ICC) and bias toward TAVR (FBI) for guideline-concordant treatment decisions",
+   "effect": "Original reports: kappa \u22120.47\u20130.22, ICC 0.0\u20131.0, FBI 0.95\u20131.51. Case summaries plus added guideline knowledge: kappa \u22120.02\u20130.63, ICC 0.01\u20131.0, FBI 0.46\u20131.23. The guideline effect is confounded with the use of summaries.",
+   "tradeoff": "Hallucinations occurred in all LLMs, and some responses were unreliable and biased even with improved inputs. Performance still depended on extensively curated input.",
+   "quote": "The LLMs\u2019 performance improved substantially when case summaries were used as input and additional guideline knowledge was added to the prompt (kappa: \u22120.02\u20130.63, ICC: 0.01\u20131.0, FBI: 0.46\u20131.23).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "Curated case summaries and guideline knowledge added to prompt"
+}

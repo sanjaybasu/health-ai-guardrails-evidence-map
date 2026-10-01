@@ -1,0 +1,42 @@
+{
+ "id": "pmid:38771093",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T016",
+   "comparator_used": "Naive zero-shot GPT-4 without retrieved examples",
+   "finding": "favours_control",
+   "outcome": "Prediction of ED admission (AUC, AUPRC, accuracy)",
+   "effect": "Naive GPT-4: 0.79 AUC, 0.48 AUPRC, 77.5% accuracy. RAG alone: 0.82 AUC, 0.56 AUPRC, 81.3% accuracy.",
+   "tradeoff": "",
+   "quote": "Interestingly, RAG alone boosted performance to near peak levels (0.82 AUC, 0.56 AUPRC, and 81.3% accuracy).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T089",
+   "comparator_used": "Naive GPT-4 alone, without ML numerical probabilities",
+   "finding": "favours_control",
+   "outcome": "Prediction of ED admission (AUC, AUPRC, accuracy)",
+   "effect": "Naive GPT-4: 0.79 AUC, 0.48 AUPRC, 77.5% accuracy. With RAG and ML probabilities: 0.87 AUC, 0.71 AUPRC, 83.1% accuracy. The pure Ensemble ML model reached 0.88 AUC, 0.72 AUPRC, 82.9% accuracy.",
+   "tradeoff": "Peak LLM performance was still slightly lower than the pure ML model on AUC and AUPRC.",
+   "quote": "The na\u00efve GPT-4's performance (0.79 AUC, 0.48 AUPRC, and 77.5% accuracy) showed substantial improvement when given limited, relevant data to learn from (ie, RAG) and underlying ML probabilities (0.87 AUC, 0.71 AUPRC, and 83.1% accuracy).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG) and ML probability augmentation of an LLM"
+}

@@ -1,0 +1,26 @@
+{
+ "id": "arxiv:2609.03221",
+ "families": [
+  "monitoring_methods",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T033",
+   "comparator_used": "Single LLM response per query (single-draw action instability floor)",
+   "finding": "favours_control",
+   "outcome": "Per-action instability floor (rate at which the agent's action changes on identical re-runs)",
+   "effect": "Majority-vote aggregation over five draws removes 39% of the instability floor, then the gain flattens; the baseline pooled floor was 8.7% of outcome-vignette cells.",
+   "tradeoff": "Mitigation is only partial: the gain flattens and residual instability remains, attributed to heterogeneous per-cell rates. The five-fold sampling cost is implied but not quantified.",
+   "quote": "Majority-vote aggregation over five draws removes 39% of it and then flattens, and a null simulation attributes the residue to heterogeneous per-cell rates, so replication mitigates without eliminating.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "majority-vote aggregation over repeated draws and per-action instability floor in counterfactual fairness audits"
+}

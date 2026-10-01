@@ -1,0 +1,51 @@
+{
+ "id": "arxiv:2601.16397",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T046",
+   "comparator_used": "Outputting all summaries without abstention (no withholding of low-groundedness output)",
+   "finding": "favours_control",
+   "outcome": "Faithfulness of released summary output",
+   "effect": "Faithfulness improved from 61.7% to 72.6% when the least-grounded 20% of output was withheld",
+   "tradeoff": "20% of output is withheld and must be reviewed by clinicians",
+   "quote": "For hallucination detection, groundedness scores achieve 0.77 AUROC with the medical-finetuned model: competitive with embedding-based confidence at zero additional cost, and enable an abstention mechanism that improves faithfulness from 61.7% to 72.6% by withholding the least: grounded 20% of output for clinician review.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T053",
+   "comparator_used": "Embedding-based confidence",
+   "finding": "no_clear_difference",
+   "outcome": "Hallucination detection (AUROC)",
+   "effect": "Attention-based groundedness scores reached 0.77 AUROC with the medical-finetuned model, described as competitive with embedding-based confidence at zero additional cost",
+   "tradeoff": "",
+   "quote": "For hallucination detection, groundedness scores achieve 0.77 AUROC with the medical-finetuned model: competitive with embedding-based confidence at zero additional cost, and enable an abstention mechanism that improves faithfulness from 61.7% to 72.6% by withholding the least: grounded 20% of output for clinician review.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose MLLM (Qwen3-8B)",
+   "finding": "favours_control",
+   "outcome": "Reliability of attention-based hallucination detection",
+   "effect": "Medical finetuning reported to substantially improve reliability of attention-based hallucination detection (0.77 AUROC reported for the medical-finetuned model); no numeric comparison given in the abstract",
+   "tradeoff": "",
+   "quote": "Notably, medical finetuning substantially improves the reliability of attention-based hallucination detection, suggesting that domain adaptation produces more semantically structured attention patterns amenable to self-auditing.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "selective abstention / uncertainty-based filtering for clinician review"
+}

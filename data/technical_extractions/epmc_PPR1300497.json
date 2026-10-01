@@ -1,0 +1,40 @@
+{
+ "id": "epmc:PPR1300497",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "output_filtering"
+ ],
+ "links": [
+  {
+   "control_id": "T030",
+   "comparator_used": "Same foundation model (Claude Haiku 4.5) without governance, plus three other ungoverned AI systems (ChatGPT GPT-4o, DeepSeek-Chat, OpenEvidence)",
+   "finding": "favours_control",
+   "outcome": "Caribbean facility citation and actionable navigation across 28 cancer screening queries",
+   "effect": "Same model scored 100% with governance vs 54% without (P\u2264.001). CaribChat cited verified Caribbean facilities in 28/28 (100%) vs 10/28 (35.7%) for ChatGPT and 9/28 (32.1%) for OpenEvidence. Actionable navigation was 28/28 (100%) vs 2/28 (7.1%) for OpenEvidence (P\u2264.001).",
+   "tradeoff": "After active clinical promotion ceased, off-codebook queries rose from 2.4% to 26.7%, so community use drifted from the cancer codebook without clinician curation. The governance contract still rejected every adversarial probe.",
+   "quote": "The same model scored 100% with governance and 54% without (P\u2264.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T008",
+   "comparator_used": "Baseline safety behavior of the model without scope-specialized governance, tested on 5 crisis queries",
+   "finding": "favours_comparator",
+   "outcome": "Safety handling of organic distress and crisis queries outside the cancer codebook",
+   "effect": "Scope-specialized governance suppressed baseline safety on 4 of 5 crisis queries and produced hallucinated crisis resources on the 5th.",
+   "tradeoff": "The scope restriction created a new failure mode on crisis queries. This led to an immediate governance amendment adding a verified Caribbean crisis registry.",
+   "quote": "a governance probe showed that scope-specialized governance suppressed baseline safety on 4 of 5 crisis queries and produced hallucinated crisis resources on the 5th, prompting an immediate governance amendment with a verified Caribbean crisis registry.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "governed community learning platform / local facility grounding vs ungoverned LLM"
+}

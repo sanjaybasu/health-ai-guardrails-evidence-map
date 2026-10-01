@@ -1,0 +1,26 @@
+{
+ "id": "pmid:42181412",
+ "families": [
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T042",
+   "comparator_used": "Single-stage LEAN persona (P_HL) applied to all cases; SAFE persona (P_HS) applied to all cases as a secondary reference",
+   "finding": "favours_control",
+   "outcome": "Rule-defined contraindication/sequence safety violations, counterfactual monotonicity violations, and test-suggestion count",
+   "effect": "LEAN baseline: safety violations 8/56 (14.3%), monotonicity violations 10/16 (62.5%), mean tests 1.95. Routing: safety violations eliminated, monotonicity violations 2/16 (ROUTER_R1) and 0/16 (ROUTER_R2_CF), mean tests 2.14-2.21. SAFE alone: 0/56 safety and 0/16 monotonicity violations but mean tests 3.38-4.32.",
+   "tradeoff": "Modest simulated call overhead (ROUTER_R1 1.21 calls; ROUTER_R2_AUDIT 2.00 calls) versus a single LEAN call. Results come from deterministic offline simulations over stored outputs from a single model on synthetic vignettes.",
+   "quote": "Routing eliminated safety violations and reduced monotonicity violations (ROUTER_R1 2/16; ROUTER_R2_CF 0/16) while keeping test counts near the lean baseline in the main router simulation (means: 2.14-2.21) with modest simulated call overhead (ROUTER_R1 1.21 calls; ROUTER_R2_AUDIT 2.00 calls).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "persona routing with red-flag escalation and dual-run auditing"
+}

@@ -1,0 +1,25 @@
+{
+ "id": "epmc:PPR1209657",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "output_filtering"
+ ],
+ "links": [
+  {
+   "control_id": "T017",
+   "comparator_used": "Cosine-similarity vector retrieval over text embeddings (PubMedBERT, MedCPT, BGE-large-en-v1.5), including with an exact variant-ID guardrail",
+   "finding": "favours_control",
+   "outcome": "Wrong-variant retrieval for clinically distinct cancer variant pairs",
+   "effect": "Cosine retrieval put the wrong paired variant in the top 5 for 75% to 100% of queries under the biomedical encoders (52-document corpus). The typed-graph pipeline gave a 0% wrong-variant retrieval rate with 95.8% normalization accuracy.",
+   "tradeoff": "Depends on a normalization layer that resolves variant strings to canonical nodes (95.8% normalization accuracy, so some strings were not resolved correctly). Evaluated on only 9 variant pairs.",
+   "quote": "Adding an exact variant-ID guardrail to cosine retrieval, and routing retrieval through an end-to-end typed-graph pipeline, both reduced wrong-variant retrieval to zero.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "exact-ID guardrails and typed-graph retrieval grounding"
+}

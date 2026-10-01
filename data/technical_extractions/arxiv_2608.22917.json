@@ -1,0 +1,56 @@
+{
+ "id": "arxiv:2608.22917",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "language_literacy_handling",
+  "output_filtering"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same backend model family without the knowledge base (no-retrieval probe, 71 questions)",
+   "finding": "favours_control",
+   "outcome": "Verifiable provider recommendations",
+   "effect": "Without the knowledge base the model produced zero verifiable provider recommendations",
+   "tradeoff": "",
+   "quote": "without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T008",
+   "comparator_used": "Backend model family without the safety prompt (no-retrieval probe, 71 questions)",
+   "finding": "favours_control",
+   "outcome": "Medical-scope compliance and refusal of out-of-scope or unsafe requests",
+   "effect": "Without the safety prompt the model produced a full drug-dosing schedule and complied with out-of-scope requests",
+   "tradeoff": "",
+   "quote": "without the safety prompt the backend model family produced a full drug-dosing schedule and complied with out-of-scope requests, and without the knowledge base it produced zero verifiable provider recommendations",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T175",
+   "comparator_used": "Unforced routing, without a first-turn classifier forcing tool-based retrieval for entity lookups",
+   "finding": "favours_control",
+   "outcome": "Reliability of grounding",
+   "effect": "Forced-retrieval routing reported as necessary for reliable grounding; no numbers given in the abstract",
+   "tradeoff": "",
+   "quote": "We further report two transferable deployment findings: English-calibrated 4-bit AWQ quantization corrupts Thai tone marks, and forced-retrieval routing is necessary for reliable grounding.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "retrieval grounding, rule-based safety layer, and query routing"
+}

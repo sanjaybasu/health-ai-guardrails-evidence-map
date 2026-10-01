@@ -1,0 +1,3880 @@
+note: Machine draft built from practices that studies tested and commentaries recommended; wording is curated by
+  a person before it is final.
+families:
+  output_filtering: keyword, rule, blocklist, or classifier filters applied to AI inputs or outputs
+  grounding_retrieval: retrieval-augmented generation, source citation, knowledge graphs, EHR grounding
+  verification_ensembles: LLM-as-judge, self-consistency, second-model or second-vendor verification, ensembles,
+    multi-agent debate
+  uncertainty_deferral: confidence thresholds, abstention, calibrated deferral to a human, conformal prediction
+  prompting: role, few-shot, chain-of-thought, structured, or optimized prompts and system instructions
+  model_choice_adaptation: fine-tuning, domain-specific versus general models, model size, open versus closed, local
+    deployment
+  language_literacy_handling: native-language processing, translation or back-translation, simplification, reading-level
+    control
+  human_workflow_design: draft versus autonomous modes, review designs, routing to humans, double review, workload
+    timing
+  alert_design: alert thresholds, tiering, throttling, timing, and display of alerts
+  input_data_handling: input formatting, structured data, missing-data handling, multimodal inputs, context length
+  monitoring_methods: drift detection, automated evaluation, audit sampling, silent-mode runs, performance dashboards
+  agent_tool_design: tool use, agent architectures, action approval gates, sandboxing, memory
+  presentation_explanation: explanations, confidence or uncertainty display, shown citations, interface design
+  privacy_security_engineering: PHI redaction and de-identification, on-premises models, prompt-injection defenses,
+    access limits
+controls:
+- id: T001
+  key: output_harm_hallucination_screen
+  family: output_filtering
+  question: Should we run a separate automated screen that flags harmful, unsafe, or hallucinated AI content before
+    users see it?
+  control: Pass AI outputs through a dedicated classifier, probe, rule filter, or knowledge-graph check that flags,
+    suppresses, or corrects harmful or hallucinated content.
+  comparator: Delivering outputs relying only on the base model's built-in alignment
+  technology:
+  - generative_llm
+  aim: Prevent harmful, biased, false, or misleading content from reaching patients, clinicians, or the public
+  variants:
+  - Trained harm or hallucination classifier on LLM answers
+  - Internal-state probe for hallucination
+  - Knowledge-graph fact check
+  - Rule-based content filter
+  - Screening AI-recommended resources against safety and patient-profile constraints
+  - Platform-level misinformation and deepfake detectors
+  proposed_by_studies: 13
+  proposed_by_commentaries: 11
+  status: machine_draft
+- id: T002
+  key: crisis_detection_escalation
+  family: output_filtering
+  question: Should we run a separate crisis and risk detector alongside our mental health chatbot that escalates
+    at-risk users to humans?
+  control: Monitor conversations with an independent classifier or keyword rules for self-harm, emergencies, or
+    harmful patterns, then pause, restrict, refer, or alert staff.
+  comparator: Conversational LLM handling crisis messages with its own safety behavior
+  technology:
+  - generative_llm
+  aim: Detect suicide risk and emergencies reliably and get at-risk users to human help quickly
+  variants:
+  - Lightweight classifier or keyword rules
+  - Bypassing the LLM and routing to emergency resources
+  - Alerting staff
+  - Detecting delusion, validation-seeking, method inquiry, or compulsive re-querying
+  - Switching to a restricted redirecting safety mode
+  proposed_by_studies: 13
+  proposed_by_commentaries: 9
+  status: machine_draft
+- id: T003
+  key: clinical_safety_rules
+  family: output_filtering
+  question: Should we hard-code clinical safety rules that block or escalate AI treatment and dosing recommendations?
+  control: Encode contraindications, dose ceilings, interactions, red flags, and guideline rules as hard constraints
+    that block, edit, or escalate AI recommendations.
+  comparator: AI recommendations passed on without an encoded rule-based safety layer
+  technology:
+  - generative_llm
+  - predictive_risk
+  aim: Prevent unsafe treatment, dosing, or triage recommendations from reaching prescribers or patients
+  variants:
+  - Medication dose-limit and interaction checks
+  - Red-flag and protocol rules overriding LLM output
+  - Masking reinforcement-learning actions to guideline-permitted options
+  - Limiting recommended changes to small increments from current settings
+  proposed_by_studies: 22
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T004
+  key: deterministic_output_checks
+  family: output_filtering
+  question: Should we run deterministic rule checks for plausibility, source consistency, and completeness on AI
+    outputs before they are used or filed?
+  control: Apply deterministic rules checking plausibility, cross-field consistency, units, verbatim source evidence,
+    required content, omissions, and trusted-list membership; route or discard failures.
+  comparator: Using AI outputs directly without rule-based checks
+  technology:
+  - generative_llm
+  aim: Catch implausible, inconsistent, incomplete, unsupported, or untrusted generated content before downstream
+    use
+  variants:
+  - Plausibility and unit checks on extracted data
+  - Verbatim evidence matching to source
+  - Source-consistency and high-risk omission gate for clinical documents
+  - Privacy check before release
+  - Binding rules on generated exam questions or synthetic data
+  - Checking generated-code dependencies against trusted registries to flag unknown or untrusted packages
+  proposed_by_studies: 25
+  proposed_by_commentaries: 7
+  status: machine_draft
+- id: T005
+  key: constrained_structured_generation
+  family: output_filtering
+  question: Should we force the LLM to generate only schema-valid structured output instead of parsing free text
+    afterward?
+  control: Enforce structured output at generation time using JSON schema, grammar, enum, or candidate-restricted
+    constrained decoding, such as FHIR profiles.
+  comparator: Free-text generation with prompt instructions and post-hoc parsing
+  technology:
+  - generative_llm
+  aim: Produce reliably parseable, standard-conformant output for EHR and downstream systems
+  variants:
+  - JSON schema or grammar-constrained decoding
+  - Enum or candidate-list restriction
+  - HL7 FHIR profile constraints
+  proposed_by_studies: 20
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T006
+  key: post_hoc_validation_repair
+  family: output_filtering
+  question: Should we validate LLM structured output against schemas and terminologies before it enters downstream
+    systems?
+  control: Validate structured outputs against schemas and terminologies (FHIR, SNOMED, CPT, HGNC); handle failures
+    by repair, retry, fallback, or fail-closed rejection.
+  comparator: Accepting structured outputs without schema or terminology validation
+  technology:
+  - generative_llm
+  aim: Prevent invalid codes and malformed output from entering systems and reduce manual rework
+  variants:
+  - Terminology code validation
+  - Automatic repair of invalid items
+  - Retry on parse failure or generation loops
+  - Fallback to another model
+  - Fail-closed rejection
+  - Manual correction of flagged failures
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T007
+  key: input_quality_gate
+  family: output_filtering
+  question: Should we automatically reject poor-quality or out-of-distribution inputs before the AI analyzes them
+    or releases results?
+  control: Screen inputs with automated quality, gradability, relevance, or out-of-distribution checks; withhold
+    analysis or reacquire when inputs fail criteria.
+  comparator: AI processing and releasing results on all inputs
+  technology:
+  - imaging_diagnostic
+  - any_ai
+  aim: Prevent unreliable AI results from poor, irrelevant, or unfamiliar inputs
+  variants:
+  - Image gradability classifier
+  - Out-of-distribution detector
+  - Prompting reacquisition of failed inputs
+  - Withholding results rather than inference
+  proposed_by_studies: 23
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T008
+  key: input_scope_classifier
+  family: output_filtering
+  question: Should we classify incoming queries so the chatbot refuses or reroutes requests outside its approved
+    scope?
+  control: Classify queries for intent, scope, and urgency; refuse or reroute out-of-scope or restricted requests,
+    and strip restricted portions from mixed prompts.
+  comparator: Chatbot answering every query without a dedicated scope gate
+  technology:
+  - generative_llm
+  aim: Keep the chatbot within approved uses and prevent risky or off-label answers
+  variants:
+  - Intent and urgency classification
+  - Refusal versus rerouting
+  - Removing or suppressing restricted portions of mixed prompts
+  proposed_by_studies: 10
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T009
+  key: approved_wording_lock
+  family: output_filtering
+  question: Should high-risk advice and safety messages use pre-approved fixed wording instead of LLM-generated
+    text?
+  control: Lock treatment advice and safety messaging to clinician-approved text and mandatory disclaimers, replacing
+    unsupported claims in user-facing output.
+  comparator: Fully generative LLM wording for all advice and safety messages
+  technology:
+  - generative_llm
+  aim: Ensure high-risk patient-facing messages are accurate, consistent, and safe
+  variants:
+  - Rule-inserted standardized statements
+  - Mandatory disclaimers
+  - Replacing unsupported claims or stigmatizing terms
+  proposed_by_studies: 4
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T010
+  key: text_similarity_screen
+  family: output_filtering
+  question: Should we screen AI-generated text for similarity to existing sources before publishing it?
+  control: Check AI-generated text with similarity or plagiarism tools against set thresholds and route flagged
+    passages for review or rewriting before use.
+  comparator: Publishing AI-generated text without similarity screening
+  technology:
+  - generative_llm
+  aim: Flag possible copying of existing sources in published materials for human review
+  variants:
+  - Plagiarism threshold on patient education materials
+  - Similarity scan to flag possible copyright concerns
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T011
+  key: patient_text_language_screen
+  family: output_filtering
+  question: Should we screen AI-generated patient-facing text for stigmatizing or frightening language before release?
+  control: Automatically screen patient-facing text for stigmatizing language and alarming tone, then revise or
+    route flagged text before release.
+  comparator: Releasing text without automated language or tone screening
+  technology:
+  - generative_llm
+  aim: Prevent stigmatizing or needlessly distressing wording from reaching patients or guardians
+  variants:
+  - Stigmatizing language detection
+  - Tone screening
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T012
+  key: confidential_disclosure_screen
+  family: output_filtering
+  question: Should we screen AI-generated text for potentially inappropriate confidential disclosures before patients
+    or proxies see it?
+  control: Automatically detect confidential or restricted content in AI-generated text and hold flagged items for
+    review before patient or proxy release.
+  comparator: Releasing text without automated confidentiality screening
+  technology:
+  - generative_llm
+  aim: Flag potentially inappropriate disclosure of confidential information before release to patients or proxies
+  variants:
+  - Confidential content screening for guardian or proxy access
+  - Restricted-information detection before portal release
+  proposed_by_studies: 2
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T013
+  key: use_context_gating
+  family: output_filtering
+  question: Should we limit which patients, exams, clinicians, or conditions each AI model is allowed to run for?
+  control: Restrict each model to predefined patient populations, exam types, users, clinical conditions, or risk-based
+    eligibility, suppressing outputs outside them.
+  comparator: Model available for all patients, exams, and situations
+  technology:
+  - any_ai
+  aim: Prevent model use outside validated populations and target it to intended eligible patients
+  variants:
+  - Population restriction to validated groups
+  - Exam-type restriction
+  - User-role restriction
+  - Risk-based eligibility restricting screening to higher-risk patients
+  proposed_by_studies: 1
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T014
+  key: spatiotemporal_output_postprocessing
+  family: output_filtering
+  question: Should we apply anatomical, spatial, or temporal post-processing constraints to raw model predictions
+    before clinical use?
+  control: Post-process raw predictions with anatomical constraints, island selection, margins, thresholds, correction
+    factors, temporal smoothing, or transition constraints before clinical use.
+  comparator: Using raw, independent model predictions without post-processing
+  technology:
+  - imaging_diagnostic
+  - predictive_risk
+  aim: Remove implausible spatial errors and spurious flickering predictions, improving output accuracy
+  variants:
+  - Largest connected component selection
+  - Anatomical constraints
+  - Margins and thresholds
+  - Correction factors
+  - Moving-average temporal smoothing
+  - Transition constraints
+  - Sequence decoding
+  proposed_by_studies: 13
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T015
+  key: false_positive_alert_filter
+  family: output_filtering
+  question: Should we add a second-stage filter to remove false-positive AI alerts before they reach reviewers?
+  control: Apply a second-stage AI or rule-based exclusion filter that suppresses likely false-positive alerts already
+    generated by the first-stage model.
+  comparator: Forwarding all first-stage alerts to reviewers
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  aim: Reduce alert burden and reviewer workload while preserving detection of true cases
+  variants:
+  - Second-stage AI filter
+  - Rule-based exclusion criteria
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T016
+  key: similar_case_retrieval
+  family: grounding_retrieval
+  question: Should the AI retrieve similar past patient cases or worked examples to inform its output?
+  control: Retrieve similar prior cases, plans or clinician-edited examples from a case library and supply them
+    as context, few-shot examples or prediction inputs.
+  comparator: No retrieved cases, fixed examples, or guideline-only single-source retrieval
+  technology:
+  - generative_llm
+  - predictive_risk
+  aim: Improve accuracy and relevance of outputs by drawing on comparable real cases
+  variants:
+  - Nearest-neighbor patient cases blended with model predictions
+  - Dynamically retrieved similar worked examples as few-shot prompts instead of zero-shot or fixed examples
+  - Dual-source retrieval combining guidelines with past cases, peer narratives or live web search
+  proposed_by_studies: 37
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T017
+  key: knowledge_graph_retrieval
+  family: grounding_retrieval
+  question: Should we ground the model in a structured clinical knowledge graph instead of plain text-chunk vector
+    search?
+  control: Retrieve from a curated clinical knowledge graph, using entity normalization and graph traversal, to
+    ground or check model outputs.
+  comparator: Vector retrieval over unstructured text chunks, or no retrieval
+  technology:
+  - generative_llm
+  - speech_ambient
+  aim: Improve factual accuracy and multi-hop reasoning; catch omitted clinical concepts
+  variants:
+  - GraphRAG with entities, relations and community summaries
+  - Knowledge-graph comparison of transcript and ambient note concepts to direct LLM restoration of omissions
+  proposed_by_studies: 46
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T018
+  key: query_transformation
+  family: grounding_retrieval
+  question: Should we rewrite, expand or decompose user queries, or route them by question type, before retrieval?
+  control: Transform the user's query into clinical search terms or sub-questions, or route it by question type,
+    before a single retrieval pass.
+  comparator: Original user query sent through one fixed search route
+  technology:
+  - generative_llm
+  - agentic
+  aim: Retrieve more complete, relevant evidence for complex or ambiguously worded clinical questions
+  variants:
+  - Query rewriting or expansion into clinical terminology, other choices fixed
+  - Decomposition of complex questions into sub-queries
+  - Query-type routing versus a fixed search route, evaluated separately
+  proposed_by_studies: 16
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T019
+  key: iterative_retrieval_support_verification
+  family: grounding_retrieval
+  question: Should the AI check whether evidence suffices and supports its answer, re-searching or correcting when
+    it does not?
+  control: Check evidence sufficiency and answer support against sources; re-retrieve, correct, or withhold unsupported
+    claims before release.
+  comparator: Single-pass retrieval and generation, answer left unchecked
+  technology:
+  - generative_llm
+  - agentic
+  aim: Prevent incomplete-evidence answers and claims not supported by retrieved sources
+  variants:
+  - Iterative retrieval until sufficiency check passes, versus single-pass, verification fixed
+  - Re-search on conflicting evidence; forced lookups for entity questions
+  - Post-generation support verification with correction or blocking of unsupported claims, same retrieved evidence
+  proposed_by_studies: 21
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T020
+  key: hybrid_retrieval
+  family: grounding_retrieval
+  question: Should we combine keyword search with semantic vector search?
+  control: Combine sparse keyword (BM25) and dense embedding retrieval, fused by rank fusion, holding any reranking
+    step fixed.
+  comparator: Keyword-only or embedding-only retrieval
+  technology:
+  - generative_llm
+  aim: Improve recall and precision of retrieved clinical passages
+  variants:
+  - Reciprocal rank fusion
+  - Weighted score fusion
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T021
+  key: rerank_filter_passages
+  family: grounding_retrieval
+  question: Should we rerank and filter retrieved passages before the LLM sees them?
+  control: Rerank candidate passages and drop those scoring low on relevance, evidence quality, recency or consistency
+    before generation.
+  comparator: Initial-ranking top-k passages passed unchanged to generation
+  technology:
+  - generative_llm
+  aim: Prevent answers built on irrelevant, weak, outdated or contradictory evidence
+  variants:
+  - Cross-encoder reranking versus initial ranking, same candidates
+  - Evidence-hierarchy or recency weighting
+  - Pre-generation relevance or contradiction filter
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T022
+  key: require_citations
+  family: grounding_retrieval
+  question: Should we require the AI to cite the exact source text behind each claim?
+  control: Link every generated statement to a specific source passage or quote that clinicians can inspect.
+  comparator: Generated output without required citations
+  technology:
+  - generative_llm
+  aim: Enable clinician verification of claims against sources
+  variants:
+  - Verbatim quote attribution
+  - Document/section/span-level citations
+  proposed_by_studies: 24
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T023
+  key: patient_ehr_grounding
+  family: grounding_retrieval
+  question: Should we feed the patient's own EHR data into the AI's context?
+  control: Retrieve the patient's record via standards-based interfaces or structured queries and inject current
+    EHR data before generation.
+  comparator: Same model and knowledge access without patient-specific EHR context
+  technology:
+  - generative_llm
+  aim: Make outputs accurate and specific to the individual patient
+  variants:
+  - FHIR-based integration
+  - Structured database queries
+  - Free-text note retrieval
+  - Deterministic injection of current EHR state
+  proposed_by_studies: 19
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T024
+  key: tune_embeddings
+  family: grounding_retrieval
+  question: Should we benchmark and tune the embedding model and number of retrieved passages for our clinical use?
+  control: Select or fine-tune embeddings using local labeled clinical data, and tune top-k as a separate comparison
+    with the embedding fixed.
+  comparator: Default general-purpose embeddings and default top-k
+  technology:
+  - generative_llm
+  aim: Improve retrieval accuracy on clinical language
+  variants:
+  - Embedding benchmarking on local corpus, top-k fixed
+  - Domain fine-tuning of embeddings, top-k fixed
+  - Top-k tuning, embedding model fixed
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T025
+  key: restrict_curated_local_sources
+  family: grounding_retrieval
+  question: Should we limit what the AI can retrieve to vetted authoritative sources, prioritizing locally relevant
+    ones?
+  control: Restrict retrieval to a vetted corpus, disabling open web search and superseded documents; add local
+    sources where local practice differs.
+  comparator: Open web search or broad unvetted corpus
+  technology:
+  - generative_llm
+  aim: Prevent unreliable or locally inapplicable guidance
+  variants:
+  - Whitelisted authoritative domains versus unrestricted access
+  - Excluding superseded documents
+  - Local guidelines, formularies, test menus, resistance data and community resources versus generic international
+    guidance within a vetted corpus
+  proposed_by_studies: 24
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T026
+  key: rag_context_supply
+  family: grounding_retrieval
+  question: Should the LLM answer from retrieved trusted passages, from full content placed in its prompt, or from
+    training knowledge alone?
+  control: Retrieve relevant passages from guidelines, institutional documents, literature or the record and supply
+    them to the LLM before it answers.
+  comparator: Training knowledge alone, or full content in a long-context/static prompt
+  technology:
+  - generative_llm
+  aim: Reduce hallucinations and outdated answers while balancing accuracy, cost and simplicity
+  variants:
+  - Guideline-based RAG versus no retrieval
+  - Institutional document RAG
+  - Literature RAG
+  - Retrieved EHR excerpts versus full patient record in long-context model
+  - Static structured knowledge table in prompt for small closed domains versus vector RAG
+  proposed_by_studies: 74
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T027
+  key: curate_maintain_knowledge_base
+  family: grounding_retrieval
+  question: Should we invest in cleaning, restructuring and regularly updating the retrieval knowledge base?
+  control: Restructure, deduplicate and conflict-check source documents before indexing, and regularly refresh the
+    indexed corpus.
+  comparator: Raw documents ingested once without curation or updates
+  technology:
+  - generative_llm
+  aim: Prevent retrieval of outdated, duplicate or conflicting content
+  variants:
+  - Preprocessing (deduplication, conflict checking) versus raw ingestion, same source snapshot
+  - Scheduled refresh versus static corpus, same preprocessing
+  proposed_by_studies: 11
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T028
+  key: chunking_strategy
+  family: grounding_retrieval
+  question: Should our RAG pipeline split documents by structure and meaning rather than fixed length?
+  control: Use structure- or semantics-aware chunking based on headings, HTML structure or semantic boundaries with
+    micro-headers.
+  comparator: Fixed-length or naive sentence chunking
+  technology:
+  - generative_llm
+  aim: Keep clinically coherent passages intact to improve retrieval quality
+  variants:
+  - Heading-based chunking
+  - HTML-structure chunking
+  - Semantic chunking with micro-headers
+  proposed_by_studies: 7
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T029
+  key: candidate_retrieval_for_coding
+  family: grounding_retrieval
+  question: For medical coding and terminology mapping, should we retrieve candidate codes and have the LLM choose
+    only among them?
+  control: Retrieve candidate codes or ontology terms and constrain the LLM to select from that shortlist.
+  comparator: Free LLM code generation, dictionary tools or embedding classifiers alone
+  technology:
+  - generative_llm
+  aim: Reduce invalid or hallucinated codes and improve coding accuracy
+  variants:
+  - ICD-10
+  - SNOMED CT
+  - HPO
+  - LOINC
+  - RxNorm
+  proposed_by_studies: 16
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T030
+  key: vetted_content_library
+  family: grounding_retrieval
+  question: 'Which response policy should patient-facing chatbots use: library-only vetted answers, vetted answers
+    with LLM fallback, or fully generative?'
+  control: 'Answer from a clinician-validated content library via LLM intent matching, with explicit unmatched-query
+    behavior: decline/escalate, or labeled generative fallback.'
+  comparator: Fully generative LLM responses, with or without RAG
+  technology:
+  - generative_llm
+  aim: Prevent unsafe or inaccurate free-text answers to patients
+  variants:
+  - 'Library-only: only clinician-vetted answers; unmatched queries declined or escalated'
+  - Library-first with generative LLM fallback for unmatched queries
+  proposed_by_studies: 10
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T031
+  key: llm_as_judge_evaluation
+  family: verification_ensembles
+  question: Should we use an LLM as a judge to score clinical AI outputs instead of having expert clinicians review
+    everything?
+  control: Use an LLM judge with a clinician-defined rubric to score AI-generated content at scale, calibrated and
+    spot-checked against expert ratings.
+  comparator: Expert clinician or physician review of every output
+  technology:
+  - generative_llm
+  aim: Scale quality, safety, and compliance evaluation while keeping agreement with expert judgment
+  variants:
+  - Clinician-defined fixed rubric
+  - Auto-generated case-specific rubrics via retrieval and multi-model consensus, expert-audited
+  - Small fine-tuned, distilled, or local-language judge model instead of a general-purpose large model
+  - Judge from a different model family than the generator
+  - Judge blinded to which model produced each answer
+  - Periodic spot-check calibration against expert ratings
+  proposed_by_studies: 64
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T032
+  key: critic_verifier_agent
+  family: verification_ensembles
+  question: Should we add a separate critic or safety-monitor model that checks the primary LLM's output before
+    it reaches clinicians or patients?
+  control: Route outputs or whole conversations through a separate critic, verifier, or supervisory model that scores
+    risk and accuracy, then revises, blocks, or escalates.
+  comparator: Single-pass primary model output with only its built-in safety behavior
+  technology:
+  - generative_llm
+  - agentic
+  aim: Catch unsafe or inaccurate outputs before release
+  variants:
+  - Critic agent that challenges or arbitrates the primary agent
+  - Critique-and-revise refinement loop
+  - Runtime monitor over full conversations
+  - Governance agent watching multi-agent workflow steps
+  proposed_by_studies: 46
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T033
+  key: self_consistency_sampling
+  family: verification_ensembles
+  question: Should we run the same LLM several times and select among the answers rather than trusting a single
+    response?
+  control: Sample multiple outputs from the same model and select the final answer by majority vote or cross-sample
+    consistency.
+  comparator: Single LLM response per query
+  technology:
+  - generative_llm
+  aim: Improve answer accuracy and reduce random errors from a single generation
+  variants:
+  - Majority or aggregated vote
+  - Consistency check across samples
+  - 'Alternative selection rule: best-of-N ranking by a trained verifier with capped verification depth, compared
+    on the same candidate set'
+  proposed_by_studies: 29
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T034
+  key: llm_second_reader_documents
+  family: verification_ensembles
+  question: Should we use an LLM as a second reader to flag or fix errors in clinician-written reports, notes, transcripts,
+    and calculations?
+  control: Run an LLM over clinician-authored or machine-transcribed reports, notes, messages, transcripts, or calculations
+    to flag or correct errors and omissions before finalization.
+  comparator: Clinician self-review or standard proofreading without AI check
+  technology:
+  - generative_llm
+  - speech_ambient
+  aim: Reduce documentation errors, mismatches, and omissions reaching the record
+  variants:
+  - Flag-only for human correction
+  - LLM post-processing of ASR transcripts to fix word errors and speaker attribution
+  - Checking calculations and laterality mismatches in reports
+  proposed_by_studies: 27
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T035
+  key: predictive_model_ensembles
+  family: verification_ensembles
+  question: Should we deploy an ensemble of several predictive models instead of the single best-performing model?
+  control: Combine predictions from multiple trained models using a pre-specified combination rule and deploy the
+    ensemble in place of one model.
+  comparator: Single best-performing model
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  aim: Improve discrimination, stability, and control of the sensitivity-specificity trade-off
+  variants:
+  - Averaging
+  - Weighted combination
+  - Stacking
+  - Any-positive vs majority vs stricter vote across chunks, slices, serial, or persona predictions to set the operating
+    point
+  proposed_by_studies: 23
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T036
+  key: claim_level_source_verification
+  family: verification_ensembles
+  question: Should we break LLM summaries and extractions into individual claims and check each against the source
+    record before use?
+  control: Decompose output into atomic claims and automatically verify each claim, quote, or number against source
+    records, guidelines, or tool traces.
+  comparator: Releasing LLM output without source-level verification
+  technology:
+  - generative_llm
+  aim: Prevent hallucinated or unsupported content in summaries and extractions
+  variants:
+  - Flag unsupported claims for review
+  - Regenerate unsupported content
+  - Verify against guidelines or tool traces instead of the chart
+  proposed_by_studies: 41
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T037
+  key: multi_model_cross_vendor_consensus
+  family: verification_ensembles
+  question: Should we combine or require agreement among several distinct LLMs rather than rely on one LLM?
+  control: Query several distinct LLMs in parallel and accept outputs by consensus or a combined result.
+  comparator: Single LLM
+  technology:
+  - generative_llm
+  aim: Improve reliability of accepted outputs
+  variants:
+  - Consensus vote
+  - Pooled or combined answer
+  - Compare outputs and escalate discordance
+  - 'Optional implementation detail: source models from different vendors'
+  proposed_by_studies: 29
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T038
+  key: disagreement_triage_for_review
+  family: verification_ensembles
+  question: Should we use disagreement among multiple models to decide which cases get human review?
+  control: Use disagreement or uncertainty across ensemble members as a case-level confidence signal and route disagreeing
+    items to human reviewers first.
+  comparator: Single-model confidence, or random or exhaustive human review
+  technology:
+  - any_ai
+  aim: Focus limited human review on uncertain, error-prone cases
+  variants:
+  - Ensemble variance as uncertainty score
+  - Prioritising disagreeing transcripts or annotations for review
+  - Compared against Monte Carlo dropout
+  proposed_by_studies: 14
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T039
+  key: combine_ai_with_independent_tools
+  family: verification_ensembles
+  question: Should we cross-check AI output with clinician judgment, rule engines, or conventional tools rather
+    than act on the AI alone?
+  control: Pair AI output with clinician scores, clinical risk tools, rule engines, conventional software, or task-specific
+    models that independently verify it.
+  comparator: AI or LLM output used alone
+  technology:
+  - any_ai
+  aim: Prevent acting on erroneous AI outputs by requiring orthogonal confirmation
+  variants:
+  - Combine with clinician risk scores
+  - Rule-engine constraints
+  - Specialized task-specific model verifying LLM output
+  - Orthogonal evidence before action
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T040
+  key: multi_agent_deliberation
+  family: verification_ensembles
+  question: Should we have several role-specialised LLM agents debate to consensus before a clinical decision, rather
+    than relying on one model?
+  control: Use multiple role-specialised LLM agents that debate or deliberate to consensus before producing a diagnosis,
+    plan, or allocation.
+  comparator: Single LLM agent answering in one pass
+  technology:
+  - generative_llm
+  - agentic
+  aim: Improve diagnostic and planning accuracy through contested reasoning
+  variants:
+  - Role-specialised specialist agents
+  - Structured debate rounds
+  - Consensus or moderator arbitration
+  proposed_by_studies: 40
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T041
+  key: llm_self_correction
+  family: verification_ensembles
+  question: Should we prompt the LLM to review and correct its own answer before returning it?
+  control: Prompt the LLM to re-evaluate and revise its own answer, for example with chain-of-verification.
+  comparator: Accepting the LLM's first answer
+  technology:
+  - generative_llm
+  aim: Reduce errors and hallucinations without adding a second model
+  variants:
+  - Chain-of-verification
+  - Self-refine prompting
+  proposed_by_studies: 10
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T042
+  key: two_stage_cascade
+  family: verification_ensembles
+  question: Should we use a two-stage cascade where a first screener decides which cases go to a second model or
+    LLM adjudicator?
+  control: Use a first-stage screener to gate cases to a second-stage model, LLM, or multi-agent adjudicator.
+  comparator: Single-stage model applied to all cases
+  technology:
+  - any_ai
+  aim: Improve accuracy and efficiency by reserving costly adjudication for flagged cases
+  variants:
+  - Second-stage predictive model
+  - LLM adjudicator
+  - Multi-agent adjudicator
+  proposed_by_studies: 9
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T043
+  key: validator_repair_loop
+  family: verification_ensembles
+  question: Should we check generated outputs against hard rules or schemas and send failures back to the LLM for
+    repair?
+  control: Validate generated output against schemas, constraints, or database state and loop failures back for
+    automated repair.
+  comparator: Unvalidated single-pass generation
+  technology:
+  - generative_llm
+  - agentic
+  aim: Prevent malformed or constraint-violating outputs from reaching downstream systems
+  variants:
+  - Schema validation
+  - Clinical constraint checks
+  - Database-state checks for queries
+  proposed_by_studies: 9
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T044
+  key: independent_qa_radiotherapy_imaging
+  family: verification_ensembles
+  question: Should we add an independent automated check on AI-generated contours, synthetic images, and radiotherapy
+    plans before clinical use?
+  control: Run an independent model or computation to flag AI-generated contours, synthetic images, or treatment
+    plans needing review.
+  comparator: Manual clinician review of AI outputs without automated QA
+  technology:
+  - imaging_diagnostic
+  aim: Catch erroneous contours, images, or plans before treatment
+  variants:
+  - Independent contour QA model
+  - Dose recomputation check
+  - Synthetic image quality check
+  proposed_by_studies: 19
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T045
+  key: simulated_patient_persona_testing
+  family: verification_ensembles
+  question: Should we test patient-facing materials with AI-simulated patient personas before release?
+  control: Use AI patient personas simulating varied literacy and cognitive load to surface comprehension barriers
+    in patient-facing documents.
+  comparator: Readability formulas or expert review alone
+  technology:
+  - generative_llm
+  - world_model_simulation
+  aim: Identify comprehension barriers in patient materials before release
+  variants:
+  - Varying health literacy levels
+  - Simulated cognitive load
+  proposed_by_studies: 2
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T046
+  key: confidence_threshold_deferral
+  family: uncertainty_deferral
+  question: Should our AI send low-confidence cases to a human reviewer instead of outputting or acting on every
+    prediction?
+  control: Set a confidence or uncertainty cutoff; below it, withhold, suppress, or flag the AI output and route
+    the case to human review.
+  comparator: AI outputs every prediction, or uniform review of all outputs
+  technology:
+  - any_ai
+  aim: Prevent errors on uncertain cases while focusing clinician review effort where it matters
+  variants:
+  - Abstain and route below-threshold cases to human review
+  - Accept high-confidence outputs with lighter checks
+  - Two cutoffs with rule-out, indeterminate, and rule-in zones; only the middle zone goes to review or a second
+    test
+  - Flag imaging segmentations with high uncertainty or low predicted quality for correction
+  - Hide or de-emphasize outputs in score zones likely to mislead clinicians
+  - Allow automated actions only on low-risk, high-confidence cases; tier autonomy by harm severity
+  proposed_by_studies: 75
+  proposed_by_commentaries: 12
+  status: machine_draft
+- id: T047
+  key: conformal_prediction
+  family: uncertainty_deferral
+  question: Should we use calibrated prediction sets to flag uncertain cases rather than point predictions or heuristic
+    confidence cutoffs?
+  control: Apply conformal prediction on a held-out calibration set to produce prediction sets or risk groups; flag
+    or defer cases based on the uncertainty the sets represent.
+  comparator: Raw point predictions or heuristic confidence cutoffs without coverage guarantees
+  technology:
+  - any_ai
+  aim: Provide average error-rate control, valid under the method's assumptions, when flagging or deferring uncertain
+    predictions
+  variants:
+  - Prediction sets or intervals with coverage guarantees conditional on exchangeability
+  - False-discovery-rate control for risk groups
+  - Defer cases whose prediction set is large or empty
+  proposed_by_studies: 26
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T048
+  key: probability_recalibration
+  family: uncertainty_deferral
+  question: Should we recalibrate model probabilities on our own data before using them, especially at a new site?
+  control: Recalibrate predicted probabilities post hoc on local or expert-validated held-out data.
+  comparator: Using the model's or vendor's uncalibrated probabilities
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  - any_ai
+  aim: Make predicted risks match observed outcomes so thresholds and deferral decisions are trustworthy
+  variants:
+  - Temperature scaling
+  - Platt scaling
+  - Isotonic regression
+  - Patient-wise recalibration
+  proposed_by_studies: 21
+  proposed_by_commentaries: 1
+  status: machine_draft
+- id: T049
+  key: local_threshold_tuning
+  family: uncertainty_deferral
+  question: Should we tune decision cutoffs for our population, use case, and each model version instead of using
+    a fixed vendor default?
+  control: Set AI score cutoffs on local validation data per model version, setting, subgroup, or intended purpose.
+  comparator: Single fixed vendor or developer default threshold reused everywhere
+  technology:
+  - any_ai
+  aim: Keep sensitivity and specificity appropriate across sites, subgroups, and model updates
+  variants:
+  - Retune per model size or quantization state
+  - Subgroup- or disease-specific cutoffs
+  - Purpose-specific cutoffs, e.g., screening versus confirmation
+  proposed_by_studies: 20
+  proposed_by_commentaries: 6
+  status: machine_draft
+- id: T050
+  key: explicit_abstention_option
+  family: uncertainty_deferral
+  question: Should the AI be allowed to say 'I don't know' or refuse and hand off to a person, rather than always
+    giving an answer?
+  control: Give the AI an explicit abstain or 'undeterminable' option when information is insufficient, log it as
+    an outcome, and hand off to a human.
+  comparator: Forcing the AI to always give a best-guess answer
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Reduce confident wrong answers on unanswerable or insufficient-information cases
+  variants:
+  - Test abstention on deliberately unanswerable cases
+  - Log abstentions as a separate outcome
+  - Automatic handoff to a human after refusal
+  proposed_by_studies: 19
+  proposed_by_commentaries: 11
+  status: machine_draft
+- id: T051
+  key: ood_detection
+  family: uncertainty_deferral
+  question: Should we add an out-of-distribution detector so the AI warns or declines on inputs unlike its training
+    data?
+  control: Detect out-of-distribution or out-of-scope inputs and warn, decline, or route them to experts.
+  comparator: Running the model on all inputs without distribution or scope checks
+  technology:
+  - any_ai
+  aim: Prevent unreliable outputs on unfamiliar patients, devices, or cases outside validated scope
+  variants:
+  - Feature-space distance detection
+  - Ensemble uncertainty detection
+  - Explicit validated-scope limits with expert routing
+  proposed_by_studies: 10
+  proposed_by_commentaries: 8
+  status: machine_draft
+- id: T052
+  key: uncertainty_outputs
+  family: uncertainty_deferral
+  question: Should our models report uncertainty estimates or prediction intervals instead of single point predictions?
+  control: Add uncertainty quantification and output calibrated intervals or patient-level uncertainty alongside
+    point estimates.
+  comparator: Point predictions only
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  - any_ai
+  aim: Let clinicians and downstream rules see how reliable each individual prediction is
+  variants:
+  - Monte Carlo dropout
+  - Deep ensembles
+  - Probabilistic models with uncertainty distributions
+  - Calibrated prediction intervals
+  proposed_by_studies: 14
+  proposed_by_commentaries: 1
+  status: machine_draft
+- id: T053
+  key: llm_uncertainty_estimation
+  family: uncertainty_deferral
+  question: Should we use computed LLM reliability signals to flag or filter potentially unreliable answers, rather
+    than rely on the LLM's stated confidence or no scoring?
+  control: Compute a reliability or hallucination-risk score from the LLM's output probabilities, answer consistency,
+    or internal signals, and flag or filter risky outputs.
+  comparator: LLM's verbalized self-rated confidence, or no reliability scoring
+  technology:
+  - generative_llm
+  aim: Catch unsupported or hallucinated LLM content before it reaches clinicians
+  variants:
+  - Token probability confidence
+  - Repeated-sampling consistency
+  - Semantic entropy hallucination scoring
+  - Internal model-state probes
+  proposed_by_studies: 29
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T054
+  key: disagreement_composite_signals
+  family: uncertainty_deferral
+  question: Should disagreement between models or explanation methods trigger review, rather than relying on one
+    model's confidence?
+  control: Flag outputs for review when independent models or explanation methods disagree, or when outputs diverge
+    from medical knowledge checks.
+  comparator: A single model's confidence score alone
+  technology:
+  - any_ai
+  aim: Detect unreliable outputs that single-model confidence misses
+  variants:
+  - Cross-model disagreement
+  - Explanation-method disagreement
+  - Divergence from medical knowledge checks
+  - Combine disagreement with confidence and similarity into one composite review score
+  proposed_by_studies: 8
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T055
+  key: clarify_missing_information
+  family: uncertainty_deferral
+  question: Should the AI ask for clarification or explicitly flag gaps when input is incomplete or ambiguous, instead
+    of answering as if it were complete?
+  control: When inputs are ambiguous, missing, or stale, have the AI ask clarifying questions, or mark fields unknown
+    and qualify its recommendation.
+  comparator: AI gives an unqualified answer from incomplete input without seeking information
+  technology:
+  - generative_llm
+  - agentic
+  aim: Prevent fabricated or overconfident outputs built on gaps in the input
+  variants:
+  - 'Active: trigger clarifying questions on ambiguity-driven uncertainty'
+  - 'Passive: mark fields as unknown'
+  - 'Passive: downgrade recommendation strength when data are incomplete'
+  proposed_by_studies: 8
+  proposed_by_commentaries: 8
+  status: machine_draft
+- id: T056
+  key: predefined_suppression_fallback
+  family: uncertainty_deferral
+  question: Should we predefine conditions under which the AI goes silent or falls back to a safe mode?
+  control: Predefine stop criteria (data completeness, operating conditions, failure triggers) that suppress AI
+    output or switch to a safe fallback or human control.
+  comparator: AI runs in all conditions without predefined stop or failure behavior
+  technology:
+  - any_ai
+  aim: Prevent harmful outputs when operating conditions are unsafe or the AI fails
+  variants:
+  - Rule-based suppression with reason codes
+  - Fallback to baseline or non-personalized policy
+  - Automatic shutdown triggers with human takeover
+  proposed_by_studies: 4
+  proposed_by_commentaries: 7
+  status: machine_draft
+- id: T057
+  key: evidence_support_gate
+  family: uncertainty_deferral
+  question: Should the system abstain or warn when retrieved evidence is absent or below a defined similarity threshold?
+  control: Require retrieved or verbatim evidence above a similarity threshold before answering; otherwise abstain
+    or warn users.
+  comparator: Answering from the model regardless of retrieved evidence
+  technology:
+  - generative_llm
+  aim: Reduce unsupported answers by abstaining or warning when an evidence-relevance check fails
+  variants:
+  - Similarity threshold on retrieved passages
+  - Verbatim quote requirement
+  - Abstention-only (fail closed) versus warn-and-answer policy
+  proposed_by_studies: 7
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T058
+  key: input_quality_triage
+  family: uncertainty_deferral
+  question: Should we screen inputs for quality and refuse to analyze unusable scans or signals?
+  control: Screen input quality first and refuse or flag ungradable images or signal segments before the model analyzes
+    them.
+  comparator: Analyzing all inputs regardless of quality
+  technology:
+  - imaging_diagnostic
+  - predictive_risk
+  aim: Avoid unreliable outputs from poor-quality images or signals
+  variants:
+  - Ungradable image rejection
+  - Signal segment quality screening
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T059
+  key: learned_deferral_policy
+  family: uncertainty_deferral
+  question: Should a learned policy decide which cases the AI defers to clinicians, instead of a simple confidence
+    cutoff?
+  control: Train or derive a deferral policy that decides case-by-case whether AI or clinician decides, based on
+    their complementary strengths.
+  comparator: Fixed confidence threshold or LLM-decided deferral
+  technology:
+  - any_ai
+  aim: Improve combined human-AI accuracy by deferring cases where clinicians outperform the AI
+  variants:
+  - Learning-to-defer models
+  - Rule-derived complementarity policies
+  proposed_by_studies: 3
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T060
+  key: model_cascade_routing
+  family: uncertainty_deferral
+  question: Should uncertain cases be escalated from a cheap model to a stronger model or retrieval step instead
+    of running the expensive path for everything?
+  control: Route only uncertain cases from a small model to a larger LLM or retrieval-augmented generation based
+    on uncertainty signals.
+  comparator: Single model for all cases, or expensive model for all cases
+  technology:
+  - generative_llm
+  aim: Balance accuracy and cost by spending heavier computation only on uncertain cases
+  variants:
+  - Small-to-large LLM escalation
+  - Escalation to retrieval-augmented generation
+  proposed_by_studies: 3
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T061
+  key: persona_role_assignment
+  family: prompting
+  question: Should the prompt assign the model an explicit clinical role or persona?
+  control: Assign the model an explicit role or persona, such as senior physician or a defined patient-facing chatbot
+    character.
+  comparator: Prompt with no assigned role or persona
+  technology:
+  - generative_llm
+  aim: Improve answer quality and appropriateness of model behavior for the clinical context
+  variants:
+  - Clinical role such as senior physician
+  - 'Patient chatbot persona: doctor vs peer'
+  - Polite, empathetic or de-escalating persona
+  proposed_by_studies: 14
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T062
+  key: audience_tailoring
+  family: prompting
+  question: Should the prompt tailor tone, content, length and reading level to the specific reader?
+  control: Specify the intended recipient and set tone, content, length, language and reading level for that audience.
+  comparator: Prompt with no audience, tone or reading-level specification
+  technology:
+  - generative_llm
+  aim: Improve readability, empathy and relevance of outputs for the intended user
+  variants:
+  - Tailoring to clinician role, patient demographics, location or needs
+  - Reading level and language conditioning
+  - Deliberate tone setting
+  - Mimicking an individual clinician's style
+  proposed_by_studies: 37
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T063
+  key: output_specification_constraints
+  family: prompting
+  question: Should we specify required fields, a template or allowed answers in the prompt?
+  control: Specify required fields, output schema, clinical template or allowed answer set in the prompt.
+  comparator: Brief prompt with free-text, open-ended output
+  technology:
+  - generative_llm
+  aim: Improve completeness, parseability, consistency and safety of generated outputs
+  variants:
+  - JSON schema or enumerated codes
+  - Clinical note and handoff templates such as I-PASS or ISBAR
+  - Completeness rules and evidence citation requirements
+  - Candidate answer lists or fixed number of outputs
+  - Explicit permission to abstain or say 'I don't know'
+  - Prompt-specified sensitivity thresholds
+  proposed_by_studies: 51
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T064
+  key: guideline_framework_grounding
+  family: prompting
+  question: Should we put the relevant guideline, criteria or established clinical framework directly into the prompt?
+  control: Embed the relevant guideline, diagnostic criteria, scoring rubric, definitions or named clinical or therapeutic
+    framework in the prompt.
+  comparator: Generic prompt relying on the model's built-in knowledge
+  technology:
+  - generative_llm
+  aim: Improve guideline adherence, accuracy and fidelity of conversational behavior to evidence-based frameworks
+  variants:
+  - Clinical guidelines or diagnostic criteria
+  - Scoring rubrics and domain definitions
+  - Expert rule files or structured patient features
+  - CBT, motivational interviewing or crisis intervention frameworks in chatbot prompts
+  - Socratic tutoring or debrief rubrics for education
+  proposed_by_studies: 57
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T065
+  key: few_shot_examples
+  family: prompting
+  question: Should we include worked examples in the prompt instead of instructions alone?
+  control: Provide a set of labeled example cases in the prompt showing expected inputs and answers.
+  comparator: Zero-shot prompt with instructions only
+  technology:
+  - generative_llm
+  aim: Improve task accuracy and output consistency
+  variants:
+  - Few-shot examples
+  - Many-shot examples
+  proposed_by_studies: 53
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T066
+  key: stepwise_reasoning
+  family: prompting
+  question: Should we have the model reason step by step before answering, via prompting or its native reasoning
+    mode?
+  control: Prompt for stepwise reasoning or a reasoning scaffold; for reasoning-capable models, enable reasoning
+    mode or higher effort.
+  comparator: Direct-answer prompt, or standard mode or lower effort on the same model
+  technology:
+  - generative_llm
+  aim: Improve accuracy on complex clinical reasoning tasks
+  variants:
+  - Chain-of-thought prompting vs direct answer
+  - Fixed reasoning scaffold
+  - Rationale-before-answer prompting
+  - Native thinking mode vs standard mode
+  - Higher vs lower reasoning effort setting
+  proposed_by_studies: 50
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T067
+  key: iterative_prompt_refinement
+  family: prompting
+  question: Should we fund iterative, expert-led prompt refinement and testing on pilot cases before go-live?
+  control: Refine prompts through repeated rounds of error analysis on pilot cases, clinician review, or automated
+    optimization before deployment.
+  comparator: Single initial prompt used without refinement
+  technology:
+  - generative_llm
+  aim: Reduce errors and improve agreement with clinicians before deployment
+  variants:
+  - Misclassified-case error analysis
+  - Pilot agreement checks with clinicians
+  - Automated prompt optimization search
+  proposed_by_studies: 46
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T068
+  key: task_decomposition
+  family: prompting
+  question: Should we split the task into a chain of smaller prompts instead of one large prompt?
+  control: Break the task into sequential or atomic sub-prompts where each step's output feeds the next.
+  comparator: One combined prompt performing the whole task
+  technology:
+  - generative_llm
+  aim: Improve accuracy and traceability on complex multi-step tasks
+  variants:
+  - Extract then classify
+  - Item-level scoring
+  - Gated steps
+  - Merging prompts when classifier routing errs
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T069
+  key: self_correction
+  family: prompting
+  question: Should we have the model review and revise its own answer before it is used?
+  control: Add a step asking the model to critique and revise its own answer before release.
+  comparator: Single-pass answer without self-review
+  technology:
+  - generative_llm
+  aim: Catch and correct errors before outputs reach users
+  variants: []
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T070
+  key: debiasing_instructions
+  family: prompting
+  question: Should we add prompt instructions that guard against cognitive bias and clinically irrelevant demographic
+    cues?
+  control: Instruct the model to ignore clinically irrelevant demographic or socioeconomic information, avoid stereotyping,
+    and counter cognitive biases such as base-rate neglect.
+  comparator: Standard prompt without debiasing instructions
+  technology:
+  - generative_llm
+  aim: Reduce biased or stereotyped outputs
+  variants:
+  - Base-rate reminders
+  - Ignore clinically irrelevant socioeconomic or demographic information
+  - Avoid stereotyping
+  proposed_by_studies: 14
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T071
+  key: anti_sycophancy_instructions
+  family: prompting
+  question: Should we instruct the model not to abandon a justified answer just because a user pushes back?
+  control: Instruct the model to avoid changing a justified answer solely because of user pressure, while still
+    updating on new clinical information.
+  comparator: Standard prompt without anti-sycophancy instructions
+  technology:
+  - generative_llm
+  aim: Reduce sycophantic capitulation to unfounded user pushback
+  variants:
+  - Hold justified position under patient pushback
+  - Re-evaluate only when new evidence is given
+  proposed_by_studies: 3
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T072
+  key: low_temperature
+  family: prompting
+  question: Should we use zero or a validated low temperature rather than the default or a higher setting?
+  control: Set sampling temperature to zero or a validated low value for clinical tasks.
+  comparator: Default or higher temperature settings
+  technology:
+  - generative_llm
+  aim: Improve reproducibility and consistency of clinical outputs
+  variants:
+  - Temperature zero
+  - Validated low nonzero temperature
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T073
+  key: instruction_placement_timing
+  family: prompting
+  question: Where and when should instructions and key information go in the prompt or conversation?
+  control: 'Choose instruction placement, repetition and evidence timing deliberately: system role, periodic restatement,
+    or staged evidence introduction, each assessed against its own baseline.'
+  comparator: User-message placement, once-only instructions, or all evidence upfront, respectively
+  technology:
+  - generative_llm
+  aim: Improve instruction adherence and reasoning across long or multi-turn interactions
+  variants:
+  - System role vs user message placement
+  - Periodic restatement vs once-only instructions
+  - Deferring diagnostic questions or salient evidence to later turns vs upfront
+  proposed_by_studies: 3
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T074
+  key: chatbot_scope_instructions
+  family: prompting
+  question: Should the system prompt restrict what the chatbot may advise and require history-taking before advice?
+  control: Set system instructions limiting chatbot scope and requiring history before advice, optionally with clinician-set
+    goals and safety context.
+  comparator: Open-ended chatbot without scope or history-taking instructions
+  technology:
+  - generative_llm
+  aim: Prevent unsafe or out-of-scope advice to patients
+  variants:
+  - Scope limits vs unrestricted scope
+  - History-taking before advice vs immediate advice
+  - Clinician-set goals and safety context as part of tested package
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T075
+  key: multimodal_visual_hints
+  family: prompting
+  question: Should we give the imaging model expert hints, reference atlases or visual markers alongside the image?
+  control: Supply expert textual cues, reference atlases or keypoint overlays with the image; test named alternative
+    input representations separately.
+  comparator: Image with plain prompt, or model self-generated intermediates where tested
+  technology:
+  - multimodal_foundation
+  - imaging_diagnostic
+  aim: Improve image interpretation accuracy
+  variants:
+  - Expert textual cues
+  - Reference atlases
+  - Keypoint or marker overlays
+  - Supplied guidance vs model-generated intermediates
+  - Named alternative input representation vs original input
+  proposed_by_studies: 7
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T076
+  key: asr_contextual_vocabulary
+  family: prompting
+  question: Should we feed the speech recognition model a contextual prompt with local medical vocabulary?
+  control: Provide speech recognition with contextual system messages and local vocabulary prompts during dictation
+    transcription.
+  comparator: Speech transcription without contextual vocabulary prompts
+  technology:
+  - speech_ambient
+  aim: Reduce transcription errors for medical terms
+  variants:
+  - Contextual system messages
+  - Local vocabulary lists
+  proposed_by_studies: 1
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T077
+  key: imbalance_aware_training
+  family: model_choice_adaptation
+  question: Should we require models to be trained with methods that correct for class imbalance so rare clinical
+    outcomes are detected?
+  control: Apply imbalance-aware training, such as reweighted or focal losses, resampling, or balanced curation,
+    and select models on rare-outcome sensitivity and calibration.
+  comparator: Otherwise comparable training without imbalance correction
+  technology:
+  - any_ai
+  aim: Improve detection of rare outcomes and limit overconfidence on majority classes
+  variants:
+  - Reweighted or focal loss
+  - Oversampling, undersampling, augmentation, or balanced curation
+  - Calibration-aware or physics-constrained losses
+  - Post hoc threshold or calibration correction as alternative comparator
+  proposed_by_studies: 30
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T078
+  key: fairness_aware_training
+  family: model_choice_adaptation
+  question: Should we require fairness-aware training methods that reduce performance gaps across patient demographic
+    groups?
+  control: Apply fairness-aware training, such as fairness constraints, adversarial debiasing, or group-specific
+    models, and select models on both accuracy and subgroup performance.
+  comparator: Otherwise comparable training without fairness-specific objectives
+  technology:
+  - any_ai
+  aim: Reduce subgroup performance gaps across sex, race, and other patient groups
+  variants:
+  - Fairness-regularized loss
+  - Adversarial debiasing
+  - Group-specific models by sex or race with no-harm selection
+  - Explicitly including or excluding sensitive attributes
+  - Model selection on accuracy plus fairness metrics
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T079
+  key: local_fine_tuning
+  family: model_choice_adaptation
+  question: Should we fine-tune or adapt a model to our own data, guidelines, and context instead of using an off-the-shelf
+    model with prompting?
+  control: Fine-tune, continue pre-training, or otherwise adapt the model to institutional or device data, local
+    guidelines, documentation formats, and culture.
+  comparator: Off-the-shelf model used as-is with zero- or few-shot prompting
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  - imaging_diagnostic
+  - predictive_risk
+  aim: Improve task accuracy and fit to local practice, devices, and patient population
+  variants:
+  - Continued pre-training on domain corpus
+  - Task-specific supervised fine-tuning
+  - Local site or capture-device retraining
+  - Test-time adaptation
+  - Adapting content to local guidelines, formulary, and documentation standards
+  - Cultural and language localization
+  proposed_by_studies: 49
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T080
+  key: multisite_training
+  family: model_choice_adaptation
+  question: Should we require models trained on data from multiple sites and devices, including through federated
+    learning?
+  control: Train or adapt models on multi-institution, multi-device data, pooled and harmonized or via federated
+    or swarm learning when data cannot be shared.
+  comparator: Model trained on single-site or single-device data
+  technology:
+  - any_ai
+  aim: Improve generalizability across sites, scanners, and populations while protecting patient data
+  variants:
+  - Pooled harmonized multi-site data
+  - Federated learning sharing model updates only
+  - Swarm learning
+  - Federated vs centralized pooled training comparison
+  proposed_by_studies: 38
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T081
+  key: local_model_hosting
+  family: model_choice_adaptation
+  question: Should we host AI models within our own environment rather than sending patient data to an external
+    vendor cloud API?
+  control: Host model inference on-premise, on-device, or embedded in scanner, PACS, or viewer infrastructure under
+    health-system control, keeping patient data local.
+  comparator: Comparable-capability model accessed through an external vendor cloud API
+  technology:
+  - generative_llm
+  - imaging_diagnostic
+  - any_ai
+  aim: Protect patient data, control cost and latency, and increase institutional control over models
+  variants:
+  - Open-weight LLM on hospital servers
+  - Small language models on-device
+  - In-house models with inspectable architecture
+  - Inference embedded in scanner, PACS, or viewer
+  - Local inference server vs cloud-only inference
+  proposed_by_studies: 37
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T082
+  key: model_updating
+  family: model_choice_adaptation
+  question: Should we keep updating deployed models, through scheduled retraining, clinician-correction loops, or
+    targeted edits, rather than leaving them static?
+  control: Update deployed models at set intervals or from clinician-corrected errors, or apply targeted editing
+    or steering, guarding against forgetting.
+  comparator: Static model trained once and never updated
+  technology:
+  - any_ai
+  aim: Maintain performance as data and practice drift and correct known errors or biases
+  variants:
+  - Scheduled retraining on recent local data
+  - Continual learning with forgetting safeguards
+  - Expert review and correction loop feeding retraining
+  - Knowledge editing or unlearning
+  - Feature steering
+  - Test-time adaptation instead of full retraining
+  proposed_by_studies: 32
+  proposed_by_commentaries: 5
+  status: machine_draft
+- id: T083
+  key: label_source_strategy
+  family: model_choice_adaptation
+  question: Should we train on supervision derived from reports, outcomes, routine data, or unlabeled data instead
+    of full expert annotation?
+  control: Use weak, proxy, or objective outcome labels, or self-supervised pretraining on unlabeled data, instead
+    of full manual expert labels, holding case selection constant.
+  comparator: Full manual expert annotation of the same cases
+  technology:
+  - any_ai
+  aim: Reduce annotation cost and label subjectivity while keeping model performance
+  variants:
+  - Objective outcome or patient-level labels
+  - Workflow-derived or routine charted proxy labels
+  - Report text or slide-level weak labels
+  - Semi- or self-supervised pretraining on unlabeled data
+  proposed_by_studies: 18
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T084
+  key: specialized_vs_general_model
+  family: model_choice_adaptation
+  question: Should we choose a specialized model variant, domain-specific or reasoning-enhanced, rather than a standard
+    general-purpose model?
+  control: Select a domain-specific, task-specific, or reasoning-enhanced model variant matched to the clinical
+    task and users, validated against the standard alternative.
+  comparator: Standard general-purpose model version used zero-shot
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  - imaging_diagnostic
+  aim: Improve accuracy and reliability on specialized or complex clinical reasoning tasks
+  variants:
+  - Medical-domain LLM
+  - Specialty foundation model
+  - Task-specific neural network
+  - Vendor reasoning model versions
+  - Reasoning-trained fine-tunes
+  - General multimodal LLM zero-shot as alternative
+  proposed_by_studies: 23
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T085
+  key: synthetic_training_data
+  family: model_choice_adaptation
+  question: Should we add synthetic or model-generated data to training when real labeled data are scarce or imbalanced?
+  control: Augment or pretrain with synthetic records, generated text, or simulated images, quality-filtered and
+    mixed with real data.
+  comparator: Training on available real data only
+  technology:
+  - any_ai
+  aim: Improve performance and balance when real labeled data are scarce
+  variants:
+  - LLM-generated clinical text
+  - Diffusion- or GAN-generated images
+  - Teacher-model distillation data
+  - Synthetic EHR records
+  - Quality filtering and real-synthetic mixing ratios
+  proposed_by_studies: 34
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T086
+  key: decoding_settings
+  family: model_choice_adaptation
+  question: Should we lock the model's temperature and decoding settings low or deterministic for clinical use?
+  control: Set decoding temperature to zero or a tuned low value and fix inference settings per clinical task.
+  comparator: Default vendor temperature and sampling settings
+  technology:
+  - generative_llm
+  aim: Reduce output variability and hallucination in clinical tasks
+  variants:
+  - Temperature zero
+  - Task-tuned low temperature
+  - Fixed top-p and other sampling parameters
+  proposed_by_studies: 15
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T087
+  key: safety_alignment
+  family: model_choice_adaptation
+  question: Should we require safety alignment training on top of the base model?
+  control: Apply RLHF, preference optimization, or safety-constrained rewards targeting clinical safety rules.
+  comparator: Base or instruction-tuned model without safety-specific alignment
+  technology:
+  - generative_llm
+  aim: Reduce unsafe, harmful, or rule-violating clinical outputs
+  variants:
+  - RLHF
+  - Direct preference optimization
+  - Safety-constrained reward models
+  proposed_by_studies: 10
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T088
+  key: dl_image_reconstruction
+  family: model_choice_adaptation
+  question: Should we adopt deep learning image reconstruction to enable lower-dose or faster imaging protocols?
+  control: Use deep learning reconstruction, denoising, or synthesis to run lower-dose or shorter acquisition protocols.
+  comparator: Current standard-dose or standard-duration protocol with conventional reconstruction
+  technology:
+  - imaging_diagnostic
+  aim: Reduce radiation dose and scan time while preserving diagnostic image quality
+  variants:
+  - DL reconstruction for low-dose CT
+  - DL-accelerated MRI vs compressed sensing
+  - Denoising
+  - Image synthesis
+  - Reconstruction-only comparison at matched acquisition settings
+  proposed_by_studies: 10
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T089
+  key: hybrid_rule_model_pipeline
+  family: model_choice_adaptation
+  question: Should we pair the AI model with a rule-based or specialized-model layer rather than rely on one end-to-end
+    model?
+  control: Combine rule-based NLP or specialized models with a general model in a staged or routed pipeline.
+  comparator: Single end-to-end general model
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Improve accuracy, reliability, and efficiency on defined subtasks
+  variants:
+  - Rule-based pre-filter then LLM
+  - Router to specialized models
+  - Staged extraction pipeline
+  proposed_by_studies: 7
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T090
+  key: training_data_curation_selection
+  family: model_choice_adaptation
+  question: Should we invest in systematic curation and informed selection of training cases rather than using available
+    or randomly chosen data?
+  control: Audit label consistency, handle label noise, deduplicate, enrich clinically important cases, and select
+    cases for expert annotation by model uncertainty.
+  comparator: Available or randomly selected data with only basic cleaning, same labeling budget
+  technology:
+  - any_ai
+  aim: Improve accuracy and robustness per unit of annotation effort by reducing noise and redundancy
+  variants:
+  - Label consistency review
+  - Noise-robust label handling
+  - Deduplication
+  - Enrichment of clinically important cases
+  - Active learning by uncertainty or informativeness
+  - Automated vs manual expert curation
+  proposed_by_studies: 15
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T091
+  key: no_code_automl
+  family: model_choice_adaptation
+  question: Should we let clinicians build their own models with no-code AutoML platforms?
+  control: Provide code-free AutoML platforms so clinicians can label data and train task-specific models.
+  comparator: Data-scientist-led conventional development for the same clinical task
+  technology:
+  - imaging_diagnostic
+  - predictive_risk
+  aim: Enable faster, lower-cost development of task-specific models by clinicians
+  variants:
+  - Vendor cloud AutoML for imaging
+  - Clinician-led labeling and training
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T092
+  key: llm_plain_language_rewrite_of_documents
+  family: language_literacy_handling
+  question: Should we use an LLM to rewrite existing patient materials, clinical reports and research summaries
+    into plain language for patients?
+  control: Use an LLM to rewrite existing patient education, discharge summaries, radiology or pathology reports,
+    and research abstracts into plain-language versions for patients.
+  comparator: Original, unsimplified clinical or research documents
+  technology:
+  - generative_llm
+  aim: Improve patient understanding of existing clinical and research documents without losing accuracy
+  variants:
+  - Share alongside the original rather than instead of it
+  - Rewrite society-vetted materials instead of generating new content
+  - Lay summaries of research abstracts and trial registry entries
+  - Versions for non-specialist clinicians
+  proposed_by_studies: 77
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T093
+  key: prompt_reading_level_or_audience
+  family: language_literacy_handling
+  question: Should our prompts tell the LLM the exact reading grade level or lay audience to write patient-facing
+    text for?
+  control: Specify a target grade level, readability formula, plain-language rules, or named lay audience in prompts
+    for patient-facing LLM output.
+  comparator: Default prompt with no reading-level or audience instruction
+  technology:
+  - generative_llm
+  aim: Bring patient-facing LLM output to a readable level for lay patients
+  variants:
+  - Explicit 5th-8th grade target
+  - Naming a readability formula
+  - Sentence or word length limits
+  - Audience persona such as patient, child, or carer
+  - Separate clinician and patient versions
+  proposed_by_studies: 91
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T094
+  key: personalize_to_individual_literacy
+  family: language_literacy_handling
+  question: Should the AI adapt its language, format and depth to each patient's literacy, age or stated preference?
+  control: Adjust AI output reading level, depth, format and tone to each user's literacy, education, age or preference,
+    including on-request simplification.
+  comparator: One fixed text-only output for all users
+  technology:
+  - generative_llm
+  - speech_ambient
+  aim: Make AI tools usable for low-literacy, older or cognitively impaired patients
+  variants:
+  - Follow-up 'explain more simply' request after first answer, monitoring information quality
+  - Voice input and output
+  - Video or visual aids
+  - Adaptive explanation depth
+  proposed_by_studies: 38
+  proposed_by_commentaries: 7
+  status: machine_draft
+- id: T095
+  key: machine_translation_vs_human_translators
+  family: language_literacy_handling
+  question: Should we use LLM or machine translation for written patient materials and questionnaires instead of
+    professional translators?
+  control: Use machine-generated (LLM or MT) translation of written patient materials, results and questionnaires,
+    with back-translation or human checks.
+  comparator: Professional human translation of the same written materials
+  technology:
+  - generative_llm
+  aim: Deliver accurate translated materials faster and at lower cost
+  variants:
+  - Human or back-translation check
+  - AI as one forward translation alongside one human translation
+  - Prompts augmented with medical term definitions, synonyms and multilingual variants
+  - Structured medical-translator prompt
+  proposed_by_studies: 25
+  proposed_by_commentaries: 1
+  status: machine_draft
+- id: T096
+  key: preferred_language_patient_tools
+  family: language_literacy_handling
+  question: Should we offer our patient chatbots, voice agents and AI outputs in patients' preferred languages rather
+    than English only?
+  control: Deploy patient-facing AI chatbots, voice agents and outputs in patients' preferred languages, with dialect
+    tolerance and bilingual review.
+  comparator: English-only AI tools and outputs
+  technology:
+  - generative_llm
+  - speech_ambient
+  aim: Improve access and comprehension for patients with limited English proficiency
+  variants:
+  - Accent and dialect tolerance
+  - Language-switching instructions
+  - LLM translation with bilingual review
+  proposed_by_studies: 21
+  proposed_by_commentaries: 8
+  status: machine_draft
+- id: T097
+  key: llm_consent_form_simplification
+  family: language_literacy_handling
+  question: Should we use an LLM to simplify existing informed consent forms and trial key information?
+  control: Use an LLM to simplify existing informed consent forms and trial key-information sections to a lay reading
+    level while preserving all risk disclosures.
+  comparator: The same consent documents left unchanged
+  technology:
+  - generative_llm
+  aim: Improve patient understanding of consent while keeping required disclosures
+  variants:
+  - Clinical and medicolegal verification of risk disclosures
+  - Trial consent key-information sections
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T098
+  key: readability_fine_tuned_model
+  family: language_literacy_handling
+  question: Should we fine-tune or train a dedicated plain-language model instead of relying on prompts?
+  control: Fine-tune or reinforcement-train a model on readability targets for patient-facing plain-language output.
+  comparator: Prompting a general-purpose LLM
+  technology:
+  - generative_llm
+  aim: Achieve more reliable readability targets than prompting alone
+  variants:
+  - RLHF on readability objectives
+  - Training on simplified parallel text
+  proposed_by_studies: 11
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T099
+  key: cultural_adaptation
+  family: language_literacy_handling
+  question: Should we culturally adapt our AI chatbot content and design for the communities we serve?
+  control: Adapt AI content, idioms, interaction style and design to local cultural norms and beliefs with target-community
+    input.
+  comparator: Same AI tool with generic, non-culturally-adapted content and design
+  technology:
+  - generative_llm
+  aim: Improve acceptability, trust and engagement among specific communities
+  variants:
+  - Community co-design
+  - Local idioms and communication styles
+  proposed_by_studies: 12
+  proposed_by_commentaries: 6
+  status: machine_draft
+- id: T100
+  key: llm_rephrase_clinician_language
+  family: language_literacy_handling
+  question: Should we have an LLM rephrase clinician notes and replies to remove stigmatizing language and improve
+    empathy?
+  control: Use an LLM to flag stigmatizing language and suggest rewrites of clinician notes and messages for respect
+    and empathy, preserving medical content.
+  comparator: Unassisted clinician-written notes and replies
+  technology:
+  - generative_llm
+  aim: Reduce stigmatizing language and improve emotional tone of patient communication
+  variants:
+  - Stigmatizing language detection in EHR notes
+  - Empathy rewriting of patient portal replies
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T101
+  key: non_english_input_processing
+  family: language_literacy_handling
+  question: Should we machine-translate non-English clinical text into English before LLM processing, rather than
+    processing it natively?
+  control: Machine-translate non-English clinical inputs into English before LLM extraction or reasoning.
+  comparator: Direct native-language processing by a multilingual or local-language-adapted LLM
+  technology:
+  - generative_llm
+  aim: Improve accuracy of LLM extraction and reasoning on non-English clinical text
+  variants:
+  - English pivot translation before inference
+  - Comparison against local-language or language-adapted LLM
+  - Comparison against English-centred LLM on native text
+  proposed_by_studies: 30
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T102
+  key: expert_review_of_simplified_text
+  family: language_literacy_handling
+  question: Should clinicians or legal experts review LLM-simplified patient documents before release?
+  control: Require clinician, and for consent legal, review of LLM-simplified text for accuracy and completeness
+    before patient use.
+  comparator: Releasing LLM-simplified text without expert review
+  technology:
+  - generative_llm
+  aim: Prevent errors and omissions in simplified patient documents
+  variants:
+  - Clinician review
+  - Legal review for consent documents
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T103
+  key: automated_readability_checks
+  family: language_literacy_handling
+  question: Should we build automated readability scoring into our AI output pipeline?
+  control: Score AI outputs with readability indices or plain-language classifiers before release, flagging outputs
+    that miss target reading levels.
+  comparator: No automated readability scoring
+  technology:
+  - generative_llm
+  aim: Detect outputs that miss target reading levels before patients receive them
+  variants:
+  - Readability formulas
+  - Plain-language classifiers
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T104
+  key: per_language_validation
+  family: language_literacy_handling
+  question: Should we validate model performance separately in each non-English language before deploying?
+  control: Test each language separately with native-language prompts and translated reference documents before
+    patient deployment.
+  comparator: Assuming English validation transfers to other languages
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Catch language-specific performance drops before patients are affected
+  variants:
+  - Native-language prompts
+  - Translated reference documents
+  proposed_by_studies: 0
+  proposed_by_commentaries: 4
+  status: machine_draft
+- id: T105
+  key: asr_codeswitch_normalization
+  family: language_literacy_handling
+  question: Should we add an LLM correction layer for accented or code-switched speech and text before it reaches
+    the record?
+  control: Post-process ASR transcripts and code-switched text with an LLM and bilingual glossaries before EHR field
+    or terminology mapping.
+  comparator: Raw ASR output or unnormalized text mapped directly
+  technology:
+  - speech_ambient
+  - generative_llm
+  aim: Reduce transcription and mapping errors for accented or multilingual speakers
+  variants:
+  - Bilingual glossaries
+  - Terminology mapping after normalization
+  proposed_by_studies: 13
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T106
+  key: simplification_only_scope
+  family: language_literacy_handling
+  question: Should we restrict the patient-facing LLM tool to rewording text without offering clinical interpretation?
+  control: Constrain the patient LLM tool to simplifying wording only, prohibiting clinical interpretation or advice.
+  comparator: LLM tool that also interprets findings or gives advice
+  technology:
+  - generative_llm
+  aim: Prevent unsafe clinical advice while still improving comprehension
+  variants: []
+  proposed_by_studies: 1
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T107
+  key: risk_targeted_allocation
+  family: human_workflow_design
+  question: Should model predictions decide which patients or time slots get limited outreach, review, follow-up
+    intensity or staff time, rather than uniform allocation?
+  control: Use predictive risk scores, case-finding flags or demand forecasts to direct outreach, screening, follow-up
+    intensity, care pathways and staffing, sized to capacity.
+  comparator: Universal, random, first-come, uniform or historical-average allocation
+  technology:
+  - predictive_risk
+  - generative_llm
+  aim: Concentrate scarce staff and services on highest-risk or highest-yield patients and periods
+  variants:
+  - Target outreach, screening or pharmacist review to highest-risk patients
+  - Assign follow-up or treatment intensity and care pathway by predicted risk
+  - NLP or ML case-finding on reports with chart review and coordinated outreach or referral
+  - ML demand, duration or length-of-stay forecasts with optimization for shifts, appointments and OR schedules,
+    compared with historical-average staffing
+  proposed_by_studies: 57
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T108
+  key: llm_extraction_human_verification
+  family: human_workflow_design
+  question: Should the LLM do first-pass chart abstraction or coding with staff verifying it, rather than fully
+    manual or fully automated work?
+  control: Use the LLM for first-pass data extraction, abstraction, terminology mapping or code assignment, with
+    trained staff confirming or correcting outputs.
+  comparator: Fully manual or double-manual abstraction and coding, or unreviewed automated output
+  technology:
+  - generative_llm
+  aim: Cut abstraction and coding effort while keeping data and billing accuracy
+  variants:
+  - Staff confirm every extracted field
+  - Humans review only discordant cases instead of double manual abstraction
+  - AI-suggested ICD, DRG, CPT or SNOMED codes verified by human coders
+  - Annotation and terminology mapping with human confirmation
+  proposed_by_studies: 39
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T109
+  key: expert_review_llm_artifacts
+  family: human_workflow_design
+  question: Should experts review LLM-generated code, research documents, evidence appraisals and teaching materials
+    before use, rather than using them unreviewed?
+  control: Require domain experts to review, fact-check and refine LLM-drafted code, queries, rules, evidence appraisals,
+    research documents and education content before use.
+  comparator: Using LLM-generated artifacts without expert review
+  technology:
+  - generative_llm
+  aim: Prevent errors in LLM-produced technical, research and educational artifacts
+  variants:
+  - Analysis code, phenotype queries and decision rules
+  - Guideline syntheses, IRB and research documents
+  - LLM first-pass triage for systematic review or decision aid appraisal with expert confirmation
+  - Faculty edit and select LLM-generated questions, vignettes, concept maps and trainee feedback
+  - 'Separate adoption comparison: reviewed LLM drafts versus experts producing artifacts from scratch'
+  proposed_by_studies: 42
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T110
+  key: llm_first_pass_screen_human_confirm
+  family: human_workflow_design
+  question: Should an LLM prescreen or rank records first, with humans reviewing only flagged or top-ranked cases
+    rather than every record?
+  control: Use an LLM or NLP to prescreen, triage or rank records, then have clinicians review flagged or top-ranked
+    cases.
+  comparator: Full manual review of all records by humans
+  technology:
+  - generative_llm
+  aim: Reduce manual review workload without missing eligible or positive cases
+  variants:
+  - LLM as first-pass screener with human review of flagged cases
+  - Highest-ranked records sent to reviewers
+  - 'Related scoring workflow: humans confirm LLM-generated scores, or LLM as second assessor of human scores, compared
+    with fully manual scoring'
+  proposed_by_studies: 31
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T111
+  key: review_patient_facing_content
+  family: human_workflow_design
+  question: Should a clinician or qualified linguist approve AI-generated patient materials, messages and translations
+    before patients see them?
+  control: Require clinician, bilingual professional or health literacy expert review and editing of AI-generated
+    patient materials, translations, consent text and responses before release.
+  comparator: Releasing AI-generated content to patients without human review
+  technology:
+  - generative_llm
+  aim: Prevent inaccurate, unsafe or unreadable content and translations reaching patients
+  variants:
+  - Clinician review of patient responses and consent text before release (drafting itself covered in llm_draft_documentation)
+  - Professional linguist post-editing of AI translations
+  - Health literacy expert review of patient education materials
+  proposed_by_studies: 28
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T112
+  key: embed_ai_in_workflow
+  family: human_workflow_design
+  question: Should AI output be embedded in existing clinical systems rather than provided through a standalone
+    tool?
+  control: Embed AI outputs in the EHR, LIS or nursing systems clinicians already use, displayed where the relevant
+    task is performed.
+  comparator: Standalone tools outside routine clinical systems
+  technology:
+  - any_ai
+  aim: Increase uptake and timely action on AI output while reducing clinician burden
+  variants:
+  - 'Delivery choice: scheduled or event-triggered push versus on-demand'
+  - 'Adoption default: AI use set default-on versus opt-in'
+  - 'Implementation practice: co-design with end users, with clinician verification'
+  proposed_by_studies: 32
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T113
+  key: targeted_exception_review
+  family: human_workflow_design
+  question: Should reviewers check only flagged, discordant or high-risk AI outputs rather than every output?
+  control: Route only flagged, model-disagreement, low-quality or predicted-harm outputs to human review, tiering
+    and escalating, with review capacity sized to queue.
+  comparator: Uniform human review of all AI outputs
+  technology:
+  - any_ai
+  aim: Focus limited reviewer time on outputs most likely to be wrong or harmful
+  variants:
+  - Review triggered by model disagreement or low quality
+  - Predicted clinician disagreement or harm sets review-required, quick-access or auto-include tiers
+  - Escalation to senior clinicians
+  proposed_by_studies: 20
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T114
+  key: clinician_led_ai_decision_support
+  family: human_workflow_design
+  question: Should clinicians keep final decision authority, validating AI or LLM suggestions as a second opinion,
+    rather than letting AI decide?
+  control: Use AI or LLM suggestions as a second opinion to challenge differentials and orders, with clinicians
+    validating all suggestions and making the final decision.
+  comparator: AI-led decisions or AI acting alone
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Gain AI benefit while avoiding automation bias and unchecked AI errors
+  variants:
+  - 'Presentation order, holding clinician authority constant: clinician assesses first then sees AI, versus AI-first
+    presentation'
+  - LLM as diagnostic second opinion broadening differentials
+  - AI framed explicitly as decision support
+  - 'Separate adoption comparison: clinician with AI versus clinician without AI'
+  proposed_by_studies: 17
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T115
+  key: clinician_mediated_patient_ai
+  family: human_workflow_design
+  question: Should patient-facing AI chatbots and prediction estimates be offered with clinician supervision and
+    explanation rather than without clinician support?
+  control: Offer AI chatbots or risk and prognosis estimates alongside clinician-led consent, counseling, therapy
+    or shared decision-making, with clinician supervising and explaining.
+  comparator: Unsupervised patient-facing AI tools or predictions shown without clinician support
+  technology:
+  - generative_llm
+  - predictive_risk
+  aim: Improve patient understanding and decisions while keeping clinician accountability and avoiding unwanted
+    disclosure
+  variants:
+  - Chatbot supplementing consent or counseling
+  - Generative tool as therapy adjunct
+  - Predictions shared only with patients who want them
+  - 'Separate adoption comparison: clinician-supported AI versus clinician-only care'
+  proposed_by_studies: 26
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T116
+  key: ai_independent_reader
+  family: human_workflow_design
+  question: Should AI take an independent reading role in screening, as an autonomous point-of-care test or as a
+    second or backup reader?
+  control: Use AI as an autonomous diabetic retinopathy test in primary care, or as an independent second or backup
+    reader in breast screening.
+  comparator: Specialist-read screening or standard two-radiologist double reading
+  technology:
+  - imaging_diagnostic
+  aim: Increase screening access and reduce reader workload without losing detection accuracy
+  variants:
+  - Autonomous AI diabetic eye exam at primary care visit, replacing specialist referral
+  - AI replacing the second reader in double-read mammography
+  - AI as backup reader added to human reading, not replacing a reader
+  proposed_by_studies: 16
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T117
+  key: ai_queue_prioritization
+  family: human_workflow_design
+  question: Should AI triage incoming work, ordering imaging worklists by urgency and routing patient messages and
+    reports to appropriate staff?
+  control: Use AI to prioritize imaging worklists and stroke workflows by urgency, and to route patient messages,
+    complaints and incident reports by risk tier to appropriate staff.
+  comparator: First-in-first-out reading order or manual triage and assignment
+  technology:
+  - imaging_diagnostic
+  - generative_llm
+  aim: Speed action on urgent cases and messages and reduce triage workload
+  variants:
+  - 'Urgency ordering: suspected-positive studies read first, accounting for reader operating-point shift, versus
+    first-in-first-out'
+  - Stroke workflow prioritization
+  - 'Routing: messages, complaints and incident reports assigned to staff or expert templates versus manual assignment'
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T118
+  key: llm_draft_documentation
+  family: human_workflow_design
+  question: Should the LLM draft notes, reports and patient message replies for clinicians to edit and sign, rather
+    than clinicians writing from scratch?
+  control: Generate LLM drafts of patient message replies, discharge summaries and report impressions that clinicians
+    edit and sign.
+  comparator: Clinician-authored documentation without AI drafts, with sign-off in both
+  technology:
+  - generative_llm
+  - speech_ambient
+  aim: Reduce documentation burden while keeping accuracy and clinician accountability
+  variants:
+  - Patient message reply drafts (release approval governed by review_patient_facing_content)
+  - Discharge summary drafts
+  - Radiology report impression drafts
+  proposed_by_studies: 15
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T119
+  key: human_corrected_segmentation
+  family: human_workflow_design
+  question: Should clinicians review and correct AI segmentations and image annotations before clinical use?
+  control: Have clinicians review and edit AI-generated contours, segmentations, landmarks and karyotypes before
+    clinical use.
+  comparator: Fully automatic AI segmentation or analysis without human correction
+  technology:
+  - imaging_diagnostic
+  aim: Catch segmentation errors while saving time over manual contouring
+  variants:
+  - Radiotherapy contour editing
+  - Landmark correction
+  - Karyotype review
+  proposed_by_studies: 10
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T120
+  key: pharmacist_mediated_cds
+  family: human_workflow_design
+  question: Should AI and decision support medication alerts go to a pharmacist team first rather than straight
+    to prescribers?
+  control: Route AI or CDS medication alerts to pharmacists who review, refine and contact prescribers or patients.
+  comparator: Alerts delivered directly to prescribers without pharmacist review
+  technology:
+  - predictive_risk
+  - any_ai
+  aim: Reduce alert fatigue and improve action on medication safety alerts
+  variants:
+  - Pharmacist contacts prescriber
+  - Pharmacist contacts patient directly
+  proposed_by_studies: 15
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T121
+  key: prediction_with_response_protocol
+  family: human_workflow_design
+  question: Should a predictive alert be paired with a defined response protocol, nudge or documentation tool rather
+    than delivered alone?
+  control: Pair predictive alerts with a defined clinical response protocol, behavioral nudges, team rounding process
+    or documentation templates.
+  comparator: Delivering the risk prediction alone without a linked action pathway
+  technology:
+  - predictive_risk
+  aim: Turn risk predictions into consistent clinical action and better outcomes
+  variants:
+  - Clinical response protocol
+  - Behavioral nudges prompting the linked action
+  - Team rounding process
+  - Documentation templates
+  proposed_by_studies: 15
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T122
+  key: use_context_threshold_setting
+  family: alert_design
+  question: Should we set the model's alert threshold for our clinical use, costs and team capacity rather than
+    accept the vendor default?
+  control: Choose the alert cutpoint on local data using clinical costs, false-alarm tolerance, prevalence, lead
+    time and follow-up capacity.
+  comparator: Vendor-fixed, default (e.g., 0.5) or purely statistical threshold
+  technology:
+  - predictive_risk
+  aim: Balance missed cases against false alarms and keep alert volume actionable
+  variants:
+  - Tune for sensitivity versus high positive predictive value
+  - Match flagged volume to staff, clinic or outreach capacity
+  - Predefined alert budget per clinician-shift or patient-day
+  - Alert-to-action ratio targets
+  - Prevalence-aware cutpoint selection for rare outcomes
+  proposed_by_studies: 34
+  proposed_by_commentaries: 8
+  status: machine_draft
+- id: T123
+  key: interruption_level
+  family: alert_design
+  question: Should the AI alert interrupt the clinician with a pop-up or hard stop, or appear passively in the chart?
+  control: Present the AI alert interruptively, as a pop-up, hard stop or mandatory pause, rather than passively
+    in the chart.
+  comparator: Passive or on-demand display of the same alert
+  technology:
+  - any_ai
+  aim: Get attention for critical findings while limiting alert fatigue and workflow disruption
+  variants:
+  - Interruptive pop-up
+  - Hard stop
+  - Mandatory pause or override prompt for high-risk decisions only
+  proposed_by_studies: 20
+  proposed_by_commentaries: 5
+  status: machine_draft
+- id: T124
+  key: tiered_severity_alerts
+  family: alert_design
+  question: Should we grade alerts into severity tiers instead of a single yes/no flag?
+  control: Present AI output as graded risk or priority tiers rather than a single binary flag.
+  comparator: Single binary alert at one threshold
+  technology:
+  - predictive_risk
+  - any_ai
+  aim: Help clinicians prioritize patients and reduce fatigue from uniform alerts
+  variants:
+  - Traffic-light or multi-level severity
+  - Continuous score to rank within tiers
+  - Tiering by acuity, confidence margin and actionability
+  proposed_by_studies: 17
+  proposed_by_commentaries: 5
+  status: machine_draft
+- id: T125
+  key: population_stratified_thresholds
+  family: alert_design
+  question: Should we use different alert thresholds for different sites or patient subgroups?
+  control: Set separate alert cutpoints by site, department or patient subgroup.
+  comparator: One common cutpoint applied across all sites and subgroups
+  technology:
+  - predictive_risk
+  aim: Improve accuracy and fairness across sites and vulnerable or understudied groups
+  variants:
+  - Site or department thresholds
+  - More conservative thresholds for paediatric, vulnerable or understudied groups
+  proposed_by_studies: 11
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T126
+  key: patient_specific_thresholds
+  family: alert_design
+  question: Should alert thresholds adapt to each patient's own baseline and risk factors?
+  control: Set alert thresholds from each patient's baseline, medications and cumulative risk.
+  comparator: Fixed population cutpoint for all patients
+  technology:
+  - predictive_risk
+  aim: Reduce false alarms and missed deterioration for patients with atypical baselines
+  variants:
+  - Adaptive individual baseline thresholds
+  - Medication- or cumulative-risk-adjusted thresholds
+  proposed_by_studies: 0
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T127
+  key: automatic_escalation_routing
+  family: alert_design
+  question: Should AI-detected high-risk findings automatically go to a named clinician or team?
+  control: Automatically route high-risk AI detections in real time to defined recipients through established escalation
+    pathways.
+  comparator: No automatic notification, or alert visible to whoever opens the chart
+  technology:
+  - any_ai
+  aim: Speed response to high-risk findings and ensure someone owns each alert
+  variants:
+  - Escalation from home or wearable monitoring to clinicians, caregivers or emergency services
+  - Routing to primary team, rapid response or multidisciplinary group
+  - Role-tailored alert content
+  - Central monitoring service
+  proposed_by_studies: 18
+  proposed_by_commentaries: 6
+  status: machine_draft
+- id: T128
+  key: action_linked_ehr_advisory
+  family: alert_design
+  question: Should the AI advisory include a recommended action or linked order set?
+  control: Attach a specific recommended action, order set or protocol link to the model-triggered advisory.
+  comparator: Same advisory showing risk without action recommendation or link
+  technology:
+  - predictive_risk
+  aim: Turn predictions into timely, evidence-based clinical actions
+  variants:
+  - Best-practice advisory with order set
+  - Linked protocol or care pathway
+  - Pre-go-live specification of the expected action
+  proposed_by_studies: 28
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T129
+  key: persistence_before_alert
+  family: alert_design
+  question: Should an alert fire only after the risk signal persists or trends upward for a set time?
+  control: Require sustained, trending or repeated model signals over a time window before issuing an alert.
+  comparator: Alerting on every single prediction or reading crossing the threshold
+  technology:
+  - predictive_risk
+  aim: Reduce false alarms from transient fluctuations
+  variants:
+  - Minimum duration of signal
+  - Output smoothing
+  - Repeated signal confirmation
+  proposed_by_studies: 8
+  proposed_by_commentaries: 1
+  status: machine_draft
+- id: T130
+  key: contextual_rule_suppression
+  family: alert_design
+  question: Should we suppress alerts when context shows they are not needed, such as patients already treated or
+    scheduled?
+  control: Use rules or context gates to suppress alerts for already-treated, contraindicated, scheduled, or non-crisis
+    situations.
+  comparator: Firing every alert that meets the threshold or keyword match
+  technology:
+  - predictive_risk
+  - generative_llm
+  aim: Cut redundant, low-yield alerts and alert fatigue
+  variants:
+  - Exclude already-treated, contraindicated or scheduled patients
+  - Show only high-yield alerts
+  - Dialogue-context gating of conversational AI safety interventions
+  proposed_by_studies: 10
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T131
+  key: active_notification_channel
+  family: alert_design
+  question: Should AI flags be pushed to clinicians by phone, text or email rather than waiting in the EHR?
+  control: Push AI findings to clinicians via mobile notifications, texts or emails.
+  comparator: Model output available only passively in the EHR or worklist
+  technology:
+  - any_ai
+  aim: Speed clinician awareness and increase follow-through on flagged patients
+  variants:
+  - Mobile push with secure group messaging or image viewing
+  - Emails or patient lists
+  - Text messages
+  proposed_by_studies: 14
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T132
+  key: second_ai_false_alert_filter
+  family: alert_design
+  question: Should we add a second AI layer, such as an LLM reading notes, to screen out false alerts before clinicians
+    see them?
+  control: Pass primary model alerts through a second AI model to suppress likely false positives.
+  comparator: Primary model alerts shown without secondary filtering
+  technology:
+  - generative_llm
+  - predictive_risk
+  aim: Raise alert precision and reduce false alarms reaching clinicians
+  variants:
+  - LLM review of clinical notes
+  - AI adjudication of alerts
+  proposed_by_studies: 7
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T133
+  key: patient_facing_ai_messages
+  family: alert_design
+  question: Should patient alerts and reminders be personalized by AI rather than generic and schedule-based?
+  control: Personalize patient messages with AI-tailored content or context-triggered timing.
+  comparator: Generic, schedule-based patient reminders
+  technology:
+  - any_ai
+  aim: Improve patient adherence and self-management
+  variants:
+  - AI-tailored content with fixed schedule
+  - Context-triggered warnings with standard content
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T134
+  key: automated_qa_alerts
+  family: alert_design
+  question: Should we run automated AI quality and safety checks that alert staff to errors or missed findings?
+  control: Run automated AI checks during procedures or on completed work and alert staff to deviations or missed
+    findings.
+  comparator: Manual quality review or no automated check
+  technology:
+  - imaging_diagnostic
+  - any_ai
+  aim: Catch errors and missed findings sooner
+  variants:
+  - Real-time alerts during procedures
+  - Retrospective checks on completed work
+  proposed_by_studies: 16
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T135
+  key: out_of_scope_error_warnings
+  family: alert_design
+  question: Should the AI warn users when a case is outside its intended use or its output looks inconsistent?
+  control: Flag out-of-scope inputs and likely errors or inconsistencies in AI outputs to users.
+  comparator: No scope or output-quality warnings shown to users
+  technology:
+  - any_ai
+  aim: Prevent reliance on AI outputs where the model is unreliable
+  variants:
+  - Out-of-intended-use input flags only
+  - Output inconsistency or likely-error warnings only
+  - Both input and output warnings
+  proposed_by_studies: 0
+  proposed_by_commentaries: 4
+  status: machine_draft
+- id: T136
+  key: alert_log_review_retirement
+  family: alert_design
+  question: Should we routinely review override data and alert logs to redesign or retire low-value alerts?
+  control: Review alert logs and override comments iteratively; redesign or retire alerts without measurable benefit.
+  comparator: Alert rules left unchanged after go-live
+  technology:
+  - any_ai
+  aim: Keep alerts useful and reduce accumulated alert fatigue
+  variants:
+  - Override comment review
+  - Retiring gates without measured benefit
+  proposed_by_studies: 0
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T137
+  key: multimodal_vs_single_input
+  family: input_data_handling
+  question: Should we give the AI multiple kinds of input, such as images, audio or video alongside text, rather
+    than one data type?
+  control: Combine relevant modalities such as images, clinical text, audio, video, labs or social determinants
+    as model inputs.
+  comparator: Text-only, image-only or single-modality input
+  technology:
+  - multimodal_foundation
+  - generative_llm
+  - predictive_risk
+  - speech_ambient
+  aim: Improve diagnostic and predictive accuracy by capturing information missing from a single data source
+  variants:
+  - Images plus history or report text into a multimodal LLM
+  - Fusion of imaging, labs, text, audio or SDOH in predictive models
+  - Paralinguistic, audio or video signals added to text tools
+  - Consultation audio or dictation fed directly to multimodal LLM or ASR
+  proposed_by_studies: 65
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T138
+  key: input_representation_format
+  family: input_data_handling
+  question: Should we change the format of the data we give the LLM, such as narrative text instead of raw files,
+    JSON or images?
+  control: Choose the input format deliberately, such as plain or narrative text, structured text from documents,
+    or text findings from images.
+  comparator: 'Default format: file uploads, raw FHIR JSON, original documents or raw images'
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  aim: Improve LLM comprehension and accuracy by presenting data in a form the model handles well
+  variants:
+  - Plain text instead of spreadsheet upload
+  - FHIR serialized as clinical narrative, chosen by model size and task
+  - Guideline tables and flowcharts converted to standardized text
+  - Expert or image-model findings supplied as text instead of raw images
+  - Lossless 3D volumes with overlays instead of 2D renders
+  proposed_by_studies: 29
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T139
+  key: clean_correct_clinical_text
+  family: input_data_handling
+  question: Should we clean and correct clinical text before sending it to the LLM, rather than pass it uncorrected?
+  control: Correct spelling, abbreviation and transcription errors, normalize terms and remove boilerplate before
+    LLM input, keeping clinical content otherwise unchanged.
+  comparator: Same text, uncorrected and uncleaned
+  technology:
+  - generative_llm
+  - speech_ambient
+  aim: Reduce errors and noise propagated from messy or mistranscribed inputs
+  variants:
+  - LLM or dictionary correction of spelling and abbreviations
+  - ASR error correction
+  - Boilerplate removal and normalization
+  proposed_by_studies: 22
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T140
+  key: input_content_scope
+  family: input_data_handling
+  question: Should we give the LLM the full source content, or a condensed version such as a summary, abstract or
+    extracted sections?
+  control: 'Match input scope to the task: supply full text where details matter, or summaries, abstracts or extracted
+    relevant sections where length adds noise.'
+  comparator: 'Opposite scope: full record or article versus summary, excerpt or abstract'
+  technology:
+  - generative_llm
+  aim: Balance completeness against noise and lost details in long inputs
+  variants:
+  - Summaries or extracted snippets of long records
+  - Prefiltering to relevant sections
+  - Full-text articles instead of abstracts for literature screening, extraction and summarization
+  proposed_by_studies: 32
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T141
+  key: chunk_long_documents
+  family: input_data_handling
+  question: Should we split long documents into chunks processed iteratively or by retrieval, rather than send them
+    in one long-context prompt?
+  control: Split long records or documents into chunks processed sequentially or via retrieval, preserving all content.
+  comparator: Same full content in a single long-context prompt
+  technology:
+  - generative_llm
+  aim: Prevent details being missed in long inputs that exceed or strain the context window
+  variants:
+  - Sequential chunk processing with aggregation
+  - Retrieval over chunked records
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T142
+  key: llm_structured_extraction
+  family: input_data_handling
+  question: Should we use an LLM to turn free-text notes and reports into structured, coded data instead of manual
+    abstraction?
+  control: Use an LLM to extract structured variables from free text, optionally mapped to standard terminologies,
+    for downstream use.
+  comparator: Manual chart abstraction, manual code mapping or structured EHR fields alone
+  technology:
+  - generative_llm
+  aim: Make free-text information usable for models, registries, quality measures and research at scale
+  variants:
+  - Extraction for registries, quality measures, surveillance
+  - Mapping to OMOP, LOINC, SNOMED CT, FHIR or staging codes
+  - Embedding-based terminology mapping
+  proposed_by_studies: 44
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T143
+  key: image_preprocessing
+  family: input_data_handling
+  question: Should we preprocess images, by enhancing, normalizing, re-windowing or cropping them, before the diagnostic
+    AI reads them?
+  control: Apply enhancement, denoising, cross-site harmonization, optimized CT windowing or region-of-interest
+    cropping and frame filtering before inference or training.
+  comparator: Same images without the preprocessing step, same model and acquisition
+  technology:
+  - imaging_diagnostic
+  aim: Improve accuracy, efficiency and generalization across scanners, sites and image quality
+  variants:
+  - AI denoising or artifact removal
+  - Test-time style transfer or stain normalization
+  - Embedding harmonization
+  - Optimized or multi-window Hounsfield unit encoding
+  - Patient-specific HU thresholds
+  - ROI cropping or background removal
+  - Frame or tile filtering
+  proposed_by_studies: 23
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T144
+  key: add_patient_context_to_prompt
+  family: input_data_handling
+  question: Should we include patient clinical data and context in LLM prompts rather than the question or complaint
+    alone?
+  control: Add relevant history, demographics, vitals, labs, exam findings, reports or prior records to LLM prompts.
+  comparator: Query, chief complaint or image with no added clinical context
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  aim: Improve triage and diagnostic accuracy by giving the model the information clinicians use
+  variants:
+  - Demographics and document metadata
+  - Vitals, labs and exam findings for triage
+  - Prior notes and reports
+  proposed_by_studies: 30
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T145
+  key: offload_computation_from_llm
+  family: input_data_handling
+  question: Should calculators, rules, vision tools or dedicated predictive models produce scores, measurements
+    and predictions, with the LLM only extracting inputs or explaining results?
+  control: Compute scores and measurements with calculators, rules or vision tools, and predictions with dedicated
+    models; the LLM extracts inputs or explains results.
+  comparator: LLM calculates scores or predicts outcomes directly from raw data or text
+  technology:
+  - generative_llm
+  - agentic
+  aim: Prevent calculation errors and inconsistent predictions by the LLM
+  variants:
+  - Precomputed scores passed to LLM as structured payload
+  - Vision tools generate measurements for the LLM
+  - LLM extracts factors; rule-based calculator computes score
+  - LLM extracts features; separate predictive model predicts
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T146
+  key: input_quality_screening
+  family: input_data_handling
+  question: Should we automatically screen inputs for quality and missing data before they reach the model, rather
+    than use them as-is?
+  control: Run automated quality and missing-data checks on inputs before training and inference; flag, reject,
+    reroute or clean poor inputs.
+  comparator: No quality check, default or ad hoc manual cleaning
+  technology:
+  - any_ai
+  - imaging_diagnostic
+  - predictive_risk
+  aim: Prevent unreliable outputs caused by poor-quality or incomplete inputs
+  variants:
+  - Image quality control at acquisition
+  - Rejecting or rerouting suboptimal images
+  - Explicit missing-data handling
+  - Automated data cleaning
+  proposed_by_studies: 15
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T147
+  key: prior_and_multi_image_input
+  family: input_data_handling
+  question: Should the model see prior exams, or multiple views or slices of the current exam, rather than a single
+    current image?
+  control: Provide prior or sequential examinations for change detection, and multiple views or volumetric slices
+    of the current exam, as model input.
+  comparator: Single current image or key image, without priors
+  technology:
+  - imaging_diagnostic
+  - multimodal_foundation
+  aim: Improve detection of interval change and diagnostic accuracy from fuller spatial coverage
+  variants:
+  - Prior or sequential exam comparison (temporal)
+  - Multiple views of the current exam (spatial)
+  - Volumetric slices instead of key image (spatial)
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T148
+  key: missing_modality_robustness
+  family: input_data_handling
+  question: Should we build multimodal models to work when some inputs are missing rather than impute or require
+    every modality?
+  control: Train with modality dropout or incomplete inputs so models function when modalities are missing.
+  comparator: Imputing missing modalities or requiring complete inputs
+  technology:
+  - multimodal_foundation
+  - predictive_risk
+  aim: Keep models usable and accurate in real-world settings with incomplete data
+  variants:
+  - Modality dropout training
+  - Training on incomplete inputs
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T149
+  key: synthetic_data_augmentation
+  family: input_data_handling
+  question: Should we augment training data with LLM-generated synthetic patient records rather than use real records
+    alone?
+  control: Augment training data with LLM-generated synthetic clinical records, checked by clinician review or drift
+    measures.
+  comparator: Real data only, without augmentation
+  technology:
+  - generative_llm
+  - predictive_risk
+  aim: Improve model performance and coverage where real data are scarce
+  variants:
+  - Clinician review of synthetic records
+  - Drift measures for quality control
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T150
+  key: standards_based_data_exchange
+  family: input_data_handling
+  question: Should AI inputs and outputs be exchanged using HL7 FHIR and DICOM standards rather than proprietary
+    or site-specific formats?
+  control: Exchange AI inputs and outputs via HL7 FHIR and DICOM, ideally through an integrated ingestion layer
+    supporting EHR write-back and cross-site deployment.
+  comparator: Proprietary or site-specific formats, siloed sources or manual data entry
+  technology:
+  - any_ai
+  aim: Enable reliable data flow, scaling across sites and less manual entry
+  variants:
+  - FHIR ingestion
+  - DICOM integration
+  - Integrated data layer instead of siloed feeds
+  - Output write-back to EHR
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T151
+  key: enhanced_image_acquisition
+  family: input_data_handling
+  question: Should we adapt the image acquisition or reconstruction protocol to optimize AI performance, rather
+    than use standard acquisition?
+  control: Run AI on enhanced acquisition modes or reconstructions, such as linked-color imaging endoscopy or thin-section
+    CT.
+  comparator: Standard protocol, e.g. white-light endoscopy or standard-thickness CT
+  technology:
+  - imaging_diagnostic
+  aim: Improve AI lesion detection sensitivity
+  variants:
+  - Enhanced endoscopy imaging modes such as linked-color imaging
+  - Thin-section CT reconstruction
+  proposed_by_studies: 2
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T152
+  key: automated_output_evaluation
+  family: monitoring_methods
+  question: Should we use automated evaluators, such as an LLM judge or quality metrics, to score AI outputs instead
+    of relying only on human expert review?
+  control: Score AI outputs automatically with an LLM judge, rubric or quantitative metric, calibrated against expert
+    ratings, and send flagged cases to humans.
+  comparator: Human expert or clinician review of sampled outputs only
+  technology:
+  - generative_llm
+  - imaging_diagnostic
+  - any_ai
+  aim: Scale quality and safety evaluation of AI outputs while preserving agreement with expert judgment
+  variants:
+  - LLM-as-judge with rubrics, periodically recalibrated against clinician ratings
+  - Independent LLM monitor run on every live patient conversation to flag risk behaviours and drift
+  - Claim-level or step-by-step verification against source evidence, with a structured error taxonomy
+  - Semantic or lexical similarity to reference texts as a cheaper proxy
+  - Image-quality, dosimetric or phantom-based metrics for routine imaging AI QA
+  - LLM or NLP audits of clinical notes, reports and incident narratives
+  proposed_by_studies: 123
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T153
+  key: statistical_drift_detection
+  family: monitoring_methods
+  question: Should we run statistical drift detection on inputs and outputs so we can spot degradation without waiting
+    for outcome labels?
+  control: Test inputs, embeddings and output scores against a reference distribution and alert when shifts cross
+    predefined control limits.
+  comparator: Periodic labeled performance audits once outcomes become available
+  technology:
+  - any_ai
+  aim: Detect data shift and likely model degradation early, before labeled outcomes accumulate
+  variants:
+  - Distribution shift tests on inputs, embeddings, output scores and feature importance
+  - SPC or CUSUM control charts on metrics, alert rates or output proxies with predefined limits
+  - Adding label-free accuracy estimation (uncertainty or pseudo-label discrepancy) between labeled audits
+  proposed_by_studies: 30
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T154
+  key: automated_ground_truth_capture
+  family: monitoring_methods
+  question: Should we automatically extract ground-truth labels from reports and records to measure the deployed
+    model's real-world accuracy?
+  control: Extract reference-standard outcomes from reports, EHR feeds or downstream diagnoses automatically, review
+    discrepancies, and compare with model outputs on a rolling basis.
+  comparator: Manual chart review or clinician panel labeling for periodic validation
+  technology:
+  - imaging_diagnostic
+  - predictive_risk
+  - generative_llm
+  aim: Enable continuous, affordable real-world accuracy tracking of deployed models
+  variants:
+  - Rule-based or NLP extraction from EHR feeds and downstream diagnoses
+  - LLM extraction of findings from radiology and clinical reports with human review of discrepancies
+  - Audit of AI-generated labels against a maintained human-only labeled subset
+  proposed_by_studies: 20
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T155
+  key: regression_test_suite
+  family: monitoring_methods
+  question: Should we keep a fixed regression test suite and rerun it whenever the model, prompt, vendor version
+    or configuration changes, and on a schedule?
+  control: Maintain a version-controlled panel of probe cases and benchmarks, and rerun it after every change and
+    periodically to detect performance shifts.
+  comparator: One-time validation at go-live, ad hoc spot checks or vendor release notes
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Catch silent performance regressions from model, prompt, hardware or vendor updates
+  variants:
+  - Rerun after every model, prompt, build or configuration change
+  - Scheduled re-benchmarking with repeated queries and consistency checks
+  - Invariance checks on fixed probe cases
+  proposed_by_studies: 30
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T156
+  key: withheld_output_evaluation
+  family: monitoring_methods
+  question: Should we withhold AI outputs from clinicians, silently before go-live or for a random fraction of live
+    cases, to measure performance unconfounded by clinician action?
+  control: Run the AI with outputs withheld from care, silently before activation or for a small random fraction
+    after, and compare predictions with outcomes.
+  comparator: Going live after retrospective validation; monitoring only labels observed after clinicians act
+  technology:
+  - any_ai
+  - predictive_risk
+  aim: Obtain unbiased real-world performance estimates before and after outputs can change the outcomes predicted
+  variants:
+  - 'Silent mode: outputs hidden entirely until after clinical decisions, before activation'
+  - Prospective comparison of silent predictions against observed outcomes
+  - Randomly withholding or varying display for a small fraction of live cases with causal weighting
+  proposed_by_studies: 10
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T157
+  key: adversarial_and_simulated_probing
+  family: monitoring_methods
+  question: Should we red-team the AI with adversarial cases and simulated multi-turn patient conversations, both
+    before go-live and on an ongoing basis in production?
+  control: Probe the AI with adversarial challenges, perturbations, trap cases and simulated patient personas across
+    full conversations, auditing whole trajectories, repeated periodically after deployment.
+  comparator: Standard benchmark accuracy or single-turn static question sets
+  technology:
+  - generative_llm
+  - agentic
+  - any_ai
+  aim: Expose robustness gaps, sycophancy and conversational failure modes before and while patients encounter them
+  variants:
+  - Adversarial and perturbation attacks and trap cases
+  - LLM-simulated patient personas run through complete multi-turn conversations
+  - Continuous automated probing of live production endpoints
+  proposed_by_studies: 34
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T158
+  key: clinician_feedback_and_edit_tracking
+  family: monitoring_methods
+  question: Should we capture clinician feedback, overrides and edits to AI drafts as an ongoing quality signal
+    for structured review?
+  control: Collect in-app feedback, override comments, AI-clinician disagreements and edit rates, and review them
+    regularly to refine prompts, thresholds and alerts.
+  comparator: No structured capture, ad hoc complaints or satisfaction surveys only
+  technology:
+  - generative_llm
+  - speech_ambient
+  - any_ai
+  aim: Surface real-world errors and usability problems from frontline use to drive refinement
+  variants:
+  - In-app feedback and override comments
+  - Review of AI-clinician disagreements
+  - Edit-rate and edit-type tracking by section, specialty and clinician
+  proposed_by_studies: 17
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T159
+  key: interaction_audit_logging
+  family: monitoring_methods
+  question: Should we keep a complete, tamper-evident log of every AI interaction so incidents can be reconstructed?
+  control: Record every AI input, output, reasoning trace, tool call, model version and clinician intervention in
+    an immutable, replayable audit log.
+  comparator: Standard application logs without provenance
+  technology:
+  - generative_llm
+  - agentic
+  - any_ai
+  aim: Enable post-hoc incident reconstruction and accountability for AI-influenced decisions
+  variants:
+  - Immutable, tamper-evident replayable audit trail
+  - Capture of agent reasoning traces and tool calls alongside outputs
+  proposed_by_studies: 26
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T160
+  key: operational_telemetry
+  family: monitoring_methods
+  question: Should we track operational telemetry such as usage, prediction volume, missing inputs, latency, uptime
+    and token cost as early warning signals?
+  control: 'Continuously track label-independent operational signals: usage and adoption, prediction volume, input
+    missingness, latency, uptime, energy and token cost.'
+  comparator: Tracking only lagging accuracy metrics such as AUC or calibration
+  technology:
+  - any_ai
+  aim: Detect pipeline failures, adoption problems and degradation early using signals available immediately
+  variants:
+  - Usage and engagement dashboards built on interaction logs
+  - Input missingness and prediction-volume alerts
+  - Latency, uptime, energy and token-cost tracking
+  proposed_by_studies: 14
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T161
+  key: monitoring_platform
+  family: monitoring_methods
+  question: Should we use a dedicated monitoring platform and dashboard rather than ad hoc manual reports and one-off
+    analyses?
+  control: Deploy an integrated monitoring platform with automated data pipelines, performance dashboards, alerts
+    and logging usable by clinical and technical teams.
+  comparator: Ad hoc manual reports and one-off analyses by data scientists
+  technology:
+  - any_ai
+  aim: Make ongoing model monitoring sustainable, timely and visible to both clinical and technical owners
+  variants: []
+  proposed_by_studies: 19
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T162
+  key: calibration_monitoring
+  family: monitoring_methods
+  question: Should we monitor calibration of predicted risks after deployment, not just discrimination?
+  control: Track calibration across the range of predicted risks, such as observed-versus-expected, calibration
+    slope and intercept, alongside discrimination.
+  comparator: Monitoring discrimination (AUROC or accuracy) only
+  technology:
+  - predictive_risk
+  - any_ai
+  aim: Catch miscalibrated risk estimates that discrimination metrics do not reveal
+  variants: []
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T163
+  key: subgroup_performance_monitoring
+  family: monitoring_methods
+  question: Should we monitor error rates by class, demographic and acquisition subgroup at the deployed threshold,
+    not just in aggregate?
+  control: Report sensitivity, specificity and other error rates at the deployed threshold for each class, demographic
+    group and acquisition subgroup.
+  comparator: Monitoring aggregate performance across all patients only
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  - any_ai
+  aim: Catch subgroup performance gaps and inequities hidden by aggregate metrics
+  variants: []
+  proposed_by_studies: 8
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T164
+  key: clinical_outcome_monitoring
+  family: monitoring_methods
+  question: Should we track downstream patient outcomes and balancing safety measures after go-live, not just model
+    accuracy?
+  control: Track patient outcomes, process measures, alert burden and balancing safety signals after AI deployment.
+  comparator: Monitoring model accuracy metrics alone
+  technology:
+  - any_ai
+  aim: Confirm the AI actually improves care without unintended harms or excess burden
+  variants: []
+  proposed_by_studies: 13
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T165
+  key: expert_audit_sampling
+  family: monitoring_methods
+  question: Should clinicians routinely audit a defined sample of AI outputs after deployment?
+  control: Have blinded clinical experts review a defined sample of AI outputs on a regular schedule and record
+    clinically significant errors.
+  comparator: No routine human audit of AI outputs
+  technology:
+  - any_ai
+  aim: Detect clinically significant AI errors that automated signals miss
+  variants:
+  - Random sampling of outputs
+  - Risk-prioritised sampling of high-risk or uncertain cases when audit capacity is limited
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T166
+  key: drift_triggered_retraining
+  family: monitoring_methods
+  question: Should drift crossing a predefined threshold automatically trigger model retraining, with validation
+    and approval before any replacement goes live?
+  control: Trigger retraining or a candidate replacement when monitored drift crosses a threshold; validate and
+    obtain governance approval before redeployment.
+  comparator: Fixed-schedule or ad hoc manual retraining
+  technology:
+  - predictive_risk
+  - any_ai
+  aim: Restore performance quickly after degradation while keeping model changes validated and governed
+  variants: []
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T167
+  key: deterministic_computation
+  family: agent_tool_design
+  question: Should the LLM only extract inputs while deterministic calculators, code or rule engines do the calculations
+    and determinations?
+  control: Limit the LLM to extracting and normalizing inputs; compute scores, doses, rule checks and decisions
+    with validated deterministic calculators, code or rule engines.
+  comparator: LLM calculating, checking rules or deciding directly in free text
+  technology:
+  - generative_llm
+  - agentic
+  aim: Prevent arithmetic, scoring and rule-application errors in LLM clinical outputs
+  variants:
+  - Validated clinical calculators called as tools
+  - Versioned deterministic skills or code tools
+  - Clinician-authored rule engine, expert system or symbolic model makes the determination
+  - LLM writes SQL or Python, runs it in a sandbox and debugs from execution feedback
+  proposed_by_studies: 60
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T168
+  key: multi_agent_decomposition
+  family: agent_tool_design
+  question: Should we split the clinical task across specialized agents or sequential steps instead of one model
+    doing everything in one prompt?
+  control: Decompose the workflow into role- or stage-specialized agents or sequential LLM steps with defined responsibilities
+    and information routing.
+  comparator: Single general-purpose LLM, single prompt or basic RAG call
+  technology:
+  - generative_llm
+  - agentic
+  aim: Improve accuracy and completeness on complex multi-step clinical tasks
+  variants:
+  - Specialist, coordinator and reviewer agent roles
+  - Chosen communication topology and limited pipeline depth
+  - 'Sequential pipeline: screen, extract, check guidelines, synthesize, explain'
+  - Simulated patients built from separate disclosure, persona, tutoring and evaluation agents
+  proposed_by_studies: 89
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T169
+  key: tool_access_data_and_specialist_models
+  family: agent_tool_design
+  question: Should the agent call external tools for authoritative data and validated specialist analyses rather
+    than relying on its own knowledge?
+  control: Give the agent tool access to authoritative data sources, EHR search, terminologies and validated task-specific
+    models instead of answering from parametric knowledge alone.
+  comparator: LLM answering from own knowledge or with the full chart pasted into context
+  technology:
+  - generative_llm
+  - agentic
+  - multimodal_foundation
+  - imaging_diagnostic
+  aim: Ground agent outputs in authoritative patient data and validated specialist analyses
+  variants:
+  - EHR structured queries exposed through MCP or typed tools
+  - Note keyword search tools
+  - Terminology and vocabulary lookup tools
+  - Genomic or reference database lookups
+  - Image classifiers, segmentation or signal-analysis models called as tools
+  proposed_by_studies: 38
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T170
+  key: adaptive_information_seeking
+  family: agent_tool_design
+  question: Should the agent ask targeted follow-up or clarifying questions before answering?
+  control: Have the agent detect ambiguity or missing information and ask targeted follow-up questions, chosen by
+    expected information gain, before answering.
+  comparator: Single-shot answer from the initial query or user-guided conversation
+  technology:
+  - generative_llm
+  - agentic
+  aim: Improve diagnostic accuracy and reduce answers based on incomplete or ambiguous information
+  variants:
+  - Adaptive multi-turn history taking
+  - Selecting questions or tests by expected information gain
+  - Resolving value mismatches with tools before responding
+  proposed_by_studies: 17
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T171
+  key: persistent_memory
+  family: agent_tool_design
+  question: Should the agent keep structured persistent memory across sessions?
+  control: Give the agent a structured persistent memory store (patient state, episodic facts or knowledge graph)
+    kept separate from conversation context.
+  comparator: Stateless agent or full histories re-serialized into context each session
+  technology:
+  - generative_llm
+  - agentic
+  aim: Improve continuity and consistency of agent behaviour across sessions
+  variants:
+  - Patient or session state store
+  - Episodic memory or knowledge graph
+  - 'Optional: separate store of lessons from prior cases and critic feedback, versus handling each case afresh'
+  proposed_by_studies: 18
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T172
+  key: structured_workflow_control
+  family: agent_tool_design
+  question: Should a state machine or predefined guideline workflow govern the agent's conversation and actions?
+  control: Layer a deterministic controller (state machine, stage controller or guideline decision tree) over the
+    LLM to enforce predefined states and transitions.
+  comparator: Free-form LLM conversation or workflow execution
+  technology:
+  - generative_llm
+  - agentic
+  aim: Ensure guideline adherence and consistent consultation structure
+  variants:
+  - Dialogue state machine or stage controller
+  - Topic network and slot collection
+  - Guideline decision-tree navigation
+  proposed_by_studies: 20
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T173
+  key: supervisor_audit_agent
+  family: agent_tool_design
+  question: Should we add a separate supervisor or safety-audit agent that checks outputs before release?
+  control: Add a separate verification, audit or fact-checking agent that checks outputs against rules, contraindications,
+    consent or bias and routes rejections back.
+  comparator: Agent outputs released without a separate checking agent
+  technology:
+  - generative_llm
+  - agentic
+  aim: Catch unsafe, incorrect or biased agent outputs before they reach users
+  variants:
+  - Supervisor agent routing rejections for targeted replanning
+  - Contraindication and safety-check agent
+  - Consent or bias audit agent
+  proposed_by_studies: 16
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T174
+  key: human_approval_gate
+  family: agent_tool_design
+  question: Should a designated human approve agent plans or actions before they execute?
+  control: Require approval from a designated clinician or user, matched to the action, at checkpoints before state-changing
+    actions, physical actuation, code execution or clinical operations.
+  comparator: Fully autonomous agent execution without human checkpoints
+  technology:
+  - agentic
+  aim: Prevent harmful autonomous actions and retain human oversight of consequential agent actions
+  variants:
+  - User approval before code execution
+  - Approval before physical actuation
+  - Escalating necessary clinical operations to a physician
+  proposed_by_studies: 7
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T175
+  key: query_routing
+  family: agent_tool_design
+  question: Should an intent classifier or orchestrator route each query or case to the right pathway, tool or team?
+  control: Classify each query or case up front and route it to safety handling, deterministic analytics, RAG, reasoning
+    modes or specialist agent panels.
+  comparator: One fixed pipeline or single LLM pathway for all queries
+  technology:
+  - generative_llm
+  - agentic
+  aim: Match each query to the safest and most accurate handling pathway
+  variants:
+  - Intent classifier routing to safety, analytics or RAG
+  - Complexity-based orchestrator recruiting specialist agent panels
+  - Routing across reasoning modes
+  proposed_by_studies: 11
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T176
+  key: ai_therapy_parameter_optimization
+  family: agent_tool_design
+  question: Should AI iteratively optimize device, therapy or treatment-plan parameters?
+  control: Use AI (model predictive control, RL, LLM or hybrid agent) to iteratively optimize device, therapy or
+    radiotherapy plan parameters within defined bounds.
+  comparator: Static, heuristic, knowledge-based or manual clinician control and planning
+  technology:
+  - agentic
+  - predictive_risk
+  - world_model_simulation
+  - generative_llm
+  aim: Improve therapy precision and plan quality while reducing clinician manual effort
+  variants:
+  - Iterative device or therapy setting adjustment via model predictive control or RL
+  - Digital-twin-based control
+  - Treatment-plan optimization by LLM or hybrid RL agent driving a planning system via scripting API
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T177
+  key: deterministic_action_guardrails
+  family: agent_tool_design
+  question: Should we put a deterministic enforcement layer between the agent and its tool calls?
+  control: Validate every agent action with deterministic, rule-based checks at the process boundary before execution,
+    independent of the agent's reasoning.
+  comparator: Agent's own reasoning or LLM-as-a-judge deciding which actions proceed
+  technology:
+  - agentic
+  aim: Block unsafe or unauthorized agent actions regardless of model reasoning errors
+  variants:
+  - Rule-based pre-execution checks on tool calls
+  proposed_by_studies: 17
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T178
+  key: agent_sandboxing
+  family: agent_tool_design
+  question: Should agents execute in isolated sandboxes with restricted permissions?
+  control: Run agent code in isolated sandboxes with kernel-level isolation and restricted runtime permissions.
+  comparator: Agents executing in shared, non-isolated environments
+  technology:
+  - agentic
+  aim: Contain security breaches and damage from misbehaving or compromised agents
+  variants:
+  - Kernel-level isolation
+  - Least-privilege runtime permissions
+  - 'Optional: per-agent network egress allowlists, versus unrestricted outbound connectivity'
+  proposed_by_studies: 5
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T179
+  key: schema_enforced_output
+  family: agent_tool_design
+  question: Should we force LLM outputs into a fixed machine-readable schema?
+  control: Enforce structured JSON output via tool use or schema constraints, repairing detected omissions or format
+    failures by automatic re-query.
+  comparator: Free-text or unconstrained LLM output
+  technology:
+  - generative_llm
+  - agentic
+  aim: Reduce format errors and omissions so outputs integrate reliably downstream
+  variants:
+  - Tool-use-based JSON output
+  - Re-query as repair method for omissions or format failures
+  - 'Optional: controlled-vocabulary code fields, versus unrestricted terminology'
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T180
+  key: audit_trace_replay
+  family: agent_tool_design
+  question: Should we log agent reasoning and actions in replayable, auditable traces?
+  control: Record structured, versioned traces of agent inputs, reasoning state, cross-agent validations and outputs
+    that can be replayed and audited.
+  comparator: Agents without structured trace logging
+  technology:
+  - agentic
+  aim: Enable auditing, incident investigation and accountability for agent decisions
+  variants:
+  - Versioned replayable traces
+  - Logging cross-agent validations
+  proposed_by_studies: 4
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T181
+  key: simulate_before_acting
+  family: agent_tool_design
+  question: Should the agent test proposed actions in a world model or simulation before committing?
+  control: Use a learned clinical world model or multi-agent simulation to test proposed actions or team coordination
+    before recommending or deploying.
+  comparator: Agent recommending or deploying without prior simulation
+  technology:
+  - world_model_simulation
+  - agentic
+  aim: Anticipate adverse outcomes of recommendations before they affect patients
+  variants:
+  - Learned clinical world model
+  - Multi-agent simulation of team coordination
+  proposed_by_studies: 3
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T182
+  key: uncertainty_confidence_display
+  family: presentation_explanation
+  question: Should AI tools show how confident they are, and highlight uncertain parts, so clinicians know what
+    to check?
+  control: Display calibrated confidence, intervals or uncertainty highlights with each AI output to guide review
+    and counter over- or under-reliance.
+  comparator: AI output shown as a single answer without uncertainty information
+  technology:
+  - predictive_risk
+  - generative_llm
+  - imaging_diagnostic
+  - any_ai
+  aim: Calibrate clinician reliance and focus review effort on likely errors
+  variants:
+  - Calibrated confidence scores or prediction intervals
+  - Reliability categories (high/medium/low)
+  - Entropy-based highlighting of low-confidence LLM tokens or statements
+  - Flagging contested facts using objective data-richness metrics instead of LLM self-reported confidence
+  - Spatial uncertainty maps on segmentations or synthetic images
+  - Design cues flagging likely clinician-AI disagreement and countering cognitive biases
+  proposed_by_studies: 26
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T183
+  key: explanation_format_selection
+  family: presentation_explanation
+  question: 'Which explanation or output format should we show clinicians: feature charts, counterfactual what-ifs,
+    similar cases, plain-language narrative or concise summaries?'
+  control: Select the explanation or output format by head-to-head testing of clinician accuracy, understanding
+    and workload across candidate formats.
+  comparator: A different explanation or output format for the same AI output
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  - generative_llm
+  - any_ai
+  aim: Improve clinician understanding and decision accuracy without adding cognitive load
+  variants:
+  - Local versus global explanations
+  - Concept-based versus attribution explanations
+  - Individualized counterfactual or causal what-if analyses
+  - Retrieved similar past cases or prototypes
+  - LLM translating a separate model's scores and attributions into plain language
+  - Comparison with full algorithmic transparency
+  - Brief narrative summaries versus detailed structured timelines
+  - Abstracted maps versus raw parametric maps
+  proposed_by_studies: 45
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T184
+  key: feature_attribution_explanations
+  family: presentation_explanation
+  question: Should we show clinicians per-prediction explanations (such as SHAP) of which factors contributed to
+    each AI prediction?
+  control: Display per-patient feature contributions (SHAP, LIME, gradient or token attribution) alongside each
+    prediction.
+  comparator: Same prediction or risk score shown without attribution
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  - generative_llm
+  aim: Help clinicians judge whether to trust and act on individual predictions
+  variants:
+  - SHAP values
+  - LIME
+  - Gradient or token attribution
+  - Consensus across several explanation methods
+  - Displaying only attributions that pass perturbation-based faithfulness or stability tests
+  proposed_by_studies: 66
+  proposed_by_commentaries: 13
+  status: machine_draft
+- id: T185
+  key: supporting_rationale_display
+  family: presentation_explanation
+  question: Should LLM answers, labels or recommendations come with a supporting rationale rather than a bare answer?
+  control: Present a concise, criterion-level supporting rationale with each generated answer or label, framed as
+    a justification, not the model's internal reasoning.
+  comparator: Bare answer, label or differential list without rationale
+  technology:
+  - generative_llm
+  - agentic
+  aim: Let clinicians check the basis of AI outputs and spot flawed justifications
+  variants:
+  - Concise auditable rationale instead of bare differential list
+  - Criterion-level justification for classification or eligibility labels
+  - Stepwise explanation of recommendations
+  proposed_by_studies: 21
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T186
+  key: source_citation_display
+  family: presentation_explanation
+  question: Should LLM outputs link each claim or extracted value back to the source passage it came from?
+  control: Attach claim-level citations or provenance links to source passages or records for generated statements
+    and extracted values.
+  comparator: Same output or extraction without source links
+  technology:
+  - generative_llm
+  - agentic
+  aim: Make AI outputs verifiable and catch hallucinations or unsupported claims
+  variants:
+  - Claim-level citations to references or source passages
+  - Provenance links for extracted values
+  - Traceability of statements to source record data
+  - Highlighting where linked sources disagree
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T187
+  key: imaging_spatial_overlay
+  family: presentation_explanation
+  question: Should imaging and signal AI show spatial overlays or region markers alongside findings rather than
+    a flag or score alone?
+  control: Overlay localization markers, regions of interest, saliency maps or ranked tiles on the image or signal
+    with each AI finding.
+  comparator: Binary flag or score without spatial display
+  technology:
+  - imaging_diagnostic
+  aim: Help readers verify findings and locate abnormalities faster and more accurately
+  variants:
+  - Localization markers or bounding regions of interest
+  - Grad-CAM saliency maps
+  - Integrated gradients
+  - Attention maps
+  - Ranked image tiles for pathology
+  proposed_by_studies: 33
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T188
+  key: inherently_interpretable_models
+  family: presentation_explanation
+  question: Should we choose interpretable-by-design models instead of black-box models with after-the-fact explanations?
+  control: Deploy models whose reasoning passes through clinically meaningful rules, concepts, regions or knowledge-graph
+    steps.
+  comparator: Black-box deep learning model with or without post-hoc explanations
+  technology:
+  - predictive_risk
+  - imaging_diagnostic
+  - any_ai
+  aim: Give clinicians faithful, checkable reasoning without sacrificing accuracy
+  variants:
+  - Rule lists or decision trees
+  - Nomograms
+  - Concept bottleneck models
+  - Knowledge-graph reasoning
+  - Region- or category-based intermediate outputs
+  proposed_by_studies: 25
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T189
+  key: user_codesign
+  family: presentation_explanation
+  question: Should we co-design AI interfaces and explanations with clinicians and patients before deployment?
+  control: Run iterative co-design with target users to build accessible, low-friction interfaces and explanations
+    integrated into workflow.
+  comparator: Developer-designed interface without end-user input or accessibility adaptation
+  technology:
+  - any_ai
+  aim: Improve usability, accessibility, adoption and workflow fit
+  variants:
+  - Requirements analysis with clinicians, patients and caregivers
+  - Accessibility features
+  - Personalization options
+  - Low-friction workflow integration
+  proposed_by_studies: 36
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T190
+  key: ai_use_disclosure
+  family: presentation_explanation
+  question: Should we clearly tell patients and clinicians when content was produced by AI?
+  control: Clearly label AI-generated or AI-assisted content shown to patients and clinicians.
+  comparator: Same content presented without AI labeling
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Support patient trust, informed consent and transparency
+  variants:
+  - Labels on AI-drafted patient messages
+  - Disclosure of clinician review or agreement with AI
+  - Timing of disclosure to patients
+  - Including approval, performance and benefit information
+  - Flexible personalized delivery of AI results
+  proposed_by_studies: 11
+  proposed_by_commentaries: 4
+  status: machine_draft
+- id: T191
+  key: embodied_avatar_delivery
+  family: presentation_explanation
+  question: Should patient-facing AI content be delivered by an embodied, human-like avatar rather than text?
+  control: Deliver AI patient content through an embodied avatar or video agent with synchronized speech.
+  comparator: Text-only AI chatbot delivering the same content
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  - speech_ambient
+  aim: Improve patient understanding, engagement and recall
+  variants:
+  - Embodied avatar or video agent with synchronized speech
+  - Demographic matching of avatar
+  - Avatar compared with a human presenter (separate contrast)
+  proposed_by_studies: 18
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T192
+  key: rich_media_supplements
+  family: presentation_explanation
+  question: Should patient-facing AI content include videos, images or interactive aids rather than text alone?
+  control: Supplement AI patient content with educational videos, annotated images, illustrations or interactive
+    aids.
+  comparator: Text-only AI content or written materials
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  aim: Improve patient understanding, engagement and recall
+  variants:
+  - Educational videos with transcripts
+  - Annotated images or illustrations
+  - Interactive aids
+  proposed_by_studies: 13
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T193
+  key: tailored_explanations
+  family: presentation_explanation
+  question: Should we tailor AI explanations to each user's expertise and role?
+  control: Adapt explanation type, depth and interaction to user expertise, literacy, role and trust propensity,
+    with separate lay and clinician modes.
+  comparator: One uniform explanation and interface for all users
+  technology:
+  - any_ai
+  aim: Make explanations understandable and useful for each audience
+  variants:
+  - Lay versus clinician modes
+  - Adjusting depth by literacy
+  - Adjusting by trust propensity
+  proposed_by_studies: 8
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T194
+  key: limitations_disclaimers
+  family: presentation_explanation
+  question: Should we attach disclaimers and limitation information to AI outputs?
+  control: Show safety disclaimers, known model limitations and expectation-setting nudges with AI outputs and alerts.
+  comparator: AI outputs presented without disclaimers or limitation information
+  technology:
+  - generative_llm
+  - predictive_risk
+  - any_ai
+  aim: Prevent misuse and overreliance on AI outputs
+  variants:
+  - Safety disclaimers
+  - Model limitation statements
+  - Expectation-setting nudges in alerts
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T195
+  key: conversational_voice_interaction
+  family: presentation_explanation
+  question: Should patients provide information through conversational dialogue, by voice or text, rather than structured
+    forms?
+  control: Offer conversational interaction for symptom collection, diaries and guidance, with voice input where
+    it improves access.
+  comparator: Structured questionnaire or form in the same modality
+  technology:
+  - speech_ambient
+  - generative_llm
+  aim: Improve patient engagement, accessibility and completeness of collected information
+  variants:
+  - Conversational versus structured symptom collection
+  - Voice versus text delivery of the same interaction
+  - Conversational diaries
+  - Multimodal guidance
+  proposed_by_studies: 12
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T196
+  key: realtime_ar_overlay
+  family: presentation_explanation
+  question: Should we overlay real-time AI guidance on screen or in augmented reality during procedures and scanning?
+  control: Display real-time AI outputs as augmented-reality or on-screen overlays during surgery, scanning or microscopy.
+  comparator: Conventional displays without real-time AI overlay
+  technology:
+  - imaging_diagnostic
+  - multimodal_foundation
+  aim: Improve procedural accuracy and image acquisition quality
+  variants:
+  - Augmented-reality surgical overlays
+  - On-screen guidance during ultrasound scanning
+  - Microscopy overlays
+  proposed_by_studies: 14
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T197
+  key: institution_controlled_llm_hosting
+  family: privacy_security_engineering
+  question: Should LLMs that handle patient data run only in environments we manage or contractually govern, rather
+    than through uncontracted external LLM services?
+  control: Host open-weight LLMs on hospital servers or devices, or use commercial LLMs only in contracted, institutionally
+    governed environments with access, logging, and retention terms.
+  comparator: Consumer or commercial LLM services used without institutional contract or governance
+  technology:
+  - generative_llm
+  aim: Keep identifiable patient data from leaving institutional control or reaching uncontracted third parties.
+  variants:
+  - Open-weight LLM on on-premises hospital servers
+  - Fully on-device, browser, or edge inference with no data leaving the device
+  - Commercial LLM inside a contracted, institutionally governed cloud environment with authentication, logging,
+    and retention limits
+  proposed_by_studies: 173
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T198
+  key: minimize_and_redact_ai_inputs
+  family: privacy_security_engineering
+  question: Should we limit and de-identify the patient data sent to AI tools, rather than sending full identified
+    records and raw media?
+  control: Send only minimum-necessary fields, redact or pseudonymize PHI in text before prompting, blur or crop
+    identifiable images and video, re-identifying outputs locally if needed.
+  comparator: Full identified records, raw images or video sent directly to the AI
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Reduce identifiable patient data reaching AI services, especially third-party or cloud LLMs.
+  variants:
+  - Minimum-necessary data fields sent to the AI
+  - Client-side PHI redaction before external API calls
+  - Pseudonymization with local re-identification of outputs
+  - Encrypting identifiers before transmission
+  - Blurring, cropping, or defacing images and video, or sending only derived features
+  proposed_by_studies: 26
+  proposed_by_commentaries: 11
+  status: machine_draft
+- id: T199
+  key: stateless_no_retention
+  family: privacy_security_engineering
+  question: Should AI tools process patient data statelessly or delete inputs after a short window, rather than
+    retaining them indefinitely?
+  control: Process AI inputs statelessly, or delete raw inputs, outputs, and logs after a defined short retention
+    window.
+  comparator: Indefinite storage of AI inputs, outputs, and raw audio or video
+  technology:
+  - any_ai
+  - speech_ambient
+  aim: Reduce exposure if an AI service or its stored data is breached or misused.
+  variants:
+  - Stateless processing with no stored inputs, outputs, or logs
+  - Deleting raw audio and other inputs after a defined window
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T200
+  key: deid_method_and_verification
+  family: privacy_security_engineering
+  question: Which de-identification method should we use for clinical text and images, and should we add a second
+    check for leftover identifiers?
+  control: Select LLM-based, hybrid, or locally fine-tuned de-identification by measured identifier recall and content
+    preservation, then add a second-pass residual-identifier check.
+  comparator: Single-pass rule-based or off-the-shelf de-identification without verification
+  technology:
+  - generative_llm
+  - any_ai
+  aim: Remove more identifiers while keeping clinical content usable.
+  variants:
+  - LLM-based de-identification
+  - Hybrid LLM plus rule-based de-identification
+  - Small model fine-tuned on annotated local records and run locally
+  - Second-pass check by a reviewer agent, leakage detector, or human on the same pipeline
+  proposed_by_studies: 30
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T201
+  key: least_privilege_ai_access
+  family: privacy_security_engineering
+  question: Should we restrict AI tools and agents to role-based, least-privilege access with auditable identities
+    and query limits?
+  control: Give AI tools and agents role-based, read-only, least-privilege access with MFA, auditable identities,
+    per-user query caps, and runtime policy-as-code rules.
+  comparator: Broad service-account access without query caps or runtime policy enforcement
+  technology:
+  - agentic
+  - generative_llm
+  - any_ai
+  aim: Limit unauthorized data access, model extraction, and misuse by users or agents.
+  variants:
+  - Read-only access scoped to each query's data needs
+  - Credential proxies and multi-factor authentication
+  - Per-user query caps
+  - Machine-readable runtime policies with auditable agent identities
+  proposed_by_studies: 9
+  proposed_by_commentaries: 3
+  status: machine_draft
+- id: T202
+  key: inference_input_attack_defenses
+  family: privacy_security_engineering
+  question: Should we add dedicated defenses against prompt injection, jailbreaks, and adversarial image inputs
+    at inference time?
+  control: 'Defend inference inputs: build prompts server-side, label untrusted content, run injection and jailbreak
+    classifiers, sanitize image text, and denoise adversarial image perturbations.'
+  comparator: Relying on the base model's built-in robustness with undefended inputs
+  technology:
+  - generative_llm
+  - multimodal_foundation
+  - agentic
+  - imaging_diagnostic
+  aim: Prevent malicious prompts or manipulated images from hijacking outputs, leaking data, or corrupting predictions.
+  variants:
+  - Server-side prompt construction
+  - Labeling untrusted content
+  - Injection and jailbreak detection classifiers
+  - OCR sanitization of text embedded in medical images
+  - Provenance-aware abstention
+  - Input denoising against adversarial image perturbations
+  proposed_by_studies: 10
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T203
+  key: isolate_patient_data_from_llm
+  family: privacy_security_engineering
+  question: Should we keep raw patient data out of the LLM, letting it plan while controlled interfaces execute
+    and return checked outputs or aggregates?
+  control: Keep raw patient data behind isolated interfaces or deterministic execution layers, letting the LLM only
+    plan, and return outputs or aggregates with disclosure checks.
+  comparator: LLM or users receiving raw patient-level data directly
+  technology:
+  - generative_llm
+  - agentic
+  aim: Prevent LLMs and analysts from exposing or exfiltrating patient-level data.
+  variants:
+  - Network isolation of LLM components
+  - Split architecture where the LLM plans and a deterministic layer executes
+  - Output-only or aggregate-only data interfaces
+  - Disclosure checks on exported results
+  proposed_by_studies: 16
+  proposed_by_commentaries: 1
+  status: machine_draft
+- id: T204
+  key: synthetic_or_deidentified_training_data
+  family: privacy_security_engineering
+  question: Should we develop, train, and fine-tune models on synthetic or de-identified data instead of identifiable
+    patient records?
+  control: Replace identifiable patient records used for model training, fine-tuning, and development pipelines
+    with anonymized, pseudonymized, or synthetic records.
+  comparator: Using identifiable real patient records for model training and development
+  technology:
+  - any_ai
+  aim: Reduce privacy risk of model development while preserving model performance.
+  variants:
+  - Fully synthetic patient records or cases
+  - Anonymized or pseudonymized real records
+  - Synthetic data for development pipelines before real-data validation
+  proposed_by_studies: 12
+  proposed_by_commentaries: 7
+  status: machine_draft
+- id: T205
+  key: security_baseline_and_monitoring
+  family: privacy_security_engineering
+  question: Should every AI system handling PHI be required to meet a defined security baseline with automated intrusion
+    detection and response?
+  control: Require encryption, tamper-evident audit logs, network segmentation, penetration testing, and automated
+    intrusion detection and response for AI systems and connected devices.
+  comparator: No required security baseline or automated detection for AI systems
+  technology:
+  - any_ai
+  aim: Prevent and detect breaches and attacks on AI systems, clinical networks, and medical devices.
+  variants:
+  - Encryption at rest and in transit
+  - Tamper-evident audit logging
+  - Network segmentation and penetration testing
+  - AI-based intrusion detection and trust scoring for medical IoT
+  proposed_by_studies: 6
+  proposed_by_commentaries: 18
+  status: machine_draft
+- id: T206
+  key: differential_privacy_training
+  family: privacy_security_engineering
+  question: Should we apply differential privacy when training or fine-tuning models or sharing federated updates?
+  control: Add calibrated differential privacy noise during training, fine-tuning, or federated update sharing,
+    under a defined privacy budget.
+  comparator: The same training or update sharing without differential privacy
+  technology:
+  - any_ai
+  aim: Limit memorization and reconstruction of individual patient records from trained models or shared updates.
+  variants:
+  - Differential privacy during training or fine-tuning
+  - Differential privacy on federated updates
+  proposed_by_studies: 12
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T207
+  key: cryptographic_computation_protection
+  family: privacy_security_engineering
+  question: Should we cryptographically protect model updates and computation, including inference, rather than
+    processing them in plaintext?
+  control: Use secure aggregation for shared model updates and homomorphic encryption for computation or inference,
+    keeping individual updates and inputs encrypted from servers.
+  comparator: Plaintext model updates, computation, and inference inputs
+  technology:
+  - any_ai
+  aim: Reduce exposure of individual updates and patient inputs to aggregators, servers, and interception.
+  variants:
+  - Secure aggregation of federated updates
+  - Homomorphic encryption for computation
+  - Homomorphic encryption for inference
+  proposed_by_studies: 7
+  proposed_by_commentaries: 2
+  status: machine_draft
+- id: T208
+  key: training_integrity_screening
+  family: privacy_security_engineering
+  question: Should we screen training data, federated client updates, and acquired models for poisoning and backdoors?
+  control: Detect and filter poisoned training data, malicious federated client updates, and backdoored or tampered
+    models before training or deployment.
+  comparator: Training on and deploying data, updates, and models without integrity screening
+  technology:
+  - any_ai
+  - imaging_diagnostic
+  aim: Prevent manipulated training data or models from corrupting AI predictions.
+  variants:
+  - Training data poisoning detection
+  - Screening malicious federated client updates
+  - Backdoor scanning of fine-tuned or acquired models
+  proposed_by_studies: 6
+  proposed_by_commentaries: 0
+  status: machine_draft
+- id: T209
+  key: federated_learning
+  family: privacy_security_engineering
+  question: Should we train models with partner hospitals through federated learning rather than pooling their patient
+    data in one place?
+  control: Train models across institutions with federated learning so patient data stays at each site and only
+    model updates are shared.
+  comparator: Centralized training on data pooled from the same participating hospitals
+  technology:
+  - any_ai
+  aim: Enable multi-site model development without transferring patient data between institutions.
+  variants:
+  - Cross-hospital federated training
+  proposed_by_studies: 29
+  proposed_by_commentaries: 27
+  status: machine_draft
+- id: T210
+  key: patient_consent_and_deletion
+  family: privacy_security_engineering
+  question: Should our AI tools enforce each patient's consent, sharing preferences, and deletion requests, including
+    removing their data from trained models?
+  control: Enforce patient opt-outs and sharing restrictions in AI processing and outputs, propagate revocations,
+    and use machine unlearning to remove requested data from models.
+  comparator: Uniform AI processing regardless of preferences; model deletion only via full retraining
+  technology:
+  - any_ai
+  aim: Respect patient data-sharing and deletion choices without costly full model retraining.
+  variants:
+  - Opt-out enforcement in AI processing
+  - Sharing restrictions applied to generated documents
+  - Consent revocation propagated across systems
+  - Patient-level machine unlearning instead of full retraining
+  - Site-level machine unlearning instead of full retraining
+  proposed_by_studies: 8
+  proposed_by_commentaries: 4
+  status: machine_draft
+- id: T211
+  key: ai_content_provenance
+  family: privacy_security_engineering
+  question: Should we watermark or attach provenance credentials to AI-generated content?
+  control: Embed watermarks or content credentials at generation and track provenance of AI-generated text, voice,
+    and video.
+  comparator: Unlabeled AI-generated content
+  technology:
+  - generative_llm
+  - speech_ambient
+  - multimodal_foundation
+  aim: Make AI-generated content identifiable and deter impersonation or deepfake misuse.
+  variants:
+  - Watermarking at generation
+  - Content credentials for text, voice, and video
+  proposed_by_studies: 0
+  proposed_by_commentaries: 3
+  status: machine_draft

@@ -1,0 +1,25 @@
+{
+ "id": "pmid:39664647",
+ "families": [
+  "model_choice_adaptation",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Off-the-shelf UCSD-trained Vent.io model applied as-is to MIMIC-IV data (external site) without local fine-tuning",
+   "finding": "favours_control",
+   "outcome": "Discrimination (AUC) at the external site (MIMIC-IV)",
+   "effect": "AUC 0.73 without fine-tuning (below the PCCP minimum of 0.85) vs 0.873 after fine-tuning; acceptable performance reached with 25% or more of the MIMIC training data used for fine-tuning",
+   "tradeoff": "Required local site-specific labeled training data (at least 25% of the MIMIC training set); the study was a simulated external site, not a real deployment.",
+   "quote": "Vent.io had an AUC of 0.73 on the MIMIC-IV dataset, triggering model fine-tuning per the PCCP as the AUC was below the minimum of 0.85.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "continuous monitoring and predetermined change control plan (PCCP) with triggered recalibration"
+}

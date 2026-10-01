@@ -1,0 +1,41 @@
+{
+ "id": "arxiv:2607.24371",
+ "families": [
+  "model_choice_adaptation",
+  "output_filtering",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T043",
+   "comparator_used": "Baseline single-pass generation without validation-repair (paired baseline condition)",
+   "finding": "favours_control",
+   "outcome": "Schema compliance of structured outputs (ICD-10, CPT, HL7 FHIR) across 960 model-scenario pairs",
+   "effect": "Compliance rose from baseline 85.9-91.6% to 99.0% overall (98.4-99.4% across models); absolute improvements of 7.8 to 12.5 percentage points; exact McNemar p<0.001",
+   "tradeoff": "Repair requires iterative loops; most errors resolved within one or two iterations (extra generation passes).",
+   "quote": "Third, the validation-repair framework achieves 99.0 percent overall compliance, ranging from 98.4 to 99.4 percent across models, with most errors resolving within one or two iterations.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T006",
+   "comparator_used": "Baseline condition without validation (unvalidated model outputs)",
+   "finding": "favours_control",
+   "outcome": "Schema compliance of structured outputs against ICD-10, CPT, and FHIR standards",
+   "effect": "Compliance improved from 85.9-91.6% at baseline to 99.0% overall with validation-repair; improvements of 7.8 to 12.5 percentage points; McNemar p<0.001",
+   "tradeoff": "Repair loop needed one or two iterations for most errors.",
+   "quote": "Exact McNemar p-values below 0.001 and absolute improvements of 7.8 to 12.5 percentage points across model sizes confirm statistical significance.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "closed-loop validation-repair / schema guardrail"
+}

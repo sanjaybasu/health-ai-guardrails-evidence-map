@@ -1,0 +1,52 @@
+{
+ "id": "epmc:PPR1284857",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T169",
+   "comparator_used": "Same base model as a generic zero-shot LLM and as a cardiology-specialized (domain-prompted) LLM, versus the complete agent with deterministic tools, guideline RAG, memory and a consistency checker (tested as a bundle, not as separate ablations)",
+   "finding": "favours_control",
+   "outcome": "Weighted accuracy on nine synthetic cardiovascular cases",
+   "effect": "Weighted accuracy 55.6% (generic LLM), 66.7% (domain prompting), 100% (complete agent); 9/9 correct, 95% Wilson CI 70.1-100%; expected tool invoked in 88.9% of cases, 2.2 tools per query",
+   "tradeoff": "Mean latency 17.7 s, median 8.9 s; one case with repeated retrieval calls took 82.3 s. Only nine synthetic cases, keyword-based scoring and no independent cardiologist adjudication.",
+   "quote": "In a controlled set of nine synthetic cardiovascular cases, weighted accuracy increased from 55.6% for the generic LLM to 66.7% after domain prompting and to 100% with the complete agent.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T061",
+   "comparator_used": "Generic zero-shot LLM prompt without cardiology specialization",
+   "finding": "favours_control",
+   "outcome": "Weighted accuracy on nine synthetic cardiovascular cases",
+   "effect": "Weighted accuracy rose from 55.6% (generic LLM) to 66.7% after domain prompting",
+   "tradeoff": "",
+   "quote": "In a controlled set of nine synthetic cardiovascular cases, weighted accuracy increased from 55.6% for the generic LLM to 66.7% after domain prompting and to 100% with the complete agent.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T036",
+   "comparator_used": "No comparator; functional safety test of the numerical consistency checker on correct and intentionally altered values",
+   "finding": "favours_control",
+   "outcome": "Detection of altered numerical values and verification of correct numerical claims",
+   "effect": "Verified 9/9 correct numerical claims and detected 5/5 intentionally altered values; 4 anomalous inputs handled correctly",
+   "tradeoff": "Small synthetic test; no comparison against unverified output.",
+   "quote": "Functional safety checks correctly handled four anomalous inputs, verified nine of nine correct numerical claims, and detected five of five intentionally altered values.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding, deterministic tools, and numerical consistency checking added to LLM"
+}

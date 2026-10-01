@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1126621",
+ "families": [
+  "grounding_retrieval",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline LLM (GPT-4o) without retrieval",
+   "finding": "favours_control",
+   "outcome": "Clinical correctness and guideline adherence of CKD decision-support answers",
+   "effect": "RAG-based methods outperformed the baseline LLM in clinical correctness and guideline adherence (no numeric values given in the abstract)",
+   "tradeoff": "All RAG systems were limited by the scope of the indexed guideline and performed poorly when essential information was missing.",
+   "quote": "RAG-based methods outperformed the baseline LLM in clinical correctness and guideline adherence.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T017",
+   "comparator_used": "Vector-indexed RAG pipeline (and baseline GPT-4o)",
+   "finding": "mixed",
+   "outcome": "Patient-specificity and clarity of CKD guideline-based answers",
+   "effect": "GraphRAG achieved the highest patient-specificity, especially for threshold, algorithmic or open-ended management tasks, but scored lower in clarity (no numeric values given in the abstract)",
+   "tradeoff": "Lower clarity, because graph walks often returned long guideline excerpts that obscured key recommendations.",
+   "quote": "GraphRAG achieved the highest patient-specificity by leveraging multi-hop relationships across a knowledge graph derived from NICE CKD guidelines, particularly for tasks involving thresholds, algorithmic decisions, or open-ended management.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG/GraphRAG) added to baseline LLM"
+}

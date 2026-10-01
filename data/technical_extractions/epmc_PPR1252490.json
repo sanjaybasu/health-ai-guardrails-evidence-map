@@ -1,0 +1,28 @@
+{
+ "id": "epmc:PPR1252490",
+ "families": [
+  "model_choice_adaptation",
+  "presentation_explanation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T048",
+   "comparator_used": "Uncalibrated model probabilities on the SEER test set; the SEER-fit calibrators were also applied unchanged to the METABRIC cohort",
+   "finding": "favours_control",
+   "outcome": "Expected Calibration Error (ECE) on the SEER test set after post hoc recalibration",
+   "effect": "Isotonic regression reduced SEER test ECE by 50\u201392% across all seven models. SEER-fit calibrators applied unchanged to METABRIC increased ECE by a factor of two to three for every model.",
+   "tradeoff": "Calibrators fit on SEER did not transfer to METABRIC because of the base-rate shift (84.7% to 42.1% alive). Per-cohort recalibration on a labeled target sample is therefore needed. The study recommends this but did not test it.",
+   "quote": "Isotonic regression reduced SEER test ECE by 50\u201392% across all seven models.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local recalibration before deployment on target cohort"
+}

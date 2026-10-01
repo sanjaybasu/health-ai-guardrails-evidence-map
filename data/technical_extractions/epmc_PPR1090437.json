@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1090437",
+ "families": [
+  "alert_design",
+  "output_filtering",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T014",
+   "comparator_used": "Raw, unsmoothed classifier probability outputs (under low and high synthetic noise)",
+   "finding": "favours_control",
+   "outcome": "Precision and recall of real-time sleep stage predictions under synthetic noise",
+   "effect": "Smoothed outputs retained 10\u201315% higher precision and recall across all stages under low and high synthetic noise (\u03c3 > 0.2)",
+   "tradeoff": "Smoothing creates a trade-off between stability and responsiveness (added latency); the authors introduce new real-time metrics to capture it and identify an optimal smoothing intensity range.",
+   "quote": "Smoothing improves generalization and robustness: under both low and high synthetic noise (  \u03c3 > 0.2), smoothed outputs retain 10\u201315% higher precision and recall across all stages.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T046",
+   "comparator_used": "Smoothed predictions without control logic, and the single strategies (probability thresholding, na\u00efve waiting, entropy constraint)",
+   "finding": "favours_control",
+   "outcome": "Stimulation-trigger precision per sleep stage",
+   "effect": "Hybrid high-confidence and low-uncertainty control achieved 80% (Wake), 96% (N2), 98% (N3), and 86% (REM) precision",
+   "tradeoff": "Conservative control logic adds waiting/evidence accumulation, so there is a trade-off between latency and reliability; no numbers given in the abstract.",
+   "quote": "Control logic further enhances reliability: our hybrid method achieves 80% (Wake), 96% (N2), 98% (N3), and 86% (REM) precision.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "post-processing smoothing and confidence/entropy control logic to prevent false stimulation triggers"
+}

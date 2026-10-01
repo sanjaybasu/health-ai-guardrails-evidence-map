@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1315002",
+ "families": [
+  "language_literacy_handling",
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T064",
+   "comparator_used": "Base model with no governance prompt (generic prompt relying on built-in knowledge)",
+   "finding": "favours_control",
+   "outcome": "Under-triage (failure to escalate to the top acuity tier) in subtle or atypical emergencies",
+   "effect": "Across 76 stems, under-triage fell from 13.2% (95% CI 7.3 to 22.6) to 3.9% (1.4 to 11.0); McNemar 7 to 0, p = 0.016; RR 0.30; NNT 11. Across eight models, 19 stems favoured governance and 5 favoured control (sign test p = 0.007). Named-guideline citation rose from 65.6% to 96.9%. MedQA was unchanged at 95.8% in both arms.",
+   "tradeoff": "Moved some ROUTINE non-emergency stems to same-day URGENT (17 added vs 2 removed, p < 0.001). HealthBench fell 3.6 points on a single seed. Residual failures stayed concentrated in a few conditions, and some model/elicitation cells were neutral or reversed.",
+   "quote": "Across 76 subtle or atypical emergencies, each adjudicated by a blinded, LLM-simulated three-physician panel and each mapped to a published guideline that names its cannot-miss diagnosis, the base model failed to escalate 13.2% (95% CI 7.3 to 22.6) to the top acuity tier; the governance prompt cut this to 3.9% (1.4 to 11.0; paired exact McNemar 7 to 0, p = 0.016; relative risk 0.30; number needed to treat 11).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "Forced immediate single-shot disposition (direct answer) vs reasoning-permitted elicitation on the same models",
+   "finding": "favours_control",
+   "outcome": "Baseline under-triage hazard by elicitation mode",
+   "effect": "Forcing an immediate single-shot disposition raised baseline hazard by roughly ten percentage points in two of four Claude models.",
+   "tradeoff": "",
+   "quote": "Elicitation mattered: forcing an immediate single-shot disposition raised baseline hazard by roughly ten percentage points in two of four Claude models, and the governance increment in the Claude family was largest under that elicitation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "prompt guardrails for emergency triage escalation"
+}

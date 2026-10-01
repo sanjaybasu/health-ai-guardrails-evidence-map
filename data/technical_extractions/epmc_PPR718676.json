@@ -1,0 +1,26 @@
+{
+ "id": "epmc:PPR718676",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T080",
+   "comparator_used": "Model trained only on South American (single-source) public spectra and applied to Kazakhstan samples as-is, versus retraining on pooled South American plus Kazakhstan data",
+   "finding": "favours_control",
+   "outcome": "Detection accuracy on Kazakhstan samples by class (SARS-CoV-2+, NCARI, asymptomatic controls)",
+   "effect": "Single-source pipeline as-is: 91.0% SARS-CoV-2+, 48.0% NCARI, 67.0% AC (random forest). Pooled SA-Kaz retraining: 88.0% SARS-CoV-2+, 95.0% NCARI, 78% AC (SVM-RBF), SARS-CoV-2 vs rest ROC AUC 0.983 [0.958, 0.987]; high accuracy maintained for South American samples.",
+   "tradeoff": "SARS-CoV-2+ detection was slightly lower after retraining (88.0% vs 91.0%). The authors note that clinical lab implementation will need continuous optimization as respiratory infections evolve.",
+   "quote": "After re-training of the ML algorithms on the SA-Kaz peak intensity matrix, the accuracy of detection by the top-performing Support Vector Machine with radial basis function kernel model was at 88.0, 95.0 and 78% for the Kazakhstan SARS-CoV-2+, NCARI, and AC subjects, respectively with a SARS-CoV-2 vs. rest ROC AUC of 0.983 [0.958, 0.987]; a high differentiation accuracy was maintained for the South American SARS-CoV-2 and NCARI.",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local retraining/recalibration of ML model on local data before deployment"
+}

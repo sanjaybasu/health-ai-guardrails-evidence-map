@@ -1,0 +1,39 @@
+{
+ "id": "pmid:42281695",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T057",
+   "comparator_used": "Label-only output without a required verbatim supporting quote (abstention allowed in both conditions)",
+   "finding": "mixed",
+   "outcome": "Macro-F1 and coverage (non-invalid, non-abstained outputs) for trial eligibility-scope classification",
+   "effect": "Coverage fell: GPT-5.2 86.2% to 84.3%, Gemini 3 flash preview 98.3% to 92.8%, Claude Opus 4.5 96.0% to 94.5%. Macro-F1 stayed high, with slight gains for GPT-5.2 and Gemini and a decrease for Claude. Labels were stable across repetitions (Fleiss' kappa 0.829 to 0.969).",
+   "tradeoff": "Coverage dropped because of more abstentions and, for Gemini, more invalid outputs. Only 48.0% to 78.8% of evidence-bearing predictions were judged semantically supported, so the approach introduces new failure modes.",
+   "quote": "Macro-F1 remained high but changed by model (slight gains for GPT-5.2 and Gemini, decrease for Claude).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T036",
+   "comparator_used": "All predictions released without filtering on whether the quote supports the label",
+   "finding": "favours_control",
+   "outcome": "Macro-F1 when restricted to predictions whose quote was verified (mechanically as an exact substring and by LLM judge as supporting the label)",
+   "effect": "Restricting to supported predictions increased macro-F1; no numbers were given in the abstract.",
+   "tradeoff": "Lower coverage. Mechanically valid quotes occurred in 83.3% to 91.2% of runs, but only 48.0% to 78.8% of evidence-bearing predictions were judged semantically supported.",
+   "quote": "Restricting to supported predictions increased macro-F1 at the cost of lower coverage.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "verbatim quote evidence requirement and mechanical validation"
+}

@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1106016",
+ "families": [
+  "grounding_retrieval",
+  "output_filtering",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T001",
+   "comparator_used": "Base Llama-3-70B output without the CHECK safety layer",
+   "finding": "favours_control",
+   "outcome": "Hallucination rate in physician QA about pivotal oncology trials",
+   "effect": "Hallucinations reduced from 31% to 0.3%",
+   "tradeoff": "",
+   "quote": "In a high-stakes setting of physician question and answer (QA) about pivotal oncology trials, where misinformation can have severe consequences, CHECK reduced hallucinations in a state-of-the-art open model (Llama-3-70B) from a clinically untenable 31\\% to just 0.3\\%.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T053",
+   "comparator_used": "Unrefined GPT-4o answers without hallucination-probability-guided refinement",
+   "finding": "favours_control",
+   "outcome": "USMLE pass rate of GPT-4o",
+   "effect": "Pass rate improved by five percentage points to 92.1%; compute significantly reduced; detection AUCs 0.95-0.98 across models and tasks",
+   "tradeoff": "",
+   "quote": "As a practical application, we demonstrate that the hallucination probability signal from CHECK can guide an iterative refinement process, improving GPT-4o\u2019s USMLE pass rate by five percentage points to a new state-of-the-art of 92.1\\% while significantly reducing compute.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "model-agnostic hallucination detection safety layer suppressing unsafe outputs"
+}

@@ -1,0 +1,26 @@
+{
+ "id": "pmid:37624624",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "privacy_security_engineering"
+ ],
+ "links": [
+  {
+   "control_id": "T108",
+   "comparator_used": "Fully manual annotation of PII without model preannotation (same annotator, same 200 notes split into 10 rounds)",
+   "finding": "favours_control",
+   "outcome": "Annotation time and annotation accuracy (PII tagging) against a gold standard",
+   "effect": "Time for 5 rounds ~58 min with preannotation vs ~98 min without; 43% faster (95% CI 33.9-52.1; P<.001). Overall micro-average recall higher by 0.013 (0.9886 vs 0.9756) and F1 higher by 0.0053 (0.9922 vs 0.9869).",
+   "tradeoff": "Preannotation had a few false negative and false positive errors on PHONE (F1 0.9667 vs 1) and ADDRESS (F1 0.9231 vs 1). Overall precision was slightly lower (0.9958 vs 0.9985). The model was a BiLSTM-CRF with RoBERTa embeddings, not an LLM. A single annotator did the work, and rounds were not randomized (the first 5 were without preannotation, the last 5 with).",
+   "quote": "Using preannotation during the manual annotation process resulted in a time savings of 43% and a micro- F 1 -score improvement of 0.005 compared to manual annotation performed without preannotation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "human-in-the-loop preannotation for deidentification"
+}

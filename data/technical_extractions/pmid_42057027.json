@@ -1,0 +1,55 @@
+{
+ "id": "pmid:42057027",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T077",
+   "comparator_used": "Direct modeling on the original (raw) data without SMOTE, under-sampling or cost-sensitive learning",
+   "finding": "favours_control",
+   "outcome": "Recall of MLP and RF donor-willingness models on the test set",
+   "effect": "Recall of both MLP and RF reached above 0.58 with sampling plus cost-sensitive processing, 'significantly outperforming' direct modeling on original data (comparator values not given in the text; see Fig. 2 and Table S2)",
+   "tradeoff": "",
+   "quote": "Experimental results show that after processing with both methods, the recall rates of both the MLP and RF models reached above 0.58, significantly outperforming the results of direct modeling on the original data (see Fig. 2 and Table S2 ).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T079",
+   "comparator_used": "Nanjing-trained MLP and RF models applied directly to Suzhou and Yangzhou without fine-tuning",
+   "finding": "favours_control",
+   "outcome": "Recall on local test data after fine-tuning with 10% of local data",
+   "effect": "Without fine-tuning, recall was Suzhou RF 0.67 / MLP 0.63 and Yangzhou RF 0.63 / MLP 0.58. Fine-tuning raised Suzhou RF to 0.77 and Yangzhou MLP to 0.68 (abstract: 0.70 and 0.77 in Suzhou, 0.68 and 0.64 in Yangzhou)",
+   "tradeoff": "",
+   "quote": "Subsequent fine-tuning with 10% local data further enhanced performance on top of direct generalization (Suzhou RF recall increased to 0.77, Yangzhou MLP to 0.68), rather than compensating for any shortcomings of generalization.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T082",
+   "comparator_used": "Previous version of the model (before incremental fine-tuning with newly collected recruitment data)",
+   "finding": "mixed",
+   "outcome": "Identification of high-willingness donors and recruitment efficiency (success rate per SMS) across recruitment rounds",
+   "effect": "Updated models consistently outperformed their predecessors overall (no numbers in main text; see Tables S9 and S10), with exceptions in simultaneously conducted rounds (1st and 2nd, 4th and 5th, 6th and 7th)",
+   "tradeoff": "In simultaneous recruitments in different settings, a single updated model could not optimize performance across both settings.",
+   "quote": "As shown in Tables S9 and S10 , the updated models consistently outperformed their predecessors in terms of identifying high-willingness donors and improving recruitment efficiency (measured by success rate per SMS).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "local fine-tuning of model on new-site data before deployment"
+}

@@ -1,0 +1,57 @@
+{
+ "id": "arxiv:2609.12156",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T089",
+   "comparator_used": "End-to-end baseline (single model performing the whole verification) versus the decision-basis contract with deterministic rule checks plus LLM documentation assessment",
+   "finding": "no_clear_difference",
+   "outcome": "Outcome agreement on 36 curated billing cases across four open-weight models",
+   "effect": "Outcome agreement varied across models and showed no consistent advantage over the baseline; no numbers given in the abstract",
+   "tradeoff": "The evidence gate converted some correct raw judgments into incomplete decision-basis entries",
+   "quote": "Outcome agreement varied across models and showed no consistent advantage over the baseline.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T064",
+   "comparator_used": "Ablation of the contract without explicit documentation requirements",
+   "finding": "favours_control",
+   "outcome": "Identification of missing required information in documentation",
+   "effect": "Improved for all four models; no numbers given in the abstract",
+   "tradeoff": "",
+   "quote": "Explicit documentation requirements improved identification of missing information for all four models.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T057",
+   "comparator_used": "Raw model judgments without the verbatim evidence gate",
+   "finding": "mixed",
+   "outcome": "Validity of evidence behind correct raw judgments and conversion to incomplete decision-basis entries",
+   "effect": "Some correct raw judgments lacked valid evidence and were converted to incomplete entries; no counts given in the abstract",
+   "tradeoff": "Correct judgments without valid verbatim evidence were downgraded to incomplete entries, which reduces apparent agreement",
+   "quote": "The evidence gate also exposed cases in which correct raw judgments lacked valid evidence and were converted to incomplete decision-basis entries.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "verbatim evidence gating with fail-closed abstention and deterministic rule checks"
+}

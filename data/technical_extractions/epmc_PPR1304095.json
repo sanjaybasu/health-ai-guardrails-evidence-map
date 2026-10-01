@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1304095",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "output_filtering"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline pipeline (LLM without retrieval) compared with Hybrid biomedical RAG",
+   "finding": "mixed",
+   "outcome": "Exact-code F1 against expert-built reference code sets",
+   "effect": "Hybrid biomedical RAG improved aggregate F1 only for Qwen; GPT-5.5 RxNorm F1 rose from 0.320 to 0.909. Claude and GPT-5.5 had their best aggregate results with Baseline.",
+   "tradeoff": "Retrieval did not consistently improve exact-code performance. Macro-averaged criterion-level gains came with lower micro-averaged aggregate performance.",
+   "quote": "Hybrid biomedical RAG improved aggregate F1 only for Qwen but increased GPT-5.5 RxNorm F1 from 0.320 to 0.909.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T006",
+   "comparator_used": "Staged verifier ablation: candidate codes before verification compared with after existence/vocabulary checking, acceptance filtering, and final verification and expansion",
+   "finding": "favours_control",
+   "outcome": "Micro-F1 and false-positive code removal",
+   "effect": "Micro-F1 rose from 0.254 before verification to 0.505 after final verification and expansion. Existence/vocabulary checking removed 2,594 false-positive codes, and acceptance filtering removed 952 more.",
+   "tradeoff": "Deterministic verification improves code validity and query readiness but cannot replace accurate clinical interpretation. Overly broad or incomplete candidate generation remained the main source of error.",
+   "quote": "Existence/vocabulary checking removed 2,594 false-positive codes, and acceptance filtering removed 952 additional false-positive codes before controlled expansion.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "deterministic terminology verification and retrieval grounding of LLM outputs"
+}

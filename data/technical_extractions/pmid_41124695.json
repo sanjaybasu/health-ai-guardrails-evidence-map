@@ -1,0 +1,40 @@
+{
+ "id": "pmid:41124695",
+ "families": [
+  "grounding_retrieval",
+  "human_workflow_design"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Native ChatGPT (GPT-4o) without retrieval, relying on training knowledge alone, with a physician present in both arms",
+   "finding": "favours_control",
+   "outcome": "Hallucination rate and physician-rated response quality; patient satisfaction with information delivery and informedness",
+   "effect": "Hallucinations 5/52 (10%) with ChatGPT+RAG vs 15/39 (38%) with native ChatGPT (P=.002). Quality was higher in every dimension (all P<.001), e.g. accuracy 4.625 vs 3.910 and evidence-based 4.961 vs 3.346. Patients reported higher satisfaction with information delivery (P=.01) and perceived informedness (P=.01). Patients asked more questions with RAG (52 vs 39 total, not significant between the two groups). Responses were about 3 times shorter with RAG.",
+   "tradeoff": "RAG did not eliminate hallucinations. 4 of the 5 RAG hallucinations came from information missing in the FAQ document. Severity did not differ significantly (P=.17), and 2 of the 5 RAG hallucinations (40%) were rated alarming vs 1 of 15 with native ChatGPT. The physician had to check and correct outputs. This was a small, non-randomised pilot with 12 patients per arm.",
+   "quote": "We observed significantly fewer hallucinations in the RAG group versus in the native ChatGPT group (5 out of 52 [10%] vs 15 out of 39, 38%; Table 8 ).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T115",
+   "comparator_used": "Physician-only consultation (control arm); hypothetical AI-only assistant without a physician (scenario preference question)",
+   "finding": "favours_control",
+   "outcome": "Patient preference for physician-supervised consent vs an AI-only assistant, and satisfaction with the consent process",
+   "effect": "Across all groups, patients preferred the physician-led scenario even when the AI-only alternative offered more accurate information. Mean preference ratings were 1.25-1.42 (human only), 1.75-2.33 (native ChatGPT) and 0.58-0.83 (ChatGPT+RAG). The preference did not change during the consent procedure. Satisfaction with informedness and information quantity was similar across arms after Q&A.",
+   "tradeoff": "RAG did not eliminate hallucinations, so a physician had to be present to identify and correct incorrect responses. Patients' attitude toward AI did not improve. The AI-only comparison was a hypothetical scenario question rather than a tested arm.",
+   "quote": "Results show that across all groups, participants preferred Scenario A (a human doctor with less accurate information) over Scenario B (an AI assistant alone with more accurate information).",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "retrieval augmented generation (RAG)"
+}

@@ -1,0 +1,84 @@
+{
+ "id": "pmid:42275454",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T017",
+   "comparator_used": "Document-based retrieval-augmented generation (DocRAG)",
+   "finding": "favours_control",
+   "outcome": "Answer accuracy on the retrospective case-based question set (also highest on the knowledge-based set); context-irrelevant errors",
+   "effect": "Case-based set: GraphRAG 71.12% vs DocRAG 62.47% average accuracy. Knowledge-based set: GraphRAG 96.89% (multiple-choice) and 66.44% (open-ended), the highest average accuracy. GraphRAG reduced context-irrelevant errors compared with DocRAG.",
+   "tradeoff": "",
+   "quote": "On the retrospective case-based question set, GraphRAG also showed the strongest overall performance, with an average accuracy of 71.12%, compared with 62.47% for DocRAG, 54.20% for CoT, 52.67% for Vanilla, and 52.54% for RoT.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Vanilla prompting (no retrieval)",
+   "finding": "favours_control",
+   "outcome": "Average accuracy on the retrospective case-based question set",
+   "effect": "DocRAG 62.47% vs Vanilla 52.67%",
+   "tradeoff": "",
+   "quote": "On the retrospective case-based question set, GraphRAG also showed the strongest overall performance, with an average accuracy of 71.12%, compared with 62.47% for DocRAG, 54.20% for CoT, 52.67% for Vanilla, and 52.54% for RoT.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T050",
+   "comparator_used": "Question format without a \"Don't know\" option",
+   "finding": "favours_control",
+   "outcome": "Explicit acknowledgment of uncertainty",
+   "effect": "Adding a \"Don't know\" option increased explicit acknowledgment of uncertainty (no numbers given in the abstract)",
+   "tradeoff": "",
+   "quote": "Adding a \"Don't know\" option increased explicit acknowledgment of uncertainty, and GraphRAG reduced context-irrelevant errors compared with DocRAG.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "Vanilla direct-answer prompting",
+   "finding": "no_clear_difference",
+   "outcome": "Average accuracy on the retrospective case-based question set",
+   "effect": "CoT 54.20% vs Vanilla 52.67%",
+   "tradeoff": "",
+   "quote": "On the retrospective case-based question set, GraphRAG also showed the strongest overall performance, with an average accuracy of 71.12%, compared with 62.47% for DocRAG, 54.20% for CoT, 52.67% for Vanilla, and 52.54% for RoT.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T069",
+   "comparator_used": "Vanilla single-pass prompting",
+   "finding": "no_clear_difference",
+   "outcome": "Average accuracy on the retrospective case-based question set",
+   "effect": "RoT 52.54% vs Vanilla 52.67%",
+   "tradeoff": "",
+   "quote": "On the retrospective case-based question set, GraphRAG also showed the strongest overall performance, with an average accuracy of 71.12%, compared with 62.47% for DocRAG, 54.20% for CoT, 52.67% for Vanilla, and 52.54% for RoT.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding with clinical knowledge graph (GraphRAG) and 'Don't know' option"
+}

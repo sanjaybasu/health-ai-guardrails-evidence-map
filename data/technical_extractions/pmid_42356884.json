@@ -1,0 +1,40 @@
+{
+ "id": "pmid:42356884",
+ "families": [
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T077",
+   "comparator_used": "Same fine-tuned backbones without the density-aware focal loss (baseline loss), ablated across three auxiliary weights",
+   "finding": "favours_comparator",
+   "outcome": "AUC and calibration on CBIS-DDSM",
+   "effect": "Density-aware focal loss degraded both AUC and calibration at every one of the three auxiliary weights tested (no specific numbers given in the abstract)",
+   "tradeoff": "",
+   "quote": "The density-aware focal loss degraded both AUC and calibration at every weight tested.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "ResNet-50 (standard general-purpose backbone) and general-purpose DINOv2-B14, versus mammography/radiology-specific models (Rad-DINO, Mammo-CLIP B5, Mammo-FM)",
+   "finding": "mixed",
+   "outcome": "AUC in-distribution (CBIS-DDSM) and at external transfer cohorts (CMMD, DMID, MIAS)",
+   "effect": "In-distribution ResNet-50 AUC 0.867 vs 0.847, 0.846, 0.813, 0.703 for the four foundation models (all p_adj < 0.05). At transfer, Mammo-CLIP B5 and Mammo-FM significantly outperformed ResNet-50 on DMID and Mammo-CLIP on CMMD after BH-FDR; MIAS directional only. In the BI-RADS D4 subgroup, Mammo-FM AUC 0.870 vs ResNet-50 0.842 (CIs overlap, not statistically supported).",
+   "tradeoff": "Every model lost 0.165 to 0.320 AUC points at transfer; sensitivity at 95% specificity fell from 0.31-0.47 to 0.11-0.22, so none was defensible for deployment without local validation.",
+   "quote": "Within this single-source three-seed evaluation, ResNet-50 outperformed all four foundation models on CBIS-DDSM (AUC 0.867 vs. 0.847, 0.846, 0.813, and 0.703; all gaps p_adj < 0.05).",
+   "finding_agreement": 0.4,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local recalibration (temperature scaling) and external validation before deployment"
+}

@@ -1,0 +1,26 @@
+{
+ "id": "epmc:PPR1253512",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T080",
+   "comparator_used": "Single-assay models trained on one assay's data (tested for cross-assay generalization)",
+   "finding": "favours_control",
+   "outcome": "Cross-assay robustness of Ct prediction (MAE)",
+   "effect": "Pooled multi-assay training improved cross-assay robustness compared with single-assay models; no numeric effect for this comparison in the abstract. Separately, models applied across platforms without recalibration had MAE 2.62, versus 0.0419 for XGBoost within-platform.",
+   "tradeoff": "Pooling did not remove platform dependence: direct cross-platform application without recalibration caused a substantial performance decline.",
+   "quote": "Extreme gradient boosting (XGBoost) achieved the most accurate and stable predictions under data-sufficient, within-platform conditions with a mean absolute error (MAE) of 0.0419, while pooled multi-assay training improved cross-assay robustness compared with single-assay models.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local recalibration before cross-platform use"
+}

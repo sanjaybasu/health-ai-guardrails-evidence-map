@@ -1,0 +1,52 @@
+{
+ "id": "pmid:41444718",
+ "families": [
+  "grounding_retrieval",
+  "input_data_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Direct prompting of ChatGPT-3.5 without retrieval (training knowledge alone)",
+   "finding": "favours_control",
+   "outcome": "Generation quality (ROUGE-1-f, BERTScore_F1) in Chinese clinical question answering; expert-rated readability, accuracy and authenticity",
+   "effect": "ROUGE-1-f +12.6%, BERTScore_F1 +1.5% (p < 0.05); expert evaluation improvements in readability, accuracy, and authenticity (all p < 0.001)",
+   "tradeoff": "",
+   "quote": "Experimental results show that dialogue-based retrieval significantly improves generation quality relative to direct prompting (e.g., ROUGE-1-f: +12.6%, BERTScore_F1: +1.5%, p < 0.05).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T021",
+   "comparator_used": "Other retrieval pipelines (dense retrieval, RRF, cascade RRF\u2192Rerank)",
+   "finding": "favours_control",
+   "outcome": "Accuracy-latency balance of retrieval pipelines for RAG",
+   "effect": "Rerank-only gave the best accuracy-latency balance among the retrieval strategies compared (no numbers given in abstract)",
+   "tradeoff": "",
+   "quote": "Among retrieval strategies, Rerank-only provides the best accuracy-latency balance, while the cascade pipeline introduces noise and yields no additional benefit.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T020",
+   "comparator_used": "Rerank-only pipeline (cascade RRF\u2192Rerank compared against it)",
+   "finding": "no_clear_difference",
+   "outcome": "Accuracy-latency balance of retrieval pipelines for RAG",
+   "effect": "The cascade RRF\u2192Rerank pipeline yielded no additional benefit over Rerank-only (no numbers given in abstract)",
+   "tradeoff": "The cascade pipeline introduces noise",
+   "quote": "Among retrieval strategies, Rerank-only provides the best accuracy-latency balance, while the cascade pipeline introduces noise and yields no additional benefit.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding (RAG) with doctor-patient dialogue sources"
+}

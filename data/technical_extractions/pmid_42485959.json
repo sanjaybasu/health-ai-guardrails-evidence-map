@@ -1,0 +1,39 @@
+{
+ "id": "pmid:42485959",
+ "families": [
+  "agent_tool_design",
+  "model_choice_adaptation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T173",
+   "comparator_used": "Rule-based baseline without Safety Agent gating",
+   "finding": "favours_control",
+   "outcome": "False inclusion rate in NSCLC trial pre-screening",
+   "effect": "False inclusion fell from 11.63% to 1.16% in the combined 120-pair cohort (McNemar p = 0.002) and from 12.12% to 1.52% in the held-out set",
+   "tradeoff": "Uncertain rate increased (more cases abstained or deferred)",
+   "quote": "Safety Agent gating reduced the false inclusion rate from 11.63% to 1.16% in the combined 120-pair cohort (McNemar's test, p = 0.002) and from 12.12% to 1.52% in the held-out set, accompanied by an increase in uncertain rate.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T168",
+   "comparator_used": "Single-agent LLM (GPT-4o-mini)",
+   "finding": "mixed",
+   "outcome": "False inclusion rate, accuracy and uncertain rate in trial pre-screening",
+   "effect": "Multi-agent M1 and M2 had zero false inclusion on the structured cohort, with uncertain rates of 25.8% and 1.7%. The single-agent LLM also had zero false inclusion, the highest accuracy (0.74) and a 7.5% uncertain rate. In PMC real-text validation, M1 had 0/44 false inclusions and M2 had one.",
+   "tradeoff": "M1 had a high uncertain rate (25.8%). M2 produced one false inclusion from an anomalous Safety Agent label upgrade on ambiguous unstructured text.",
+   "quote": "Multi-agent M1 and M2 also achieved zero observed false inclusion on the structured cohort with distinct uncertainty profiles (25.8% and 1.7% uncertain, respectively); in the PMC real-text validation, M1 maintained zero false inclusion (0/44; 95% CI 0.0-8.0%) while M2 produced one false inclusion arising from an anomalous Safety Agent label upgrade on ambiguous unstructured text.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "safety agent gating and uncertainty-aware abstention"
+}

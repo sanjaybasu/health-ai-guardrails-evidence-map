@@ -1,0 +1,37 @@
+{
+ "id": "epmc:PPR1260865",
+ "families": [
+  "output_filtering",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T001",
+   "comparator_used": "Bare model without the guardrail stack",
+   "finding": "mixed",
+   "outcome": "Commission error and safety-critical omission",
+   "effect": "Guardrail stack lowered commission but raised safety-critical omission by 12.5 percentage points across 921 paired case-runs (17.6% to 30.1%)",
+   "tradeoff": "New failure mode: increased safety-critical omissions (an 'omission tax') with the standard four-component guardrail stack",
+   "quote": "a standard four-component guardrail stack lowered commission but raised safety-critical omission by 12.5 percentage points across 921 paired case-runs (17.6% to 30.1%)",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T032",
+   "comparator_used": "Standard guardrail stack alone (and the same layer added only as advisory text)",
+   "finding": "favours_control",
+   "outcome": "Safety-critical omission rate (and commission when placed as advisory text)",
+   "effect": "Verification layer that modified the response lowered omission to bare-model level (paired reduction 16.46 percentage points; 95% CI 10.93 to 21.86; McNemar exact P = 1.32 \u00d7 10\u207b\u00b2\u00b3), detected 49.0% of omissions the guardrails missed (per-model 39.8% to 73.3%)",
+   "tradeoff": "When added only as advisory text rather than modifying the response, the layer raised commission (paired difference 4.44 percentage points; P = 0.0015)",
+   "quote": "A downstream verification layer that modified the response before it was returned lowered omission to the bare-model level (paired reduction 16.46 percentage points; Newcombe 95% confidence interval 10.93 to 21.86; McNemar exact P = 1.32 \u00d7 10\u207b\u00b2\u00b3), detected 49.0% of the omissions the guardrails missed, and missed none that the guardrails caught (per-model 39.8% to 73.3%; P < 10\u207b\u2074).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "downstream verification layer and standard guardrail stack"
+}

@@ -1,0 +1,43 @@
+{
+ "id": "epmc:PPR1237467",
+ "families": [
+  "grounding_retrieval",
+  "output_filtering",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T019",
+   "comparator_used": "RAG without an authorization gate (single-pass retrieval and generation, unchecked)",
+   "finding": "favours_control",
+   "outcome": "Unjustified inference rate, appropriate refusal rate, and factual correctness",
+   "effect": "EGDA unjustified inference 8.0% vs 47.7% for RAG; appropriate refusal 95.0% vs 56.9%; factual correctness 96.4% vs 74.5%",
+   "tradeoff": "",
+   "quote": "In a controlled experiment using 60 breast cancer decision-snapshot cases (1,260 system outputs across three arms evaluated by LLM-as-Judge with expert calibration), EGDA reduced the unjustified inference rate to 8.0% (vs. 48.7% for unconstrained LLM and 47.7% for RAG; risk difference vs. unconstrained \u221240.7%, 95% CI \u221246.9 to \u221234.0, p < 0.001), raised the appropriate refusal rate to 95.0% (vs. 56.9% and 56.9%; risk difference vs. unconstrained +38.1%, 95% CI +31.3 to +44.5, p < 0.001), and achieved the highest factual correctness at 96.4% (vs. 69.8% and 74.5%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Unconstrained LLM relying on its own knowledge (no retrieval)",
+   "finding": "no_clear_difference",
+   "outcome": "Unjustified inference rate and appropriate refusal rate",
+   "effect": "Unjustified inference 47.7% (RAG) vs 48.7% (unconstrained), p=0.870; appropriate refusal 56.9% vs 56.9%, p=1.0; factual correctness 74.5% vs 69.8%",
+   "tradeoff": "",
+   "quote": "An unexpected finding was that retrieval-augmented generation without an authorization gate failed to reduce unjustified inference relative to the unconstrained baseline (47.7% vs. 48.7%, p = 0.870) and produced no improvement in appropriate refusal (56.9% vs. 56.9%, p = 1.0), showing that information supply alone is not sufficient for inferential governance.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "evidence-graded decision authorization / reasoning guardrail"
+}

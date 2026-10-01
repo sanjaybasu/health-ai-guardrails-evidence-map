@@ -155,7 +155,7 @@
       ${commentaryHtml(r)}
       <h3>Tests of the practice (${tests.length})</h3>${tests.length ? tests.map(ev).join("") : "<p class='meta'>No study has tested this practice yet.</p>"}
       <h3>Studies documenting the hazard (${haz.length})</h3>${haz.length ? haz.slice(0, 40).map(ev).join("") + (haz.length > 40 ? `<p class="meta">${haz.length - 40} more in the data file.</p>` : "") : "<p class='meta'>None linked yet.</p>"}
-      <h3>Endorsing sources (${r.n_endorse})</h3>${en || "<p class='meta'>None.</p>"}`;
+      <h3>Endorsing sources (${r.n_endorse})</h3><div class="meta">${r.n_formal} governance documents, ${r.n_editorial || 0} editorials in prominent journals, ${r.n_commentary} other commentaries</div>${en || "<p class='meta'>None.</p>"}`;
     if (!dlg.open) dlg.showModal();
   }
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") history.replaceState(null, "", location.pathname); });

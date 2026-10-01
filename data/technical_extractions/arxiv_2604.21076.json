@@ -1,0 +1,37 @@
+{
+ "id": "arxiv:2604.21076",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T138",
+   "comparator_used": "Raw FHIR JSON serialisation (also compared Markdown Table and Chronological Timeline) across five open-weight models",
+   "finding": "mixed",
+   "outcome": "Medication reconciliation F1 on 200 synthetic patients (4,000 inference runs)",
+   "effect": "Clinical Narrative outperformed Raw JSON by up to 19 F1 points for Mistral-7B (r = 0.617, p < 10^-10) in models up to 8B; the advantage reversed at 70B, where Raw JSON achieved the best mean F1 of 0.9956.",
+   "tradeoff": "In all 20 model and strategy combinations mean precision exceeded mean recall, so omission of active medications was the dominant failure mode. Smaller models plateaued at roughly 7-10 concurrent active medications, underserving polypharmacy patients.",
+   "quote": "We find that serialisation strategy has a large, statistically significant effect on performance for models up to 8B parameters: Clinical Narrative outperforms Raw JSON by up to 19 F1 points for Mistral-7B (r = 0.617, p < 10^{-10}).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "Instruction-tuned general-purpose models (e.g., Mistral-7B, Llama-3.1-8B) used on the same task",
+   "finding": "favours_comparator",
+   "outcome": "Usable structured medication extraction output",
+   "effect": "BioMistral-7B, a domain-pretrained model without instruction tuning, produced zero usable output in all conditions.",
+   "tradeoff": "",
+   "quote": "BioMistral-7B, a domain-pretrained model without instruction tuning, produces zero usable output in all conditions, showing that domain pretraining alone is not sufficient for structured extraction.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "FHIR data serialisation format (input formatting) selection"
+}

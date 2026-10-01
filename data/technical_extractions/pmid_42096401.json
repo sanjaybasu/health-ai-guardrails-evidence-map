@@ -1,0 +1,52 @@
+{
+ "id": "pmid:42096401",
+ "families": [
+  "agent_tool_design",
+  "input_data_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T066",
+   "comparator_used": "Direct prompting (no reasoning) on the same models",
+   "finding": "favours_control",
+   "outcome": "Accuracy on structured EHR table tasks (numerical answers)",
+   "effect": "CoT prompting moderately improved performance versus uniformly low direct-prompting accuracy, particularly for logical filtering; no numeric values reported in the abstract",
+   "tradeoff": "CoT performance degraded significantly as table size increased, with limited accuracy and poor scalability",
+   "quote": "CoT prompting moderately improved performance, particularly for logical filtering, but results degraded significantly as table size increased.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T167",
+   "comparator_used": "Direct prompting and chain-of-thought prompting, where the LLM answers directly in text",
+   "finding": "favours_control",
+   "outcome": "Accuracy on structured EHR table tasks and valid JSON output formatting",
+   "effect": "Tool-based strategy (LLM-generated Python code, executed to retrieve answers) substantially improved accuracy over direct and CoT prompting; no numeric values reported in the abstract",
+   "tradeoff": "Smaller models and distilled reasoning variants had more frequent formatting and execution errors",
+   "quote": "The tool-based strategy substantially improved accuracy.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T145",
+   "comparator_used": "Direct prompting and chain-of-thought prompting, where the LLM computes answers directly from the table text",
+   "finding": "favours_control",
+   "outcome": "Accuracy on structured EHR table tasks and valid output formatting",
+   "effect": "Tool-based prompting, where models generated and executed Python code, achieved higher accuracy and valid output formatting than direct and CoT prompting; no numeric values reported in the abstract",
+   "tradeoff": "Smaller models and distilled reasoning variants had more frequent formatting and execution errors",
+   "quote": "Tool-based prompting, where models generated and executed Python code, achieved higher accuracy and valid output formatting.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "tool-enabled code generation vs direct/CoT prompting"
+}

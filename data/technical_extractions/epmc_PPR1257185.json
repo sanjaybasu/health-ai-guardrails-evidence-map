@@ -1,0 +1,40 @@
+{
+ "id": "epmc:PPR1257185",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Pretrained models (primary model and public EchoNet-Dynamic) applied to phone-recorded videos without phone-video fine-tuning",
+   "finding": "favours_control",
+   "outcome": "LVEF estimation accuracy on phone-recorded echocardiogram videos (MAE, R\u00b2, AUROC for EF >50%)",
+   "effect": "Primary model without fine-tuning on phone videos: MAE 7.00 pp, R\u00b2 0.49, AUROC 0.91; after fine-tuning on the 2396-video evaluation cohort: MAE 6.96 pp, R\u00b2 0.61, AUROC 0.93. EchoNet-Dynamic: MAE 9.36 to 7.86 pp, R\u00b2 0.37 to 0.50, AUROC 0.84 to 0.89.",
+   "tradeoff": "",
+   "quote": "On the 2396-video fine-tuning evaluation cohort, fine-tuning improved primary model performance to a mean absolute error of 6.96 percentage points, coefficient of determination of 0.61, and area under the receiver operating characteristic curve of 0.93.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T143",
+   "comparator_used": "Same phone-recorded videos without progressive central zoom preprocessing",
+   "finding": "favours_comparator",
+   "outcome": "LVEF estimation performance on phone-recorded videos",
+   "effect": "Progressive central zoom degraded model performance; no numbers given in the abstract.",
+   "tradeoff": "Digital zoom/cropping degraded accuracy.",
+   "quote": "Progressive central zoom preprocessing degraded model performance.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local fine-tuning/recalibration on site-specific data before deployment"
+}

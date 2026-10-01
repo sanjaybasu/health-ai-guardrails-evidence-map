@@ -1,0 +1,24 @@
+{
+ "id": "arxiv:2603.00924",
+ "families": [
+  "model_choice_adaptation",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T047",
+   "comparator_used": "Raw LLM confidence scores, which the study reports as miscalibrated (underconfident on FDA labels, overconfident on radiology reports); no head-to-head numeric comparison with heuristic cutoffs is reported",
+   "finding": "favours_control",
+   "outcome": "Empirical coverage of correct entities in LLM-based medical entity extraction (FDA drug labels and MIMIC-CXR radiology reports)",
+   "effect": "Achieved target coverage (>=90%) in both domains. Conformal thresholds varied by domain: tau approx 0.06 on FDA labels and up to 0.99 on radiology reports. Rejection rates were 9-13%.",
+   "tradeoff": "9-13% of extracted entities were rejected (deferred). Thresholds had to be calibrated separately per domain, extraction category and model, because miscalibration direction reverses across domains. Radiology reports needed very strict thresholds (up to 0.99).",
+   "quote": "Despite this heterogeneity, conformal prediction achieves target coverage ($\\geq 90\\%$) in both settings with manageable rejection rates (9--13\\%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "conformal prediction calibration thresholds for LLM output rejection"
+}

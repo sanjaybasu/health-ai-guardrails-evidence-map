@@ -1,0 +1,38 @@
+{
+ "id": "pmid:41720937",
+ "families": [
+  "model_choice_adaptation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T053",
+   "comparator_used": "Baseline low-temperature (0.1) answers to all questions, with no reliability scoring",
+   "finding": "favours_control",
+   "outcome": "Diagnostic/VQA answer accuracy on retained questions after filtering by discrete semantic entropy",
+   "effect": "DSE > 0.3 filter: GPT-4o accuracy 51.7% to 76.3% (334/706 retained); GPT-4.1 54.8% to 63.8% (499/706 retained); both p < 0.001",
+   "tradeoff": "Many questions go unanswered (372/706 excluded for GPT-4o, 207/706 for GPT-4.1). Each question needs 15 sampled responses at temperature 1.0 plus bidirectional entailment clustering.",
+   "quote": "After filtering out high-entropy questions (DSE > 0.3), accuracy on the remaining questions was 76.3% (retained questions: 334/706) for GPT-4o and 63.8% (retained questions: 499/706) for GPT-4.1 (both p < 0.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T046",
+   "comparator_used": "Baseline answers to all questions with no uncertainty cutoff (low-temperature output for every question)",
+   "finding": "favours_control",
+   "outcome": "Accuracy on answered questions after rejecting high-entropy (DSE > 0.6 or > 0.3) questions",
+   "effect": "DSE > 0.3 cutoff: GPT-4o 51.7% to 76.3%; GPT-4.1 54.8% to 63.8%; gains seen across both datasets and largely significant after Bonferroni correction",
+   "tradeoff": "Fewer questions answered (334/706 retained for GPT-4o, 499/706 for GPT-4.1). The abstract does not report any human review of the rejected questions.",
+   "quote": "DSE filtering at a 0.3 threshold increased GPT-4o accuracy from 51.7% to 76.3% and GPT-4.1 from 54.8% to 63.8%, while answering fewer questions.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "uncertainty-based output filtering"
+}

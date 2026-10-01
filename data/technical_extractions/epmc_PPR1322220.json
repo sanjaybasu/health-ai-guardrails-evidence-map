@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1322220",
+ "families": [
+  "privacy_security_engineering"
+ ],
+ "links": [
+  {
+   "control_id": "T207",
+   "comparator_used": "Plaintext federated learning (unencrypted model updates), also compared with centralised learning and differential-privacy baselines",
+   "finding": "mixed",
+   "outcome": "Membership-inference attack AUC (privacy) versus predictive utility (F1, ROC-AUC) and communication cost",
+   "effect": "HE-FL reduced membership-inference AUC to 0.5000 (random guess); plaintext FL had F1 = 0.9922 and ROC-AUC = 0.9996 versus HE-FL F1 = 0.4042 and ROC-AUC = 0.7714; uplink rose from 3.18 MB to 37.69 MB per round (~24\u00d7 ciphertext expansion)",
+   "tradeoff": "Large utility loss, convergence degradation, approximately 24\u00d7 ciphertext expansion, and uplink increase from 3.18 MB to 37.69 MB per round",
+   "quote": "Plaintext FL achieved the highest utility (F1 = 0.9922; ROC-AUC = 0.9996), whereas the proposed HE-FL configuration retained meaningful predictive capability (F1 = 0.4042; ROC-AUC = 0.7714) and reduced membership-inference attack performance to the random-guess level (AUC = 0.5000) under the evaluated protocol.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T209",
+   "comparator_used": "Centralised learning on pooled data from the same simulated hospitals",
+   "finding": "no_clear_difference",
+   "outcome": "Predictive performance and privacy of federated versus centralised training",
+   "effect": "The abstract reports plaintext FL utility (F1 = 0.9922; ROC-AUC = 0.9996) but gives no centralised numbers or direct comparison result.",
+   "tradeoff": "",
+   "quote": "The framework is compared with centralised learning, plaintext FL, and differential-privacy baselines using predictive, privacy, and systems metrics.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "homomorphic encryption of federated learning updates"
+}

@@ -1,0 +1,52 @@
+{
+ "id": "arxiv:2609.02396",
+ "families": [
+  "grounding_retrieval",
+  "language_literacy_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Standard LLM generation without retrieval (few-shot and fine-tuned Qwen and BioBART)",
+   "finding": "favours_comparator",
+   "outcome": "Quality, factual consistency and readability of lay summaries",
+   "effect": "RAG alone offered no benefit; the abstract gives no numbers. Combining RAG with NER degraded performance in few-shot settings but improved readability when fine-tuned.",
+   "tradeoff": "Irrelevant retrieved terms can introduce hallucinations.",
+   "quote": "Results show that NER consistently improves readability and overall quality, while RAG alone offers no benefit and can introduce hallucinations from irrelevant retrieved terms.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T089",
+   "comparator_used": "Standard LLM-based generation without NER-based entity extraction",
+   "finding": "favours_control",
+   "outcome": "Readability and overall quality of lay summaries",
+   "effect": "NER consistently improved readability and overall quality; fine-tuned BioBART with NER achieved the best overall performance (no numbers in the abstract).",
+   "tradeoff": "",
+   "quote": "Results show that NER consistently improves readability and overall quality, while RAG alone offers no benefit and can introduce hallucinations from irrelevant retrieved terms.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T079",
+   "comparator_used": "Few-shot prompting variants of the same models",
+   "finding": "favours_control",
+   "outcome": "Overall performance and readability of lay summaries",
+   "effect": "Fine-tuned BioBART with NER achieved the best overall performance. Adding RAG to NER degraded few-shot results but improved readability when fine-tuned (no numbers in the abstract).",
+   "tradeoff": "",
+   "quote": "Fine-tuned BioBART with NER achieves the best overall performance, highlighting entity-aware extraction as the primary driver of improved patient-friendly summaries.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding and NER-based entity extraction added to LLM lay summarization"
+}

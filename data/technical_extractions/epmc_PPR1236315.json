@@ -1,0 +1,27 @@
+{
+ "id": "epmc:PPR1236315",
+ "families": [
+  "monitoring_methods",
+  "output_filtering",
+  "prompting",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T002",
+   "comparator_used": "Five prompt-defined detection variants of a single base LLM with increasing sensitivity thresholds, from the least sensitive variant up to extreme sensitivity, scored against clinician consensus labels. No comparison with a conversational LLM using its own safety behaviour.",
+   "finding": "mixed",
+   "outcome": "False-negative rate (recall) and false-positive rate for suicide- and crisis-risk detection, plus per-turn latency",
+   "effect": "False-negative rate fell monotonically from 87% to 0% as sensitivity increased. High- and extreme-sensitivity variants reached 98.9% and 100% recall. Mean latency was under 1 s.",
+   "tradeoff": "False-positive rates rose as sensitivity increased, so near-zero-miss detection necessarily incurs elevated false positives. Remaining errors aligned with cases of clinician disagreement.",
+   "quote": "As sensitivity increased, the false-negative rate decreased monotonically from 87% to 0%, while false-positive rates rose accordingly.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "LLM crisis-detection sensitivity threshold selection with independent emergency-mode detector"
+}

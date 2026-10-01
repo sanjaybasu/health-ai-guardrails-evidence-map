@@ -1,0 +1,40 @@
+{
+ "id": "pmid:41041744",
+ "families": [
+  "monitoring_methods",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T046",
+   "comparator_used": "Performance on all samples (no uncertainty screening) versus samples below the 95th-percentile epistemic uncertainty threshold; flagged samples were set aside for review",
+   "finding": "favours_control",
+   "outcome": "Macro-F1 and robustness to temporal drift; capture of prediction errors by flagged samples",
+   "effect": "Samples below the threshold had consistently higher macro-F1 and performance virtually invariant to temporal drift across all training-test time pairs; flagged samples captured most prediction errors (no numeric values in the abstract)",
+   "tradeoff": "",
+   "quote": "Results across all training-test time pairs show that samples below this threshold exhibit consistently higher macro-F1 and render performance virtually invariant to temporal drift, while the flagged samples captured most prediction errors.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T051",
+   "comparator_used": "Running the model on all samples without an uncertainty-based out-of-distribution flag",
+   "finding": "favours_control",
+   "outcome": "Macro-F1 and error capture when potential OOD samples were flagged using Monte Carlo Dropout epistemic uncertainty",
+   "effect": "Unflagged (in-distribution) samples had consistently higher macro-F1 and were virtually invariant to temporal drift; flagged potential OOD samples captured most prediction errors (no numeric values in the abstract)",
+   "tradeoff": "",
+   "quote": "Results across all training-test time pairs show that samples below this threshold exhibit consistently higher macro-F1 and render performance virtually invariant to temporal drift, while the flagged samples captured most prediction errors.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "uncertainty thresholding for out-of-distribution detection and clinician review triage"
+}

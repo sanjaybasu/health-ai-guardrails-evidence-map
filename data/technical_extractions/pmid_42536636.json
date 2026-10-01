@@ -1,0 +1,64 @@
+{
+ "id": "pmid:42536636",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T016",
+   "comparator_used": "zero-shot prompting and fixed random few-shot prompting",
+   "finding": "favours_control",
+   "outcome": "Textual similarity of generated CTPA impressions to original impressions (ROUGE, BERTScore F1)",
+   "effect": "Dynamic retrieval-based few-shot outperformed both comparators in all configurations (all p < 0.05). ROUGE-1 F1 was 0.44-0.47 for GPT-4o and 0.37-0.50 for LLaMA, versus 0.35-0.37 and 0.25-0.37 respectively with zero-shot.",
+   "tradeoff": "",
+   "quote": "Dynamic retrieval-based few-shot prompting outperformed zero-shot and fixed few-shot prompting across all configurations (all p < 0.05).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T072",
+   "comparator_used": "higher sampling temperatures (0.7 and 1)",
+   "finding": "favours_control",
+   "outcome": "Textual similarity of generated impressions to reference impressions (ROUGE, BERTScore F1)",
+   "effect": "The highest scores were at temperature 0 (with k = 10); lower temperature was associated with higher similarity scores.",
+   "tradeoff": "",
+   "quote": "Lower temperature and larger k were associated with higher similarity scores.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T086",
+   "comparator_used": "higher decoding temperatures (0.7 and 1)",
+   "finding": "favours_control",
+   "outcome": "Textual similarity of generated impressions to reference impressions (ROUGE, BERTScore F1)",
+   "effect": "The highest scores were at temperature 0 (with k = 10); lower temperature was associated with higher similarity scores.",
+   "tradeoff": "",
+   "quote": "The highest scores were observed at temperature 0 and k = 10.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T024",
+   "comparator_used": "smaller top-k values (k = 3 and 5 vs k = 10) with the retrieval method fixed",
+   "finding": "favours_control",
+   "outcome": "Textual similarity of generated impressions to reference impressions (ROUGE, BERTScore F1)",
+   "effect": "The highest scores were at k = 10; larger k was associated with higher similarity scores.",
+   "tradeoff": "",
+   "quote": "Lower temperature and larger k were associated with higher similarity scores.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval-augmented few-shot prompting (case-matched retrieval)"
+}

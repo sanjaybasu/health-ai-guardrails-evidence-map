@@ -1,0 +1,27 @@
+{
+ "id": "pmid:42263419",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same locally-deployed LLM (gpt-oss-20b) without RAG-based local guideline context, and a frontier model (gpt-5.4) without RAG",
+   "finding": "favours_control",
+   "outcome": "Proportion of answers to simulated antimicrobial advice questions judged fully correct",
+   "effect": "With RAG, 162/186 (87%) attempted answers were fully correct. Without RAG, 21/186 (11%) were fully correct with the same local LLM and 92/200 (46%) with gpt-5.4.",
+   "tradeoff": "RAG still produced occasional errors (5% incorrect, 8% partially correct), performance was lower in complex scenarios such as renal impairment, and only 5/9 (56%) out-of-scope questions were correctly identified. Median generation time was 12 s (single-stage).",
+   "quote": "LLMs without RAG-based local guideline context had lower performance: 21/186 (11%) answers to simulated questions fully correct with the same locally-deployed LLM and 92/200 (46%) with a current frontier model (gpt-5.4).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval-augmented generation grounding on local clinical guidelines"
+}

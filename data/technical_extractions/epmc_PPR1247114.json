@@ -1,0 +1,27 @@
+{
+ "id": "epmc:PPR1247114",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T036",
+   "comparator_used": "Unguided LLM output with no citation verification (C1 condition in the 640-run ablation)",
+   "finding": "favours_control",
+   "outcome": "Type I (fabricated citation) and Type II (wrong-topic citation) hallucination rates",
+   "effect": "Live PMID verification alone (C3) gave 0.0% Type I and 0.0% Type II, versus 95.9% Type II for unguided output. The full VaaS protocol (C4) gave 0.0% Type I and 6.5% Type II, a >14-fold reduction.",
+   "tradeoff": "The full pipeline cost less than ~$1 per comprehensive gene review. No latency or new failure modes are reported in the abstract.",
+   "quote": "live PMID verification alone (C3) eliminated both error types entirely (0.0%/0.0%)",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "live PMID citation verification and multi-layer output validation guardrails"
+}

@@ -1,0 +1,55 @@
+{
+ "id": "epmc:PPR1241968",
+ "families": [
+  "agent_tool_design",
+  "monitoring_methods",
+  "output_filtering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T004",
+   "comparator_used": "Same pipeline without the deterministic post-processing rules (controlled ablation on 25 cases)",
+   "finding": "favours_control",
+   "outcome": "Binary check pass rate and fabrication-class failures",
+   "effect": "166 rules across 6 profiles improved binary check pass rate by 11.7 percentage points and eliminated all 6 fabrication-class failures (n = 25)",
+   "tradeoff": "",
+   "quote": "these rules improved binary check pass rate by 11.7 per-centage points and eliminated all 6 fabrication-class failures.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T167",
+   "comparator_used": "Multi-kilobyte LLM assembly-agent prompt (Chart_Builder) before replacement",
+   "finding": "favours_control",
+   "outcome": "H+P trace latency after replacing the LLM assembly call with a deterministic template plus sandboxed scripting",
+   "effect": "Latency fell from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s; n = 100 pre, n = 100 post)",
+   "tradeoff": "",
+   "quote": "a deterministic assembly-agent replacement cut H+P trace latency from 19.6 s to 10.8 s (\u22128.8 s, 95% CI [\u221210.5, \u22127.1] s",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T067",
+   "comparator_used": "Unoptimized initial prompts for reasoning versus assembly agents",
+   "finding": "mixed",
+   "outcome": "Quality of agent output after iterative prompt optimization",
+   "effect": "Optimization worked on reasoning agents but not on the assembly agent: four consecutive attempts on one assembly agent produced 18\u201328 point regressions",
+   "tradeoff": "New failure mode: prompt optimization regressed the assembly agent, so deterministic post-processing or removing the LLM call was needed instead",
+   "quote": "In our pipeline, prompt optimization worked on the reasoning agents but did not work on the assembly agent: four consecutive optimization attempts on one assembly agent produced 18\u201328 point regressions.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "closed-loop quality assurance and deterministic output guardrails/gates"
+}

@@ -1,0 +1,27 @@
+{
+ "id": "pmid:42710003",
+ "families": [
+  "grounding_retrieval",
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Long-context prompting with the most recent clinical notes (varying amounts of context) across GPT-5.4-mini, Mistral Medium 3 and DeepSeek V3.1",
+   "finding": "mixed",
+   "outcome": "Task performance (F1 for imaging procedure extraction, Jaccard for antibiotic timelines, diagnosis generation) and token use",
+   "effect": "Imaging Procedures: RAG exceeded long-context performance by 0.17-9.83 F1 across all models using fewer than 8K tokens. Antibiotic Timelines: <8K retrieved tokens matched long-context recent-notes performance (between -3.26 and +3.24 Jaccard). Diagnosis Generation: performance largely static across methods and models.",
+   "tradeoff": "No gain for diagnosis generation, the hardest task. Missing information in the notes, often from inter-hospital transfers, limited performance to some extent.",
+   "quote": "For Imaging Procedures, RAG strongly outperformed recent-note inputs and exceeded long-context performance (by 0.17-9.83 F1 across all models) using fewer than 8K tokens.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding versus long-context input"
+}

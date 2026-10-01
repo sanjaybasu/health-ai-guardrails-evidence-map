@@ -1,0 +1,38 @@
+{
+ "id": "arxiv:2604.23972",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T017",
+   "comparator_used": "No validator baseline (reasoner only); also KG validation without context matching",
+   "finding": "favours_control",
+   "outcome": "Medical QA accuracy on KG-grounded MedReason subset (2,788 questions), Haiku-4.5 as Reasoner and Validator",
+   "effect": "KG-backed validation +0.61 pp over no-validator baseline; QKG with context matching +0.79 pp over KG validation without context matching and +1.40 pp over no-validator baseline (paired McNemar, all p<0.05). With stronger validator (Qwen-3.6-Plus), raw QKG gain over no-validator baseline +5.96 pp; context-matching gap p=0.73 on raw set, p=0.05 after adjustment.",
+   "tradeoff": "",
+   "quote": "With Haiku-4.5 as both the Reasoner and the Validator, KG-backed validation significantly improves over a no-validator baseline ($+0.61$ pp), and QKG with context matching yields the largest gain, outperforming both KG validation without context matching ($+0.79$ pp) and the no-validator baseline ($+1.40$ pp; paired McNemar, all $p<0.05$).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T036",
+   "comparator_used": "No-validator baseline (reasoner output released without KG-based validation)",
+   "finding": "favours_control",
+   "outcome": "Medical QA accuracy on KG-grounded MedReason subset (2,788 questions)",
+   "effect": "KG-backed validation +0.61 pp over no-validator baseline; QKG with context matching +1.40 pp over baseline (p<0.05); with Qwen-3.6-Plus validator, raw QKG gain grew from +1.40 pp to +5.96 pp.",
+   "tradeoff": "",
+   "quote": "Under a stronger validator (Qwen-3.6-Plus), the raw QKG gain over the no-validator baseline grows from $+1.40$ pp to $+5.96$ pp; the context-matching gap is non-significant ($p=0.73$) on the raw set but becomes borderline significant ($p=0.05$) after adjustment for knowledge leakage and suspicious questions, consistent with a benchmark-gold ceiling rather than a QKG limitation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "knowledge graph-based validation with context matching (retrieval grounding)"
+}

@@ -1,0 +1,54 @@
+{
+ "id": "pmid:42346209",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T084",
+   "comparator_used": "Domain-specialized MedGemma 27B (no external guideline retrieval) compared with general-purpose Gemini 2.5 (guideline-integrated)",
+   "finding": "favours_comparator",
+   "outcome": "Concordance with MTB decisions and clinical safety rate in 300 CRC cases",
+   "effect": "Gemini 2.5: \u03ba = 0.792, exact concordance 85.0%, safety 83.7%. MedGemma: \u03ba = 0.566 (T=0.0) and 0.610 (T=1.0), accuracy 70.3% and 73.5%, safety 62.3% and 62.7%; p < 0.001 for the difference.",
+   "tradeoff": "The comparison is confounded: Gemini had guideline integration and MedGemma had none, which the authors call a predefined asymmetry in knowledge augmentation. Discordance clustered in complex scenarios such as surgical planning, recurrent disease and poor performance status.",
+   "quote": "A guideline-integrated general-purpose LLM demonstrated superior concordance and safety compared with a domain-specialized model operating without external retrieval, supporting its adjunctive use within MTBs while preserving expert clinical judgment.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "MedGemma 27B operating without external guideline retrieval",
+   "finding": "favours_control",
+   "outcome": "Concordance with MTB decisions and clinical safety rate",
+   "effect": "Guideline-integrated Gemini 2.5: \u03ba = 0.792, 85.0% exact concordance, 83.7% safety. MedGemma without retrieval: \u03ba = 0.566-0.610, accuracy 70.3-73.5%, safety 62.3-62.7%; p < 0.001.",
+   "tradeoff": "Retrieval was not isolated. The arms differ in both model and guideline access, so the effect cannot be attributed to retrieval alone.",
+   "quote": "A guideline-integrated general-purpose LLM demonstrated superior concordance and safety compared with a domain-specialized model operating without external retrieval, supporting its adjunctive use within MTBs while preserving expert clinical judgment.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T086",
+   "comparator_used": "MedGemma at temperature T = 1.0",
+   "finding": "favours_comparator",
+   "outcome": "Concordance with MTB decisions (kappa, accuracy) and safety rate",
+   "effect": "T=0.0: \u03ba = 0.566, accuracy 70.3%, safety 62.3%. T=1.0: \u03ba = 0.610, accuracy 73.5%, safety 62.7%. Concordance improvement p = 0.038.",
+   "tradeoff": "The improvement at T=1.0 was modest, and safety remained low at both settings.",
+   "quote": "MedGemma showed moderate agreement at T = 0.0 (\u03ba = 0.566; accuracy = 70.3%) and modest improvement at T = 1.0 (\u03ba = 0.610; accuracy = 73.5%; <i>p</i> = 0.038), with lower safety rates (62.3% and 62.7%; <i>p</i> < 0.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "guideline-integrated retrieval augmentation"
+}

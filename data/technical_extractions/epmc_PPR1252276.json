@@ -1,0 +1,38 @@
+{
+ "id": "epmc:PPR1252276",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T167",
+   "comparator_used": "Model reasoning on its own (unguarded) and model reasoning grounded by guideline retrieval, across nine frontier LLMs and 110 pharmacogenomic cases",
+   "finding": "favours_control",
+   "outcome": "Correctness and determinism of the pharmacogenomic phenotype/clinical mapping, and lethal-class errors",
+   "effect": "Executing the validated versioned skill as code made the mapping exact and identical across models, and removed the ancestry gradient from the clinical mapping. Model-only reasoning was stochastic and unsafe. The abstract gives no numeric accuracy figures for this comparison.",
+   "tradeoff": "All residual error remains at the single input-interpretation step. The ancestry gradient moves to the completeness of the input caller. The authors do not claim full clinical validation.",
+   "quote": "Encoding the validated decision logic as a versioned skill and executing it as code made the pharmacogenomic mapping exact, auditable and identical across models, confining all residual error to a single input-interpretation step.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Model reasoning from its own knowledge without retrieval (also contrasted with the executed skill)",
+   "finding": "mixed",
+   "outcome": "Phenotype accuracy and lethal-class errors",
+   "effect": "Retrieval raised phenotype accuracy but increased lethal-class errors; the abstract gives no numbers.",
+   "tradeoff": "Retrieval increased lethal-class errors, a new safety failure mode.",
+   "quote": "Letting the model reason was stochastic and unsafe, and grounding it in the correct guidelines by retrieval paradoxically increased lethal-class errors.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding vs executing validated decision logic as versioned code skill"
+}

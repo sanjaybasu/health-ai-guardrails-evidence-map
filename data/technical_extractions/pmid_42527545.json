@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42527545",
+ "families": [
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T035",
+   "comparator_used": "Single models: source-only transfer logistic regression and target-only logistic regression",
+   "finding": "no_clear_difference",
+   "outcome": "Discrimination (AUC) and calibration (Brier) on the Virginia hold-out set",
+   "effect": "Meta-ensemble AUC 0.728 (95% CI 0.691-0.764), Brier 0.193 (95% CI 0.180-0.207); source-only AUC 0.725, p = 0.454; target-only AUC 0.628 (p < 0.001)",
+   "tradeoff": "",
+   "quote": "Source-only transfer performed similarly (AUC 0.725), with no significant difference (p = 0.454), and both outperformed target-only logistic regression (AUC 0.628; p < 0.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T079",
+   "comparator_used": "source-only transfer to Virginia without target adaptation",
+   "finding": "favours_control",
+   "outcome": "Race/ethnicity equalized odds difference",
+   "effect": "Target-adapted models 0.132-0.157 vs source-only transfer 0.897.",
+   "tradeoff": "Disparities persisted; not all complex target-adapted methods improved discrimination (Enhanced MAML AUC 0.677 did not improve over naive transfer).",
+   "quote": "Fairness analyses showed lower race/ethnicity equalized odds differences for target-adapted models (0.132-0.157) than source-only transfer (0.897), though disparities persisted.",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local recalibration and transfer learning adaptation"
+}

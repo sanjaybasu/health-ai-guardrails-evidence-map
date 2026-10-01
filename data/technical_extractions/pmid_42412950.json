@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42412950",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T085",
+   "comparator_used": "Hospital-only baseline model trained on real hospital data only (vs. synthetic-pretrained zero-shot and domain-adapted models)",
+   "finding": "mixed",
+   "outcome": "7-year overall survival prediction, AUPRC and Brier score on held-out real hospital test set",
+   "effect": "Domain adaptation (synthetic pretraining then local fine-tuning) improved AUPRC in 8/12 combinations, 4 statistically significant; best XGBoost+RUS+F1 AUPRC=0.5391 (\u0394+0.1474; P<.001). Zero-shot use of the synthetic-pretrained model reduced AUPRC in most settings, with no significant gains elsewhere. Brier scores improved in most domain adaptation combinations.",
+   "tradeoff": "Synthetic data did not substitute for real data: zero-shot use of the synthetic-pretrained model performed worse, and the authors conclude synthetic data is a complement, not a substitute, for local clinical data.",
+   "quote": "In contrast, the domain adaptation model improved AUPRC in 8/12 combinations, with 4 statistically significant gains; the best setting (XGBoost+RUS+F1 optimization) achieved AUPRC=0.5391 (\u0394+0.1474; P<.001).",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T035",
+   "comparator_used": "Hospital-only baseline single model",
+   "finding": "mixed",
+   "outcome": "7-year overall survival prediction, AUPRC and Brier score on held-out real hospital test set",
+   "effect": "Soft ensemble increased AUPRC in 7/12 combinations, 3 statistically significant; best XGBoost+RUS+AUPRC AUPRC=0.5060 (\u0394+0.1258, P=.002). Brier scores improved in most ensemble combinations.",
+   "tradeoff": "",
+   "quote": "The soft ensemble increased AUPRC in 7/12 combinations, with 3 statistically significant gains; the best setting (XGBoost+RUS+AUPRC optimization) achieved AUPRC=0.5060 (\u0394+0.1258, P=.002).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local adaptation/recalibration of models pretrained on synthetic data"
+}

@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42361285",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same five LLMs (GPT-4-turbo, GPT-3.5-turbo, Qwen2.5-14B, LLaMA3-8B, OpenBioLLM-8B) without RAG",
+   "finding": "favours_control",
+   "outcome": "Quality of answers to breast cancer guideline queries (rubric scores and pairwise ranking win rates), with human oncologist validation",
+   "effect": "Absolute rubric gains 0.02-0.05 on a five-point scale; relative improvements in head-to-head win rates 16% to 46%; RAG-enhanced Qwen2.5-14B rubric 3.77 vs 3.96 for GPT-4-turbo and pairwise 0.72 vs 0.81",
+   "tradeoff": "Absolute rubric gains were modest; human expert scores were more conservative than LLM judge scores (mean 3.81 vs 4.12); performance degraded sharply at higher context volumes",
+   "quote": "Human expert scores confirmed RAG superiority but were consistently more conservative than LLM judge scores (mean 3.81 v 4.12 across all metrics).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T024",
+   "comparator_used": "Higher numbers of retrieved contexts (top-k values above 5)",
+   "finding": "favours_control",
+   "outcome": "Answer quality across different numbers of retrieved contexts",
+   "effect": "Top-5 contexts was optimal; performance degraded sharply at higher context volumes (no numbers given in the abstract)",
+   "tradeoff": "Performance degraded sharply when more contexts were supplied",
+   "quote": "Optimal retrieval used top-5 contexts; performance degraded sharply at higher context volumes.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG) added to existing LLMs"
+}

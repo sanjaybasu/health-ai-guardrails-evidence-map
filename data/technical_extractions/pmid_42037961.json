@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42037961",
+ "families": [
+  "output_filtering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T072",
+   "comparator_used": "Stochastic decoding (temperature 1.0, top_p 0.95)",
+   "finding": "mixed",
+   "outcome": "Run-to-run modal agreement and urgent red-flag primary-action safety (hard under-triage)",
+   "effect": "Modal agreement improved under near-deterministic decoding. Red-flag hard under-triage was 100.0% for both prompts under near-deterministic decoding, versus 100.0% for P1 and 99.7% for P2 under stochastic prompt-only decoding.",
+   "tradeoff": "",
+   "quote": "Near-deterministic decoding improved run-to-run modal agreement, but this reproducibility gain did not improve urgent-case safety.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T005",
+   "comparator_used": "Stochastic prompt-only execution without response-schema enforcement",
+   "finding": "mixed",
+   "outcome": "Run-to-run agreement and the proportion of escalation recommendations below the hard minimum in urgent cases",
+   "effect": "Response-schema enforcement often improved agreement relative to stochastic prompt-only execution. Red-flag hard under-triage of the primary action stayed at 100.0% for both prompts under stochastic response-schema decoding.",
+   "tradeoff": "In some urgent conditions, schema enforcement increased the proportion of escalation recommendations that still remained below the hard minimum.",
+   "quote": "Response-schema enforcement often improved agreement relative to stochastic prompt-only execution, yet in some urgent conditions, it increased the proportion of escalation recommendations that still remained below the hard minimum.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "decoding configuration and response-schema enforcement"
+}

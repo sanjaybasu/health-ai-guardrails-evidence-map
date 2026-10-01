@@ -356,8 +356,17 @@ def extract_studies(workers: int = 6, limit: int | None = None, only: set[str] |
     tax_block, valid = _taxonomy_block()
     papers = fetch.load()
     rows = [json.loads(l) for l in SCREEN.read_text().splitlines()]
+    def pending(r):
+        path = EXTRACT_DIR / f"{_fn(r['id'])}.json"
+        if not path.exists():
+            return True
+        # Commentaries skipped for lack of open text are retried once an open-access location is known.
+        if r["category"] == "recommendation_commentary" and papers.get(r["id"], {}).get("oa_url"):
+            x = json.loads(path.read_text())
+            return bool(x.get("skipped")) and not x.get("oa_retried")
+        return False
     todo = [r for r in rows if r["category"] in ("empirical_ai_health", "recommendation_commentary")
-            and not (EXTRACT_DIR / f"{_fn(r['id'])}.json").exists() and (only is None or r["id"] in only)]
+            and pending(r) and (only is None or r["id"] in only)]
     todo.sort(key=lambda r: (not r["tests_practice"], r["setting"] != "real_deployment"))
     if limit:
         todo = todo[:limit]
@@ -379,7 +388,7 @@ def extract_studies(workers: int = 6, limit: int | None = None, only: set[str] |
         except Exception as e:
             print("  extract fail", r["id"], repr(e)[:160], flush=True)
             return
-        res.update({"id": r["id"], "screen": r})
+        res.update({"id": r["id"], "screen": r, "oa_retried": bool(p.get("oa_url"))})
         path = EXTRACT_DIR / f"{_fn(r['id'])}.json"
         tmp = path.with_suffix(".tmp")
         tmp.write_text(json.dumps(res, indent=1))
@@ -492,7 +501,8 @@ Candidate recommendations:
 
 def _commentary(p, tax_block, valid):
     m = CFG["models"]["hazard"]
-    ft = fulltext(p, max_words=9000)
+    from .editorials import open_text
+    ft = open_text(p, max_words=9000)
     if not ft:   # abstracts rarely state a recommendation verbatim; count commentaries only with open full text
         return {"route": "commentary", "models": {}, "endorsements": [], "unlisted_practices": [], "links": [],
                 "skipped": "no open full text"}

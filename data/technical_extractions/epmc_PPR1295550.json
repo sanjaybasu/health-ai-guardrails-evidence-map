@@ -1,0 +1,24 @@
+{
+ "id": "epmc:PPR1295550",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T138",
+   "comparator_used": "Default raw FHIR JSON serialisation (raw_json) versus five other FHIR-to-text formats, including structured_markdown and hybrid_adaptive",
+   "finding": "mixed",
+   "outcome": "Clinical LLM quality (scored 1-5) across clinical QA, clinical reasoning and summarisation tasks",
+   "effect": "Format choice significantly affected quality (Kruskal-Wallis H=163.86, p<10^-33, \u0394=0.24 on a 5-point scale). raw_json was suboptimal in 58% of model-task-complexity scenarios. raw_json was best for clinical QA, hybrid_adaptive for clinical reasoning, and structured_markdown for summarisation. Format sensitivity was 0.10 points for Claude Sonnet 4.5 versus 0.39 for Llama 3.3.",
+   "tradeoff": "",
+   "quote": "The optimal format is context-dependent: raw_json dominates for clinical QA, hybrid_adaptive for clinical reasoning, and structured_markdown for summarisation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "task-aware FHIR serialisation format selection"
+}

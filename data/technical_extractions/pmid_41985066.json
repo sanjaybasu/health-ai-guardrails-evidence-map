@@ -1,0 +1,40 @@
+{
+ "id": "pmid:41985066",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T031",
+   "comparator_used": "Expert clinician fact-checking (3 clinical experts) of the same responses and statements",
+   "finding": "mixed",
+   "outcome": "Accuracy (agreement with experts) and time to complete fact-checking",
+   "effect": "Acne scenario: GPT-4o and OpenBioLLM-70B both 86% agreement with experts. 20 claims: GPT-4o 100%, OpenBioLLM-70B 95%. Time: experts mean 18 (SD 3.74) min, GPT-4o 42 s, OpenBioLLM-70B 33 min.",
+   "tradeoff": "LLM fact-checks missed some safety messages (urgency of stopping isotretinoin, folic acid). OpenBioLLM-70B was slower than the experts and omitted 1 key safety item. The authors conclude that human experts still need to perform additional checks for accuracy and safety.",
+   "quote": "The expert fact-checks took a mean time of 18 (SD 3.74) minutes, GPT-4o took 42 seconds, and OpenBioLLM-70B took 33 minutes.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose GPT-4o compared with the domain-specific biomedical model OpenBioLLM-70B",
+   "finding": "favours_comparator",
+   "outcome": "Fact-checking agreement with human experts, speed, and omissions of safety information",
+   "effect": "20 claims: GPT-4o 100% vs OpenBioLLM-70B 95% agreement with experts. Acne scenario: both 86%. Time: GPT-4o 42 s vs OpenBioLLM-70B 33 min.",
+   "tradeoff": "The domain-specific model was much slower, diverged from experts on 1 pediatric antihistamine question, and omitted 1 key patient-safety information item.",
+   "quote": "For the set of 20 medical claims, GPT-4o fact-checking had 100% agreement with that of human experts, whereas OpenBioLLM-70B had 95% agreement.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "LLM automated fact-checking of responses versus human expert review"
+}

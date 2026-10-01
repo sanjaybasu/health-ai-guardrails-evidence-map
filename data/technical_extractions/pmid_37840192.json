@@ -1,0 +1,39 @@
+{
+ "id": "pmid:37840192",
+ "families": [
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "PDA-Alpha (trained at center 1 only) applied as-is at center 2, without adaptation to local data",
+   "finding": "favours_control",
+   "outcome": "Positive predictive value and false-positive predictions for pneumothorax detection on the center 2 test set (n=200)",
+   "effect": "PPV rose from 0.525 to 0.886 (p = 0.041). False positives fell from 7 to 1. Sensitivity was unchanged (49/50 for both). AUC was 0.993 for PDA-Alpha and 0.986 for PDA-Beta.",
+   "tradeoff": "Needed 50 locally obtained pneumothorax radiographs. AUC was slightly lower after adaptation (0.986 vs 0.993, overlapping CIs). The optimal amount of local data is still undetermined.",
+   "quote": "The positive predictive value increased from 0.525 to 0.886 after external validation (p = 0.041).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T080",
+   "comparator_used": "PDA-Alpha trained on single-site data (center 1 only)",
+   "finding": "favours_control",
+   "outcome": "Positive predictive value and false-positive predictions at the second center after adding data from that center",
+   "effect": "PPV rose from 0.525 to 0.886 (p = 0.041). False positives fell from 7 to 1. Sensitivity was unchanged (49/50). AUC was 0.993 vs 0.986.",
+   "tradeoff": "Only 50 additional radiographs from center 2 were used. AUC was slightly lower (0.986 vs 0.993). The amount of external data needed to fully address generalizability remains unknown.",
+   "quote": "Both algorithms successfully detected the presence of pneumothorax on 49/50 radiographs; however, PDA-Alpha had seven false-positive predictions, whereas PDA-Beta had one.",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local validation / fine-tuning with local data before deployment"
+}

@@ -1,0 +1,25 @@
+{
+ "id": "pmid:36836797",
+ "families": [
+  "alert_design",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T153",
+   "comparator_used": "Matched reference distribution vs deliberately unmatched reference (wrong manufacturer, modality or version) as simulated deviations; no comparison with labeled performance audits",
+   "finding": "favours_control",
+   "outcome": "Detection of simulated deviations in AI score distribution (PCC with 0.95 alert threshold; chi-squared test)",
+   "effect": "With matched references, global PCCs were 0.998 (US-1), 0.975 (US-2), 0.995 (US-3), 0.994 (US-4) and chi-squared p-values were 0.346-0.853, so no deviation was flagged. With unmatched references, PCCs were 0.714 (US-1), 0.825 (US-2), 0.707 (US-3), 0.364 (US-4), all below 0.95. Chi-squared p-values were 0.026, 0.320, 0.221, 0.026, so it flagged only 2 of 4 centers.",
+   "tradeoff": "The reference came from one US region, so a different population could cause large significant differences without an AI problem. PCC detected shifts but could not measure their severity, so the Wasserstein distance was added. Alert thresholds and levels were not yet refined.",
+   "quote": "The low PCC value found when an unmatched manufacturer is used for the reference shows that finding a difference could be the source of an alert, which would facilitate the detection of software malfunctions or deviations (such as an unsupported manufacturer or a version of the tool that is not suitable for the analyzed mammogram).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "drift monitoring of AI score distributions"
+}

@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1325524",
+ "families": [
+  "grounding_retrieval",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Zero-shot prompting without retrieval (model's training knowledge alone)",
+   "finding": "no_clear_difference",
+   "outcome": "Accuracy and F1 for AO/OTA 31A vs 31B classification on a balanced test set of 70 cases",
+   "effect": "RAG-LLM accuracy 94.29% (F1 = 94.29%) vs zero-shot accuracy 94.29% (F1 = 94.28%)",
+   "tradeoff": "",
+   "quote": "The comparable performance between zero\u2011shot and RAG models suggests that modern LLMs already possess inherent knowledge of AO/OTA classification, though RAG may offer advantages in more nuanced tasks.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "Zero-shot prompt with instructions only",
+   "finding": "favours_comparator",
+   "outcome": "Accuracy and F1 for AO/OTA 31A vs 31B classification on a balanced test set of 70 cases",
+   "effect": "Few-shot (5 examples per class) accuracy 88.57% (F1 = 88.53%) vs zero-shot accuracy 94.29% (F1 = 94.28%)",
+   "tradeoff": "Few-shot performance dropped unexpectedly relative to zero-shot",
+   "quote": "Zero\u2011shot prompting attained the same accuracy (94.29%, F1 = 94.28%), while few\u2011shot learning unexpectedly dropped to 88.57% (F1 = 88.53%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG) versus zero-shot and few-shot prompting"
+}

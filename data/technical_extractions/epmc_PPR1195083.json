@@ -1,0 +1,26 @@
+{
+ "id": "epmc:PPR1195083",
+ "families": [
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T042",
+   "comparator_used": "Static single-persona baselines applied to all cases (lean BASE_HL; safe BASE_HS and BASE_LS)",
+   "finding": "favours_control",
+   "outcome": "Safety violations, test counts and counterfactual monotonicity violations",
+   "effect": "BASE_HL had safety violations in 8/56 scenarios (14.3%; mean severity 0.39) with mean 1.95 tests. SAFE baselines had zero violations but more tests (BASE_HS 3.38; BASE_LS 4.32). Routers had zero safety violations with mean tests of 2.14 (R1), 2.20 (R2_AUDIT) and 2.21 (R3_ARBITER). Monotonicity violations: LEAN 10/16 (62.5%), SAFE 0/16, ROUTER_R1 2/16, ROUTER_R2 (audit) 0/16.",
+   "tradeoff": "Routers suggested slightly more tests than the lean baseline (about 2.14-2.21 vs 1.95). The simple router R1 still had 2/16 monotonicity violations. Only synthetic vignettes and a single model were tested.",
+   "quote": "Routing eliminated safety violations while keeping test counts near the lean baseline (ROUTER_R1 mean 2.14; ROUTER_R2_AUDIT mean 2.20; ROUTER_R3_ARBITER mean 2.21).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "persona routing with red-flag escalation and dual-run audit as prompt-based safety wrapper"
+}

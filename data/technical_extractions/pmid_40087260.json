@@ -1,0 +1,38 @@
+{
+ "id": "pmid:40087260",
+ "families": [
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T162",
+   "comparator_used": "Discrimination (AUROC) across groups, with no calibration assessment (no formal head-to-head comparison)",
+   "finding": "favours_control",
+   "outcome": "Detection of subgroup bias in model performance",
+   "effect": "Calibration differed by race-ethnicity and HPI: predicted hospitalization probabilities were significantly lower for African Americans (0.129\u00b10.051, p=0.016), Hispanics (0.133\u00b10.047, p=0.004), AAPI (0.120\u00b10.051, p=0.018), multi-race (0.245\u00b10.087, p=0.005), and low-HPI areas (0-25%: 0.178\u00b10.042, p<0.001). For hospitalizations, AUROC was similar across races (e.g., 0.781 white, 0.792 Black, 0.757 Hispanic) and across HPI quartiles (0.765-0.780).",
+   "tradeoff": "Evaluation was described as feasible with a part-time statistical analyst. The model was trained on a balanced dataset, so predicted probabilities were far above observed rates. Differential calibration was not detected by gender.",
+   "quote": "There was evidence of differential calibration by race-ethnicity for both ED visits and hospitalizations.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T163",
+   "comparator_used": "Aggregate performance across all patients (implicit; no aggregate-only arm was compared)",
+   "finding": "favours_control",
+   "outcome": "Subgroup differences in sensitivity, specificity, PPV and NPV at the deployed threshold of 60",
+   "effect": "ED visit sensitivity: White 0.495, Black 0.599, Hispanic 0.402, Other 0.381. Hospitalization sensitivity: White 0.392, Black 0.511, AAPI 0.300, Other 0.282. Sensitivity was also higher in the lowest HPI quartile (hospitalization 0.462 vs 0.271 in the highest).",
+   "tradeoff": "Small groups (e.g., AIAN) gave wide confidence intervals and unstable estimates. The operations team kept the 60% outreach threshold to balance reduced bias for some groups against outreach staff bandwidth.",
+   "quote": "Test sensitivity for a decision threshold of 60 also varied among race/ethnicity group with sensitivity lowest among Hispanic and the Other race group and highest among African Americans (Table 3 ).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "disaggregated calibration and equity audit before/during deployment"
+}

@@ -1,0 +1,40 @@
+{
+ "id": "pmid:41735989",
+ "families": [
+  "agent_tool_design",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T063",
+   "comparator_used": "Prompt with diagnostic category constraints removed (open-ended diagnosis, not limited to the seven predefined conditions plus Other Diagnosis)",
+   "finding": "mixed",
+   "outcome": "Sensitivity and specificity for emergent chest-pain diagnoses, and false alarms per 500 encounters",
+   "effect": "Baseline prompt with category constraints: sensitivity 79.3%, specificity 45.2%. Removing category constraints: specificity 94.7%, 140 fewer false alarms per 500, sensitivity 8.8%.",
+   "tradeoff": "Constraints produced systematic over-prediction of rare conditions (more false alarms). Removing them cut false alarms but sensitivity fell to 8.8%, so life-threatening diagnoses would be missed.",
+   "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T070",
+   "comparator_used": "Baseline prompting without disease-prevalence cues",
+   "finding": "mixed",
+   "outcome": "Diagnostic sensitivity, specificity, and false alarms for life-threatening chest-pain etiologies",
+   "effect": "Baseline prompting: sensitivity 79.3%; specificity 45.2%. Adding prevalence cues: specificity 83.0%; false alarms reduced by 107 per 500; sensitivity 30.4%.",
+   "tradeoff": "Poor sensitivity after adding prevalence cues: 30.4%.",
+   "quote": "With baseline prompting, GPT-4o systematically over-predicted rare conditions (sensitivity 79.3%; specificity 45.2%); adding prevalence cues or removing diagnostic category constraints respectively increased specificity (83.0% and 94.7%) while reducing false alarms by 107 and 140 per 500, but at the cost of poor sensitivity (30.4% and 8.8%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "prompt guardrails (prevalence cues and diagnostic category constraints)"
+}

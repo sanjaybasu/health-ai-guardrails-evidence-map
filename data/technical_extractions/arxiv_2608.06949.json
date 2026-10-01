@@ -1,0 +1,41 @@
+{
+ "id": "arxiv:2608.06949",
+ "families": [
+  "agent_tool_design",
+  "monitoring_methods",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T168",
+   "comparator_used": "Single-agent control condition (one LLM making and checking the decision) vs a nine-agent role-differentiated pipeline (assessment, allocation, independent audit)",
+   "finding": "no_clear_difference",
+   "outcome": "Rate of biased outcomes in synthetic disaster-triage resource allocation (paired cases differing by one demographic attribute)",
+   "effect": "6.9% vs. 6.1% biased outcomes, p = 0.498 (192 episodes, 2,304 resolved case pairs, GPT-4o-mini)",
+   "tradeoff": "",
+   "quote": "We find no measurable difference in how often biased outcomes occur between the two conditions (6.9% vs. 6.1%, p = 0.498).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T173",
+   "comparator_used": "Overloaded (capacity-constrained) auditor agent vs non-overloaded auditor agent within the multi-agent pipeline",
+   "finding": "mixed",
+   "outcome": "Proportion of biased outcomes going undetected by the independent audit agent",
+   "effect": "30.0% of biased outcomes undetected overall; 43.8% when the auditor is overloaded vs 18.4% when it is not. Review coverage fell from 100.0% to 65.6% under load (p < 0.001), while judgment on reviewed cases was 81.6% vs 85.7% (p = 1.000). Risk-ordered audit queue restored coverage from 65.6% to 91.7% (p = 0.028).",
+   "tradeoff": "Audit effectiveness depends on capacity: under load, cases are not reviewed at all (coverage loss), so bias goes undetected; the audit agent did not reduce the bias rate itself.",
+   "quote": "We do find a large and significant effect of audit capacity on whether bias is caught: 30.0% of biased outcomes go entirely undetected, rising to 43.8% when the auditor is overloaded and falling to 18.4% when it is not.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "multi-agent audit pipeline and risk-prioritized audit queuing"
+}

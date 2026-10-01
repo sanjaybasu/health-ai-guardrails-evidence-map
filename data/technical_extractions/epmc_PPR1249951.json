@@ -1,0 +1,56 @@
+{
+ "id": "epmc:PPR1249951",
+ "families": [
+  "grounding_retrieval",
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T035",
+   "comparator_used": "best balanced single tool",
+   "finding": "mixed",
+   "outcome": "Sensitivity and specificity for autonomous triage of hazardous patient messages",
+   "effect": "Best balanced ensemble: sensitivity 0.685, specificity 0.575; best balanced single tool: sensitivity 0.594, specificity 0.592. Neither met the 0.80/0.80 autonomous benchmark.",
+   "tradeoff": "Higher sensitivity came with slightly lower specificity, and the ensemble still fell short of the autonomous benchmark.",
+   "quote": "No configuration met the autonomous benchmark; sensitivity and specificity reached 0.594 and 0.592 for the best balanced single tool, 0.685 and 0.575 for the best balanced ensemble, and 0.297 and 0.874 for the highest-specificity cascade.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T042",
+   "comparator_used": "best balanced single tool applied to all messages",
+   "finding": "mixed",
+   "outcome": "Sensitivity and specificity for autonomous triage of hazardous patient messages",
+   "effect": "Highest-specificity cascade: sensitivity 0.297, specificity 0.874; best balanced single tool: sensitivity 0.594, specificity 0.592. A separate high-recall first-stage screen reached sensitivity 0.855 with 12.0 missed hazards and 729 alerts per 1,000 messages.",
+   "tradeoff": "The cascade's higher specificity came with much lower sensitivity (0.297). The high-recall screen produced 729 alerts per 1,000 messages that need clinician review.",
+   "quote": "No configuration met the autonomous benchmark; sensitivity and specificity reached 0.594 and 0.592 for the best balanced single tool, 0.685 and 0.575 for the best balanced ensemble, and 0.297 and 0.874 for the highest-specificity cascade.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T038",
+   "comparator_used": "high-recall first-stage screen (the other configuration that met the sensitivity floor)",
+   "finding": "mixed",
+   "outcome": "Sensitivity and missed hazards per 1,000 messages under clinician review of flagged messages",
+   "effect": "Disagreement-stratified clinician-review workflow: sensitivity 0.939, 5.0 missed hazards and 878 alerts per 1,000 messages. High-recall first-stage screen: sensitivity 0.855, 12.0 missed hazards and 729 alerts per 1,000 messages.",
+   "tradeoff": "Fewer missed hazards but more alerts for clinicians to review (878 versus 729 per 1,000 messages).",
+   "quote": "Two configurations met the sensitivity-floor target: a high-recall first-stage screen (sensitivity 0.855; 12.0 missed hazards and 729 alerts per 1,000 messages) and a disagreement-stratified clinician-review workflow (sensitivity 0.939; 5.0 missed hazards and 878 alerts per 1,000 messages).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "safety guardrails and clinician review workflows"
+}

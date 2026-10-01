@@ -1,0 +1,39 @@
+{
+ "id": "arxiv:2605.04039",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Closed-book prompting (zero-shot) with no supplied evidence",
+   "finding": "favours_control",
+   "outcome": "Accuracy, high-risk error, evidence contradiction and dangerous overconfidence across 34 local LLMs on RadSaFE-200",
+   "effect": "Mean accuracy 73.5% to 94.1%; high-risk error 12.0% to 2.6%; contradiction 12.7% to 2.3%; dangerous overconfidence 8.0% to 1.6%",
+   "tradeoff": "The benefit came from clinician-defined clean evidence. Standard RAG and agentic RAG did not reproduce this safety profile.",
+   "quote": "Clean evidence produced the strongest improvement, increasing mean accuracy from 73.5% to 94.1%, while reducing high-risk error from 12.0% to 2.6%, contradiction from 12.7% to 2.3%, and dangerous overconfidence from 8.0% to 1.6%.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T019",
+   "comparator_used": "Standard single-pass RAG",
+   "finding": "mixed",
+   "outcome": "Accuracy, evidence contradiction, high-risk error and dangerous overconfidence for agentic RAG versus standard RAG",
+   "effect": "Agentic RAG improved accuracy and reduced contradiction relative to standard RAG, but high-risk error and dangerous overconfidence remained elevated. No numbers given in the abstract.",
+   "tradeoff": "High-risk errors and overconfidence persisted, so agentic RAG did not match the safety profile of clean evidence.",
+   "quote": "Standard RAG and agentic RAG did not reproduce this safety profile: agentic RAG improved accuracy over standard RAG and reduced contradiction, but high-risk error and dangerous overconfidence remained elevated.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval-augmented generation (RAG) and evidence grounding"
+}

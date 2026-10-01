@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Technical controls · Guardrail Evidence Map{% endblock %}
+{% block body %}
+<section class="intro">
+  <h1>Implementation choices, and what the studies found</h1>
+  <p class="lede">Governance frameworks rarely say whether to add a keyword filter on top of a language model, pay for a second vendor to cross-check the first, or ground answers in retrieved sources. These decisions come from the practices that published studies compared and that journal commentaries recommended. Each shows the strongest study that compared the choice with an alternative, which way it came out, and any tradeoff the authors reported.</p>
+</section>
+<section class="panel">
+  <div class="controls">
+    <input id="tq" type="search" placeholder="Search decisions" aria-label="Search decisions">
+    <select id="tfam" aria-label="Family"><option value="">All families</option></select>
+    <select id="ttech" aria-label="Technology"><option value="">All AI technologies</option></select>
+    <select id="tverdict" aria-label="Result"><option value="">Any result</option></select>
+  </div>
+  <div class="tablehead"><h2>Decisions</h2><span id="tcount"></span></div>
+  <div id="tlist"></div>
+</section>
+<dialog id="tdetail"><div id="tdetail-body"></div></dialog>
+{% endblock %}
+{% block scripts %}<script src="technical.js?v={{ build }}"></script>{% endblock %}

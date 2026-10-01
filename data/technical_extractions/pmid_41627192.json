@@ -1,0 +1,27 @@
+{
+ "id": "pmid:41627192",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T082",
+   "comparator_used": "Original deployed model V1 (not retrained), versus retrained model V2 trained on 6 times more data",
+   "finding": "mixed",
+   "outcome": "Concordance with reported labels across three evaluation sets: recent production hold-out, original pre-AI human-labeled validation set, and recent human-only or human-corrected labels",
+   "effect": "V2 had 10% lower concordance than V1 on the recent production hold-out set (mostly AI-influenced labels). Performance was similar on the pre-AI validation set. V2 outperformed V1 on recent cases with human-only or human-corrected labels, particularly for less-common stone types.",
+   "tradeoff": "An AI label feedback loop, in which AI-influenced labels contaminate the retraining and evaluation data, confounded retraining and evaluation. Ongoing human annotation and careful validation set construction are needed.",
+   "quote": "V2 demonstrated a 10% lower concordance rate than V1 when evaluated on the recent production hold-out set, despite a much larger training dataset.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "ongoing human annotation and careful validation set construction for retraining"
+}

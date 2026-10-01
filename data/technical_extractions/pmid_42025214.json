@@ -1,0 +1,54 @@
+{
+ "id": "pmid:42025214",
+ "families": [
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T064",
+   "comparator_used": "Na\u00efve zero-shot prompt without DISCERN guidance (the Combined split-plus-augmented approach was the reported result)",
+   "finding": "mixed",
+   "outcome": "Agreement with human DISCERN scores (correlation, absolute error)",
+   "effect": "Combined prompting modestly improved agreement and reduced absolute error. Agreement was still weak to moderate, and prompt engineering did not correct calibration bias. Results for Augmented prompting alone are not given separately.",
+   "tradeoff": "Systematic score compression persisted (low-quality pages overestimated, high-quality pages underestimated). Run-to-run variability was substantial, with a mean score range of 17.5 points and up to 43 points for one webpage.",
+   "quote": "Combined prompting modestly improved agreement and reduced absolute error, particularly for the o3 model, which consistently outperformed GPT-5.2 and GPT-4o.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T068",
+   "comparator_used": "Na\u00efve zero-shot single prompt scoring the whole DISCERN instrument (the Combined split-plus-augmented approach was the reported result)",
+   "finding": "mixed",
+   "outcome": "Agreement with human DISCERN scores (correlation, absolute error)",
+   "effect": "Combined prompting, which includes item-level Split scoring, modestly improved agreement and reduced absolute error. Agreement was still weak to moderate. Results for Split scoring alone are not given separately.",
+   "tradeoff": "Prompt engineering did not correct calibration bias or reproducibility limitations. Run-to-run variability was substantial, with a mean score range of 17.5 points and up to 43 points for one webpage.",
+   "quote": "Prompt engineering did not correct calibration bias or reproducibility limitations.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "GPT-4o and GPT-5.2 general-purpose models",
+   "finding": "favours_control",
+   "outcome": "Agreement with human DISCERN scores and absolute error",
+   "effect": "The o3 reasoning model consistently outperformed GPT-5.2 and GPT-4o, particularly with combined prompting. Numeric effect sizes are not given in the abstract.",
+   "tradeoff": "Even o3 showed attenuation bias and poor repeatability, and was judged insufficient for reliable automated DISCERN scoring.",
+   "quote": "Combined prompting modestly improved agreement and reduced absolute error, particularly for the o3 model, which consistently outperformed GPT-5.2 and GPT-4o.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "prompt engineering guardrails (split, augmented, combined prompting) and repeated-run averaging"
+}

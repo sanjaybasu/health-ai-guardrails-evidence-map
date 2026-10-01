@@ -1,0 +1,56 @@
+{
+ "id": "arxiv:2511.06738",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "output_filtering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "non-RAG variants (model without retrieved evidence)",
+   "finding": "favours_comparator",
+   "outcome": "Factuality and completeness of responses; relevance of retrieved passages and evidence selection",
+   "effect": "Factuality and completeness dropped by up to 6% and 5% vs non-RAG; only 22% of top-16 passages relevant; evidence selection precision 41-43%, recall 27-49%",
+   "tradeoff": "Standard RAG introduced a new failure mode: poor retrieval and evidence selection that contributed to the overall performance drop.",
+   "quote": "Contrary to expectation, standard RAG often degraded performance: only 22% of top-16 passages were relevant, evidence selection remained weak (precision 41-43%, recall 27-49%), and factuality and completeness dropped by up to 6% and 5%, respectively, compared with non-RAG variants.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T021",
+   "comparator_used": "standard RAG without evidence filtering",
+   "finding": "favours_control",
+   "outcome": "Accuracy on MedMCQA and MedXpertQA",
+   "effect": "Improvement of up to 12% on MedMCQA and up to 8.2% on MedXpertQA (reported jointly for evidence filtering and query reformulation)",
+   "tradeoff": "",
+   "quote": "We further show that simple yet effective strategies, including evidence filtering and query reformulation, substantially mitigate these issues, improving performance on MedMCQA and MedXpertQA by up to 12% and 8.2%, respectively.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T018",
+   "comparator_used": "standard RAG using the original query",
+   "finding": "favours_control",
+   "outcome": "Accuracy on MedMCQA and MedXpertQA",
+   "effect": "Improvement of up to 12% on MedMCQA and up to 8.2% on MedXpertQA (reported jointly for evidence filtering and query reformulation)",
+   "tradeoff": "",
+   "quote": "We further show that simple yet effective strategies, including evidence filtering and query reformulation, substantially mitigate these issues, improving performance on MedMCQA and MedXpertQA by up to 12% and 8.2%, respectively.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding with evidence filtering and query reformulation"
+}

@@ -53,9 +53,11 @@ def compute() -> dict:
         endorse[e["rec"]].append({"source": e["source"], "title": s["title"], "issuer": s["issuer"],
                                   "kind": s["kind"], "date": str(s["date"]), "url": s["landing"],
                                   "strength": e["strength"], "quote": e["quote"]})
+    from .editorials import VENUES, venue_of
     for e in _jsonl(COMMENTARY_EDGES):
-        endorse[e["rec"]].append({"source": e["study"], "title": e["title"], "issuer": e.get("venue") or "",
-                                  "kind": "commentary", "date": e.get("date") or "",
+        v = venue_of({"venue": e.get("venue")})
+        endorse[e["rec"]].append({"source": e["study"], "title": e["title"], "issuer": v or e.get("venue") or "",
+                                  "kind": "journal editorial" if v in VENUES else "commentary", "date": e.get("date") or "",
                                   "url": f"https://doi.org/{e['doi']}" if e.get("doi") else "",
                                   "strength": "should", "quote": e["quote"]})
     comm = {c["rec"]: c for c in _jsonl(ROOT / "data" / "commentary.jsonl")}
@@ -67,8 +69,9 @@ def compute() -> dict:
         es = endorse[r["id"]]
         tests = [e for e in ev[r["id"]] if e["relation"] == "tests_guardrail"]
         haz = [e for e in ev[r["id"]] if e["relation"] == "documents_hazard"]
-        n_formal = len({e["source"] for e in es if e["kind"] != "commentary"})
-        n_comment = len({e["source"] for e in es if e["kind"] == "commentary"})
+        n_formal = len({e["source"] for e in es if e["kind"] not in ("commentary", "journal editorial")})
+        n_editorial = len({e["source"] for e in es if e["kind"] == "journal editorial"})
+        n_comment = len({e["source"] for e in es if e["kind"] in ("commentary", "journal editorial")})
         st = status(n_formal + n_comment, tests)
         if st in ("no_data", "consensus_without_evidence") and haz and n_formal + n_comment < 3:
             st = "hazard_documented_untested"
@@ -87,7 +90,8 @@ def compute() -> dict:
                           "underserved_tested": any(any(e["population"].get(f) for f in UNDERSERVED) for e in tt)}
         recs.append({
             **r, "by_tech": by_tech, "curation": r.get("status", "machine_draft"), "domain_label": DOMAINS[r["domain"]],
-            "n_endorse": n_formal + n_comment, "n_formal": n_formal, "n_commentary": n_comment,
+            "n_endorse": n_formal + n_comment, "n_formal": n_formal, "n_editorial": n_editorial,
+            "n_commentary": n_comment - n_editorial,
             "n_must": len({e["source"] for e in es if e["strength"] == "must"}),
             "n_tests": len({e["study"] for e in tests}), "n_hazard": len({e["study"] for e in haz}),
             "best_level": min((e["level"] for e in tests), default=None),
@@ -98,7 +102,8 @@ def compute() -> dict:
             "status": st, "status_label": STATUS_LABEL[st],
             "commentary": {k: comm[r["id"]].get(k) for k in ("bottom_line", "certainty", "perspectives",
                                                               "research_gap", "underserved_note")} if r["id"] in comm else None,
-            "endorsements": sorted(es, key=lambda e: (e["kind"] == "commentary", e["strength"] != "must")),
+            "endorsements": sorted(es, key=lambda e: ({"journal editorial": 1, "commentary": 2}.get(e["kind"], 0),
+                                                      e["strength"] != "must")),
             "evidence": sorted(ev[r["id"]], key=lambda e: (e["relation"] != "tests_guardrail", e["level"])),
         })
     return {"recs": recs, "domains": DOMAINS, "technologies": tax.get("technologies", {}), "levels": LEVEL_LABEL, "status_labels": STATUS_LABEL,
@@ -131,7 +136,40 @@ def stats(data: dict) -> dict:
         "screen_audit": {k: audit[k] for k in ("sampled", "disagreements")} if audit else None,
         "n_recs": len(data["recs"]), "status_counts": dict(Counter(r["status"] for r in data["recs"])),
         "n_sources": len(data["sources"]),
+        "editorial_coverage": json.loads((ROOT / "data" / "editorial_coverage.json").read_text())
+        if (ROOT / "data" / "editorial_coverage.json").exists() else {},
     }
+
+
+def technical_data() -> dict | None:
+    from .technical import FAMILIES, TECH_EVIDENCE, TECHNICAL
+    if not TECHNICAL.exists():
+        return None
+    ctrls = yaml.safe_load(TECHNICAL.read_text())["controls"]
+    ev = defaultdict(list)
+    for e in _jsonl(TECH_EVIDENCE):
+        ev[e["control"]].append(e)
+    out = []
+    for c in ctrls:
+        es = sorted(ev[c["id"]], key=lambda e: e["level"])
+        best = min((e["level"] for e in es), default=None)
+        at_best = Counter(e["finding"] for e in es if e["level"] == best)
+        if not es:
+            verdict = "untested"
+        elif best <= 2 and at_best.get("favours_control") and not at_best.get("favours_comparator"):
+            verdict = "favoured_deployment"
+        elif at_best.get("favours_control") and at_best.get("favours_comparator"):
+            verdict = "conflicting"
+        elif at_best.get("favours_control", 0) > at_best.get("favours_comparator", 0) + at_best.get("no_clear_difference", 0):
+            verdict = "favoured_weaker"
+        elif at_best.get("favours_comparator", 0) > at_best.get("favours_control", 0):
+            verdict = "comparator_favoured"
+        else:
+            verdict = "no_clear_difference"
+        out.append({**c, "family_label": FAMILIES[c["family"]], "n_studies": len({e["study"] for e in es}),
+                    "best_level": best, "verdict": verdict, "findings": dict(Counter(e["finding"] for e in es)),
+                    "tradeoffs": [e["tradeoff"] for e in es if e.get("tradeoff")][:6], "evidence": es})
+    return {"controls": out, "families": FAMILIES}
 
 
 def build():
@@ -152,9 +190,13 @@ def build():
         shutil.copy(f, DOCS / f.name)
     env = Environment(loader=FileSystemLoader(SITE / "templates"), autoescape=True)
     import hashlib
-    build = hashlib.sha256(b"".join((SITE / "static" / f).read_bytes() for f in ("app.js", "style.css"))
+    build = hashlib.sha256(b"".join((SITE / "static" / f).read_bytes() for f in ("app.js", "style.css", "technical.js"))
                            + (DOCS / "data" / "map.json").read_bytes()).hexdigest()[:10]
-    for name in ("index.html", "methods.html", "changelog.html"):
+    tech = technical_data()
+    if tech:
+        (DOCS / "data" / "technical.json").write_text(json.dumps(tech, separators=(",", ":"), default=str))
+    pages = ["index.html", "methods.html", "changelog.html"] + (["technical.html"] if tech else [])
+    for name in pages:
         (DOCS / name).write_text(env.get_template(name).render(s=data["stats"], changelog=_changelog(), build=build))
     (DOCS / ".nojekyll").write_text("")
     print(f"site: {len(data['recs'])} recommendations; {data['stats']['n_evidence_edges']} evidence edges")

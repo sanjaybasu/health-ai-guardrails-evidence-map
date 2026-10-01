@@ -1,0 +1,52 @@
+{
+ "id": "arxiv:2603.22625",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "privacy_security_engineering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T065",
+   "comparator_used": "Zero-shot prompting",
+   "finding": "favours_comparator",
+   "outcome": "Diagnostic code generation performance (ICD-10-CM) with local open-weight models",
+   "effect": "Few-shot prompting degraded performance; no numbers reported in the abstract",
+   "tradeoff": "Overfitting and hallucinations",
+   "quote": "Contrary to common prompt-engineering guidance, few-shot prompting degraded performance through overfitting and hallucinations.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Zero-shot and few-shot prompting without retrieval",
+   "finding": "mixed",
+   "outcome": "Discovery of unseen codes and overall coding accuracy",
+   "effect": "RAG enabled limited discovery of unseen codes but reduced overall accuracy; no numbers reported in the abstract",
+   "tradeoff": "Frequently saturated context windows, reducing overall accuracy",
+   "quote": "While RAG enabled limited discovery of unseen codes, it frequently saturated context windows, reducing overall accuracy.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T063",
+   "comparator_used": "No explicit comparator stated; effect of schema enforcement measured",
+   "finding": "favours_control",
+   "outcome": "Output formatting compliance",
+   "effect": "Near 100% formatting compliance",
+   "tradeoff": "Format compliance did not ensure accurate specific diagnostic codes for smaller local models (7B-20B parameters)",
+   "quote": "Results show that strict JSON schema enforcement achieved near 100% formatting compliance, but accurate generation of specific diagnostic codes remains challenging for smaller local models (7B-20B parameters).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding and JSON schema output enforcement"
+}

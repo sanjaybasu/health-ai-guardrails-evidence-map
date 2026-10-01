@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1236305",
+ "families": [
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T063",
+   "comparator_used": "Simple question prompt (\"Should this patient be offered thrombolytics?\") with open-ended output",
+   "finding": "favours_control",
+   "outcome": "Guideline adherence, unsafe recommendations, risk recognition, guideline grading accuracy, conversational explanation (across six LLMs, three stroke vignettes)",
+   "effect": "GPT-4o and o3: guideline adherence 83.3% to 100%, unsafe recommendations 16.7% to 0%, guideline grading accuracy 0% to 100%. GPT-5.2 Thinking: 100% adherence, 0% unsafe, 100% grading with structured prompts. R1-1776: 100% adherence, 0% unsafe, 100% grading, 100% conversation, with grading and conversation up from 0%. Llama-4-Scout and Llama-3.3-70B: risk recognition 83.3% to 100%, grading 0% to 66.7%, but adherence stayed 66.7% and unsafe recommendations 33.3%.",
+   "tradeoff": "Gains varied by model family; the Llama models were only modestly improved and kept unsafe recommendations (33.3%). Vigilant human oversight is still essential.",
+   "quote": "For some closed-source models (GPT-4o, o3), prompts structured in the CARDS style improved guideline adherence from 83.3% to 100%, eliminated unsafe recommendations (16.7% to 0%), and increased specific guideline grading accuracy from 0% to 100%.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "Simple direct-answer question prompt (\u201cShould this patient be offered thrombolytics?\u201d) versus a five-step CARDS reasoning scaffold guiding information extraction, timing analysis, contraindication checking, decision-process explanation, and risk-benefit discussion; this was tested as part of the structured prompt package, not isolated from the required-fields/template component.",
+   "finding": "favours_control",
+   "outcome": "Overall helpfulness domains, especially guideline grading accuracy and conversational reasoning, in acute stroke thrombolysis clinical decision support.",
+   "effect": "Structured prompting yielded the largest improvements in guideline grading accuracy and conversational reasoning across multiple models. Reported examples: GPT-4o/o3 guideline adherence 83.3% to 100%, unsafe recommendations 16.7% to 0%, grading 0% to 100%; R1-1776 grading and conversation improved from 0% to 100%.",
+   "tradeoff": "Vigilant human oversight remains essential; no cost or latency tradeoff was reported.",
+   "quote": "Overall, structured prompting yielded the largest improvements in guideline grading accuracy and conversational reasoning across multiple models.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "structured prompting (CARDS) as prompt guardrail"
+}

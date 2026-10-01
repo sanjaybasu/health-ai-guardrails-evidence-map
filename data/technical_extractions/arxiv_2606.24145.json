@@ -1,0 +1,39 @@
+{
+ "id": "arxiv:2606.24145",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "output_filtering",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T001",
+   "comparator_used": "Baseline LLM outputs (GPT-4o-mini and GPT-4o) without the evidence gate",
+   "finding": "favours_control",
+   "outcome": "Compliance with benchmark-defined evidence-path checks (unsupported omissions)",
+   "effect": "Baseline outputs failed evidence-path checks in 35% of cases for GPT-4o-mini and 33% for GPT-4o; with the evidence gate and constrained revision, outputs reached verifier-level compliance (no post-revision percentages given in the abstract).",
+   "tradeoff": "",
+   "quote": "The evidence gate detects unsupported omissions and uses constrained revision to bring outputs into verifier-level compliance with benchmark-defined evidence requirements.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T003",
+   "comparator_used": "Baseline LLM outputs without computable ADA guideline rule and evidence constraints",
+   "finding": "favours_control",
+   "outcome": "Satisfaction of guideline constraints and evidence requirements in diabetes recommendations",
+   "effect": "Baseline outputs failed benchmark-defined evidence-path checks in 35% (GPT-4o-mini) and 33% (GPT-4o) of 100 vignettes; the gate with constrained revision brought outputs into verifier-level compliance.",
+   "tradeoff": "",
+   "quote": "The evidence gate detects unsupported omissions and uses constrained revision to bring outputs into verifier-level compliance with benchmark-defined evidence requirements.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "knowledge-graph evidence gate with constrained revision"
+}

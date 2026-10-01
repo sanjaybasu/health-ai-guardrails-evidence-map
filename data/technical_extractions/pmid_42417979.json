@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42417979",
+ "families": [
+  "grounding_retrieval",
+  "language_literacy_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T105",
+   "comparator_used": "Raw ASR output (baseline gpt-4o-transcribe transcripts without postprocessing)",
+   "finding": "favours_control",
+   "outcome": "Character error rate and BERTScore versus original written notes",
+   "effect": "Baseline BERTScore 0.9131 and CER 0.2336. LLM-only postprocessing reduced CER by 36.09% (Claude Sonnet 4) and 32.53% (GPT-4o). Dictionary+LLM with Claude Sonnet 4 reached BERTScore 0.9638 and CER 0.0820, a 64.9% CER reduction from baseline (P<.001).",
+   "tradeoff": "",
+   "quote": "The combined dictionary-LLM approach achieved the best performance: Claude Sonnet 4 attained a BERTScore of 0.9638 and CER of 0.0820, representing a 64.9% reduction in CER from baseline (P<.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T086",
+   "comparator_used": "Different temperature settings (0.0-0.8) across six LLMs",
+   "finding": "no_clear_difference",
+   "outcome": "Postprocessing performance (BERTScore, CER) across temperature settings",
+   "effect": "All models had small temperature-related effect sizes (all |Cohen dz| \u22640.15); GPT-4o showed the largest dependency, with significant improvement at temperature 0.6 (Holm-adjusted P<.001 for BERTScore and CER); the 4 Claude variants and GPT-4.1 performed practically consistently across all settings.",
+   "tradeoff": "",
+   "quote": "Temperature optimization showed that all postprocessing models had small temperature-related effect sizes (all |Cohen dz| \u22640.15), with GPT-4o exhibiting the largest dependency and statistically significant improvement at temperature 0.6 (Holm-adjusted P<.001 for both BERTScore and CER) and the 4 Claude variants and GPT-4.1 exhibiting practically consistent performance across all settings.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "dictionary normalization plus LLM postprocessing of ASR output"
+}

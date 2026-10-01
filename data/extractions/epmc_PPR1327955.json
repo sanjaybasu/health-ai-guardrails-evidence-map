@@ -1,10 +1,35 @@
 {
  "route": "commentary",
- "models": {},
- "endorsements": [],
- "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "endorsements": [
+  {
+   "rec_id": "R073",
+   "quote": "This also bounds agentic AI: an agent may orchestrate authoring, gather metadata, or propose changes, but must not mutate approved artifacts or start production execution without crossing the same boundary as human-authored changes."
+  },
+  {
+   "rec_id": "R023",
+   "quote": "Custom logic should be promoted to a capability and governed through the capability lifecycle."
+  },
+  {
+   "rec_id": "R538",
+   "quote": "Construction-time traceability explains how a workflow came into existence: approved specification, registry snapshot, composer version, validation report, resolved capability versions, canonical definition, and hash."
+  }
+ ],
+ "unlisted_practices": [
+  "Separate AI-assisted authoring from execution so that AI-drafted artifacts remain non-executable until validated, reviewed, approved, and version-published.",
+  "Express transformation intent in a machine-readable specification that references only approved, versioned capabilities in a governed registry.",
+  "Use a deterministic composer to validate specifications against a pinned registry snapshot and emit a construction trace before any workflow is executed.",
+  "Require pinning of capability versions for approved production execution while allowing controlled migration.",
+  "Block deprecated capabilities for new compositions unless a recorded exception is made.",
+  "Do not use AI model self-explanations or reasoning traces as the basis of regulated execution; confine execution by specifications, tests, contracts, approvals, and traces.",
+  "Do not allow AI to approve its own tests as sufficient evidence.",
+  "Treat data preparation such as date formatting and unit conversion as approved, governed capabilities rather than embedded scripts.",
+  "Provide AI code generation with behavioral specifications plus project conventions, tests, type context, and helper signatures to ensure correct and integrable output.",
+  "Keep contract quality under human review at approval, since the composer does not certify contract correctness."
+ ],
  "links": [],
- "skipped": "no open full text",
  "id": "epmc:PPR1327955",
  "screen": {
   "id": "epmc:PPR1327955",
@@ -24,5 +49,6 @@
    "tests_practice": 0.08,
    "real_deployment": 0.13
   }
- }
+ },
+ "oa_retried": true
 }

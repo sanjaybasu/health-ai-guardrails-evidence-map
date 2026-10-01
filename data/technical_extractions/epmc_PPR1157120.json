@@ -1,0 +1,26 @@
+{
+ "id": "epmc:PPR1157120",
+ "families": [
+  "grounding_retrieval",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T027",
+   "comparator_used": "LLM-based retrieval without the evidence ledger layer (baseline not detailed in the abstract)",
+   "finding": "favours_control",
+   "outcome": "Stale citations and unverifiable citations in LLM retrieval outputs",
+   "effect": "Stale citations fell from 14.7% to 1.2%. Unverifiable citations fell from 28.4% to 2.3%.",
+   "tradeoff": "Rollback has a cost: p95 rollback takes 5.13 s at 78M assertions. No other burden is reported in the abstract.",
+   "quote": "As an auditable memory layer for LLM-based retrieval, EviLedger reduces stale citations from 14.7% to 1.2% and unverifiable citations from 28.4% to 2.3%, while supporting p95 rollback in 5.13 s at 78M assertions.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "auditable evidence ledger as retrieval memory layer with drift monitoring and rollback"
+}

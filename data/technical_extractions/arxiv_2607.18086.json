@@ -1,0 +1,38 @@
+{
+ "id": "arxiv:2607.18086",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T066",
+   "comparator_used": "Standard prompt without the structured evidence-sufficiency wrapper (same four models, paired cells)",
+   "finding": "mixed",
+   "outcome": "Unsafe overconfident answers under incomplete evidence (primary judge), and correct diagnosis as the helpfulness outcome",
+   "effect": "Unsafe overconfidence fell from 49.3% to 24.7% (paired reduction 24.7 points, 95% CI 21.8-27.7; p<0.001). Correct diagnosis fell from 80.3% to 50.3%. The second judge (Sonnet) gave a smaller reduction of 13.1 points.",
+   "tradeoff": "Model-specific helpfulness cost: near-free for GPT-5.5, near-total for Gemini (-58 points correct diagnosis). The safety effect was judge-dependent.",
+   "quote": "Unsafe overconfidence fell from 49.3% to 24.7%, a paired reduction of 24.7 points (95% CI 21.8-27.7; p<0.001), robust in direction across models and paraphrases.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T031",
+   "comparator_used": "Blinded three-clinician review of outputs, plus a different-family LLM judge (Claude Sonnet 5)",
+   "finding": "mixed",
+   "outcome": "Agreement of the primary LLM judge (GPT-5.4-nano) with clinician ratings, and cross-judge consistency of the measured effect",
+   "effect": "Primary judge sensitivity 1.00 and specificity 0.55 against clinicians. The Sonnet judge agreed on direction but nearly halved the effect (+13.1 points).",
+   "tradeoff": "The judge over-flags unsafe answers, so its rates are not calibrated absolute rates. Results were one-directionally judge-dependent, so human anchoring is needed.",
+   "quote": "Blinded clinicians characterized the primary judge as a high-sensitivity (1.00), low-specificity (0.55) screen, not a calibrated rate.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "evidence-sufficiency prompt wrapper (prompt guardrail)"
+}

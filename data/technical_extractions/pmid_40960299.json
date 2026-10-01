@@ -1,0 +1,55 @@
+{
+ "id": "pmid:40960299",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline GPT-4 Turbo without retrieval (training knowledge alone)",
+   "finding": "favours_control",
+   "outcome": "Expert-rated accuracy and clarity on open-ended HCV questions; correct DAA regimen selection in 25 simulated scenarios",
+   "effect": "RAG-Top10 vs baseline: accuracy 91.7% vs 36.6% (p<0.001); clarity 91.7% vs 46.6% (p<0.001). RAG-Top1: 81.7% accuracy, 86.6% clarity (both p<0.001). Correct DAA regimen in 76% of cases with RAG-Top10 vs 24% for baseline (p<0.001).",
+   "tradeoff": "",
+   "quote": "On open-ended questions, RAG-Top10 outperformed baseline in accuracy (91.7% vs. 36.6%; p < 0.001) and clarity (91.7% vs. 46.6%; p < 0.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T079",
+   "comparator_used": "Baseline GPT-4 Turbo used off-the-shelf without fine-tuning",
+   "finding": "favours_control",
+   "outcome": "Expert-rated accuracy and clarity on open-ended HCV questions",
+   "effect": "SFT reached 71.7% accuracy and 88.3% clarity (p<0.001) vs baseline 36.6% accuracy and 46.6% clarity.",
+   "tradeoff": "",
+   "quote": "RAG-Top1 achieved 81.7% accuracy and 86.6% clarity (both p < 0.001), while SFT reached 71.7% accuracy and 88.3% clarity (p < 0.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T024",
+   "comparator_used": "RAG retrieving only the top 1 passage vs top 10 passages, with the same guideline embeddings",
+   "finding": "favours_control",
+   "outcome": "Accuracy and clarity of answers, and DAA regimen selection, with different numbers of retrieved passages",
+   "effect": "RAG-Top10 accuracy 91.7% and clarity 91.7% vs RAG-Top1 81.7% accuracy and 86.6% clarity; RAG-Top10 gave the highest correct DAA regimen performance (76%). The Top1 vs Top10 difference was not reported with a separate test.",
+   "tradeoff": "",
+   "quote": "RAG-Top10's broader context retrieval confers the greatest gains, while SFT underscores the value of domain-specific alignment.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding on guidelines (RAG) vs baseline"
+}

@@ -1,0 +1,52 @@
+{
+ "id": "arxiv:2603.25960",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T066",
+   "comparator_used": "Direct answering (no chain-of-thought) on MedGemma 4B and 27B",
+   "finding": "favours_comparator",
+   "outcome": "Accuracy on MedMCQA and PubMedQA",
+   "effect": "CoT decreased accuracy by 5.7% compared to direct answering",
+   "tradeoff": "",
+   "quote": "Chain-of-Thought (CoT) prompting decreases accuracy by 5.7% compared to direct answering.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "Prompting without few-shot examples (zero-shot baseline)",
+   "finding": "favours_comparator",
+   "outcome": "Accuracy and position bias",
+   "effect": "Few-shot examples degraded performance by 11.9% and increased position bias from 0.14 to 0.47",
+   "tradeoff": "Increased position bias from 0.14 to 0.47",
+   "quote": "Few-shot examples degrade performance by 11.9% while increasing position bias from 0.14 to 0.47.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T033",
+   "comparator_used": "Single-ordering inference",
+   "finding": "favours_control",
+   "outcome": "Accuracy",
+   "effect": "Permutation voting recovered 4 percentage points over single-ordering inference",
+   "tradeoff": "",
+   "quote": "Permutation voting recovers 4 percentage points over single-ordering inference.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "prompt strategy selection and permutation voting"
+}

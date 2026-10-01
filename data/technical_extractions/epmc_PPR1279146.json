@@ -1,0 +1,57 @@
+{
+ "id": "epmc:PPR1279146",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T066",
+   "comparator_used": "Standard direct prompting (no chain-of-thought) on the same model, for both MedGo and DeepSeek",
+   "finding": "favours_control",
+   "outcome": "Physician-rated comprehensive antibiotic regimen score (1-5)",
+   "effect": "MedGo 4.25\u00b10.16 to 4.58\u00b10.09 with CoT (Holm-adjusted p=0.024); DeepSeek 3.98\u00b10.20 to 4.41\u00b10.11 with CoT (Holm-adjusted p<0.001); score dispersion reduced",
+   "tradeoff": "",
+   "quote": "CoT improved both models (Holm-adjusted p<0.001 for DeepSeek; p=0.024 for MedGo) and reduced score dispersion.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose model DeepSeek V3.5 (both under direct prompting and under CoT prompting)",
+   "finding": "favours_control",
+   "outcome": "Physician-rated comprehensive antibiotic regimen score, plus individualized adjustment and dosing precision sub-scores",
+   "effect": "Base mode: MedGo 4.25\u00b10.16 vs DeepSeek 3.98\u00b10.20 (Holm-adjusted p=0.040). With CoT: MedGo 4.58\u00b10.09 vs DeepSeek 4.41\u00b10.11, better on individualized adjustment (adjusted p<0.001) and dosing precision (adjusted p=0.005)",
+   "tradeoff": "Deficiencies persisted in antimicrobial stewardship ecological awareness, and real physicians still scored higher (4.76\u00b10.04)",
+   "quote": "In base mode, MedGo significantly outperformed DeepSeek (Holm-adjusted p=0.040).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T031",
+   "comparator_used": "Senior clinician expert ratings of the regimens",
+   "finding": "favours_comparator",
+   "outcome": "Agreement between ChatGPT 5.2 automated scores and expert clinician scores",
+   "effect": "Overall Kendall \u03c4=0.153 (p=0.003); subgroup \u03c4=0.06-0.20, all p>0.05",
+   "tradeoff": "Automated evaluation reliability was poor, so it could not replace senior clinical expertise",
+   "quote": "ChatGPT\u2013expert correlation was negligible (overall Kendall \u03c4=0.153, p=0.003; subgroup \u03c4=0.06\u20130.20, all p>0.05).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "chain-of-thought prompting"
+}

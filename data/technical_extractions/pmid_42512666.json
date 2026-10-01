@@ -1,0 +1,42 @@
+{
+ "id": "pmid:42512666",
+ "families": [
+  "model_choice_adaptation",
+  "output_filtering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T005",
+   "comparator_used": "Free-text JSON prompt with post-hoc parsing and retry",
+   "finding": "favours_control",
+   "outcome": "First-pass JSON/schema validity of admission-note editing outputs",
+   "effect": "Schema enforcement: all models produced 70 of 70 first-pass valid, schema-compliant outputs in every run; free-text JSON prompt: Mistral-7B-Instruct-v0.3 had 74.3-78.6% first-pass validity per run and 18.6-21.4% persistent parse/schema failures after retry",
+   "tradeoff": "Schema enforcement did not eliminate model-specific editing behavior; models still differed in verbosity and numeric-token preservation.",
+   "quote": "Under schema enforcement, all models produced 70 of 70 first-pass valid, schema-compliant outputs in every run.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T073",
+   "comparator_used": "Embedding system instructions in the user message (Meta-Llama-3-8B-Instruct)",
+   "finding": "favours_control",
+   "outcome": "First-attempt invalid outputs",
+   "effect": "Separate system/user roles: 12/700 (1.7%) invalid vs. embedded in user message: 55/700 (7.9%)",
+   "tradeoff": "",
+   "quote": "In a message-format sensitivity analysis using Meta-Llama-3-8B-Instruct, embedding system instructions in the user message increased first-attempt invalid outputs compared with separate system/user roles (55/700, 7.9% vs. 12/700, 1.7%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "schema enforcement and prompt structuring"
+}

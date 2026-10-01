@@ -1,0 +1,56 @@
+{
+ "id": "epmc:PPR1281122",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline frontier LLM without retrieval (Model A)",
+   "finding": "no_clear_difference",
+   "outcome": "Clinical reasoning score across nine cognitive steps in longitudinal nephrology cases",
+   "effect": "Human evaluation (20-point scale): Model B 16.2 (SD 1.2) vs Model A 16.1 (SD 1.3), no significant improvement. AI panel (15-point scale): Model B 14.3 vs Model A 14.2.",
+   "tradeoff": "",
+   "quote": "Implementing static RAG (Model B) yielded no significant improvement over the baseline.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T168",
+   "comparator_used": "Single baseline frontier LLM (Model A) and LLM with static guideline RAG (Model B)",
+   "finding": "favours_control",
+   "outcome": "Overall clinical reasoning score, diagnostic accuracy and therapeutic management scores",
+   "effect": "Human evaluation (20-point scale): Model C 17.2 (SD 1.2) vs Model A 16.1 and Model B 16.2 (P < 0.001). AI panel (15-point scale): Model C 14.7 vs Model A 14.2 (P < 0.001) and Model B 14.3 (P = 0.01). Diagnostic accuracy 17.6 (P = 0.019); therapeutic management 17.3 (P = 0.002).",
+   "tradeoff": "",
+   "quote": "Distributing clinical workflows into a multi-agent dynamic refinement pipeline significantly improves reasoning completeness, intercepts error cascades, and safely resolves planning bottlenecks in complex patient care.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T041",
+   "comparator_used": "LLM with static guideline-based RAG and no iterative self-critique (Model B)",
+   "finding": "favours_control",
+   "outcome": "Clinical reasoning score in longitudinal nephrology cases",
+   "effect": "Human evaluation (20-point scale): Model C (RAG plus iterative self-critique and refinement) 17.2 vs Model B 16.2 (P < 0.001). AI panel: 14.7 vs 14.3 (P = 0.01). Model C was also a multi-agent framework, so the self-critique effect is confounded with the agent decomposition.",
+   "tradeoff": "",
+   "quote": "Static knowledge retrieval alone fails to enhance frontier LLM performance in longitudinal medical reasoning.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding and iterative self-critique refinement added to baseline LLM"
+}

@@ -1,0 +1,50 @@
+{
+ "id": "arxiv:2601.15429",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T017",
+   "comparator_used": "No-RAG baseline (and unions of graphs, i.e. broader KG retrieval sources)",
+   "finding": "mixed",
+   "outcome": "Accuracy on domain-specific probes (AD/T2DM) across seven instruction-tuned LLMs",
+   "effect": "Scope-matched KG retrieval (notably G2) yielded the most consistent gains; indiscriminate graph unions often introduced distractors that reduced accuracy; larger models frequently matched or exceeded KG-RAG with a No-RAG baseline on Probe 1; smaller/mid-sized models benefited more from well-scoped retrieval. No numeric values reported in the abstract.",
+   "tradeoff": "Indiscriminate graph unions introduce distractors that reduce accuracy.",
+   "quote": "Larger models frequently match or exceed KG-RAG with a No-RAG baseline on Probe 1, indicating strong parametric priors, whereas smaller/mid-sized models benefit more from well-scoped retrieval.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T086",
+   "comparator_used": "Three decoding temperatures compared against each other (higher vs lower temperature)",
+   "finding": "favours_control",
+   "outcome": "Accuracy across decoding temperatures",
+   "effect": "Temperature played a secondary role; higher values rarely helped. No numeric values reported in the abstract.",
+   "tradeoff": "",
+   "quote": "Temperature plays a secondary role; higher values rarely help.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "No-RAG baseline (training knowledge alone)",
+   "finding": "mixed",
+   "outcome": "Accuracy on domain-specific probes across seven LLMs",
+   "effect": "Scope-matched retrieval gave the most consistent gains, especially for smaller/mid-sized models, while larger models frequently matched or exceeded KG-RAG with No-RAG on Probe 1. No numeric values reported in the abstract.",
+   "tradeoff": "Broad or unioned retrieval sources can introduce distractors that reduce accuracy.",
+   "quote": "Larger models frequently match or exceed KG-RAG with a No-RAG baseline on Probe 1, indicating strong parametric priors, whereas smaller/mid-sized models benefit more from well-scoped retrieval.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding with scope-matched knowledge graphs"
+}

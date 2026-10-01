@@ -1,0 +1,55 @@
+{
+ "id": "arxiv:2608.17051",
+ "families": [
+  "model_choice_adaptation",
+  "privacy_security_engineering",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T064",
+   "comparator_used": "Prompt 1, a HIPAA-aligned baseline prompt without the institutional PHI categories",
+   "finding": "favours_control",
+   "outcome": "Recovery of institutional PHI categories missed by the baseline prompt, plus precision",
+   "effect": "Naming the missed categories recovered 79% (48/61) of them; adding instructions against over-redaction restored precision",
+   "tradeoff": "",
+   "quote": "Naming the missed categories recovered 79\\% (48/61) of them, and discouraging over-redaction restored precision.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T067",
+   "comparator_used": "Initial HIPAA-aligned baseline prompt (prompt 1) before refinement",
+   "finding": "favours_control",
+   "outcome": "Recovery of missed institutional PHI and precision after prompt refinement based on missed categories",
+   "effect": "Recovered 79% (48/61) of missed categories; the over-redaction instruction restored precision",
+   "tradeoff": "",
+   "quote": "Naming the missed categories recovered 79\\% (48/61) of them, and discouraging over-redaction restored precision.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "control_id": "T200",
+   "comparator_used": "Purpose-built de-identification systems (Stanford TiDE, OpenMed PII) and pattern-based baselines",
+   "finding": "favours_control",
+   "outcome": "PHI de-identification F1, with the advantage concentrated in contextual categories",
+   "effect": "Best LLM F1=0.918\u00b10.001 vs TiDE 0.779",
+   "tradeoff": "LLMs cost more to run than traditional methods",
+   "quote": "LLMs outperformed the purpose-built systems (best F1=0.918$\\pm$0.001 vs.\\ TiDE 0.779), with advantages concentrated in contextual categories.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "institution-specific prompt guardrails (naming local PHI categories, anti-over-redaction instructions)"
+}

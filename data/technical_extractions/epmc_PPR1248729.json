@@ -1,0 +1,57 @@
+{
+ "id": "epmc:PPR1248729",
+ "families": [
+  "language_literacy_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T092",
+   "comparator_used": "Original, unsimplified ICU discharge summary sections from MIMIC-III",
+   "finding": "favours_control",
+   "outcome": "Readability (Flesch Reading Ease, grade level)",
+   "effect": "Flesch Reading Ease rose from 51.2 \u00b1 6.1 to 58.3\u201360.3; grade level fell from 9.4 \u00b1 1.2 to 7.6\u20138.0 (all p < 0.0001)",
+   "tradeoff": "Simplification carried omission risk: the best automated configuration (GPT-4o few-shot) still had 2.2% medication omission and 0.4% diagnosis omission. The authors state that patient-facing use needs section-aware constraints, explicit safety checks and human oversight.",
+   "quote": "All six prompting conditions significantly improved readability versus the original notes (all p < 0.0001), increasing Flesch Reading Ease from 51.2 \u00b1 6.1 to 58.3\u201360.3 and reducing grade level from 9.4 \u00b1 1.2 to 7.6\u20138.0.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "Zero-shot prompting (and chain-of-thought prompting) with GPT-4o and GPT-4o-mini",
+   "finding": "favours_control",
+   "outcome": "Automated balance of simplification and preservation (similarity, lexical overlap, medication and diagnosis omission); blinded human faithfulness, readability and actionability",
+   "effect": "GPT-4o few-shot: similarity 0.844 \u00b1 0.071, lexical overlap 0.638 \u00b1 0.072, medication omission 2.2%, diagnosis omission 0.4%; best combined human-rated faithfulness, readability and actionability",
+   "tradeoff": "",
+   "quote": "GPT-4o few-shot provided the strongest automated overall balance of simplification and preservation (similarity 0.844 \u00b1 0.071, lexical overlap 0.638 \u00b1 0.072, medication omission 2.2%, diagnosis omission 0.4%).",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "Zero-shot and few-shot prompting without stepwise reasoning",
+   "finding": "mixed",
+   "outcome": "Blinded human-rated faithfulness and hallucination; combined faithfulness, readability and actionability",
+   "effect": "GPT-4o with chain-of-thought achieved perfect faithfulness and 0% hallucination, but GPT-4o few-shot had the best combined faithfulness, readability and actionability",
+   "tradeoff": "",
+   "quote": "In blinded human evaluation, GPT-4o with chain-of-thought prompting achieved perfect faithfulness and 0% hallucination, while GPT-4o few-shot showed the best combined faithfulness, readability, and actionability.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "prompting strategy (zero-shot, few-shot, chain-of-thought) for readability and safety"
+}

@@ -1,0 +1,26 @@
+{
+ "id": "epmc:PPR1306581",
+ "families": [
+  "model_choice_adaptation",
+  "monitoring_methods",
+  "presentation_explanation"
+ ],
+ "links": [
+  {
+   "control_id": "T162",
+   "comparator_used": "Discrimination (AUC) alone, as tracked across the same models and time periods",
+   "finding": "favours_control",
+   "outcome": "Detection of temporal performance drift in first-trimester GDM prediction models",
+   "effect": "Calibration intercepts shifted downward from internal holdout to temporal cohort (XGBoost \u0394intercept -0.866; LightGBM -0.977), meaning more average overprediction, in all three models, while discrimination was largely preserved (temporal AUC: XGBoost 0.881, LightGBM 0.870, logistic regression 0.857). Logistic recalibration brought the intercept to about 0 and the slope to 1.0, and improved the XGBoost Brier score from 0.111 to 0.100.",
+   "tradeoff": "Confidence intervals for the calibration shifts were wide. The recalibration was apparent (fitted and assessed in the same temporal cohort) and only partly corrected the drift.",
+   "quote": "Calibration drift occurred despite stable AUC and was partly correctable by recalibration, underscoring the need for calibration monitoring before clinical deployment.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "recalibration and calibration drift monitoring"
+}

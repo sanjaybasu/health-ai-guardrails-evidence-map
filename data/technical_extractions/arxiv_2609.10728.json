@@ -1,0 +1,25 @@
+{
+ "id": "arxiv:2609.10728",
+ "families": [
+  "agent_tool_design",
+  "model_choice_adaptation",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T167",
+   "comparator_used": "direct model arithmetic (LLM calculating in free text) on MedCalc-Bench Verified, with formulas and gold variables supplied",
+   "finding": "mixed",
+   "outcome": "Accuracy on clinical calculator cases (1,100 cases, 55 calculators)",
+   "effect": "7B: 75.31% vs 72.02%, paired +3.29 points, 95% calculator-cluster CI [-3.49, 10.38] (not a reliable advantage); 32B: 90.53% vs 83.47%, +7.05 [0.47, 14.60], clear of zero",
+   "tradeoff": "Benefit depends on model size; not a substitute for verified formulas or reliable variable extraction. 16 of 55 benchmark formulas flagged with version, use or coefficient concerns.",
+   "quote": "With formulas and gold variables supplied and both routes reading the whole note, handing off to the solver is not a reliable advantage at 7B (75.31% against 72.02%, a paired +3.29 points with a 95% calculator-cluster interval of [-3.49, 10.38]) but is one at 32B (90.53% against 83.47%, +7.05 [0.47, 14.60], clear of zero).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "deterministic code executor for LLM clinical calculations"
+}

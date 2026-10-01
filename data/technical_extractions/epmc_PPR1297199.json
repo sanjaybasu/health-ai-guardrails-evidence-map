@@ -1,0 +1,42 @@
+{
+ "id": "epmc:PPR1297199",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "output_filtering",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Non-fine-tuned model under the same supervision",
+   "finding": "favours_control",
+   "outcome": "Allow rate under supervision",
+   "effect": "Fine-tuning increased the allow rate sixfold when combined with supervision (on HealthBench Hard, N=1000; 0.0% deploy VR under C2).",
+   "tradeoff": "",
+   "quote": "Moreover, a separate test on HealthBench Hard (N =1000, an independent benchmark with different scenarios and grading) also reached 0.0% deploy VR under C2, and fine-tuning increased the allow rate sixfold when combined with supervision.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T001",
+   "comparator_used": "Five-gate rule-based sentinel under handoff-on deployment versus handoff-off deployment of the same supervised system; no base-model-only/no-sentinel arm is reported in the abstract.",
+   "finding": "favours_control",
+   "outcome": "Deploy violation rate / residual unsafe output rate",
+   "effect": "Across five models, handoff-on deploy violation rates were at most 6% and strict violation rates were 1.5% to 49.5%; handoff-off residual risk was 0.0\u201350%. In the multisite Llama 70B extension, deploy violation rate was 0.0% under handoff-on (strict VR 2.0%) versus 2.4% under handoff-off.",
+   "tradeoff": "Strict violation rates counted blocked and escalated outputs (1.5% to 49.5%), indicating variable blocking/escalation burden; clinician adjudication found 5 of 30 allowed outputs potentially harmful from reasoning errors beyond the sentinel\u2019s scope.",
+   "quote": "A multisite extension (Llama 70B, N =2935 encounter-derived scenarios, three sites) confirmed 0.0% deploy violation rate under handoff-on (strict VR 2.0%) and 2.4% under handoff-off.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "Rule-based supervision and escalation/handoff protocols"
+}

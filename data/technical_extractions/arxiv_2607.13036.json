@@ -1,0 +1,38 @@
+{
+ "id": "arxiv:2607.13036",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T050",
+   "comparator_used": "Standard prompting without safety-aware instructions, where models are not explicitly guided toward abstaining or clarifying",
+   "finding": "mixed",
+   "outcome": "Premature commitment (under-abstention) versus excessive abstention",
+   "effect": "Under-abstention exceeded 60% for most models; safety-aware prompting reduced premature commitment only by shifting errors toward excessive abstention (no figures given in the abstract)",
+   "tradeoff": "New failure mode: excessive abstention replaces premature diagnosis",
+   "quote": "Our findings show that capability does not ensure calibration: even strong models struggle under incomplete clinical information, with under-abstention exceeding 60% for most models and safety-aware prompting reducing premature commitment only by shifting errors toward excessive abstention.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T055",
+   "comparator_used": "Default prompting without explicit instruction to seek clarification",
+   "finding": "favours_control",
+   "outcome": "Rate of clarification-seeking under sequential, incomplete evidence",
+   "effect": "Models rarely sought clarification unless explicitly prompted; no numbers given in the abstract",
+   "tradeoff": "Premature diagnoses made without clarification were less accurate than on-time diagnoses",
+   "quote": "In sequential evaluation, models frequently diagnose before sufficient evidence is available and rarely seek clarification unless explicitly prompted; these premature diagnoses are less accurate than on-time diagnoses.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "safety-aware prompting (prompt guardrails for clarify/abstain)"
+}

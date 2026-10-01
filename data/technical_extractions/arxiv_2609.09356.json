@@ -1,0 +1,40 @@
+{
+ "id": "arxiv:2609.09356",
+ "families": [
+  "output_filtering",
+  "presentation_explanation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T003",
+   "comparator_used": "Prior LLM-only triage that classified emergencies from a flat list of danger signs, without the clinicians' decision tree encoded as rules",
+   "finding": "favours_control",
+   "outcome": "Emergency triage recall and F1 for identifying queries needing immediate in-person attention",
+   "effect": "Recall rose from 0.565 to 0.810 and F1 from 0.606 to 0.702. Structured rules drove most of the accuracy gains. After deployment, 152,421 queries were triaged and 28,535 (18.7%) were flagged as emergencies, with no increase in missed emergencies.",
+   "tradeoff": "Over-escalation rate of 17.8% after deployment. The new system required clinician-authored vocabulary and rules, and clinicians added 48 new rules after deployment.",
+   "quote": "We show that the new system raised recall from 0.565 to 0.810 and F1 from 0.606 to 0.702, with structured rules driving most of the accuracy gains while the decomposition provides auditability: clinical experts can inspect each stage of the new system to see whether the query was mistranslated, symptoms were incorrectly extracted, patient context was wrongly inferred, or the necessary rules were missing.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T188",
+   "comparator_used": "Opaque LLM-only triage classifier with rationale chains, compared with a decomposed pipeline whose decision path runs through canonical symptom/context extraction and a deterministic clinician-authored rule engine.",
+   "finding": "favours_control",
+   "outcome": "Emergency triage accuracy and auditability of the decision process.",
+   "effect": "Recall raised from 0.565 to 0.810; F1 raised from 0.606 to 0.702; clinicians added 48 new rules since deployment; no increase in missed emergencies was reported.",
+   "tradeoff": "Over-escalation rate was 17.8%; rule maintenance required clinician additions, but the study reports a faster correction loop and avoidance of costly full evaluations.",
+   "quote": "We show that the new system raised recall from 0.565 to 0.810 and F1 from 0.606 to 0.702, with structured rules driving most of the accuracy gains while the decomposition provides auditability: clinical experts can inspect each stage of the new system to see whether the query was mistranslated, symptoms were incorrectly extracted, patient context was wrongly inferred, or the necessary rules were missing.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "deterministic clinician-authored rule engine with LLM symptom extraction for auditable triage"
+}

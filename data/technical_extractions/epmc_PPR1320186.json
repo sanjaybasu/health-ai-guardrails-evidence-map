@@ -1,0 +1,40 @@
+{
+ "id": "epmc:PPR1320186",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T025",
+   "comparator_used": "Full five-document guideline corpus mixing current (Sepsis-3) and superseded (SIRS-based) definitions",
+   "finding": "mixed",
+   "outcome": "Superseded-guideline vocabulary density in model responses",
+   "effect": "Superseded-vocabulary use fell significantly for the 8B model, rose significantly for the 23.6B model, and did not differ significantly for the other two models (the 20B model's null result was statistically undetermined).",
+   "tradeoff": "Pruning was not a uniform safeguard; it raised superseded-vocabulary use for one model. Conclusion accuracy stayed high (89\u2013100%) for three models, but the biomedically fine-tuned model collapsed under injected context.",
+   "quote": "Second, narrowing this context through static retrieval pruning produced model-dependent effects rather than a uniform benefit: superseded-vocabulary use fell significantly for an 8-billion-parameter model, rose significantly for a 23.6-billion-parameter model, and did not differ significantly for the remaining two models; for the 20-billion-parameter model, this null result remains statistically undetermined rather than demonstrated absent.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "No corpus access (no-context baseline, relying on training knowledge alone)",
+   "finding": "favours_comparator",
+   "outcome": "Superseded-guideline vocabulary density in model responses",
+   "effect": "Injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline.",
+   "tradeoff": "One biomedically fine-tuned model showed a distractor-driven accuracy collapse to 17.9\u201325.0% under injected context. Stated rationale was valid in only 53.7% of responses despite near-ceiling conclusion accuracy.",
+   "quote": "First, injecting guideline context of any kind increased superseded-vocabulary use for every model relative to the no-context baseline.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval context pruning / restriction"
+}

@@ -1,0 +1,57 @@
+{
+ "id": "pmid:41500150",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T049",
+   "comparator_used": "fixed threshold vs balanced/adjusted threshold applied to LLM predictions",
+   "finding": "favours_control",
+   "outcome": "LLM discrimination (AUC) and approximation of SVM performance after threshold adjustment",
+   "effect": "After threshold adjustment, all LLMs reached comparable AUCs (0.902-0.919), versus SVM AUC = 0.920",
+   "tradeoff": "",
+   "quote": "After threshold adjustment, all LLMs reached comparable AUCs (0.902-0.919).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "zero-shot GPT",
+   "finding": "favours_control",
+   "outcome": "Closeness of LLM predictive performance to the SVM model",
+   "effect": "Few-shot GPT most closely matched SVM (SVM AUC = 0.920; all LLMs 0.902-0.919 after threshold adjustment); no numeric zero-shot contrast given in the abstract",
+   "tradeoff": "",
+   "quote": "Few-shot GPT most closely matched SVM, CoT + few-shot achieved highest sensitivity, and CoT-only favored specificity.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "zero-shot and few-shot GPT without chain-of-thought",
+   "finding": "mixed",
+   "outcome": "Sensitivity and specificity of LLM mortality prediction",
+   "effect": "CoT + few-shot achieved highest sensitivity; CoT-only favored specificity; AUCs comparable (0.902-0.919) after threshold adjustment",
+   "tradeoff": "Strategies traded sensitivity against specificity rather than improving both",
+   "quote": "Few-shot GPT most closely matched SVM, CoT + few-shot achieved highest sensitivity, and CoT-only favored specificity.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "threshold calibration and prompting strategy selection"
+}

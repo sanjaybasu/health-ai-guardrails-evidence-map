@@ -1,0 +1,37 @@
+{
+ "id": "arxiv:2604.23801",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose Gemma 3 4B (4-bit quantized, via Ollama) vs. domain-adapted MedGemma 4B, same prompt, temperature and retrieval setup",
+   "finding": "favours_control",
+   "outcome": "Majority-vote accuracy on MedQA-USMLE 4-option test split (1,273 questions, 3 repetitions each)",
+   "effect": "+6.8 pp majority-vote accuracy (53.3% vs. 46.4%, McNemar p < 10^-4)",
+   "tradeoff": "",
+   "quote": "Domain fine-tuning yields a +6.8 percentage-point gain in majority-vote accuracy over the general 4B baseline (53.3% vs. 46.4%, McNemar p < 10^-4).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "No retrieval (model's weight knowledge alone) vs. retrieved MedMCQA explanation passages inserted into the prompt, in both Gemma 3 4B and MedGemma 4B",
+   "finding": "no_clear_difference",
+   "outcome": "Majority-vote accuracy on MedQA-USMLE 4-option test split",
+   "effect": "No statistically significant gain in either model; in the domain-tuned model the point estimate was -1.9 pp (p = 0.16)",
+   "tradeoff": "",
+   "quote": "RAG over MedMCQA explanations does not produce a statistically significant gain in either model, and in the domain-tuned model the point estimate is slightly negative (-1.9 pp, p = 0.16).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval grounding added to existing model"
+}

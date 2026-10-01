@@ -1,0 +1,52 @@
+{
+ "id": "pmid:40911841",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T037",
+   "comparator_used": "Each single LLM (GPT-4o or Gemini-1.5-Pro) alone versus expert labels",
+   "finding": "favours_control",
+   "outcome": "Classification error against expert-annotated labels for guideline recommendations",
+   "effect": "Single-model accuracy was 93.5% (GPT-4o) and 92.7% (Gemini-1.5-Pro). Where the two models agreed (341/385), only 1 case (0.3%) diverged from expert labels.",
+   "tradeoff": "Selective manual review is still needed for the discordant cases. Total cost of both LLMs was US $0.76.",
+   "quote": "Among these agreed-upon cases, only one (0.3%) diverged from expert labels.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T038",
+   "comparator_used": "Exhaustive manual review of all 385 guideline items",
+   "finding": "favours_control",
+   "outcome": "Manual review workload when disagreeing items are prioritised for human review",
+   "effect": "Consistent predictions for 341 of 385 items reduced the need for manual review by 88.6%. The agreement-threshold strategy cut priority review to 2.9% (11/385).",
+   "tradeoff": "With the threshold strategy, the error rate rose slightly to 0.5% (2/374).",
+   "quote": "The models generated consistent predictions for 341 of 385 guideline items, reducing the need for manual review by 88.6%.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T113",
+   "comparator_used": "Uniform manual review of all guideline classifications",
+   "finding": "favours_control",
+   "outcome": "Number of cases needing priority manual review and residual error",
+   "effect": "Priority manual review fell to 2.9% (11/385) of cases, with the error rate at 0.5% (2/374).",
+   "tradeoff": "The error rate increased slightly, to 0.5%, and some manual review is still required.",
+   "quote": "Applying a predefined agreement-threshold strategy further reduced the number of priority manual review cases to 2.9% (11/385), although the error rate slightly increased to 0.5% (2/374).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "cross-model consensus and agreement-threshold triage for manual review"
+}

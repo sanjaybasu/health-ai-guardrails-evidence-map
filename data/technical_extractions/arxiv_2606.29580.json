@@ -1,0 +1,57 @@
+{
+ "id": "arxiv:2606.29580",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Same 4B generator without retrieved context (oracle-context vs no-context generator evaluation)",
+   "finding": "no_clear_difference",
+   "outcome": "Answer quality of the small on-device generator",
+   "effect": "Adding retrieved context did not improve the generator's answers (no numbers given in the abstract)",
+   "tradeoff": "",
+   "quote": "adding retrieved context does not improve its answers",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T081",
+   "comparator_used": "Cloud-based retrieval systems (seven retrievers compared)",
+   "finding": "no_clear_difference",
+   "outcome": "Retrieval ranking quality of the on-device 300M embedder",
+   "effect": "The on-device 300M embedder ranks third of seven retrievers and rivals cloud systems",
+   "tradeoff": "",
+   "quote": "the 300M embedder ranks third of seven retrievers and rivals cloud systems",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T067",
+   "comparator_used": "Original prompt before redesign",
+   "finding": "favours_control",
+   "outcome": "Deflection rate (loss of helpfulness) of the deployed generator",
+   "effect": "Deflection cut from 33% to 3%",
+   "tradeoff": "",
+   "quote": "recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "prompt redesign to reduce deflection; retrieval grounding with citations"
+}

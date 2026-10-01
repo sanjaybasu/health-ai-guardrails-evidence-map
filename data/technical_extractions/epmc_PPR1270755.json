@@ -1,0 +1,40 @@
+{
+ "id": "epmc:PPR1270755",
+ "families": [
+  "grounding_retrieval",
+  "privacy_security_engineering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T074",
+   "comparator_used": "Baseline chatbot prompt without added explicit guardrails",
+   "finding": "favours_control",
+   "outcome": "Total errors across attack vectors (single-turn)",
+   "effect": "Total errors reduced by 60% (15/60\u21926/60)",
+   "tradeoff": "",
+   "quote": "Prompt augmentation reduced total errors across these vectors by 60% (15/60\u21926/60).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T025",
+   "comparator_used": "Chatbot retrieval corpus without the added localized FAQ document",
+   "finding": "favours_control",
+   "outcome": "Single-turn user_distress and advice_query errors",
+   "effect": "user_distress errors eliminated (to 0/20); advice_query errors reduced (7/20\u21924/20)",
+   "tradeoff": "When combined with prompt augmentation in multi-turn tests, high-severity errors were eliminated, but BA errors remained at 20% (advice_query) and 30% (user_distress), with the chatbot forced into safe failure loops.",
+   "quote": "Document augmentation eliminated all single-turn user_distress errors (to 0/20) and reduced advice_query errors (7/20\u21924/20).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "prompt guardrails and document augmentation"
+}

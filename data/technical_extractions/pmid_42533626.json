@@ -1,0 +1,26 @@
+{
+ "id": "pmid:42533626",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T077",
+   "comparator_used": "Models trained on original data without class-imbalance correction (SMOTE, random undersampling and random oversampling at 1:1 compared against no resampling)",
+   "finding": "favours_comparator",
+   "outcome": "Discrimination (ROC-AUC, PR-AUC) and calibration (Brier score, calibration intercept and slope) on held-out data",
+   "effect": "ROC-AUC change -0.002 to -0.01; PR-AUC change -0.10 to -0.03; no method showed systematic improvement. Resampled models had higher Brier scores (increase 0.029-0.080) and marked deviations in calibration intercept and slope.",
+   "tradeoff": "Resampling altered the implicit class prior learned during training, producing miscalibrated and distorted predicted risks despite preserved ranking performance. Gains from imbalance correction can typically be reproduced by threshold adjustment without distorting probabilities.",
+   "quote": "Common 1:1 class-imbalance correction techniques do not improve discrimination and may substantially degrade calibration, limiting their suitability for clinical risk prediction where accurate probabilities are essential.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "class-imbalance correction vs. none; threshold adjustment and calibration assessment"
+}

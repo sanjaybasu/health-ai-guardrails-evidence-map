@@ -1,0 +1,40 @@
+{
+ "id": "pmid:42116134",
+ "families": [
+  "model_choice_adaptation",
+  "monitoring_methods",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T082",
+   "comparator_used": "Conventional supervised model trained on the first period and not updated (static), also benchmarked against in-context learning and hybrid approaches",
+   "finding": "favours_control",
+   "outcome": "F1 drop under label-set incompatibility and task definition evolution after incremental retraining",
+   "effect": "Static supervised models dropped up to 82% F1 in LSI and 43% in TDE; continual adaptation with incremental retraining gradually restored performance and surpassed in-context and hybrid approaches after at least 30% of second-period data",
+   "tradeoff": "Needs newly labeled data from the second period (at least 30%) to surpass in-context and hybrid approaches; with little new data it performs worse than them",
+   "quote": "Continual adaptation with incremental retraining gradually restored performance, but only surpassed in-context and hybrid approaches after incorporating at least 30% of data from the second period.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T079",
+   "comparator_used": "Off-the-shelf LLM with in-context learning (no adaptation to new data)",
+   "finding": "mixed",
+   "outcome": "Recovery of baseline F1 after shift",
+   "effect": "Continual training only surpassed in-context and hybrid approaches after incorporating at least 30% of data from the second period; below that, in-context learning was better",
+   "tradeoff": "Requires labeled data from the new period and retraining; in-context learning needs no new labeled data",
+   "quote": "Continual adaptation with incremental retraining gradually restored performance, but only surpassed in-context and hybrid approaches after incorporating at least 30% of data from the second period.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "model adaptation to dataset shift (continual retraining vs in-context learning)"
+}

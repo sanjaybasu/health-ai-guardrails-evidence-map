@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1013793",
+ "families": [
+  "model_choice_adaptation",
+  "privacy_security_engineering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Untuned (off-the-shelf) AnonCAT without concept alignment or fine-tuning",
+   "finding": "favours_control",
+   "outcome": "Word-level PII classification F1 (de-identification) on site-specific data",
+   "effect": "AnonCAT F1 increased from 0.851 (0.843-0.859) to 0.910 (0.905-0.914) after fine-tuning; fine-tuned precision 0.978 (0.973-0.982), recall 0.850 (0.843-0.858); least performance shift across datasets",
+   "tradeoff": "Fine-tuned AnonCAT recall (0.850) was lower than the best tool, Azure DeID (0.950), despite high precision; fine-tuning requires site-specific annotated data",
+   "quote": "AnonCAT showed significant improvement in performance on fine-tuning (F1 increase from 0.851; 0.843-0.859 to 0.910; 0.905-0.914).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "Zero-shot prompting of general-purpose LLMs for de-identification",
+   "finding": "favours_control",
+   "outcome": "De-identification performance and hallucinated or added text in LLMs with 1, 5, 10 in-context examples",
+   "effect": "GPT-4-0125 with ten shots reached F1 0.898 (0.876-0.915), precision 0.874, recall 0.924; hallucinatory output persisted in Phi-3-mini and Llama-3-8B at zero-, one- and five-shots, and universally for Gemma-7b-IT",
+   "tradeoff": "Few-shot examples did not remove hallucination in all models; Gemma-7b-IT hallucinated at every shot count; zero-shot figures for direct comparison were not given in the abstract",
+   "quote": "Low-adaptation strategies may improve the performance of generalist LLMs and task-specific models.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "local fine-tuning and few-shot adaptation with site-specific data"
+}

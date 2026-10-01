@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1267932",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T057",
+   "comparator_used": "label-only prompt without a required verbatim supporting quote",
+   "finding": "mixed",
+   "outcome": "coverage and conditional macro-F1 for trial eligibility-scope classification",
+   "effect": "Coverage fell: GPT-5.2 86.2% to 84.3%, Gemini 98.3% to 92.8%, Claude 96.0% to 94.5%. Conditional macro-F1 changed by model: slight gains for GPT-5.2 and Gemini, a decrease for Claude. Labels were stable across repetitions (Fleiss' kappa 0.829 to 0.969).",
+   "tradeoff": "More abstentions and, for Gemini, more invalid outputs. Quotes introduce new failure modes: only 48.0% to 78.8% of evidence-bearing predictions were judged semantically supported.",
+   "quote": "Evidence requirements modestly reduced coverage (GPT-5.2 86.2% to 84.3%, Gemini 98.3% to 92.8%, Claude 96.0% to 94.5%) by increasing abstentions and, for Gemini, invalid outputs.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T036",
+   "comparator_used": "all predictions released without checking the quote against the source (unrestricted predictions)",
+   "finding": "mixed",
+   "outcome": "macro-F1 versus coverage when restricting to predictions with supported quotes",
+   "effect": "Mechanically valid quotes occurred in 83.3% to 91.2% of runs, but only 48.0% to 78.8% of evidence-bearing predictions were judged semantically supported. Restricting to supported predictions raised macro-F1.",
+   "tradeoff": "Lower coverage. Valid substring quotes were often not semantically supportive of the label.",
+   "quote": "Restricting to supported predictions increased macro-F1 at the cost of lower coverage.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "verbatim evidence quotation and automated verification guardrail"
+}

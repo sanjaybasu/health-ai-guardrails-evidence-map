@@ -1,0 +1,38 @@
+{
+ "id": "arxiv:2605.04180",
+ "families": [
+  "grounding_retrieval",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T057",
+   "comparator_used": "Answering from retrieved evidence regardless of its confidence (no retrieval-confidence gate)",
+   "finding": "favours_control",
+   "outcome": "Macro F1 for word-level medical fabrication detection",
+   "effect": "Macro F1 rose from 61% to 74% with the retrieval-confidence gate",
+   "tradeoff": "",
+   "quote": "The failure is actionable: a retrieval-confidence gate that abstains on low-confidence evidence raises macro F1 from 61% to 74%, and we release MedFabric, all code, and every baseline.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "No-evidence baseline (the LLM's own knowledge alone), with gold versus wrong retrieved passages",
+   "finding": "mixed",
+   "outcome": "Macro F1 for fabrication detection by a strong LLM, by evidence condition",
+   "effect": "Scores 91% with the gold passage, but 35% with a wrong passage, which is below its own no-evidence baseline",
+   "tradeoff": "Incorrect retrieved evidence makes detection worse than having no evidence, a new failure mode",
+   "quote": "Our central finding is that detection is governed by evidence correctness rather than fabrication subtlety, since a strong LLM scores 91% with the gold passage but falls to 35%, below its own no-evidence baseline, under a wrong one, a pattern that holds on two benchmarks at two model scales.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "retrieval-confidence gate abstention"
+}

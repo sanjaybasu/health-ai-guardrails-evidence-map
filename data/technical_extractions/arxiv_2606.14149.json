@@ -1,0 +1,39 @@
+{
+ "id": "arxiv:2606.14149",
+ "families": [
+  "agent_tool_design",
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T168",
+   "comparator_used": "Vanilla (single-LLM, default configuration) condition on the same models (GPT-OSS, Llama-3, Falcon-3)",
+   "finding": "favours_control",
+   "outcome": "Hallucination Error Rate (HER) on 103 adversarial banned-drug clinical MCQs",
+   "effect": "HER reduced by approximately 53% across models; pointwise scores shifted from -0.25 (unsafe recommendation) toward 0.0 (appropriate refusal)",
+   "tradeoff": "",
+   "quote": "Our proposed agentic architecture reduced HER by approximately 53% across models.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T173",
+   "comparator_used": "Vanilla condition without the multi-agent pipeline's post-hoc safety audit (default model output)",
+   "finding": "favours_control",
+   "outcome": "Interception of unsafe recommendations of banned drugs, measured by HER and pointwise score",
+   "effect": "Audit intercepted dangerous outputs even when parametric knowledge favored the banned substance; overall HER reduced ~53%, pointwise scores moved from -0.25 toward 0.0",
+   "tradeoff": "",
+   "quote": "The safety audit intercepted dangerous outputs even when models' parametric knowledge favored the banned substance.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "post-hoc multi-agent safety audit with real-time regulatory data grounding"
+}

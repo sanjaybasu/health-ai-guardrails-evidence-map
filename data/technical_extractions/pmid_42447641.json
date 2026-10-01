@@ -1,0 +1,26 @@
+{
+ "id": "pmid:42447641",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "presentation_explanation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Source-trained model applied to the target without adaptation (also compared with pooled training and calibration-only updating)",
+   "finding": "favours_control",
+   "outcome": "ROC-AUC and Expected Calibration Error on younger children (Experiment A); mortality prediction from vital signs",
+   "effect": "Random Forest ROC-AUC 0.725 (0.703-0.746) without adaptation vs 0.867 (0.842-0.890) after target-domain retraining; ECE 0.142 vs below 0.01. Retraining on only 5% of the target pool (about 180 patients) recovered most of the gap. Calibration-only updating corrected ECE but did not restore discrimination.",
+   "tradeoff": "Requires labelled target-cohort data (50% of target data in the main analysis). Calibration-only updating was insufficient for discrimination.",
+   "quote": "The strongest discrimination evidence comes from the fully observed Experiment A: Random Forest ROC-AUC fell from 0.940 (95% CI 0.912-0.968) on older children to 0.725 (0.703-0.746) on younger children, and target-domain retraining recovered 0.867 (0.842-0.890); ECE rose from \u22640.010 to 0.142 and was restored below 0.01.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "target-domain retraining and recalibration before pediatric deployment"
+}

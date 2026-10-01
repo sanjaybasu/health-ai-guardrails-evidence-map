@@ -1,0 +1,50 @@
+{
+ "id": "arxiv:2606.18262",
+ "families": [
+  "input_data_handling",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T075",
+   "comparator_used": "Visual-only condition (image with overlaid lesion contour, no conflicting text)",
+   "finding": "favours_comparator",
+   "outcome": "Overall diagnostic accuracy on hemorrhage versus drusen discrimination when the contour was paired with an inconsistent textual claim",
+   "effect": "Overall accuracy dropped from 75% to 46% relative to the visual-only condition",
+   "tradeoff": "The inconsistent textual cue overrode the correct visual cue, a new failure mode of textual dominance",
+   "quote": "When an overlaid lesion contour is paired with an inconsistent textual claim, the textual prompt overrides the correct visual cue: overall accuracy drops from 75% to 46% relative to the visual-only condition, and Chain-of-Thought (CoT) reasoning is associated with further degradation rather than self-correction.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T066",
+   "comparator_used": "Prompting without Chain-of-Thought reasoning (inconsistent text and contour condition)",
+   "finding": "favours_comparator",
+   "outcome": "Diagnostic accuracy under conflicting text and visual cues",
+   "effect": "CoT was associated with further degradation rather than self-correction; no separate numbers given in the abstract",
+   "tradeoff": "CoT did not correct the model's textual override and was associated with worse performance",
+   "quote": "When an overlaid lesion contour is paired with an inconsistent textual claim, the textual prompt overrides the correct visual cue: overall accuracy drops from 75% to 46% relative to the visual-only condition, and Chain-of-Thought (CoT) reasoning is associated with further degradation rather than self-correction.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "Zero-shot inference",
+   "finding": "favours_comparator",
+   "outcome": "Direction of predictions (bias toward the prompted finding)",
+   "effect": "One-shot textual prompts biased predictions toward the prompted finding; no numbers reported in the abstract",
+   "tradeoff": "Prediction bias toward the prompted finding",
+   "quote": "(ii) Compared with zero-shot inference, one-shot textual prompts bias predictions toward the prompted finding.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "prompting strategies (one-shot text, CoT, contour overlay) as safeguards"
+}

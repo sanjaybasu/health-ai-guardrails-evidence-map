@@ -1,0 +1,63 @@
+{
+ "id": "epmc:PPR1040654",
+ "families": [
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T066",
+   "comparator_used": "Non-reasoning base model (Llama-3.3-70B and Qwen3-32B) vs. reasoning-enhanced variants",
+   "finding": "mixed",
+   "outcome": "Overall accuracy on BiasMedQA vignettes and susceptibility to cognitive bias",
+   "effect": "Reasoning models had better overall performance (OR 4.0 for Llama-3.3-70B, OR 3.6 for Qwen3-32B) but did not consistently prevent cognitive bias. In Llama-3.3-70B, reasoning increased vulnerability to frequency bias (OR 0.6, p = 0.006) and recency bias (OR 0.5, p < 0.001).",
+   "tradeoff": "Reasoning increased vulnerability to several bias types in Llama-3.3-70B, including frequency and recency bias.",
+   "quote": "In neither of the two models, reasoning capabilities were able to consistently prevent cognitive bias, although both reasoning models achieved better overall performance compared to their respective base model (OR 4.0 for Llama-3.3-70B, OR 3.6 for Qwen3-32B).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "Standard general-purpose base models (Llama-3.3-70B, Qwen3-32B) vs. their reasoning-enhanced variants",
+   "finding": "mixed",
+   "outcome": "Overall accuracy and bias susceptibility on BiasMedQA",
+   "effect": "Reasoning variants had higher overall performance (OR 4.0 Llama, OR 3.6 Qwen) but did not consistently prevent bias; frequency bias OR 0.6 (p = 0.006) and recency bias OR 0.5 (p < 0.001) worsened in Llama.",
+   "tradeoff": "Increased vulnerability to several bias types in the reasoning variant of Llama-3.3-70B.",
+   "quote": "In neither of the two models, reasoning capabilities were able to consistently prevent cognitive bias, although both reasoning models achieved better overall performance compared to their respective base model (OR 4.0 for Llama-3.3-70B, OR 3.6 for Qwen3-32B).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T070",
+   "comparator_used": "Base prompt without debiasing instruction",
+   "finding": "favours_control",
+   "outcome": "Biased responses on BiasMedQA vignettes",
+   "effect": "Statistically significant reduction in biased responses across both model architectures (OR 0.6 for Llama-3.3-70B and for Qwen3).",
+   "tradeoff": "",
+   "quote": "In contrast, the debiasing and few-shot prompting approaches demonstrated statistically significant reductions in biased responses across both model architectures, with the few-shot strategy exhibiting substantially greater effectiveness (OR 0.1 vs. 0.6 for Llama-3.3-70B; OR 0.25 vs. 0.6 for Qwen3).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T065",
+   "comparator_used": "Base prompt (zero-shot) and debiasing prompt",
+   "finding": "favours_control",
+   "outcome": "Biased responses on BiasMedQA vignettes",
+   "effect": "Statistically significant reduction in biased responses, greater than debiasing prompt (OR 0.1 vs. 0.6 for Llama-3.3-70B; OR 0.25 vs. 0.6 for Qwen3).",
+   "tradeoff": "",
+   "quote": "In contrast, the debiasing and few-shot prompting approaches demonstrated statistically significant reductions in biased responses across both model architectures, with the few-shot strategy exhibiting substantially greater effectiveness (OR 0.1 vs. 0.6 for Llama-3.3-70B; OR 0.25 vs. 0.6 for Qwen3).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "debiasing prompt and few-shot prompt guardrails"
+}

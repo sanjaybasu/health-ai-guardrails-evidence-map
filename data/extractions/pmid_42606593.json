@@ -1,10 +1,51 @@
 {
  "route": "commentary",
- "models": {},
- "endorsements": [],
- "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "endorsements": [
+  {
+   "rec_id": "R074",
+   "quote": "Minimum requirements should include predefined intended use, \u201cno new facts\u201d generation, prov enance, access controls, logging, documented validation, post-deployment monitoring, incident-response planning, and explicit allocation of responsibility among the devel oper, vendor, health system, radiology department, and interpreting radiologist."
+  },
+  {
+   "rec_id": "R151",
+   "quote": "The radiologist should verify laterality, sector location, lesion size, PI-RADS category, staging language, and any gener ated impression against the images and the source report Table 2 Risk-tiered LLM applications in prostate MRI reporting and minimum safeguards Use case Task type Relative risk Verifiability Potential value Main risks Minimum safeguards Completeness / consistency checks Bounded quality check Low to intermediate High Flag missing staging elements or contradictions Alert fatigue; false positives Few high-value rules; local tuning; audit of false alerts Free text -> predefined structured fields Bounded extraction Low to intermediate High Registry, research, QA readiness; standardization Wrong laterality; hallucinated fields; omitted lesion Strict schema; no invention; source provenance; targeted spot checks Quality-assurance extraction from reports / EMR Bounded secondary-use extraction Intermediate Medium to high Evaluate completeness, MRI-pathology concordance, scanner/protocol or radiologist variation, biopsy-targeting outcomes Incomplete linkage; biased variables; privacy exposure Approved variable dictionary; local validation; data minimization; governance for secondary use Drafting from structured inputs Supervised transformation Intermediate Medium Consistency; time savings Meaning drift; automation bias Schema-constrained text; draft label; radiologist review; change tracking Supervised impression assistance Radiologistfacing transformation Intermediate Medium Readability and consistency; potential burnout reduction Omission; overemphasis; altered staging language Side-by-side source display; active confirmation; no default acceptance Patient-friendly addendum from finalized report Patient-facing transformation Intermediate to high Medium Improved comprehension and patient communication Overconfidence; inappropriate advice; privacy breach Generated only after finalization; no new recommendations; disclosure; review/ accountability pathway; secure processing PI-RADS assignment or model-generated staging Inferential classification High Low to medium Research/triage hypothesis only Categorical hallucination; invalid labels; altered management Not for autonomous deployment; prospective validation; constrained inputs; clinician sign-off Ungoverned patient counseling by public chatbot Open-ended patient-facing generation High Low Accessible explanation outside health system Hallucination; privacy leakage; inappropriate reassurance or alarm Not a recommended clinical deployment model; develop governed alternatives with audit and accountability 1 3 Abdominal Radiology before accepting the output."
+  },
+  {
+   "rec_id": "R156",
+   "quote": "Interface design should reduce review burden by highlighting only high-value discrepan cies, requiring active confirmation, and avoiding default acceptance."
+  },
+  {
+   "rec_id": "R163",
+   "quote": "For prostate MRI reporting, that principle means that the radiologist \u2013not the model\u2013 must remain responsible for the signed clinical report and for deciding whether any generated text is clinically faithful to the images and source report."
+  },
+  {
+   "rec_id": "R186",
+   "quote": "For patient-facing explanations, institutions should disclose AI assistance when generated text is presented to patients, 1 3 Abdominal Radiology provide a pathway for questions, and define who is respon sible for review and correction."
+  },
+  {
+   "rec_id": "R335",
+   "quote": "Implementation should include a data-flow map; data minimization; role-based access controls; local or secure pro cessing where feasible; explicit limits on prompt retention, model training, and secondary use; access logs; encryption; vendor due diligence; and a breach/incident-response plan aligned with applicable law."
+  },
+  {
+   "rec_id": "R362",
+   "quote": "Continuous post-deployment monitoring should track not only model accuracy but also workflow burden, alert fatigue, patient complaints, privacy incidents, and error modes after model or template updates."
+  },
+  {
+   "rec_id": "R481",
+   "quote": "generated statements should include provenance linking them to source sen tences, structured fields, or finalized report content so that the radiologist can independently verify the output."
+  }
+ ],
+ "unlisted_practices": [
+  "Enforce a strict \"no new facts\" rule in LLM-generated clinical text, prohibiting the model from adding, inferring, or fabricating findings or recommendations absent from the source report.",
+  "Constrain LLM outputs to a predefined schema where possible.",
+  "Do not deploy autonomous PI-RADS assignment, unsupervised staging language, or unsupervised patient counseling by general-purpose LLMs without prospective validation and clinically accountable workflow.",
+  "Place LLM after report drafting but before final sign-off, using it mainly to flag missing elements and inconsistencies, with model-suggested text shown as draft with change tracking.",
+  "Generate patient-facing explanations only after the radiology report is finalized, label them as explanations, and use centrally approved definitions.",
+  "Define before deployment who reviews and is accountable for patient-facing AI output."
+ ],
  "links": [],
- "skipped": "no open full text",
  "id": "pmid:42606593",
  "screen": {
   "id": "pmid:42606593",
@@ -24,5 +65,6 @@
    "tests_practice": 0.06,
    "real_deployment": 0.07
   }
- }
+ },
+ "oa_retried": true
 }

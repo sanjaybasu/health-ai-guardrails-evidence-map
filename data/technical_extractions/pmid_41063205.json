@@ -1,0 +1,54 @@
+{
+ "id": "pmid:41063205",
+ "families": [
+  "human_workflow_design",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T046",
+   "comparator_used": "fully automated model classifying every slide (and fully manual IHC plus pathologist review of all slides)",
+   "finding": "favours_control",
+   "outcome": "diagnostic accuracy and IHC workload in lineage prediction with confidence-threshold deferral to IHC and manual review",
+   "effect": "Fully automated model had 16.1% lower accuracy and 0.040 lower AUC than IHC/manual review in the prospective cohort (p<0.001). Semi-automated with threshold deferral gave 95.9% accuracy, comparable to full IHC/manual (p=0.610), with a 68.9% reduction in IHC workload. Internal test: threshold >0.8 gave accuracy comparable to manual (p=0.856), with 78.0% auto-subtyped. External cohort: cutoff 0.8 gave 86.0% accuracy; cutoff 0.9 gave 95.1% accuracy (p=0.293 vs manual) with 39.3% workload reduction. Functional cohort: 99.0% accuracy, 74.4% workload reduction.",
+   "tradeoff": "Raising the cutoff improves accuracy but reduces workload savings (external cohort: 86.0% accuracy at 0.8 vs 95.1% accuracy with only 39.3% reduction at 0.9). Low-confidence cases still need IHC staining and manual review. Determinants of the confidence index are not fully characterized.",
+   "quote": "In the prospective cohort, the implementation of the semi-automated approach resulted in a 68.9% reduction in the workload of IHC staining.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T049",
+   "comparator_used": "a lower confidence cutoff of 0.8 versus a higher cutoff of 0.9 in the external cohort (different centers)",
+   "finding": "favours_control",
+   "outcome": "accuracy of semi-automated lineage prediction in the external cohort with a raised confidence cutoff",
+   "effect": "External cohort: cutoff 0.8 yielded 86.0% accuracy; raising to 0.9 improved accuracy to 95.1%, statistically comparable to full IHC/manual evaluation (p=0.293), with workload reduction of 39.3%.",
+   "tradeoff": "Higher cutoff reduces workload savings to 39.3%.",
+   "quote": "Under this scenario, although the workload reduction was only 39.3%, the accuracy significantly improved to 95.1%.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T113",
+   "comparator_used": "uniform IHC staining and manual review of all slides",
+   "finding": "favours_control",
+   "outcome": "diagnostic workload and accuracy when only low-confidence cases are routed to IHC and pathologist review",
+   "effect": "68.9% reduction in IHC workload with 95.9% accuracy in the prospective cohort (p=0.610 vs full IHC/manual). Functional cohort 74.4% reduction and 99.0% accuracy. External cohort 39.3% reduction and 95.1% accuracy at cutoff 0.9.",
+   "tradeoff": "Savings shrink as the cutoff is raised to maintain accuracy; escalated cases still require IHC staining (about 1,000 CNY per three-antibody panel) and manual review.",
+   "quote": "The pipeline employs a dynamic confidence threshold: samples below this threshold undergo confirmatory IHC staining and manual pathological review, while those surpassing it are classified automatically.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "confidence threshold triage with confirmatory IHC and manual pathology review"
+}

@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1266498",
+ "families": [
+  "model_choice_adaptation",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T033",
+   "comparator_used": "Single LLM response per query (standard single-run output)",
+   "finding": "favours_control",
+   "outcome": "Agreement/stability (Fleiss' Kappa) and F1-score on binary mobility information extraction",
+   "effect": "Improves \u03ba substantially and often improves or preserves F1-score (no specific numbers in abstract)",
+   "tradeoff": "Additional inference cost",
+   "quote": "Finally, we evaluate a practical mitigation, self-consistency via majority voting, which improves \u03ba substantially and often improves or preserves F1-score, at the cost of additional inference.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T072",
+   "comparator_used": "Higher sampling temperature settings",
+   "finding": "favours_control",
+   "outcome": "Reproducibility (agreement across repeated runs) in mobility information extraction",
+   "effect": "Increasing temperature generally degrades agreement; magnitude depends on model and task (no numbers in abstract)",
+   "tradeoff": "",
+   "quote": "Results show that increasing temperature generally degrades agreement, but the magnitude depends on model and task; furthermore, prompt paraphrasing can substantially reduce stability, with particularly large drops for the MoE model.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "self-consistency majority voting and temperature selection"
+}

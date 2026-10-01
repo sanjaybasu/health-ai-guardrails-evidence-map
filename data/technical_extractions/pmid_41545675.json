@@ -1,0 +1,25 @@
+{
+ "id": "pmid:41545675",
+ "families": [
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Strictly zero-shot NormWear applied to PPG without any local training or labels (also NormWear with a locally trained classifier, and unsupervised PCA features)",
+   "finding": "favours_control",
+   "outcome": "CVD detection from wearable PPG (AUROC, average precision)",
+   "effect": "Frozen PaPaGei embeddings plus a locally trained calibrated Random Forest: AUROC 0.769, AP 0.489, recall 1.000. Zero-shot NormWear: AUROC 0.560, AP 0.226 (abstract reports 0.610 and 0.226). NormWear zero-shot with a supervised classifier: AUROC 0.667, AP 0.322. PCA features: AUROC 0.689, AP 0.208.",
+   "tradeoff": "Needs local labels to train the classifier, though not encoder fine-tuning. The comparison is confounded by different models (PPG-specific PaPaGei vs ECG-pretrained NormWear) and different preprocessing, so the authors call NormWear a lower bound and not a fair head-to-head. Only 13 CVD cases, so results are tentative and need validation.",
+   "quote": "Our zero-shot baseline (NormWear, AUROC 0.560) represents truly label-free deployment but yields insufficient discrimination, highlighting that some local labels substantially improve utility.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "local classifier training on frozen embeddings vs zero-shot use"
+}

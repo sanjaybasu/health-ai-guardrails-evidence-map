@@ -1,0 +1,55 @@
+{
+ "id": "pmid:42553932",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation",
+  "monitoring_methods"
+ ],
+ "links": [
+  {
+   "control_id": "T107",
+   "comparator_used": "Random selection baseline (~0.17 no-show precision) for Top-N targeting; no-reminder control group in the randomized call trial",
+   "finding": "mixed",
+   "outcome": "Top-N precision of true no-shows among targeted patients; overall no-show rate in the randomized phone-call trial",
+   "effect": "Top-10 precision 0.38 and Top-20 precision 0.31 for XGBoost vs random baseline 0.17; no-show rate 21.9% intervention vs 22.0% control (P = .48)",
+   "tradeoff": "42.3% of called patients were not reached; model performance fell in the prospective test (AUROC 0.65 to 0.61) due to data drift",
+   "quote": "All models outperformed random guessing (baseline: 0.17), with XGBoost performing best, achieving precision scores of 0.38 and 0.31 for the Top 10 and 20 predictions, respectively.",
+   "finding_agreement": 0.33,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T121",
+   "comparator_used": "High-risk patients flagged by the model but receiving no reminder call (control group)",
+   "finding": "no_clear_difference",
+   "outcome": "MRI no-show rate",
+   "effect": "21.9% intervention (274 appointments) vs 22.0% control (460 appointments), P = .48; reached patients 18.4% vs not reached 26.7%",
+   "tradeoff": "Limited reach: 116 of 274 (42.3%) not reached, with no retry; calls added scheduling-staff workload",
+   "quote": "Overall, the phone call trial showed no significant reduction in the no-show rate between the control (22.0%) and intervention (21.9%) groups ( P- value: .48), as shown in Table 2 .",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T156",
+   "comparator_used": "Retrospective hold-out validation performance before go-live",
+   "finding": "favours_control",
+   "outcome": "Prospective model discrimination (AUROC/AUPRC) detected in the silent live test",
+   "effect": "AUROC 0.61 and AUPRC 0.24 in the silent live test (5882 appointments) vs 0.65 and 0.29 on the validation set; drop attributed in part to data drift",
+   "tradeoff": "Required a 13-month silent period before the intervention could begin",
+   "quote": "On this dataset, the model achieved an AUROC of 0.61 and an AUPRC of 0.24, a reduction in performance when compared to the validation data performance (AUROC: 0.65, AUPRC: 0.29).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "targeted phone call reminder for high-risk patients; prospective evaluation and drift monitoring"
+}

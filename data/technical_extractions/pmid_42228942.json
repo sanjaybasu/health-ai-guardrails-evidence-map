@@ -1,0 +1,25 @@
+{
+ "id": "pmid:42228942",
+ "families": [
+  "model_choice_adaptation",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T053",
+   "comparator_used": "Self-reported (verbalized) confidence metrics (first and mean self-reported confidence), plus consistency-based metrics alone (relative entropy, majority-vote percentage)",
+   "finding": "favours_control",
+   "outcome": "Discrimination of correct vs incorrect answers (ROC AUC), Spearman correlation of confidence with accuracy, and calibration (ECE, Brier score)",
+   "effect": "Top Weighted Score (hybrid of response frequency and self-reported confidence) was the only metric with significant correlations across all 4 models: Gemini-3-Pro \u03c1=0.52, GPT-5 \u03c1=0.43, Claude-4.5-Sonnet \u03c1=0.30, GPT-4o \u03c1=0.22. AUC 0.826 (95% CI 0.731-0.920) for Gemini-3-Pro and 0.767 (95% CI 0.668-0.866) for GPT-5. Lowest ECE in GPT-5 (0.098) and Claude-4.5-Sonnet (0.192); Gemini-3-Pro was comparable between relative entropy (0.119) and Top Weighted Score (0.122). It was the only significant metric in GPT-4o.",
+   "tradeoff": "Consistency-based and hybrid metrics need 20 repeated outputs per case. Reasoning models required substantially longer processing times and higher token consumption than the general model. The authors call for resource-efficient sampling strategies, and association strength varied across models.",
+   "quote": "Receiver operating characteristic analysis revealed that Top Weighted Score demonstrated the highest discriminative ability, with area under the curve values of 0.826 (95% CI 0.731-0.920) for Gemini-3-Pro and 0.767 (95% CI 0.668-0.866) for GPT-5.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "LLM confidence estimation metrics (uncertainty quantification)"
+}

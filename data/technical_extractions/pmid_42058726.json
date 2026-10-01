@@ -1,0 +1,70 @@
+{
+ "id": "pmid:42058726",
+ "families": [
+  "human_workflow_design",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Off-the-shelf (non-finetuned) BioLORD and Claude 3.7 used as-is for laboratory test concept mapping",
+   "finding": "favours_control",
+   "outcome": "Top-1 accuracy of laboratory test concept mapping",
+   "effect": "Top-1 accuracy was 37.0% for non-finetuned BioLORD, 43.8% for Claude 3.7 and 91.6% for fine-tuned BioLORD on the hold-out test set. When a new hospital was held out and the model was trained on the other hospitals, top-1 accuracy was 73.5%, with the hospital's own data excluded. Other embedding models rose from 11.7-27.9% to 65.8-75.2%.",
+   "tradeoff": "Training needs a GPU, and LoRA was used for the larger models. Accuracy fell to 73.5% for a new, unseen hospital, with wide variation between hospitals (hospital 2 reached only 25% top-1 in the hold-out test).",
+   "quote": "For example, top-1 accuracy was 37.0%, 43.8%, and 91.6% for non-finetuned BioLORD, Claude 3.7, and fine-tuned BioLORD respectively.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T082",
+   "comparator_used": "Static fine-tuned model at the start of deployment (session 1), before further updates from expert-validated mappings",
+   "finding": "favours_control",
+   "outcome": "Top-1 accuracy on the static hold-out test set over ten mapping sessions",
+   "effect": "Top-1 accuracy rose from 89.43% in session 1 to 94.22% by session 9. Linear regression gave \u03b2=0.367, p=0.021, R\u00b2=0.50. Top-5 accuracy stayed at 99-100%.",
+   "tradeoff": "Human-in-the-loop learning risks propagating incorrect user confirmations into later model updates. The authors mitigate this by restricting edit permissions to trained users. Distribution shift needs monitoring and was not evaluated. Session-specific accuracy varied widely (56.7-98.15%).",
+   "quote": "On the hold-out test set, top-1 accuracy displayed a gradual linear increase, starting at 89.43% in session 1 and increasing with further fine-tuning to 94.22% by session 9, reflecting the benefits of continuous learning.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T084",
+   "comparator_used": "General-purpose embedding models (Qwen3-0.6B, EmbeddingGemma-300M) and the general LLM Claude 3.7 Sonnet, all used zero-shot without finetuning",
+   "finding": "mixed",
+   "outcome": "Baseline top-1 accuracy for medication and laboratory test concept mapping",
+   "effect": "Domain-specific BioLORD reached 92.9% top-1 for medications and 37.0% for lab tests, against 85.6%/23.7% for Qwen3 and 71.9%/11.7% for Gemma (the lab-test column of Table 1 pairs Qwen3 with 23.7% and Gemma with 11.7%). Claude 3.7 was better on lab tests (43.8% top-1, 86.7% top-5) but worse on medications (76.6% top-1).",
+   "tradeoff": "Claude 3.7 carries substantially higher computational and hardware cost, which the authors say makes it unjustifiable for this task. After finetuning, differences between embedding models largely vanished.",
+   "quote": "Overall, the BioLORD model outperforms other embedding models, achieving an acc top1 of 92.9% for medications and 37.0% laboratory test names, compared to 91.2% and 27.9% obtained by the next highest embedding model (SapBERT).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T108",
+   "comparator_used": "Fully manual concept mapping in Microsoft Excel by the same informatician",
+   "finding": "favours_control",
+   "outcome": "Number of laboratory test concepts mapped per 30-minute session",
+   "effect": "ArcMAP sessions mapped 64.6 \u00b1 30 concepts on average, against 31.7 \u00b1 0.9 in manual sessions, an estimated >2-fold efficiency increase.",
+   "tradeoff": "The comparison is indicative only. Manual sessions used easier, more frequent concepts from the training data (only 1.7 needed further data analysis versus 16.8 in ArcMAP sessions). There was a single informatician, three manual sessions, and considerable variation between ArcMAP sessions. The suggestions came from a small BERT-based embedding model, not an LLM.",
+   "quote": "In contrast, during the manual mapping sessions without ArcMAP, only 31.7 \u00b1 0.9 ( Supplementary Table 2 ) concepts were mapped on average, resulting in an estimated >2-fold increase in efficiency when using ArcMAP.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "real_deployment",
+ "design_hint": "human-in-the-loop expert review with continuous fine-tuning"
+}

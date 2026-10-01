@@ -1,0 +1,42 @@
+{
+ "id": "pmid:41190890",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T140",
+   "comparator_used": "Full original anonymized medical reports (lengthy, unstructured) as input, versus manually generated case summaries",
+   "finding": "favours_control",
+   "outcome": "Agreement with heart team treatment decision (Cohen \u03ba), reliability (ICC), and bias toward TAVR (FBI)",
+   "effect": "Original reports: \u03ba -0.47 to 0.22; ICC 0.0-1.0; FBI 0.95-1.51. Case summaries plus added guideline knowledge: \u03ba -0.02 to 0.63; ICC 0.01-1.0; FBI 0.46-1.23. The summary and guideline effects are not separated.",
+   "tradeoff": "Summaries were manually generated, which is a curation burden. Hallucinations occurred in all LLMs tested, and the authors conclude that advanced LLMs still require extensively curated input.",
+   "quote": "The LLMs' performance improved substantially when case summaries were used as input and additional guideline knowledge was added to the prompt (Cohen \u03ba coefficient: -0.02 to 0.63; ICC: 0.01-1.0; FBI: 0.46-1.23).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T064",
+   "comparator_used": "Prompt without added guideline knowledge, applied to original medical reports",
+   "finding": "favours_control",
+   "outcome": "Agreement with heart team treatment decision (Cohen \u03ba), reliability (ICC), and bias toward TAVR (FBI)",
+   "effect": "Original reports: \u03ba -0.47 to 0.22; ICC 0.0-1.0; FBI 0.95-1.51. Case summaries plus guideline knowledge in the prompt: \u03ba -0.02 to 0.63; ICC 0.01-1.0; FBI 0.46-1.23. The guideline effect is confounded with the switch to summaries.",
+   "tradeoff": "Hallucinations occurred in all LLMs tested. Reliability remained variable (ICC 0.01-1.0), and some models still agreed poorly with the heart team (\u03ba as low as -0.02).",
+   "quote": "The LLMs' performance improved substantially when case summaries were used as input and additional guideline knowledge was added to the prompt (Cohen \u03ba coefficient: -0.02 to 0.63; ICC: 0.01-1.0; FBI: 0.46-1.23).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "input curation with case summaries and guideline-augmented prompts"
+}

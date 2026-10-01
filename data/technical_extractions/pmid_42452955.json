@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42452955",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Baseline Gemini 2.5 Flash without fine-tuning (off-the-shelf model); baseline did not receive equivalent safety/deferral instructions",
+   "finding": "favours_control",
+   "outcome": "Overall accuracy on 150 postoperative queries (expert-rated)",
+   "effect": "baseline 68% vs fine-tuning 92.7% (P<.001, all knowledge-enhanced models vs baseline); fine-tuning+RAG 97.3%",
+   "tradeoff": "Knowledge-enhanced models had lower readability than baseline, partly attributed to standardized safety boilerplate; baseline lacked equivalent safety/deferral instructions, which likely influenced safety findings.",
+   "quote": "All knowledge-enhanced models significantly outperformed baseline in overall accuracy (baseline 68% vs fine-tuning 92.7%, RAG 91.3%, fine-tuning+RAG 97.3%; P<.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline Gemini 2.5 Flash without retrieval (training knowledge alone); also compared with fine-tuning and hybrid",
+   "finding": "favours_control",
+   "outcome": "Overall accuracy on 150 postoperative queries (expert-rated)",
+   "effect": "baseline 68% vs RAG 91.3% (P<.001, all knowledge-enhanced models vs baseline); fine-tuning 92.7%, fine-tuning+RAG 97.3%; fine-tuning and RAG broadly comparable on most secondary outcomes",
+   "tradeoff": "Knowledge-enhanced models had lower readability than baseline, partly attributed to standardized safety boilerplate; baseline lacked equivalent safety/deferral instructions, which likely influenced safety findings.",
+   "quote": "All knowledge-enhanced models significantly outperformed baseline in overall accuracy (baseline 68% vs fine-tuning 92.7%, RAG 91.3%, fine-tuning+RAG 97.3%; P<.001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding and fine-tuning with safety/deferral instructions"
+}
