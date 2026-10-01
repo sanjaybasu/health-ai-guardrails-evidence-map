@@ -1,0 +1,440 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 95,
+   "sample_unit": "previously treated patient CT datasets",
+   "models_evaluated": [
+    "RayStation 11B U-Net deep-learning segmentation",
+    "RayStation 2024A U-Net deep-learning segmentation"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R545",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Geometric and dosimetric performance change after software upgrade of DLS model versus prior version",
+     "effect": "Head and neck, thorax and male pelvis showed overall consistent performance after 2024A upgrade; version differences limited to selected structures (p<0.05), plus one true spinal canal segmentation failure found only on case-level review.",
+     "quote": "However, in one patient, the 2024A model failed to correctly segment the spinal canal and instead generated a contour along the chest wall."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local performance of DLS versus clinical reference contours, with decision on commissioning by site",
+     "effect": "Abdomen commissioned (DSC 0.95 \u00b1 0.014); breast model not recommended for clinical use (DSC 0.66 \u00b1 0.15, HD95 22.2 \u00b1 9.6 mm) against local reference.",
+     "quote": "Breast segmentation results showed low performance (DSC 0.66 \u00b1 0.15, MSD 4.8 \u00b1 1.93 mm, and HD95 22.2 \u00b1 9.6 mm) compared to clinical reference, so the breast structure models are not recommended for clinical use."
+    },
+    {
+     "rec_id": "R075",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Generalization of vendor DLS model to institutional contouring conventions and anatomy",
+     "effect": "Breast model discrepancy attributed to differences in contouring guidelines and styles between training data and institutional data; prostate spacers degraded accuracy; unusual anatomy not evaluated.",
+     "quote": "The breast DLS model was evaluated in version 11B but was not commissioned for clinical use at that time because of the large discrepancy between DLS and the clinical segmentations, likely due to differences in contouring guidelines and styles between the model training data and the institutional contour data."
+    },
+    {
+     "rec_id": "R137",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Revalidation of model after software update to detect performance changes",
+     "effect": "Regression testing after 2024A upgrade found selective version differences (e.g., mandible, lungs, esophagus, prostate improved; spinal cord DSC decreased significantly p<0.001 due to one failure case).",
+     "quote": "Version\u2010related differences were selective rather than consistent across sites."
+    },
+    {
+     "rec_id": "R548",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Pre-release testing of updated model for errors using prior commissioning datasets",
+     "effect": "Regression testing of upgraded model detected a true spinal canal segmentation failure and a breast segmentation of the shoulder, plus significant changes for several structures.",
+     "quote": "This represented a true segmentation failure and highlights the importance of case\u2010level review following model updates."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unsafe or inaccurate DLS outputs at case level reaching users",
+     "effect": "Isolated failures found: spinal canal contour along chest wall in one thorax patient, shoulder segmented as breast in one case; esophagus truncated with dose errors up to ~46%.",
+     "quote": "In one right\u2010sided breast case, the model incorrectly segmented a shoulder as Breast_R target volume, showing the low robustness performance of the DLS model."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across anatomic sites and structures",
+     "effect": "DSC varied by site: breast 0.66 vs abdomen 0.95; small structures such as cochleae and optic nerves had lower DSC (0.65\u20130.75).",
+     "quote": "Geometric agreement varied primarily with structure characteristics rather than disease site."
+    }
+   ],
+   "unlisted_practices": [
+    "Combine geometric and dosimetric evaluation of auto-segmentation, since DSC alone can underestimate dose impact for serial organs",
+    "Maintain institution-specific benchmark datasets for ongoing performance monitoring of segmentation tools",
+    "Require treating physician review of every auto-segmented structure"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 95,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RayStation DLS U-Net model version 11B",
+    "RayStation DLS U-Net model version 2024A SP3 (software build 15.1.3.10)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Post-upgrade segmentation performance",
+     "effect": "After upgrade, head/neck, thorax, male pelvis had mean DSC 0.81\u00b10.09, 0.84\u00b10.13, 0.89\u00b10.06; selected paired differences p<0.05.",
+     "quote": "Regression testing showed that, in comparison with the previously commissioned data, mean [\u00b1 standard deviation (SD)] DSC values were 0.81 \u00b1 0.09 for the head and neck, 0.84 \u00b1 0.13 for the thorax, and 0.89 \u00b1 0.06 for male pelvis."
+    },
+    {
+     "rec_id": "R545",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local regression testing after software upgrade",
+     "effect": "Regression testing found consistent performance for commissioned sites, abdominal model commissioned, breast not recommended; selected structures changed significantly (p<0.05).",
+     "quote": "Regression testing of head and neck, thorax, and male pelvis sites showed consistent performance after the software upgrade and the DLS models for abdominal site were commissioned in this study for clinical use; while the DLS models for breast site were not recommended."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Local commissioning decision",
+     "effect": "Local clinical-reference testing found breast low performance: DSC 0.66\u00b10.15, MSD 4.8\u00b11.93 mm, HD95 22.2\u00b19.6 mm; not recommended.",
+     "quote": "Breast segmentation results showed low performance (DSC 0.66 \u00b1 0.15, MSD 4.8 \u00b1 1.93 mm, and HD95 22.2 \u00b1 9.6 mm) compared to clinical reference, so the breast structure models are not recommended for clinical use."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Local contouring-practice shift",
+     "effect": "Breast DLS was not commissioned because of large DLS-clinical discrepancies attributed to training versus institutional contouring guideline/style differences.",
+     "quote": "The breast DLS model was evaluated in version 11B but was not commissioned for clinical use at that time because of the large discrepancy between DLS and the clinical segmentations, likely due to differences in contouring guidelines and styles between the model training data and the institutional contour data."
+    },
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Unrepresented prostate spacer anatomy",
+     "effect": "Prostate spacer cases (SpaceOAR, Barrigel) had accuracy suffering because altered anatomy was not represented in training data; no spacer-specific metrics reported.",
+     "quote": "Version 2024A improved somewhat over 11B, but accuracy still suffered with prostate spacing agents (SpaceOAR, Barrigel), since these alter local anatomy in ways not represented in the DLS training data."
+    },
+    {
+     "rec_id": "R134",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Case-level segmentation failure",
+     "effect": "One 2024A case failed spinal canal segmentation, placing the contour along the chest wall.",
+     "quote": "However, in one patient, the 2024A model failed to correctly segment the spinal canal and instead generated a contour along the chest wall."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States",
+   "sample_size": 95,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RayStation DLS (version 11B)",
+    "RayStation DLS (version 2024A)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R545",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Auto-segmentation geometric performance across software versions",
+     "effect": "Lung_R DSC improved significantly (p = 0.04), whereas Lung_L DSC decreased significantly (p = 0.03) and MSD worsened (p = 0.02), while most other structures were consistent across versions.",
+     "quote": "In the thorax cohort, significant improvement was observed for Lung_R DSC ( p = 0.04), whereas Lung_L showed a significant decrease in DSC ( p = 0.03) and worse MSD ( p = 0.02)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 95,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "models_evaluated": [
+  "RayStation 11B U-Net deep-learning segmentation",
+  "RayStation 2024A U-Net deep-learning segmentation",
+  "RayStation DLS (version 11B)",
+  "RayStation DLS (version 2024A)",
+  "RayStation DLS U-Net model version 11B",
+  "RayStation DLS U-Net model version 2024A SP3 (software build 15.1.3.10)"
+ ],
+ "links": [
+  {
+   "rec_id": "R545",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Geometric and dosimetric performance change after software upgrade of DLS model versus prior version",
+   "effect": "Head and neck, thorax and male pelvis showed overall consistent performance after 2024A upgrade; version differences limited to selected structures (p<0.05), plus one true spinal canal segmentation failure found only on case-level review.",
+   "quote": "However, in one patient, the 2024A model failed to correctly segment the spinal canal and instead generated a contour along the chest wall.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Local performance of DLS versus clinical reference contours, with decision on commissioning by site",
+   "effect": "Abdomen commissioned (DSC 0.95 \u00b1 0.014); breast model not recommended for clinical use (DSC 0.66 \u00b1 0.15, HD95 22.2 \u00b1 9.6 mm) against local reference.",
+   "quote": "Breast segmentation results showed low performance (DSC 0.66 \u00b1 0.15, MSD 4.8 \u00b1 1.93 mm, and HD95 22.2 \u00b1 9.6 mm) compared to clinical reference, so the breast structure models are not recommended for clinical use.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R134",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Unsafe or inaccurate DLS outputs at case level reaching users",
+   "effect": "Isolated failures found: spinal canal contour along chest wall in one thorax patient, shoulder segmented as breast in one case; esophagus truncated with dose errors up to ~46%.",
+   "quote": "In one right\u2010sided breast case, the model incorrectly segmented a shoulder as Breast_R target volume, showing the low robustness performance of the DLS model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R075",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Generalization of vendor DLS model to institutional contouring conventions and anatomy",
+   "effect": "Breast model discrepancy attributed to differences in contouring guidelines and styles between training data and institutional data; prostate spacers degraded accuracy; unusual anatomy not evaluated.",
+   "quote": "The breast DLS model was evaluated in version 11B but was not commissioned for clinical use at that time because of the large discrepancy between DLS and the clinical segmentations, likely due to differences in contouring guidelines and styles between the model training data and the institutional contour data.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R137",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Revalidation of model after software update to detect performance changes",
+   "effect": "Regression testing after 2024A upgrade found selective version differences (e.g., mandible, lungs, esophagus, prostate improved; spinal cord DSC decreased significantly p<0.001 due to one failure case).",
+   "quote": "Version\u2010related differences were selective rather than consistent across sites.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R548",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Pre-release testing of updated model for errors using prior commissioning datasets",
+   "effect": "Regression testing of upgraded model detected a true spinal canal segmentation failure and a breast segmentation of the shoulder, plus significant changes for several structures.",
+   "quote": "This represented a true segmentation failure and highlights the importance of case\u2010level review following model updates.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Post-upgrade segmentation performance",
+   "effect": "After upgrade, head/neck, thorax, male pelvis had mean DSC 0.81\u00b10.09, 0.84\u00b10.13, 0.89\u00b10.06; selected paired differences p<0.05.",
+   "quote": "Regression testing showed that, in comparison with the previously commissioned data, mean [\u00b1 standard deviation (SD)] DSC values were 0.81 \u00b1 0.09 for the head and neck, 0.84 \u00b1 0.13 for the thorax, and 0.89 \u00b1 0.06 for male pelvis.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Local contouring-practice shift",
+   "effect": "Breast DLS was not commissioned because of large DLS-clinical discrepancies attributed to training versus institutional contouring guideline/style differences.",
+   "quote": "The breast DLS model was evaluated in version 11B but was not commissioned for clinical use at that time because of the large discrepancy between DLS and the clinical segmentations, likely due to differences in contouring guidelines and styles between the model training data and the institutional contour data.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R070",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Unrepresented prostate spacer anatomy",
+   "effect": "Prostate spacer cases (SpaceOAR, Barrigel) had accuracy suffering because altered anatomy was not represented in training data; no spacer-specific metrics reported.",
+   "quote": "Version 2024A improved somewhat over 11B, but accuracy still suffered with prostate spacing agents (SpaceOAR, Barrigel), since these alter local anatomy in ways not represented in the DLS training data.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R545",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Auto-segmentation geometric performance across software versions",
+   "effect": "Lung_R DSC improved significantly (p = 0.04), whereas Lung_L DSC decreased significantly (p = 0.03) and MSD worsened (p = 0.02), while most other structures were consistent across versions.",
+   "quote": "In the thorax cohort, significant improvement was observed for Lung_R DSC ( p = 0.04), whereas Lung_L showed a significant decrease in DSC ( p = 0.03) and worse MSD ( p = 0.02).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Combine geometric and dosimetric evaluation of auto-segmentation, since DSC alone can underestimate dose impact for serial organs",
+  "Maintain institution-specific benchmark datasets for ongoing performance monitoring of segmentation tools",
+  "Require treating physician review of every auto-segmented structure"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42779095",
+ "screen": {
+  "id": "pmid:42779095",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local commissioning and regression testing after software upgrade",
+  "user": "clinician_or_staff",
+  "reason": "The study directly evaluates and demonstrates a quality assurance / regression testing deployment procedure for clinical commissioning of updated commercial deep learning auto-segmentation models.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "regression testing and clinical commissioning QA after software upgrades"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42779095",
+   "empirical": 0.97,
+   "tests_practice": 0.24,
+   "real_deployment": 0.42
+  }
+ },
+ "oa_retried": false
+}

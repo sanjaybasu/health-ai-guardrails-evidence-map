@@ -1,0 +1,259 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Vietnam and Singapore",
+   "sample_size": 16159,
+   "sample_unit": "patients (243 Vietnam, 15,916 Singapore)",
+   "models_evaluated": [
+    "external OHCA neurological outcome prediction model trained on large PAROS cohort",
+    "transfer learning adapted model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": true,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Model AUROC for neurological outcome on local cohort before vs after transfer learning",
+     "effect": "Vietnam: external model AUROC 0.467 (95% CI 0.141-0.785) vs transfer learning 0.807 (0.626-0.948). Singapore: 0.945 vs 0.955.",
+     "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External model performance on a new-setting cohort versus development setting",
+     "effect": "External model AUROC 0.467 (95% CI 0.141-0.785) on the Vietnam cohort, i.e. poor generalization.",
+     "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Vietnam; Singapore",
+   "sample_size": 16159,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "external outcome prediction model",
+    "transfer learning adapted outcome prediction model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External model performance in Vietnam",
+     "effect": "External model AUROC 0.467 (95% CI: 0.141-0.785) in Vietnam.",
+     "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Transfer learning improvement in Vietnam",
+     "effect": "Transfer learning improved AUROC from 0.467 (95% CI: 0.141-0.785) to 0.807 (95% CI: 0.626-0.948).",
+     "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Vietnam, Singapore",
+   "sample_size": 16159,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "out-of-hospital cardiac arrest neurological outcome prediction model",
+    "transfer learning adapted model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "neurological outcome prediction discrimination (AUROC)",
+     "effect": "Vietnam AUROC increased from 0.467 (95% CI: 0.141-0.785) to 0.807 (95% CI: 0.626-0.948); Singapore AUROC reached 0.955 vs. 0.945",
+     "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948)."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Vietnam and Singapore",
+ "sample_unit": "patients",
+ "sample_size": 16159,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "external OHCA neurological outcome prediction model trained on large PAROS cohort",
+  "external outcome prediction model",
+  "out-of-hospital cardiac arrest neurological outcome prediction model",
+  "transfer learning adapted model",
+  "transfer learning adapted outcome prediction model"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Model AUROC for neurological outcome on local cohort before vs after transfer learning",
+   "effect": "Vietnam: external model AUROC 0.467 (95% CI 0.141-0.785) vs transfer learning 0.807 (0.626-0.948). Singapore: 0.945 vs 0.955.",
+   "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External model performance on a new-setting cohort versus development setting",
+   "effect": "External model AUROC 0.467 (95% CI 0.141-0.785) on the Vietnam cohort, i.e. poor generalization.",
+   "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External model performance in Vietnam",
+   "effect": "External model AUROC 0.467 (95% CI: 0.141-0.785) in Vietnam.",
+   "quote": "The external model performed poorly on the Vietnam cohort, with an area under the receiver operating characteristic curve (AUROC) of 0.467 (95% CI: 0.141-0.785), but TL markedly improved performance (AUROC = 0.807, 95% CI: 0.626-0.948).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:41272039",
+ "screen": {
+  "id": "pmid:41272039",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local recalibration/adaptation via transfer learning before deployment",
+  "user": "none",
+  "reason": "Empirically tests transfer learning as a local adaptation/recalibration deployment practice to improve performance and equity when applying external models to low-resource settings.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "transfer learning for local adaptation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:41272039",
+   "empirical": 0.94,
+   "tests_practice": 0.54,
+   "real_deployment": 0.07
+  }
+ },
+ "oa_retried": true
+}

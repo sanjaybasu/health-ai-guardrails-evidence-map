@@ -1,0 +1,303 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "unspecified",
+   "sample_size": 676192,
+   "sample_unit": "ECGs (training); external validation 219,231 ECGs; consumer-device sets Apple Watch n=9835 and QOCA n=31,517",
+   "models_evaluated": [
+    "Lead-I AI-ECG models trained on 12-lead-derived data, fine-tuned on Apple Watch and QOCA ECG102D recordings"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AUC on consumer-device ECGs after fine-tuning on device-specific labeled data versus direct deployment",
+     "effect": "Fine-tuning significantly improved AUCs across eight tasks for both devices (low EF 0.85/0.86; PASP 0.73/0.68; anemia 0.73/0.69); about 500-1000 labeled ECGs needed, smaller sets can be harmful.",
+     "quote": "After fine-tuning, AUCs across eight classification tasks for the Apple Watch and QOCA ECG102D were significantly improved, with high performance for low EF (0.85/0.86) and more modest performance for elevated PASP (0.73/0.68) and anemia (0.73/0.69)."
+    },
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Accuracy loss from device and context domain shift when deploying to consumer single-lead ECGs",
+     "effect": "Direct deployment to Apple Watch (n=9835) and QOCA ECG102D (n=31,517) produced substantial accuracy losses, whereas cross-hospital AUC decline was <0.03.",
+     "quote": "In contrast, direct deployment to consumer ECGs from Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Performance variation across sites versus acquisition devices",
+     "effect": "Cross-hospital validation showed minimal overall degradation (AUC decline <0.03), but consumer devices showed substantial accuracy losses.",
+     "quote": "Cross-hospital validation showed minimal overall degradation (AUC decline <0.03)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance across clinical subgroups by cardiac rhythm",
+     "effect": "Performance was higher in sinus rhythm than in atrial fibrillation.",
+     "quote": "Performance was higher in sinus rhythm than atrial fibrillation."
+    }
+   ],
+   "unlisted_practices": [
+    "Releasing an evaluation-only dataset (HOME) for reproducible benchmarking of cross-device generalization",
+    "Determining minimum labeled sample size (learning curves) for reliable local fine-tuning"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "Not reported",
+   "sample_size": 936775,
+   "sample_unit": "ECGs",
+   "models_evaluated": [
+    "Lead-I AI ECG models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R123",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-device domain shift",
+     "effect": "Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses.",
+     "quote": "In contrast, direct deployment to consumer ECGs from Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "fine-tuning for consumer ECGs",
+     "effect": "Fine-tuning significantly improved AUCs across eight tasks; low EF 0.85/0.86, elevated PASP 0.73/0.68, anemia 0.73/0.69.",
+     "quote": "After fine-tuning, AUCs across eight classification tasks for the Apple Watch and QOCA ECG102D were significantly improved, with high performance for low EF (0.85/0.86) and more modest performance for elevated PASP (0.73/0.68) and anemia (0.73/0.69)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "performance across acquisition devices",
+     "effect": "Direct consumer ECG deployment to Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) caused substantial accuracy losses.",
+     "quote": "In contrast, direct deployment to consumer ECGs from Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 936775,
+   "sample_unit": "ECGs",
+   "models_evaluated": [
+    "AI-enabled single-lead ECG models",
+    "Lead-I models"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "discrimination across classification tasks after device fine-tuning",
+     "effect": "AUCs significantly improved across eight classification tasks, reaching 0.85/0.86 for low EF, 0.73/0.68 for elevated PASP, and 0.73/0.69 for anemia",
+     "quote": "After fine-tuning, AUCs across eight classification tasks for the Apple Watch and QOCA ECG102D were significantly improved, with high performance for low EF (0.85/0.86) and more modest performance for elevated PASP (0.73/0.68) and anemia (0.73/0.69)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "accuracy loss from deployment to consumer acquisition devices",
+     "effect": "Direct deployment to consumer ECGs from Apple Watch and QOCA ECG102D produced substantial accuracy losses",
+     "quote": "In contrast, direct deployment to consumer ECGs from Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "unspecified",
+ "sample_unit": "ECGs",
+ "sample_size": 936775,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "technology": [
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "AI-enabled single-lead ECG models",
+  "Lead-I AI ECG models",
+  "Lead-I AI-ECG models trained on 12-lead-derived data, fine-tuned on Apple Watch and QOCA ECG102D recordings",
+  "Lead-I models"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "AUC on consumer-device ECGs after fine-tuning on device-specific labeled data versus direct deployment",
+   "effect": "Fine-tuning significantly improved AUCs across eight tasks for both devices (low EF 0.85/0.86; PASP 0.73/0.68; anemia 0.73/0.69); about 500-1000 labeled ECGs needed, smaller sets can be harmful.",
+   "quote": "After fine-tuning, AUCs across eight classification tasks for the Apple Watch and QOCA ECG102D were significantly improved, with high performance for low EF (0.85/0.86) and more modest performance for elevated PASP (0.73/0.68) and anemia (0.73/0.69).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R123",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Accuracy loss from device and context domain shift when deploying to consumer single-lead ECGs",
+   "effect": "Direct deployment to Apple Watch (n=9835) and QOCA ECG102D (n=31,517) produced substantial accuracy losses, whereas cross-hospital AUC decline was <0.03.",
+   "quote": "In contrast, direct deployment to consumer ECGs from Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.67,
+   "outcome": "performance across acquisition devices",
+   "effect": "Direct consumer ECG deployment to Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) caused substantial accuracy losses.",
+   "quote": "In contrast, direct deployment to consumer ECGs from Apple Watch (n = 9835) and QOCA ECG102D (n = 31,517) produced substantial accuracy losses.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance across clinical subgroups by cardiac rhythm",
+   "effect": "Performance was higher in sinus rhythm than in atrial fibrillation.",
+   "quote": "Performance was higher in sinus rhythm than atrial fibrillation.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Determining minimum labeled sample size (learning curves) for reliable local fine-tuning",
+  "Releasing an evaluation-only dataset (HOME) for reproducible benchmarking of cross-device generalization"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42410026",
+ "screen": {
+  "id": "pmid:42410026",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local fine-tuning/recalibration on target-device data before deployment",
+  "user": "none",
+  "reason": "The study empirically assesses the impact of device-level domain shift (consumer single-lead vs clinical 12-lead) and tests the deployment practice of local calibration/fine-tuning using sample-size requirements to prevent performance degradation.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "local fine-tuning for domain shift mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42410026",
+   "empirical": 0.97,
+   "tests_practice": 0.58,
+   "real_deployment": 0.09
+  }
+ },
+ "oa_retried": true
+}
