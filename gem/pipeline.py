@@ -11,7 +11,7 @@ import argparse
 import datetime as dt
 import json
 
-from . import build_site, evidence, fetch, governance, jev, llm, taxonomy
+from . import build_site, editorials, evidence, fetch, governance, jev, llm, taxonomy, technical
 from .llm import ROOT
 
 STATE = ROOT / "state" / "last_run.json"
@@ -69,7 +69,16 @@ def weekly():
     if changed:   # new candidates are proposals; they enter taxonomy.yaml only through human curation
         taxonomy.extract(set(changed))
     new = fetch.update(since)
+    ed = editorials.sweep(since)                       # editorials often lack abstracts; pull them by venue
+    new += [p for p in fetch.load().values() if p.get("source") == "openalex_venue_sweep" and p.get("fetched") == dt.date.today().isoformat()]
+    tech_before = sum(1 for _ in open(technical.TECH_EVIDENCE)) if technical.TECH_EVIDENCE.exists() else 0
     entry = _process(new, "weekly")
+    technical.classify()          # new practices are recorded as candidates; the decision list changes only by curation
+    technical.link()
+    entry["new_technical_links"] = technical.assemble() - tech_before
+    entry["new_editorials"] = ed["new_records"]
+    editorials.coverage()
+    build_site.build()
     entry["sources_changed"] = changed
     if dt.date.today().day <= 7:   # monthly screening audit
         evidence.screen_audit()

@@ -7,7 +7,8 @@
 {% for c in changelog %}
 <section class="change">
   <h2>{{ c.date }}</h2>
-  <p>{{ c.new_records }} new records screened; {{ c.new_tests }} new tests of a practice; {{ c.new_hazard }} new hazard studies; {{ c.new_endorsements }} new endorsements.</p>
+  <p>{{ "{:,}".format(c.new_records) }} new records screened; {{ "{:,}".format(c.new_tests) }} new tests of a practice; {{ "{:,}".format(c.new_hazard) }} new hazard studies; {{ "{:,}".format(c.new_endorsements) }} new endorsements{% if c.new_technical_links %}; {{ "{:,}".format(c.new_technical_links) }} new technical-control comparisons{% endif %}{% if c.new_editorials %}; {{ "{:,}".format(c.new_editorials) }} new journal editorials{% endif %}.</p>
+  {% if c.notes %}<ul>{% for n in c.notes %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
   {% if c.status_changes %}<ul>{% for x in c.status_changes %}<li><a href="index.html#{{ x.id }}">{{ x.id }}</a> {{ x.statement }}: {{ x.before }} → {{ x.after }}</li>{% endfor %}</ul>{% endif %}
   {% if c.sources_changed %}<p>Revised governance sources: {{ c.sources_changed|join(", ") }}.</p>{% endif %}
 </section>
