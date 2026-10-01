@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic",
+  "multimodal_foundation"
+ ],
+ "country": "India; Pakistan",
+ "sample_size": 3441,
+ "sample_unit": "radiographs",
+ "models_evaluated": [
+  "DenseNet-121 student (distilled from BioMedCLIP)",
+  "BioMedCLIP teacher",
+  "supervised DenseNet-121 baseline"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Referral of ambiguous TB cases to clinicians versus autonomous clearance of healthy controls",
+   "effect": "Referred 63.1% of ambiguous active TB cases to clinicians, flagged 32.5% as urgent for GeneXpert, and autonomously cleared 77.4% of healthy controls (178/230).",
+   "quote": "In Indian hospital cohorts, the system referred 63.1% of ambiguous active TB cases to clinicians, flagging 32.5% as urgent for GeneXpert testing, while autonomously clearing 77.4% of healthy controls (178/230).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Missed TB cases (false-negative discharge) under conformal abstention and referral interlock",
+   "effect": "False-negative discharge rate was 4.4% in India (9/203, down from 16.3% on baseline) and 0.0% in Pakistan (0/2,494), with 63.1% clinical referral.",
+   "quote": "Among confirmed active TB cases, the false-negative discharge rate was 4.4% in India (9/203, down from 16.3% on baseline) and 0.0% in Pakistan (0/2,494), counterbalanced by 63.1% clinical referral.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Knowledge distillation of foundation model into small student network to improve robustness to shortcut learning",
+  "Mondrian split-conformal prediction for selective classification with abstention",
+  "Client-side WebAssembly edge deployment"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1329768",
+ "screen": {
+  "id": "epmc:PPR1329768",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study develops and tests a student model distilled from BioMedCLIP equipped with a Mondrian split-conformal prediction interlock to manage clinical abstention/escalation (urgent molecular testing, autonomous clearance, or clinician referral) on external validation cohorts.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "conformal prediction abstention and referral interlock"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1329768",
+   "empirical": 0.96,
+   "tests_practice": 0.68,
+   "real_deployment": 0.17
+  }
+ },
+ "oa_retried": false
+}

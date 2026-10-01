@@ -1,0 +1,284 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Multi-country (US AREDS images; clinicians from 12 institutions; external validation in Singapore)",
+   "sample_size": 240,
+   "sample_unit": "patients (AREDS patient samples; 960 images, 2880 AMD risk features, 24 clinicians)",
+   "models_evaluated": [
+    "DeepSeeNet",
+    "DeepSeeNet+"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician diagnostic accuracy (F1) and time with vs without AI assistance for AMD features",
+     "effect": "AI assistance improved accuracy for 23 of 24 clinicians; mean F1 rose from 37.71 to 45.52; time saved 10.3 s per patient; combining manual and AI did not always yield highest accuracy or efficiency.",
+     "quote": "AI assistance significantly improved accuracy for 23 of 24 clinicians, increasing the mean F1 score from 37.71 (95% CI, 27.83-44.17) to 45.52 (95% CI, 39.01-51.61), with some improvements exceeding 50%."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI model performance on external Singapore cohort versus other test sets",
+     "effect": "Original model underperformed on the external Singapore cohort; DeepSeeNet+ had a significantly higher F1 score than the original model there (52.43 vs 38.95).",
+     "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45])."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "F1 score of model after retraining with additional US images, tested on 3 datasets including external",
+     "effect": "DeepSeeNet+ trained on 39,196 additional images performed better in 3 test sets, with F1 52.43 vs 38.95 in the Singapore cohort.",
+     "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45])."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "United States; Singapore",
+   "sample_size": 2880,
+   "sample_unit": "AMD risk features across 960 images from 240 patients, rated by 24 clinicians",
+   "models_evaluated": [
+    "DeepSeeNet",
+    "DeepSeeNet+"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician diagnostic accuracy with AI",
+     "effect": "Mean F1 increased from 37.71 (95% CI, 27.83-44.17) to 45.52 (95% CI, 39.01-51.61); 23 of 24 clinicians improved.",
+     "quote": "AI assistance significantly improved accuracy for 23 of 24 clinicians, increasing the mean F1 score from 37.71 (95% CI, 27.83-44.17) to 45.52 (95% CI, 39.01-51.61), with some improvements exceeding 50%."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "generalizability across test datasets",
+     "effect": "DeepSeeNet+ performed better in 3 test sets; reported F1 52.43 (95% CI, 44.38-61.00) vs 38.95 (95% CI, 30.50-47.45).",
+     "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45])."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "enhanced versus original model F1",
+     "effect": "DeepSeeNet+ performed better in 3 test sets; reported F1 52.43 (95% CI, 44.38-61.00) vs 38.95 (95% CI, 30.50-47.45).",
+     "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45])."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "United States, Singapore",
+   "sample_size": 240,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DeepSeeNet",
+    "DeepSeeNet+"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "diagnostic F1 score in external cohort",
+     "effect": "F1 score was 52.43 (95% CI, 44.38-61.00) in 3 test sets vs 38.95 (95% CI, 30.50-47.45) in the external Singapore cohort",
+     "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45])."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Multi-country (US AREDS images; clinicians from 12 institutions; external validation in Singapore)",
+ "sample_unit": "patients (AREDS patient samples; 960 images, 2880 AMD risk features, 24 clinicians)",
+ "sample_size": 240,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": true,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "models_evaluated": [
+  "DeepSeeNet",
+  "DeepSeeNet+"
+ ],
+ "links": [
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician diagnostic accuracy (F1) and time with vs without AI assistance for AMD features",
+   "effect": "AI assistance improved accuracy for 23 of 24 clinicians; mean F1 rose from 37.71 to 45.52; time saved 10.3 s per patient; combining manual and AI did not always yield highest accuracy or efficiency.",
+   "quote": "AI assistance significantly improved accuracy for 23 of 24 clinicians, increasing the mean F1 score from 37.71 (95% CI, 27.83-44.17) to 45.52 (95% CI, 39.01-51.61), with some improvements exceeding 50%.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "generalizability across test datasets",
+   "effect": "DeepSeeNet+ performed better in 3 test sets; reported F1 52.43 (95% CI, 44.38-61.00) vs 38.95 (95% CI, 30.50-47.45).",
+   "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45]).",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "AI model performance on external Singapore cohort versus other test sets",
+   "effect": "Original model underperformed on the external Singapore cohort; DeepSeeNet+ had a significantly higher F1 score than the original model there (52.43 vs 38.95).",
+   "quote": "The DeepSeeNet+ model performed better in 3 test sets, achieving a significantly higher F1 score than the Singapore cohort (52.43 [95% CI, 44.38-61.00] vs 38.95 [95% CI, 30.50-47.45]).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:40668583",
+ "screen": {
+  "id": "pmid:40668583",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "AI-assisted clinician diagnosis vs manual diagnosis, plus external validation",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a clinician-in-the-loop workflow comparing manual vs. manual-plus-AI assistance across 24 clinicians in a randomized crossover reader study.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "AI-assisted clinical workflow"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:40668583",
+   "empirical": 0.97,
+   "tests_practice": 0.62,
+   "real_deployment": 0.25
+  }
+ },
+ "oa_retried": true
+}

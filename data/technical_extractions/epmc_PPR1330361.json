@@ -1,0 +1,40 @@
+{
+ "id": "epmc:PPR1330361",
+ "families": [
+  "grounding_retrieval",
+  "output_filtering",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T041",
+   "comparator_used": "RAG without self-verification, and the deterministic validator (simulation of 2,000 documents per condition)",
+   "finding": "favours_comparator",
+   "outcome": "Error recovery among checked claims, false-positive rate, reviewer correction rate, and final document accuracy",
+   "effect": "Self-verification achieved near-complete validation coverage (1.000) but recovered only 48.0% of true errors among checked claims, with an 8.1% false-positive rate; reviewer correction rate 44.6% and final document accuracy 16.1%, both lower than the deterministic validator (59.2% and 34.6%)",
+   "tradeoff": "Full coverage can mask an automation-complacency cost; self-verification had lower reviewer time (5.3 minutes per document); simulated results only",
+   "quote": "Self-verification achieved near-complete validation coverage (1.000) but recovered only 48.0 percent of true errors among the claims it checked, with an 8.1 percent false-positive rate.",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T036",
+   "comparator_used": "RAG with LLM-based self-verification, within a four-configuration simulation that also included baseline LLM and RAG",
+   "finding": "mixed",
+   "outcome": "Validation coverage, true-error recovery within covered claims, false-positive rate, reviewer correction rate, final document accuracy, and reviewer time",
+   "effect": "Deterministic validator: covered 58.7 percent of claims, recovered 99.5 percent of errors within that coverage, 0.5 percent false-positive rate, reviewer correction rate 59.2 percent, final document accuracy 34.6 percent, reviewer time 10.0 minutes per document; self-verification: validation coverage 1.000, recovered 48.0 percent of true errors among checked claims, 8.1 percent false-positive rate, reviewer correction rate 44.6 percent, final document accuracy 16.1 percent, reviewer time 5.3 minutes per document",
+   "tradeoff": "Narrower coverage and more reviewer time per document for the deterministic validator; reported limitations included parser brittleness, dependence on source-metadata currency, and risk of reduced reviewer vigilance.",
+   "quote": "The deterministic validator covered a narrower 58.7 percent of claims but recovered 99.5 percent of errors within that coverage, with a 0.5 percent false-positive rate, and produced both the highest reviewer correction rate (59.2 percent versus 44.6 percent for self-verification) and the highest final document accuracy (34.6 percent versus 16.1 percent), despite requiring more reviewer time per document (10.0 versus 5.3 minutes).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "deterministic fact validation layer before human review"
+}
