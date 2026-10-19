@@ -1,0 +1,334 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "multimodal_foundation"
+   ],
+   "country": "United States",
+   "sample_size": 1279,
+   "sample_unit": "COPD patients (MIMIC-IV admissions cohort)",
+   "models_evaluated": [
+    "frozen pre-trained ECG encoder",
+    "frozen pre-trained chest radiograph encoder",
+    "frozen pre-trained clinical notes encoder",
+    "structured EHR encoder",
+    "naive concatenation fusion",
+    "scalar gated fusion",
+    "EHR-anchored residual fusion"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal leakage in admission-linkage pipelines across modalities",
+     "effect": "Audit corrected three previously undetected temporal-alignment issues affecting 5-9% of patients for notes, 29-43% for chest radiographs, and 53-58% for ECG.",
+     "quote": "The audit corrected three previously undetected temporal-alignment issues, affecting 5-9% of patients for clinical notes, 29-43% for chest radiographs, and 53-58% for ECG."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Complex multimodal fusion versus simpler EHR-alone baseline on discrimination",
+     "effect": "No fusion architecture significantly outperformed EHR-alone (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+     "quote": "No fusion architecture significantly outperformed the EHR-alone baseline (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration and Brier score of EHR-alone versus fusion, with and without recalibration",
+     "effect": "Raw Brier was about 0.24 for fusion versus 0.32 for EHR-alone, reflecting EHR-alone overconfidence (calibration slope 0.12); after recalibration Brier scores were indistinguishable (0.239 vs 0.240-0.244).",
+     "quote": "The raw Brier score was lower for all three fusion architectures than for EHR-alone (about 0.24 versus 0.32), but this reflected overconfidence of the EHR-alone probe (calibration slope 0.12); after logistic recalibration fitted on the validation set, Brier scores were indistinguishable (EHR-alone 0.239; fusion 0.240-0.244; all paired bootstrap 95% CIs included zero)."
+    }
+   ],
+   "unlisted_practices": [
+    "Missingness stress testing of multimodal fusion models",
+    "Post-hoc logistic recalibration of risk predictions"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 1279,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "electrocardiogram encoder",
+    "chest radiograph encoder",
+    "clinical notes encoder",
+    "structured EHR encoder",
+    "naive concatenation",
+    "scalar gated fusion",
+    "EHR-anchored residual fusion",
+    "unimodal baselines",
+    "EHR-alone reference"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Temporal leakage in admission linkage",
+     "effect": "Three temporal-alignment issues affected 5-9% of notes, 29-43% of chest radiographs, and 53-58% of ECG patients.",
+     "quote": "The audit corrected three previously undetected temporal-alignment issues, affecting 5-9% of patients for clinical notes, 29-43% for chest radiographs, and 53-58% for ECG."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Calibration and Brier score",
+     "effect": "Raw Brier favored fusion (about 0.24 versus 0.32) but EHR-alone was overconfident (slope 0.12); after recalibration, Brier scores were EHR-alone 0.239 vs fusion 0.240-0.244.",
+     "quote": "The raw Brier score was lower for all three fusion architectures than for EHR-alone (about 0.24 versus 0.32), but this reflected overconfidence of the EHR-alone probe (calibration slope 0.12); after logistic recalibration fitted on the validation set, Brier scores were indistinguishable (EHR-alone 0.239; fusion 0.240-0.244; all paired bootstrap 95% CIs included zero)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Missingness stress-test degradation",
+     "effect": "Removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+     "quote": "No fusion architecture significantly outperformed the EHR-alone baseline (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fusion versus EHR-alone performance",
+     "effect": "No fusion architecture significantly outperformed EHR-alone; the EHR-alone baseline ROC-AUC was 0.63.",
+     "quote": "No fusion architecture significantly outperformed the EHR-alone baseline (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing."
+    }
+   ],
+   "unlisted_practices": [
+    "Post-hoc logistic recalibration fitted on the validation set."
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk",
+    "multimodal_foundation"
+   ],
+   "country": "USA",
+   "sample_size": 1279,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "naive concatenation",
+    "scalar gated fusion",
+    "EHR-anchored residual fusion",
+    "structured EHR encoder",
+    "ECG encoder",
+    "chest radiograph encoder",
+    "clinical notes encoder"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination and calibration of multimodal fusion versus EHR alone",
+     "effect": "No fusion architecture outperformed EHR alone (ROC-AUC 0.63); recalibrated Brier scores were indistinguishable (EHR alone 0.239 vs fusion 0.240-0.244); removing auxiliary modalities improved performance under stress testing.",
+     "quote": "Structured EHR data alone matched the discrimination and, after recalibration, the calibration of more complex multimodal fusion for 30-day COPD readmission prediction."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 1279,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "multimodal_foundation",
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "ECG encoder",
+  "EHR-alone reference",
+  "EHR-anchored residual fusion",
+  "chest radiograph encoder",
+  "clinical notes encoder",
+  "electrocardiogram encoder",
+  "frozen pre-trained ECG encoder",
+  "frozen pre-trained chest radiograph encoder",
+  "frozen pre-trained clinical notes encoder",
+  "naive concatenation",
+  "naive concatenation fusion",
+  "scalar gated fusion",
+  "structured EHR encoder",
+  "unimodal baselines"
+ ],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Temporal leakage in admission-linkage pipelines across modalities",
+   "effect": "Audit corrected three previously undetected temporal-alignment issues affecting 5-9% of patients for notes, 29-43% for chest radiographs, and 53-58% for ECG.",
+   "quote": "The audit corrected three previously undetected temporal-alignment issues, affecting 5-9% of patients for clinical notes, 29-43% for chest radiographs, and 53-58% for ECG.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Complex multimodal fusion versus simpler EHR-alone baseline on discrimination",
+   "effect": "No fusion architecture significantly outperformed EHR-alone (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+   "quote": "No fusion architecture significantly outperformed the EHR-alone baseline (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Calibration and Brier score of EHR-alone versus fusion, with and without recalibration",
+   "effect": "Raw Brier was about 0.24 for fusion versus 0.32 for EHR-alone, reflecting EHR-alone overconfidence (calibration slope 0.12); after recalibration Brier scores were indistinguishable (0.239 vs 0.240-0.244).",
+   "quote": "The raw Brier score was lower for all three fusion architectures than for EHR-alone (about 0.24 versus 0.32), but this reflected overconfidence of the EHR-alone probe (calibration slope 0.12); after logistic recalibration fitted on the validation set, Brier scores were indistinguishable (EHR-alone 0.239; fusion 0.240-0.244; all paired bootstrap 95% CIs included zero).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Missingness stress-test degradation",
+   "effect": "Removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+   "quote": "No fusion architecture significantly outperformed the EHR-alone baseline (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Missingness stress testing of multimodal fusion models",
+  "Post-hoc logistic recalibration fitted on the validation set.",
+  "Post-hoc logistic recalibration of risk predictions"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1343226",
+ "screen": {
+  "id": "epmc:PPR1343226",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "temporal-leakage auditing and post-hoc recalibration",
+  "user": "none",
+  "reason": "Empirical offline study evaluating multimodal risk prediction that directly tests the effect of temporal-leakage auditing and post-hoc recalibration practices on model performance and calibration.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "temporal-leakage auditing and post-hoc recalibration"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1343226",
+   "empirical": 0.96,
+   "tests_practice": 0.43,
+   "real_deployment": 0.02
+  }
+ },
+ "oa_retried": false
+}

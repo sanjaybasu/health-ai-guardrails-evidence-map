@@ -1,0 +1,294 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Not reported",
+   "sample_size": 77,
+   "sample_unit": "human-adjudicated de-identified case reports (plus 1,043-record benchmark)",
+   "models_evaluated": [
+    "Llama 3.1 8B",
+    "CIBB-Guard"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Acceptance of inappropriate answers on cases ineligible for the evaluated calculators",
+     "effect": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of 12 passed alternate-representation re-verification.",
+     "quote": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of those 12 passed genuine alternate-representation re-verification."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Correctness of guarded pipeline versus direct prompting on same benchmark",
+     "effect": "Benchmark all-record correctness 631/1,043 (60.5%) for CIBB-Guard vs 101/1,043 (9.7%) for direct prompting; eligible cases 4 correct vs 0 with direct prompting.",
+     "quote": "On the benchmark, all-record correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting; all accepted confirmatory answers were synthetic."
+    }
+   ],
+   "unlisted_practices": [
+    "Separate applicability checks for calculator selection, distinct from internal execution-consistency verification",
+    "Deterministic code execution with alternate-representation consistency checking of LLM-extracted inputs"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "not reported",
+   "sample_size": 1120,
+   "sample_unit": "records/case reports",
+   "models_evaluated": [
+    "Llama 3.1 8B",
+    "CIBB-Guard",
+    "direct prompting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R070",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Ineligible case handling",
+     "effect": "CIBB-Guard accepted 12/33 inappropriate answers; 11/12 passed genuine alternate-representation re-verification.",
+     "quote": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of those 12 passed genuine alternate-representation re-verification."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Benchmark correctness",
+     "effect": "Correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting.",
+     "quote": "On the benchmark, all-record correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting; all accepted confirmatory answers were synthetic."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison with direct prompting",
+     "effect": "CIBB-Guard correctness was 631/1,043 (60.5%) versus 101/1,043 (9.7%) for direct prompting.",
+     "quote": "On the benchmark, all-record correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting; all accepted confirmatory answers were synthetic."
+    }
+   ],
+   "unlisted_practices": [
+    "alternate-representation re-verification/internal execution consistency checking for clinical calculator outputs"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "Not reported",
+   "sample_size": 1043,
+   "sample_unit": "records",
+   "models_evaluated": [
+    "Llama 3.1 8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "all-record correctness compared to direct prompting",
+     "effect": "All-record correctness was 631/1,043 (60.5%) for CIBB-Guard versus 101/1,043 (9.7%) for direct prompting on the benchmark.",
+     "quote": "On the benchmark, all-record correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting; all accepted confirmatory answers were synthetic."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "internal consistency check passing after inappropriate calculator choice",
+     "effect": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers, with 11 of 12 passing genuine alternate-representation re-verification.",
+     "quote": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of those 12 passed genuine alternate-representation re-verification."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Not reported",
+ "sample_unit": "human-adjudicated de-identified case reports (plus 1,043-record benchmark)",
+ "sample_size": 1043,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "agentic",
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "CIBB-Guard",
+  "Llama 3.1 8B",
+  "direct prompting"
+ ],
+ "links": [
+  {
+   "rec_id": "R070",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Acceptance of inappropriate answers on cases ineligible for the evaluated calculators",
+   "effect": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of 12 passed alternate-representation re-verification.",
+   "quote": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of those 12 passed genuine alternate-representation re-verification.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Correctness of guarded pipeline versus direct prompting on same benchmark",
+   "effect": "Benchmark all-record correctness 631/1,043 (60.5%) for CIBB-Guard vs 101/1,043 (9.7%) for direct prompting; eligible cases 4 correct vs 0 with direct prompting.",
+   "quote": "On the benchmark, all-record correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting; all accepted confirmatory answers were synthetic.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "internal consistency check passing after inappropriate calculator choice",
+   "effect": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers, with 11 of 12 passing genuine alternate-representation re-verification.",
+   "quote": "On 33 ineligible cases, CIBB-Guard correctly declined 21 but accepted 12 inappropriate answers; 11 of those 12 passed genuine alternate-representation re-verification.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.33,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Deterministic code execution with alternate-representation consistency checking of LLM-extracted inputs",
+  "Separate applicability checks for calculator selection, distinct from internal execution-consistency verification",
+  "alternate-representation re-verification/internal execution consistency checking for clinical calculator outputs"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1341706",
+ "screen": {
+  "id": "epmc:PPR1341706",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "guarded pipeline with alternate-representation verification and calculator applicability check",
+  "user": "none",
+  "reason": "Evaluates the safety and failure modes of a guardrail pipeline (CIBB-Guard verification check) versus direct prompting on clinical calculator selection and execution using clinical case reports and benchmarks.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "guarded LLM pipeline with internal consistency / alternate-representation verification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1341706",
+   "empirical": 0.94,
+   "tests_practice": 0.79,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

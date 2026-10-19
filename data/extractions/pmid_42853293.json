@@ -1,0 +1,390 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 800,
+   "sample_unit": "transcript outputs",
+   "models_evaluated": [
+    "Dragon Medical One",
+    "Heidi Health",
+    "Tortus",
+    "Speechmatics Enhanced",
+    "Amazon Medical Transcribe",
+    "Whisper",
+    "GPT4oTranscribe",
+    "GPT4oTranscribe-Corrected-5 (GPT-5 LLM error correction)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Proportion of transcript outputs containing at least one clinically significant Class 3 error",
+     "effect": "30-68% of transcript outputs contained at least one clinically significant Class 3 error across systems (GPT4oTranscribe-Corrected-5 lowest; Amazon-Medical-Transcribe and Dragon-Medical-One highest).",
+     "quote": "Across (n = 800) transcript-outputs, 30-68% (GPT4oTranscribe-Corrected-5; Amazon-Medical-Transcribe and Dragon-Medical-One, respectively) contained at least one clinically significant Class 3 error."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Severe-harm errors by domain, including medication type/dose and laboratory results",
+     "effect": "53 errors with potential for severe harm or death (NHS Level 3-4), concentrated in medication-type/dose (39.6%) and investigations/laboratory results (30.2%).",
+     "quote": "Errors with potential to cause severe harm or death (NHS England Level 3-4) totalled (n = 53) across systems, concentrated in the domains of medication-type/dose (39.6%), and investigations/laboratory results (30.2%)."
+    },
+    {
+     "rec_id": "R491",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinically significant errors resolved, remaining or newly introduced after LLM error correction of ASR output",
+     "effect": "Proportion of outputs affected fell from 53% to 30%; of 89 significant errors, 51 resolved, 38 remained, 4 newly introduced (new errors in 3% of outputs).",
+     "quote": "LLM-processing reduced the proportion of transcript-outputs affected (53% to 30%), amongst 89 clinically significant errors in ASR-output, 51 were resolved, 38 remained significant and 4 were newly introduced."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of reference transcript length on odds of Class 3 errors",
+     "effect": "Longer transcripts significantly increased odds of Class 3 errors for 4 systems; OR 2.65-3.34 per additional 100 reference words.",
+     "quote": "Reference-transcript length significantly increased odds of Class 3 errors for 4 systems (GPT4oTranscribe, Tortus, Amazon-Medical-Transcribe, Dragon-Medical-One; odds ratio 2.65-3.34/additional 100 reference-words)."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-stage ASR plus LLM generative error correction pipeline to reduce transcription errors"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "speech_ambient"
+   ],
+   "country": "not reported",
+   "sample_size": 800,
+   "sample_unit": "transcript-outputs",
+   "models_evaluated": [
+    "Dragon-Medical-One",
+    "Heidi-Health",
+    "Tortus",
+    "Speechmatics-Enhanced",
+    "Amazon-Medical-Transcribe",
+    "Whisper",
+    "GPT4oTranscribe",
+    "GPT4oTranscribe-Corrected-5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R479",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "clinically significant transcription errors",
+     "effect": "30-68% of 800 transcript-outputs contained at least one clinically significant Class 3 error.",
+     "quote": "Across (n\u2009=\u2009800) transcript-outputs, 30-68% (GPT4oTranscribe-Corrected-5; Amazon-Medical-Transcribe and Dragon-Medical-One, respectively) contained at least one clinically significant Class 3 error."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "length-related Class 3 error risk",
+     "effect": "For 4 systems, odds ratio 2.65-3.34 per additional 100 reference-words.",
+     "quote": "Reference-transcript length significantly increased odds of Class 3 errors for 4 systems (GPT4oTranscribe, Tortus, Amazon-Medical-Transcribe, Dragon-Medical-One; odds ratio 2.65-3.34/additional 100 reference-words)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "vendor medical terminology DWER",
+     "effect": "GPT4oTranscribe-Corrected-5 DWER=3.60% and Heidi-Health=5.67% best; Amazon-Medical-Transcribe worst=24.03%.",
+     "quote": "GPT4oTranscribe-Corrected-5 (DWER\u2009=\u20093.60%) and Heidi-Health (DWER\u2009=\u20095.67%) performed best for medical terminology; Amazon-Medical-Transcribe worst (DWER\u2009=\u200924.03%)."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "new errors after LLM post-processing",
+     "effect": "LLM processing reduced affected outputs 53% to 30%; 51/89 ASR errors resolved, 38 remained, 4 newly introduced.",
+     "quote": "LLM-processing reduced the proportion of transcript-outputs affected (53% to 30%), amongst 89 clinically significant errors in ASR-output, 51 were resolved, 38 remained significant and 4 were newly introduced."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "severe medication-dose and laboratory-result errors",
+     "effect": "53 errors had severe harm/death potential; medication-type/dose 39.6%, investigations/laboratory results 30.2%.",
+     "quote": "Errors with potential to cause severe harm or death (NHS England Level 3-4) totalled (n\u2009=\u200953) across systems, concentrated in the domains of medication-type/dose (39.6%), and investigations/laboratory results (30.2%)."
+    }
+   ],
+   "unlisted_practices": [
+    "Two-stage ASR-LLM generative error correction of transcripts"
+   ]
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "speech_ambient",
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 800,
+   "sample_unit": "transcript-outputs",
+   "models_evaluated": [
+    "Dragon-Medical-One",
+    "Heidi-Health",
+    "Tortus",
+    "Speechmatics-Enhanced",
+    "Amazon-Medical-Transcribe",
+    "Whisper",
+    "GPT4oTranscribe",
+    "GPT4oTranscribe-Corrected-5",
+    "GPT-5-LLM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R146",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "transcription outputs with clinically significant Class 3 errors",
+     "effect": "30% to 68% of transcript-outputs contained at least one clinically significant Class 3 error across systems; 53 errors had potential to cause severe harm or death",
+     "quote": "Across (n\u2009=\u2009800) transcript-outputs, 30-68% (GPT4oTranscribe-Corrected-5; Amazon-Medical-Transcribe and Dragon-Medical-One, respectively) contained at least one clinically significant Class 3 error."
+    }
+   ],
+   "unlisted_practices": [
+    "Generative LLM post-processing error correction for automatic speech recognition transcription"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "transcript-outputs",
+ "sample_size": 800,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm",
+  "speech_ambient"
+ ],
+ "models_evaluated": [
+  "Amazon Medical Transcribe",
+  "Amazon-Medical-Transcribe",
+  "Dragon Medical One",
+  "Dragon-Medical-One",
+  "GPT-5-LLM",
+  "GPT4oTranscribe",
+  "GPT4oTranscribe-Corrected-5",
+  "GPT4oTranscribe-Corrected-5 (GPT-5 LLM error correction)",
+  "Heidi Health",
+  "Heidi-Health",
+  "Speechmatics Enhanced",
+  "Speechmatics-Enhanced",
+  "Tortus",
+  "Whisper"
+ ],
+ "links": [
+  {
+   "rec_id": "R479",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Proportion of transcript outputs containing at least one clinically significant Class 3 error",
+   "effect": "30-68% of transcript outputs contained at least one clinically significant Class 3 error across systems (GPT4oTranscribe-Corrected-5 lowest; Amazon-Medical-Transcribe and Dragon-Medical-One highest).",
+   "quote": "Across (n = 800) transcript-outputs, 30-68% (GPT4oTranscribe-Corrected-5; Amazon-Medical-Transcribe and Dragon-Medical-One, respectively) contained at least one clinically significant Class 3 error.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Severe-harm errors by domain, including medication type/dose and laboratory results",
+   "effect": "53 errors with potential for severe harm or death (NHS Level 3-4), concentrated in medication-type/dose (39.6%) and investigations/laboratory results (30.2%).",
+   "quote": "Errors with potential to cause severe harm or death (NHS England Level 3-4) totalled (n = 53) across systems, concentrated in the domains of medication-type/dose (39.6%), and investigations/laboratory results (30.2%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of reference transcript length on odds of Class 3 errors",
+   "effect": "Longer transcripts significantly increased odds of Class 3 errors for 4 systems; OR 2.65-3.34 per additional 100 reference words.",
+   "quote": "Reference-transcript length significantly increased odds of Class 3 errors for 4 systems (GPT4oTranscribe, Tortus, Amazon-Medical-Transcribe, Dragon-Medical-One; odds ratio 2.65-3.34/additional 100 reference-words).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R491",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinically significant errors resolved, remaining or newly introduced after LLM error correction of ASR output",
+   "effect": "Proportion of outputs affected fell from 53% to 30%; of 89 significant errors, 51 resolved, 38 remained, 4 newly introduced (new errors in 3% of outputs).",
+   "quote": "LLM-processing reduced the proportion of transcript-outputs affected (53% to 30%), amongst 89 clinically significant errors in ASR-output, 51 were resolved, 38 remained significant and 4 were newly introduced.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "vendor medical terminology DWER",
+   "effect": "GPT4oTranscribe-Corrected-5 DWER=3.60% and Heidi-Health=5.67% best; Amazon-Medical-Transcribe worst=24.03%.",
+   "quote": "GPT4oTranscribe-Corrected-5 (DWER\u2009=\u20093.60%) and Heidi-Health (DWER\u2009=\u20095.67%) performed best for medical terminology; Amazon-Medical-Transcribe worst (DWER\u2009=\u200924.03%).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R146",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "transcription outputs with clinically significant Class 3 errors",
+   "effect": "30% to 68% of transcript-outputs contained at least one clinically significant Class 3 error across systems; 53 errors had potential to cause severe harm or death",
+   "quote": "Across (n\u2009=\u2009800) transcript-outputs, 30-68% (GPT4oTranscribe-Corrected-5; Amazon-Medical-Transcribe and Dragon-Medical-One, respectively) contained at least one clinically significant Class 3 error.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R118",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Generative LLM post-processing error correction for automatic speech recognition transcription",
+  "Two-stage ASR plus LLM generative error correction pipeline to reduce transcription errors",
+  "Two-stage ASR-LLM generative error correction of transcripts"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42853293",
+ "screen": {
+  "id": "pmid:42853293",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "LLM-based generative error correction of ASR transcripts",
+  "user": "none",
+  "reason": "The study evaluates ambient speech-to-text systems and tests an experimental safeguard/post-processing pipeline (LLM-based error correction on top of raw ASR transcription) to measure its effect on resolving or introducing clinically significant errors.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "generative LLM post-processing error correction pipeline"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42853293",
+   "empirical": 0.98,
+   "tests_practice": 0.44,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

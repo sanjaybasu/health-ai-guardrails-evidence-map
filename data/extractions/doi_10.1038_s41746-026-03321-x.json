@@ -1,0 +1,83 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "Not reported",
+ "sample_size": 30,
+ "sample_unit": "resident-drafted hyperthyroidism admission notes",
+ "models_evaluated": [
+  "HQ-ANR (Qwen3-32B with multi-agent RAG)",
+  "Qwen3-32B general LLM with chain-of-thought prompting"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Positive factual hallucination rate in refined HPI notes, RAG multi-agent model vs general LLM with CoT",
+   "effect": "Hallucination rate 6.67% for HQ-ANR (knowledge-grounded RAG) vs 26.67% for general LLM with CoT; median PDQI-9 rose from 39.00 to 42.00.",
+   "quote": "In a blinded evaluation of 30 resident-drafted hyperthyroidism notes, HQ-ANR significantly improved median Physician Documentation Quality Instrument (PDQI-9) scores (from 39.00 to 42.00) and reduced the hallucination rate (positive factual hallucinations only) to 6.67%, compared to 26.67% for a general LLM with chain-of-thought (CoT) prompting.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Multi-agent decomposition (separate agents for symptoms, examinations, treatments) to improve clinical note quality"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "doi:10.1038/s41746-026-03321-x",
+ "screen": {
+  "id": "doi:10.1038/s41746-026-03321-x",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "The study develops and evaluates HQ-ANR (a multi-agent RAG system) against a baseline LLM to test whether knowledge grounding/RAG and multi-agent verification reduces hallucinations and improves clinical note quality.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "retrieval-augmented generation and multi-agent guardrails for hallucination mitigation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "doi:10.1038/s41746-026-03321-x",
+   "empirical": 0.93,
+   "tests_practice": 0.46,
+   "real_deployment": 0.14
+  }
+ },
+ "oa_retried": true
+}

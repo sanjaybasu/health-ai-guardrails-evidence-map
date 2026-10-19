@@ -1,0 +1,41 @@
+{
+ "id": "epmc:PPR1335007",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Zero-shot baseline (no retrieval) on llama3.2:1b and llama3.2:3b",
+   "finding": "mixed",
+   "outcome": "Category-level diagnostic accuracy and high-risk recall on 24-case DSM-Bench-24 vignettes",
+   "effect": "RAG improved 1B accuracy (75.0%\u219279.2%) but degraded 3B accuracy (83.3%\u219275.0%); high-risk recall dropped to 0/2 under both RAG configurations",
+   "tradeoff": "High-risk recall fell to 0/2 under RAG even where accuracy improved (new safety failure mode); mechanism unclear since retrieved DSM criteria for BPD mention self-harm",
+   "quote": "RAG improved the 1B model (75.0%\u219279.2%) but degraded the 3B model (83.3%\u219275.0%); LoRA fine-tuning left Qwen's accuracy unchanged (70.8%\u219270.8%, same count, different cases).",
+   "finding_agreement": 0.75,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T079",
+   "comparator_used": "Zero-shot baseline of Qwen2.5-1.5B-Instruct (off-the-shelf, no fine-tuning)",
+   "finding": "favours_comparator",
+   "outcome": "Category-level diagnostic accuracy and high-risk recall on 24-case DSM-Bench-24 vignettes",
+   "effect": "Accuracy unchanged (70.8%\u219270.8%, same count, different cases); high-risk recall dropped to 0/2 after LoRA fine-tuning",
+   "tradeoff": "Safety degradation: high-risk recall fell to 0/2, traced to a training data flaw that labeled the BPD example's risk tier as moderate rather than high, teaching the wrong association",
+   "quote": "For fine-tuning we trace this to a specific, disclosed methodological flaw: our training data labeled the Borderline Personality Disorder training example's risk tier as moderate rather than high, teaching the model exactly the wrong association.",
+   "finding_agreement": 0.75,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG) added to existing LLM"
+}
