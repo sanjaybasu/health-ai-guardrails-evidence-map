@@ -1,0 +1,41 @@
+{
+ "id": "arxiv:2610.00795",
+ "families": [
+  "input_data_handling",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T142",
+   "comparator_used": "Manual review/abstraction of ophthalmic diagnostic PDF reports (reconciled manual ground truth and manual extraction time)",
+   "finding": "favours_control",
+   "outcome": "Extraction time and accuracy of structured data extraction from PDF reports",
+   "effect": "Mean extraction time 56.51 s per report for manual review vs 5.04 s Schema-Constrained and 4.70 s Prompt-Only (~92% reduction); value accuracy 97.45-100% (Schema-Constrained) and 100% (Prompt-Only) vs manual ground truth",
+   "tradeoff": "Small proof-of-concept (20 reports); Schema-Constrained value accuracy fell to 97.45% for Glaucoma Overview and 98.00% for Thickness Map; Prompt-Only formatting accuracy fell to 90.14% for RNFL Single Exam.",
+   "quote": "Mean extraction time was 56.51 s per report for manual review versus 5.04 s for Schema-Constrained and 4.70 s for Prompt-Only, an approximately 92% reduction.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T063",
+   "comparator_used": "Prompt-Only: detailed instruction prompt followed by Python conversion to JSON, without a predefined JSON Schema in Structured Output mode",
+   "finding": "mixed",
+   "outcome": "Value accuracy and formatting accuracy of extracted data",
+   "effect": "Schema-Constrained value accuracy 100% (Visual Field, RNFL Single Exam), 97.45% (Glaucoma Overview), 98.00% (Thickness Map) vs Prompt-Only 100% across all; formatting accuracy 100% for Schema-Constrained across all types vs Prompt-Only 100% except RNFL Single Exam (90.14%). Extraction time 5.04 s vs 4.70 s.",
+   "tradeoff": "Schema-Constrained had slightly lower value accuracy on two report types; Prompt-Only had a formatting failure on RNFL Single Exam and required a Python conversion step.",
+   "quote": "Prompt-Only achieved the highest value accuracy, while Schema-Constrained produced schema-compliant output with 100% formatting accuracy.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "schema-constrained structured output vs prompt-only extraction"
+}

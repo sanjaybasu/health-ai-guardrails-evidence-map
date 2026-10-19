@@ -1,0 +1,40 @@
+{
+ "id": "epmc:PPR1343226",
+ "families": [
+  "input_data_handling",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T137",
+   "comparator_used": "EHR-alone (single-modality structured EHR) baseline and unimodal baselines",
+   "finding": "no_clear_difference",
+   "outcome": "30-day COPD readmission discrimination (ROC-AUC) and calibration (Brier score) after recalibration",
+   "effect": "No fusion architecture significantly outperformed EHR-alone (ROC-AUC 0.63); non-EHR modalities alone had ROC-AUC 0.46-0.53; after recalibration Brier was EHR-alone 0.239 vs fusion 0.240-0.244, with all paired bootstrap 95% CIs including zero",
+   "tradeoff": "",
+   "quote": "No fusion architecture significantly outperformed the EHR-alone baseline (ROC-AUC 0.63); removing auxiliary modalities improved rather than degraded fusion performance under stress testing.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T048",
+   "comparator_used": "Raw, uncalibrated probabilities from the EHR-alone probe and the fusion models",
+   "finding": "favours_control",
+   "outcome": "Brier score and calibration of EHR-alone predictions",
+   "effect": "Raw EHR-alone Brier about 0.32 (calibration slope 0.12) vs fusion about 0.24; after logistic recalibration fitted on the validation set, EHR-alone Brier was 0.239 and fusion 0.240-0.244, indistinguishable",
+   "tradeoff": "",
+   "quote": "The raw Brier score was lower for all three fusion architectures than for EHR-alone (about 0.24 versus 0.32), but this reflected overconfidence of the EHR-alone probe (calibration slope 0.12); after logistic recalibration fitted on the validation set, Brier scores were indistinguishable (EHR-alone 0.239; fusion 0.240-0.244; all paired bootstrap 95% CIs included zero).",
+   "finding_agreement": 0.5,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "temporal-leakage auditing and post-hoc recalibration"
+}

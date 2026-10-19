@@ -1,0 +1,42 @@
+{
+ "id": "epmc:PPR1341313",
+ "families": [
+  "input_data_handling",
+  "output_filtering",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T005",
+   "comparator_used": "Naive chatbot baseline (free-form generation without the constrained framework)",
+   "finding": "favours_control",
+   "outcome": "Hallucination rate in pharmaceutical authenticity verification",
+   "effect": "Hallucination rate fell from fifteen percent in the naive chatbot baseline to under two percent in MedTruth (50 pharmaceutical samples). The strict JSON schema was part of a bundled framework, so its effect is not isolated.",
+   "tradeoff": "Mean verification latency stayed near 2.1 seconds.",
+   "quote": "Testing across fifty pharmaceutical samples shows hallucination rate falling from fifteen percent in a naive chatbot baseline to under two percent in MedTruth while mean verification latency stays near 2.1 seconds.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T072",
+   "comparator_used": "Naive chatbot baseline (unconstrained chatbot without the fixed low-temperature setting and framework constraints)",
+   "finding": "favours_control",
+   "outcome": "Hallucination rate in pharmaceutical authenticity verification",
+   "effect": "Hallucination rate fell from fifteen percent in the naive chatbot baseline to under two percent in MedTruth (50 samples). Temperature 0.2 was bundled with the JSON schema and the other framework constraints, so its effect is not isolated.",
+   "tradeoff": "Mean verification latency stayed near 2.1 seconds.",
+   "quote": "Testing across fifty pharmaceutical samples shows hallucination rate falling from fifteen percent in a naive chatbot baseline to under two percent in MedTruth while mean verification latency stays near 2.1 seconds.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "output constraints (low temperature, strict JSON schema, verification gating)"
+}

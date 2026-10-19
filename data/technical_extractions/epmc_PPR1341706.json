@@ -1,0 +1,27 @@
+{
+ "id": "epmc:PPR1341706",
+ "families": [
+  "agent_tool_design",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T167",
+   "comparator_used": "Direct prompting of the same frozen local Llama 3.1 8B model",
+   "finding": "favours_control",
+   "outcome": "Correctness of clinical calculator answers (all-record benchmark correctness and correct answers on eligible case reports)",
+   "effect": "Benchmark: 631/1,043 (60.5%) for CIBB-Guard vs 101/1,043 (9.7%) for direct prompting. Eligible case reports: 4 correct of 44 vs 0 with direct prompting.",
+   "tradeoff": "On 33 ineligible cases, CIBB-Guard accepted 12 inappropriate answers, and 11 of those 12 passed genuine alternate-representation re-verification. Its internal consistency check therefore does not establish that the selected calculator fits the case. It correctly declined 21 of the 33.",
+   "quote": "On the benchmark, all-record correctness was 631/1,043 (60.5%) for CIBB-Guard and 101/1,043 (9.7%) for direct prompting; all accepted confirmatory answers were synthetic.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "guarded pipeline with alternate-representation verification and calculator applicability check"
+}
