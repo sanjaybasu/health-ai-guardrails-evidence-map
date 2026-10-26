@@ -1,0 +1,52 @@
+{
+ "id": "arxiv:2610.26088",
+ "families": [
+  "agent_tool_design",
+  "output_filtering",
+  "prompting",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T177",
+   "comparator_used": "unconstrained agent selecting features without a verifier (and an LLM repair loop alone)",
+   "finding": "favours_control",
+   "outcome": "Selection of prediction-time-invalid (leaking) features",
+   "effect": "A deterministic provenance verifier-in-loop removes the leak; no numeric effect size given in the abstract",
+   "tradeoff": "The LLM repair loop is treated as defense-in-depth only; the mitigation results are described as limited.",
+   "quote": "A deterministic provenance verifier-in-loop removes the leak, making the LLM repair loop defense-in-depth.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T043",
+   "comparator_used": "agent without verifier feedback (unvalidated single-pass modeling)",
+   "finding": "favours_control",
+   "outcome": "Fatal leakage in a hosted agent, and decision-level defects in a three-seed ablation",
+   "effect": "Specific verifier feedback clears fatal leakage in a hosted agent; principle-only feedback clears decision-level defects (three seeds)",
+   "tradeoff": "Mitigation results are limited.",
+   "quote": "Specific verifier feedback clears fatal leakage in a hosted agent, and a three-seed ablation finds principle-only feedback clears decision-level defects, though these mitigation results are limited.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T064",
+   "comparator_used": "unconstrained prompt without an explicit admission-time constraint",
+   "finding": "favours_control",
+   "outcome": "Leakage of a prediction-time-invalid feature across 10 runs per condition",
+   "effect": "Leaked in 10/10 unconstrained runs vs 0/10 with the explicit admission-time constraint, for both DeepSeek Flash and GPT-6-astra",
+   "tradeoff": "The contrast is version-sensitive: a blinded Claude/Fable-5.1 chat run did not leak in either condition, and explicit-constraint violations appear in a historical August 2026 slice lacking raw trajectories.",
+   "quote": "In fully logged September 2026 A/B runs, DeepSeek Flash and GPT-6-astra each leak in 10/10 unconstrained runs and 0/10 runs with an explicit admission-time constraint.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "provenance verifier-in-loop and explicit admission-time constraints"
+}

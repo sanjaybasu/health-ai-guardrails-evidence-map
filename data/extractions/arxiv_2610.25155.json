@@ -1,0 +1,97 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "any_ai"
+ ],
+ "country": "Greece",
+ "sample_size": 500,
+ "sample_unit": "synthetic discharge summaries",
+ "models_evaluated": [
+  "Morpheus",
+  "Gemini 3.1 Pro"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Greek"
+ ],
+ "links": [
+  {
+   "rec_id": "R330",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Share of identifier instances removed by validated de-identification pipeline, direct vs quasi-identifiers",
+   "effect": "96.59% (7,666/7,937) overall; 98.49% direct and 93.42% quasi-identifiers; no patient's complete identifier survived; 271 residuals, 73.4% institutional.",
+   "quote": "The de-identification rate was 96.59% (7,666/7,937 identifier instances; 95% CI 96.16-96.96): 98.49% for direct and 93.42% for quasi-identifiers.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R348",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Residual identifier leaks caught by independent egress-review layer",
+   "effect": "Egress guard flagged 2 of 271 residual identifier instances, both complete telephone numbers.",
+   "quote": "The egress guard flagged 2 of 271 residuals, both complete telephone numbers.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Fully local on-premises de-identification of clinical text before it leaves the hospital",
+  "Measuring over-redaction of clinical content as a cost of de-identification"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2610.25155",
+ "screen": {
+  "id": "arxiv:2610.25155",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "any_ai"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Empirical benchmark evaluation of a clinical text de-identification pipeline (Morpheus) including the quantified evaluation of an independent egress guard safeguard layer.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "independent egress guard layer for automated de-identification"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2610.25155",
+   "empirical": 0.96,
+   "tests_practice": 0.56,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

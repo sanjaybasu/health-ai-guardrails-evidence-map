@@ -1,0 +1,75 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "any_ai"
+ ],
+ "country": "Germany; Brazil",
+ "sample_size": 233204,
+ "sample_unit": "ECG exams (CODE-15% external validation; PTB-XL fold 10 n=2,198)",
+ "models_evaluated": [
+  "per-lead 1D-ResNet encoder with per-diagnosis attention (M0 standard training)",
+  "M1 random whole-lead masking",
+  "M2 masking plus guideline-based attention guidance (KL penalty)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "outcome": "AUROC robustness of ECG classifier to lost leads, masked versus standard training",
+   "effect": "Standard model M0 tolerated 7 lost leads before AUROC fell >0.02; masked M1 tolerated 10; M1\u2212M0 = +0.0134 (95% CI +0.0102 to +0.0172) when one key lead was lost.",
+   "quote": "Masking improved AUROC: M1 \u2212 M0 = +0.0134 (95% CI +0.0102 to +0.0172) when one key lead was lost, and the number of lost leads tolerated before AUROC fell by more than 0.02 rose from 7 (M0) to 10 (M1).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Random whole-lead masking during training to improve robustness to missing ECG leads",
+  "Guideline-based attention guidance (KL penalty toward key-lead map) to inject clinical knowledge"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1345220",
+ "screen": {
+  "id": "epmc:PPR1345220",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates model training and architecture methods (random lead masking vs. guideline-based attention guidance) on ECG benchmarks to test model robustness and calibration rather than evaluating an organizational deployment safeguard or practice.",
+  "jev": {
+   "id": "epmc:PPR1345220",
+   "empirical": 0.97,
+   "tests_practice": 0.13,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}
