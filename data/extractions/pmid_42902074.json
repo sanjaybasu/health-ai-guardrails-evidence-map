@@ -1,0 +1,285 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 600759,
+   "sample_unit": "patients (410,715 UPMC + 190,044 VHA)",
+   "models_evaluated": [
+    "Risk Analysis Index (RAI-C)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R366",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Loss of RAI-C accuracy relative to original calibration after a decade of use",
+     "effect": "Existing scoring: c=0.868 (UPMC), 0.827 (VHA); recalibration improved to 0.872 and 0.839. Authors found no evidence of meaningful algorithmic drift.",
+     "quote": "The RAI scoring system remains robust after a decade of widespread use without evidence of meaningful algorithmic drift."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Performance drift of a deployed prediction model over time across two health systems",
+     "effect": "Strong discrimination persisted (c=0.868 UPMC, 0.827 VHA); calibration improved slightly after recalibration, mainly at extremes, little change near frailty threshold.",
+     "quote": "The RAI scoring system remains robust after a decade of widespread use without evidence of meaningful algorithmic drift."
+    }
+   ],
+   "unlisted_practices": [
+    "Decision curve analysis to judge whether recalibrating a model is worth the implementation resources"
+   ]
+  },
+  "openai": {
+   "design": "other",
+   "setting": "real_deployment",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 600759,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "RAI-C existing scoring system",
+    "RAI-C recalibrated parameter-weight system"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinical utility of recalibration",
+     "effect": "One additional frail reclassification required screening 1400-6000 patients with the recalibrated system, depending on threshold score.",
+     "quote": "Decision curve analysis demonstrated that reclassification of just a single additional patient as frail would require screening 1400-6000 patients with the recalibrated system, depending on the threshold score defining frailty, and after accounting for the harms of false-positive classification, weighted proportional to the odds at each threshold probability."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "calibration by predicted risk range",
+     "effect": "Calibration improved slightly after recalibration; the model tended to underpredict mortality at extremes, with little change around the frailty threshold.",
+     "quote": "Calibration improved slightly, especially at the extremes where the model tends to underpredict mortality, but little change was observed in the range around the threshold of frailty."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "discrimination by health system",
+     "effect": "Existing RAI-C discrimination was higher at UPMC than VHA: c\u2009=\u20090.868 95% CI [0.864-0.872] versus 0.827 [0.822-0.832].",
+     "quote": "In 410,715 patients from UPMC and 190,044 patients from VHA, the existing RAI-C scoring system demonstrated strong discrimination (c\u2009=\u20090.868 95% CI [0.864-0.872] for UPMC, 0.827 [0.822-0.832] for VHA) which improved modestly after recalibrating parameter weights (c\u2009=\u20090.872 95% CI [0.868-0.876], for UPMC, 0.839 [0.834-0.845] for VHA)."
+    },
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "algorithmic drift after widespread use",
+     "effect": "After a decade, no meaningful algorithmic drift; existing RAI-C discrimination c\u2009=\u20090.868 95% CI [0.864-0.872] at UPMC and 0.827 [0.822-0.832] at VHA.",
+     "quote": "The RAI scoring system remains robust after a decade of widespread use without evidence of meaningful algorithmic drift."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 600759,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "Risk Analysis Index (RAI)",
+    "RAI-clinical questionnaire (RAI-C)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R362",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "algorithmic drift over 10 years of clinical use",
+     "effect": "Discrimination remained c=0.868 (UPMC) and c=0.827 (VHA) after a decade without evidence of meaningful algorithmic drift.",
+     "quote": "The RAI scoring system remains robust after a decade of widespread use without evidence of meaningful algorithmic drift."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": 600759,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "RAI-C existing scoring system",
+  "RAI-C recalibrated parameter-weight system",
+  "RAI-clinical questionnaire (RAI-C)",
+  "Risk Analysis Index (RAI)",
+  "Risk Analysis Index (RAI-C)"
+ ],
+ "links": [
+  {
+   "rec_id": "R362",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Performance drift of a deployed prediction model over time across two health systems",
+   "effect": "Strong discrimination persisted (c=0.868 UPMC, 0.827 VHA); calibration improved slightly after recalibration, mainly at extremes, little change near frailty threshold.",
+   "quote": "The RAI scoring system remains robust after a decade of widespread use without evidence of meaningful algorithmic drift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R366",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Loss of RAI-C accuracy relative to original calibration after a decade of use",
+   "effect": "Existing scoring: c=0.868 (UPMC), 0.827 (VHA); recalibration improved to 0.872 and 0.839. Authors found no evidence of meaningful algorithmic drift.",
+   "quote": "The RAI scoring system remains robust after a decade of widespread use without evidence of meaningful algorithmic drift.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Decision curve analysis to judge whether recalibrating a model is worth the implementation resources"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42902074",
+ "screen": {
+  "id": "pmid:42902074",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "recalibration and drift monitoring of a deployed risk score",
+  "user": "none",
+  "reason": "The study directly evaluates algorithmic drift over a decade and tests whether recalibrating the model's weights improves performance or clinical utility compared to the original deployed model.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "model recalibration and drift monitoring"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42902074",
+   "empirical": 0.6,
+   "tests_practice": 0.75,
+   "real_deployment": 0.09
+  }
+ },
+ "oa_retried": false
+}

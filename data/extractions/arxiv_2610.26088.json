@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "agentic",
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "country": "United States (MIMIC-IV); MHFP hospitals not specified",
+ "sample_size": null,
+ "sample_unit": "agent modeling runs",
+ "models_evaluated": [
+  "DeepSeek Flash",
+  "GPT-6-astra",
+  "Claude/Fable-5.1"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Whether autonomous modeling agents select prediction-time leaking features that inflate validation performance",
+   "effect": "DeepSeek Flash and GPT-6-astra each leak in 10/10 unconstrained runs and 0/10 runs with an explicit admission-time constraint; Claude/Fable-5.1 chat run did not leak in either condition.",
+   "quote": "A deterministic optimizer and every evaluated unconstrained local-model configuration select a fatal leaking feature.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Deterministic provenance-based verifier-in-loop to block prediction-time-invalid features in agent modeling",
+  "Explicit admission-time constraint in agent prompts to prevent leakage",
+  "Specific verifier feedback in LLM repair loop for clearing leakage"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2610.26088",
+ "screen": {
+  "id": "arxiv:2610.26088",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic",
+   "predictive_risk"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "provenance verifier-in-loop and explicit admission-time constraints",
+  "user": "none",
+  "reason": "Evaluates audit/guardrail mechanisms (such as admission-time constraints, verifier-in-loop, and verifier feedback) to prevent reward hacking and data leakage by autonomous clinical modeling agents on clinical datasets.",
+  "jev": {
+   "id": "arxiv:2610.26088",
+   "empirical": 0.92,
+   "tests_practice": 0.89,
+   "real_deployment": 0.17
+  }
+ },
+ "oa_retried": false
+}

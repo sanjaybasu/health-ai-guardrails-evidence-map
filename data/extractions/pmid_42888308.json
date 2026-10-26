@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "other",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "country": "Multiple (public datasets from seven sources)",
+ "sample_size": 46410,
+ "sample_unit": "chest radiograph images",
+ "models_evaluated": [],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Inflation of AUC from image-level random splitting versus patient-level splitting (leakage-free evaluation)",
+   "effect": "On single-source drug-resistance probe, random image-level splitting inflated internal AUC by 1.7 points (95% CI 0.9 to 2.4; p=0.001), or 1.2 after dedup repair; holdout gap 1.1 shrank to 0.4 on patient-disjoint holdout. Multi-source effects <0.1 points.",
+   "quote": "On a single-source probe task (drug resistance within TB Portals), random image-level splitting inflated the internal AUC by 1.7 percentage points (95% confidence interval 0.9 to 2.4; p = 0.001), or 1.2 points after a deduplication gap found during revision was repaired; in a holdout design, an internal gap of 1.1 points shrank to 0.4 points on a patient-disjoint holdout.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Three-hash deduplication (MD5, pHash, dHash) of image datasets",
+  "Data fingerprint/SHA-256 version freezing of dataset layers",
+  "Invariant-check auditing of data splits"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42888308",
+ "screen": {
+  "id": "pmid:42888308",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "data-governance workflow with deduplication and patient-level splitting",
+  "user": "none",
+  "reason": "Empirically tests and quantifies the impact of data governance safeguards (multi-hash deduplication and patient-level splitting) against data leakage in AI for TB detection on chest radiographs.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "data governance and leakage prevention pipeline (deduplication and patient-level splitting)"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42888308",
+   "empirical": 0.9,
+   "tests_practice": 0.26,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

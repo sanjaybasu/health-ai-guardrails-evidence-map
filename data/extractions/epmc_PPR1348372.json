@@ -1,0 +1,235 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 2753,
+   "sample_unit": "operations (local temporal validation set)",
+   "models_evaluated": [
+    "Qwen3.5-9B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Quadratic-weighted kappa for ASA-PS after local tuning with few labels (cutpoint calibration or LoRA) versus uncalibrated readout",
+     "effect": "Readout kappa 0.460 uncalibrated; 0.526 with 100 local labels and 0.534 with 1,000. LoRA kappa 0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 and full labels; curves cross at about 270 labels.",
+     "quote": "Cutpoints fitted on 100 and 1,000 local labels gave \u03ba = 0.526 and 0.534; LoRA gave 0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 labels and the full training set, the two curves crossing at about 270 labels."
+    }
+   ],
+   "unlisted_practices": [
+    "Using a non-generative single-forward-pass readout instead of generative prompting for classification, for speed and cost",
+    "Few-label cutpoint calibration as a lightweight alternative to per-site LoRA adapters"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 66468,
+   "sample_unit": "operations",
+   "models_evaluated": [
+    "Qwen3.5-9B generative zero-shot prompting with rationale",
+    "Qwen3.5-9B non-generative readout",
+    "Qwen3.5-9B non-generative readout with cutpoint calibration",
+    "Qwen3.5-9B task LoRA"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "\u03ba against recorded ASA",
+     "effect": "Readout \u03ba=0.460 vs generative zero-shot \u03ba=0.227; difference +0.234 (95% CI 0.201-0.264) in 999 parsable cases of 1,000.",
+     "quote": "In the local validation set the readout reached \u03ba = 0.460 versus 0.227 for generative zero-shot prompting with a requested rationale (difference +0.234, 95% confidence interval [CI] 0.201-0.264; 999 parsable cases of 1,000)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "\u03ba after local calibration or LoRA",
+     "effect": "Cutpoints on 100/1,000 local labels \u03ba=0.526/0.534; LoRA \u03ba=0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 labels and full training set.",
+     "quote": "Cutpoints fitted on 100 and 1,000 local labels gave \u03ba = 0.526 and 0.534; LoRA gave 0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 labels and the full training set, the two curves crossing at about 270 labels."
+    }
+   ],
+   "unlisted_practices": [
+    "Benchmarking LLM configurations for inference latency and GPU/token cost"
+   ]
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 66468,
+   "sample_unit": "operations",
+   "models_evaluated": [
+    "Qwen3.5-9B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "ASA-PS quadratic-weighted kappa with cutpoint calibration and LoRA",
+     "effect": "kappa was 0.526-0.534 with cutpoint calibration (100-1,000 labels) and 0.423-0.561 with LoRA, versus 0.460 uncalibrated",
+     "quote": "Cutpoints fitted on 100 and 1,000 local labels gave \u03ba = 0.526 and 0.534; LoRA gave 0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 labels and the full training set, the two curves crossing at about 270 labels."
+    }
+   ],
+   "unlisted_practices": [
+    "Non-generative readout with cutpoint calibration instead of generative prompting or full adapter fine-tuning for classification"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "operations",
+ "sample_size": 66468,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "Qwen3.5-9B",
+  "Qwen3.5-9B generative zero-shot prompting with rationale",
+  "Qwen3.5-9B non-generative readout",
+  "Qwen3.5-9B non-generative readout with cutpoint calibration",
+  "Qwen3.5-9B task LoRA"
+ ],
+ "links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Quadratic-weighted kappa for ASA-PS after local tuning with few labels (cutpoint calibration or LoRA) versus uncalibrated readout",
+   "effect": "Readout kappa 0.460 uncalibrated; 0.526 with 100 local labels and 0.534 with 1,000. LoRA kappa 0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 and full labels; curves cross at about 270 labels.",
+   "quote": "Cutpoints fitted on 100 and 1,000 local labels gave \u03ba = 0.526 and 0.534; LoRA gave 0.423, 0.542, 0.559 and 0.561 with 100, 300, 1,000 labels and the full training set, the two curves crossing at about 270 labels.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Benchmarking LLM configurations for inference latency and GPU/token cost",
+  "Few-label cutpoint calibration as a lightweight alternative to per-site LoRA adapters",
+  "Non-generative readout with cutpoint calibration instead of generative prompting or full adapter fine-tuning for classification",
+  "Using a non-generative single-forward-pass readout instead of generative prompting for classification, for speed and cost"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1348372",
+ "screen": {
+  "id": "epmc:PPR1348372",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local validation and recalibration",
+  "user": "none",
+  "reason": "The study directly evaluates few-label local recalibration versus fine-tuning across different clinical sites for an LLM-based perioperative risk classification task.",
+  "jev": {
+   "id": "epmc:PPR1348372",
+   "empirical": 0.97,
+   "tests_practice": 0.83,
+   "real_deployment": 0.1
+  }
+ },
+ "oa_retried": false
+}

@@ -1,0 +1,100 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "United States",
+ "sample_size": 1000,
+ "sample_unit": "MIMIC-IV-Note discharge summaries",
+ "models_evaluated": [
+  "DeepSeek-R1-Distill-LLaMA-8B",
+  "GPT-OSS-20B",
+  "MedGemma-27B-IT",
+  "Qwen3.5-27B"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R085",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Whether complex agentic architectures outperform a simple single agent for code status extraction",
+   "effect": "For capable models (GPT-OSS-20B, MedGemma-27B-IT, Qwen3.5-27B), single agents matched or beat complex systems; multiagent review doubled tokens and latency without accuracy gains. Reflection impaired MedGemma DNI (P=.047).",
+   "quote": "For capable larger models (GPT-OSS-20B, MedGemma-27B-IT, Qwen3.5-27B), single-agent architectures achieved comparable or superior performance for explicit code status (DNR, DNI) relative to complex systems, whereas multiagent review doubled token consumption and latency without accuracy gains.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy, token use and latency of complex agentic architectures versus simpler single-agent baseline on same data",
+   "effect": "Architectural complexity did not improve extraction in capable LLMs. Multiagent review helped only the 8B model (DNR P=.017, CMO P<.001), still below clinically acceptable performance.",
+   "quote": "Architectural complexity does not enhance extraction performance for capable LLMs, and reflective self-review may cause conservative overcorrection.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Matching agentic architecture complexity (self-reflection, extractor-reviewer) to task characteristics and model capability rather than adopting by default"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42901486",
+ "screen": {
+  "id": "pmid:42901486",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "The study directly tests agentic verification safeguards (single agent with self-reflection and multiagent extractor-reviewer pipelines) against standard single-agent generation across multiple LLMs for clinical code status extraction.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "reflective self-review and multiagent extractor-reviewer architecture"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42901486",
+   "empirical": 0.97,
+   "tests_practice": 0.33,
+   "real_deployment": 0.07
+  }
+ },
+ "oa_retried": true
+}

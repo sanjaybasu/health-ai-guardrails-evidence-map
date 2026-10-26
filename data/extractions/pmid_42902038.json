@@ -1,0 +1,114 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "multimodal_foundation"
+ ],
+ "country": "Turkey",
+ "sample_size": 200,
+ "sample_unit": "reports (180 authentic plus 20 adversarial) rated by readers; 1025 held-out reports for automated comparison",
+ "models_evaluated": [
+  "MedGemma 4B IT (QLoRA fine-tuned, TurkRadLLM)",
+  "MedGemma 4B IT (base, non-fine-tuned)",
+  "rule-based baseline",
+  "larger non-fine-tuned model",
+  "proprietary LLM (silver-label generator)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Turkish"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Model acceptance on authentic reports interleaved with adversarial cases",
+   "effect": "Every output was valid schema-conformant JSON; grouped acceptance rate 100% (95% CI 97.9-100), but one reader judged negative-finding lists incomplete in 57.8% of reports.",
+   "quote": "Every output was valid, schema-conformant JSON, and the grouped acceptance rate was 100% (95% CI 97.9-100), though one reader judged negative-finding lists incomplete in 57.8% of reports.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Fine-tuned model compared against rule-based baseline, base model, and larger model on held-out set",
+   "effect": "Fine-tuning raised impression agreement from 17.7% to 67.1% and urgent-flag sensitivity from 18.8% to 62.5% (p<.001); larger non-fine-tuned model reached 27.5% and 50.0%.",
+   "quote": "On the full held-out set (1025 reports), fine-tuning increased agreement with the silver-label impression from 17.7% to 67.1% and urgent-flag sensitivity against the silver reference from 18.8% to 62.5% (both p < .001); the larger non-fine-tuned model reached 27.5% and 50.0%, and a rule-based baseline 99.0% on body region.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R093",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "outcome": "Reader scoring of silver-standard labels versus model outputs",
+   "effect": "When readers scored the silver labels themselves, the model was rated higher on negative findings and lower on the impression, showing the silver reference is imperfect.",
+   "quote": "When the readers scored the silver labels themselves, the model was rated higher on negative findings and lower on the impression.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "QLoRA fine-tuning of a compact medical LLM for locally deployable report structuring",
+  "Local deployment on consumer GPU hardware for data privacy"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42902038",
+ "screen": {
+  "id": "pmid:42902038",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates a fine-tuned compact LLM (TurkRadLLM) for structuring Turkish spine MRI reports using a multi-reader clinical validation study including adversarial stress tests, but does not test a specific organizational deployment practice or guardrail.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": false,
+   "practice": ""
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42902038",
+   "empirical": 0.97,
+   "tests_practice": 0.26,
+   "real_deployment": 0.09
+  }
+ },
+ "oa_retried": false
+}

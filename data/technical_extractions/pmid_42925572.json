@@ -1,0 +1,41 @@
+{
+ "id": "pmid:42925572",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T077",
+   "comparator_used": "Default-threshold classifiers trained on the original imbalanced data without resampling",
+   "finding": "mixed",
+   "outcome": "Minority-class (non-survivor) recognition",
+   "effect": "SMOTE improved minority-class recognition relative to default-threshold models; no numeric values reported in the abstract",
+   "tradeoff": "SMOTE altered classification behavior and the class distribution, unlike cost-sensitive threshold optimization, which preserved real-world prevalence.",
+   "quote": "SMOTE improved minority-class recognition but altered classification behavior.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T049",
+   "comparator_used": "Default-threshold classification (standard default decision threshold) across ten ML classifiers",
+   "finding": "favours_control",
+   "outcome": "Balanced performance and identification of non-survivors (specificity, sensitivity, balanced accuracy)",
+   "effect": "Threshold-optimized SVM: specificity 0.857, sensitivity 0.914, balanced accuracy 0.886, correctly identified 18 of 21 non-survivors; McNemar testing showed significant classification changes after threshold optimization for most classifiers",
+   "tradeoff": "",
+   "quote": "Cost-sensitive threshold optimization improved balanced performance without changing the original class distribution.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "cost-sensitive alert threshold optimization"
+}
