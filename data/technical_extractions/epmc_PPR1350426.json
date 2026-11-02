@@ -1,0 +1,25 @@
+{
+ "id": "epmc:PPR1350426",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "uncertainty_deferral"
+ ],
+ "links": [
+  {
+   "control_id": "T060",
+   "comparator_used": "Single model for all items: Jev decision model alone (94.4%) or the general LLM alone (99.0%)",
+   "finding": "mixed",
+   "outcome": "Item-level NIHSS scoring accuracy against the synthetic answer key (simulated confidence-based routing of uncertain Jev items to the LLM)",
+   "effect": "Re-checking the 14.8% of items with Jev confidence below 0.70 would have caught 86% of Jev's errors; the simulated hybrid reached 98.8% accuracy, versus 94.4% for Jev alone and 99.0% for the LLM alone",
+   "tradeoff": "The hybrid was simulated, not run live. The LLM is slower and costlier than Jev (median 5.78 vs 0.15 s per exam; USD 0.67 vs 0.23 per 1,000 exams). No cost or latency was reported for the hybrid itself.",
+   "quote": "Re-checking the 14.8% of items with confidence below 0.70 would have caught 86% of them, and a simulated hybrid reached 98.8% accuracy.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "confidence-threshold routing of uncertain items to LLM review"
+}
