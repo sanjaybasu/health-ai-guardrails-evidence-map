@@ -1,0 +1,80 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": 3019,
+ "sample_unit": "model responses",
+ "models_evaluated": [
+  "Llama 4 Maverick",
+  "Claude Opus 5.5",
+  "Gemini 4 Argon",
+  "GPT-6.1 Sol",
+  "GPT-6.1 Sol Pro"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Erasure or alteration of correct table values when reviewing under partial evidence (excerpt missing proof sections)",
+   "effect": "Without the proof in the excerpt, some models erased cells: GPT-6.1 Sol and Sol Pro erased 27 of 36 cells in each twin and changed 5.0 non-target cells per response. Claude Opus 5.5 and Gemini 4 Argon kept and flagged almost everything.",
+   "quote": "Without the proof in the excerpt, the models diverged: Claude Opus 5.5 and Gemini 4 Argon kept almost everything and flagged it; GPT-6.1 Sol and Sol Pro erased 27 of 36 cells in each twin and changed on average 5.0 non-target cells per response.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Adding an explicit keep-rule instruction to LLM reviewer prompts to prevent erasure of unverifiable correct values (erasure fell to zero in 10 of 13 models)",
+  "Raising LLM reasoning effort to reduce erasure (cost 1.1 to 21.5 times more tokens and reduced erasure in only three models)",
+  "Instructing LLM reviewers to flag rather than erase values they cannot verify"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1353539",
+ "screen": {
+  "id": "epmc:PPR1353539",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "keep rule prompt instruction",
+  "user": "none",
+  "reason": "Evaluates the effect of prompt-based safeguards ('keep rule' instructions) on preventing LLMs from improperly erasing unverified clinical data when reviewing extracted genomic reports.",
+  "jev": {
+   "id": "epmc:PPR1353539",
+   "empirical": 0.93,
+   "tests_practice": 0.91,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

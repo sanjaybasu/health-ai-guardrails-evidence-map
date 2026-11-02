@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "agentic",
+  "predictive_risk"
+ ],
+ "country": "Not applicable (synthetic benchmark)",
+ "sample_size": 5000,
+ "sample_unit": "synthetic agent trajectories (36,855 access events)",
+ "models_evaluated": [
+  "MedTrustGraph (graph attention encoder + causal GRU + policy engine)",
+  "XGBoost",
+  "static graph attention network"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R342",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Unauthorized agent actions allowed by calibrated policy layer enforcing patient and purpose scope",
+   "effect": "Policy layer allowed 0 of 652 unauthorized events (95% CI 0\u20130.59%), auto-allowed 98.64% of authorized events, 1.90% verification workload; synthetic labels make results upper bounds.",
+   "quote": "The calibrated policy layer allowed 0 of 652 unauthorized events (95% CI 0\u20130.59%) and auto-allowed 98.64% of authorized events with a 1.90% verification workload.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R341",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Detection of unauthorized agent actions with versus without patient and purpose context checks",
+   "effect": "Full model F1 0.9653; removing patient context lowered F1 by 0.2173 and purpose context by 0.0200 (Holm-adjusted p<10^-4). Labels derived from scope rules, so upper bounds.",
+   "quote": "In a controlled ablation configuration the full model reached F1 =0.9653 (95% CI 0.9544\u20130.9741); removing patient context, purpose context, graph structure or temporal structure lowered F1 by 0.2173, 0.0200, 0.0188 and 0.0174 (all Holm-adjusted p<10  <sup>\u22124</sup>  ).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Continuous purpose-aware, per-action Zero-Trust authorization of clinical LLM agents using temporal graph models",
+  "Separating learned risk scoring from a deterministic policy engine with ALLOW/VERIFY/DENY decisions"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1352113",
+ "screen": {
+  "id": "epmc:PPR1352113",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "agentic",
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "none",
+  "reason": "Evaluates MedTrustGraph as a continuous zero-trust authorization guardrail / policy engine for clinical LLM agents executing EHR tasks, benchmarked against synthetic agent trajectories to prevent unauthorized actions.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "zero-trust continuous authorization guardrail for clinical LLM agents"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1352113",
+   "empirical": 0.92,
+   "tests_practice": 0.4,
+   "real_deployment": 0.03
+  }
+ },
+ "oa_retried": false
+}

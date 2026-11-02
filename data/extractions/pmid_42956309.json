@@ -1,0 +1,341 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 70,
+   "sample_unit": "real counseling dialogue contexts (clinical expert evaluation; 490 context-response pairs rated by 8 experts)",
+   "models_evaluated": [
+    "YuanChat-GLM4-9B",
+    "YuanChat-Huozi3.5",
+    "GLM-4-9B-Chat",
+    "Huozi3.5",
+    "GPT-4",
+    "ERNIE 4.0",
+    "CharacterGLM"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R171",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expert-rated empathic attunement and safety of domain-fine-tuned chatbot versus base model, with counseling experts involved",
+     "effect": "YuanChat-Huozi3.5 empathic attunement 1.279 vs 0.327 for base Huozi3.5 (mean difference 0.952, 95% CI 0.746-1.152); safety rating close to counselors (difference 0.002).",
+     "quote": "From descriptive results ( Table 9 ), compared with Huozi3.5, YuanChat-Huozi3.5 received higher empathic attunement ratings (1.279 vs 0.327; mean difference 0.952, 95% CI 0.746-1.152) and supportive appropriateness ratings (1.389 vs 1.070; mean difference 0.320, 95% CI 0.134-0.502)."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Evaluation of generative AI communication for empathy and appropriateness, and effect of fine-tuning and E-URIAL on empathy scores",
+     "effect": "Fine-tuning raised YuanChat-Huozi3.5 EES from 0.57 to 0.68 and EIS from 0.54 to 0.59; E-URIAL k=3 raised EIS to 0.69 and EES to 0.79.",
+     "quote": "Fine-tuning increased YuanChat-Huozi3.5's empathic expression score from 0.57 to 0.68; empathy identification score increased from 0.54 to 0.59."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Interrater reliability of expert annotations used as reference standard",
+     "effect": "Mean pairwise Cohen kappa 0.5857 for ESC stages, 0.4219 for counseling techniques, 0.5887 for empathy effect; overall IRR 0.5321 (moderate agreement).",
+     "quote": "The mean pairwise \u03ba was 0.5857 for the ESC stages, 0.4219 for counseling techniques, and 0.5887 for empathy effect, indicating moderate agreement."
+    },
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Effect of retrieval-augmented exemplar grounding (E-URIAL) on empathic response quality",
+     "effect": "Dynamic retrieval ablation: removing retrieval dropped EIS by 0.09, EES by 0.11, empathy by 0.16; E-URIAL k=3 raised GPT-4 EIS from 0.45 to 0.57 and EES from 0.54 to 0.65.",
+     "quote": "Replacing dynamic retrieval with static exemplars caused the most extreme performance drop across all metrics (eg, EES decreased by 0.11)."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning LLMs on real-world counseling data with structured emotional support labels to improve empathic responding",
+    "Inference-time retrieval of labeled counselor exemplars with predicted emotion and strategy labels (E-URIAL)",
+    "Dual-model label-consistency filtering and constrained rewriting to build training data"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 2000,
+   "sample_unit": "response instances for automatic evaluation",
+   "models_evaluated": [
+    "GPT-4",
+    "ERNIE 4.0",
+    "CharacterGLM",
+    "GLM-4-9B-Chat",
+    "Huozi3.5",
+    "YuanChat-GLM4-9B",
+    "YuanChat-Huozi3.5"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "comparison with counselors and other models",
+     "effect": "YuanChat-Huozi3.5 vs counselor: +0.148, +0.079, +0.039, +0.002; Holm-adjusted P\u2265.29; other models had significant gaps.",
+     "quote": "YuanChat-Huozi3.5 was the only model for which the comparisons with counselor responses did not reach statistical significance in any of the 4 dimensions; the remaining models all exhibited significant gaps compared to counselors in various dimensions."
+    },
+    {
+     "rec_id": "R171",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "expert review of fine-tuning data quality",
+     "effect": "Expert review of 216 turns: contextual authenticity 95.37%, empathic appropriateness 59.26%, semantic naturalness 77.31%, total acceptance 71.99%.",
+     "quote": "With a total score of \u226512 as the threshold for acceptance, the overall acceptance rate was 71.99%."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "empathy, appropriateness, and safety ratings",
+     "effect": "Safety/professional boundaries: Huozi3.5 1.445 vs counselor 1.689 (\u22120.245, P<.001); YuanChat-Huozi3.5 1.691 (+0.002, P=.87).",
+     "quote": "GPT-4 received lower ratings for empathic attunement and safety and professional boundary adherence; GLM4-9B-Chat received lower ratings for supportive appropriateness, perceived helpfulness, and safety and professional boundary adherence; YuanChat-GLM4-9B received lower ratings for safety and professional boundary adherence; and CharacterGLM received higher empathic attunement ratings than the counselor responses."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning LLMs on real-world counseling dialogue data for emotional support",
+    "Inference-time retrieval-augmented prompting with predicted emotion and counseling strategy labels",
+    "Dynamic retrieval of semantically similar human-annotated counselor exemplars"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "patient",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 70,
+   "sample_unit": "counseling scenarios",
+   "models_evaluated": [
+    "GLM-4-9B-Chat",
+    "YuanChat-GLM4-9B",
+    "Huozi3.5",
+    "YuanChat-Huozi3.5",
+    "GPT-4",
+    "CharacterGLM",
+    "ERNIE 4.0"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Expert-rated empathic attunement, supportive strategy appropriateness, and safety and boundary adherence",
+     "effect": "Compared to counselors, GPT-4 scored lower on empathic attunement (-0.421) and safety (-0.166); GLM-4-9B-Chat scored lower on supportive strategy (-0.400), helpfulness (-0.366), and safety (-0.263); and YuanChat-GLM4-9B scored lower on safety (-0.091; all Holm-adjusted P<.001).",
+     "quote": "GPT-4 received lower ratings for empathic attunement and safety and professional boundary adherence; GLM4-9B-Chat received lower ratings for supportive appropriateness, perceived helpfulness, and safety and professional boundary adherence; YuanChat-GLM4-9B received lower ratings for safety and professional boundary adherence; and CharacterGLM received higher empathic attunement ratings than the counselor responses."
+    }
+   ],
+   "unlisted_practices": [
+    "Fine-tuning large language models on counseling dialogue datasets annotated with emotional support stages and techniques",
+    "Retrieval-augmented in-context alignment (E-URIAL) using predicted emotion and strategy labels with dynamically retrieved labeled counselor exemplars"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "country": "China",
+ "sample_unit": "real counseling dialogue contexts (clinical expert evaluation; 490 context-response pairs rated by 8 experts)",
+ "sample_size": 70,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "CharacterGLM",
+  "ERNIE 4.0",
+  "GLM-4-9B-Chat",
+  "GPT-4",
+  "Huozi3.5",
+  "YuanChat-GLM4-9B",
+  "YuanChat-Huozi3.5"
+ ],
+ "links": [
+  {
+   "rec_id": "R171",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "Expert-rated empathic attunement and safety of domain-fine-tuned chatbot versus base model, with counseling experts involved",
+   "effect": "YuanChat-Huozi3.5 empathic attunement 1.279 vs 0.327 for base Huozi3.5 (mean difference 0.952, 95% CI 0.746-1.152); safety rating close to counselors (difference 0.002).",
+   "quote": "From descriptive results ( Table 9 ), compared with Huozi3.5, YuanChat-Huozi3.5 received higher empathic attunement ratings (1.279 vs 0.327; mean difference 0.952, 95% CI 0.746-1.152) and supportive appropriateness ratings (1.389 vs 1.070; mean difference 0.320, 95% CI 0.134-0.502).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "empathy, appropriateness, and safety ratings",
+   "effect": "Safety/professional boundaries: Huozi3.5 1.445 vs counselor 1.689 (\u22120.245, P<.001); YuanChat-Huozi3.5 1.691 (+0.002, P=.87).",
+   "quote": "GPT-4 received lower ratings for empathic attunement and safety and professional boundary adherence; GLM4-9B-Chat received lower ratings for supportive appropriateness, perceived helpfulness, and safety and professional boundary adherence; YuanChat-GLM4-9B received lower ratings for safety and professional boundary adherence; and CharacterGLM received higher empathic attunement ratings than the counselor responses.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Interrater reliability of expert annotations used as reference standard",
+   "effect": "Mean pairwise Cohen kappa 0.5857 for ESC stages, 0.4219 for counseling techniques, 0.5887 for empathy effect; overall IRR 0.5321 (moderate agreement).",
+   "quote": "The mean pairwise \u03ba was 0.5857 for the ESC stages, 0.4219 for counseling techniques, and 0.5887 for empathy effect, indicating moderate agreement.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "comparison with counselors and other models",
+   "effect": "YuanChat-Huozi3.5 vs counselor: +0.148, +0.079, +0.039, +0.002; Holm-adjusted P\u2265.29; other models had significant gaps.",
+   "quote": "YuanChat-Huozi3.5 was the only model for which the comparisons with counselor responses did not reach statistical significance in any of the 4 dimensions; the remaining models all exhibited significant gaps compared to counselors in various dimensions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R299",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dual-model label-consistency filtering and constrained rewriting to build training data",
+  "Dynamic retrieval of semantically similar human-annotated counselor exemplars",
+  "Fine-tuning LLMs on real-world counseling data with structured emotional support labels to improve empathic responding",
+  "Fine-tuning LLMs on real-world counseling dialogue data for emotional support",
+  "Fine-tuning large language models on counseling dialogue datasets annotated with emotional support stages and techniques",
+  "Inference-time retrieval of labeled counselor exemplars with predicted emotion and strategy labels (E-URIAL)",
+  "Inference-time retrieval-augmented prompting with predicted emotion and counseling strategy labels",
+  "Retrieval-augmented in-context alignment (E-URIAL) using predicted emotion and strategy labels with dynamically retrieved labeled counselor exemplars"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42956309",
+ "screen": {
+  "id": "pmid:42956309",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "exemplar retrieval and strategy-prompt grounding (E-URIAL)",
+  "user": "patient",
+  "reason": "The study develops and evaluates an emotional support LLM system, testing an inference-time retrieval and strategy-prompt grounding framework (E-URIAL) compared to baseline generation, evaluated by clinical experts and psychology students.",
+  "jev": {
+   "id": "pmid:42956309",
+   "empirical": 0.93,
+   "tests_practice": 0.87,
+   "real_deployment": 0.09
+  }
+ },
+ "oa_retried": false
+}
