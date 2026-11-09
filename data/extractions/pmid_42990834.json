@@ -1,0 +1,416 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 70,
+   "sample_unit": "synthetic CKD patients (9 questions each)",
+   "models_evaluated": [
+    "GPT-4o (gpt-4o-2024-08-06)",
+    "GPT-4o + vector RAG (llama_index)",
+    "GPT-4o + Microsoft GraphRAG"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Clinician-rated correctness of baseline LLM versus retrieval-grounded (RAG/GraphRAG) outputs on CKD questions",
+     "effect": "RAG 76.6%, GraphRAG 75.6% vs baseline LLM 70.8%; RAG vs baseline McNemar p=0.045, GraphRAG p=0.057. LLM-as-judge ranked baseline higher (~60% vs RAG ~51%).",
+     "quote": "The overall clinical correctness, as judged by the clinician, favours the retrieval pipelines: LLM+RAG scores 76.6%, LLM+GraphRAG scores 75.6% and LLM scores 70.8%."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of outdated guideline corpus on recommendations (additional CKD drugs, Q8)",
+     "effect": "Baseline LLM scored 1.00 vs RAG 0.27/0.28 and GraphRAG 0.10 on Q8 because SGLT-2 inhibitors and finerenone were absent from the NICE NG203 corpus (updated Nov 2021).",
+     "quote": "Our indexed document, NICE NG203 (last updated in November 2021), predates later technology appraisals for the use of dapagliflozin, empagliflozin and finerenone, agents now considered standard of care for many CKD patients, meaning RAG pipelines faithfully omit them."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Correctness on numerical KFRE 5-year risk calculation",
+     "effect": "All models performed poorly on Q9: clinician correctness LLM 0.03, RAG 0.28, GraphRAG 0.31; LLMs hallucinated coefficients.",
+     "quote": "Even after converting the KFRE equation image into text, LLMs produced inconsistent outputs and hallucinated coefficients."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Agreement between clinician reference standard and LLM-as-judge on correctness",
+     "effect": "Overall kappa 0.63 (83.2% agreement); determinate tasks kappa 0.70-0.97, open-ended tasks 0.13-0.36; LLM judge ranked baseline above RAG, opposite to clinician.",
+     "quote": "Agreement between the clinician and LLM judge was substantial overall (Cohen's kappa=0.63, 83.2% agreement)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Reference standard quality: single clinician and same-model LLM judge divergence",
+     "effect": "The same clinician developed and evaluated reference answers; LLM judge (GPT-4o judging own outputs) rated baseline significantly more correct than RAG (p<0.001), opposite to clinician.",
+     "quote": "The same clinician developed and evaluated the reference answers, which may introduce bias, particularly in borderline cases."
+    },
+    {
+     "rec_id": "R299",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clarity and conciseness of responses across pipelines",
+     "effect": "Clarity declined from 9.01 (LLM) to 8.53 (RAG) to 7.80 (GraphRAG); response length correlated with clarity rho=-0.84.",
+     "quote": "Response length was strongly correlated with both patient specificity (Spearman rho=0.82, p<0.001) and clarity (rho=\u22120.84, p<0.001)."
+    },
+    {
+     "rec_id": "R486",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "False-positive triggering of safety filters on benign clinical questions",
+     "effect": "Some questions, e.g. 'What should I do about bicarbonate?', were flagged as self-harm related and had to be reformulated.",
+     "quote": "Some questions required rephrasing due to inappropriate triggering of safety filters."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Comparison of RAG and GraphRAG against baseline LLM on same synthetic data",
+     "effect": "RAG 76.6% and GraphRAG 75.6% vs baseline 70.8% clinician-rated correctness; RAG vs GraphRAG indistinguishable (p=0.897); baseline better on extra-guideline question.",
+     "quote": "RAG was numerically higher than baseline (McNemar p=0.045); GraphRAG showed a similar numerical improvement (p=0.057), and RAG and GraphRAG were indistinguishable (p=0.897)."
+    }
+   ],
+   "unlisted_practices": [
+    "Comparing vector RAG with knowledge-graph-enhanced GraphRAG retrieval",
+    "Adding a summarisation step or structured output template to balance specificity and clarity",
+    "Detecting out-of-scope queries via low retrieval confidence scores in retrieval systems",
+    "Using external calculator or function-calling tools for numerical formulae"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Not reported (NICE CKD guidelines)",
+   "sample_size": 630,
+   "sample_unit": "synthetic patient-question pairs per model",
+   "models_evaluated": [
+    "GPT-4o baseline LLM",
+    "GPT-4o with vector-indexed RAG over NICE CKD guidelines",
+    "GPT-4o with GraphRAG over NICE CKD guidelines"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician-rated clinical correctness",
+     "effect": "RAG 76.6% vs LLM 70.8% (p=0.045); GraphRAG 75.6% (p=0.057).",
+     "quote": "The overall clinical correctness, as judged by the clinician, favours the retrieval pipelines: LLM+RAG scores 76.6%, LLM+GraphRAG scores 75.6% and LLM scores 70.8%."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "bone disease management correctness",
+     "effect": "Scores ranged from 0.45 to 0.48 across all methods; p=1.0.",
+     "quote": "The bone disease task (Q5) proved uniformly challenging across all methods (scores ranged from 0.45 to 0.48, confirmed non-significant, p=1.0)."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "extra-guideline CKD drug recommendations",
+     "effect": "LLM 1.00 vs RAG 0.27 and GraphRAG 0.10; p<0.001 for both comparisons.",
+     "quote": "In contrast, for Q8 (additional CKD medication), the LLM (1.00) far exceeded both RAG-based approaches (0.27 and 0.10; p<0.001 for both comparisons), reflecting the stale-guideline problem rather than a failure of enumerative reasoning."
+    },
+    {
+     "rec_id": "R489",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "KFRE formula calculation correctness",
+     "effect": "LLM-judge KFRE correctness was GraphRAG 0.05 vs 0.02 for other methods.",
+     "quote": "Despite our effort of processing the image via the LLM (ChatGPT-4o) and including the result in the corpus without explicit function-calling the pipelines incorrectly apply or guess coefficients, leading to very low absolute clinical correctness (GraphRAG 0.05 vs 0.02 for others)."
+    },
+    {
+     "rec_id": "R093",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "automated correctness judging",
+     "effect": "LLM judge favored baseline over RAG (p<0.001), opposite the clinician assessment.",
+     "quote": "Notably, the LLM judge rated baseline as significantly more correct than RAG overall (McNemar p<0.001), the opposite direction to the clinician assessment."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "United Kingdom",
+   "sample_size": 70,
+   "sample_unit": "patient scenarios",
+   "models_evaluated": [
+    "GPT-4o",
+    "text-embedding-3-small"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician-rated correctness of clinical recommendations",
+     "effect": "RAG improved clinician-rated correctness over baseline LLM from 70.8% to 76.6% (McNemar p=0.045), and GraphRAG to 75.6% (p=0.057).",
+     "quote": "The overall clinical correctness, as judged by the clinician, favours the retrieval pipelines: LLM+RAG scores 76.6%, LLM+GraphRAG scores 75.6% and LLM scores 70.8%."
+    },
+    {
+     "rec_id": "R477",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "correctness on clinical tasks requiring therapies not in outdated guideline",
+     "effect": "On medication expansion (Q8), baseline LLM correctness was 1.00 versus 0.28 for RAG and 0.10 for GraphRAG (p<0.001) due to omission of newer therapies absent from the 2021 guideline.",
+     "quote": "In contrast, for Q8 (additional CKD medication), the LLM (1.00) far exceeded both RAG-based approaches (0.27 and 0.10; p<0.001 for both comparisons), reflecting the stale-guideline problem rather than a failure of enumerative reasoning."
+    }
+   ],
+   "unlisted_practices": [
+    "Knowledge graph-enhanced retrieval-augmented generation (GraphRAG)",
+    "LLM-as-judge automated evaluation compared to clinician review"
+   ]
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United Kingdom",
+ "sample_unit": "synthetic CKD patients (9 questions each)",
+ "sample_size": 70,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "GPT-4o",
+  "GPT-4o (gpt-4o-2024-08-06)",
+  "GPT-4o + Microsoft GraphRAG",
+  "GPT-4o + vector RAG (llama_index)",
+  "GPT-4o baseline LLM",
+  "GPT-4o with GraphRAG over NICE CKD guidelines",
+  "GPT-4o with vector-indexed RAG over NICE CKD guidelines",
+  "text-embedding-3-small"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Clinician-rated correctness of baseline LLM versus retrieval-grounded (RAG/GraphRAG) outputs on CKD questions",
+   "effect": "RAG 76.6%, GraphRAG 75.6% vs baseline LLM 70.8%; RAG vs baseline McNemar p=0.045, GraphRAG p=0.057. LLM-as-judge ranked baseline higher (~60% vs RAG ~51%).",
+   "quote": "The overall clinical correctness, as judged by the clinician, favours the retrieval pipelines: LLM+RAG scores 76.6%, LLM+GraphRAG scores 75.6% and LLM scores 70.8%.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R477",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of outdated guideline corpus on recommendations (additional CKD drugs, Q8)",
+   "effect": "Baseline LLM scored 1.00 vs RAG 0.27/0.28 and GraphRAG 0.10 on Q8 because SGLT-2 inhibitors and finerenone were absent from the NICE NG203 corpus (updated Nov 2021).",
+   "quote": "Our indexed document, NICE NG203 (last updated in November 2021), predates later technology appraisals for the use of dapagliflozin, empagliflozin and finerenone, agents now considered standard of care for many CKD patients, meaning RAG pipelines faithfully omit them.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R489",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Correctness on numerical KFRE 5-year risk calculation",
+   "effect": "All models performed poorly on Q9: clinician correctness LLM 0.03, RAG 0.28, GraphRAG 0.31; LLMs hallucinated coefficients.",
+   "quote": "Even after converting the KFRE equation image into text, LLMs produced inconsistent outputs and hallucinated coefficients.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R093",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Reference standard quality: single clinician and same-model LLM judge divergence",
+   "effect": "The same clinician developed and evaluated reference answers; LLM judge (GPT-4o judging own outputs) rated baseline significantly more correct than RAG (p<0.001), opposite to clinician.",
+   "quote": "The same clinician developed and evaluated the reference answers, which may introduce bias, particularly in borderline cases.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Comparison of RAG and GraphRAG against baseline LLM on same synthetic data",
+   "effect": "RAG 76.6% and GraphRAG 75.6% vs baseline 70.8% clinician-rated correctness; RAG vs GraphRAG indistinguishable (p=0.897); baseline better on extra-guideline question.",
+   "quote": "RAG was numerically higher than baseline (McNemar p=0.045); GraphRAG showed a similar numerical improvement (p=0.057), and RAG and GraphRAG were indistinguishable (p=0.897).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R299",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R486",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding a summarisation step or structured output template to balance specificity and clarity",
+  "Comparing vector RAG with knowledge-graph-enhanced GraphRAG retrieval",
+  "Detecting out-of-scope queries via low retrieval confidence scores in retrieval systems",
+  "Knowledge graph-enhanced retrieval-augmented generation (GraphRAG)",
+  "LLM-as-judge automated evaluation compared to clinician review",
+  "Using external calculator or function-calling tools for numerical formulae"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42990834",
+ "screen": {
+  "id": "pmid:42990834",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval grounding (RAG/GraphRAG) added to baseline LLM",
+  "user": "clinician_or_staff",
+  "reason": "Empirically tests whether adding retrieval grounding (standard RAG and GraphRAG) to a baseline LLM (GPT-4o) improves clinical correctness and safety for clinical decision support in a simulated CKD cohort.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "Retrieval-Augmented Generation (RAG) and GraphRAG grounding"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42990834",
+   "empirical": 0.96,
+   "tests_practice": 0.41,
+   "real_deployment": 0.05
+  }
+ },
+ "oa_retried": false
+}

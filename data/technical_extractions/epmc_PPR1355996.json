@@ -1,0 +1,24 @@
+{
+ "id": "epmc:PPR1355996",
+ "families": [
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T063",
+   "comparator_used": "Uninstructed prompt (models answered the cases without the structured-plan instruction); also tested against a request for 25 recommendations",
+   "finding": "favours_control",
+   "outcome": "Severity-weighted F1 on NOHARM v2 public cases (mainly graded on omissions)",
+   "effect": "Mean F1 rose by 0.14 [0.09, 0.20], improving 4 of 5 models (Grok 4.7 0.354 to 0.633; GPT-5.6 Terra 0.678 to 0.853). Three instructed models exceeded the best uninstructed score (0.764). Between-model SD halved (0.17 to 0.09). The plan format alone matched the full instruction; the framing alone or 25 recommendations scored lower.",
+   "tradeoff": "Added some harmful options: one model proposed +0.13 [+0.05, +0.23] more specialist-rated harmful options per item, and a physician judged 13 of the 43 added options harmful as stated. Most recovered actions were follow-up and counseling.",
+   "quote": "The instruction raised F1 by 0.14 on average [0.09, 0.20] and improved 4 of 5 models, most for the tersest (Grok 4.7, 0.354 to 0.633; GPT-5.6 Terra, 0.678 to 0.853).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "structured prompt instruction requesting complete plan (prompt guardrail) with review of added actions"
+}

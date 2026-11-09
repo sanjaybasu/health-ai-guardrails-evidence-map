@@ -1,0 +1,39 @@
+{
+ "id": "epmc:PPR1355685",
+ "families": [
+  "model_choice_adaptation",
+  "monitoring_methods",
+  "uncertainty_deferral",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T031",
+   "comparator_used": "Expert raters' agreement with each other, plus frontier LLM judges (GPT-6.1 Sol, Claude Opus 5.5), with agreement against expert labels as the main outcome",
+   "finding": "mixed",
+   "outcome": "Plain agreement with the expert label across six tasks from five clinical benchmarks",
+   "effect": "Jev averaged 64.7% agreement over six tasks. On 3,614 matched units it averaged 66.1% vs 65.0% for Opus and 60.7% for Sol, and was non-inferior to both on four of six tasks. Jev judged the whole pool in 17 minutes for US$1.46, at 1/34 of Sol's cost and 1/152 of Opus's per judgment.",
+   "tradeoff": "Omissions were hard to catch. At the same false-alarm rate, Jev missed 55.6% of planted omissions and Opus 48.1%, and Opus caught 8.8 points more planted errors overall. Expert oversight is still needed for omissions and clinical documents.",
+   "quote": "On 3,614 matched units it averaged 66.1%, against 65.0% for Opus and 60.7% for Sol, and it was non-inferior to both on four of six tasks.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T046",
+   "comparator_used": "Random audit of answers (simulated)",
+   "finding": "favours_control",
+   "outcome": "Number of errors found when human reviewers audit the judge's least-sure answers first",
+   "effect": "Reviewing Jev's least-sure answers first found 1.4 times the errors of a random audit; a preset cutoff held its false-alarm rate on fresh planted-error answers.",
+   "tradeoff": "The review-prioritisation result came from simulation, not live deployment. Omissions remained hard to detect.",
+   "quote": "A preset cutoff held its false-alarm rate on fresh planted-error answers, and in simulation, reviewing Jev\u2019s least-sure answers first found 1.4 times the errors of a random audit.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "automated AI judge for output monitoring with uncertainty-prioritized expert review"
+}

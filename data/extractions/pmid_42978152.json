@@ -1,0 +1,125 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "Europe (ESVS guidelines)",
+ "sample_size": 55,
+ "sample_unit": "vignettes",
+ "models_evaluated": [
+  "GPT-5",
+  "multi-guideline GraphRAG clinical agent (ESVS)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R061",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Staying within locked corpus and declining out-of-scope queries",
+   "effect": "The system stayed within its locked corpus and declined all out-of-scope queries.",
+   "quote": "The system stayed within its locked corpus, declined all out-of-scope queries, and achieved 98.4% guideline-routing recall.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R487",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Verifiability of citations in generated outputs",
+   "effect": "All 259 cited recommendations were verifiable within the locked corpus.",
+   "quote": "The Context Gate showed 91.9% specificity and 78.6% sensitivity for underspecified queries, and all 259 cited recommendations were verifiable within the locked corpus.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Clinically consequential errors and unsupported claims in guideline-grounded answers",
+   "effect": "Judges flagged unsupported claims in 18.2% of items; after adjudication 7.3% had a clinically consequential error, none capable of causing harm.",
+   "quote": "Automated judges flagged an unsupported claim in 18.2% of items under a sensitive screening definition; on adjudication by 2 vascular surgeons, 7.3% of items contained a clinically consequential error, none graded capable of causing harm.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R176",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Context Gate withholding retrieval when decision-critical parameters are absent",
+   "effect": "Context Gate had 91.9% specificity and 78.6% sensitivity for underspecified queries.",
+   "quote": "The Context Gate showed 91.9% specificity and 78.6% sensitivity for underspecified queries, and all 259 cited recommendations were verifiable within the locked corpus.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Guideline router directing queries to relevant guideline among 14 CPGs",
+  "Context Gate withholding answers when decision-critical clinical parameters are missing"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "pmid:42978152",
+ "screen": {
+  "id": "pmid:42978152",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates specific safeguard mechanisms (Context Gate to withhold underspecified queries, locked-corpus retrieval grounding, and mandatory citation verification) within a multi-guideline clinical agent benchmarked on clinical vignettes.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "guideline-locked retrieval, Context Gate withholding, and citation verification guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42978152",
+   "empirical": 0.95,
+   "tests_practice": 0.21,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

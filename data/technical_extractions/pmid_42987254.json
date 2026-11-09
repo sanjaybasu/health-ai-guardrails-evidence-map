@@ -1,0 +1,39 @@
+{
+ "id": "pmid:42987254",
+ "families": [
+  "agent_tool_design",
+  "language_literacy_handling",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T094",
+   "comparator_used": "Baseline prompt with no readability control (fixed output not adapted to the question's readability)",
+   "finding": "favours_control",
+   "outcome": "Agreement between question readability and response readability (quadratic-weighted Cohen kappa)",
+   "effect": "External calculator-guided strategy had the highest agreement: Gemini 3 \u03ba=0.94; GPT 5.2 \u03ba=0.90. Response accuracy stayed >98% for GPT 5.2 and Gemini 3, and BERTScore F1 stayed >0.87.",
+   "tradeoff": "The open-source OSS-20b model had lower accuracy (83.75%-90%) and was more sensitive to readability constraints. Longer questions were associated with slightly lower accuracy in lower-performing configurations.",
+   "quote": "The external calculator-guided strategy produced the strongest alignment in readability across models, achieving the highest agreement (Gemini 3: \u03ba=0.94; GPT 5.2: \u03ba=0.90), while maintaining favorable computational efficiency.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T167",
+   "comparator_used": "Semantic Readability Inference (LLM estimating readability itself) and Formula-Informed Readability Prompt",
+   "finding": "favours_control",
+   "outcome": "Agreement between question and response readability (quadratic-weighted Cohen kappa)",
+   "effect": "The external calculator-guided prompt gave the strongest alignment (Gemini 3 \u03ba=0.94; GPT 5.2 \u03ba=0.90). Formula-informed prompting was intermediate. Semantic inference gave poor agreement.",
+   "tradeoff": "",
+   "quote": "Formula-informed prompting showed intermediate performance, whereas semantic inference demonstrated poor agreement due to unreliable readability estimation.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "reading-level constraints and readability prompting strategies"
+}

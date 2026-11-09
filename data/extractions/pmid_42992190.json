@@ -1,0 +1,330 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 50,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Qwen3-VL-8B",
+    "DeepSeek-R1-Distill-Llama-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Expert-rated clinical accuracy, patient safety, and faithfulness with versus without retrieval grounding",
+     "effect": "RAG improved Qwen3 accuracy (+0.44, P<0.001) but not DeepSeek (+0.21, P=0.09); safety showed no reliable benefit; faithfulness fell on Qwen3 (-0.24, P<0.001).",
+     "quote": "RAG produced no stable, consistent improvement across the three content-quality dimensions ( Table 2 and Figure 3 )."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "Existence of retrieved PubMed identifiers verified against PubMed",
+     "effect": "All retrieved PMIDs existed in PubMed (236 question-level instances, 187 unique; 100% existence rate, zero fabricated references), though existence did not establish relevance or support.",
+     "quote": "All PMIDs retrieved by the RAG arm existed in PubMed (236 question-level instances, 187 unique; 100% existence rate, zero fabricated references)."
+    },
+    {
+     "rec_id": "R490",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Clinical knowledge accuracy and safety on high-difficulty perioperative IBD questions, including contraindications",
+     "effect": "On DeepSeek, RAG received failing safety scores (\u22642) on six high-risk questions; Q34 RAG safety 1.00 versus baseline 3.67 with off-topic retrieved evidence.",
+     "quote": "Moreover, on DeepSeek, RAG received failing safety scores (\u22642) on six high-risk questions ( Table 3 ) (epidural drug combinations, sedative identification, drug interactions), indicating that retrieval failed to prevent\u2014and sometimes accompanied\u2014unsafe outputs in high-risk scenarios."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Output accuracy and safety against guideline-based expert judgment",
+     "effect": "Mean accuracy was 2.85 (RAG) vs 2.64 (baseline) on DeepSeek and 3.64 vs 3.20 on Qwen3; safety did not reliably improve and unsafe outputs persisted.",
+     "quote": "Authentic retrieved sources could still accompany incorrect or unsafe outputs, demonstrating that evidence traceability and clinical reliability are distinct dimensions."
+    },
+    {
+     "rec_id": "R176",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Whether the model abstained when retrieved evidence was insufficient",
+     "effect": "For Q34, the RAG response acknowledged snippets were not directly relevant but still generated a specific, unsafe recommendation (safety 1.00 vs baseline 3.67).",
+     "quote": "At the same time, the model did not recognize the insufficiency of the available evidence and abstain, but generated a specific clinical recommendation from off-target information."
+    },
+    {
+     "rec_id": "R097",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Deployed local RAG configuration performance on high-difficulty intended-use perioperative IBD questions",
+     "effect": "Retrieval did not consistently improve accuracy, safety or faithfulness across the two deployed 8B model configurations.",
+     "quote": "In the two evaluated 8B models, using the present 50-question benchmark and IBD-anchored retrieval corpus, PubMed-based retrieval achieved source-existence authenticity but did not consistently improve clinical accuracy, safety, or faithfulness."
+    }
+   ],
+   "unlisted_practices": [
+    "Separating source-existence verification from clinical correctness evaluation in RAG",
+    "Model-external deterministic safety rule layer for high-risk drugs (proposed, not tested)"
+   ]
+  },
+  "openai": {
+   "design": "vignette_simulation",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 50,
+   "sample_unit": "clinical questions",
+   "models_evaluated": [
+    "Qwen3-VL-8B",
+    "DeepSeek-R1-Distill-Llama-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "clinical accuracy, safety, and faithfulness",
+     "effect": "Qwen3 accuracy \u0394=+0.44, P<0.001; DeepSeek \u0394=+0.21, P=0.09; Qwen3 faithfulness \u0394=-0.24, P<0.001.",
+     "quote": "RAG significantly improved Qwen3 accuracy (\u0394=+0.44, P<0.001) but not DeepSeek accuracy (\u0394=+0.21, P=0.09), and the model-by-retrieval interaction for accuracy was not significant."
+    },
+    {
+     "rec_id": "R487",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "fabricated PubMed identifiers",
+     "effect": "236 question-level instances, 187 unique PMIDs; 100% existence rate, zero fabricated references.",
+     "quote": "All PMIDs retrieved by the RAG arm existed in PubMed (236 question-level instances, 187 unique; 100% existence rate, zero fabricated references)."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "unsafe high-risk answers",
+     "effect": "DeepSeek RAG had failing safety scores (\u22642) on six high-risk questions.",
+     "quote": "Moreover, on DeepSeek, RAG received failing safety scores (\u22642) on six high-risk questions ( Table 3 ) (epidural drug combinations, sedative identification, drug interactions), indicating that retrieval failed to prevent\u2014and sometimes accompanied\u2014unsafe outputs in high-risk scenarios."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "vignette_simulation",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 50,
+   "sample_unit": "questions",
+   "models_evaluated": [
+    "Qwen3-VL-8B",
+    "DeepSeek-R1-Distill-Llama-8B"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "clinical accuracy, patient safety, and faithfulness",
+     "effect": "RAG improved Qwen3 accuracy (\u0394=+0.44, P<0.001) but not DeepSeek (\u0394=+0.21, P=0.09); safety showed no significant benefit; faithfulness decreased on Qwen3 (\u0394=-0.24, P<0.001).",
+     "quote": "In the two evaluated 8B models, using the present 50-question benchmark and IBD-anchored retrieval corpus, PubMed-based retrieval achieved source-existence authenticity but did not consistently improve clinical accuracy, safety, or faithfulness."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "China",
+ "sample_unit": "questions",
+ "sample_size": 50,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "DeepSeek-R1-Distill-Llama-8B",
+  "Qwen3-VL-8B"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Expert-rated clinical accuracy, patient safety, and faithfulness with versus without retrieval grounding",
+   "effect": "RAG improved Qwen3 accuracy (+0.44, P<0.001) but not DeepSeek (+0.21, P=0.09); safety showed no reliable benefit; faithfulness fell on Qwen3 (-0.24, P<0.001).",
+   "quote": "RAG produced no stable, consistent improvement across the three content-quality dimensions ( Table 2 and Figure 3 ).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R487",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "Existence of retrieved PubMed identifiers verified against PubMed",
+   "effect": "All retrieved PMIDs existed in PubMed (236 question-level instances, 187 unique; 100% existence rate, zero fabricated references), though existence did not establish relevance or support.",
+   "quote": "All PMIDs retrieved by the RAG arm existed in PubMed (236 question-level instances, 187 unique; 100% existence rate, zero fabricated references).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Output accuracy and safety against guideline-based expert judgment",
+   "effect": "Mean accuracy was 2.85 (RAG) vs 2.64 (baseline) on DeepSeek and 3.64 vs 3.20 on Qwen3; safety did not reliably improve and unsafe outputs persisted.",
+   "quote": "Authentic retrieved sources could still accompany incorrect or unsafe outputs, demonstrating that evidence traceability and clinical reliability are distinct dimensions.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Clinical knowledge accuracy and safety on high-difficulty perioperative IBD questions, including contraindications",
+   "effect": "On DeepSeek, RAG received failing safety scores (\u22642) on six high-risk questions; Q34 RAG safety 1.00 versus baseline 3.67 with off-topic retrieved evidence.",
+   "quote": "Moreover, on DeepSeek, RAG received failing safety scores (\u22642) on six high-risk questions ( Table 3 ) (epidural drug combinations, sedative identification, drug interactions), indicating that retrieval failed to prevent\u2014and sometimes accompanied\u2014unsafe outputs in high-risk scenarios.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R176",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Whether the model abstained when retrieved evidence was insufficient",
+   "effect": "For Q34, the RAG response acknowledged snippets were not directly relevant but still generated a specific, unsafe recommendation (safety 1.00 vs baseline 3.67).",
+   "quote": "At the same time, the model did not recognize the insufficiency of the available evidence and abstain, but generated a specific clinical recommendation from off-target information.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Model-external deterministic safety rule layer for high-risk drugs (proposed, not tested)",
+  "Separating source-existence verification from clinical correctness evaluation in RAG"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42992190",
+ "screen": {
+  "id": "pmid:42992190",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "multimodal_foundation"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation (RAG)",
+  "user": "clinician_or_staff",
+  "reason": "The study evaluates whether adding retrieval-augmented generation (RAG) to existing models improves clinical accuracy, patient safety, and faithfulness compared to matched no-retrieval conditions.",
+  "jev": {
+   "id": "pmid:42992190",
+   "empirical": 0.97,
+   "tests_practice": 0.94,
+   "real_deployment": 0.05
+  }
+ },
+ "oa_retried": false
+}

@@ -1,0 +1,306 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 163,
+   "sample_unit": "retrospective patient cases",
+   "models_evaluated": [
+    "DeepSeek V4 Flash",
+    "Qwen 3.5 397B",
+    "GPT-OSS 120B",
+    "Qwen 2.5 (local)",
+    "Gemma 3n (local)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Balanced accuracy change when adding a fixed retrieval-derived knowledge block (M0) to the full prompt (P1)",
+     "effect": "M0 did not significantly improve P1 for any of the five models after Holm correction.",
+     "quote": "M0 did not significantly improve P1 for any model after correction."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Variation in classification accuracy and undecidable outputs across prompt variants and models",
+     "effect": "Removing the nine-point schema improved Qwen 3.5 vs P1 (p_Holm=0.015); the full prompt sharply degraded Gemma 3n and produced 84 undecidable outputs.",
+     "quote": "Thus, prompt effects were strongly model-dependent, and a longer or retrieval-augmented prompt was not universally safer or more accurate."
+    }
+   ],
+   "unlisted_practices": [
+    "Prompt-component ablation per model to select the optimal prompt design",
+    "Counting undecidable or malformed outputs as errors when evaluating LLM decision support"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 163,
+   "sample_unit": "retrospective cases",
+   "models_evaluated": [
+    "DeepSeek V4 Flash",
+    "Qwen 3.5 397B",
+    "GPT-OSS 120B",
+    "local Qwen 2.5",
+    "local Gemma 3n"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Balanced accuracy across candidate LLMs",
+     "effect": "Best balanced accuracies varied by model/configuration: 0.720 DeepSeek V4 Flash/P0, 0.713 Qwen 3.5 397B/P4, 0.704 GPT-OSS 120B/P4, 0.657 local Qwen 2.5/P2, 0.549 local Gemma 3n/P0.",
+     "quote": "The best observed balanced accuracies were 0.720 for DeepSeek\u00a0V4 Flash/P0, 0.713 for Qwen\u00a03.5\u00a0397B/P4, 0.704 for GPT-OSS\u00a0120B/P4, 0.657 for local Qwen\u00a02.5/P2, and 0.549 for local Gemma\u00a03n/P0."
+    },
+    {
+     "rec_id": "R118",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Validation after prompt modifications",
+     "effect": "Removing the schema improved Qwen 3.5 versus P1 (pHolm=0.015); the full prompt degraded Gemma 3n and produced 84 undecidable outputs.",
+     "quote": "Removing the nine-point schema improved Qwen\u00a03.5 relative to P1 ($p_{\\text{Holm}}=0.015$), whereas the full prompt sharply degraded Gemma\u00a03n and produced 84 undecidable outputs."
+    },
+    {
+     "rec_id": "R499",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Prompt-template variability",
+     "effect": "Removing the schema improved Qwen 3.5 versus P1 (pHolm=0.015); the full prompt degraded Gemma 3n and produced 84 undecidable outputs.",
+     "quote": "Removing the nine-point schema improved Qwen\u00a03.5 relative to P1 ($p_{\\text{Holm}}=0.015$), whereas the full prompt sharply degraded Gemma\u00a03n and produced 84 undecidable outputs."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "LLM screening classification accuracy",
+     "effect": "Even the best observed balanced accuracies ranged from 0.549 to 0.720 across models\u2019 best configurations.",
+     "quote": "The best observed balanced accuracies were 0.720 for DeepSeek\u00a0V4 Flash/P0, 0.713 for Qwen\u00a03.5\u00a0397B/P4, 0.704 for GPT-OSS\u00a0120B/P4, 0.657 for local Qwen\u00a02.5/P2, and 0.549 for local Gemma\u00a03n/P0."
+    }
+   ],
+   "unlisted_practices": [
+    "Adding one fixed, non-personalized MemoRAG-derived knowledge block shared by all patients"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 163,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "DeepSeek V4 Flash",
+    "Qwen 3.5 397B",
+    "GPT-OSS 120B",
+    "Qwen 2.5",
+    "Gemma 3n"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "screening balanced accuracy with retrieval-augmented knowledge block",
+     "effect": "M0 did not significantly improve P1 for any model after Holm correction",
+     "quote": "M0 did not significantly improve P1 for any model after correction."
+    }
+   ],
+   "unlisted_practices": [
+    "Removal or ablation of role and safety prompt blocks",
+    "Removal or ablation of structured nine-point prompt schemas"
+   ]
+  }
+ },
+ "design": "other",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "retrospective patient cases",
+ "sample_size": 163,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "DeepSeek V4 Flash",
+  "GPT-OSS 120B",
+  "Gemma 3n",
+  "Gemma 3n (local)",
+  "Qwen 2.5",
+  "Qwen 2.5 (local)",
+  "Qwen 3.5 397B",
+  "local Gemma 3n",
+  "local Qwen 2.5"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "null_or_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Balanced accuracy change when adding a fixed retrieval-derived knowledge block (M0) to the full prompt (P1)",
+   "effect": "M0 did not significantly improve P1 for any of the five models after Holm correction.",
+   "quote": "M0 did not significantly improve P1 for any model after correction.",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R499",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Variation in classification accuracy and undecidable outputs across prompt variants and models",
+   "effect": "Removing the nine-point schema improved Qwen 3.5 vs P1 (p_Holm=0.015); the full prompt sharply degraded Gemma 3n and produced 84 undecidable outputs.",
+   "quote": "Thus, prompt effects were strongly model-dependent, and a longer or retrieval-augmented prompt was not universally safer or more accurate.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R118",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding one fixed, non-personalized MemoRAG-derived knowledge block shared by all patients",
+  "Counting undecidable or malformed outputs as errors when evaluating LLM decision support",
+  "Prompt-component ablation per model to select the optimal prompt design",
+  "Removal or ablation of role and safety prompt blocks",
+  "Removal or ablation of structured nine-point prompt schemas"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42970647",
+ "screen": {
+  "id": "pmid:42970647",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "prompt guardrails ablation (role/safety block, structured schema, retrieval knowledge block)",
+  "user": "none",
+  "reason": "The study empirically evaluates different prompt design components (including safety/role blocks, structured schema, and fixed retrieval augmentation) across multiple LLMs for biologic screening on retrospective clinical cases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "prompt engineering and safety guardrails ablation"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42970647",
+   "empirical": 0.96,
+   "tests_practice": 0.79,
+   "real_deployment": 0.07
+  }
+ },
+ "oa_retried": false
+}

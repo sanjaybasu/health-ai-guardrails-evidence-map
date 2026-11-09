@@ -1,0 +1,366 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": 2835,
+   "sample_unit": "external patient-day observations",
+   "models_evaluated": [
+    "37-feature logistic regression next-day extubation model",
+    "10-feature respiratory comparator model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Full model AUC versus simpler respiratory comparator on same external data",
+     "effect": "External AUC 0.8490 vs 0.8183, difference 0.0307 (95% CI 0.0030 to 0.0584); internal test difference 0.0636. Full model had worse external Brier score (0.0611 vs 0.0589).",
+     "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims."
+    },
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance on locked external institutional cohort versus internal test cohort",
+     "effect": "Internal test AUC 0.8553; external AUC 0.8490 with frozen thresholds and preprocessing; calibration slope 0.675 and PPV 0.168 externally revealed limitations.",
+     "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Whether calibration and threshold metrics reveal issues hidden by discrimination alone",
+     "effect": "Favorable external AUC 0.8490, but calibration slope 0.675, worse Brier score than comparator, and PPV 0.168 at sensitivity 0.885.",
+     "quote": "Calibration, predictive value, threshold behavior, and missingness can change the interpretation of favorable external discrimination."
+    },
+    {
+     "rec_id": "R509",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance across quartiles of input missingness",
+     "effect": "Full-model AUC declined from 0.8839 in lowest external missingness quartile to 0.7681 in highest.",
+     "quote": "Full-model area under the curve declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Calibration and predictive value when model applied to external institution",
+     "effect": "External calibration slope 0.675; worse Brier score 0.0611 vs 0.0589; PPV 0.168 despite AUC 0.8490.",
+     "quote": "The full model had a worse external Brier score than the comparator, 0.0611 versus 0.0589, and a calibration slope of 0.675."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "openai": {
+   "design": "other",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 3666,
+   "sample_unit": "patient-day observations in internal test and external cohorts",
+   "models_evaluated": [
+    "10-feature respiratory comparator",
+    "37-feature logistic model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "External calibration and prediction error",
+     "effect": "Full-model external Brier was 0.0611 versus comparator 0.0589; calibration slope was 0.675.",
+     "quote": "The full model had a worse external Brier score than the comparator, 0.0611 versus 0.0589, and a calibration slope of 0.675."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance under missingness",
+     "effect": "Full-model AUC declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest.",
+     "quote": "Full-model area under the curve declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "Full model versus comparator",
+     "effect": "External AUROC favored full model, 0.8490 vs 0.8183, but external Brier was worse, 0.0611 vs 0.0589.",
+     "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "External transfer of performance",
+     "effect": "External AUROC was 0.8490, but calibration slope was 0.675 and PPV at the frozen threshold was 0.168.",
+     "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 3666,
+   "sample_unit": "patient-day observations",
+   "models_evaluated": [
+    "37-feature logistic model",
+    "10-feature respiratory comparator"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external calibration error and calibration slope",
+     "effect": "worse external Brier score (0.0611 vs 0.0589 comparator) and calibration slope of 0.675 despite high AUC",
+     "quote": "The full model had a worse external Brier score than the comparator, 0.0611 versus 0.0589, and a calibration slope of 0.675."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "discrimination stratified by input missingness",
+     "effect": "external AUC dropped from 0.8839 in lowest missingness quartile to 0.7681 in highest quartile",
+     "quote": "Full-model area under the curve declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "external patient-day observations",
+ "sample_size": 3666,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "10-feature respiratory comparator",
+  "10-feature respiratory comparator model",
+  "37-feature logistic model",
+  "37-feature logistic regression next-day extubation model"
+ ],
+ "links": [
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 0.5,
+   "outcome": "Calibration and predictive value when model applied to external institution",
+   "effect": "External calibration slope 0.675; worse Brier score 0.0611 vs 0.0589; PPV 0.168 despite AUC 0.8490.",
+   "quote": "The full model had a worse external Brier score than the comparator, 0.0611 versus 0.0589, and a calibration slope of 0.675.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "External calibration and prediction error",
+   "effect": "Full-model external Brier was 0.0611 versus comparator 0.0589; calibration slope was 0.675.",
+   "quote": "The full model had a worse external Brier score than the comparator, 0.0611 versus 0.0589, and a calibration slope of 0.675.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance under missingness",
+   "effect": "Full-model AUC declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest.",
+   "quote": "Full-model area under the curve declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Full model AUC versus simpler respiratory comparator on same external data",
+   "effect": "External AUC 0.8490 vs 0.8183, difference 0.0307 (95% CI 0.0030 to 0.0584); internal test difference 0.0636. Full model had worse external Brier score (0.0611 vs 0.0589).",
+   "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance on locked external institutional cohort versus internal test cohort",
+   "effect": "Internal test AUC 0.8553; external AUC 0.8490 with frozen thresholds and preprocessing; calibration slope 0.675 and PPV 0.168 externally revealed limitations.",
+   "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R509",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance across quartiles of input missingness",
+   "effect": "Full-model AUC declined from 0.8839 in lowest external missingness quartile to 0.7681 in highest.",
+   "quote": "Full-model area under the curve declined from 0.8839 in the lowest external missingness quartile to 0.7681 in the highest.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 1.0,
+   "outcome": "Full model versus comparator",
+   "effect": "External AUROC favored full model, 0.8490 vs 0.8183, but external Brier was worse, 0.0611 vs 0.0589.",
+   "quote": "The full model retained external discrimination and exceeded the respiratory comparator, but calibration, positive predictive value, and missingness findings limit readiness claims.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R094",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.33,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 0.67,
+  "population": 1.0
+ },
+ "unlisted_practices": [],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1358366",
+ "screen": {
+  "id": "epmc:PPR1358366",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "external validation with calibration and missingness assessment before deployment",
+  "user": "none",
+  "reason": "Evaluates the readiness and transferability of a clinical predictive model via external validation focusing specifically on calibration, fixed-threshold behavior, and performance degradation across missingness strata.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "external validation of calibration, threshold transferability, and missingness impact"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1358366",
+   "empirical": 0.92,
+   "tests_practice": 0.07,
+   "real_deployment": 0.06
+  }
+ },
+ "oa_retried": false
+}
