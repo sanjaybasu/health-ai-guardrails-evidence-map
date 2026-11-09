@@ -1,0 +1,282 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic",
+    "generative_llm"
+   ],
+   "country": "Germany",
+   "sample_size": 1974,
+   "sample_unit": "breast MRI examinations",
+   "models_evaluated": [
+    "pix2pix GAN (vCE-all)",
+    "pix2pix GAN (vCE-clean)",
+    "DenseNet121 artifact classifier"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "vCE performance under DWI input artifacts (perturbed/degraded inputs) at inference",
+     "effect": "Whole-image metrics largely insensitive to artifact severity; lesion MSE rose with LI artifact percentage (rho=0.478, p=0.025, n=12 lesions). HI associations not reproduced in restricted analysis.",
+     "quote": "In contrast, post-hoc normalized lesion MSE showed a moderate positive association with artifact percentage for LI artifacts in the vCE-clean network when restricting the analysis to lesions with only strong-artifact-affected lesions ( n = 12 cases) (Spearman \u03c1 = 0.478, p = 0.025), noting that this analysis was based on a very small subset, as shown in Fig. 7 ."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance differences between two MRI scanners (acquisition devices)",
+     "effect": "Whole-image SSIM significantly higher on Vida than Skyra Fit (both p<0.001); e.g., vCE-clean 0.868 vs 0.825 SSIM; lesion-based performance largely consistent across scanners.",
+     "quote": "Independent of the model, examinations acquired on the MAGNETOM Vida demonstrated significantly higher whole-image SSIM than those acquired on the MAGNETOM Skyra Fit (both p < 0.001)."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Effect of poor-quality (artifact-laden) DWI inputs on vCE output reliability",
+     "effect": "Severe low-intensity DWI artifacts were associated with higher lesion-based error (lesion MSE rho=0.478 in restricted analysis); authors suggest automated input quality-control step; artifact prevalence 11% severe slices.",
+     "quote": "Furthermore, automated detection of poor DWI image quality or severe artifacts during or immediately after image acquisition and before vCE synthesis could represent a useful quality-control step within future AI-augmented (semi-)automated imaging workflows."
+    }
+   ],
+   "unlisted_practices": [
+    "Excluding artifact-affected slices from training data to improve model robustness (small SSIM gain, no perceived quality gain)"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 1974,
+   "sample_unit": "breast MRI examinations",
+   "models_evaluated": [
+    "pix2pix 2D-GAN vCE-all",
+    "pix2pix 2D-GAN vCE-clean"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Artifact severity versus vCE performance",
+     "effect": "LI artifacts raised lesion MSE in restricted analysis (n = 12; vCE-clean Spearman \u03c1 = 0.478, p = 0.025).",
+     "quote": "In contrast, post-hoc normalized lesion MSE showed a moderate positive association with artifact percentage for LI artifacts in the vCE-clean network when restricting the analysis to lesions with only strong-artifact-affected lesions ( n = 12 cases) (Spearman \u03c1 = 0.478, p = 0.025), noting that this analysis was based on a very small subset, as shown in Fig. 7 ."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Poor-quality DWI input and lesion error",
+     "effect": "LI artifact percentage had a main effect on normalized lesion MSE (p = 0.037); network version and interaction were not significant (p = 0.84, 0.88).",
+     "quote": "ANCOVA analysis for LI artifacts confirmed a significant main effect of artifact percentage on post-hoc normalized lesion MSE ( p = 0.037), while neither network version ( p = 0.84) nor the interaction between artifact percentage and network version ( p = 0.88) was significant."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation by scanner",
+     "effect": "Vida whole-image SSIM exceeded Skyra Fit; vCE-clean 0.868 \u00b1 0.021 vs 0.825 \u00b1 0.025, vCE-all 0.865 \u00b1 0.021 vs 0.813 \u00b1 0.024; both p < 0.001.",
+     "quote": "Independent of the model, examinations acquired on the MAGNETOM Vida demonstrated significantly higher whole-image SSIM than those acquired on the MAGNETOM Skyra Fit (both p < 0.001)."
+    }
+   ],
+   "unlisted_practices": [
+    "Excluding severe DWI artifact-affected slices during vCE model training"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "imaging_diagnostic"
+   ],
+   "country": "Germany",
+   "sample_size": 1974,
+   "sample_unit": "examinations",
+   "models_evaluated": [
+    "pix2pix 2D-GAN (vCE-all)",
+    "pix2pix 2D-GAN (vCE-clean)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "lesion reconstruction error under low-intensity artifacts",
+     "effect": "Significant main effect of artifact percentage on post-hoc normalized lesion MSE (p = 0.037) and moderate positive correlation in vCE-clean restricted to lesions with strong artifacts (Spearman rho = 0.478, p = 0.025).",
+     "quote": "ANCOVA analysis for LI artifacts confirmed a significant main effect of artifact percentage on post-hoc normalized lesion MSE ( p = 0.037), while neither network version ( p = 0.84) nor the interaction between artifact percentage and network version ( p = 0.88) was significant."
+    }
+   ],
+   "unlisted_practices": [
+    "Excluding artifact-affected slices from training data"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Germany",
+ "sample_unit": "breast MRI examinations",
+ "sample_size": 1974,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "technology": [
+  "imaging_diagnostic"
+ ],
+ "models_evaluated": [
+  "DenseNet121 artifact classifier",
+  "pix2pix 2D-GAN (vCE-all)",
+  "pix2pix 2D-GAN (vCE-clean)",
+  "pix2pix 2D-GAN vCE-all",
+  "pix2pix 2D-GAN vCE-clean",
+  "pix2pix GAN (vCE-all)",
+  "pix2pix GAN (vCE-clean)"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "vCE performance under DWI input artifacts (perturbed/degraded inputs) at inference",
+   "effect": "Whole-image metrics largely insensitive to artifact severity; lesion MSE rose with LI artifact percentage (rho=0.478, p=0.025, n=12 lesions). HI associations not reproduced in restricted analysis.",
+   "quote": "In contrast, post-hoc normalized lesion MSE showed a moderate positive association with artifact percentage for LI artifacts in the vCE-clean network when restricting the analysis to lesions with only strong-artifact-affected lesions ( n = 12 cases) (Spearman \u03c1 = 0.478, p = 0.025), noting that this analysis was based on a very small subset, as shown in Fig. 7 .",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance differences between two MRI scanners (acquisition devices)",
+   "effect": "Whole-image SSIM significantly higher on Vida than Skyra Fit (both p<0.001); e.g., vCE-clean 0.868 vs 0.825 SSIM; lesion-based performance largely consistent across scanners.",
+   "quote": "Independent of the model, examinations acquired on the MAGNETOM Vida demonstrated significantly higher whole-image SSIM than those acquired on the MAGNETOM Skyra Fit (both p < 0.001).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Effect of poor-quality (artifact-laden) DWI inputs on vCE output reliability",
+   "effect": "Severe low-intensity DWI artifacts were associated with higher lesion-based error (lesion MSE rho=0.478 in restricted analysis); authors suggest automated input quality-control step; artifact prevalence 11% severe slices.",
+   "quote": "Furthermore, automated detection of poor DWI image quality or severe artifacts during or immediately after image acquisition and before vCE synthesis could represent a useful quality-control step within future AI-augmented (semi-)automated imaging workflows.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Excluding artifact-affected slices from training data",
+  "Excluding artifact-affected slices from training data to improve model robustness (small SSIM gain, no perceived quality gain)",
+  "Excluding severe DWI artifact-affected slices during vCE model training"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:42977908",
+ "screen": {
+  "id": "pmid:42977908",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "imaging_diagnostic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "image quality control (artifact exclusion in training and artifact screening at inference)",
+  "user": "clinician_or_staff",
+  "reason": "The study empirically tests the effect of artifact detection and exclusion (input quality control) during training and inference on the robustness and performance of a generative AI model for virtual contrast-enhanced breast MRI.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "input image quality control / artifact filtering during training and inference"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "pmid:42977908",
+   "empirical": 0.97,
+   "tests_practice": 0.41,
+   "real_deployment": 0.06
+  }
+ },
+ "oa_retried": false
+}

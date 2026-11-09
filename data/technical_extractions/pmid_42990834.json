@@ -1,0 +1,55 @@
+{
+ "id": "pmid:42990834",
+ "families": [
+  "grounding_retrieval",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T026",
+   "comparator_used": "Baseline LLM (GPT-4o) without retrieval",
+   "finding": "favours_control",
+   "outcome": "Clinician-rated correctness of guideline-based CKD answers",
+   "effect": "RAG 76.6% vs baseline LLM 70.8%; GraphRAG 75.6%",
+   "tradeoff": "All retrieval-based methods were constrained by the scope of the indexed guideline.",
+   "quote": "RAG achieved higher clinician-rated correctness than the baseline LLM (76.6% vs 70.8%), with GraphRAG showing a similar improvement (75.6%).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T017",
+   "comparator_used": "Vector-indexed RAG pipeline (and baseline LLM)",
+   "finding": "mixed",
+   "outcome": "Clinician-rated correctness, patient specificity and clarity",
+   "effect": "GraphRAG correctness 75.6% vs vector RAG 76.6%; GraphRAG gave the most patient-specific responses but no corresponding gain in correctness",
+   "tradeoff": "GraphRAG outputs were substantially longer with reduced clarity; the specificity-clarity trade-off was largely length-driven.",
+   "quote": "RAG showed higher clinician-rated correctness, while GraphRAG improved patient specificity without a corresponding gain in correctness.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T031",
+   "comparator_used": "Clinician-led expert evaluation",
+   "finding": "mixed",
+   "outcome": "Agreement between LLM-as-Judge and clinician ratings",
+   "effect": "Cohen's kappa 0.13-0.97 depending on task type, lower for open-ended tasks",
+   "tradeoff": "Poor agreement on open-ended tasks, so calibrated evaluation frameworks are needed.",
+   "quote": "Agreement between clinician and LLM-based evaluation varied by task type (Cohen's kappa 0.13-0.97), with lower agreement for open-ended tasks.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "retrieval grounding (RAG/GraphRAG) added to baseline LLM"
+}

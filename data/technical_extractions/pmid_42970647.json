@@ -1,0 +1,42 @@
+{
+ "id": "pmid:42970647",
+ "families": [
+  "grounding_retrieval",
+  "model_choice_adaptation",
+  "prompting"
+ ],
+ "links": [
+  {
+   "control_id": "T063",
+   "comparator_used": "P1 full role/safety/structured nine-point prompt with the nine-point schema, compared against P4 with the nine-point schema removed.",
+   "finding": "favours_comparator",
+   "outcome": "Balanced accuracy and output reliability.",
+   "effect": "Removing the schema improved Qwen 3.5 relative to P1 with $p_{\\text{Holm}}=0.015; best observed balanced accuracy for Qwen 3.5 397B/P4 was 0.713; the full prompt produced 84 undecidable Gemma 3n outputs.",
+   "tradeoff": "The full prompt sharply degraded Gemma 3n and produced 84 undecidable outputs.",
+   "quote": "Removing the nine-point schema improved Qwen\u00a03.5 relative to P1 ($p_{\\text{Holm}}=0.015$), whereas the full prompt sharply degraded Gemma\u00a03n and produced 84 undecidable outputs.",
+   "finding_agreement": 0.67,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "control_id": "T026",
+   "comparator_used": "P1 full prompt without retrieval (no knowledge block)",
+   "finding": "no_clear_difference",
+   "outcome": "Balanced accuracy in CRSwNP biologic eligibility screening",
+   "effect": "M0 (P1 plus one fixed MemoRAG-derived knowledge block) did not significantly improve on P1 for any model after Holm correction.",
+   "tradeoff": "",
+   "quote": "M0 did not significantly improve P1 for any model after correction.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "setting": "offline_or_simulated",
+ "design_hint": "prompt guardrails ablation (role/safety block, structured schema, retrieval knowledge block)"
+}

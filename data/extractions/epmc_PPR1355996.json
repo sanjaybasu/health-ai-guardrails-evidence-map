@@ -1,0 +1,98 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "not reported",
+ "sample_size": 330,
+ "sample_unit": "benchmark items (30 NOHARM v2 public cases)",
+ "models_evaluated": [
+  "Grok 4.7",
+  "GPT-5.6 Terra",
+  "12 unnamed language models in total, 5 of them also tested with a structured instruction"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R499",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Severity-weighted F1 with versus without a structured instruction requesting a complete plan",
+   "effect": "Instruction raised F1 by 0.14 on average [0.09, 0.20] and improved 4 of 5 models. Between-model SD halved (0.17 to 0.09). One model added harmful options (+0.13 per item).",
+   "quote": "The instruction raised F1 by 0.14 on average [0.09, 0.20] and improved 4 of 5 models, most for the tersest (Grok 4.7, 0.354 to 0.633; GPT-5.6 Terra, 0.678 to 0.853).",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R097",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Dependence of benchmark scores on prompt configuration rather than model knowledge",
+   "effect": "Three instructed models exceeded the best uninstructed score (0.764). Between-model SD fell from 0.17 to 0.09, so uninstructed rankings partly reflect how much a model volunteers.",
+   "quote": "On this benchmark, an uninstructed score reflects how much a model volunteers, not only what it knows.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Reporting benchmark scores under a standard structured instruction alongside uninstructed scores",
+  "Checking what a structured instruction adds, including harmful options, before ranking models"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1355996",
+ "screen": {
+  "id": "epmc:PPR1355996",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "structured prompt instruction requesting complete plan (prompt guardrail) with review of added actions",
+  "user": "none",
+  "reason": "Empirical benchmark evaluation measuring the safety and completeness impact of a prompt engineering/instruction practice compared to uninstructed prompting on clinical consult cases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "structured prompt design / instruction framing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1355996",
+   "empirical": 0.95,
+   "tests_practice": 0.38,
+   "real_deployment": 0.02
+  }
+ },
+ "oa_retried": false
+}

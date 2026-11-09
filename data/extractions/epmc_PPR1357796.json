@@ -1,0 +1,328 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "cross_sectional_or_descriptive",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "multimodal_foundation",
+    "imaging_diagnostic"
+   ],
+   "country": "Multinational (four continents; incl. Austria-funded, US ED-BWH cohort)",
+   "sample_size": 5400000,
+   "sample_unit": "ECGs",
+   "models_evaluated": [
+    "ECGFounder",
+    "xECG",
+    "ECG-FM",
+    "DeepECG-SSL"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": true,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Worst-group AUROC gap across age, sex, race subgroups for ECG foundation models",
+     "effect": "Median worst-group AUROC gap 0.028 for age vs 0.004 (sex) and 0.016 (race); age exceeded sex in 97% of results; ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575.",
+     "quote": "Disparities concentrated on age, not sex or race (median worst-group AUROC gap 0.028  vs 0.004 and 0.016; age exceeded sex in 97% of results) and replicated externally (ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Whether post-hoc correction, more labelled data, comorbidity exclusion, or low-rank fine-tuning closes age disparity",
+     "effect": "No remedy closed the age gap; low-rank adaptation changed the gap by \u22120.007 to \u22120.004.",
+     "quote": "No remedy closed it (low-rank adaptation: \u22120.007 to \u22120.004)."
+    },
+    {
+     "rec_id": "R131",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance variation across held-out external cohorts and sites",
+     "effect": "Age-related gap replicated externally across six held-out cohorts; ED-BWH MACE AUROC 0.81\u20130.90 under 40 vs 0.64\u20130.71 at \u226575.",
+     "quote": "Disparities concentrated on age, not sex or race (median worst-group AUROC gap 0.028  vs 0.004 and 0.016; age exceeded sex in 97% of results) and replicated externally (ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575)."
+    },
+    {
+     "rec_id": "R094",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Fixed pooled threshold performance by age subgroup masked by headline metric",
+     "effect": "Authors state a threshold fixed on the pooled population operates at a worse point for older patients than the headline metric implies; age-stratified reporting recommended.",
+     "quote": "Fairness evaluation of ECG foundation models should prioritise age and report age-stratified performance as a primary result, because a threshold fixed on the pooled population operates at a worse point for older patients than the headline metric implies."
+    }
+   ],
+   "unlisted_practices": [
+    "Include untrained-network and classical-measurement baselines before attributing a performance gap to a model",
+    "Use age-specific thresholds and recalibration for ECG AI"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "any_ai",
+    "predictive_risk"
+   ],
+   "country": "Multiple countries on four continents; specific countries not reported",
+   "sample_size": 5400000,
+   "sample_unit": "ECGs",
+   "models_evaluated": [
+    "ECGFounder",
+    "xECG",
+    "ECG-FM",
+    "DeepECG-SSL",
+    "untrained copies of each network",
+    "logistic regression on classical ECG measurements"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Demographic AUROC gaps across ECG foundation models",
+     "effect": "Median worst-group AUROC gap: age 0.028 vs sex 0.004 and race 0.016; ED-BWH MACE AUROC 0.81\u20130.90 under 40 vs 0.64\u20130.71 at \u226575.",
+     "quote": "Disparities concentrated on age, not sex or race (median worst-group AUROC gap 0.028  vs 0.004 and 0.016; age exceeded sex in 97% of results) and replicated externally (ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575)."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "Age AUROC gap after mitigation attempts",
+     "effect": "No remedy closed the gap; low-rank adaptation changed it by \u22120.007 to \u22120.004.",
+     "quote": "No remedy closed it (low-rank adaptation: \u22120.007 to \u22120.004)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Foundation models versus untrained and classical baselines",
+     "effect": "Untrained copies r=0.81 over 102 pairs and classical measurements \u03c1=0.90 reproduced gaps; pretraining raised AUROC +0.067 without changing them.",
+     "quote": "Untrained copies (r=0.81, 102 pairs) and classical measurements (  \u03c1 =0.90) reproduced the endpoint-specific gaps, and pretraining raised AUROC (+0.067) without changing them."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "International",
+   "sample_size": 5400000,
+   "sample_unit": "ECGs",
+   "models_evaluated": [
+    "ECGFounder",
+    "xECG",
+    "ECG-FM",
+    "DeepECG-SSL"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "age-related AUROC disparity across ECG endpoints",
+     "effect": "Median worst-group AUROC gap was 0.028 for age vs 0.004 for sex and 0.016 for race; ED-BWH 30-day MACE AUROC was 0.81\u20130.90 under 40 years vs 0.64\u20130.71 at \u226575.",
+     "quote": "Disparities concentrated on age, not sex or race (median worst-group AUROC gap 0.028  vs 0.004 and 0.016; age exceeded sex in 97% of results) and replicated externally (ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575)."
+    }
+   ],
+   "unlisted_practices": [
+    "Untrained network baseline to diagnose bias origin",
+    "Classical feature regression baseline to diagnose bias origin",
+    "Low-rank adaptation fine-tuning for demographic disparity mitigation",
+    "Comorbidity exclusion for demographic disparity mitigation",
+    "Post-hoc demographic correction"
+   ]
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Multinational (four continents; incl. Austria-funded, US ED-BWH cohort)",
+ "sample_unit": "ECGs",
+ "sample_size": 5400000,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "technology": [
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "DeepECG-SSL",
+  "ECG-FM",
+  "ECGFounder",
+  "logistic regression on classical ECG measurements",
+  "untrained copies of each network",
+  "xECG"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Worst-group AUROC gap across age, sex, race subgroups for ECG foundation models",
+   "effect": "Median worst-group AUROC gap 0.028 for age vs 0.004 (sex) and 0.016 (race); age exceeded sex in 97% of results; ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575.",
+   "quote": "Disparities concentrated on age, not sex or race (median worst-group AUROC gap 0.028  vs 0.004 and 0.016; age exceeded sex in 97% of results) and replicated externally (ED-BWH 30-day MACE AUROC 0.81\u20130.90 under 40 years, 0.64\u20130.71 at \u226575).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "against_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Whether post-hoc correction, more labelled data, comorbidity exclusion, or low-rank fine-tuning closes age disparity",
+   "effect": "No remedy closed the age gap; low-rank adaptation changed the gap by \u22120.007 to \u22120.004.",
+   "quote": "No remedy closed it (low-rank adaptation: \u22120.007 to \u22120.004).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R094",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Fixed pooled threshold performance by age subgroup masked by headline metric",
+   "effect": "Authors state a threshold fixed on the pooled population operates at a worse point for older patients than the headline metric implies; age-stratified reporting recommended.",
+   "quote": "Fairness evaluation of ECG foundation models should prioritise age and report age-stratified performance as a primary result, because a threshold fixed on the pooled population operates at a worse point for older patients than the headline metric implies.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Foundation models versus untrained and classical baselines",
+   "effect": "Untrained copies r=0.81 over 102 pairs and classical measurements \u03c1=0.90 reproduced gaps; pretraining raised AUROC +0.067 without changing them.",
+   "quote": "Untrained copies (r=0.81, 102 pairs) and classical measurements (  \u03c1 =0.90) reproduced the endpoint-specific gaps, and pretraining raised AUROC (+0.067) without changing them.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R131",
+   "relation": "documents_hazard",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.33,
+  "sample_unit": 1.0,
+  "sample_size": 1.0,
+  "population": 0.96
+ },
+ "unlisted_practices": [
+  "Classical feature regression baseline to diagnose bias origin",
+  "Comorbidity exclusion for demographic disparity mitigation",
+  "Include untrained-network and classical-measurement baselines before attributing a performance gap to a model",
+  "Low-rank adaptation fine-tuning for demographic disparity mitigation",
+  "Post-hoc demographic correction",
+  "Untrained network baseline to diagnose bias origin",
+  "Use age-specific thresholds and recalibration for ECG AI"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1357796",
+ "screen": {
+  "id": "epmc:PPR1357796",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "multimodal_foundation",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "post-hoc correction and fine-tuning for subgroup disparity mitigation",
+  "user": "none",
+  "reason": "Empirical study testing demographic disparities across four ECG foundation models and evaluating multiple bias mitigation/remedy practices (post-hoc correction, data filtering, low-rank fine-tuning) on fairness and performance.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "subgroup disparity mitigation methods"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1357796",
+   "empirical": 0.97,
+   "tests_practice": 0.37,
+   "real_deployment": 0.07
+  }
+ },
+ "oa_retried": false
+}
