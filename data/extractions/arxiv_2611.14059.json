@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "patient",
+ "technology": [
+  "generative_llm"
+ ],
+ "country": "Not reported",
+ "sample_size": 41,
+ "sample_unit": "question-answer pairs (first-aid questions)",
+ "models_evaluated": [
+  "HandsOnAid (Gemma 2B, 4-bit QLoRA fine-tuned)",
+  "Gemma 2B base",
+  "8-bit fine-tuned Gemma 2B",
+  "fine-tuned 4-bit with length floor",
+  "fine-tuned 4-bit with safety gate",
+  "fine-tuned 4-bit with retrieval",
+  "GPT-5.6 Sol (judge)",
+  "Claude Opus 5 (judge)",
+  "DeepSeek V4 Pro (judge)",
+  "GLM-5.3 (judge)"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Mean 0-5 rubric score of first-aid answers with versus without retrieval grounding",
+   "effect": "Fine-tuned 4-bit model with retrieval scored highest at 2.51 out of 5, versus 2.34 for the fine-tuned model without retrieval (a modest gain).",
+   "quote": "The best configuration scored 2.51 out of 5 which was the fine-tuned 4-bit model with retrieval.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R490",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "outcome": "Coverage of guideline-required first-aid details in training data and answer scores",
+   "effect": "Mean scores were low (best 2.51/5). A keyword audit found limited training-corpus coverage of ANZCOR details required by the rubric.",
+   "quote": "A keyword audit found limited coverage of several details of ANZCOR guidelines in the training corpus, that are required by the rubric, which suggests that missing information in the training data could be a cause of the low scores.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Domain-specific fine-tuning (QLoRA) of a small language model on a first-aid corpus",
+  "LLM-as-judge scoring with hidden control answers to check judge reliability",
+  "Offline on-device deployment of a small language model with latency measurement",
+  "Length floor on generated answers"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2611.14059",
+ "screen": {
+  "id": "arxiv:2611.14059",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "safety gate and retrieval grounding",
+  "user": "patient",
+  "reason": "Empirically tests and compares safety guardrail configurations (safety gate, length floor, retrieval-augmented generation) for an offline first-aid LLM using guideline-based safety scoring and clinician evaluation.",
+  "jev": {
+   "id": "arxiv:2611.14059",
+   "empirical": 0.95,
+   "tests_practice": 0.9,
+   "real_deployment": 0.04
+  }
+ },
+ "oa_retried": false
+}

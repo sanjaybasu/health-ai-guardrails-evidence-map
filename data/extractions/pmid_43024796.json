@@ -1,0 +1,287 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "prospective_with_comparator",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "China",
+   "sample_size": 161,
+   "sample_unit": "RoB records from recently published RCTs",
+   "models_evaluated": [
+    "TRoB-1 (fine-tuned Gemma 2-9B-Instruct)",
+    "Gemma 2-9B-Instruct base"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Accuracy of clinician-verified vs raw LLM risk-of-bias judgments against reference standard",
+     "effect": "Raw TRoB-1 accuracy 73.3%-73.9%; after verification 82.0%-84.5%. Verification did not change any correct judgment to incorrect; clinicians corrected 13 and 18 incorrect judgments.",
+     "quote": "After verification, accuracy ranged from 82.0% (n=132) to 84.5% (n=136) and macro-F1 from 0.709 to 0.776."
+    },
+    {
+     "rec_id": "R105",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Performance of clinicians using AI-assisted workflow versus raw AI output; overreliance",
+     "effect": "Clinician-verified accuracy 82.0%-84.5% vs raw TRoB-1 73.3%-73.9%; high-RoB F1 rose from 0.600 to 0.784 and 0.571 to 0.821; no correct judgments made incorrect.",
+     "quote": "The F1-score for judgments of high-RoB increased from 0.600 to 0.784 for clinician 1 and from 0.571 to 0.821 for clinician 2."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Fine-tuned model accuracy compared with base model on same data",
+     "effect": "Raw TRoB-1 accuracy 73.3% to 73.9% versus 52.2% to 60.2% for the Gemma 2 base model.",
+     "quote": "In independent clinician-assisted assessments using the same workflow, raw TRoB-1 accuracy ranged from 73.3% (n=118) to 73.9% (n=119), compared with 52.2% (n=84) to 60.2% (n=97) for the Gemma 2 base model."
+    }
+   ],
+   "unlisted_practices": [
+    "Task-specific fine-tuning of open-weight LLM on domain data",
+    "Evidence-linked outputs with supporting quotations from source passages",
+    "Locally hosted web interface for reviewer verification"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 161,
+   "sample_unit": "risk-of-bias records",
+   "models_evaluated": [
+    "TRoB-1",
+    "Gemma 2 base workflow",
+    "Gemma 2-9B-Instruct"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "candidate versus base-model accuracy",
+     "effect": "Raw TRoB-1 accuracy was 73.3% (n=118) to 73.9% (n=119) versus Gemma 2 base 52.2% (n=84) to 60.2% (n=97).",
+     "quote": "In independent clinician-assisted assessments using the same workflow, raw TRoB-1 accuracy ranged from 73.3% (n=118) to 73.9% (n=119), compared with 52.2% (n=84) to 60.2% (n=97) for the Gemma 2 base model."
+    },
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "clinician verification of AI judgments",
+     "effect": "Verification raised accuracy to 82.0% (n=132) to 84.5% (n=136); clinicians corrected 13 and 18 initially incorrect judgments.",
+     "quote": "Clinician 1 corrected 13 initially incorrect judgments and clinician 2 corrected 18."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "AI RoB judgment accuracy",
+     "effect": "Raw TRoB-1 accuracy was only 73.3% (n=118) to 73.9% (n=119); Gemma 2 base was 52.2% (n=84) to 60.2% (n=97).",
+     "quote": "In independent clinician-assisted assessments using the same workflow, raw TRoB-1 accuracy ranged from 73.3% (n=118) to 73.9% (n=119), compared with 52.2% (n=84) to 60.2% (n=97) for the Gemma 2 base model."
+    }
+   ],
+   "unlisted_practices": [
+    "Task-specific supervised fine-tuning of Gemma 2-9B-Instruct for Cochrane RoB 1 assessment"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 161,
+   "sample_unit": "records",
+   "models_evaluated": [
+    "TRoB-1",
+    "Gemma 2-9B-Instruct",
+    "Gemma 2 base"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R162",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "accuracy of risk of bias assessments after clinician verification",
+     "effect": "accuracy ranged from 82.0% (n=132) to 84.5% (n=136) and macro-F1 from 0.709 to 0.776",
+     "quote": "After verification, accuracy ranged from 82.0% (n=132) to 84.5% (n=136) and macro-<i>F</i><sub>1</sub> from 0.709 to 0.776."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "RoB records from recently published RCTs",
+ "sample_size": 161,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "Gemma 2 base",
+  "Gemma 2 base workflow",
+  "Gemma 2-9B-Instruct",
+  "Gemma 2-9B-Instruct base",
+  "TRoB-1",
+  "TRoB-1 (fine-tuned Gemma 2-9B-Instruct)"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Fine-tuned model accuracy compared with base model on same data",
+   "effect": "Raw TRoB-1 accuracy 73.3% to 73.9% versus 52.2% to 60.2% for the Gemma 2 base model.",
+   "quote": "In independent clinician-assisted assessments using the same workflow, raw TRoB-1 accuracy ranged from 73.3% (n=118) to 73.9% (n=119), compared with 52.2% (n=84) to 60.2% (n=97) for the Gemma 2 base model.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R162",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "clinician verification of AI judgments",
+   "effect": "Verification raised accuracy to 82.0% (n=132) to 84.5% (n=136); clinicians corrected 13 and 18 initially incorrect judgments.",
+   "quote": "Clinician 1 corrected 13 initially incorrect judgments and clinician 2 corrected 18.",
+   "linked_by": [
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R105",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of clinicians using AI-assisted workflow versus raw AI output; overreliance",
+   "effect": "Clinician-verified accuracy 82.0%-84.5% vs raw TRoB-1 73.3%-73.9%; high-RoB F1 rose from 0.600 to 0.784 and 0.571 to 0.821; no correct judgments made incorrect.",
+   "quote": "The F1-score for judgments of high-RoB increased from 0.600 to 0.784 for clinician 1 and from 0.571 to 0.821 for clinician 2.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Evidence-linked outputs with supporting quotations from source passages",
+  "Locally hosted web interface for reviewer verification",
+  "Task-specific fine-tuning of open-weight LLM on domain data",
+  "Task-specific supervised fine-tuning of Gemma 2-9B-Instruct for Cochrane RoB 1 assessment"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:43024796",
+ "screen": {
+  "id": "pmid:43024796",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "clinician review of outputs",
+  "user": "clinician_or_staff",
+  "reason": "The study directly evaluates human-in-the-loop review by comparing raw LLM outputs to clinician-verified outputs for risk of bias assessment in systematic reviews.",
+  "jev": {
+   "id": "pmid:43024796",
+   "empirical": 0.97,
+   "tests_practice": 0.96,
+   "real_deployment": 0.17
+  }
+ },
+ "oa_retried": false
+}
