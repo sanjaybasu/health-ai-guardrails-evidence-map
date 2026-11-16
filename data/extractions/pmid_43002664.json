@@ -1,0 +1,296 @@
+{
+ "route": "fast_panel",
+ "fulltext": true,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "China",
+   "sample_size": 444,
+   "sample_unit": "patients (CT reports); plus 62 perioperative questions",
+   "models_evaluated": [
+    "GPT-5.4 Mini",
+    "Gemini-3-flash-preview",
+    "DeepSeek-V3.2",
+    "PancreaGuide (RAG agent on each backbone)"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Expert-rated perioperative consultation quality with vs without RAG knowledge base grounding",
+     "effect": "PancreaGuide-integrated models scored higher on all 5 dimensions; Gemini+ mean 3.88 (SD 0.38) vs DeepSeek base 2.31 (SD 0.58); largest gains in completeness and robustness. No component ablation.",
+     "quote": "As shown in Figure 6 A, PancreaGuide-integrated models received higher expert-rated scores than their corresponding base models across all evaluated dimensions."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "CT report interpretation accuracy against surgery-based proxy reference, base vs integrated",
+     "effect": "Accuracy rose from 80.0% to 85.8% (ChatGPT), 67.6% to 74.3% (DeepSeek), 80.9% to 87.4% (Gemini); 95% CIs generally overlapped.",
+     "quote": "After integration, accuracy increased to 85.8% (381/444) for ChatGPT+, 74.3% (330/444) for DeepSeek+, and 87.4% (388/444) for Gemini+."
+    }
+   ],
+   "unlisted_practices": [
+    "Knowledge-augmented agent framework with structured prompting and task routing to improve LLM performance on CT report interpretation",
+    "Structured error-source analysis of false positives and false negatives"
+   ]
+  },
+  "openai": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "China",
+   "sample_size": 444,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "OpenAI GPT-5.4 Mini / ChatGPT",
+    "Google Gemini-3-flash-preview / Gemini",
+    "DeepSeek-V3.2 / DeepSeek",
+    "ChatGPT+ PancreaGuide",
+    "Gemini+ PancreaGuide",
+    "DeepSeek+ PancreaGuide"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert-rated consultation quality",
+     "effect": "Integrated models scored higher; Gemini+ mean 3.88 (SD 0.38), ChatGPT+ 3.81 (0.36), DeepSeek+ 3.75 (0.35); DeepSeek base 2.31 (0.58).",
+     "quote": "PancreaGuide-integrated models received higher expert-rated scores than their corresponding base models across all evaluated dimensions."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "CT classification errors",
+     "effect": "PancreaGuide-integrated models still produced 233 model-case error events for FP and FN classifications.",
+     "quote": "A total of 233 error events were independently reviewed by 2 senior pancreatic surgeons and assigned to predefined error-source categories."
+    },
+    {
+     "rec_id": "R478",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "error sources from ambiguous inputs",
+     "effect": "Ambiguous vascular involvement accounted for 31.3% of both FN and FP error categories.",
+     "quote": "Ambiguous vascular involvement was the most frequent source of both FN and FP events, accounting for 31.3% of errors in each category."
+    },
+    {
+     "rec_id": "R068",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "standalone resectability interpretation reliability",
+     "effect": "Best integrated model accuracy was 87.4% (388/444), sensitivity 95.9%, specificity 76.9%, leaving false classifications.",
+     "quote": "Gemini+ demonstrated the highest classification accuracy at 87.4% (388/444), with a sensitivity of 95.9% and a specificity of 76.9%."
+    }
+   ],
+   "unlisted_practices": [
+    "Integrated structured prompting, task routing, reranking, and postprocessing as a complete LLM-agent workflow"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "both",
+   "technology": [
+    "generative_llm",
+    "agentic"
+   ],
+   "country": "China",
+   "sample_size": 444,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "OpenAI GPT-5.4 Mini",
+    "Google Gemini-3-flash-preview",
+    "DeepSeek-V3.2"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": true,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "Chinese",
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R482",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "expert-rated perioperative consultation quality across 5 dimensions",
+     "effect": "PancreaGuide integration increased scores across all models (Gemini+ 3.88, ChatGPT+ 3.81, DeepSeek+ 3.75 vs base DeepSeek 2.31); completeness and robustness improved most.",
+     "quote": "In perioperative consultation, PancreaGuide-integrated models received higher expert-rated scores than their corresponding base models across all 5 evaluation dimensions."
+    }
+   ],
+   "unlisted_practices": [
+    "Integrating structured prompting, task routing, and domain knowledge retrieval into a unified agent framework for clinical text interpretation"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "both",
+ "country": "China",
+ "sample_unit": "patients",
+ "sample_size": 444,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": true,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "Chinese",
+  "English"
+ ],
+ "technology": [
+  "agentic",
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "ChatGPT+ PancreaGuide",
+  "DeepSeek+ PancreaGuide",
+  "DeepSeek-V3.2",
+  "DeepSeek-V3.2 / DeepSeek",
+  "GPT-5.4 Mini",
+  "Gemini+ PancreaGuide",
+  "Gemini-3-flash-preview",
+  "Google Gemini-3-flash-preview",
+  "Google Gemini-3-flash-preview / Gemini",
+  "OpenAI GPT-5.4 Mini",
+  "OpenAI GPT-5.4 Mini / ChatGPT",
+  "PancreaGuide (RAG agent on each backbone)"
+ ],
+ "links": [
+  {
+   "rec_id": "R482",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Expert-rated perioperative consultation quality with vs without RAG knowledge base grounding",
+   "effect": "PancreaGuide-integrated models scored higher on all 5 dimensions; Gemini+ mean 3.88 (SD 0.38) vs DeepSeek base 2.31 (SD 0.58); largest gains in completeness and robustness. No component ablation.",
+   "quote": "As shown in Figure 6 A, PancreaGuide-integrated models received higher expert-rated scores than their corresponding base models across all evaluated dimensions.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R478",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 1.0,
+  "setting": 1.0,
+  "user": 0.67,
+  "country": 1.0,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Integrated structured prompting, task routing, reranking, and postprocessing as a complete LLM-agent workflow",
+  "Integrating structured prompting, task routing, and domain knowledge retrieval into a unified agent framework for clinical text interpretation",
+  "Knowledge-augmented agent framework with structured prompting and task routing to improve LLM performance on CT report interpretation",
+  "Structured error-source analysis of false positives and false negatives"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:43002664",
+ "screen": {
+  "id": "pmid:43002664",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "retrieval-augmented generation and structured prompting integration",
+  "user": "clinician_or_staff",
+  "reason": "The study retrospectively evaluates the impact of adding a domain-specific retrieval-augmented generation and structured prompting framework (PancreaGuide) to multiple standard base LLMs on clinical interpretation and consultation safety/quality.",
+  "jev": {
+   "id": "pmid:43002664",
+   "empirical": 0.97,
+   "tests_practice": 0.84,
+   "real_deployment": 0.11
+  }
+ },
+ "oa_retried": false
+}
