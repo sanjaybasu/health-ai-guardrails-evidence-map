@@ -1,0 +1,403 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "South Korea; United States",
+   "sample_size": 3700,
+   "sample_unit": "digestive resection operations (1,909 VitalDB; 1,791 MOVER)",
+   "models_evaluated": [
+    "Qwen3-14B Q4_K_M",
+    "Gemma3-12B Q4_K_M",
+    "logistic regression",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Change in LLM risk estimates under equivalent unit conversion and field reordering",
+     "effect": "Unit conversion changed raw risk by average absolute 0.93 percentage points for Qwen and 6.49 for Gemma; some representation changes improved error, others worsened it.",
+     "quote": "Among 429 MOVER operations with a convertible laboratory value, unit conversion changed raw risk by an average absolute 0.93 percentage points for Qwen (0.75\u20131.14) and 6.49 for Gemma (5.77\u20137.20)."
+    },
+    {
+     "rec_id": "R125",
+     "relation": "tests_guardrail",
+     "finding": "against_practice",
+     "outcome": "External Brier score change after applying source-derived logistic calibration to LLM risk estimates",
+     "effect": "Source calibration increased external Brier scores by 0.01065 for Qwen (0.00791\u20130.01320) and 0.00200 for Gemma (0.00015\u20130.00377), i.e., calibration transfer was unsuccessful.",
+     "quote": "Source calibration increased external Brier scores by 0.01065 for Qwen (95% interval 0.00791\u20130.01320) and 0.00200 for Gemma (0.00015\u20130.00377)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "External AUC of LLMs compared with logistic regression and gradient boosting on same data",
+     "effect": "External AUCs were 0.788 logistic regression, 0.782 gradient boosting, 0.656 Qwen and 0.722 Gemma; LLMs had weaker discrimination than simple models.",
+     "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma."
+    },
+    {
+     "rec_id": "R121",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Performance of models transferred from source institution to external institution",
+     "effect": "External AUC for LLMs was lower (Qwen 0.656, Gemma 0.722) than for conventional models (0.788, 0.782), and calibration transfer failed.",
+     "quote": "In these two quantized models, lower aggregate probability error coexisted with weaker discrimination, unsuccessful calibration transfer and representation-dependent risks."
+    }
+   ],
+   "unlisted_practices": [
+    "Paired testing of LLM risk estimates under equivalent input representations (field order, unit conversion)"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 3700,
+   "sample_unit": "operations/candidates",
+   "models_evaluated": [
+    "Qwen3-14B Q4_K_M",
+    "Gemma3-12B Q4_K_M",
+    "logistic regression",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "external discrimination",
+     "effect": "External AUROC was 0.788 logistic, 0.782 gradient boosting, 0.656 Qwen, and 0.722 Gemma.",
+     "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "risk stability under unit conversion",
+     "effect": "Unit conversion changed raw risk by 0.93 percentage points for Qwen and 6.49 for Gemma.",
+     "quote": "Among 429 MOVER operations with a convertible laboratory value, unit conversion changed raw risk by an average absolute 0.93 percentage points for Qwen (0.75\u20131.14) and 6.49 for Gemma (5.77\u20137.20)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "AI versus simpler models",
+     "effect": "External AUROC was lower for Qwen 0.656 and Gemma 0.722 than logistic 0.788 and gradient boosting 0.782.",
+     "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma."
+    },
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "probability error and discrimination",
+     "effect": "LLMs had raw Brier 0.0699/0.0689, but weaker discrimination; calibration transfer was unsuccessful.",
+     "quote": "In these two quantized models, lower aggregate probability error coexisted with weaker discrimination, unsuccessful calibration transfer and representation-dependent risks."
+    },
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-institutional calibration transfer",
+     "effect": "Source calibration increased external Brier scores by 0.01065 for Qwen and 0.00200 for Gemma.",
+     "quote": "Source calibration increased external Brier scores by 0.01065 for Qwen (95% interval 0.00791\u20130.01320) and 0.00200 for Gemma (0.00015\u20130.00377)."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm",
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": 3700,
+   "sample_unit": "operations",
+   "models_evaluated": [
+    "Qwen3-14B",
+    "Gemma3-12B",
+    "logistic regression",
+    "gradient boosting"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "en"
+   ],
+   "links": [
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "change in raw surgical risk from equivalent unit conversion",
+     "effect": "Unit conversion changed raw risk by an average absolute 0.93 percentage points for Qwen (0.75\u20131.14) and 6.49 for Gemma (5.77\u20137.20).",
+     "quote": "Among 429 MOVER operations with a convertible laboratory value, unit conversion changed raw risk by an average absolute 0.93 percentage points for Qwen (0.75\u20131.14) and 6.49 for Gemma (5.77\u20137.20)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "external discrimination compared to simpler models",
+     "effect": "External AUROC was 0.788 for logistic regression and 0.782 for gradient boosting, compared to 0.656 for Qwen and 0.722 for Gemma.",
+     "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "not reported",
+ "sample_unit": "digestive resection operations (1,909 VitalDB; 1,791 MOVER)",
+ "sample_size": 3700,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English",
+  "en"
+ ],
+ "technology": [
+  "generative_llm",
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "Gemma3-12B",
+  "Gemma3-12B Q4_K_M",
+  "Qwen3-14B",
+  "Qwen3-14B Q4_K_M",
+  "gradient boosting",
+  "logistic regression"
+ ],
+ "links": [
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Change in LLM risk estimates under equivalent unit conversion and field reordering",
+   "effect": "Unit conversion changed raw risk by average absolute 0.93 percentage points for Qwen and 6.49 for Gemma; some representation changes improved error, others worsened it.",
+   "quote": "Among 429 MOVER operations with a convertible laboratory value, unit conversion changed raw risk by an average absolute 0.93 percentage points for Qwen (0.75\u20131.14) and 6.49 for Gemma (5.77\u20137.20).",
+   "linked_by": [
+    "claude",
+    "gemini"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "External AUC of LLMs compared with logistic regression and gradient boosting on same data",
+   "effect": "External AUCs were 0.788 logistic regression, 0.782 gradient boosting, 0.656 Qwen and 0.722 Gemma; LLMs had weaker discrimination than simple models.",
+   "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R121",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Performance of models transferred from source institution to external institution",
+   "effect": "External AUC for LLMs was lower (Qwen 0.656, Gemma 0.722) than for conventional models (0.788, 0.782), and calibration transfer failed.",
+   "quote": "In these two quantized models, lower aggregate probability error coexisted with weaker discrimination, unsuccessful calibration transfer and representation-dependent risks.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R091",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "external discrimination",
+   "effect": "External AUROC was 0.788 logistic, 0.782 gradient boosting, 0.656 Qwen, and 0.722 Gemma.",
+   "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R096",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.5,
+   "outcome": "risk stability under unit conversion",
+   "effect": "Unit conversion changed raw risk by 0.93 percentage points for Qwen and 6.49 for Gemma.",
+   "quote": "Among 429 MOVER operations with a convertible laboratory value, unit conversion changed raw risk by an average absolute 0.93 percentage points for Qwen (0.75\u20131.14) and 6.49 for Gemma (5.77\u20137.20).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "finding": "hazard_mixed",
+   "finding_agreement": 0.5,
+   "outcome": "probability error and discrimination",
+   "effect": "LLMs had raw Brier 0.0699/0.0689, but weaker discrimination; calibration transfer was unsuccessful.",
+   "quote": "In these two quantized models, lower aggregate probability error coexisted with weaker discrimination, unsuccessful calibration transfer and representation-dependent risks.",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "cross-institutional calibration transfer",
+   "effect": "Source calibration increased external Brier scores by 0.01065 for Qwen and 0.00200 for Gemma.",
+   "quote": "Source calibration increased external Brier scores by 0.01065 for Qwen (95% interval 0.00791\u20130.01320) and 0.00200 for Gemma (0.00015\u20130.00377).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "external discrimination compared to simpler models",
+   "effect": "External AUROC was 0.788 for logistic regression and 0.782 for gradient boosting, compared to 0.656 for Qwen and 0.722 for Gemma.",
+   "quote": "External areas under the receiver operating characteristic curve were 0.788 for logistic regression, 0.782 for gradient boosting, 0.656 for Qwen and 0.722 for Gemma.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R125",
+   "relation": "tests_guardrail",
+   "vendors": [
+    "claude"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.33,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Paired testing of LLM risk estimates under equivalent input representations (field order, unit conversion)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "epmc:PPR1368166",
+ "screen": {
+  "id": "epmc:PPR1368166",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm",
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "local calibration transfer and representation-stability testing before deployment",
+  "user": "none",
+  "reason": "Empirically tests deployment practices around language model risk estimates, specifically evaluating the effect of external calibration transfer and input representation stability (field ordering, unit conversions) across multi-institutional surgical databases.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "cross-institutional calibration transfer and representation stability testing"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1368166",
+   "empirical": 0.98,
+   "tests_practice": 0.76,
+   "real_deployment": 0.08
+  }
+ },
+ "oa_retried": false
+}

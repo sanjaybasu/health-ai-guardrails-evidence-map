@@ -1,0 +1,121 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "vignette_simulation",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "technology": [
+  "generative_llm",
+  "speech_ambient"
+ ],
+ "country": "not reported",
+ "sample_size": 20,
+ "sample_unit": "synthetic consultations (15 scripted, 5 acted)",
+ "models_evaluated": [],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R481",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Whether each cited claim in generated notes points to a real transcript line",
+   "effect": "301 of 302 citations pointed to real transcript lines; the one uncited claim was flagged for manual checking. This was an existence check only; faithfulness was not measured.",
+   "quote": "In generated notes, 301 of 302 citations pointed to real transcript lines \u2014 an existence check, with clinical faithfulness unmeasured pending independent rating; the one uncited claim was flagged for manual checking.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R243",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Urgency alarm firing in scripted emergencies versus routine consultations",
+   "effect": "Alarm fired in all 8 scripted emergencies and stayed silent in 6 of 7 routine consultations (1 unnecessary alarm).",
+   "quote": "The urgency alarm fired in all eight scripted emergencies and stayed silent in six of seven routine consultations.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R135",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Defects found in acted consultations in a real room that automated checks missed",
+   "effect": "Five acted consultations surfaced five defects the automated checks had missed, four of them serious; all were fixed and each pinned by a regression test.",
+   "quote": "Five acted consultations surfaced five defects the automated checks had missed, four of them serious; all were fixed, each pinned by a regression test.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R346",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Vulnerabilities found by adversarial security audit before public exposure",
+   "effect": "The audit returned 12 findings, including one critical vulnerability, which was fixed and verified before any public exposure.",
+   "quote": "The security audit returned twelve findings, including one critical vulnerability, fixed and verified before any public exposure.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Fully local, open-source on-device deployment of ambient scribe to keep consultation audio in the room",
+  "Logging whether the reviewing clinician opened cited evidence and review time to make human review measurable"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "epmc:PPR1370714",
+ "screen": {
+  "id": "epmc:PPR1370714",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "speech_ambient",
+   "generative_llm",
+   "agentic"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": false,
+  "practice": "",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates formative safeguards (transcript citation links, urgency alarms, security audit) for an open-source ambient clinical scribe system using simulated/scripted consultations.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "offline_or_simulated",
+   "tests_practice": true,
+   "practice": "citation grounding verification, urgency alarm rules, security audit"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "epmc:PPR1370714",
+   "empirical": 0.91,
+   "tests_practice": 0.17,
+   "real_deployment": 0.12
+  }
+ },
+ "oa_retried": false
+}
