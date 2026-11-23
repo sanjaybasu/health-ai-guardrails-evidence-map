@@ -1,0 +1,26 @@
+{
+ "id": "arxiv:2611.26914",
+ "families": [
+  "model_choice_adaptation",
+  "output_filtering",
+  "privacy_security_engineering",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Frozen (non-fine-tuned) local encoders used as-is",
+   "finding": "favours_control",
+   "outcome": "Multi-policy safety screening accuracy of the local Tier-1 classifier",
+   "effect": "Frozen local encoders matched cloud models on structured PHI detection (>= 98.3% accuracy in <= 23.5 ms) but degraded markedly on semantic safety and symmetric-blocklist prompts. End-to-end fine-tuning of a 335M-parameter BGE-Large classifier reached 98.90% out-of-fold accuracy, 97.8%-98.2% recall and a 0.0%-0.4% over-refusal rate. The zero-shot cloud LLM judge scored 99.20% (exact McNemar p = 0.648).",
+   "tradeoff": "The fine-tuned classifier took 39.0 ms per query, longer than the frozen encoders' <= 23.5 ms on PHI detection. Residual errors remained on reading-level checks (93.3%-95.3% recall).",
+   "quote": "However, end-to-end representation fine-tuning closes the multi-policy accuracy gap: a fine-tuned 335M-parameter BGE-Large classifier achieves 98.90% out-of-fold accuracy versus 99.20% for a zero-shot cloud LLM judge (exact McNemar p = 0.648, zero shared errors), 97.8%-98.2% recall, and a 0.0%-0.4% over-refusal rate in 39.0 ms (>14x faster than cloud LLM evaluation on our benchmark host).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "tiered safety screening with local classifier and cloud LLM judge escalation (output filters/guardrails)"
+}

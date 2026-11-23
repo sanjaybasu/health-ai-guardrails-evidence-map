@@ -1,0 +1,51 @@
+{
+ "id": "epmc:PPR1371550",
+ "families": [
+  "input_data_handling",
+  "model_choice_adaptation",
+  "verification_ensembles"
+ ],
+ "links": [
+  {
+   "control_id": "T079",
+   "comparator_used": "Base model (off-the-shelf recogniser) under identical preprocessing, on held-out reports",
+   "finding": "favours_comparator",
+   "outcome": "Laboratory value reading accuracy on held-out reports",
+   "effect": "Fine-tuned model lost 8.1 percentage points against its base model (unadjusted p = 0.031). It read its tuning document perfectly at low resolution. It was the most accurate reader on one half of the held-out set and the least accurate on the other.",
+   "tradeoff": "The aggregate loss hid a reversal across the two halves of the held-out set. The result does not survive correction for multiple testing.",
+   "quote": "Fine-tuning the recogniser did not help: it read the document it was tuned for perfectly at low resolution, but against its own base model under identical preprocessing it lost 8.1 percentage points on held-out reports (unadjusted p = 0.031; this and the corresponding version 1 comparison do not survive correction for multiple testing).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T143",
+   "comparator_used": "Same pages without upscaling before recognition (same model)",
+   "finding": "favours_control",
+   "outcome": "Value reading accuracy at low resolution and on held-out reports",
+   "effect": "Low-resolution accuracy rose from 60.0% to 98.5%. Held-out accuracy of the same base model improved by 11.0 points (p = 0.0001).",
+   "tradeoff": "",
+   "quote": "Upscaling the page before recognition was the largest single gain, improving low-resolution accuracy from 60.0% to 98.5% and the held-out accuracy of the same base model by 11.0 points (p = 0.0001).",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  },
+  {
+   "control_id": "T039",
+   "comparator_used": "Single reader (recogniser) output used alone, including improvements to the recogniser itself",
+   "finding": "favours_control",
+   "outcome": "Detection of corrupted laboratory values on held-out data",
+   "effect": "Agreement between two independently built readers caught 193 of 193 corruptions at a 19.8% review rate. Verification reduced undetected errors more than any improvement to the recogniser itself.",
+   "tradeoff": "19.8% of values needed review.",
+   "quote": "Requiring agreement between two independently built readers caught 193 of 193 corruptions on held-out data at a 19.8% review rate.",
+   "finding_agreement": 1.0,
+   "linked_by": [
+    "claude"
+   ]
+  }
+ ],
+ "setting": "benchmark_only",
+ "design_hint": "dual-reader consensus verification and image upscaling pre-processing"
+}

@@ -1,0 +1,232 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Unknown",
+   "sample_size": 206,
+   "sample_unit": "brain MRI reports (held-out test set)",
+   "models_evaluated": [
+    "OpenBioLLM-8B",
+    "Qwen3.5-9B",
+    "fine-tuned radiology-specific BERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "LLM finding macro-F1 versus fine-tuned BERT model and an independent neuroradiology fellow on the same test set",
+     "effect": "Qwen3.5-9B macro-F1 0.63 (95% CI 0.53-0.70) vs BERT 0.59 (difference -0.04; 95% CI -0.13 to 0.07) and inter-reader agreement 0.61 (kappa 0.59).",
+     "quote": "Without task-specific training, the general-purpose model achieved a finding macro-F1 of 0.63 (95% confidence interval (CI), 0.53-0.70), comparable to the fine-tuned BERT model (0.59; difference, - 0.04; 95% CI, - 0.13 to 0.07) and to inter-reader agreement (0.61; \u03ba = 0.59)."
+    }
+   ],
+   "unlisted_practices": [
+    "Providing an explicit institutional category-definition rule set in the prompt improved the biomedical LLM's classification (difference 0.23)",
+    "Example retrieval did not improve classification performance",
+    "On-premises open-weight LLM deployment on a single GPU without external data transfer"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "benchmark_only",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "not reported",
+   "sample_size": 206,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "OpenBioLLM-8B",
+    "Qwen3.5-9B",
+    "fine-tuned radiology-specific BERT",
+    "same-base control model"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R493",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "primary imaging finding classification",
+     "effect": "General-purpose model macro-F1 was 0.63 (95% CI, 0.53-0.70), BERT 0.59, and inter-reader agreement 0.61 (\u03ba=0.59).",
+     "quote": "Without task-specific training, the general-purpose model achieved a finding macro-F1 of 0.63 (95% confidence interval (CI), 0.53-0.70), comparable to the fine-tuned BERT model (0.59; difference,\u2009-\u20090.04; 95% CI,\u2009-\u20090.13 to 0.07) and to inter-reader agreement (0.61; \u03ba\u2009=\u20090.59)."
+    }
+   ],
+   "unlisted_practices": [
+    "On-premises open-weight LLM deployment without external data transfer",
+    "Adding institutional category-definition rule sets to LLM prompts",
+    "Adding example retrieval to LLM report classification"
+   ]
+  },
+  "gemini": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "generative_llm"
+   ],
+   "country": "Unknown",
+   "sample_size": 206,
+   "sample_unit": "reports",
+   "models_evaluated": [
+    "OpenBioLLM-8B",
+    "Qwen3.5-9B",
+    "radiology-specific BERT"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [],
+   "unlisted_practices": [
+    "Providing a rule set stating institutional category definitions in LLM prompts",
+    "Few-shot example retrieval for clinical report classification",
+    "On-premises deployment of open-weight LLMs on local hardware to prevent external data transfer"
+   ]
+  }
+ },
+ "design": "retrospective_replay_with_raters",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "Unknown",
+ "sample_unit": "reports",
+ "sample_size": 206,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "generative_llm"
+ ],
+ "models_evaluated": [
+  "OpenBioLLM-8B",
+  "Qwen3.5-9B",
+  "fine-tuned radiology-specific BERT",
+  "radiology-specific BERT",
+  "same-base control model"
+ ],
+ "links": [
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "LLM finding macro-F1 versus fine-tuned BERT model and an independent neuroradiology fellow on the same test set",
+   "effect": "Qwen3.5-9B macro-F1 0.63 (95% CI 0.53-0.70) vs BERT 0.59 (difference -0.04; 95% CI -0.13 to 0.07) and inter-reader agreement 0.61 (kappa 0.59).",
+   "quote": "Without task-specific training, the general-purpose model achieved a finding macro-F1 of 0.63 (95% confidence interval (CI), 0.53-0.70), comparable to the fine-tuned BERT model (0.59; difference, - 0.04; 95% CI, - 0.13 to 0.07) and to inter-reader agreement (0.61; \u03ba = 0.59).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R493",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 0.67,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Adding example retrieval to LLM report classification",
+  "Adding institutional category-definition rule sets to LLM prompts",
+  "Example retrieval did not improve classification performance",
+  "Few-shot example retrieval for clinical report classification",
+  "On-premises deployment of open-weight LLMs on local hardware to prevent external data transfer",
+  "On-premises open-weight LLM deployment on a single GPU without external data transfer",
+  "On-premises open-weight LLM deployment without external data transfer",
+  "Providing a rule set stating institutional category definitions in LLM prompts",
+  "Providing an explicit institutional category-definition rule set in the prompt improved the biomedical LLM's classification (difference 0.23)"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:43052637",
+ "screen": {
+  "id": "pmid:43052637",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "generative_llm"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "rule set prompt grounding and example retrieval",
+  "user": "clinician_or_staff",
+  "reason": "Evaluates locally deployed LLMs for classifying MRI reports and explicitly tests deployment-level prompting safeguards/augmentations (adding an institutional rule set vs. example retrieval) to improve classification performance.",
+  "jev": {
+   "id": "pmid:43052637",
+   "empirical": 0.97,
+   "tests_practice": 0.87,
+   "real_deployment": 0.09
+  }
+ },
+ "oa_retried": false
+}

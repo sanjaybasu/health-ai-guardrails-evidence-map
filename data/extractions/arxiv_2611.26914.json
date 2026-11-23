@@ -1,0 +1,99 @@
+{
+ "route": "single",
+ "fulltext": false,
+ "models": {
+  "claude": "claude-sonnet-5-5"
+ },
+ "design": "automated_benchmark",
+ "setting": "benchmark_only",
+ "user": "patient",
+ "technology": [
+  "generative_llm",
+  "agentic"
+ ],
+ "country": "not reported",
+ "sample_size": null,
+ "sample_unit": "benchmark prompts (length-matched contrastive twin benchmarks)",
+ "models_evaluated": [
+  "BGE-Large (335M, fine-tuned)",
+  "frozen local encoders",
+  "zero-shot cloud LLM judge"
+ ],
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [],
+ "links": [
+  {
+   "rec_id": "R348",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Accuracy and recall of local input screening classifier for PHI detection, and latency",
+   "effect": "Frozen local encoders reached >=98.3% accuracy on structured PHI detection in <=23.5 ms; fine-tuned BGE-Large reached 100.0% local recall on PHI violations.",
+   "quote": "Per-policy error analysis reveals ceiling local recall on PHI (100.0%), brand (100.0%), and clinical scope (98.7%-99.3%) violations, isolating residual errors to reading-level checks (93.3%-95.3%) and motivating targeted multi-tier escalation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  },
+  {
+   "rec_id": "R061",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "outcome": "Detection of out-of-scope clinical requests and over-refusal rate of safety classifier",
+   "effect": "Fine-tuned BGE-Large reached 98.7%-99.3% recall on clinical scope violations, 97.8%-98.2% overall recall, and 0.0%-0.4% over-refusal; 98.90% accuracy vs 99.20% for cloud LLM judge.",
+   "quote": "Per-policy error analysis reveals ceiling local recall on PHI (100.0%), brand (100.0%), and clinical scope (98.7%-99.3%) violations, isolating residual errors to reading-level checks (93.3%-95.3%) and motivating targeted multi-tier escalation.",
+   "quote_score": 100.0,
+   "linked_by": [
+    "claude"
+   ],
+   "finding_agreement": null
+  }
+ ],
+ "unlisted_practices": [
+  "Multi-tier edge triage: local compact classifier screening with escalation of ambiguous queries to a cloud LLM judge to reduce latency",
+  "Fine-tuning local encoders for multi-policy safety screening of agent queries",
+  "Length-matched contrastive twin benchmarks for evaluating safety classifiers"
+ ],
+ "agreement": null,
+ "contested_links": [],
+ "id": "arxiv:2611.26914",
+ "screen": {
+  "id": "arxiv:2611.26914",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "agentic",
+   "generative_llm"
+  ],
+  "setting": "benchmark_only",
+  "tests_practice": true,
+  "practice": "tiered safety screening with local classifier and cloud LLM judge escalation (output filters/guardrails)",
+  "user": "none",
+  "reason": "The study develops and benchmarks a multi-tier edge triage guardrail architecture for clinical LLM agents to enforce safety policies (PHI, scope of practice, reading level) under latency constraints.",
+  "primary": {
+   "category": "empirical_ai_health",
+   "setting": "benchmark_only",
+   "tests_practice": true,
+   "practice": "multi-tier edge safety triage and output guardrails"
+  },
+  "arbitrated": true,
+  "arbiter": "claude-sonnet-5-5",
+  "jev": {
+   "id": "arxiv:2611.26914",
+   "empirical": 0.92,
+   "tests_practice": 0.52,
+   "real_deployment": 0.08
+  }
+ },
+ "oa_retried": false
+}

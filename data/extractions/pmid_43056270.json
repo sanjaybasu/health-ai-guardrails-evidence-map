@@ -1,0 +1,426 @@
+{
+ "route": "fast_panel",
+ "fulltext": false,
+ "raw": {
+  "claude": {
+   "design": "retrospective_replay_with_raters",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "ICU patients (MIMIC-IV development cohort; eICU external cohort)",
+   "models_evaluated": [
+    "LSTM",
+    "LightGBM",
+    "Random Forest",
+    "XGBoost",
+    "Logistic Regression",
+    "SOFA-only baseline",
+    "Dynamic Adaptive Fairness controller",
+    "static reweighing"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R546",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Model performance when generalized from MIMIC-IV to eICU hospitals",
+     "effect": "Common-feature Random Forest on eICU achieved AUC 0.743 (95% CI 0.738-0.749), versus LSTM AUC 0.884 on MIMIC-IV held-out test set.",
+     "quote": "Because three development-model predictors (vasopressors, mechanical ventilation, and the full SOFA score) are not consistently recorded in eICU, cross-institutional generalization is assessed with a common-feature Random Forest, yielding AUC 0.743 (95% CI: 0.738-0.749)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Per-hospital fairness variability in cross-institutional eICU audit",
+     "effect": "Measurable per-hospital variability: TPR gap 0.134, FPR gap 0.060, FOR gap 0.032.",
+     "quote": "A cross-institutional eICU fairness audit reveals measurable per-hospital variability (TPR gap 0.134, FPR gap 0.060, FOR gap 0.032); subgroup estimates are reported with event counts and Wilson intervals."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "null_or_mixed",
+     "outcome": "Final TPR gaps under dynamic adaptive fairness versus static reweighing versus no intervention across retraining cycles",
+     "effect": "No significant difference in final TPR gaps across three strategies (Friedman chi2(2)=1.195, p=0.550); adaptive controller showed damped trajectories vs larger transient spikes with static reweighing.",
+     "quote": "Across 30 independent runs, all three strategies converge to final TPR gaps with no significant difference (Friedman $\\chi ^{2}(2)=1.195$, $p=0.550$); however, the Dynamic Adaptive Fairness controller exhibits bounded, damped trajectories where static reweighing shows larger transient spikes."
+    },
+    {
+     "rec_id": "R365",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "Post-covariate-shift TPR-gap spike with adaptive control versus no intervention",
+     "effect": "Adaptive control attenuated post-shift TPR-gap spike (\u0394=+0.091) relative to no-intervention baseline (\u0394=+0.139).",
+     "quote": "Under an auxiliary exogenous covariate shift, adaptive control attenuates the post-shift TPR-gap spike ($\\Delta =+0.091$) relative to the no-intervention baseline ($\\Delta =+0.139$)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "Discrimination of LSTM versus tabular baselines and SOFA-only baseline on same data",
+     "effect": "LSTM AUC 0.884 comparable to LightGBM 0.892, RF 0.889, XGBoost 0.886, LR 0.867 and well above SOFA-only 0.770.",
+     "quote": "Using the MIMIC-IV cohort, the LSTM achieves an AUC of 0.884 (95% CI: 0.859-0.908) on a held-out test set, comparable to contemporary tabular baselines (LightGBM 0.892, Random Forest 0.889, XGBoost 0.886, Logistic Regression 0.867) and substantially above a SOFA-only clinical baseline (0.770)."
+    }
+   ],
+   "unlisted_practices": [
+    "Dynamic adaptive fairness controller for retraining across cycles",
+    "SHAP feature-importance stability monitoring across retraining cycles"
+   ]
+  },
+  "openai": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "not reported",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LSTM",
+    "LightGBM",
+    "Random Forest",
+    "XGBoost",
+    "Logistic Regression",
+    "SOFA-only clinical baseline",
+    "common-feature Random Forest",
+    "Dynamic Adaptive Fairness controller"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [],
+   "links": [
+    {
+     "rec_id": "R091",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-institutional generalization",
+     "effect": "Common-feature Random Forest eICU AUC 0.743 (95% CI: 0.738-0.749), lower than MIMIC-IV held-out AUCs.",
+     "quote": "Because three development-model predictors (vasopressors, mechanical ventilation, and the full SOFA score) are not consistently recorded in eICU, cross-institutional generalization is assessed with a common-feature Random Forest, yielding AUC 0.743 (95% CI: 0.738-0.749)."
+    },
+    {
+     "rec_id": "R107",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "AUC versus tabular and SOFA baselines",
+     "effect": "LSTM AUC 0.884; tabular baselines 0.867-0.892; SOFA-only baseline 0.770.",
+     "quote": "Using the MIMIC-IV cohort, the LSTM achieves an AUC of 0.884 (95% CI: 0.859-0.908) on a held-out test set, comparable to contemporary tabular baselines (LightGBM 0.892, Random Forest 0.889, XGBoost 0.886, Logistic Regression 0.867) and substantially above a SOFA-only clinical baseline (0.770)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "per-hospital fairness variability",
+     "effect": "eICU audit found TPR gap 0.134, FPR gap 0.060, FOR gap 0.032.",
+     "quote": "A cross-institutional eICU fairness audit reveals measurable per-hospital variability (TPR gap 0.134, FPR gap 0.060, FOR gap 0.032); subgroup estimates are reported with event counts and Wilson intervals."
+    },
+    {
+     "rec_id": "R318",
+     "relation": "documents_hazard",
+     "finding": "hazard_mixed",
+     "outcome": "TPR gaps over retraining cycles",
+     "effect": "Final TPR gaps did not differ (p=0.550), but static reweighing had larger transient spikes.",
+     "quote": "Across 30 independent runs, all three strategies converge to final TPR gaps with no significant difference (Friedman $\\chi ^{2}(2)=1.195$, $p=0.550$); however, the Dynamic Adaptive Fairness controller exhibits bounded, damped trajectories where static reweighing shows larger transient spikes."
+    },
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "post-shift TPR-gap spike",
+     "effect": "Adaptive control \u0394=+0.091 versus no-intervention baseline \u0394=+0.139.",
+     "quote": "Under an auxiliary exogenous covariate shift, adaptive control attenuates the post-shift TPR-gap spike ($\\Delta =+0.091$) relative to the no-intervention baseline ($\\Delta =+0.139$)."
+    },
+    {
+     "rec_id": "R096",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "fairness under exogenous covariate shift",
+     "effect": "Post-shift TPR-gap spikes occurred: \u0394=+0.091 with adaptive control and \u0394=+0.139 with no intervention.",
+     "quote": "Under an auxiliary exogenous covariate shift, adaptive control attenuates the post-shift TPR-gap spike ($\\Delta =+0.091$) relative to the no-intervention baseline ($\\Delta =+0.139$)."
+    },
+    {
+     "rec_id": "R104",
+     "relation": "documents_hazard",
+     "finding": "hazard_absent",
+     "outcome": "SHAP ranking stability over cycles",
+     "effect": "SHAP feature-importance rankings remained highly stable, \u03c1=0.986.",
+     "quote": "SHAP feature-importance rankings remain highly stable across cycles ($\\rho =0.986$), anchored by clinical severity markers."
+    }
+   ],
+   "unlisted_practices": []
+  },
+  "gemini": {
+   "design": "automated_benchmark",
+   "setting": "offline_or_simulated",
+   "user": "clinician_or_staff",
+   "technology": [
+    "predictive_risk"
+   ],
+   "country": "United States",
+   "sample_size": null,
+   "sample_unit": "patients",
+   "models_evaluated": [
+    "LSTM",
+    "LightGBM",
+    "Random Forest",
+    "XGBoost",
+    "Logistic Regression",
+    "SOFA",
+    "Dynamic Adaptive Fairness controller"
+   ],
+   "population": {
+    "medicaid": false,
+    "safety_net": false,
+    "limited_english_or_non_english": false,
+    "low_health_literacy": false,
+    "low_income": false,
+    "racial_ethnic_minority_focus": false,
+    "rural": false,
+    "older_adults": false,
+    "disability": false
+   },
+   "languages": [
+    "English"
+   ],
+   "links": [
+    {
+     "rec_id": "R323",
+     "relation": "tests_guardrail",
+     "finding": "supports_practice",
+     "outcome": "post-shift true positive rate gap under covariate shift",
+     "effect": "adaptive control attenuated TPR-gap spike (delta = +0.091) relative to no-intervention baseline (delta = +0.139)",
+     "quote": "Under an auxiliary exogenous covariate shift, adaptive control attenuates the post-shift TPR-gap spike ($\u0394 =+0.091$) relative to the no-intervention baseline ($\u0394 =+0.139$)."
+    },
+    {
+     "rec_id": "R311",
+     "relation": "documents_hazard",
+     "finding": "hazard_present",
+     "outcome": "cross-institutional fairness variability across hospitals",
+     "effect": "audit revealed per-hospital variability with TPR gap 0.134, FPR gap 0.060, and FOR gap 0.032",
+     "quote": "A cross-institutional eICU fairness audit reveals measurable per-hospital variability (TPR gap 0.134, FPR gap 0.060, FOR gap 0.032); subgroup estimates are reported with event counts and Wilson intervals."
+    }
+   ],
+   "unlisted_practices": []
+  }
+ },
+ "design": "automated_benchmark",
+ "setting": "offline_or_simulated",
+ "user": "clinician_or_staff",
+ "country": "United States",
+ "sample_unit": "patients",
+ "sample_size": null,
+ "population": {
+  "medicaid": false,
+  "safety_net": false,
+  "limited_english_or_non_english": false,
+  "low_health_literacy": false,
+  "low_income": false,
+  "racial_ethnic_minority_focus": false,
+  "rural": false,
+  "older_adults": false,
+  "disability": false
+ },
+ "languages": [
+  "English"
+ ],
+ "technology": [
+  "predictive_risk"
+ ],
+ "models_evaluated": [
+  "Dynamic Adaptive Fairness controller",
+  "LSTM",
+  "LightGBM",
+  "Logistic Regression",
+  "Random Forest",
+  "SOFA",
+  "SOFA-only baseline",
+  "SOFA-only clinical baseline",
+  "XGBoost",
+  "common-feature Random Forest",
+  "static reweighing"
+ ],
+ "links": [
+  {
+   "rec_id": "R311",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Per-hospital fairness variability in cross-institutional eICU audit",
+   "effect": "Measurable per-hospital variability: TPR gap 0.134, FPR gap 0.060, FOR gap 0.032.",
+   "quote": "A cross-institutional eICU fairness audit reveals measurable per-hospital variability (TPR gap 0.134, FPR gap 0.060, FOR gap 0.032); subgroup estimates are reported with event counts and Wilson intervals.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R323",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 0.67,
+   "outcome": "post-shift TPR-gap spike",
+   "effect": "Adaptive control \u0394=+0.091 versus no-intervention baseline \u0394=+0.139.",
+   "quote": "Under an auxiliary exogenous covariate shift, adaptive control attenuates the post-shift TPR-gap spike ($\\Delta =+0.091$) relative to the no-intervention baseline ($\\Delta =+0.139$).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R546",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Model performance when generalized from MIMIC-IV to eICU hospitals",
+   "effect": "Common-feature Random Forest on eICU achieved AUC 0.743 (95% CI 0.738-0.749), versus LSTM AUC 0.884 on MIMIC-IV held-out test set.",
+   "quote": "Because three development-model predictors (vasopressors, mechanical ventilation, and the full SOFA score) are not consistently recorded in eICU, cross-institutional generalization is assessed with a common-feature Random Forest, yielding AUC 0.743 (95% CI: 0.738-0.749).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R365",
+   "relation": "documents_hazard",
+   "finding": "hazard_present",
+   "finding_agreement": 1.0,
+   "outcome": "Post-covariate-shift TPR-gap spike with adaptive control versus no intervention",
+   "effect": "Adaptive control attenuated post-shift TPR-gap spike (\u0394=+0.091) relative to no-intervention baseline (\u0394=+0.139).",
+   "quote": "Under an auxiliary exogenous covariate shift, adaptive control attenuates the post-shift TPR-gap spike ($\\Delta =+0.091$) relative to the no-intervention baseline ($\\Delta =+0.139$).",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R107",
+   "relation": "tests_guardrail",
+   "finding": "supports_practice",
+   "finding_agreement": 1.0,
+   "outcome": "Discrimination of LSTM versus tabular baselines and SOFA-only baseline on same data",
+   "effect": "LSTM AUC 0.884 comparable to LightGBM 0.892, RF 0.889, XGBoost 0.886, LR 0.867 and well above SOFA-only 0.770.",
+   "quote": "Using the MIMIC-IV cohort, the LSTM achieves an AUC of 0.884 (95% CI: 0.859-0.908) on a held-out test set, comparable to contemporary tabular baselines (LightGBM 0.892, Random Forest 0.889, XGBoost 0.886, Logistic Regression 0.867) and substantially above a SOFA-only clinical baseline (0.770).",
+   "linked_by": [
+    "claude",
+    "openai"
+   ],
+   "via": "cross_examination"
+  },
+  {
+   "rec_id": "R104",
+   "relation": "documents_hazard",
+   "finding": "hazard_absent",
+   "finding_agreement": 1.0,
+   "outcome": "SHAP ranking stability over cycles",
+   "effect": "SHAP feature-importance rankings remained highly stable, \u03c1=0.986.",
+   "quote": "SHAP feature-importance rankings remain highly stable across cycles ($\\rho =0.986$), anchored by clinical severity markers.",
+   "linked_by": [
+    "claude",
+    "gemini",
+    "openai"
+   ],
+   "via": "cross_examination"
+  }
+ ],
+ "contested_links": [
+  {
+   "rec_id": "R091",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R107",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R318",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  },
+  {
+   "rec_id": "R096",
+   "relation": "documents_hazard",
+   "vendors": [
+    "openai"
+   ]
+  }
+ ],
+ "agreement": {
+  "design": 0.67,
+  "setting": 1.0,
+  "user": 1.0,
+  "country": 0.67,
+  "sample_unit": 0.67,
+  "sample_size": 1.0,
+  "population": 1.0
+ },
+ "unlisted_practices": [
+  "Dynamic adaptive fairness controller for retraining across cycles",
+  "SHAP feature-importance stability monitoring across retraining cycles"
+ ],
+ "models": {
+  "claude": "claude-sonnet-5-5",
+  "openai": "gpt-5.5",
+  "gemini": "gemini-3.8-flash"
+ },
+ "id": "pmid:43056270",
+ "screen": {
+  "id": "pmid:43056270",
+  "model": "gemini-3.8-flash",
+  "category": "empirical_ai_health",
+  "technology": [
+   "predictive_risk"
+  ],
+  "setting": "offline_or_simulated",
+  "tests_practice": true,
+  "practice": "dynamic fairness monitoring and adaptive retraining control under drift",
+  "user": "none",
+  "reason": "The study conducts a longitudinal simulation evaluating dynamic adaptive fairness control and drift monitoring strategies versus static reweighing and no intervention during periodic retraining cycles.",
+  "jev": {
+   "id": "pmid:43056270",
+   "empirical": 0.96,
+   "tests_practice": 0.88,
+   "real_deployment": 0.08
+  }
+ },
+ "oa_retried": false
+}
